@@ -15,21 +15,23 @@ export function GoalCard({
 }: GoalProps) {
     return (
         <Link
-            href={`/goal/${slug}`}
-            className="group block"
+            href={`/goals/${slug}`}
+            className="group block h-full"
         >
-            <div className="bg-surface-container border border-outline rounded-2xl p-6 hover:border-primary transition-all hover:-translate-y-1">
+            <div className="h-full bg-surface-container border border-outline rounded-2xl p-6 hover:border-primary hover:shadow-lg hover:-translate-y-1 transition-all">
+
                 <span className="material-symbols-outlined text-4xl text-primary mb-4 block">
                     {icon}
                 </span>
 
-                <h3 className="font-bold text-on-surface mb-2">
+                <h3 className="text-lg font-bold text-on-surface group-hover:text-primary transition-colors">
                     {title}
                 </h3>
 
-                <p className="text-sm text-on-surface-variant">
-                    {count} tools
+                <p className="mt-2 text-sm text-on-surface-variant">
+                    {count} AI tools
                 </p>
+
             </div>
         </Link>
     );

@@ -42,12 +42,13 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {goals.map(goal => (
+          {goals.map((goal) => (
             <GoalCard
-              key={goal.title}
+              key={goal.slug}
               title={goal.title}
               icon={goal.icon}
-              description={goal.description}
+              count={goal.count}
+              slug={goal.slug}
             />
           ))}
         </div>

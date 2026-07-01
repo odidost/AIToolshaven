@@ -12,17 +12,36 @@ export type AITool = {
   slug: string;
   tagline: string;
   description: string;
-  category: string; // corresponds to ToolCategory.id
+
+  category: string;
+
   priceModel: "Free" | "Freemium" | "Paid" | "Enterprise";
   price?: string;
+
   rating: number;
   reviewCount: number;
+
   imageUrl: string;
   websiteUrl: string;
+
   tags: string[];
   features: string[];
+
   verified: boolean;
   featured?: boolean;
+
+  goals?: string[];
+
+  // NEW
+  pros: string[];
+  cons: string[];
+  bestFor: string[];
+
+  platform: string;
+  api: boolean;
+  mobileApp: boolean;
+  openSource: boolean;
+  freeTrial: boolean;
 };
 
 export type Review = {
@@ -52,18 +71,78 @@ export const tools: AITool[] = [
     slug: "aetherwriter",
     tagline: "The ultimate AI co-writer for creators",
     description: "AetherWriter is a next-generation AI writing assistant that adapts to your voice and helps you create high-quality content 10x faster.",
+
     category: "c1",
+
     priceModel: "Freemium",
     price: "$15/mo",
+
     rating: 4.8,
     reviewCount: 342,
+
     imageUrl: "https://placehold.co/600x400/4F46E5/FFFFFF?text=AetherWriter",
     websiteUrl: "https://example.com/aetherwriter",
-    tags: ["Copywriting", "Blog", "Social Media"],
-    features: ["Tone adaptation", "Plagiarism checker", "SEO optimization", "Multi-language support", "Brand voice training"],
+
+    tags: [
+      "Copywriting",
+      "Blog",
+      "Social Media",
+    ],
+
+    features: [
+      "Tone adaptation",
+      "Plagiarism checker",
+      "SEO optimization",
+      "Multi-language support",
+      "Brand voice training",
+    ],
+
     verified: true,
     featured: true,
+
+    goals: [
+      "faceless-youtube",
+      "make-money-online",
+      "business-growth",
+    ],
+
+    goalBenefits: [
+      "Generate complete YouTube scripts",
+      "Write attention-grabbing hooks",
+      "Create SEO-optimized video titles",
+    ],
+
+    // NEW
+    pros: [
+      "Very beginner friendly",
+      "Excellent SEO writing",
+      "Produces high-quality content",
+    ],
+
+    cons: [
+      "Limited free plan",
+      "No desktop app",
+      "Advanced features require a paid subscription",
+    ],
+
+    bestFor: [
+      "Bloggers",
+      "YouTubers",
+      "Freelancers",
+      "Marketing teams",
+    ],
+
+    platform: "Web",
+
+    api: true,
+
+    mobileApp: false,
+
+    openSource: false,
+
+    freeTrial: true,
   },
+
   {
     id: "t2",
     name: "LuminaVision",
@@ -81,6 +160,10 @@ export const tools: AITool[] = [
     features: ["4K Resolution", "Inpainting", "Style transfer", "Batch generation", "API access"],
     verified: true,
     featured: true,
+    goals: [
+      "faceless-youtube",
+      "ai-influencers",
+    ],
   },
   {
     id: "t3",
@@ -98,6 +181,10 @@ export const tools: AITool[] = [
     features: ["Multi-language support", "Security scanning", "Auto-documentation", "Git integration", "Code review"],
     verified: true,
     featured: false,
+    goals: [
+      "vibe-coding",
+      "ai-workflows",
+    ],
   },
   {
     id: "t4",
@@ -116,6 +203,10 @@ export const tools: AITool[] = [
     features: ["100+ Voices", "Emotion control", "Voice cloning", "Real-time synthesis", "Audio editing"],
     verified: false,
     featured: false,
+    goals: [
+      "faceless-youtube",
+      "ai-influencers",
+    ],
   },
   {
     id: "t5",
@@ -134,6 +225,10 @@ export const tools: AITool[] = [
     features: ["Auto-captions", "Silence removal", "B-roll generation", "Multi-track editing", "Export presets"],
     verified: true,
     featured: true,
+    goals: [
+      "faceless-youtube",
+      "make-money-online",
+    ],
   },
   {
     id: "t6",
@@ -152,6 +247,10 @@ export const tools: AITool[] = [
     features: ["Human-like output", "Citation generation", "Outline builder", "Fact-checking", "Readability scoring"],
     verified: true,
     featured: false,
+    goals: [
+      "make-money-online",
+      "business-growth",
+    ],
   },
   {
     id: "t7",
@@ -170,6 +269,10 @@ export const tools: AITool[] = [
     features: ["ControlNet support", "Layer editing", "Custom model training", "Vector export", "Color palette generation"],
     verified: true,
     featured: false,
+    goals: [
+      "ai-influencers",
+      "faceless-youtube",
+    ],
   },
   {
     id: "t8",
@@ -188,6 +291,10 @@ export const tools: AITool[] = [
     features: ["Whole-file generation", "Auto-testing", "Debugging assistant", "Terminal commands", "Deployment automation"],
     verified: true,
     featured: true,
+    goals: [
+      "vibe-coding",
+      "ai-workflows",
+    ],
   },
   {
     id: "t9",
@@ -206,6 +313,10 @@ export const tools: AITool[] = [
     features: ["Multi-platform ads", "A/B testing", "Audience targeting", "Performance analytics", "Template library"],
     verified: false,
     featured: false,
+    goals: [
+      "business-growth",
+      "make-money-online",
+    ],
   },
   {
     id: "t10",
@@ -224,6 +335,10 @@ export const tools: AITool[] = [
     features: ["Smart scheduling", "Auto-prioritization", "Team analytics", "Slack integration", "Custom workflows"],
     verified: true,
     featured: false,
+    goals: [
+      "business-growth",
+      "ai-workflows",
+    ],
   },
 ];
 

@@ -1,0 +1,82 @@
+import { notFound } from "next/navigation";
+import Link from "next/link";
+
+import { goals } from "@/lib/goals";
+import { tools } from "@/lib/mock-data";
+import { GoalHero } from "@/components/goals/GoalHero";
+import { GoalToolGrid } from "@/components/goals/GoalToolGrid";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { GoalRoadmap } from "@/components/goals/GoalRoadmap";
+import { roadmaps } from "@/lib/roadmaps";
+
+export default async function GoalPage({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const { slug } = await params;
+
+    const goal = goals.find((g) => g.slug === slug);
+
+    if (!goal) {
+        notFound();
+    }
+
+    // Show only tools mapped to this goal
+    const goalTools = tools.filter((tool) =>
+        tool.goals?.includes(goal.slug)
+    );
+
+    // Get the roadmap for this goal
+    const roadmap =
+        roadmaps[goal.slug as keyof typeof roadmaps] ?? [];
+
+    return (
+        <div className="container mx-auto px-4 py-8">
+            <Breadcrumbs
+                items={[
+                    { label: "Goals", href: "/goals" },
+                    { label: goal.title },
+                ]}
+            />
+
+            {/* Hero */}
+            <GoalHero
+                title={goal.title}
+                description={goal.description}
+                icon={goal.icon}
+                toolCount={goalTools.length}
+            />
+
+            {/* Tools */}
+
+            <GoalToolGrid tools={goalTools} />
+
+            <GoalRoadmap
+                title={goal.title}
+                steps={roadmap}
+            />
+
+            {/* Other Goals */}
+            <section className="mt-16 rounded-2xl bg-surface-container border border-outline p-8">
+                <h2 className="text-2xl font-bold mb-6">
+                    Explore More Goals
+                </h2>
+
+                <div className="flex flex-wrap gap-3">
+                    {goals
+                        .filter((g) => g.slug !== goal.slug)
+                        .map((g) => (
+                            <Link
+                                key={g.slug}
+                                href={`/goals/${g.slug}`}
+                                className="rounded-full border border-outline px-4 py-2 hover:border-primary transition"
+                            >
+                                {g.title}
+                            </Link>
+                        ))}
+                </div>
+            </section>
+        </div>
+    );
+}
