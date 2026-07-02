@@ -1,83 +1,96 @@
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import { getToolBySlug, getCategoryBySlug, getToolsByCategory } from '@/lib/mock-data';
-import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
-import { ToolCard } from '@/components/shared/ToolCard';
+import { notFound } from "next/navigation";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { ToolHero } from "@/components/tool/ToolHero";
+import { ToolOverview } from "@/components/tool/ToolOverview";
+import { UseCases } from "@/components/tool/UseCases";
+import { FeatureGrid } from "@/components/tool/FeatureGrid";
 import { QuickFacts } from "@/components/tool/QuickFacts";
 import { ProsCons } from "@/components/tool/ProsCons";
-import { ToolHero } from "@/components/tool/ToolHero";
-import { BestFor } from "@/components/tool/BestFor";
+import ToolComparisonSection from "@/components/tool/ToolComparisonSection";
+import { PricingPlans } from "@/components/tool/PricingPlans";
+import { RatingBreakdown } from "@/components/tool/RatingBreakdown";
+import { ToolSidebar } from "@/components/tool/ToolSidebar";
 
-export default async function ToolDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+import {
+  getToolBySlug,
+  getToolsByCategory,
+  getFeaturedTools,
+} from "@/lib/queries/tools";
+
+import {
+  getAllCategories,
+  getCategoryById,
+} from "@/lib/queries/categories";
+
+import { getComparisonCandidates } from "@/lib/queries/comparisons";
+
+export default async function ToolDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
+
   const tool = getToolBySlug(slug);
+  if (!tool) notFound();
 
-  if (!tool) {
-    notFound();
-  }
+  // category FIX (this was missing)
+  const category = getCategoryById(tool.category);
 
-  const category = getCategoryBySlug(tool.category);
-  const relatedTools = getToolsByCategory(tool.category).filter(t => t.id !== tool.id).slice(0, 4);
+  // related tools FIX (this was missing)
+  const relatedTools = getToolsByCategory(tool.category).filter(
+    (t) => t.id !== tool.id
+  );
+
+  // comparisons (keep as-is)
+  const comparisonTools = getComparisonCandidates(tool);
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Breadcrumbs items={[
-        { label: category?.name || 'Category', href: category ? `/category/${category.slug}` : undefined },
-        { label: tool.name }
-      ]} />
+      <Breadcrumbs
+        items={[
+          {
+            label: category?.name || "Category",
+            href: category ? `/category/${category.slug}` : undefined,
+          },
+          { label: tool.name },
+        ]}
+      />
 
       <ToolHero tool={tool} />
 
-      {/* Features section */}
-      <section className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
-          <h2 className="text-2xl font-bold text-on-surface mb-6">
-            Key Features
-          </h2>
+      <div className="mt-16 grid lg:grid-cols-[minmax(0,1fr)_320px] gap-12">
+        <main>
+          <ToolOverview
+            title={tool.name}
+            description={tool.description}
+          />
 
-          <ul className="space-y-3">
-            {tool.features.map((feature, idx) => (
-              <li
-                key={idx}
-                className="flex items-start gap-3"
-              >
-                <span className="material-symbols-outlined text-primary">
-                  check_circle
-                </span>
+          <UseCases useCases={tool.useCases} />
 
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+          <FeatureGrid features={tool.features} />
 
-        <QuickFacts
-          platform={tool.platform}
-          api={tool.api}
-          mobileApp={tool.mobileApp}
-          openSource={tool.openSource}
-          freeTrial={tool.freeTrial}
-          priceModel={tool.priceModel}
+          <QuickFacts tool={tool} />
+
+          <ProsCons pros={tool.pros} cons={tool.cons} />
+
+          <ToolComparisonSection
+            tool={tool}
+            comparisonTools={comparisonTools}
+          />
+
+          <PricingPlans plans={tool.pricingPlans} />
+
+          <RatingBreakdown tool={tool} />
+        </main>
+
+        <ToolSidebar
+          featuredTool={getFeaturedTools()[0]}
+          relatedTools={relatedTools}
+          categories={getAllCategories()}
+          currentCategory={category}
         />
-      </section>
-      <ProsCons
-        pros={tool.pros}
-        cons={tool.cons}
-      />
-      <BestFor
-        users={tool.bestFor}
-      />
-      {/* Related Tools */}
-      {relatedTools.length > 0 && (
-        <section>
-          <h2 className="text-2xl font-bold text-on-surface mb-6">Similar Tools</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {relatedTools.map(t => (
-              <ToolCard key={t.id} tool={t} />
-            ))}
-          </div>
-        </section>
-      )}
+      </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { AITool } from "@/lib/mock-data";
+import type { AITool } from "@/lib/types/tool";
 
 type ToolHeroProps = {
     tool: AITool;
@@ -7,134 +7,215 @@ type ToolHeroProps = {
 
 export function ToolHero({ tool }: ToolHeroProps) {
     return (
-        <section className="mb-12 rounded-3xl border border-outline bg-surface-container p-8 lg:p-10 shadow-sm">
+        <section className="relative mb-20">
+            <div className="absolute inset-0 -z-10 overflow-hidden">
 
-            <div className="flex flex-col lg:flex-row gap-8">
+                <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-primary/10 blur-3xl" />
 
-                {/* Logo */}
+                <div className="absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-blue-500/10 blur-3xl" />
 
-                <div className="flex-shrink-0">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                        src={tool.imageUrl}
-                        alt={tool.name}
-                        className="w-36 h-36 lg:w-44 lg:h-44 rounded-3xl border border-outline object-cover shadow-sm"
-                    />
-                </div>
+            </div>
 
-                {/* Main Content */}
+            <div className="grid lg:grid-cols-[1.9fr_1fr] gap-10 items-start">
 
-                <div className="flex-1">
+                {/* LEFT */}
+                <div>
 
-                    {/* Badges */}
+                    {/* Logo + Name */}
 
-                    <div className="flex flex-wrap gap-3 mb-5">
+                    <div className="flex items-start justify-between mb-6">
 
-                        {tool.verified && (
-                            <span className="inline-flex items-center gap-2 rounded-full bg-green-100 text-green-700 px-4 py-2 text-sm font-semibold">
-                                <span className="material-symbols-outlined text-base">
-                                    verified
-                                </span>
-                                Verified
-                            </span>
-                        )}
+                        <div className="flex items-start gap-4">
 
-                        <span className="rounded-full bg-primary-container px-4 py-2 text-sm font-semibold">
-                            {tool.priceModel}
-                        </span>
+                            <img
+                                src={tool.logoUrl}
+                                alt={tool.name}
+                                className="h-14 w-14 rounded-2xl border border-outline"
+                            />
 
-                        <span className="rounded-full border border-outline px-4 py-2 text-sm">
-                            {tool.platform}
-                        </span>
+                            <div>
 
-                    </div>
+                                <div className="flex items-center gap-2">
 
-                    {/* Name */}
+                                    <h1 className="text-4xl font-bold">
+                                        {tool.name}
+                                    </h1>
 
-                    <h1 className="text-5xl font-bold mb-3 tracking-tight">
-                        {tool.name}
-                    </h1>
+                                    {tool.verified && (
+                                        <span className="material-symbols-outlined text-primary">
+                                            verified
+                                        </span>
+                                    )}
 
-                    {/* Tagline */}
+                                </div>
 
-                    <p className="text-xl text-on-surface-variant mb-6">
-                        {tool.tagline}
-                    </p>
+                                <div className="flex items-center gap-2 mt-2">
 
-                    {/* Rating */}
+                                    <span className="text-yellow-500">
+                                        ★★★★★
+                                    </span>
 
-                    <div className="flex flex-wrap items-center gap-6 mb-8">
+                                    <strong>{tool.rating}</strong>
 
-                        <div className="flex items-center gap-2">
+                                    <span className="text-on-surface-variant">
+                                        ({tool.reviewCount.toLocaleString()} reviews)
+                                    </span>
 
-                            <span className="text-yellow-500 text-xl">
-                                ★★★★★
-                            </span>
+                                </div>
 
-                            <span className="font-semibold">
-                                {tool.rating}
-                            </span>
+                                <p className="text-sm text-on-surface-variant mt-2">
+                                    by {tool.company}
+                                </p>
 
-                            <span className="text-on-surface-variant">
-                                ({tool.reviewCount} reviews)
-                            </span>
+                            </div>
 
                         </div>
 
-                        {tool.api && (
-                            <div className="flex items-center gap-2 text-sm">
-                                ⚡ API Available
-                            </div>
-                        )}
+                        <div className="flex gap-2">
 
-                        {tool.freeTrial && (
-                            <div className="flex items-center gap-2 text-sm">
-                                🎁 Free Trial
-                            </div>
-                        )}
+                            <button className="h-11 w-11 rounded-xl border border-outline flex items-center justify-center">
+                                <span className="material-symbols-outlined">
+                                    bookmark
+                                </span>
+                            </button>
+
+                            <button className="h-11 w-11 rounded-xl border border-outline flex items-center justify-center">
+                                <span className="material-symbols-outlined">
+                                    share
+                                </span>
+                            </button>
+
+                        </div>
 
                     </div>
 
-                    {/* Description */}
+                    {/* Screenshot */}
 
-                    <p className="max-w-3xl leading-8 text-on-surface mb-8">
+                    <div className="overflow-hidden rounded-[32px] border border-outline bg-surface shadow-2xl">
+
+                        {/* Browser Header */}
+
+                        <div className="flex items-center justify-between border-b border-outline bg-surface-container px-5 py-3">
+
+                            <div className="flex gap-2">
+
+                                <div className="h-3 w-3 rounded-full bg-red-400" />
+
+                                <div className="h-3 w-3 rounded-full bg-yellow-400" />
+
+                                <div className="h-3 w-3 rounded-full bg-green-400" />
+
+                            </div>
+
+                            <div className="rounded-full bg-surface px-5 py-1 text-xs text-on-surface-variant">
+                                {tool.websiteUrl.replace("https://", "")}
+                            </div>
+
+                            <div className="w-10" />
+
+                        </div>
+
+                        <img
+                            src={tool.screenshotUrl}
+                            alt={tool.name}
+                            className="w-full transition duration-500 hover:scale-[1.02]"
+                        />
+
+                    </div>
+
+                </div>
+
+
+                {/* RIGHT */}
+
+                <div className="sticky top-24 rounded-[32px] border border-outline bg-gradient-to-b from-surface to-surface-container p-8 shadow-lg">
+
+                    <h2 className="text-2xl font-bold mb-5">
+                        About {tool.name}
+                    </h2>
+
+                    <p className="leading-8 text-on-surface-variant mb-8">
                         {tool.description}
                     </p>
 
-                    {/* Tags */}
+                    {/* Quick Facts */}
 
                     <div className="flex flex-wrap gap-3 mb-8">
 
-                        {tool.tags.map((tag) => (
-                            <span
-                                key={tag}
-                                className="rounded-full border border-outline px-4 py-2 text-sm hover:border-primary transition"
-                            >
-                                {tag}
+                        <div className="flex items-center gap-2 rounded-full border border-outline px-4 py-2">
+                            <span className="material-symbols-outlined text-base">
+                                payments
                             </span>
-                        ))}
+                            <span>{tool.priceModel}</span>
+                        </div>
+
+                        <div className="flex items-center gap-2 rounded-full border border-outline px-4 py-2">
+                            <span className="material-symbols-outlined text-base">
+                                language
+                            </span>
+                            <span>{tool.platform}</span>
+                        </div>
+
+                        {tool.api && (
+                            <div className="flex items-center gap-2 rounded-full border border-outline px-4 py-2">
+                                <span className="material-symbols-outlined text-base">
+                                    api
+                                </span>
+                                <span>API</span>
+                            </div>
+                        )}
+
+                        {tool.mobileApp && (
+                            <div className="flex items-center gap-2 rounded-full border border-outline px-4 py-2">
+                                <span className="material-symbols-outlined text-base">
+                                    smartphone
+                                </span>
+                                <span>Mobile</span>
+                            </div>
+                        )}
+
+                        {tool.verified && (
+                            <div className="flex items-center gap-2 rounded-full border border-outline px-4 py-2">
+                                <span className="material-symbols-outlined text-base text-primary">
+                                    verified
+                                </span>
+                                <span>Verified</span>
+                            </div>
+                        )}
 
                     </div>
 
-                    {/* Buttons */}
+                    <div className="flex flex-wrap gap-3">
 
-                    <div className="flex flex-wrap gap-4">
-
-                        <a
+                        <Link
                             href={tool.websiteUrl}
                             target="_blank"
-                            rel="noopener noreferrer"
-                            className="rounded-xl bg-primary px-8 py-4 font-semibold text-primary-foreground transition hover:scale-[1.02]"
+                            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 font-semibold text-white transition hover:opacity-90"
                         >
-                            Visit Website →
-                        </a>
+                            <span className="material-symbols-outlined">
+                                open_in_new
+                            </span>
+                            Visit Website
+                        </Link>
 
                         <Link
                             href={`/compare/${tool.slug}`}
-                            className="rounded-xl border border-outline px-8 py-4 font-semibold transition hover:border-primary"
+                            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-outline px-6 py-4 font-semibold transition hover:border-primary"
                         >
-                            Compare Tool
+                            <span className="material-symbols-outlined">
+                                compare_arrows
+                            </span>
+                            Compare
                         </Link>
+
+                        <button
+                            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-outline px-6 py-4 font-semibold transition hover:border-primary"
+                        >
+                            <span className="material-symbols-outlined">
+                                bookmark
+                            </span>
+                            Save
+                        </button>
 
                     </div>
 

@@ -1,13 +1,21 @@
-import { notFound } from 'next/navigation';
-import { getCategoryBySlug, getToolsByCategory } from '@/lib/mock-data';
-import { ToolCard } from '@/components/shared/ToolCard';
-import { CategoryCapsuleBar } from '@/components/shared/CategoryCapsuleBar';
-import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
+import { notFound } from "next/navigation";
 
-export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
+import { getCategoryBySlug } from "@/lib/queries/categories";
+import { getToolsByCategory } from "@/lib/queries/tools";
+
+import { ToolCard } from "@/components/shared/ToolCard";
+import { CategoryCapsuleBar } from "@/components/shared/CategoryCapsuleBar";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+
+export default async function CategoryPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
+
   const category = getCategoryBySlug(slug);
-  
+
   if (!category) {
     notFound();
   }
@@ -16,18 +24,25 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Breadcrumbs items={[
-        { label: 'Categories' },
-        { label: category.name }
-      ]} />
+
+      <Breadcrumbs
+        items={[
+          { label: "Categories" },
+          { label: category.name },
+        ]}
+      />
 
       <div className="mb-8">
         <h1 className="text-3xl md:text-4xl font-bold text-on-surface mb-2 flex items-center gap-3">
-          <span className="material-symbols-outlined text-primary text-4xl">{category.icon}</span>
+          <span className="material-symbols-outlined text-primary text-4xl">
+            {category.icon}
+          </span>
           {category.name}
         </h1>
+
         <p className="text-on-surface-variant text-lg">
-          Explore {category.count} tools in the {category.name} category to enhance your workflow.
+          Explore {category.count} tools in the {category.name} category to
+          enhance your workflow.
         </p>
       </div>
 
@@ -37,7 +52,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {categoryTools.length > 0 ? (
-          categoryTools.map(tool => (
+          categoryTools.map((tool) => (
             <ToolCard key={tool.id} tool={tool} />
           ))
         ) : (

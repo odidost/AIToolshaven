@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 
 import { ToolCard } from "@/components/shared/ToolCard";
-import type { AITool } from "@/lib/mock-data";
+import type { AITool } from "@/lib/types/tool";
 
 type GoalToolGridProps = {
     tools: AITool[];

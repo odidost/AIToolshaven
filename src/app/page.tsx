@@ -1,26 +1,25 @@
-import { opportunities } from '@/lib/opportunities';
-import { workflows } from '@/lib/workflows';
-import { comparisons } from '@/lib/comparisons';
-import { articles } from '@/lib/articles';
+import { opportunities } from "@/lib/opportunities";
+import { workflows } from "@/lib/workflows";
+import { comparisons } from "@/lib/comparisons";
+import { articles } from "@/lib/articles";
 
-import { SpotlightBanner } from '@/components/shared/SpotlightBanner';
-import { CategoryCapsuleBar } from '@/components/shared/CategoryCapsuleBar';
+import { SpotlightBanner } from "@/components/shared/SpotlightBanner";
+import { CategoryCapsuleBar } from "@/components/shared/CategoryCapsuleBar";
 import { WorkflowCard } from "@/components/home/WorkflowCard";
 import { OpportunityCard } from "@/components/home/OpportunityCard";
 import { ComparisonCard } from "@/components/home/ComparisonCard";
 import { ArticleCard } from "@/components/home/ArticleCard";
 import { NewsletterCTA } from "@/components/home/NewsletterCTA";
-import { ToolCard } from '@/components/shared/ToolCard';
-import { GoalCard } from '@/components/home/GoalCard';
+import { ToolCard } from "@/components/shared/ToolCard";
+import { GoalCard } from "@/components/home/GoalCard";
 
-import { tools, getFeaturedTools } from '@/lib/mock-data';
-import { goals } from '@/lib/goals';
+import { getAllTools, getFeaturedTools } from "@/lib/queries/tools";
+import { goals } from "@/lib/goals";
 
 export default function Home() {
   const featuredTools = getFeaturedTools();
 
-  // Latest tools are the non-featured tools
-  const latestTools = tools.filter(t => !t.featured);
+  const latestTools = getAllTools().filter((t) => !t.featured);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -54,7 +53,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Browse by opportunities */}
+      {/* Trending AI Opportunities */}
       <section className="mb-16">
         <div className="flex items-center gap-2 mb-6">
           <span className="material-symbols-outlined text-primary">
@@ -78,7 +77,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Browse Popular AI Workflows */}
+      {/* Popular AI Workflows */}
       <section className="mb-16">
         <div className="flex items-center gap-2 mb-6">
           <span className="material-symbols-outlined text-primary">
@@ -101,7 +100,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Popular Comparisons Section */}
+      {/* Popular Comparisons */}
       <section className="mb-16">
         <div className="flex items-center gap-2 mb-6">
           <span className="material-symbols-outlined text-primary">
@@ -122,6 +121,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+
       {/* Browse Categories */}
       <section className="mb-12">
         <h2 className="text-xl font-bold text-on-surface mb-4">
@@ -143,11 +143,8 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {featuredTools.map(tool => (
-            <ToolCard
-              key={tool.id}
-              tool={tool}
-            />
+          {featuredTools.map((tool) => (
+            <ToolCard key={tool.id} tool={tool} />
           ))}
         </div>
       </section>
@@ -188,11 +185,8 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {latestTools.map(tool => (
-            <ToolCard
-              key={tool.id}
-              tool={tool}
-            />
+          {latestTools.map((tool) => (
+            <ToolCard key={tool.id} tool={tool} />
           ))}
         </div>
       </section>

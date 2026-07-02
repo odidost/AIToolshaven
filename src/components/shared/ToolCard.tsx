@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { AITool } from '@/lib/mock-data';
+import Link from "next/link";
+import type { AITool } from "@/lib/types/tool";
 
 export function ToolCard({ tool }: { tool: AITool }) {
   return (
@@ -7,35 +7,56 @@ export function ToolCard({ tool }: { tool: AITool }) {
       <article className="bg-surface-container rounded-2xl p-6 border border-outline hover:border-primary transition-colors h-full flex flex-col shadow-sm hover:shadow-md">
         <div className="flex justify-between items-start mb-4">
           <div className="w-12 h-12 rounded-xl overflow-hidden bg-outline flex-shrink-0">
-            {/* Using a placeholder for the tool logo */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={tool.imageUrl} alt={tool.name} className="w-full h-full object-cover" />
+            <img
+              src={tool.imageUrl}
+              alt={tool.name}
+              className="w-full h-full object-cover"
+            />
           </div>
+
           <div className="bg-primary-container text-on-primary-container text-xs font-semibold px-2 py-1 rounded-md">
             {tool.priceModel}
           </div>
         </div>
-        
+
         <h3 className="font-bold text-lg text-on-surface mb-1 group-hover:text-primary transition-colors">
           {tool.name}
+
           {tool.verified && (
-            <span className="material-symbols-outlined text-primary text-sm ml-1 align-middle" title="Verified">verified</span>
+            <span
+              className="material-symbols-outlined text-primary text-sm ml-1 align-middle"
+              title="Verified"
+            >
+              verified
+            </span>
           )}
         </h3>
-        
+
         <p className="text-on-surface-variant text-sm mb-4 line-clamp-2 flex-grow">
           {tool.tagline}
         </p>
-        
+
         <div className="flex items-center gap-1 mb-4 text-accent">
-          <span className="material-symbols-outlined text-base">star</span>
-          <span className="text-sm font-semibold text-on-surface">{tool.rating}</span>
-          <span className="text-xs text-on-surface-variant ml-1">({tool.reviewCount})</span>
+          <span className="material-symbols-outlined text-base">
+            star
+          </span>
+
+          <span className="text-sm font-semibold text-on-surface">
+            {tool.rating}
+          </span>
+
+          <span className="text-xs text-on-surface-variant ml-1">
+            ({tool.reviewCount})
+          </span>
         </div>
-        
+
         <div className="flex flex-wrap gap-2 mt-auto">
-          {tool.tags.slice(0, 3).map(tag => (
-            <span key={tag} className="text-xs text-on-surface-variant bg-surface px-2 py-1 rounded-md border border-outline">
+          {tool.tags.slice(0, 3).map((tag) => (
+            <span
+              key={tag}
+              className="text-xs text-on-surface-variant bg-surface px-2 py-1 rounded-md border border-outline"
+            >
               {tag}
             </span>
           ))}

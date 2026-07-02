@@ -1,51 +1,92 @@
+import type { AITool } from "@/lib/types/tool";
 type QuickFactsProps = {
-    platform: string;
-    api: boolean;
-    mobileApp: boolean;
-    openSource: boolean;
-    freeTrial: boolean;
-    priceModel: string;
+    tool: AITool;
 };
 
 export function QuickFacts({
-    platform,
-    api,
-    mobileApp,
-    openSource,
-    freeTrial,
-    priceModel,
+    tool,
 }: QuickFactsProps) {
     const facts = [
-        ["Platform", platform],
-        ["Pricing", priceModel],
-        ["API", api ? "Yes" : "No"],
-        ["Mobile App", mobileApp ? "Yes" : "No"],
-        ["Open Source", openSource ? "Yes" : "No"],
-        ["Free Trial", freeTrial ? "Yes" : "No"],
+        {
+            icon: "payments",
+            label: "Pricing",
+            value: tool.priceModel,
+        },
+        {
+            icon: "star",
+            label: "Rating",
+            value: `${tool.rating} / 5`,
+        },
+        {
+            icon: "reviews",
+            label: "Reviews",
+            value: tool.reviewCount.toLocaleString(),
+        },
+        {
+            icon: "verified",
+            label: "Verified",
+            value: tool.verified ? "Yes" : "No",
+        },
+        {
+            icon: "language",
+            label: "Platform",
+            value: tool.platform ?? "Web",
+        },
+        {
+            icon: "api",
+            label: "API",
+            value: tool.api ? "Available" : "No",
+        },
+        {
+            icon: "phone_iphone",
+            label: "Mobile App",
+            value: tool.mobileApp ? "Yes" : "No",
+        },
+        {
+            icon: "science",
+            label: "Free Trial",
+            value: tool.freeTrial ? "Yes" : "No",
+        },
     ];
 
     return (
-        <div className="rounded-2xl border border-outline bg-surface-container p-6">
-            <h3 className="text-xl font-bold mb-5">
+        <aside className="rounded-3xl border border-outline bg-surface-container p-8">
+
+            <h2 className="text-xl font-bold mb-6">
                 Quick Facts
-            </h3>
+            </h2>
 
-            <div className="space-y-4">
-                {facts.map(([label, value]) => (
+            <div className="space-y-5">
+
+                {facts.map((fact) => (
+
                     <div
-                        key={label}
-                        className="flex justify-between border-b border-outline pb-3 last:border-none last:pb-0"
+                        key={fact.label}
+                        className="flex items-center justify-between border-b border-outline/30 pb-4 last:border-none last:pb-0"
                     >
-                        <span className="text-on-surface-variant">
-                            {label}
+
+                        <div className="flex items-center gap-3">
+
+                            <span className="material-symbols-outlined text-primary">
+                                {fact.icon}
+                            </span>
+
+                            <span className="text-on-surface-variant">
+                                {fact.label}
+                            </span>
+
+                        </div>
+
+                        <span className="font-semibold">
+                            {fact.value}
                         </span>
 
-                        <span className="font-medium">
-                            {value}
-                        </span>
                     </div>
+
                 ))}
+
             </div>
-        </div>
+
+        </aside>
     );
 }

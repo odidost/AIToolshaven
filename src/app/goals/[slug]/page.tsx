@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 
 import { goals } from "@/lib/goals";
-import { tools } from "@/lib/mock-data";
+import { getAllTools } from "@/lib/queries/tools";
+
 import { GoalHero } from "@/components/goals/GoalHero";
 import { GoalToolGrid } from "@/components/goals/GoalToolGrid";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
@@ -21,6 +22,9 @@ export default async function GoalPage({
     if (!goal) {
         notFound();
     }
+
+    // ✅ FIX: use getAllTools instead of missing `tools`
+    const tools = getAllTools();
 
     // Show only tools mapped to this goal
     const goalTools = tools.filter((tool) =>
@@ -49,9 +53,9 @@ export default async function GoalPage({
             />
 
             {/* Tools */}
-
             <GoalToolGrid tools={goalTools} />
 
+            {/* Roadmap */}
             <GoalRoadmap
                 title={goal.title}
                 steps={roadmap}

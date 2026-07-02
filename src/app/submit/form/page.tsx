@@ -4,8 +4,7 @@ import { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
-import { categories } from '@/lib/mock-data';
-
+import { categories } from '@/lib/data/categories';
 const pricingModels = ["Free", "Freemium", "Paid", "Enterprise"] as const;
 
 export default function SubmitFormPage() {
@@ -242,11 +241,10 @@ function SubmitFormContent() {
                     key={model}
                     type="button"
                     onClick={() => setFormData(prev => ({ ...prev, pricingModel: model }))}
-                    className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 border ${
-                      formData.pricingModel === model
+                    className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 border ${formData.pricingModel === model
                         ? 'bg-primary text-primary-foreground border-primary shadow-sm'
                         : 'bg-surface border-outline text-on-surface-variant hover:border-primary'
-                    }`}
+                      }`}
                   >
                     {model}
                   </button>
@@ -283,11 +281,10 @@ function SubmitFormContent() {
               onDragLeave={handleDrag}
               onDragOver={handleDrag}
               onDrop={handleDrop}
-              className={`relative rounded-xl border-2 border-dashed p-8 text-center transition-colors cursor-pointer ${
-                dragActive
+              className={`relative rounded-xl border-2 border-dashed p-8 text-center transition-colors cursor-pointer ${dragActive
                   ? 'border-primary bg-primary-container/30'
                   : 'border-outline hover:border-primary/50 bg-surface'
-              }`}
+                }`}
             >
               <input
                 type="file"
