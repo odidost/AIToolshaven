@@ -8,8 +8,58 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "AETHER | AI Tools Discovery Hub",
-  description: "Discover and compare the best AI tools.",
+  metadataBase: new URL("https://aitoolshaven.com"),
+  title: {
+    default: "AETHER | AI Tools Discovery Hub",
+    template: "%s | AETHER",
+  },
+  description:
+    "Discover, compare, and review the best AI tools of 2026. AETHER is the #1 directory for AI software across writing, coding, image generation, and more.",
+  keywords: [
+    "AI tools",
+    "AI software directory",
+    "best AI tools 2026",
+    "compare AI tools",
+    "AI tool reviews",
+    "ChatGPT alternatives",
+    "AI productivity tools",
+  ],
+  authors: [{ name: "AETHER" }],
+  creator: "AETHER",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://aitoolshaven.com",
+    siteName: "AETHER AI Tools",
+    title: "AETHER | AI Tools Discovery Hub",
+    description:
+      "Discover, compare, and review the best AI tools of 2026.",
+    images: [
+      {
+        url: "/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "AETHER — AI Tools Discovery Hub",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AETHER | AI Tools Discovery Hub",
+    description: "Discover, compare, and review the best AI tools of 2026.",
+    images: ["/og-default.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 import { Header } from "@/components/shared/Header";

@@ -6,6 +6,32 @@ import { getToolsByCategory } from "@/lib/queries/tools";
 import { ToolCard } from "@/components/shared/ToolCard";
 import { CategoryCapsuleBar } from "@/components/shared/CategoryCapsuleBar";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { Metadata } from "next";
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const category = getCategoryBySlug(slug);
+
+  if (!category) {
+    return {
+      title: "Category Not Found | AETHER",
+    };
+  }
+
+  return {
+    title: `Best ${category.name} AI Tools in 2026 | AETHER`,
+    description: `Explore the top ${category.name} AI tools to enhance your workflow and productivity.`,
+    openGraph: {
+      title: `${category.name} AI Tools | AETHER`,
+      description: `Explore the top ${category.name} AI tools to enhance your workflow and productivity.`,
+      type: "website",
+    },
+  };
+}
 
 export default async function CategoryPage({
   params,

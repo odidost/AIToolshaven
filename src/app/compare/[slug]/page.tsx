@@ -6,6 +6,40 @@ import { getCategoryById } from "@/lib/queries/categories";
 import { getToolsByCategory } from "@/lib/queries/tools";
 
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { Metadata } from "next";
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const mainTool = getToolBySlug(slug);
+
+  if (!mainTool) {
+    return { title: "Comparison Not Found | AETHER" };
+  }
+
+  const otherTools = getToolsByCategory(mainTool.category).filter(
+    (t) => t.id !== mainTool.id
+  );
+  const compareTool = otherTools[0];
+
+  const title = compareTool
+    ? `${mainTool.name} vs ${compareTool.name}: Full Comparison | AETHER`
+    : `${mainTool.name} Comparison | AETHER`;
+
+  const description = compareTool
+    ? `Compare ${mainTool.name} and ${compareTool.name} side-by-side. See pricing, features, pros & cons, and decide which AI tool is right for you.`
+    : `Compare ${mainTool.name} with other AI tools on AETHER.`;
+
+  return {
+    title,
+    description,
+    openGraph: { title, description, type: "website" },
+    twitter: { card: "summary_large_image", title, description },
+  };
+}
 
 export default async function ComparePage({
   params,

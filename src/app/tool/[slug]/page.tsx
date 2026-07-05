@@ -23,6 +23,37 @@ import {
 } from "@/lib/queries/categories";
 
 import { getComparisonCandidates } from "@/lib/queries/comparisons";
+import { Metadata } from "next";
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const tool = getToolBySlug(slug);
+
+  if (!tool) {
+    return {
+      title: "Tool Not Found | AETHER",
+    };
+  }
+
+  return {
+    title: `${tool.name} Reviews, Pricing & Features | AETHER`,
+    description: tool.description,
+    openGraph: {
+      title: `${tool.name} | AETHER`,
+      description: tool.description,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${tool.name} | AETHER`,
+      description: tool.description,
+    },
+  };
+}
 
 export default async function ToolDetailPage({
   params,
@@ -55,6 +86,35 @@ export default async function ToolDetailPage({
           },
           { label: tool.name },
         ]}
+      />
+
+      {/* JSON-LD Structured Data for Google rich results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: tool.name,
+            description: tool.description,
+            applicationCategory: "BusinessApplication",
+            operatingSystem: "Web",
+            offers: {
+              "@type": "Offer",
+              price: tool.priceModel === "Free" ? "0" : undefined,
+              priceCurrency: "USD",
+              availability: "https://schema.org/OnlineOnly",
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: tool.rating,
+              reviewCount: tool.reviewCount,
+              bestRating: 5,
+              worstRating: 1,
+            },
+            url: `https://aitoolshaven.com/tool/${tool.slug}`,
+          }),
+        }}
       />
 
       <ToolHero tool={tool} />

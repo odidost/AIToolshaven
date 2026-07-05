@@ -58,6 +58,15 @@ export default {
         '3xl': '1.5rem',
         full: '9999px',
       },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+      },
+      animation: {
+        marquee: 'marquee 40s linear infinite',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
