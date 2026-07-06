@@ -29,7 +29,7 @@ export function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4 group">
               <span className="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform">auto_awesome</span>
-              <span className="font-black text-xl text-white">AETHER</span>
+              <span className="font-black text-xl text-white">AIToolsHaven</span>
             </Link>
             <p className="text-sm leading-relaxed max-w-xs mb-6">
               The world's most curated AI tools directory. Discover, compare, and find the perfect AI software for your workflow.
@@ -66,7 +66,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-600">
-            &copy; {new Date().getFullYear()} AETHER AI Tools Discovery Hub. All rights reserved.
+            &copy; {new Date().getFullYear()} AIToolsHaven AI Tools Discovery Hub. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-xs">
             <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy</Link>

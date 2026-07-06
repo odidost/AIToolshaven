@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Page Not Found | AETHER",
+  title: "Page Not Found | AIToolsHaven",
   description: "The page you're looking for doesn't exist.",
 };
 

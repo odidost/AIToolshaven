@@ -4,7 +4,7 @@ import type { AITool } from "@/lib/types/tool";
 export function ToolCard({ tool }: { tool: AITool }) {
   return (
     <Link href={`/tool/${tool.slug}`} className="block group h-full">
-      <article className="bg-surface-container rounded-2xl p-6 border border-outline hover:border-primary transition-colors h-full flex flex-col shadow-sm hover:shadow-md">
+      <article className="bg-surface-container rounded-3xl p-7 border border-outline hover:border-primary transition-colors h-full flex flex-col shadow-sm hover:shadow-md">
         <div className="flex justify-between items-start mb-4">
           <div className="w-12 h-12 rounded-xl overflow-hidden bg-outline flex-shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -15,8 +15,16 @@ export function ToolCard({ tool }: { tool: AITool }) {
             />
           </div>
 
-          <div className="bg-primary-container text-on-primary-container text-xs font-semibold px-2 py-1 rounded-md">
-            {tool.priceModel}
+          <div className="flex gap-2">
+            {tool.featured && (
+              <div className="bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 text-xs font-bold px-2 py-1 rounded-md flex items-center gap-1">
+                <span className="material-symbols-outlined text-[14px]">star</span>
+                Featured
+              </div>
+            )}
+            <div className="bg-primary-container text-on-primary-container text-xs font-semibold px-2 py-1 rounded-md flex items-center">
+              {tool.priceModel}
+            </div>
           </div>
         </div>
 

@@ -2,7 +2,6 @@ import { tools } from '@/lib/data/tools';
 import { ToolCard } from '@/components/shared/ToolCard';
 
 const getUserLibraryTools = () => tools.slice(0, 6);
-import { ToolCard } from '@/components/shared/ToolCard';
 
 export default function FavoritesPage() {
   // Reuse library tools as mock favorites for now

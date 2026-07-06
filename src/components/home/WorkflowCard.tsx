@@ -4,7 +4,7 @@ export function WorkflowCard({
     icon,
 }: {
     title: string;
-    tools: string;
+    tools: string[];
     icon: string;
 }) {
     return (
@@ -18,7 +18,7 @@ export function WorkflowCard({
             </h3>
 
             <p className="text-sm text-on-surface-variant">
-                {tools}
+                {tools.join(", ")}
             </p>
         </div>
     );

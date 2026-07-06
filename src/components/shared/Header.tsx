@@ -1,20 +1,18 @@
 import Link from 'next/link';
+import { CommandPalette } from './CommandPalette';
+import { getAllTools } from '@/lib/queries/tools';
 
 export function Header() {
+  const tools = getAllTools();
   return (
     <header className="w-full bg-surface-container border-b border-outline">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <span className="material-symbols-outlined text-primary text-3xl">auto_awesome</span>
-          <span className="font-bold text-xl text-on-surface">AETHER</span>
+          <span className="font-bold text-xl text-on-surface">AIToolsHaven</span>
         </Link>
         <div className="flex-1 max-w-md mx-8 relative hidden md:block">
-          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-          <input 
-            type="text" 
-            placeholder="Search AI tools..." 
-            className="w-full h-10 pl-10 pr-4 rounded-full border border-outline bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
-          />
+          <CommandPalette tools={tools} />
         </div>
         <nav className="flex items-center gap-4">
           <Link href="/dashboard/favorites" className="text-on-surface-variant hover:text-primary hidden md:block">

@@ -10,11 +10,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://aitoolshaven.com"),
   title: {
-    default: "AETHER | AI Tools Discovery Hub",
-    template: "%s | AETHER",
+    default: "AIToolsHaven | AI Tools Discovery Hub",
+    template: "%s | AIToolsHaven",
   },
   description:
-    "Discover, compare, and review the best AI tools of 2026. AETHER is the #1 directory for AI software across writing, coding, image generation, and more.",
+    "Discover, compare, and review the best AI tools of 2026. AIToolsHaven is the #1 directory for AI software across writing, coding, image generation, and more.",
   keywords: [
     "AI tools",
     "AI software directory",
@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     "ChatGPT alternatives",
     "AI productivity tools",
   ],
-  authors: [{ name: "AETHER" }],
-  creator: "AETHER",
+  authors: [{ name: "AIToolsHaven" }],
+  creator: "AIToolsHaven",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://aitoolshaven.com",
-    siteName: "AETHER AI Tools",
-    title: "AETHER | AI Tools Discovery Hub",
+    siteName: "AIToolsHaven AI Tools",
+    title: "AIToolsHaven | AI Tools Discovery Hub",
     description:
       "Discover, compare, and review the best AI tools of 2026.",
     images: [
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
         url: "/og-default.png",
         width: 1200,
         height: 630,
-        alt: "AETHER — AI Tools Discovery Hub",
+        alt: "AIToolsHaven — AI Tools Discovery Hub",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AETHER | AI Tools Discovery Hub",
+    title: "AIToolsHaven | AI Tools Discovery Hub",
     description: "Discover, compare, and review the best AI tools of 2026.",
     images: ["/og-default.png"],
   },

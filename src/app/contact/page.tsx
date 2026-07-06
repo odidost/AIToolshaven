@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Contact Us | AETHER",
-  description: "Get in touch with the AETHER team for partnerships, tool submissions, press inquiries, or support.",
+  title: "Contact Us | AIToolsHaven",
+  description: "Get in touch with the AIToolsHaven team for partnerships, tool submissions, press inquiries, or support.",
 };
 
 const reasons = [

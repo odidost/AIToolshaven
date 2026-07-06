@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | AETHER",
-  description: "Learn how AETHER collects, uses, and protects your data.",
+  title: "Privacy Policy | AIToolsHaven",
+  description: "Learn how AIToolsHaven collects, uses, and protects your data.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -27,7 +27,7 @@ We also automatically collect certain information about your device and how you 
     },
     {
       title: "3. Affiliate Disclosure",
-      content: `AETHER participates in affiliate marketing programs. This means we may earn a commission when you click on links to tools and services featured on our platform and make a purchase. This comes at no additional cost to you. We only recommend tools we genuinely believe in, and our editorial content is not influenced by affiliate relationships.`,
+      content: `AIToolsHaven participates in affiliate marketing programs. This means we may earn a commission when you click on links to tools and services featured on our platform and make a purchase. This comes at no additional cost to you. We only recommend tools we genuinely believe in, and our editorial content is not influenced by affiliate relationships.`,
     },
     {
       title: "4. Information Sharing",
@@ -73,7 +73,7 @@ We also automatically collect certain information about your device and how you 
 
       <div className="prose prose-slate max-w-none">
         <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-          At AETHER, we take your privacy seriously. This Privacy Policy explains how we
+          At AIToolsHaven, we take your privacy seriously. This Privacy Policy explains how we
           collect, use, disclose, and safeguard your information when you visit our
           website and use our services.
         </p>

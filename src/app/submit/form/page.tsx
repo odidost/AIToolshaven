@@ -133,7 +133,7 @@ function SubmitFormContent() {
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold text-on-surface mb-3">Submit a Tool</h1>
           <p className="text-on-surface-variant">
-            Fill out the form below to get your AI tool listed on AETHER.
+            Fill out the form below to get your AI tool listed on AIToolsHaven.
           </p>
           <div className="inline-flex items-center gap-2 mt-4 bg-primary-container text-on-primary-container px-4 py-2 rounded-full text-sm font-semibold">
             <span className="material-symbols-outlined text-sm">verified</span>
@@ -151,7 +151,7 @@ function SubmitFormContent() {
             <input
               id="tool-name"
               type="text"
-              placeholder="e.g. AetherWriter"
+              placeholder="e.g. AIToolsHavenWriter"
               value={formData.toolName}
               onChange={(e) => setFormData(prev => ({ ...prev, toolName: e.target.value }))}
               className={`w-full h-12 px-4 rounded-xl border bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm ${errors.toolName ? 'border-red-400' : 'border-outline'}`}

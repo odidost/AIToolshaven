@@ -6,7 +6,7 @@ const pricingTiers = [
     name: "Standard",
     price: "Free",
     priceDetail: null,
-    description: "Get listed on AETHER at no cost",
+    description: "Get listed on AIToolsHaven at no cost",
     recommended: false,
     features: [
       { text: "Standard directory listing", included: true },
@@ -249,7 +249,7 @@ export default function SubmitPage() {
         <div className="bg-primary rounded-2xl p-8 md:p-12 text-center text-primary-foreground">
           <h2 className="text-2xl md:text-3xl font-bold mb-3">Ready to Launch?</h2>
           <p className="opacity-80 mb-6 max-w-md mx-auto">
-            Join hundreds of AI tools already growing with AETHER. Start with a free listing today.
+            Join hundreds of AI tools already growing with AIToolsHaven. Start with a free listing today.
           </p>
           <Link
             href="/submit/form?plan=standard"

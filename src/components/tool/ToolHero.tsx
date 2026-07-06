@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { AITool } from "@/lib/types/tool";
+import { SocialShareBar } from "./SocialShareBar";
 
 type ToolHeroProps = {
     tool: AITool;
@@ -73,17 +74,13 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                         <div className="flex gap-2">
 
-                            <button className="h-11 w-11 rounded-xl border border-outline flex items-center justify-center">
+                            <button className="h-11 w-11 rounded-xl border border-outline flex items-center justify-center hover:bg-surface-container hover:text-primary transition-colors">
                                 <span className="material-symbols-outlined">
                                     bookmark
                                 </span>
                             </button>
 
-                            <button className="h-11 w-11 rounded-xl border border-outline flex items-center justify-center">
-                                <span className="material-symbols-outlined">
-                                    share
-                                </span>
-                            </button>
+                            <SocialShareBar toolName={tool.name} urlPath={`/tool/${tool.slug}`} />
 
                         </div>
 

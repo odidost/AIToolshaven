@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | AETHER",
-  description: "Read the terms and conditions for using AETHER AI Tools Directory.",
+  title: "Terms of Service | AIToolsHaven",
+  description: "Read the terms and conditions for using AIToolsHaven AI Tools Directory.",
 };
 
 export default function TermsPage() {
@@ -12,11 +12,11 @@ export default function TermsPage() {
   const sections = [
     {
       title: "1. Acceptance of Terms",
-      content: `By accessing and using AETHER ("the Service"), you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our Service.`,
+      content: `By accessing and using AIToolsHaven ("the Service"), you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our Service.`,
     },
     {
       title: "2. Description of Service",
-      content: `AETHER is an AI tools directory and discovery platform. We curate, review, and list AI-powered tools to help users find the right software for their needs. The information provided on the platform is for informational purposes only.`,
+      content: `AIToolsHaven is an AI tools directory and discovery platform. We curate, review, and list AI-powered tools to help users find the right software for their needs. The information provided on the platform is for informational purposes only.`,
     },
     {
       title: "3. User Conduct",
@@ -29,15 +29,15 @@ export default function TermsPage() {
     },
     {
       title: "4. Tool Listings & Editorial Independence",
-      content: `Tool listings on AETHER are based on our editorial assessment. We reserve the right to accept, reject, or remove any tool listing at our sole discretion. Paid placements and sponsored listings will be clearly marked as such. Our editorial reviews are independent and not influenced by commercial relationships.`,
+      content: `Tool listings on AIToolsHaven are based on our editorial assessment. We reserve the right to accept, reject, or remove any tool listing at our sole discretion. Paid placements and sponsored listings will be clearly marked as such. Our editorial reviews are independent and not influenced by commercial relationships.`,
     },
     {
       title: "5. Affiliate Links",
-      content: `Some links on AETHER are affiliate links, meaning we may earn a commission if you click through and make a purchase. These links do not affect our editorial independence, and we only recommend tools we genuinely believe provide value to our users.`,
+      content: `Some links on AIToolsHaven are affiliate links, meaning we may earn a commission if you click through and make a purchase. These links do not affect our editorial independence, and we only recommend tools we genuinely believe provide value to our users.`,
     },
     {
       title: "6. Intellectual Property",
-      content: `The content on AETHER, including text, graphics, logos, and software, is the property of AETHER and is protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without our explicit written consent.`,
+      content: `The content on AIToolsHaven, including text, graphics, logos, and software, is the property of AIToolsHaven and is protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without our explicit written consent.`,
     },
     {
       title: "7. Disclaimer of Warranties",
@@ -45,7 +45,7 @@ export default function TermsPage() {
     },
     {
       title: "8. Limitation of Liability",
-      content: `AETHER shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Service or reliance on any information provided. Our total liability to you shall not exceed the amount you paid us in the past twelve months.`,
+      content: `AIToolsHaven shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Service or reliance on any information provided. Our total liability to you shall not exceed the amount you paid us in the past twelve months.`,
     },
     {
       title: "9. Changes to Terms",
@@ -79,7 +79,7 @@ export default function TermsPage() {
 
       <div className="prose prose-slate max-w-none">
         <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-          Please read these Terms of Service carefully before using AETHER. These terms
+          Please read these Terms of Service carefully before using AIToolsHaven. These terms
           govern your access to and use of our website and services.
         </p>
 

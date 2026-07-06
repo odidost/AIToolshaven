@@ -15,7 +15,7 @@ import { NewsletterCTA } from "@/components/home/NewsletterCTA";
 import { ToolCard } from "@/components/shared/ToolCard";
 import { GoalCard } from "@/components/home/GoalCard";
 
-import { getAllTools, getFeaturedTools } from "@/lib/queries/tools";
+import { getFeaturedTools, getLatestTools, getTrendingTools } from "@/lib/data/tools-service";
 import { goals } from "@/lib/goals";
 import Link from "next/link";
 
@@ -23,8 +23,9 @@ import { CommunityReviews } from "@/components/home/CommunityReviews";
 import { SubmitToolCTA } from "@/components/home/SubmitToolCTA";
 
 export default function Home() {
-  const featuredTools = getFeaturedTools();
-  const latestTools = getAllTools().filter((t) => !t.featured);
+  const featuredTools = getFeaturedTools(8);
+  const trendingTools = getTrendingTools(8);
+  const latestTools = getLatestTools(8);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -34,6 +35,28 @@ export default function Home() {
         <SpotlightBanner />
       </section>
 
+      {/* 1b. Featured Tools */}
+      {featuredTools.length > 0 && (
+        <section className="mb-16">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+            <div>
+              <div className="flex items-center gap-2 text-amber-500 mb-2">
+                <span className="material-symbols-outlined text-xl">star</span>
+                <span className="text-sm font-bold uppercase tracking-widest">Premium Picks</span>
+              </div>
+              <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+                Featured Tools
+              </h2>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {featuredTools.map((tool) => (
+              <ToolCard key={tool.id} tool={tool} />
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* 2. Trust Layer */}
       <TrustedByMarquee />
 
@@ -41,7 +64,7 @@ export default function Home() {
       <RecommendationEngine />
 
       {/* 4. Featured Categories */}
-      <section className="mb-24">
+      <section className="mb-24 mt-16">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-3xl font-black text-slate-900 tracking-tight">
             Explore Categories
@@ -69,7 +92,7 @@ export default function Home() {
 
         {/* Swipeable on mobile, Grid on desktop */}
         <div className="flex overflow-x-auto pb-8 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory gap-6 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:overflow-visible [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          {featuredTools.map((tool) => (
+          {trendingTools.map((tool) => (
             <div key={tool.id} className="min-w-[300px] md:min-w-0 snap-start">
               <ToolCard tool={tool} />
             </div>

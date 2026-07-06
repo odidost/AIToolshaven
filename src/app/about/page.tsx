@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About AETHER | The Best AI Tools Directory",
+  title: "About AIToolsHaven | The Best AI Tools Directory",
   description:
-    "AETHER is a curated AI tools directory helping creators, developers, and entrepreneurs discover the best AI software for their needs.",
+    "AIToolsHaven is a curated AI tools directory helping creators, developers, and entrepreneurs discover the best AI software for their needs.",
 };
 
 const stats = [
@@ -49,14 +49,14 @@ export default function AboutPage() {
       <div className="text-center mb-20">
         <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-1.5 text-sm font-bold mb-6">
           <span className="material-symbols-outlined text-[16px]">auto_awesome</span>
-          About AETHER
+          About AIToolsHaven
         </div>
         <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">
           The world's most curated<br />
           <span className="text-primary">AI tools directory.</span>
         </h1>
         <p className="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
-          We built AETHER because we were tired of bloated, out-of-date tool lists.
+          We built AIToolsHaven because we were tired of bloated, out-of-date tool lists.
           Our mission is to help you find the right AI tool fast — and trust what you find.
         </p>
       </div>

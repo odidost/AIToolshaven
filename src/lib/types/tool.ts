@@ -71,6 +71,12 @@ export interface AITool {
     compareWith?: string[];
 
     goals?: string[];
+    
+    workflows?: string[];
+    
+    collections?: string[];
+    
+    recommendationTags?: string[];
 
     pros: string[];
 

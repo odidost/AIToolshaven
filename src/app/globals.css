@@ -116,3 +116,38 @@
 .animate-float-fast {
   animation: floatFast 5s ease-in-out infinite;
 }
+
+@keyframes ai-scan {
+
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(400%);
+  }
+
+}
+
+.animate-ai-scan {
+  animation: ai-scan 8s linear infinite;
+}
+
+@keyframes ai-pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+
+}
+
+.animate-pulse-glow {
+  animation: ai-pulse-glow 4s ease-in-out infinite;
+}

@@ -1,32 +1,91 @@
 export const workflows = [
     {
-        title: "Faceless YouTube Workflow",
-        tools: "ChatGPT • ElevenLabs • CapCut",
+        slug: "faceless-youtube",
+        title: "Faceless YouTube",
+        description: "Create YouTube videos without showing your face.",
         icon: "smart_display",
+        audience: "Content Creators",
+        color: "red",
+        tools: [
+            "ChatGPT",
+            "ElevenLabs",
+            "CapCut",
+            "TubeBuddy",
+        ],
     },
+
     {
-        title: "AI Influencer Workflow",
-        tools: "Midjourney • ChatGPT • Runway",
+        slug: "ai-influencer",
+        title: "AI Influencer",
+        description: "Create realistic AI influencers for social media.",
         icon: "photo_camera_front",
+        audience: "Creators",
+        color: "pink",
+        tools: [
+            "Midjourney",
+            "ChatGPT",
+            "Runway",
+            "Canva",
+        ],
     },
+
     {
-        title: "Vibe Coding Workflow",
-        tools: "Claude • Cursor • GitHub",
+        slug: "vibe-coding",
+        title: "Vibe Coding",
+        description: "Build apps faster using AI coding assistants.",
         icon: "code",
+        audience: "Developers",
+        color: "cyan",
+        tools: [
+            "Claude",
+            "Cursor",
+            "GitHub Copilot",
+            "Vercel",
+        ],
     },
+
     {
-        title: "Content Creator Workflow",
-        tools: "ChatGPT • Canva • Opus Clip",
+        slug: "content-creator",
+        title: "Content Creator",
+        description: "Plan, design and publish content faster.",
         icon: "edit_note",
+        audience: "Creators",
+        color: "violet",
+        tools: [
+            "ChatGPT",
+            "Canva",
+            "Opus Clip",
+            "Buffer",
+        ],
     },
+
     {
-        title: "Agency Workflow",
-        tools: "Notion • ChatGPT • Zapier",
+        slug: "agency",
+        title: "Agency",
+        description: "Run your client business with AI.",
         icon: "business_center",
+        audience: "Agencies",
+        color: "emerald",
+        tools: [
+            "Notion",
+            "ChatGPT",
+            "Zapier",
+            "ClickUp",
+        ],
     },
+
     {
-        title: "Solopreneur Workflow",
-        tools: "Claude • Canva • Framer",
+        slug: "solopreneur",
+        title: "Solopreneur",
+        description: "Launch and grow an online business with AI.",
         icon: "rocket_launch",
+        audience: "Entrepreneurs",
+        color: "amber",
+        tools: [
+            "Claude",
+            "Canva",
+            "Framer",
+            "Stripe",
+        ],
     },
 ];

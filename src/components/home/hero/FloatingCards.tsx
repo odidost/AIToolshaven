@@ -1,7 +1,7 @@
 export function FloatingCards() {
     return (
         <div className="absolute inset-0 z-30 pointer-events-none">
-            
+
             {/* 1. Search (Sky) - Top Left */}
             <div
                 className="

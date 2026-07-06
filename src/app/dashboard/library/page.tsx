@@ -2,7 +2,6 @@ import { tools } from '@/lib/data/tools';
 import { ToolCard } from '@/components/shared/ToolCard';
 
 const getUserLibraryTools = () => tools.slice(0, 6);
-import { ToolCard } from '@/components/shared/ToolCard';
 
 export default function LibraryPage() {
   const savedTools = getUserLibraryTools();

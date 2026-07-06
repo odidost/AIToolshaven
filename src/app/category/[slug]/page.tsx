@@ -1,16 +1,17 @@
 import { notFound } from "next/navigation";
-
 import { getCategoryBySlug } from "@/lib/queries/categories";
-import { getToolsByCategory } from "@/lib/queries/tools";
+import { getToolsByCategoryId } from "@/lib/data/tools-service";
 
-import { ToolCard } from "@/components/shared/ToolCard";
 import { CategoryCapsuleBar } from "@/components/shared/CategoryCapsuleBar";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { ToolGridWithFilters } from "@/components/shared/ToolGridWithFilters";
 import { Metadata } from "next";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export const revalidate = 3600; // 1 hour
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -18,15 +19,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!category) {
     return {
-      title: "Category Not Found | AETHER",
+      title: "Category Not Found | AIToolsHaven",
     };
   }
 
   return {
-    title: `Best ${category.name} AI Tools in 2026 | AETHER`,
+    title: `Best ${category.name} AI Tools in 2026 | AIToolsHaven`,
     description: `Explore the top ${category.name} AI tools to enhance your workflow and productivity.`,
     openGraph: {
-      title: `${category.name} AI Tools | AETHER`,
+      title: `${category.name} AI Tools | AIToolsHaven`,
       description: `Explore the top ${category.name} AI tools to enhance your workflow and productivity.`,
       type: "website",
     },
@@ -46,47 +47,86 @@ export default async function CategoryPage({
     notFound();
   }
 
-  const categoryTools = getToolsByCategory(category.id);
+  const categoryTools = getToolsByCategoryId(category.id);
+
+  // Calculate some dynamic stats for the premium header
+  const totalReviews = categoryTools.reduce((acc, tool) => acc + (tool.reviewCount || 0), 0);
+  const avgRating = categoryTools.length 
+    ? (categoryTools.reduce((acc, tool) => acc + (tool.rating || 0), 0) / categoryTools.length).toFixed(1) 
+    : "N/A";
+  const verifiedCount = categoryTools.filter(t => t.verified).length;
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <main className="container mx-auto px-6 py-12">
+      {/* Breadcrumb */}
+      <nav className="mb-8">
+        <Breadcrumbs
+          items={[
+            { label: "Categories" },
+            { label: category.name },
+          ]}
+        />
+      </nav>
 
-      <Breadcrumbs
-        items={[
-          { label: "Categories" },
-          { label: category.name },
-        ]}
-      />
+      {/* Premium Hero Section */}
+      <section className="relative overflow-hidden rounded-[32px] border border-outline bg-gradient-to-br from-surface to-surface-container p-8 md:p-12 mb-12 shadow-sm">
+        <div className="absolute right-0 top-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl -z-10" />
+        
+        <div className="flex flex-col lg:flex-row gap-8 items-start justify-between relative z-10">
+          <div className="max-w-3xl">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 mb-6">
+              <span className="material-symbols-outlined text-4xl text-primary">
+                {category.icon}
+              </span>
+            </div>
 
-      <div className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-on-surface mb-2 flex items-center gap-3">
-          <span className="material-symbols-outlined text-primary text-4xl">
-            {category.icon}
-          </span>
-          {category.name}
-        </h1>
+            <h1 className="text-4xl md:text-5xl font-black text-on-surface tracking-tight mb-4">
+              Best {category.name} AI Tools
+            </h1>
 
-        <p className="text-on-surface-variant text-lg">
-          Explore {category.count} tools in the {category.name} category to
-          enhance your workflow.
-        </p>
-      </div>
+            <p className="text-xl text-on-surface-variant leading-relaxed max-w-2xl">
+              Explore the top {categoryTools.length} {category.name} solutions. Compare features, pricing, and reviews to find the perfect addition to your workflow.
+            </p>
+          </div>
 
-      <section className="mb-10">
+          {/* Stats Widget */}
+          <div className="w-full lg:w-72 bg-surface rounded-2xl border border-outline p-6 shadow-sm flex flex-col gap-4 shrink-0 mt-4 lg:mt-0">
+            <div className="flex justify-between items-center border-b border-outline pb-3">
+              <span className="text-sm text-on-surface-variant flex items-center gap-1">
+                <span className="material-symbols-outlined text-[16px]">grid_view</span> Tools Listed
+              </span>
+              <span className="font-bold text-on-surface">{categoryTools.length}</span>
+            </div>
+            <div className="flex justify-between items-center border-b border-outline pb-3">
+              <span className="text-sm text-on-surface-variant flex items-center gap-1">
+                <span className="material-symbols-outlined text-[16px]">reviews</span> Total Reviews
+              </span>
+              <span className="font-bold text-on-surface">{totalReviews.toLocaleString()}+</span>
+            </div>
+            <div className="flex justify-between items-center border-b border-outline pb-3">
+              <span className="text-sm text-on-surface-variant flex items-center gap-1">
+                <span className="material-symbols-outlined text-[16px]">star</span> Avg Rating
+              </span>
+              <span className="font-bold text-on-surface">{avgRating} / 5.0</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-on-surface-variant flex items-center gap-1">
+                <span className="material-symbols-outlined text-[16px]">verified</span> Verified Tools
+              </span>
+              <span className="font-bold text-on-surface">{verifiedCount}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Category Navigation */}
+      <section className="mb-12">
+        <h3 className="text-sm font-bold text-on-surface-variant uppercase tracking-wider mb-4">Explore other categories</h3>
         <CategoryCapsuleBar activeSlug={category.slug} />
       </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {categoryTools.length > 0 ? (
-          categoryTools.map((tool) => (
-            <ToolCard key={tool.id} tool={tool} />
-          ))
-        ) : (
-          <div className="col-span-full py-12 text-center text-on-surface-variant">
-            No tools found in this category yet.
-          </div>
-        )}
-      </div>
-    </div>
+      {/* Tools Grid */}
+      <ToolGridWithFilters tools={categoryTools} />
+    </main>
   );
 }

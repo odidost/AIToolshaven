@@ -119,7 +119,7 @@ export default function SettingsPage() {
             { key: 'newTools' as const, label: 'New tools in your categories', desc: 'Get notified when new tools are added to your favorite categories.' },
             { key: 'weeklyDigest' as const, label: 'Weekly digest', desc: 'A curated summary of trending AI tools every week.' },
             { key: 'reviewReplies' as const, label: 'Review replies', desc: 'Get notified when someone replies to your reviews.' },
-            { key: 'promotions' as const, label: 'Promotions & offers', desc: 'Receive offers from tool creators and AETHER promotions.' },
+            { key: 'promotions' as const, label: 'Promotions & offers', desc: 'Receive offers from tool creators and AIToolsHaven promotions.' },
           ]).map(item => (
             <div key={item.key} className="flex items-start justify-between gap-4 py-3 border-b border-outline last:border-0">
               <div>
