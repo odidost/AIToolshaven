@@ -42,6 +42,42 @@ export function getToolsByRecommendationTag(tag: string): AITool[] {
     return tools.filter(t => t.recommendationTags?.includes(tag));
 }
 
+export function getRecommendationsByPersona(role: string, goal: string): AITool[] {
+    const roleLower = role.toLowerCase();
+    const goalLower = goal.toLowerCase();
+
+    return tools.filter(t => {
+        const matchesRole = t.bestFor?.some(b => b.toLowerCase().includes(roleLower));
+        
+        const matchesGoal = 
+            t.useCases?.some(u => u.toLowerCase().includes(goalLower) || goalLower.includes(u.toLowerCase())) ||
+            t.goals?.some(g => g.toLowerCase().replace(/-/g, ' ').includes(goalLower) || goalLower.includes(g.toLowerCase().replace(/-/g, ' '))) ||
+            t.tags?.some(tag => tag.toLowerCase().includes(goalLower) || goalLower.includes(tag.toLowerCase()));
+        
+        return matchesRole || matchesGoal;
+    }).sort((a, b) => {
+        // Boost if it matches both role AND goal
+        const aMatchesRole = a.bestFor?.some(b => b.toLowerCase().includes(roleLower));
+        const aMatchesGoal = a.useCases?.some(u => u.toLowerCase().includes(goalLower) || goalLower.includes(u.toLowerCase())) ||
+            a.goals?.some(g => g.toLowerCase().replace(/-/g, ' ').includes(goalLower) || goalLower.includes(g.toLowerCase().replace(/-/g, ' '))) ||
+            a.tags?.some(tag => tag.toLowerCase().includes(goalLower) || goalLower.includes(tag.toLowerCase()));
+            
+        const bMatchesRole = b.bestFor?.some(b => b.toLowerCase().includes(roleLower));
+        const bMatchesGoal = b.useCases?.some(u => u.toLowerCase().includes(goalLower) || goalLower.includes(u.toLowerCase())) ||
+            b.goals?.some(g => g.toLowerCase().replace(/-/g, ' ').includes(goalLower) || goalLower.includes(g.toLowerCase().replace(/-/g, ' '))) ||
+            b.tags?.some(tag => tag.toLowerCase().includes(goalLower) || goalLower.includes(tag.toLowerCase()));
+
+        const aMatchesBoth = (aMatchesRole && aMatchesGoal) ? 1 : 0;
+        const bMatchesBoth = (bMatchesRole && bMatchesGoal) ? 1 : 0;
+
+        if (aMatchesBoth !== bMatchesBoth) {
+            return bMatchesBoth - aMatchesBoth;
+        }
+
+        return (b.popularity || 0) - (a.popularity || 0);
+    });
+}
+
 export function getToolsByCategoryId(categoryId: string): AITool[] {
     return tools.filter(t => t.category === categoryId);
 }

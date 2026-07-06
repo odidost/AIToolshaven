@@ -1,10 +1,41 @@
-import { tools } from '@/lib/data/tools';
-import { ToolCard } from '@/components/shared/ToolCard';
+"use client";
 
-const getUserLibraryTools = () => tools.slice(0, 6);
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { getAllTools } from '@/lib/data/tools-service';
+import { ToolCard } from '@/components/shared/ToolCard';
+import { useBookmarks } from '@/lib/contexts/BookmarksContext';
 
 export default function LibraryPage() {
-  const savedTools = getUserLibraryTools();
+  const { bookmarkedToolIds } = useBookmarks();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [mounted, setMounted] = useState(false);
+
+  // Avoid hydration mismatch by waiting for mount to render localStorage items
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const savedTools = (() => {
+    if (!mounted) return [];
+    
+    const allTools = getAllTools();
+    let filtered = allTools.filter(tool => bookmarkedToolIds.includes(tool.id));
+    
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      filtered = filtered.filter(tool => 
+        tool.name.toLowerCase().includes(q) || 
+        tool.description.toLowerCase().includes(q)
+      );
+    }
+    
+    return filtered;
+  })();
+
+  if (!mounted) {
+    return <div className="min-h-[400px] flex items-center justify-center">Loading your library...</div>;
+  }
 
   return (
     <div>
@@ -15,27 +46,25 @@ export default function LibraryPage() {
           My Library
         </h1>
         <p className="text-on-surface-variant text-sm">
-          Tools you&apos;ve bookmarked for quick access. {savedTools.length} tool{savedTools.length !== 1 ? 's' : ''} saved.
+          Tools you&apos;ve bookmarked for quick access. {bookmarkedToolIds.length} tool{bookmarkedToolIds.length !== 1 ? 's' : ''} saved.
         </p>
       </div>
 
       {/* Search / Filter bar */}
-      <div className="flex flex-col sm:flex-row gap-3 mb-6">
-        <div className="relative flex-1">
-          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
-          <input
-            type="text"
-            placeholder="Search your saved tools..."
-            className="w-full h-10 pl-10 pr-4 rounded-xl border border-outline bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
-          />
+      {bookmarkedToolIds.length > 0 && (
+        <div className="flex flex-col sm:flex-row gap-3 mb-6">
+          <div className="relative flex-1">
+            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search your saved tools..."
+              className="w-full h-10 pl-10 pr-4 rounded-xl border border-outline bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+            />
+          </div>
         </div>
-        <select className="h-10 px-4 rounded-xl border border-outline bg-surface text-sm text-on-surface appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary">
-          <option>All Categories</option>
-          <option>Text Generation</option>
-          <option>Image Generation</option>
-          <option>Coding Assistants</option>
-        </select>
-      </div>
+      )}
 
       {/* Tools Grid */}
       {savedTools.length > 0 ? (
@@ -44,17 +73,29 @@ export default function LibraryPage() {
             <ToolCard key={tool.id} tool={tool} />
           ))}
         </div>
-      ) : (
+      ) : bookmarkedToolIds.length > 0 ? (
         <div className="text-center py-20">
+          <p className="text-on-surface-variant text-sm mb-6">
+            No saved tools match your search query.
+          </p>
+          <button 
+            onClick={() => setSearchQuery("")}
+            className="text-primary hover:underline"
+          >
+            Clear Search
+          </button>
+        </div>
+      ) : (
+        <div className="text-center py-20 border border-dashed border-outline rounded-3xl bg-surface-container">
           <span className="material-symbols-outlined text-6xl text-on-surface-variant opacity-30 mb-4 block">bookmark_border</span>
           <h2 className="text-xl font-bold text-on-surface mb-2">No saved tools yet</h2>
           <p className="text-on-surface-variant text-sm mb-6">
             Start exploring and bookmark the tools you love!
           </p>
-          <a href="/" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-opacity text-sm">
+          <Link href="/" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-opacity text-sm">
             <span className="material-symbols-outlined text-sm">explore</span>
             Explore Tools
-          </a>
+          </Link>
         </div>
       )}
     </div>

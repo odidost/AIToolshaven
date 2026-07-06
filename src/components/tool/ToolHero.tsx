@@ -64,9 +64,11 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                                 </div>
 
-                                <p className="text-sm text-on-surface-variant mt-2">
-                                    by {tool.company}
-                                </p>
+                                {tool.company && (
+                                    <p className="text-sm text-on-surface-variant mt-2">
+                                        by {tool.company}
+                                    </p>
+                                )}
 
                             </div>
 
@@ -105,7 +107,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
                             </div>
 
                             <div className="rounded-full bg-surface px-5 py-1 text-xs text-on-surface-variant">
-                                {tool.websiteUrl.replace("https://", "")}
+                                {(tool.websiteUrl || tool.url || "").replace("https://", "")}
                             </div>
 
                             <div className="w-10" />
@@ -113,7 +115,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
                         </div>
 
                         <img
-                            src={tool.screenshotUrl}
+                            src={tool.screenshotUrl || tool.imageUrl}
                             alt={tool.name}
                             className="w-full transition duration-500 hover:scale-[1.02]"
                         />
@@ -185,7 +187,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
                     <div className="flex flex-wrap gap-3">
 
                         <Link
-                            href={tool.websiteUrl}
+                            href={tool.websiteUrl || tool.url || "#"}
                             target="_blank"
                             className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 font-semibold text-white transition hover:opacity-90"
                         >

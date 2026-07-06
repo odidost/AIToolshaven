@@ -64,6 +64,7 @@ export const metadata: Metadata = {
 
 import { Header } from "@/components/shared/Header";
 import { Footer } from "@/components/shared/Footer";
+import { BookmarksProvider } from "@/lib/contexts/BookmarksContext";
 
 export default function RootLayout({
   children,
@@ -79,11 +80,13 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col font-sans bg-surface text-on-surface">
-        <Header />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
+        <BookmarksProvider>
+          <Header />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </BookmarksProvider>
       </body>
     </html>
   );

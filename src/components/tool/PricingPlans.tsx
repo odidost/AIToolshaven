@@ -7,10 +7,20 @@ type PricingPlan = {
 };
 
 type PricingPlansProps = {
-    plans: PricingPlan[];
+    plans?: PricingPlan[];
+    pricing?: { planName: string; price: number | string; period: string }[];
 };
 
-export function PricingPlans({ plans }: PricingPlansProps) {
+export function PricingPlans({ plans, pricing }: PricingPlansProps) {
+    const finalPlans: PricingPlan[] = plans || pricing?.map(p => ({
+        name: p.planName,
+        price: p.price === 0 ? "Free" : `$${p.price}`,
+        description: `Billed ${p.period}`,
+        features: []
+    })) || [];
+
+    if (!finalPlans.length) return null;
+
     return (
         <section className="my-20">
 
@@ -28,7 +38,7 @@ export function PricingPlans({ plans }: PricingPlansProps) {
 
             <div className="grid gap-8 lg:grid-cols-3">
 
-                {plans.map((plan) => (
+                {finalPlans.map((plan) => (
 
                     <div
                         key={plan.name}

@@ -1,12 +1,11 @@
 type ProsConsProps = {
-    pros: string[];
-    cons: string[];
+    pros?: string[];
+    cons?: string[];
 };
 
-export function ProsCons({
-    pros,
-    cons,
-}: ProsConsProps) {
+export function ProsCons({ pros, cons }: ProsConsProps) {
+    if (!pros?.length && !cons?.length) return null;
+
     return (
         <section className="my-16">
             <h2 className="text-2xl font-bold mb-8">
@@ -29,7 +28,7 @@ export function ProsCons({
                     </div>
 
                     <ul className="space-y-4">
-                        {pros.map((item) => (
+                        {pros?.map((item) => (
                             <li
                                 key={item}
                                 className="flex gap-3"
@@ -58,7 +57,7 @@ export function ProsCons({
                     </div>
 
                     <ul className="space-y-4">
-                        {cons.map((item) => (
+                        {cons?.map((item) => (
                             <li
                                 key={item}
                                 className="flex gap-3"

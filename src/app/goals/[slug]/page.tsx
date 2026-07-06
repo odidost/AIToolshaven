@@ -1,8 +1,33 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Metadata } from "next";
 
 import { goals } from "@/lib/goals";
 import { getAllTools } from "@/lib/queries/tools";
+import { StructuredData } from "@/components/shared/StructuredData";
+
+type Props = {
+    params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { slug } = await params;
+    const goal = goals.find((g) => g.slug === slug);
+
+    if (!goal) {
+        return { title: "Goal Not Found | AIToolsHaven" };
+    }
+
+    return {
+        title: `${goal.title} AI Tools & Workflows | AIToolsHaven`,
+        description: goal.description,
+        openGraph: {
+            title: `${goal.title} AI Tools | AIToolsHaven`,
+            description: goal.description,
+            type: "website",
+        },
+    };
+}
 
 import { GoalHero } from "@/components/goals/GoalHero";
 import { GoalToolGrid } from "@/components/goals/GoalToolGrid";
@@ -35,8 +60,21 @@ export default async function GoalPage({
     const roadmap =
         roadmaps[goal.slug as keyof typeof roadmaps] ?? [];
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: `${goal.title} AI Tools`,
+        description: goal.description,
+        url: `https://aitoolshaven.com/goals/${goal.slug}`,
+        about: {
+            "@type": "Thing",
+            name: goal.title
+        }
+    };
+
     return (
         <div className="container mx-auto px-4 py-8">
+            <StructuredData data={jsonLd} />
             <Breadcrumbs
                 items={[
                     { label: "Goals", href: "/goals" },

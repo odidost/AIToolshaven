@@ -1,16 +1,13 @@
+import { ToolFeature } from "@/lib/types/tool";
 import { FeatureCard } from "./FeatureCard";
 
-type Feature = {
-    title: string;
-    description: string;
-    icon: string;
-};
-
 type FeatureGridProps = {
-    features: Feature[];
+    features?: (ToolFeature | string)[];
 };
 
 export function FeatureGrid({ features }: FeatureGridProps) {
+    if (!features?.length) return null;
+    
     return (
         <section className="my-20">
 
@@ -29,14 +26,17 @@ export function FeatureGrid({ features }: FeatureGridProps) {
 
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 
-                {features.map((feature) => (
-
-                    <FeatureCard
-                        key={feature.title}
-                        feature={feature}
-                    />
-
-                ))}
+                {features.map((feature, idx) => {
+                    const featObj = typeof feature === 'string'
+                        ? { title: feature, description: "", icon: "check_circle" }
+                        : feature;
+                    return (
+                        <FeatureCard
+                            key={featObj.title || idx}
+                            feature={featObj}
+                        />
+                    );
+                })}
 
             </div>
 

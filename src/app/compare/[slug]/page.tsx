@@ -149,7 +149,10 @@ export default async function ComparePage({
   ];
 
   const allFeatureTitles = Array.from(
-    new Set([...mainTool.features.map(f => f.title), ...compareTool.features.map(f => f.title)])
+    new Set([
+      ...mainTool.features.map(f => typeof f === 'string' ? f : f.title), 
+      ...compareTool.features.map(f => typeof f === 'string' ? f : f.title)
+    ])
   );
 
   return (
@@ -270,8 +273,8 @@ export default async function ComparePage({
 
         <div className="border border-outline rounded-2xl overflow-hidden bg-surface-container">
           {allFeatureTitles.map((featureTitle, i) => {
-            const hasA = mainTool.features.some(f => f.title === featureTitle);
-            const hasB = compareTool.features.some(f => f.title === featureTitle);
+            const hasA = mainTool.features.some(f => (typeof f === 'string' ? f : f.title) === featureTitle);
+            const hasB = compareTool.features.some(f => (typeof f === 'string' ? f : f.title) === featureTitle);
 
             return (
               <div key={featureTitle} className={`grid grid-cols-3 ${i !== allFeatureTitles.length - 1 ? "border-b border-outline" : ""}`}>
@@ -307,11 +310,11 @@ export default async function ComparePage({
             <div className="bg-surface-container rounded-2xl p-6 border border-outline shadow-sm">
               <h4 className="font-bold text-green-600 mb-2 flex items-center gap-2"><span className="material-symbols-outlined">add_circle</span> Pros</h4>
               <ul className="list-disc list-inside mb-4 text-on-surface-variant space-y-1">
-                {mainTool.pros.map((p, i) => <li key={i}>{p}</li>)}
+                {mainTool.pros?.map((p, i) => <li key={i}>{p}</li>)}
               </ul>
               <h4 className="font-bold text-red-500 mb-2 flex items-center gap-2"><span className="material-symbols-outlined">do_not_disturb_on</span> Cons</h4>
               <ul className="list-disc list-inside text-on-surface-variant space-y-1">
-                {mainTool.cons.map((c, i) => <li key={i}>{c}</li>)}
+                {mainTool.cons?.map((c, i) => <li key={i}>{c}</li>)}
               </ul>
             </div>
           </div>
@@ -320,11 +323,11 @@ export default async function ComparePage({
             <div className="bg-surface-container rounded-2xl p-6 border border-outline shadow-sm">
               <h4 className="font-bold text-green-600 mb-2 flex items-center gap-2"><span className="material-symbols-outlined">add_circle</span> Pros</h4>
               <ul className="list-disc list-inside mb-4 text-on-surface-variant space-y-1">
-                {compareTool.pros.map((p, i) => <li key={i}>{p}</li>)}
+                {compareTool.pros?.map((p, i) => <li key={i}>{p}</li>)}
               </ul>
               <h4 className="font-bold text-red-500 mb-2 flex items-center gap-2"><span className="material-symbols-outlined">do_not_disturb_on</span> Cons</h4>
               <ul className="list-disc list-inside text-on-surface-variant space-y-1">
-                {compareTool.cons.map((c, i) => <li key={i}>{c}</li>)}
+                {compareTool.cons?.map((c, i) => <li key={i}>{c}</li>)}
               </ul>
             </div>
           </div>

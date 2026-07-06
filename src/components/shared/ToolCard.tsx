@@ -1,11 +1,32 @@
+"use client";
+
 import Link from "next/link";
 import type { AITool } from "@/lib/types/tool";
+import { useBookmarks } from "@/lib/contexts/BookmarksContext";
 
 export function ToolCard({ tool }: { tool: AITool }) {
+  const { isBookmarked, toggleBookmark } = useBookmarks();
+  const bookmarked = isBookmarked(tool.id);
+
+  const handleBookmarkClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    toggleBookmark(tool.id);
+  };
+
   return (
     <Link href={`/tool/${tool.slug}`} className="block group h-full">
-      <article className="bg-surface-container rounded-3xl p-7 border border-outline hover:border-primary transition-colors h-full flex flex-col shadow-sm hover:shadow-md">
-        <div className="flex justify-between items-start mb-4">
+      <article className="bg-surface-container rounded-3xl p-7 border border-outline hover:border-primary transition-colors h-full flex flex-col shadow-sm hover:shadow-md relative">
+        <button 
+          onClick={handleBookmarkClick}
+          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-surface border border-outline hover:bg-primary group/btn transition-colors flex items-center justify-center shadow-sm"
+          title={bookmarked ? "Remove Bookmark" : "Bookmark Tool"}
+        >
+          <span className={`material-symbols-outlined text-[18px] transition-colors ${bookmarked ? 'text-primary group-hover/btn:text-white' : 'text-on-surface-variant group-hover/btn:text-white'}`}>
+            {bookmarked ? 'bookmark' : 'bookmark_border'}
+          </span>
+        </button>
+
+        <div className="flex justify-between items-start mb-4 pr-10">
           <div className="w-12 h-12 rounded-xl overflow-hidden bg-outline flex-shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img

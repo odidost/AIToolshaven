@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import type { AITool } from "@/lib/types/tool";
 import { ToolCard } from "@/components/shared/ToolCard";
 
@@ -11,9 +11,17 @@ type ToolGridWithFiltersProps = {
   tools: AITool[];
 };
 
+const PAGE_SIZE = 12;
+
 export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
   const [sortBy, setSortBy] = useState<SortOption>("popular");
   const [pricingFilter, setPricingFilter] = useState<FilterOption>("all");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [sortBy, pricingFilter]);
 
   const filteredAndSortedTools = useMemo(() => {
     let result = [...tools];
@@ -27,7 +35,7 @@ export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
     result.sort((a, b) => {
       switch (sortBy) {
         case "popular":
-          return b.popularity - a.popularity;
+          return (b.popularity || 0) - (a.popularity || 0);
         case "rating":
           return b.rating - a.rating;
         case "newest":
@@ -37,7 +45,7 @@ export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
           if (yearA !== yearB) {
             return yearB - yearA;
           }
-          return b.popularity - a.popularity;
+          return (b.popularity || 0) - (a.popularity || 0);
         default:
           return 0;
       }
@@ -45,6 +53,13 @@ export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
 
     return result;
   }, [tools, sortBy, pricingFilter]);
+
+  const paginatedTools = useMemo(() => {
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return filteredAndSortedTools.slice(start, start + PAGE_SIZE);
+  }, [filteredAndSortedTools, currentPage]);
+
+  const totalPages = Math.ceil(filteredAndSortedTools.length / PAGE_SIZE);
 
   return (
     <div>
@@ -56,7 +71,7 @@ export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
             Pricing:
           </span>
           <div className="flex gap-2 overflow-x-auto pb-1 md:pb-0 scrollbar-hide flex-1 md:flex-none">
-            {(["all", "Free", "Freemium", "Paid"] as FilterOption[]).map((option) => (
+            {(["all", "Free", "Freemium", "Paid", "Enterprise"] as FilterOption[]).map((option) => (
               <button
                 key={option}
                 onClick={() => setPricingFilter(option)}
@@ -96,9 +111,9 @@ export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredAndSortedTools.length > 0 ? (
-          filteredAndSortedTools.map((tool) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+        {paginatedTools.length > 0 ? (
+          paginatedTools.map((tool) => (
             <ToolCard key={tool.id} tool={tool} />
           ))
         ) : (
@@ -119,6 +134,31 @@ export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
           </div>
         )}
       </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex justify-center items-center gap-4 mt-8">
+          <button
+            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+            disabled={currentPage === 1}
+            className="px-4 py-2 bg-surface hover:bg-surface-container border border-outline rounded-xl disabled:opacity-30 disabled:hover:bg-surface transition-colors font-semibold text-sm flex items-center gap-1"
+          >
+            <span className="material-symbols-outlined text-sm">arrow_back</span> Prev
+          </button>
+          
+          <span className="text-sm font-semibold text-on-surface-variant">
+            Page <span className="text-on-surface">{currentPage}</span> of {totalPages}
+          </span>
+          
+          <button
+            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 bg-surface hover:bg-surface-container border border-outline rounded-xl disabled:opacity-30 disabled:hover:bg-surface transition-colors font-semibold text-sm flex items-center gap-1"
+          >
+            Next <span className="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+      )}
     </div>
   );
 }

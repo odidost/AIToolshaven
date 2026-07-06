@@ -25,6 +25,7 @@ export interface ToolStats {
     monthlyVisits?: number;
     launchYear?: number;
     employees?: string;
+    monthlyUsers?: string;
 }
 
 export interface AITool {
@@ -32,7 +33,7 @@ export interface AITool {
     name: string;
     slug: string;
 
-    company: string;
+    company?: string;
 
     tagline: string;
     description: string;
@@ -45,23 +46,25 @@ export interface AITool {
     rating: number;
     reviewCount: number;
 
-    easeOfUse: number;
-    featureRating: number;
-    valueForMoney: number;
-    performance: number;
-    support: number;
+    easeOfUse?: number;
+    featureRating?: number;
+    valueForMoney?: number;
+    performance?: number;
+    support?: number;
 
     logoUrl: string;
-    screenshotUrl: string;
+    screenshotUrl?: string;
     imageUrl: string;
 
-    websiteUrl: string;
+    websiteUrl?: string;
+    url?: string; // some tools use url
 
     tags: string[];
 
-    features: ToolFeature[];
+    features: (ToolFeature | string)[];
 
-    pricingPlans: PricingPlan[];
+    pricingPlans?: PricingPlan[];
+    pricing?: { planName: string; price: number | string; period: string }[];
 
     verified: boolean;
     featured?: boolean;
@@ -78,23 +81,23 @@ export interface AITool {
     
     recommendationTags?: string[];
 
-    pros: string[];
+    pros?: string[];
 
-    cons: string[];
+    cons?: string[];
 
     bestFor: string[];
 
     useCases: string[];
 
-    platform: string;
+    platform?: string;
 
-    api: boolean;
+    api?: boolean;
 
-    mobileApp: boolean;
+    mobileApp?: boolean;
 
-    openSource: boolean;
+    openSource?: boolean;
 
-    freeTrial: boolean;
+    freeTrial?: boolean;
 
     socials?: SocialLinks;
 

@@ -2,17 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { ToolCard } from "@/components/shared/ToolCard";
-import { searchTools } from "@/lib/data/tools-service";
+import { getRecommendationsByPersona, searchTools } from "@/lib/data/tools-service";
 import type { AITool } from "@/lib/types/tool";
-
-const ROLES = ["Developer", "Marketer", "Designer", "Founder", "Student"];
-const GOALS = {
-  Developer: ["Write Better Code", "Deploy Faster", "Debug Errors"],
-  Marketer: ["Write SEO Content", "Create Ad Assets", "Analyze Data"],
-  Designer: ["Generate Images", "Remove Backgrounds", "Build UI Mockups"],
-  Founder: ["Automate Tasks", "Draft Pitch Decks", "Customer Support"],
-  Student: ["Summarize Notes", "Research Topics", "Write Essays"],
-} as const;
+import { ROLES, GOALS } from "@/lib/data/goals";
 
 export function RecommendationEngine() {
   const [role, setRole] = useState<keyof typeof GOALS>("Marketer");
@@ -29,7 +21,7 @@ export function RecommendationEngine() {
     // Simulate loading to make it feel like an "Engine"
     setIsLoading(true);
     const timer = setTimeout(() => {
-      const results = searchTools(`${role} ${goal}`);
+      const results = getRecommendationsByPersona(role, goal);
       
       // If we don't have enough exact matches for the goal, fallback to some trending ones to fill the grid
       if (results.length < 3) {

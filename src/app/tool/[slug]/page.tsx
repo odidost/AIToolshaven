@@ -175,7 +175,7 @@ export default async function ToolDetailPage({
             comparisonTools={comparisonTools}
           />
 
-          <PricingPlans plans={tool.pricingPlans} />
+          <PricingPlans plans={tool.pricingPlans} pricing={tool.pricing} />
 
           {/* Workflows containing this tool */}
           {toolWorkflows.length > 0 && (

@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Metadata } from "next";
 import { workflows } from "@/lib/workflows";
 import { getToolBySlug, getTrendingTools } from "@/lib/data/tools-service";
+import { StructuredData } from "@/components/shared/StructuredData";
 
 type Props = {
     params: Promise<{
@@ -9,87 +11,26 @@ type Props = {
     }>;
 };
 
-// Define mock metadata mappings for workflows to make them rich and production-ready
-const WORKFLOW_METADATA: Record<string, {
-    outcome: string;
-    time: string;
-    skill: string;
-    cost: string;
-    steps: { role: string; desc: string }[];
-}> = {
-    "faceless-youtube": {
-        outcome: "A fully finished, voice-guided YouTube video ready for upload.",
-        time: "30-45 minutes",
-        skill: "Beginner",
-        cost: "Free (with paid upgrades)",
-        steps: [
-            { role: "Script & Concept Writer", desc: "Use ChatGPT to generate high-retention video scripts and outlines." },
-            { role: "Voice Generator", desc: "Generate ultra-realistic human voices using ElevenLabs." },
-            { role: "Video Editor", desc: "Compile voice clips, stock footage, and subtitles in CapCut." },
-            { role: "SEO Optimizer", desc: "Perform keyword research and generate tags/descriptions with TubeBuddy." }
-        ]
-    },
-    "ai-influencer": {
-        outcome: "High-quality, consistent images and videos of a custom digital persona.",
-        time: "1-2 hours",
-        skill: "Intermediate",
-        cost: "$20 - $50 / month",
-        steps: [
-            { role: "Character Generator", desc: "Generate consistent, high-fidelity model images in Midjourney." },
-            { role: "Persona Writer", desc: "Establish the influencer's backstory and write social posts with ChatGPT." },
-            { role: "Animator", desc: "Animate character images into short video clips with Runway." },
-            { role: "Layout Designer", desc: "Format final images and stories for Instagram/TikTok with Canva." }
-        ]
-    },
-    "vibe-coding": {
-        outcome: "A fully functional web application deployed live on a public URL.",
-        time: "2-4 hours",
-        skill: "Intermediate",
-        cost: "Mostly Free",
-        steps: [
-            { role: "AI Assistant", desc: "Design application architecture and explore APIs using Claude." },
-            { role: "Core Code Editor", desc: "Iterate and write code using chat/agent modes in Cursor." },
-            { role: "Autocomplete", desc: "Accept inline code suggestions as you write with GitHub Copilot." },
-            { role: "Hosting & Deployment", desc: "Deploy your code immediately to a production-ready cloud via Vercel." }
-        ]
-    },
-    "content-creator": {
-        outcome: "A week's worth of optimized social media posts and clips scheduled.",
-        time: "1 hour",
-        skill: "Beginner",
-        cost: "Free - $20 / month",
-        steps: [
-            { role: "Ideation & Copywriting", desc: "Brainstorm copy and captions for multiple platforms with ChatGPT." },
-            { role: "Visual Graphics", desc: "Design premium posts, banners, and thumbnails with Canva." },
-            { role: "Shorts Extractor", desc: "Convert long-form videos into viral short clips using Opus Clip." },
-            { role: "Scheduling & Analytics", desc: "Automate delivery and posting queue using Buffer." }
-        ]
-    },
-    "agency": {
-        outcome: "Automated onboarding, tracking pipelines, and client project spaces.",
-        time: "3-5 hours",
-        skill: "Advanced",
-        cost: "$30 - $80 / month",
-        steps: [
-            { role: "Central Hub", desc: "Create CRM templates, documentation, and task boards in Notion." },
-            { role: "AI Coordinator", desc: "Generate proposals, drafts, and responses using ChatGPT." },
-            { role: "Integration Pipeline", desc: "Bridge apps together and trigger actions automatically with Zapier." },
-            { role: "Task Manager", desc: "Manage client sprint progress, milestones, and issues with ClickUp." }
-        ]
-    },
-    "solopreneur": {
-        outcome: "A professional landing page with live payment integration.",
-        time: "2-3 hours",
-        skill: "Intermediate",
-        cost: "$29 - $99 / month",
-        steps: [
-            { role: "Strategist", desc: "Refine landing page structure and value props with Claude." },
-            { role: "Brand & Ad Assets", desc: "Design marketing banners, logos, and post graphics in Canva." },
-            { role: "Website Builder", desc: "Build a highly responsive, beautiful website in Framer." },
-            { role: "Checkout & Payments", desc: "Configure secure online payment processing with Stripe." }
-        ]
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { slug } = await params;
+    const workflow = workflows.find((item) => item.slug === slug);
+
+    if (!workflow) {
+        return { title: "Workflow Not Found | AIToolsHaven" };
     }
-};
+
+    return {
+        title: `${workflow.title} Workflow Guide | AIToolsHaven`,
+        description: workflow.description,
+        openGraph: {
+            title: `${workflow.title} | AIToolsHaven Workflows`,
+            description: workflow.description,
+            type: "article",
+        },
+    };
+}
+
+// Workflow metadata is now centralized in src/lib/workflows.ts
 
 export default async function WorkflowPage({ params }: Props) {
     const { slug } = await params;
@@ -99,7 +40,7 @@ export default async function WorkflowPage({ params }: Props) {
         notFound();
     }
 
-    const meta = WORKFLOW_METADATA[slug] || {
+    const meta = workflow.meta || {
         outcome: "Automated outputs ready for direct use.",
         time: "1-2 hours",
         skill: "Beginner",
@@ -109,8 +50,21 @@ export default async function WorkflowPage({ params }: Props) {
 
     const relatedWorkflows = workflows.filter(w => w.slug !== slug).slice(0, 3);
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: `${workflow.title} Workflow`,
+        description: workflow.description,
+        step: workflow.tools.map((toolName, index) => ({
+            "@type": "HowToStep",
+            name: `Step ${index + 1}: ${toolName}`,
+            text: meta.steps[index]?.desc || `Use ${toolName} to complete this step.`,
+        })),
+    };
+
     return (
         <main className="container mx-auto px-6 py-12">
+            <StructuredData data={jsonLd} />
             {/* Breadcrumb */}
             <nav className="mb-8 flex items-center gap-2 text-sm text-on-surface-variant">
                 <Link href="/" className="hover:text-primary transition-colors">

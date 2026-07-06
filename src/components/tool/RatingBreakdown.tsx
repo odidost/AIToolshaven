@@ -4,30 +4,28 @@ type RatingBreakdownProps = {
 };
 
 export function RatingBreakdown({ tool }: RatingBreakdownProps) {
-
     const ratings = [
         {
             label: "Ease of Use",
-            value: tool.easeOfUse,
+            value: tool.easeOfUse || tool.rating || 0,
         },
         {
             label: "Features",
-            value: tool.featureRating,
+            value: tool.featureRating || tool.rating || 0,
         },
         {
             label: "Value for Money",
-            value: tool.valueForMoney,
+            value: tool.valueForMoney || tool.rating || 0,
         },
         {
             label: "Performance",
-            value: tool.performance,
+            value: tool.performance || tool.rating || 0,
         },
         {
             label: "Support",
-            value: tool.support,
+            value: tool.support || tool.rating || 0,
         },
     ];
-
     return (
 
         <section className="my-20">
