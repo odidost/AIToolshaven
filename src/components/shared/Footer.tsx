@@ -21,22 +21,24 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="w-full bg-slate-950 text-slate-400 mt-auto">
-      <div className="container mx-auto px-4 py-16">
+    <footer className="w-full bg-surface-secondary text-on-surface-variant mt-auto border-t border-border relative overflow-hidden">
+      {/* Subtle Circuit Background */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M10 10h10v10H10V10zm20 0h10v10H30V10zm20 0h10v10H50V10zm20 0h10v10H70V10zm20 0h10v10H90V10z\' fill=\'%237C3AED\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")' }} />
+      <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12">
 
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4 group">
               <span className="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform">auto_awesome</span>
-              <span className="font-black text-xl text-white">AIToolsHaven</span>
+              <span className="font-black text-xl text-on-surface">AIToolsHaven</span>
             </Link>
-            <p className="text-sm leading-relaxed max-w-xs mb-6">
-              The world's most curated AI tools directory. Discover, compare, and find the perfect AI software for your workflow.
+            <p className="text-sm text-on-surface-variant leading-relaxed max-w-xs mb-6">
+              The world&apos;s most curated AI tools directory. Discover, compare, and find the perfect AI software for your workflow.
             </p>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-on-surface-variant/80 leading-relaxed">
               Some links on this site are affiliate links. We may earn a commission at no extra cost to you. See our{" "}
-              <Link href="/privacy-policy" className="underline hover:text-slate-400 transition-colors">
+              <Link href="/privacy-policy" className="underline hover:text-primary transition-colors">
                 Privacy Policy
               </Link>{" "}
               for details.
@@ -46,13 +48,13 @@ export function Footer() {
           {/* Links */}
           {Object.entries(footerLinks).map(([group, links]) => (
             <div key={group}>
-              <h4 className="font-bold text-white mb-4 text-sm uppercase tracking-widest">{group}</h4>
+              <h4 className="font-bold text-on-surface mb-4 text-xs uppercase tracking-[0.2em]">{group}</h4>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm hover:text-white transition-colors duration-200"
+                      className="text-sm text-on-surface-variant hover:text-primary transition-colors duration-200"
                     >
                       {link.label}
                     </Link>
@@ -64,14 +66,14 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-slate-600">
+        <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-on-surface-variant/80">
             &copy; {new Date().getFullYear()} AIToolsHaven AI Tools Discovery Hub. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-xs">
-            <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
-            <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
+          <div className="flex items-center gap-6 text-xs text-on-surface-variant">
+            <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy</Link>
+            <Link href="/terms" className="hover:text-primary transition-colors">Terms</Link>
+            <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
           </div>
         </div>
       </div>

@@ -75,8 +75,8 @@ export default async function WorkflowPage({ params }: Props) {
             </nav>
 
             {/* Hero Section */}
-            <section className="relative overflow-hidden rounded-[32px] border border-outline bg-gradient-to-br from-surface to-surface-container p-8 md:p-12 mb-12 shadow-sm">
-                <div className="absolute right-0 top-0 w-[300px] h-[300px] bg-primary/5 rounded-full blur-3xl -z-10" />
+            <section className="relative overflow-hidden rounded-[32px] border border-border/50 bg-gradient-to-br from-surface to-surface-secondary/50 p-8 md:p-12 mb-12 shadow-sm">
+                <div className="absolute right-0 top-0 w-[300px] h-[300px] bg-[radial-gradient(circle,rgba(124,58,237,0.08)_0%,transparent_70%)] rounded-full pointer-events-none -z-10" />
                 <div className="flex flex-col lg:flex-row gap-8 items-start justify-between">
                     <div className="max-w-3xl">
                         <div className="flex items-center gap-3 mb-4">
@@ -100,20 +100,20 @@ export default async function WorkflowPage({ params }: Props) {
                     </div>
 
                     {/* Stats Widget */}
-                    <div className="w-full lg:w-80 bg-surface rounded-2xl border border-outline p-6 shadow-sm flex flex-col gap-4">
-                        <div className="flex justify-between border-b border-outline pb-3">
+                    <div className="w-full lg:w-80 bg-surface rounded-3xl border border-border p-6 shadow-sm flex flex-col gap-4 transition-all hover:shadow-md hover:-translate-y-[0.5px]">
+                        <div className="flex justify-between border-b border-border/50 pb-3">
                             <span className="text-sm text-on-surface-variant flex items-center gap-1">
                                 <span className="material-symbols-outlined text-sm">schedule</span> Time Required
                             </span>
                             <span className="font-bold text-sm text-on-surface">{meta.time}</span>
                         </div>
-                        <div className="flex justify-between border-b border-outline pb-3">
+                        <div className="flex justify-between border-b border-border/50 pb-3">
                             <span className="text-sm text-on-surface-variant flex items-center gap-1">
                                 <span className="material-symbols-outlined text-sm">fitness_center</span> Skill Level
                             </span>
                             <span className="font-bold text-sm text-on-surface">{meta.skill}</span>
                         </div>
-                        <div className="flex justify-between border-b border-outline pb-3">
+                        <div className="flex justify-between border-b border-border/50 pb-3">
                             <span className="text-sm text-on-surface-variant flex items-center gap-1">
                                 <span className="material-symbols-outlined text-sm">payments</span> Cost Estimate
                             </span>
@@ -143,13 +143,13 @@ export default async function WorkflowPage({ params }: Props) {
                             return (
                                 <div key={toolName} className="relative group">
                                     {/* Number Badge */}
-                                    <div className="absolute -left-[50px] top-0 flex h-10 w-10 items-center justify-center rounded-full bg-primary font-bold text-white text-sm shadow-md border-4 border-surface group-hover:scale-110 transition-transform">
+                                    <div className="absolute -left-[50px] top-0 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-primary to-secondary shadow-glow font-bold text-white text-sm border-4 border-surface group-hover:scale-110 transition-all group-hover:shadow-glow-primary">
                                         {index + 1}
                                     </div>
 
                                     {/* Step Card */}
-                                    <div className="rounded-2xl border border-outline bg-surface p-6 shadow-sm hover:shadow-md transition-shadow">
-                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-outline pb-4 mb-4">
+                                    <div className="rounded-3xl border border-border bg-surface p-8 shadow-sm transition-all hover:shadow-md hover:-translate-y-[0.5px]">
+                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/50 pb-4 mb-4">
                                             <div>
                                                 <span className="text-xs font-bold text-primary uppercase tracking-widest">{stepMeta.role}</span>
                                                 <h3 className="text-xl font-extrabold text-on-surface mt-1">{toolName}</h3>
@@ -173,17 +173,17 @@ export default async function WorkflowPage({ params }: Props) {
 
                                         {/* Dynamic Alternatives based on Category */}
                                         {toolData && (
-                                            <div className="bg-surface-container rounded-xl p-4 border border-outline">
-                                                <h4 className="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Alternative Tools</h4>
+                                            <div className="bg-surface-secondary/30 rounded-2xl p-5 border border-border/50">
+                                                <h4 className="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-3">Alternative Tools</h4>
                                                 <div className="flex flex-wrap gap-2">
-                                                    <Link href={`/tool/${toolData.slug}`} className="text-xs font-semibold text-primary bg-primary/5 px-2.5 py-1 rounded-md border border-primary/10">
+                                                    <Link href={`/tool/${toolData.slug}`} className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1.5 rounded-lg border border-primary/20 hover:bg-primary/20 transition-colors">
                                                         {toolData.name} (Primary)
                                                     </Link>
                                                     {getTrendingTools()
                                                         .filter(t => t.category === toolData.category && t.id !== toolData.id)
                                                         .slice(0, 2)
                                                         .map(alt => (
-                                                            <Link key={alt.id} href={`/tool/${alt.slug}`} className="text-xs font-medium text-on-surface-variant hover:text-primary bg-surface px-2.5 py-1 rounded-md border border-outline hover:border-primary/20 transition-colors">
+                                                            <Link key={alt.id} href={`/tool/${alt.slug}`} className="text-xs font-medium text-on-surface-variant hover:text-primary bg-surface px-3 py-1.5 rounded-lg border border-border hover:border-primary/30 transition-colors shadow-xs hover:shadow-sm">
                                                                 {alt.name}
                                                             </Link>
                                                         ))}
@@ -200,33 +200,33 @@ export default async function WorkflowPage({ params }: Props) {
                 {/* Sidebar */}
                 <aside className="space-y-8 lg:sticky lg:top-24">
                     {/* Visual Diagram Banner */}
-                    <div className="rounded-2xl border border-outline bg-primary-container p-6 shadow-sm">
-                        <h3 className="font-bold text-lg text-on-primary-container mb-2">Visual Pipeline Summary</h3>
-                        <p className="text-xs text-on-primary-container opacity-80 mb-4 leading-relaxed">
+                    <div className="rounded-3xl border border-primary/20 bg-primary/5 p-8 shadow-sm">
+                        <h3 className="font-bold text-lg text-primary mb-2">Visual Pipeline Summary</h3>
+                        <p className="text-xs text-on-surface-variant mb-5 leading-relaxed">
                             How details and data flow through this workflow setup.
                         </p>
-                        <div className="bg-surface/85 backdrop-blur-sm rounded-xl p-4 flex flex-col gap-2 border border-outline">
+                        <div className="bg-surface/85 backdrop-blur-sm rounded-2xl p-5 flex flex-col gap-3 border border-border/50 shadow-xs">
                             {workflow.tools.map((t, idx) => (
-                                <div key={t} className="flex items-center gap-2 text-xs font-medium text-on-surface">
-                                    <div className="w-5 h-5 rounded bg-primary text-white flex items-center justify-center font-bold text-[10px]">{idx + 1}</div>
+                                <div key={t} className="flex items-center gap-3 text-sm font-medium text-on-surface">
+                                    <div className="w-6 h-6 rounded bg-gradient-to-r from-primary to-secondary text-white flex items-center justify-center font-bold text-xs shadow-glow">{idx + 1}</div>
                                     <span>{t}</span>
-                                    {idx !== workflow.tools.length - 1 && <span className="material-symbols-outlined text-xs text-primary ml-auto">arrow_downward</span>}
+                                    {idx !== workflow.tools.length - 1 && <span className="material-symbols-outlined text-sm text-primary ml-auto">arrow_downward</span>}
                                 </div>
                             ))}
                         </div>
                     </div>
 
                     {/* Related Workflows */}
-                    <div className="rounded-2xl border border-outline p-6">
-                        <h3 className="font-black text-lg text-on-surface mb-4">Related Workflows</h3>
+                    <div className="rounded-3xl border border-border bg-surface-secondary/30 p-8 shadow-sm">
+                        <h3 className="font-black text-lg text-on-surface mb-5">Related Workflows</h3>
                         <div className="flex flex-col gap-4">
                             {relatedWorkflows.map(flow => (
-                                <Link key={flow.slug} href={`/workflows/${flow.slug}`} className="group block border border-outline rounded-xl p-4 hover:border-primary transition-colors">
-                                    <div className="flex items-center gap-2 mb-1">
-                                        <span className="material-symbols-outlined text-primary text-lg">{flow.icon}</span>
-                                        <span className="font-bold text-sm text-on-surface group-hover:text-primary transition-colors">{flow.title}</span>
+                                <Link key={flow.slug} href={`/workflows/${flow.slug}`} className="group block border border-border bg-surface rounded-2xl p-5 shadow-xs transition-all hover:shadow-sm hover:border-primary hover:-translate-y-[0.5px]">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <span className="material-symbols-outlined text-primary text-xl">{flow.icon}</span>
+                                        <span className="font-bold text-[15px] text-on-surface group-hover:text-primary transition-colors">{flow.title}</span>
                                     </div>
-                                    <p className="text-xs text-on-surface-variant line-clamp-2">{flow.description}</p>
+                                    <p className="text-[13px] text-on-surface-variant line-clamp-2 leading-relaxed">{flow.description}</p>
                                 </Link>
                             ))}
                         </div>

@@ -69,8 +69,8 @@ export default async function CategoryPage({
       </nav>
 
       {/* Premium Hero Section */}
-      <section className="relative overflow-hidden rounded-[32px] border border-outline bg-gradient-to-br from-surface to-surface-container p-8 md:p-12 mb-12 shadow-sm">
-        <div className="absolute right-0 top-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl -z-10" />
+      <section className="relative overflow-hidden rounded-[32px] border border-border/50 bg-gradient-to-br from-surface-secondary/50 to-surface p-8 md:p-12 mb-12 shadow-sm">
+        <div className="absolute right-0 top-0 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(124,58,237,0.08)_0%,transparent_70%)] rounded-full pointer-events-none -z-10" />
         
         <div className="flex flex-col lg:flex-row gap-8 items-start justify-between relative z-10">
           <div className="max-w-3xl">
@@ -80,7 +80,7 @@ export default async function CategoryPage({
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-black text-on-surface tracking-tight mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-on-surface tracking-tight mb-4">
               Best {category.name} AI Tools
             </h1>
 
@@ -90,30 +90,30 @@ export default async function CategoryPage({
           </div>
 
           {/* Stats Widget */}
-          <div className="w-full lg:w-72 bg-surface rounded-2xl border border-outline p-6 shadow-sm flex flex-col gap-4 shrink-0 mt-4 lg:mt-0">
-            <div className="flex justify-between items-center border-b border-outline pb-3">
-              <span className="text-sm text-on-surface-variant flex items-center gap-1">
+          <div className="w-full lg:w-72 bg-surface rounded-2xl border border-border/50 p-6 shadow-xs flex flex-col gap-4 shrink-0 mt-4 lg:mt-0 transition-all hover:shadow-sm">
+            <div className="flex justify-between items-center border-b border-border/50 pb-3">
+              <span className="text-[13px] font-medium text-on-surface-variant flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-[16px]">grid_view</span> Tools Listed
               </span>
-              <span className="font-bold text-on-surface">{categoryTools.length}</span>
+              <span className="font-semibold text-on-surface">{categoryTools.length}</span>
             </div>
-            <div className="flex justify-between items-center border-b border-outline pb-3">
-              <span className="text-sm text-on-surface-variant flex items-center gap-1">
+            <div className="flex justify-between items-center border-b border-border/50 pb-3">
+              <span className="text-[13px] font-medium text-on-surface-variant flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-[16px]">reviews</span> Total Reviews
               </span>
-              <span className="font-bold text-on-surface">{totalReviews.toLocaleString()}+</span>
+              <span className="font-semibold text-on-surface">{totalReviews.toLocaleString()}+</span>
             </div>
-            <div className="flex justify-between items-center border-b border-outline pb-3">
-              <span className="text-sm text-on-surface-variant flex items-center gap-1">
+            <div className="flex justify-between items-center border-b border-border/50 pb-3">
+              <span className="text-[13px] font-medium text-on-surface-variant flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-[16px]">star</span> Avg Rating
               </span>
-              <span className="font-bold text-on-surface">{avgRating} / 5.0</span>
+              <span className="font-semibold text-on-surface">{avgRating} / 5.0</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-sm text-on-surface-variant flex items-center gap-1">
+              <span className="text-[13px] font-medium text-on-surface-variant flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-[16px]">verified</span> Verified Tools
               </span>
-              <span className="font-bold text-on-surface">{verifiedCount}</span>
+              <span className="font-semibold text-on-surface">{verifiedCount}</span>
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default async function CategoryPage({
 
       {/* Category Navigation */}
       <section className="mb-12">
-        <h3 className="text-sm font-bold text-on-surface-variant uppercase tracking-wider mb-4">Explore other categories</h3>
+        <h3 className="text-[13px] font-bold text-on-surface-variant uppercase tracking-[0.2em] mb-4">Explore other categories</h3>
         <CategoryCapsuleBar activeSlug={category.slug} />
       </section>
 

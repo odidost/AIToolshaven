@@ -16,13 +16,13 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
 
                 {/* Pros */}
 
-                <div className="rounded-2xl border border-green-200 bg-green-50 p-6">
+                <div className="rounded-3xl border border-success/30 bg-success/5 p-6 shadow-sm">
                     <div className="flex items-center gap-2 mb-5">
-                        <span className="material-symbols-outlined text-green-600">
+                        <span className="material-symbols-outlined text-success">
                             thumb_up
                         </span>
 
-                        <h3 className="text-xl font-bold text-green-700">
+                        <h3 className="text-xl font-bold text-success">
                             Pros
                         </h3>
                     </div>
@@ -33,7 +33,7 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
                                 key={item}
                                 className="flex gap-3"
                             >
-                                <span className="material-symbols-outlined text-green-600">
+                                <span className="material-symbols-outlined text-success">
                                     check_circle
                                 </span>
 
@@ -45,13 +45,13 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
 
                 {/* Cons */}
 
-                <div className="rounded-2xl border border-red-200 bg-red-50 p-6">
+                <div className="rounded-3xl border border-destructive/30 bg-destructive/5 p-6 shadow-sm">
                     <div className="flex items-center gap-2 mb-5">
-                        <span className="material-symbols-outlined text-red-600">
+                        <span className="material-symbols-outlined text-destructive">
                             thumb_down
                         </span>
 
-                        <h3 className="text-xl font-bold text-red-700">
+                        <h3 className="text-xl font-bold text-destructive">
                             Cons
                         </h3>
                     </div>
@@ -62,7 +62,7 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
                                 key={item}
                                 className="flex gap-3"
                             >
-                                <span className="material-symbols-outlined text-red-600">
+                                <span className="material-symbols-outlined text-destructive">
                                     cancel
                                 </span>
 

@@ -58,6 +58,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${tool.name} | AIToolsHaven`,
       description: tool.description,
     },
+    alternates: {
+      canonical: `https://aitoolshaven.com/tool/${tool.slug}`,
+    },
   };
 }
 
@@ -124,34 +127,7 @@ export default async function ToolDetailPage({
         ]}
       />
 
-      {/* JSON-LD Structured Data for Google rich results */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            name: tool.name,
-            description: tool.description,
-            applicationCategory: "BusinessApplication",
-            operatingSystem: "Web",
-            offers: {
-              "@type": "Offer",
-              price: tool.priceModel === "Free" ? "0" : undefined,
-              priceCurrency: "USD",
-              availability: "https://schema.org/OnlineOnly",
-            },
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: tool.rating,
-              reviewCount: tool.reviewCount,
-              bestRating: 5,
-              worstRating: 1,
-            },
-            url: `https://aitoolshaven.com/tool/${tool.slug}`,
-          }),
-        }}
-      />
+
 
       <ToolHero tool={tool} />
 
@@ -180,7 +156,7 @@ export default async function ToolDetailPage({
           {/* Workflows containing this tool */}
           {toolWorkflows.length > 0 && (
             <section className="mt-16">
-              <h3 className="text-2xl font-bold mb-6">Workflows Using {tool.name}</h3>
+              <h3 className="text-xl font-bold tracking-tight mb-6">Workflows Using {tool.name}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {toolWorkflows.map(w => (
                   <WorkflowCard key={w.slug} title={w.title} tools={w.tools} icon={w.icon} />
@@ -192,7 +168,7 @@ export default async function ToolDetailPage({
           {/* Goals/Collections containing this tool */}
           {toolGoals.length > 0 && (
             <section className="mt-16">
-              <h3 className="text-2xl font-bold mb-6">Related Collections</h3>
+              <h3 className="text-xl font-bold tracking-tight mb-6">Related Collections</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {toolGoals.map(g => (
                   <GoalCard key={g.slug} title={g.title} icon={g.icon} count={g.count} slug={g.slug} />

@@ -7,6 +7,7 @@ export const marketingSalesTools: AITool[] = [
         slug: "apollo",
         tagline: "Find your next customer with Apollo.",
         description: "Apollo is a data-first sales platform that uses AI to help you find buyers, connect with contacts, and close more deals.",
+        screenshotUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
         logoUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=200",
         category: "c6",
@@ -21,9 +22,16 @@ export const marketingSalesTools: AITool[] = [
         featured: true,
         verified: true,
         popularity: 98,
-        goals: ["Run Ad Campaigns"],
+        goals: ["Run Ad Campaigns", "business-growth", "make-money-online"],
         bestFor: ["Founder", "Sales", "Marketer"],
-        stats: { launchYear: 2015 }
+        stats: { launchYear: 2015 },
+        workflows: ["agency", "solopreneur"],
+        compareWith: ["clay", "reply-io"],
+        relatedTools: ["clay", "reply-io", "mem-ai"],
+        similarTools: ["clay", "reply-io"],
+        collections: ["Best Marketing Tools", "Sales Automation"],
+        recommendationTags: ["marketer", "sales", "business"],
+        audiences: ["Marketers", "Sales Professionals"]
     },
     {
         id: "gong",
@@ -31,6 +39,7 @@ export const marketingSalesTools: AITool[] = [
         slug: "gong",
         tagline: "The Revenue Intelligence platform.",
         description: "Gong captures customer interactions across phone, web conferencing, and email, understands what was said, and delivers insights to win more deals.",
+        screenshotUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
         logoUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=200",
         category: "c6",
@@ -45,9 +54,16 @@ export const marketingSalesTools: AITool[] = [
         featured: false,
         verified: true,
         popularity: 90,
-        goals: ["Analyze Data"],
+        goals: ["Analyze Data", "business-growth", "make-money-online"],
         bestFor: ["Sales", "Founder"],
-        stats: { launchYear: 2015 }
+        stats: { launchYear: 2015 },
+        workflows: ["agency", "solopreneur"],
+        compareWith: ["anyword", "apollo"],
+        relatedTools: ["anyword", "apollo", "zapier-central"],
+        similarTools: ["anyword", "apollo"],
+        collections: ["Best Marketing Tools", "Sales Automation"],
+        recommendationTags: ["marketer", "sales", "business"],
+        audiences: ["Marketers", "Sales Professionals"]
     },
     {
         id: "surfer",
@@ -55,6 +71,7 @@ export const marketingSalesTools: AITool[] = [
         slug: "surfer",
         tagline: "Skyrocket your organic traffic with Surfer.",
         description: "Surfer is a content intelligence tool that merges content strategy, creation, and optimization into one smooth process.",
+        screenshotUrl: "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?auto=format&fit=crop&q=80&w=800",
         logoUrl: "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?auto=format&fit=crop&q=80&w=200",
         category: "c6",
@@ -69,9 +86,16 @@ export const marketingSalesTools: AITool[] = [
         featured: true,
         verified: true,
         popularity: 88,
-        goals: ["Write SEO Content"],
+        goals: ["Write SEO Content", "business-growth", "make-money-online"],
         bestFor: ["Marketer", "Founder"],
-        stats: { launchYear: 2017 }
+        stats: { launchYear: 2017 },
+        workflows: ["agency", "solopreneur"],
+        compareWith: ["clay", "reply-io"],
+        relatedTools: ["clay", "reply-io", "heygen"],
+        similarTools: ["clay", "reply-io"],
+        collections: ["Best Marketing Tools", "Sales Automation"],
+        recommendationTags: ["marketer", "sales", "business"],
+        audiences: ["Marketers", "Sales Professionals"]
     },
     {
         id: "instantly",
@@ -79,6 +103,7 @@ export const marketingSalesTools: AITool[] = [
         slug: "instantly",
         tagline: "Scale your outreach with unlimited email accounts.",
         description: "Instantly helps B2B businesses scale their outreach campaigns with unlimited email sending accounts, a B2B lead database, and AI generative sequences.",
+        screenshotUrl: "https://images.unsplash.com/photo-1557200134-90327ee9fafa?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1557200134-90327ee9fafa?auto=format&fit=crop&q=80&w=800",
         logoUrl: "https://images.unsplash.com/photo-1557200134-90327ee9fafa?auto=format&fit=crop&q=80&w=200",
         category: "c6",
@@ -93,9 +118,16 @@ export const marketingSalesTools: AITool[] = [
         featured: false,
         verified: true,
         popularity: 86,
-        goals: ["Automate Tasks"],
+        goals: ["Automate Tasks", "business-growth", "make-money-online"],
         bestFor: ["Founder", "Sales", "Agency"],
-        stats: { launchYear: 2021 }
+        stats: { launchYear: 2021 },
+        workflows: ["agency", "solopreneur"],
+        compareWith: ["surfer", "clay"],
+        relatedTools: ["surfer", "clay", "phind"],
+        similarTools: ["surfer", "clay"],
+        collections: ["Best Marketing Tools", "Sales Automation"],
+        recommendationTags: ["marketer", "sales", "business"],
+        audiences: ["Marketers", "Sales Professionals"]
     },
     {
         id: "clay",
@@ -103,6 +135,7 @@ export const marketingSalesTools: AITool[] = [
         slug: "clay",
         tagline: "Build automated, hyper-personalized campaigns.",
         description: "Clay is a data provider and outbound platform that uses AI and 50+ data providers to perfectly personalize your cold outreach.",
+        screenshotUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
         logoUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=200",
         category: "c6",
@@ -117,8 +150,15 @@ export const marketingSalesTools: AITool[] = [
         featured: true,
         verified: true,
         popularity: 84,
-        goals: ["Automate Ops"],
+        goals: ["Automate Ops", "business-growth", "make-money-online"],
         bestFor: ["Sales", "Founder", "Agency"],
-        stats: { launchYear: 2020 }
+        stats: { launchYear: 2020 },
+        workflows: ["agency", "solopreneur"],
+        compareWith: ["smartwriter", "outbound"],
+        relatedTools: ["smartwriter", "outbound", "mem-ai"],
+        similarTools: ["smartwriter", "outbound"],
+        collections: ["Best Marketing Tools", "Sales Automation"],
+        recommendationTags: ["marketer", "sales", "business"],
+        audiences: ["Marketers", "Sales Professionals"]
     }
 ];

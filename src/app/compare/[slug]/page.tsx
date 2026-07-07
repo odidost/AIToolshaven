@@ -182,7 +182,7 @@ export default async function ComparePage({
       {/* Tool cards */}
       <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-0 items-center mb-10 max-w-4xl mx-auto">
         {/* A */}
-        <div className="bg-surface-container rounded-2xl p-6 border border-outline shadow-sm text-center">
+        <div className="bg-surface rounded-3xl p-8 border border-border shadow-sm text-center transition-all hover:shadow-md hover:-translate-y-[0.5px]">
           <img
             src={mainTool.imageUrl}
             alt={mainTool.name}
@@ -199,7 +199,7 @@ export default async function ComparePage({
             ★ {mainTool.rating} ({mainTool.reviewCount})
           </div>
 
-          <span className="px-3 py-1 rounded-lg text-xs bg-primary-container">
+          <span className="px-3 py-1 rounded-lg text-xs bg-primary/10 text-primary font-semibold">
             {mainTool.priceModel}
           </span>
         </div>
@@ -212,7 +212,7 @@ export default async function ComparePage({
         </div>
 
         {/* B */}
-        <div className="bg-surface-container rounded-2xl p-6 border border-outline shadow-sm text-center">
+        <div className="bg-surface rounded-3xl p-8 border border-border shadow-sm text-center transition-all hover:shadow-md hover:-translate-y-[0.5px]">
           <img
             src={compareTool.imageUrl}
             alt={compareTool.name}
@@ -229,17 +229,17 @@ export default async function ComparePage({
             ★ {compareTool.rating} ({compareTool.reviewCount})
           </div>
 
-          <span className="px-3 py-1 rounded-lg text-xs bg-primary-container">
+          <span className="px-3 py-1 rounded-lg text-xs bg-primary/10 text-primary font-semibold">
             {compareTool.priceModel}
           </span>
         </div>
       </div>
 
       {/* Comparison table */}
-      <div className="max-w-4xl mx-auto mb-12">
-        <div className="bg-surface-container rounded-2xl border border-outline overflow-hidden">
-          <div className="grid grid-cols-3 border-b border-outline">
-            <div className="p-4 font-bold bg-surface">Criteria</div>
+      <div className="max-w-4xl mx-auto mb-16">
+        <div className="bg-surface rounded-3xl border border-border overflow-hidden shadow-sm">
+          <div className="grid grid-cols-3 border-b border-border">
+            <div className="p-5 font-bold bg-surface-secondary/50">Criteria</div>
             <div className="p-4 text-center font-bold border-l bg-surface">
               {mainTool.name}
             </div>
@@ -251,17 +251,17 @@ export default async function ComparePage({
           {comparisonRows.map((row) => (
             <div
               key={row.label}
-              className="grid grid-cols-3 border-b border-outline"
+              className="grid grid-cols-3 border-b border-border last:border-0"
             >
-              <div className="p-4 flex items-center gap-2">
+              <div className="p-5 flex items-center gap-2">
                 <span className="material-symbols-outlined text-primary">
                   {row.icon}
                 </span>
                 {row.label}
               </div>
 
-              <div className="p-4 text-center border-l">{row.toolA}</div>
-              <div className="p-4 text-center border-l">{row.toolB}</div>
+              <div className="p-5 text-center border-l border-border">{row.toolA}</div>
+              <div className="p-5 text-center border-l border-border">{row.toolB}</div>
             </div>
           ))}
         </div>
@@ -271,28 +271,28 @@ export default async function ComparePage({
       <div className="max-w-4xl mx-auto mb-16">
         <h2 className="text-2xl font-bold mb-6">Feature Comparison</h2>
 
-        <div className="border border-outline rounded-2xl overflow-hidden bg-surface-container">
+        <div className="border border-border rounded-3xl overflow-hidden bg-surface shadow-sm">
           {allFeatureTitles.map((featureTitle, i) => {
             const hasA = mainTool.features.some(f => (typeof f === 'string' ? f : f.title) === featureTitle);
             const hasB = compareTool.features.some(f => (typeof f === 'string' ? f : f.title) === featureTitle);
 
             return (
-              <div key={featureTitle} className={`grid grid-cols-3 ${i !== allFeatureTitles.length - 1 ? "border-b border-outline" : ""}`}>
-                <div className="p-4">{featureTitle}</div>
+              <div key={featureTitle} className={`grid grid-cols-3 ${i !== allFeatureTitles.length - 1 ? "border-b border-border" : ""}`}>
+                <div className="p-5">{featureTitle}</div>
 
-                <div className="p-4 text-center border-l border-outline flex justify-center items-center">
+                <div className="p-5 text-center border-l border-border flex justify-center items-center">
                   {hasA ? (
-                    <span className="material-symbols-outlined text-green-500">check_circle</span>
+                    <span className="material-symbols-outlined text-success">check_circle</span>
                   ) : (
-                    <span className="material-symbols-outlined text-red-400 opacity-50">cancel</span>
+                    <span className="material-symbols-outlined text-destructive opacity-50">cancel</span>
                   )}
                 </div>
 
-                <div className="p-4 text-center border-l border-outline flex justify-center items-center">
+                <div className="p-5 text-center border-l border-border flex justify-center items-center">
                   {hasB ? (
-                    <span className="material-symbols-outlined text-green-500">check_circle</span>
+                    <span className="material-symbols-outlined text-success">check_circle</span>
                   ) : (
-                    <span className="material-symbols-outlined text-red-400 opacity-50">cancel</span>
+                    <span className="material-symbols-outlined text-destructive opacity-50">cancel</span>
                   )}
                 </div>
               </div>
@@ -307,12 +307,12 @@ export default async function ComparePage({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">{mainTool.name}</h3>
-            <div className="bg-surface-container rounded-2xl p-6 border border-outline shadow-sm">
-              <h4 className="font-bold text-green-600 mb-2 flex items-center gap-2"><span className="material-symbols-outlined">add_circle</span> Pros</h4>
+            <div className="bg-surface rounded-3xl p-8 border border-border shadow-sm">
+              <h4 className="font-bold text-success mb-2 flex items-center gap-2"><span className="material-symbols-outlined">add_circle</span> Pros</h4>
               <ul className="list-disc list-inside mb-4 text-on-surface-variant space-y-1">
                 {mainTool.pros?.map((p, i) => <li key={i}>{p}</li>)}
               </ul>
-              <h4 className="font-bold text-red-500 mb-2 flex items-center gap-2"><span className="material-symbols-outlined">do_not_disturb_on</span> Cons</h4>
+              <h4 className="font-bold text-destructive mb-2 flex items-center gap-2"><span className="material-symbols-outlined">do_not_disturb_on</span> Cons</h4>
               <ul className="list-disc list-inside text-on-surface-variant space-y-1">
                 {mainTool.cons?.map((c, i) => <li key={i}>{c}</li>)}
               </ul>
@@ -320,12 +320,12 @@ export default async function ComparePage({
           </div>
           <div>
             <h3 className="text-xl font-bold mb-4">{compareTool.name}</h3>
-            <div className="bg-surface-container rounded-2xl p-6 border border-outline shadow-sm">
-              <h4 className="font-bold text-green-600 mb-2 flex items-center gap-2"><span className="material-symbols-outlined">add_circle</span> Pros</h4>
+            <div className="bg-surface rounded-3xl p-8 border border-border shadow-sm">
+              <h4 className="font-bold text-success mb-2 flex items-center gap-2"><span className="material-symbols-outlined">add_circle</span> Pros</h4>
               <ul className="list-disc list-inside mb-4 text-on-surface-variant space-y-1">
                 {compareTool.pros?.map((p, i) => <li key={i}>{p}</li>)}
               </ul>
-              <h4 className="font-bold text-red-500 mb-2 flex items-center gap-2"><span className="material-symbols-outlined">do_not_disturb_on</span> Cons</h4>
+              <h4 className="font-bold text-destructive mb-2 flex items-center gap-2"><span className="material-symbols-outlined">do_not_disturb_on</span> Cons</h4>
               <ul className="list-disc list-inside text-on-surface-variant space-y-1">
                 {compareTool.cons?.map((c, i) => <li key={i}>{c}</li>)}
               </ul>
@@ -338,13 +338,13 @@ export default async function ComparePage({
       <div className="max-w-4xl mx-auto mb-16">
         <h2 className="text-2xl font-bold mb-6">Best For</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-primary/5 rounded-2xl p-6 border border-primary/20">
+          <div className="bg-primary/5 rounded-3xl p-8 border border-primary/20 shadow-sm">
             <h3 className="text-xl font-bold mb-3">{mainTool.name} is best for:</h3>
             <ul className="list-disc list-inside text-on-surface-variant space-y-2">
               {mainTool.bestFor.map((b, i) => <li key={i}>{b}</li>)}
             </ul>
           </div>
-          <div className="bg-blue-500/5 rounded-2xl p-6 border border-blue-500/20">
+          <div className="bg-secondary/5 rounded-3xl p-8 border border-secondary/20 shadow-sm">
             <h3 className="text-xl font-bold mb-3">{compareTool.name} is best for:</h3>
             <ul className="list-disc list-inside text-on-surface-variant space-y-2">
               {compareTool.bestFor.map((b, i) => <li key={i}>{b}</li>)}
@@ -355,12 +355,12 @@ export default async function ComparePage({
 
       {/* Verdict */}
       <div className="max-w-4xl mx-auto mb-16">
-        <div className="bg-surface-container rounded-2xl p-8 border border-outline text-center shadow-md">
-          <div className="inline-flex items-center justify-center w-12 h-12 bg-primary text-white rounded-full mb-4">
-            <span className="material-symbols-outlined text-2xl">gavel</span>
+        <div className="bg-gradient-to-br from-surface to-surface-secondary/50 rounded-3xl p-10 border border-border text-center shadow-md">
+          <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-r from-primary to-secondary shadow-glow text-white rounded-full mb-6">
+            <span className="material-symbols-outlined text-3xl">gavel</span>
           </div>
-          <h2 className="text-2xl font-bold mb-4">The Verdict</h2>
-          <p className="text-lg text-on-surface-variant">
+          <h2 className="text-3xl font-bold mb-4">The Verdict</h2>
+          <p className="text-lg text-on-surface-variant leading-relaxed">
             If you need <strong>{mainTool.bestFor[0]?.toLowerCase()}</strong>, then <strong>{mainTool.name}</strong> is the clear winner. 
             However, if you prioritize <strong>{compareTool.bestFor[0]?.toLowerCase()}</strong>, you will be better off choosing <strong>{compareTool.name}</strong>.
           </p>
@@ -369,20 +369,20 @@ export default async function ComparePage({
 
       {/* CTA */}
       <div className="max-w-4xl mx-auto">
-        <div className="bg-primary-container rounded-2xl p-8 text-center">
-          <h2 className="text-xl font-bold mb-3">Ready to decide?</h2>
+        <div className="bg-surface-secondary/30 rounded-3xl border border-border p-10 text-center shadow-sm">
+          <h2 className="text-2xl font-bold mb-6">Ready to decide?</h2>
 
           <div className="flex gap-4 justify-center">
             <Link
               href={`/tool/${mainTool.slug}`}
-              className="bg-primary text-white px-6 py-3 rounded-xl"
+              className="bg-gradient-to-r from-primary to-secondary shadow-glow text-white px-8 py-4 rounded-2xl font-semibold transition-all hover:shadow-glow-primary hover:-translate-y-[0.5px]"
             >
               Explore {mainTool.name}
             </Link>
 
             <Link
               href={`/tool/${compareTool.slug}`}
-              className="border px-6 py-3 rounded-xl"
+              className="border border-border bg-surface text-on-surface px-8 py-4 rounded-2xl font-semibold transition-all shadow-xs hover:border-primary hover:bg-surface-secondary hover:shadow-sm hover:-translate-y-[0.5px]"
             >
               Explore {compareTool.name}
             </Link>

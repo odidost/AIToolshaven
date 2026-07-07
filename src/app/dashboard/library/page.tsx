@@ -13,6 +13,7 @@ export default function LibraryPage() {
 
   // Avoid hydration mismatch by waiting for mount to render localStorage items
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

@@ -52,7 +52,7 @@ export function CommunityReviews() {
           <span className="text-sm font-bold uppercase tracking-widest">Loved by Creators</span>
         </div>
         <h2 className="text-3xl font-black text-slate-900 tracking-tight md:text-5xl">
-          Don't just take our word for it.
+          Don&apos;t just take our word for it.
         </h2>
         <p className="mt-4 max-w-xl text-slate-500">
           Join 10,000+ creators, developers, and founders who use our platform to stay ahead in the AI revolution.
@@ -74,7 +74,7 @@ export function CommunityReviews() {
             </div>
             
             <p className="text-slate-700 leading-relaxed font-medium mb-6">
-              "{review.content}"
+              &quot;{review.content}&quot;
             </p>
 
             <div className="flex items-center gap-4 border-t border-slate-100 pt-4">

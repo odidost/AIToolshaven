@@ -81,6 +81,12 @@ export interface AITool {
     
     recommendationTags?: string[];
 
+    relatedTools?: string[];
+
+    similarTools?: string[];
+
+    audiences?: string[];
+
     pros?: string[];
 
     cons?: string[];

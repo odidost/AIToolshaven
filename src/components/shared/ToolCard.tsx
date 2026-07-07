@@ -15,7 +15,7 @@ export function ToolCard({ tool }: { tool: AITool }) {
 
   return (
     <Link href={`/tool/${tool.slug}`} className="block group h-full">
-      <article className="bg-surface-container rounded-3xl p-7 border border-outline hover:border-primary transition-colors h-full flex flex-col shadow-sm hover:shadow-md relative">
+      <article className="bg-card rounded-3xl p-6 border border-border hover:border-primary/30 transition-all duration-300 h-full flex flex-col shadow-sm hover:shadow-glow relative group/card hover:-translate-y-1 bg-gradient-to-b from-surface to-surface-secondary/20">
         <button 
           onClick={handleBookmarkClick}
           className="absolute top-4 right-4 z-10 p-2 rounded-full bg-surface border border-outline hover:bg-primary group/btn transition-colors flex items-center justify-center shadow-sm"
@@ -38,12 +38,12 @@ export function ToolCard({ tool }: { tool: AITool }) {
 
           <div className="flex gap-2">
             {tool.featured && (
-              <div className="bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 text-xs font-bold px-2 py-1 rounded-md flex items-center gap-1">
-                <span className="material-symbols-outlined text-[14px]">star</span>
+              <div className="bg-accent/10 text-accent border border-accent/20 text-[11px] tracking-tight font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                <span className="material-symbols-outlined text-[12px]">star</span>
                 Featured
               </div>
             )}
-            <div className="bg-primary-container text-on-primary-container text-xs font-semibold px-2 py-1 rounded-md flex items-center">
+            <div className="bg-secondary/10 text-secondary border border-secondary/20 text-[11px] tracking-tight font-semibold px-2.5 py-0.5 rounded-full flex items-center">
               {tool.priceModel}
             </div>
           </div>
@@ -80,11 +80,11 @@ export function ToolCard({ tool }: { tool: AITool }) {
           </span>
         </div>
 
-        <div className="flex flex-wrap gap-2 mt-auto">
+        <div className="flex flex-wrap gap-1.5 mt-auto">
           {tool.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="text-xs text-on-surface-variant bg-surface px-2 py-1 rounded-md border border-outline"
+              className="text-[11px] font-medium text-on-surface-variant bg-surface-secondary px-3 py-1 rounded-full border border-border/50 group-hover/card:border-border transition-colors"
             >
               {tag}
             </span>

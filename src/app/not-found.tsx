@@ -24,11 +24,11 @@ export default function NotFound() {
       </span>
 
       <h1 className="text-2xl md:text-4xl font-black text-slate-900 mb-4">
-        This page doesn't exist.
+        This page doesn&apos;t exist.
       </h1>
       <p className="text-slate-500 text-lg max-w-md mb-10">
         The AI tool, category, or page you were looking for may have moved or
-        never existed. Let's get you back on track.
+        never existed. Let&apos;s get you back on track.
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4">

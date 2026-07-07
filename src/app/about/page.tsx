@@ -52,7 +52,7 @@ export default function AboutPage() {
           About AIToolsHaven
         </div>
         <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">
-          The world's most curated<br />
+          The world&apos;s most curated<br />
           <span className="text-primary">AI tools directory.</span>
         </h1>
         <p className="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
@@ -105,7 +105,7 @@ export default function AboutPage() {
             Have a tool we should feature?
           </h2>
           <p className="text-slate-400 mb-8 max-w-lg mx-auto">
-            Submit your AI tool for review. If it meets our quality bar, we'll add it to the directory and help it reach thousands of early adopters.
+            Submit your AI tool for review. If it meets our quality bar, we&apos;ll add it to the directory and help it reach thousands of early adopters.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

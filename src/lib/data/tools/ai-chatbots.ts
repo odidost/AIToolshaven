@@ -126,6 +126,7 @@ export const aiChatbots: AITool[] = [
             "claude",
             "gemini",
             "perplexity",
+            "copy-ai"
         ],
 
         goals: [
@@ -183,6 +184,12 @@ export const aiChatbots: AITool[] = [
         },
 
         lastUpdated: "2026-07-02",
+        workflows: ["content-creator", "agency"],
+        relatedTools: ["copy-ai", "perplexity", "capcut"],
+        similarTools: ["copy-ai", "perplexity"],
+        collections: ["Best AI Writing Tools", "Top Productivity Assistants"],
+        recommendationTags: ["writer", "marketer", "business"],
+        audiences: ["Marketers", "Writers"]
     },
     {
         id: "claude",
@@ -241,8 +248,8 @@ export const aiChatbots: AITool[] = [
         verified: true,
         featured: true,
         popularity: 95,
-        compareWith: ["chatgpt", "gemini"],
-        goals: ["vibe-coding", "business-growth"],
+        compareWith: ["chatgpt", "gemini", "novelai", "quillbot"],
+        goals: ["vibe-coding", "business-growth", "ai-workflows"],
         pros: ["Superior coding intelligence", "Excellent writing tone", "Large 200k context window"],
         cons: ["No built-in image generator", "Message limits on free plan can be reached quickly"],
         bestFor: ["Developers", "Writers", "Researchers"],
@@ -255,6 +262,12 @@ export const aiChatbots: AITool[] = [
         socials: { website: "https://claude.ai" },
         stats: { launchYear: 2023 },
         lastUpdated: "2026-07-01",
+        workflows: ["content-creator", "agency"],
+        relatedTools: ["novelai", "quillbot", "tome-pro"],
+        similarTools: ["novelai", "quillbot"],
+        collections: ["Best AI Writing Tools", "Top Productivity Assistants"],
+        recommendationTags: ["writer", "marketer", "business"],
+        audiences: ["Marketers", "Writers"]
     },
     {
         id: "gemini",
@@ -308,8 +321,8 @@ export const aiChatbots: AITool[] = [
         verified: true,
         featured: false,
         popularity: 90,
-        compareWith: ["chatgpt", "claude"],
-        goals: ["business-growth", "make-money-online"],
+        compareWith: ["chatgpt", "claude", "grok"],
+        goals: ["business-growth", "make-money-online", "ai-workflows"],
         pros: ["Huge context window (up to 2M tokens)", "Great integration with Google ecosystem", "Handles video inputs natively"],
         cons: ["Coding and reasoning sometimes lags behind Claude", "Interface can occasionally feel cluttered"],
         bestFor: ["Google power users", "Students", "Researchers looking at long documents"],
@@ -322,5 +335,11 @@ export const aiChatbots: AITool[] = [
         socials: { website: "https://gemini.google.com" },
         stats: { launchYear: 2023 },
         lastUpdated: "2026-07-03",
+        workflows: ["content-creator", "agency"],
+        relatedTools: ["grok", "chatgpt", "codium-ai"],
+        similarTools: ["grok", "chatgpt"],
+        collections: ["Best AI Writing Tools", "Top Productivity Assistants"],
+        recommendationTags: ["writer", "marketer", "business"],
+        audiences: ["Marketers", "Writers"]
     }
 ];

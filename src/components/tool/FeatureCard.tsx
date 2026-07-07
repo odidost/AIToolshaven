@@ -15,14 +15,16 @@ export function FeatureCard({ feature }: FeatureCardProps) {
             group
             rounded-3xl
             border
-            border-outline
-            bg-surface-container
+            border-border
+            bg-surface
             p-6
+            shadow-sm
             transition-all
             duration-300
-            hover:-translate-y-1
-            hover:border-primary
-            hover:shadow-xl
+            hover:-translate-y-[0.5px]
+            hover:border-primary/50
+            hover:shadow-md
+            hover:shadow-glow
             "
         >
 

@@ -24,19 +24,20 @@ export function ToolSidebar({
                 className="
                 relative
                 overflow-hidden
-                rounded-[32px]
+                rounded-3xl
                 border
                 border-primary/20
                 bg-gradient-to-br
-                from-primary/10
+                from-primary/5
                 via-surface
-                to-surface-container
+                to-surface-secondary/50
                 p-7
-                shadow-xl
+                shadow-sm
                 transition-all
                 duration-300
-                hover:-translate-y-1
-                hover:shadow-2xl
+                hover:-translate-y-[0.5px]
+                hover:shadow-md
+                hover:shadow-glow
                 "
             >
 
@@ -50,7 +51,7 @@ export function ToolSidebar({
                             workspace_premium
                         </span>
 
-                        Editor's Pick
+                        Editor&apos;s Pick
 
                     </div>
 
@@ -94,13 +95,16 @@ export function ToolSidebar({
                             justify-center
                             gap-2
                             rounded-2xl
-                            bg-primary
+                            bg-gradient-to-r
+                            from-primary
+                            to-secondary
                             py-4
                             font-semibold
                             text-white
                             transition-all
-                            hover:scale-[1.02]
-                            hover:shadow-lg
+                            shadow-glow
+                            hover:-translate-y-[0.5px]
+                            hover:shadow-glow-primary
                             "
                         >
 
@@ -122,15 +126,15 @@ export function ToolSidebar({
 
             <section
                 className="
-                rounded-[28px]
+                rounded-3xl
                 border
-                border-outline
-                bg-surface-container
+                border-border/50
+                bg-surface-secondary/30
                 p-7
-                shadow-lg
+                shadow-sm
                 transition-all
                 duration-300
-                hover:shadow-xl
+                hover:shadow-md
                 "
             >
 
@@ -232,17 +236,18 @@ export function ToolSidebar({
                     gap-2
                     rounded-2xl
                     border
-                    border-primary
-                    bg-primary/5
+                    border-border
+                    bg-surface
                     px-5
                     py-3
                     font-semibold
-                    text-primary
+                    text-on-surface
+                    shadow-xs
                     transition-all
                     duration-300
-                    hover:bg-primary
-                    hover:text-white
-                    hover:shadow-lg
+                    hover:bg-surface-secondary
+                    hover:border-primary
+                    hover:-translate-y-[0.5px]
                     "
                 >
 
@@ -260,15 +265,15 @@ export function ToolSidebar({
 
             <section
                 className="
-                rounded-[28px]
+                rounded-3xl
                 border
-                border-outline
-                bg-surface-container
+                border-border/50
+                bg-surface-secondary/30
                 p-7
-                shadow-lg
+                shadow-sm
                 transition-all
                 duration-300
-                hover:shadow-xl
+                hover:shadow-md
                 "
             >
 

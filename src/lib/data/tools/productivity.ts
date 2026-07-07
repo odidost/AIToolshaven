@@ -7,6 +7,7 @@ export const productivityTools: AITool[] = [
         slug: "notion-ai",
         tagline: "Work faster. Write better. Think bigger.",
         description: "Notion AI is integrated directly into your workspace. It can extract action items, summarize meeting notes, and generate documents based on your existing wikis.",
+        screenshotUrl: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=800",
         logoUrl: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=200",
         category: "c7",
@@ -21,9 +22,16 @@ export const productivityTools: AITool[] = [
         featured: true,
         verified: true,
         popularity: 96,
-        goals: ["Organize Notes", "Automate Tasks"],
+        goals: ["Organize Notes", "Automate Tasks", "ai-workflows", "business-growth"],
         bestFor: ["Founder", "Student", "Marketer"],
-        stats: { launchYear: 2023 }
+        stats: { launchYear: 2023 },
+        workflows: ["agency", "content-creator"],
+        compareWith: ["superhuman", "mem-ai"],
+        relatedTools: ["superhuman", "mem-ai", "magnific"],
+        similarTools: ["superhuman", "mem-ai"],
+        collections: ["Best Productivity Assistants", "Top AI Assistants"],
+        recommendationTags: ["productivity", "student", "founder"],
+        audiences: ["Founders", "Students"]
     },
     {
         id: "mem-ai",
@@ -31,6 +39,7 @@ export const productivityTools: AITool[] = [
         slug: "mem-ai",
         tagline: "The AI workspace that's personalized to you.",
         description: "Mem uses artificial intelligence to organize your notes automatically. Just dump your thoughts and Mem will connect them together.",
+        screenshotUrl: "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=800",
         logoUrl: "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=200",
         category: "c7",
@@ -45,9 +54,16 @@ export const productivityTools: AITool[] = [
         featured: false,
         verified: true,
         popularity: 82,
-        goals: ["Organize Notes"],
+        goals: ["Organize Notes", "ai-workflows", "business-growth"],
         bestFor: ["Student", "Founder"],
-        stats: { launchYear: 2021 }
+        stats: { launchYear: 2021 },
+        workflows: ["agency", "content-creator"],
+        compareWith: ["notion-ai", "otter-ai"],
+        relatedTools: ["notion-ai", "otter-ai", "invideo"],
+        similarTools: ["notion-ai", "otter-ai"],
+        collections: ["Best Productivity Assistants", "Top AI Assistants"],
+        recommendationTags: ["productivity", "student", "founder"],
+        audiences: ["Founders", "Students"]
     },
     {
         id: "otter-ai",
@@ -55,6 +71,7 @@ export const productivityTools: AITool[] = [
         slug: "otter-ai",
         tagline: "AI meeting assistant.",
         description: "Otter records meetings, takes notes in real time, and generates an automated summary to share with everyone and to help you remember everything.",
+        screenshotUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
         logoUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=200",
         category: "c7",
@@ -69,9 +86,16 @@ export const productivityTools: AITool[] = [
         featured: false,
         verified: true,
         popularity: 90,
-        goals: ["Automate Tasks"],
+        goals: ["Automate Tasks", "ai-workflows", "business-growth"],
         bestFor: ["Founder", "Student", "Marketer"],
-        stats: { launchYear: 2016 }
+        stats: { launchYear: 2016 },
+        workflows: ["agency", "content-creator"],
+        compareWith: ["superhuman", "notion-ai"],
+        relatedTools: ["superhuman", "notion-ai", "claude"],
+        similarTools: ["superhuman", "notion-ai"],
+        collections: ["Best Productivity Assistants", "Top AI Assistants"],
+        recommendationTags: ["productivity", "student", "founder"],
+        audiences: ["Founders", "Students"]
     },
     {
         id: "zapier-central",
@@ -79,6 +103,7 @@ export const productivityTools: AITool[] = [
         slug: "zapier-central",
         tagline: "AI bots that act on your data.",
         description: "Zapier Central lets you teach AI bots to perform tasks across 6,000+ apps, turning natural language instructions into automated workflows.",
+        screenshotUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
         logoUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=200",
         category: "c7",
@@ -93,9 +118,16 @@ export const productivityTools: AITool[] = [
         featured: true,
         verified: true,
         popularity: 85,
-        goals: ["Automate Tasks", "Automate Ops"],
+        goals: ["Automate Tasks", "Automate Ops", "ai-workflows", "business-growth"],
         bestFor: ["Founder", "Marketer", "Agency"],
-        stats: { launchYear: 2024 }
+        stats: { launchYear: 2024 },
+        workflows: ["agency", "content-creator"],
+        compareWith: ["cody-ai", "sanebox"],
+        relatedTools: ["cody-ai", "sanebox", "codeium"],
+        similarTools: ["cody-ai", "sanebox"],
+        collections: ["Best Productivity Assistants", "Top AI Assistants"],
+        recommendationTags: ["productivity", "student", "founder"],
+        audiences: ["Founders", "Students"]
     },
     {
         id: "tldv",
@@ -103,6 +135,7 @@ export const productivityTools: AITool[] = [
         slug: "tldv",
         tagline: "The AI meeting recorder for Zoom and Google Meet.",
         description: "tl;dv automatically records, transcribes, and summarizes your meetings. It identifies speakers and lets you clip the best moments.",
+        screenshotUrl: "https://images.unsplash.com/photo-1515378960530-7c0da6231d45?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1515378960530-7c0da6231d45?auto=format&fit=crop&q=80&w=800",
         logoUrl: "https://images.unsplash.com/photo-1515378960530-7c0da6231d45?auto=format&fit=crop&q=80&w=200",
         category: "c7",
@@ -117,8 +150,15 @@ export const productivityTools: AITool[] = [
         featured: false,
         verified: true,
         popularity: 80,
-        goals: ["Automate Tasks"],
+        goals: ["Automate Tasks", "ai-workflows", "business-growth"],
         bestFor: ["Founder", "Sales", "Agency"],
-        stats: { launchYear: 2020 }
+        stats: { launchYear: 2020 },
+        workflows: ["agency", "content-creator"],
+        compareWith: ["beautiful-ai", "fathom"],
+        relatedTools: ["beautiful-ai", "fathom", "anyword"],
+        similarTools: ["beautiful-ai", "fathom"],
+        collections: ["Best Productivity Assistants", "Top AI Assistants"],
+        recommendationTags: ["productivity", "student", "founder"],
+        audiences: ["Founders", "Students"]
     }
 ];

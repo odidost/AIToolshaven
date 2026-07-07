@@ -12,6 +12,7 @@ export function SocialShareBar({ toolName, urlPath }: SocialShareBarProps) {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setUrl(`${window.location.origin}${urlPath}`);
   }, [urlPath]);
 

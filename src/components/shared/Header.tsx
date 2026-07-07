@@ -5,7 +5,7 @@ import { getAllTools } from '@/lib/queries/tools';
 export function Header() {
   const tools = getAllTools();
   return (
-    <header className="w-full bg-surface-container border-b border-outline">
+    <header className="w-full bg-background/80 backdrop-blur-md border-b border-border sticky top-0 z-40 transition-all">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <span className="material-symbols-outlined text-primary text-3xl">auto_awesome</span>
@@ -21,7 +21,7 @@ export function Header() {
           <Link href="/dashboard" className="text-on-surface-variant hover:text-primary hidden md:block">
             <span className="material-symbols-outlined">person</span>
           </Link>
-          <Link href="/submit" className="bg-primary text-primary-foreground px-4 py-2 rounded-full font-medium text-sm hover:bg-primary-foreground hover:text-primary border border-primary transition-colors">
+          <Link href="/submit" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-5 py-2.5 rounded-2xl font-medium text-sm shadow-glow hover:shadow-glow-primary hover:-translate-y-0.5 transition-all duration-300">
             Submit a Tool
           </Link>
         </nav>

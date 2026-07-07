@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import type { AITool } from "@/lib/types/tool";
 
@@ -16,22 +16,24 @@ export function CommandPalette({ tools }: CommandPaletteProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   
   // Flatten categories/tags into searchable text
-  const filteredTools = search
-    ? tools.filter((tool) => {
-        const query = search.toLowerCase();
-        return (
-          tool.name.toLowerCase().includes(query) ||
-          tool.tagline.toLowerCase().includes(query) ||
-          tool.description.toLowerCase().includes(query) ||
-          tool.category.toLowerCase().includes(query) ||
-          tool.tags.some(tag => tag.toLowerCase().includes(query))
-        );
-      }).sort((a, b) => {
-        const aBoost = (a.featured ? 100 : 0) + (a.popularity || 0);
-        const bBoost = (b.featured ? 100 : 0) + (b.popularity || 0);
-        return bBoost - aBoost;
-      }).slice(0, 8)
-    : [];
+  const filteredTools = useMemo(() => {
+    return search
+      ? tools.filter((tool) => {
+          const query = search.toLowerCase();
+          return (
+            tool.name.toLowerCase().includes(query) ||
+            tool.tagline.toLowerCase().includes(query) ||
+            tool.description.toLowerCase().includes(query) ||
+            tool.category.toLowerCase().includes(query) ||
+            tool.tags.some(tag => tag.toLowerCase().includes(query))
+          );
+        }).sort((a, b) => {
+          const aBoost = (a.featured ? 100 : 0) + (a.popularity || 0);
+          const bBoost = (b.featured ? 100 : 0) + (b.popularity || 0);
+          return bBoost - aBoost;
+        }).slice(0, 8)
+      : [];
+  }, [search, tools]);
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -51,13 +53,16 @@ export function CommandPalette({ tools }: CommandPaletteProps) {
 
   useEffect(() => {
     if (isOpen) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSearch("");
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSelectedIndex(0);
       setTimeout(() => inputRef.current?.focus(), 50);
     }
   }, [isOpen]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelectedIndex(0);
   }, [search]);
 
@@ -88,7 +93,7 @@ export function CommandPalette({ tools }: CommandPaletteProps) {
     return (
       <button 
         onClick={() => setIsOpen(true)}
-        className="w-full h-10 px-4 rounded-full border border-outline bg-surface hover:border-primary transition-colors flex items-center justify-between text-sm text-on-surface-variant"
+        className="w-full h-10 px-4 rounded-full border border-border bg-surface hover:bg-muted hover:border-border/80 shadow-xs hover:shadow-sm transition-all duration-200 flex items-center justify-between text-[13px] font-medium text-muted-foreground"
       >
         <div className="flex items-center gap-2">
           <span className="material-symbols-outlined text-xl">search</span>
@@ -112,7 +117,7 @@ export function CommandPalette({ tools }: CommandPaletteProps) {
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 pointer-events-none">
         <div 
-          className="w-full max-w-2xl bg-surface-container rounded-2xl shadow-2xl border border-outline overflow-hidden pointer-events-auto flex flex-col max-h-[80vh]"
+          className="w-full max-w-2xl bg-card rounded-2xl shadow-2xl shadow-primary/10 border border-border overflow-hidden pointer-events-auto flex flex-col max-h-[80vh] ring-1 ring-border/50"
           onClick={e => e.stopPropagation()}
         >
           {/* Search Input */}
@@ -143,7 +148,7 @@ export function CommandPalette({ tools }: CommandPaletteProps) {
               </div>
             ) : filteredTools.length === 0 ? (
               <div className="p-8 text-center text-on-surface-variant">
-                No results found for "{search}".
+                No results found for &quot;{search}&quot;.
               </div>
             ) : (
               <div className="space-y-1">

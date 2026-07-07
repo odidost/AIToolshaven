@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: #F9FAFB;
+    --background: #F8F7FF;
     --foreground: #111827;
 
     --card: #FFFFFF;
@@ -13,26 +13,26 @@
     --popover: #FFFFFF;
     --popover-foreground: #111827;
 
-    --primary: #4F46E5;
+    --primary: #7C3AED;
     --primary-foreground: #FFFFFF;
 
-    --secondary: #10B981;
+    --secondary: #A855F7;
     --secondary-foreground: #FFFFFF;
 
-    --muted: #F3F4F6;
-    --muted-foreground: #4B5563;
+    --muted: #F5F7FB;
+    --muted-foreground: #6B7280;
 
-    --accent: #F59E0B;
-    --accent-foreground: #111827;
+    --accent: #14B8A6;
+    --accent-foreground: #FFFFFF;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: #EF4444;
+    --destructive-foreground: #FAFAFA;
 
-    --border: #E5E7EB;
-    --input: #E5E7EB;
-    --ring: #4F46E5;
+    --border: #E8ECF3;
+    --input: #E8ECF3;
+    --ring: #7C3AED;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
   }
 }
 
@@ -42,7 +42,12 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-semibold text-foreground;
   }
 }
 

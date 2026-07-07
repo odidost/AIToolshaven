@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import type { AITool } from "@/lib/types/tool";
 import { ToolCard } from "@/components/shared/ToolCard";
 
@@ -17,11 +17,6 @@ export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
   const [sortBy, setSortBy] = useState<SortOption>("popular");
   const [pricingFilter, setPricingFilter] = useState<FilterOption>("all");
   const [currentPage, setCurrentPage] = useState(1);
-
-  // Reset to page 1 when filters change
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [sortBy, pricingFilter]);
 
   const filteredAndSortedTools = useMemo(() => {
     let result = [...tools];
@@ -64,21 +59,24 @@ export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
   return (
     <div>
       {/* Controls */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 bg-surface-container p-4 rounded-2xl border border-outline shadow-sm">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 bg-card p-4 rounded-xl border border-border shadow-xs">
         <div className="flex items-center gap-3 w-full md:w-auto">
-          <span className="text-sm font-medium text-on-surface-variant flex items-center gap-1">
-            <span className="material-symbols-outlined text-[18px]">filter_list</span>
+          <span className="text-[13px] font-medium text-muted-foreground flex items-center gap-1.5">
+            <span className="material-symbols-outlined text-[16px]">filter_list</span>
             Pricing:
           </span>
           <div className="flex gap-2 overflow-x-auto pb-1 md:pb-0 scrollbar-hide flex-1 md:flex-none">
             {(["all", "Free", "Freemium", "Paid", "Enterprise"] as FilterOption[]).map((option) => (
               <button
                 key={option}
-                onClick={() => setPricingFilter(option)}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-lg whitespace-nowrap transition-colors ${
+                onClick={() => {
+                  setPricingFilter(option);
+                  setCurrentPage(1);
+                }}
+                className={`px-3 py-1.5 text-[13px] font-medium rounded-lg whitespace-nowrap transition-all duration-200 ${
                   pricingFilter === option
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-surface text-on-surface-variant border border-outline hover:border-primary/50 hover:text-primary"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "bg-surface text-muted-foreground border border-border hover:bg-muted hover:text-foreground hover:shadow-xs"
                 }`}
               >
                 {option === "all" ? "All Models" : option}
@@ -87,15 +85,18 @@ export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 w-full md:w-auto border-t md:border-t-0 border-outline pt-4 md:pt-0">
-          <span className="text-sm font-medium text-on-surface-variant flex items-center gap-1">
-            <span className="material-symbols-outlined text-[18px]">sort</span>
+        <div className="flex items-center gap-3 w-full md:w-auto border-t md:border-t-0 border-border pt-4 md:pt-0">
+          <span className="text-[13px] font-medium text-muted-foreground flex items-center gap-1.5">
+            <span className="material-symbols-outlined text-[16px]">sort</span>
             Sort by:
           </span>
           <select
             value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="bg-surface border border-outline text-on-surface text-sm rounded-lg focus:ring-primary focus:border-primary block p-2 outline-none cursor-pointer flex-1 md:flex-none"
+            onChange={(e) => {
+              setSortBy(e.target.value as SortOption);
+              setCurrentPage(1);
+            }}
+            className="bg-surface border border-border text-foreground text-[13px] font-medium rounded-lg focus:ring-2 focus:ring-ring focus:border-ring block py-2 px-3 outline-none cursor-pointer flex-1 md:flex-none transition-all"
           >
             <option value="popular">Most Popular</option>
             <option value="rating">Highest Rated</option>
@@ -105,7 +106,7 @@ export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
       </div>
 
       {/* Results summary */}
-      <div className="mb-6 text-sm text-on-surface-variant font-medium">
+      <div className="mb-6 text-[13px] text-muted-foreground font-medium">
         Showing {filteredAndSortedTools.length} {filteredAndSortedTools.length === 1 ? 'tool' : 'tools'}
         {pricingFilter !== "all" && ` with ${pricingFilter} pricing`}
       </div>
@@ -117,17 +118,17 @@ export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
             <ToolCard key={tool.id} tool={tool} />
           ))
         ) : (
-          <div className="col-span-full py-16 text-center bg-surface-container rounded-2xl border border-dashed border-outline">
-            <span className="material-symbols-outlined text-4xl text-on-surface-variant/50 mb-3 block">
+          <div className="col-span-full py-16 text-center bg-muted/30 rounded-2xl border border-dashed border-border">
+            <span className="material-symbols-outlined text-4xl text-muted-foreground/50 mb-3 block">
               search_off
             </span>
-            <p className="text-lg font-medium text-on-surface">No tools found</p>
-            <p className="text-on-surface-variant">Try adjusting your filters.</p>
+            <p className="text-[15px] font-medium text-foreground">No tools found</p>
+            <p className="text-[13px] text-muted-foreground mt-1">Try adjusting your filters.</p>
             <button 
               onClick={() => {
                 setPricingFilter("all");
               }}
-              className="mt-4 px-4 py-2 bg-surface border border-outline rounded-xl text-sm font-medium hover:bg-surface-container hover:text-primary transition-colors"
+              className="mt-4 px-4 py-2 bg-surface border border-border rounded-xl text-[13px] font-medium hover:bg-muted hover:text-foreground transition-colors"
             >
               Clear filters
             </button>
@@ -141,21 +142,21 @@ export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
           <button
             onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
             disabled={currentPage === 1}
-            className="px-4 py-2 bg-surface hover:bg-surface-container border border-outline rounded-xl disabled:opacity-30 disabled:hover:bg-surface transition-colors font-semibold text-sm flex items-center gap-1"
+            className="px-4 py-2 bg-surface hover:bg-muted border border-border rounded-xl disabled:opacity-30 disabled:hover:bg-surface transition-colors font-medium text-[13px] flex items-center gap-1.5"
           >
-            <span className="material-symbols-outlined text-sm">arrow_back</span> Prev
+            <span className="material-symbols-outlined text-[16px]">arrow_back</span> Prev
           </button>
           
-          <span className="text-sm font-semibold text-on-surface-variant">
-            Page <span className="text-on-surface">{currentPage}</span> of {totalPages}
+          <span className="text-[13px] font-medium text-muted-foreground">
+            Page <span className="text-foreground">{currentPage}</span> of {totalPages}
           </span>
           
           <button
             onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 bg-surface hover:bg-surface-container border border-outline rounded-xl disabled:opacity-30 disabled:hover:bg-surface transition-colors font-semibold text-sm flex items-center gap-1"
+            className="px-4 py-2 bg-surface hover:bg-muted border border-border rounded-xl disabled:opacity-30 disabled:hover:bg-surface transition-colors font-medium text-[13px] flex items-center gap-1.5"
           >
-            Next <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            Next <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
           </button>
         </div>
       )}

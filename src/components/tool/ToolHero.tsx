@@ -10,11 +10,8 @@ export function ToolHero({ tool }: ToolHeroProps) {
     return (
         <section className="relative mb-20">
             <div className="absolute inset-0 -z-10 overflow-hidden">
-
-                <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-primary/10 blur-3xl" />
-
-                <div className="absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-blue-500/10 blur-3xl" />
-
+                <div className="absolute left-[-10%] top-0 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,rgba(124,58,237,0.06)_0%,transparent_70%)] pointer-events-none" />
+                <div className="absolute right-[-10%] bottom-0 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(20,184,166,0.06)_0%,transparent_70%)] pointer-events-none" />
             </div>
 
             <div className="grid lg:grid-cols-[1.9fr_1fr] gap-10 items-start">
@@ -127,7 +124,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                 {/* RIGHT */}
 
-                <div className="sticky top-24 rounded-[32px] border border-outline bg-gradient-to-b from-surface to-surface-container p-8 shadow-lg">
+                <div className="sticky top-24 rounded-[32px] border border-border/50 bg-surface-secondary/30 p-8 shadow-sm backdrop-blur-sm">
 
                     <h2 className="text-2xl font-bold mb-5">
                         About {tool.name}
@@ -189,7 +186,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
                         <Link
                             href={tool.websiteUrl || tool.url || "#"}
                             target="_blank"
-                            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 font-semibold text-white transition hover:opacity-90"
+                            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-secondary px-6 py-4 font-semibold text-white transition-all shadow-glow hover:shadow-glow-primary hover:-translate-y-[0.5px]"
                         >
                             <span className="material-symbols-outlined">
                                 open_in_new
@@ -199,7 +196,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                         <Link
                             href={`/compare/${tool.slug}`}
-                            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-outline px-6 py-4 font-semibold transition hover:border-primary"
+                            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-surface px-6 py-4 font-semibold transition-all shadow-xs hover:shadow-sm hover:border-primary hover:bg-surface-secondary hover:-translate-y-[0.5px]"
                         >
                             <span className="material-symbols-outlined">
                                 compare_arrows
@@ -208,7 +205,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
                         </Link>
 
                         <button
-                            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-outline px-6 py-4 font-semibold transition hover:border-primary"
+                            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-surface px-6 py-4 font-semibold transition-all shadow-xs hover:shadow-sm hover:border-primary hover:bg-surface-secondary hover:-translate-y-[0.5px]"
                         >
                             <span className="material-symbols-outlined">
                                 bookmark

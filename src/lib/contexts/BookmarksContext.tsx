@@ -17,6 +17,7 @@ export function BookmarksProvider({ children }: { children: ReactNode }) {
     const saved = localStorage.getItem("aith_bookmarks");
     if (saved) {
       try {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setBookmarkedToolIds(JSON.parse(saved));
       } catch (e) {
         console.error("Failed to parse bookmarks", e);

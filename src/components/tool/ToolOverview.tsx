@@ -23,7 +23,7 @@ export function ToolOverview({
                     </p>
 
                     <p>
-                        Whether you're a beginner or a professional,
+                        Whether you&apos;re a beginner or a professional,
                         {` ${title} `}
                         helps streamline your workflow with AI-powered
                         automation and intelligent assistance.

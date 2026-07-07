@@ -40,11 +40,11 @@ export default function Home() {
         <section className="mb-16">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
             <div>
-              <div className="flex items-center gap-2 text-amber-500 mb-2">
+              <div className="flex items-center gap-2 text-accent mb-2">
                 <span className="material-symbols-outlined text-xl">star</span>
-                <span className="text-sm font-bold uppercase tracking-widest">Premium Picks</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.2em]">Premium Picks</span>
               </div>
-              <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-3xl font-bold text-foreground tracking-tight">
                 Featured Tools
               </h2>
             </div>
@@ -64,13 +64,20 @@ export default function Home() {
       <RecommendationEngine />
 
       {/* 4. Featured Categories */}
-      <section className="mb-24 mt-16">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-black text-slate-900 tracking-tight">
-            Explore Categories
-          </h2>
+      <section className="mb-24 mt-16 relative overflow-hidden bg-surface-secondary/30 rounded-[32px] p-8 border border-border/50">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none flex flex-wrap justify-around items-center overflow-hidden">
+           <span className="material-symbols-outlined text-[120px] text-primary rotate-12">terminal</span>
+           <span className="material-symbols-outlined text-[160px] text-secondary -rotate-12">edit_document</span>
+           <span className="material-symbols-outlined text-[140px] text-accent rotate-45">palette</span>
         </div>
-        <CategoryCapsuleBar />
+        <div className="relative z-10">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-3xl font-bold text-foreground tracking-tight">
+              Explore Categories
+            </h2>
+          </div>
+          <CategoryCapsuleBar />
+        </div>
       </section>
 
       {/* 5. Trending AI Tools */}
@@ -79,13 +86,13 @@ export default function Home() {
           <div>
             <div className="flex items-center gap-2 text-accent mb-2">
               <span className="material-symbols-outlined text-xl">local_fire_department</span>
-              <span className="text-sm font-bold uppercase tracking-widest">Trending Now</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em]">Trending Now</span>
             </div>
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-3xl font-bold text-foreground tracking-tight">
               Most Popular Tools
             </h2>
           </div>
-          <Link href="/category/all" className="text-sm font-bold text-primary hover:text-primary-foreground transition-colors flex items-center gap-1">
+          <Link href="/category/all" className="text-[13px] font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
             View All <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
           </Link>
         </div>
@@ -101,14 +108,17 @@ export default function Home() {
       </section>
 
       {/* 6. Compare Popular AI Tools */}
-      <section className="mb-24">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+      <section className="mb-24 relative overflow-hidden bg-surface-secondary/40 rounded-[32px] p-8 md:p-12 border border-border/50">
+        {/* Subtle Grid Background */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+        
+        <div className="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
-            <div className="flex items-center gap-2 text-violet-500 mb-2">
+            <div className="flex items-center gap-2 text-primary mb-2">
               <span className="material-symbols-outlined text-xl">compare_arrows</span>
-              <span className="text-sm font-bold uppercase tracking-widest">Versus Battles</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em]">Versus Battles</span>
             </div>
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-3xl font-bold text-foreground tracking-tight">
               Compare Top AI Tools
             </h2>
           </div>
@@ -126,14 +136,28 @@ export default function Home() {
       </section>
 
       {/* 7. AI Workflows */}
-      <section className="mb-24 bg-slate-50 -mx-4 px-4 py-16 md:mx-0 md:px-12 md:rounded-[32px] border border-slate-100">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+      <section className="mb-24 relative overflow-hidden bg-gradient-to-b from-surface-secondary/80 to-surface-secondary/30 -mx-4 px-4 py-16 md:mx-0 md:px-12 md:rounded-[32px] border border-border shadow-sm">
+        {/* Neural Network Nodes Background */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="nodes" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                <circle cx="20" cy="20" r="4" fill="#7C3AED" />
+                <circle cx="80" cy="60" r="6" fill="#A855F7" />
+                <path d="M20 20 L80 60" stroke="#7C3AED" strokeWidth="2" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#nodes)" />
+          </svg>
+        </div>
+        
+        <div className="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
           <div>
-            <div className="flex items-center gap-2 text-emerald-500 mb-2">
+            <div className="flex items-center gap-2 text-accent mb-2">
               <span className="material-symbols-outlined text-xl">account_tree</span>
-              <span className="text-sm font-bold uppercase tracking-widest">Learn & Apply</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em]">Learn & Apply</span>
             </div>
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-3xl font-bold text-foreground tracking-tight">
               Popular AI Workflows
             </h2>
           </div>
@@ -155,11 +179,11 @@ export default function Home() {
       <section className="mb-24">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
-            <div className="flex items-center gap-2 text-sky-500 mb-2">
+            <div className="flex items-center gap-2 text-accent mb-2">
               <span className="material-symbols-outlined text-xl">new_releases</span>
-              <span className="text-sm font-bold uppercase tracking-widest">Fresh Drops</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em]">Fresh Drops</span>
             </div>
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-3xl font-bold text-foreground tracking-tight">
               Latest Additions
             </h2>
           </div>
@@ -178,11 +202,11 @@ export default function Home() {
       <section className="mb-24">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
-            <div className="flex items-center gap-2 text-pink-500 mb-2">
+            <div className="flex items-center gap-2 text-accent mb-2">
               <span className="material-symbols-outlined text-xl">interests</span>
-              <span className="text-sm font-bold uppercase tracking-widest">Curated</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em]">Curated</span>
             </div>
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-3xl font-bold text-foreground tracking-tight">
               Browse by Goal
             </h2>
           </div>
@@ -200,7 +224,7 @@ export default function Home() {
           ))}
         </div>
 
-        <h3 className="text-2xl font-bold text-slate-900 mb-6">Trending Opportunities</h3>
+        <h3 className="text-2xl font-bold text-foreground tracking-tight mb-6">Trending Opportunities</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {opportunities.map((item) => (
             <OpportunityCard
@@ -220,11 +244,11 @@ export default function Home() {
       <section className="mb-24">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
-            <div className="flex items-center gap-2 text-slate-500 mb-2">
+            <div className="flex items-center gap-2 text-muted-foreground mb-2">
               <span className="material-symbols-outlined text-xl">article</span>
-              <span className="text-sm font-bold uppercase tracking-widest">Resources</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em]">Resources</span>
             </div>
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-3xl font-bold text-foreground tracking-tight">
               Latest Guides & News
             </h2>
           </div>

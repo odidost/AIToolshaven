@@ -1,5 +1,6 @@
 import { tools } from '@/lib/data/tools';
 import { ToolCard } from '@/components/shared/ToolCard';
+import Link from 'next/link';
 
 const getUserLibraryTools = () => tools.slice(0, 6);
 
@@ -34,10 +35,10 @@ export default function FavoritesPage() {
           <p className="text-on-surface-variant text-sm mb-6">
             Upvote tools you love to help them get discovered!
           </p>
-          <a href="/" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-opacity text-sm">
+          <Link href="/" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-opacity text-sm">
             <span className="material-symbols-outlined text-sm">explore</span>
             Explore Tools
-          </a>
+          </Link>
         </div>
       )}
     </div>

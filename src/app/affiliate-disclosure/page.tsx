@@ -47,7 +47,7 @@ export default function AffiliateDisclosurePage() {
             How does it work?
           </h2>
           <p className="text-on-surface-variant leading-8">
-            When you click on a link to a tool from AIToolsHaven and make a purchase or sign up for a premium plan, we may receive a small commission from the tool provider. This comes at <strong>absolutely no additional cost to you</strong>. The price you pay is exactly the same whether you use our link or go directly to the provider's website.
+            When you click on a link to a tool from AIToolsHaven and make a purchase or sign up for a premium plan, we may receive a small commission from the tool provider. This comes at <strong>absolutely no additional cost to you</strong>. The price you pay is exactly the same whether you use our link or go directly to the provider&apos;s website.
           </p>
         </section>
 

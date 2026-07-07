@@ -42,15 +42,15 @@ export function PricingPlans({ plans, pricing }: PricingPlansProps) {
 
                     <div
                         key={plan.name}
-                        className={`rounded-3xl border p-8 ${plan.recommended
-                                ? "border-primary shadow-xl"
-                                : "border-outline"
+                        className={`rounded-3xl border p-8 bg-surface transition-all duration-300 hover:-translate-y-[0.5px] ${plan.recommended
+                                ? "border-primary shadow-glow-primary"
+                                : "border-border shadow-sm hover:shadow-md"
                             }`}
                     >
 
                         {plan.recommended && (
 
-                            <div className="mb-5 inline-flex rounded-full bg-primary px-3 py-1 text-sm font-semibold text-white">
+                            <div className="mb-5 inline-flex rounded-full bg-gradient-to-r from-primary to-secondary px-3 py-1 text-sm font-semibold text-white shadow-glow">
                                 Most Popular
                             </div>
 

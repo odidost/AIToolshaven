@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss'
-
+import tailwindcssAnimate from 'tailwindcss-animate'
 export default {
   darkMode: ["class"],
   content: [
@@ -10,53 +10,77 @@ export default {
   theme: {
     extend: {
       colors: {
-        surface: '#F9FAFB',
-        'surface-container': '#FFFFFF',
-        outline: '#E5E7EB',
-        'outline-variant': '#F3F4F6',
+        surface: '#FFFFFF',
+        'surface-secondary': '#F5F7FB',
+        'surface-container': '#FFFFFF', // keep for compatibility if used
+        outline: '#E8ECF3',
+        'outline-variant': '#E8ECF3',
         primary: {
-          DEFAULT: '#4F46E5',
-          container: '#EEF2FF',
-          foreground: '#4338CA',
+          DEFAULT: '#7C3AED',
+          container: '#F3E8FF',
+          foreground: '#FFFFFF',
         },
         secondary: {
-          DEFAULT: '#10B981',
+          DEFAULT: '#A855F7',
+          foreground: '#FFFFFF',
+        },
+        success: {
+          DEFAULT: '#22C55E',
+          foreground: '#FFFFFF',
+        },
+        warning: {
+          DEFAULT: '#F59E0B',
+          foreground: '#FFFFFF',
         },
         on: {
-          surface: '#111827',
-          'surface-variant': '#4B5563',
+          surface: '#111827', // Headings
+          'surface-variant': '#6B7280', // Body Text
         },
         accent: {
-          DEFAULT: '#F59E0B',
-          container: '#FEF3C7',
+          cyan: '#22D3EE',
+          indigo: '#6366F1',
+          DEFAULT: '#14B8A6',
+          container: '#CCFBF1',
+          foreground: '#FFFFFF',
         },
-        // Shadcn defaults to map to our tokens
-        background: '#F9FAFB',
-        foreground: '#111827',
+        // Semantic tokens map to CSS variables for potential theming
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
         card: {
-          DEFAULT: '#FFFFFF',
-          foreground: '#111827',
+          DEFAULT: 'var(--card)',
+          foreground: 'var(--card-foreground)',
         },
         popover: {
-          DEFAULT: '#FFFFFF',
-          foreground: '#111827',
+          DEFAULT: 'var(--popover)',
+          foreground: 'var(--popover-foreground)',
         },
         muted: {
-          DEFAULT: '#F3F4F6',
-          foreground: '#4B5563',
+          DEFAULT: 'var(--muted)',
+          foreground: 'var(--muted-foreground)',
         },
-        border: '#E5E7EB',
-        input: '#E5E7EB',
-        ring: '#4F46E5',
+        border: 'var(--border)',
+        input: 'var(--input)',
+        ring: 'var(--ring)',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],
       },
       borderRadius: {
         xl: '0.75rem',
-        '2xl': '1rem',
-        '3xl': '1.5rem',
-        full: '9999px',
+        '2xl': '1rem', // Buttons (16px)
+        '3xl': '1.5rem', // Cards (24px)
+        'input': '1.125rem', // Inputs (18px)
+        full: '9999px', // Badges
+      },
+      boxShadow: {
+        'xs': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        'sm': '0 10px 40px rgba(15, 23, 42, 0.06)',
+        'md': '0 20px 60px rgba(15, 23, 42, 0.10)',
+        'lg': '0 30px 80px rgba(15, 23, 42, 0.12)',
+        'xl': '0 40px 100px rgba(15, 23, 42, 0.14)',
+        '2xl': '0 50px 120px rgba(15, 23, 42, 0.16)',
+        'glow': '0 0 20px rgba(124, 58, 237, 0.15)', // Soft primary glow
+        'glow-primary': '0 0 20px rgba(124, 58, 237, 0.25)', // Primary glow
       },
       keyframes: {
         marquee: {
@@ -69,5 +93,5 @@ export default {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [tailwindcssAnimate],
 } satisfies Config

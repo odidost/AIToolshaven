@@ -27,10 +27,10 @@ export default function ContactPage() {
           Back to Home
         </Link>
         <h1 className="text-4xl md:text-5xl font-black text-slate-900 mt-4 mb-4">
-          Let's talk.
+          Let&apos;s talk.
         </h1>
         <p className="text-xl text-slate-500 max-w-xl mx-auto">
-          Whether you're a founder looking to list your tool, a brand wanting to sponsor, or just have a question — we'd love to hear from you.
+          Whether you&apos;re a founder looking to list your tool, a brand wanting to sponsor, or just have a question — we&apos;d love to hear from you.
         </p>
       </div>
 
