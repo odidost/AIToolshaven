@@ -1,4 +1,5 @@
 import type { AITool } from "@/lib/types/tool";
+
 type QuickFactsProps = {
     tool: AITool;
 };
@@ -50,43 +51,33 @@ export function QuickFacts({
     ];
 
     return (
-        <aside className="rounded-3xl border border-outline bg-surface-container p-8">
-
-            <h2 className="text-xl font-bold mb-6">
+        <section className="rounded-[24px] border border-border/50 bg-white p-6 shadow-sm">
+            <h3 className="mb-6 flex items-center gap-2 text-xl font-bold text-on-surface">
+                <span className="material-symbols-outlined text-primary text-[24px]">info</span>
                 Quick Facts
-            </h2>
+            </h3>
 
-            <div className="space-y-5">
-
+            <div className="space-y-4">
                 {facts.map((fact) => (
-
                     <div
                         key={fact.label}
-                        className="flex items-center justify-between border-b border-outline/30 pb-4 last:border-none last:pb-0"
+                        className="flex items-center justify-between border-b border-border/30 pb-3 last:border-none last:pb-0 text-sm"
                     >
-
-                        <div className="flex items-center gap-3">
-
-                            <span className="material-symbols-outlined text-primary">
+                        <div className="flex items-center gap-2.5 text-on-surface-variant">
+                            <span className="material-symbols-outlined text-primary text-[18px]">
                                 {fact.icon}
                             </span>
-
-                            <span className="text-on-surface-variant">
+                            <span className="font-medium">
                                 {fact.label}
                             </span>
-
                         </div>
 
-                        <span className="font-semibold">
+                        <span className="font-semibold text-on-surface text-right truncate max-w-[150px]" title={fact.value}>
                             {fact.value}
                         </span>
-
                     </div>
-
                 ))}
-
             </div>
-
-        </aside>
+        </section>
     );
 }

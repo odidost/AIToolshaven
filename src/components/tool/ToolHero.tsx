@@ -1,12 +1,16 @@
 import Link from "next/link";
 import type { AITool } from "@/lib/types/tool";
 import { SocialShareBar } from "./SocialShareBar";
+import { getComparisonCandidates } from "@/lib/queries/comparisons";
 
 type ToolHeroProps = {
     tool: AITool;
 };
 
 export function ToolHero({ tool }: ToolHeroProps) {
+    const compareTool = getComparisonCandidates(tool, 1)[0];
+    const compareHref = compareTool ? `/compare/${tool.slug}-vs-${compareTool.slug}` : `/compare/${tool.slug}`;
+
     return (
         <section className="relative mb-20">
             <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -183,19 +187,22 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                     <div className="flex flex-wrap gap-3">
 
-                        <Link
-                            href={tool.websiteUrl || tool.url || "#"}
-                            target="_blank"
-                            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-secondary px-6 py-4 font-semibold text-white transition-all shadow-glow hover:shadow-glow-primary hover:-translate-y-[0.5px]"
-                        >
-                            <span className="material-symbols-outlined">
-                                open_in_new
-                            </span>
-                            Visit Website
-                        </Link>
+                        {(tool.websiteUrl || (tool as any).url) && (
+                            <Link
+                                href={tool.websiteUrl || (tool as any).url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-secondary px-6 py-4 font-semibold text-white transition-all shadow-glow hover:shadow-glow-primary hover:-translate-y-[0.5px]"
+                            >
+                                <span className="material-symbols-outlined">
+                                    open_in_new
+                                </span>
+                                Visit Website
+                            </Link>
+                        )}
 
                         <Link
-                            href={`/compare/${tool.slug}`}
+                            href={compareHref}
                             className="inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-surface px-6 py-4 font-semibold transition-all shadow-xs hover:shadow-sm hover:border-primary hover:bg-surface-secondary hover:-translate-y-[0.5px]"
                         >
                             <span className="material-symbols-outlined">

@@ -15,27 +15,8 @@ export function ToolCard({ tool }: { tool: AITool }) {
 
   return (
     <Link href={`/tool/${tool.slug}`} className="block group h-full">
-      <article className="bg-card rounded-3xl p-6 border border-border hover:border-primary/30 transition-all duration-300 h-full flex flex-col shadow-sm hover:shadow-glow relative group/card hover:-translate-y-1 bg-gradient-to-b from-surface to-surface-secondary/20">
-        <button 
-          onClick={handleBookmarkClick}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-surface border border-outline hover:bg-primary group/btn transition-colors flex items-center justify-center shadow-sm"
-          title={bookmarked ? "Remove Bookmark" : "Bookmark Tool"}
-        >
-          <span className={`material-symbols-outlined text-[18px] transition-colors ${bookmarked ? 'text-primary group-hover/btn:text-white' : 'text-on-surface-variant group-hover/btn:text-white'}`}>
-            {bookmarked ? 'bookmark' : 'bookmark_border'}
-          </span>
-        </button>
-
-        <div className="flex justify-between items-start mb-4 pr-10">
-          <div className="w-12 h-12 rounded-xl overflow-hidden bg-outline flex-shrink-0">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={tool.imageUrl}
-              alt={tool.name}
-              className="w-full h-full object-cover"
-            />
-          </div>
-
+      <article className="bg-card rounded-3xl p-6 border border-border hover:border-primary/30 transition-all duration-300 h-full flex flex-col shadow-sm hover:shadow-hover relative group/card hover:-translate-y-1">
+        <div className="flex flex-wrap justify-between items-start gap-2 mb-4">
           <div className="flex gap-2">
             {tool.featured && (
               <div className="bg-accent/10 text-accent border border-accent/20 text-[11px] tracking-tight font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1">
@@ -47,20 +28,40 @@ export function ToolCard({ tool }: { tool: AITool }) {
               {tool.priceModel}
             </div>
           </div>
+          
+          <button 
+            onClick={handleBookmarkClick}
+            className="p-1.5 rounded-full bg-surface border border-outline hover:bg-primary group/btn transition-colors flex items-center justify-center shadow-sm z-10"
+            title={bookmarked ? "Remove Bookmark" : "Bookmark Tool"}
+          >
+            <span className={`material-symbols-outlined text-[16px] transition-colors ${bookmarked ? 'text-primary group-hover/btn:text-white' : 'text-on-surface-variant group-hover/btn:text-white'}`}>
+              {bookmarked ? 'bookmark' : 'bookmark_border'}
+            </span>
+          </button>
         </div>
 
-        <h3 className="font-bold text-lg text-on-surface mb-1 group-hover:text-primary transition-colors">
-          {tool.name}
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 rounded-xl overflow-hidden bg-outline flex-shrink-0 shadow-sm">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={tool.imageUrl}
+              alt={tool.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-          {tool.verified && (
-            <span
-              className="material-symbols-outlined text-primary text-sm ml-1 align-middle"
-              title="Verified"
-            >
-              verified
-            </span>
-          )}
-        </h3>
+          <h3 className="font-bold text-lg text-on-surface group-hover:text-primary transition-colors flex items-center">
+            {tool.name}
+            {tool.verified && (
+              <span
+                className="material-symbols-outlined text-primary text-[18px] ml-1.5"
+                title="Verified"
+              >
+                verified
+              </span>
+            )}
+          </h3>
+        </div>
 
         <p className="text-on-surface-variant text-sm mb-4 line-clamp-2 flex-grow">
           {tool.tagline}

@@ -65,6 +65,7 @@ export const metadata: Metadata = {
 import { Header } from "@/components/shared/Header";
 import { Footer } from "@/components/shared/Footer";
 import { BookmarksProvider } from "@/lib/contexts/BookmarksContext";
+import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 
 export default function RootLayout({
   children,
@@ -75,11 +76,12 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col font-sans bg-surface text-on-surface">
+      <body className="min-h-full flex flex-col font-sans bg-background text-on-surface relative">
+        <BackgroundPattern type="ambient" className="fixed inset-0 -z-10" opacity={1} />
         <BookmarksProvider>
           <Header />
           <main className="flex-grow">

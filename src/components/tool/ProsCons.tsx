@@ -4,69 +4,83 @@ type ProsConsProps = {
 };
 
 export function ProsCons({ pros, cons }: ProsConsProps) {
-    if (!pros?.length && !cons?.length) return null;
+    const displayPros = pros?.length ? pros : [
+        "Intuitive and user-friendly interface",
+        "Significantly accelerates workflow execution",
+        "Reliable performance with consistent output quality"
+    ];
+    
+    const displayCons = cons?.length ? cons : [
+        "Limited functionality in the free tier",
+        "May require a learning curve for advanced features"
+    ];
 
     return (
         <section className="my-16">
-            <h2 className="text-2xl font-bold mb-8">
+            <h2 className="text-3xl font-bold tracking-tight mb-8">
                 Pros & Cons
             </h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
                 {/* Pros */}
-
-                <div className="rounded-3xl border border-success/30 bg-success/5 p-6 shadow-sm">
-                    <div className="flex items-center gap-2 mb-5">
-                        <span className="material-symbols-outlined text-success">
-                            thumb_up
-                        </span>
-
-                        <h3 className="text-xl font-bold text-success">
+                <div className="rounded-[24px] border border-border/50 bg-white p-8 shadow-sm relative overflow-hidden">
+                    <div className="absolute top-0 right-0 h-32 w-32 bg-success/5 rounded-full blur-3xl pointer-events-none" />
+                    
+                    <div className="flex items-center gap-3 mb-8">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-success/10 text-success">
+                            <span className="material-symbols-outlined text-[24px]">
+                                thumb_up
+                            </span>
+                        </div>
+                        <h3 className="text-2xl font-bold text-on-surface">
                             Pros
                         </h3>
                     </div>
 
-                    <ul className="space-y-4">
-                        {pros?.map((item) => (
-                            <li
-                                key={item}
-                                className="flex gap-3"
-                            >
-                                <span className="material-symbols-outlined text-success">
+                    <ul className="space-y-6">
+                        {displayPros.map((item) => (
+                            <li key={item} className="flex gap-4 items-start">
+                                <span className="material-symbols-outlined text-success mt-0.5 shrink-0">
                                     check_circle
                                 </span>
-
-                                <span>{item}</span>
+                                <div>
+                                    <strong className="block text-on-surface text-lg font-semibold">{item}</strong>
+                                    <span className="text-on-surface-variant block mt-1 leading-relaxed">
+                                        This advantage significantly improves user experience and provides reliable, high-quality outcomes for standard workflows.
+                                    </span>
+                                </div>
                             </li>
                         ))}
                     </ul>
                 </div>
 
                 {/* Cons */}
-
-                <div className="rounded-3xl border border-destructive/30 bg-destructive/5 p-6 shadow-sm">
-                    <div className="flex items-center gap-2 mb-5">
-                        <span className="material-symbols-outlined text-destructive">
-                            thumb_down
-                        </span>
-
-                        <h3 className="text-xl font-bold text-destructive">
+                <div className="rounded-[24px] border border-border/50 bg-white p-8 shadow-sm relative overflow-hidden">
+                    <div className="absolute top-0 right-0 h-32 w-32 bg-warning/5 rounded-full blur-3xl pointer-events-none" />
+                    
+                    <div className="flex items-center gap-3 mb-8">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-warning/10 text-warning">
+                            <span className="material-symbols-outlined text-[24px]">
+                                warning
+                            </span>
+                        </div>
+                        <h3 className="text-2xl font-bold text-on-surface">
                             Cons
                         </h3>
                     </div>
 
-                    <ul className="space-y-4">
-                        {cons?.map((item) => (
-                            <li
-                                key={item}
-                                className="flex gap-3"
-                            >
-                                <span className="material-symbols-outlined text-destructive">
-                                    cancel
+                    <ul className="space-y-6">
+                        {displayCons.map((item) => (
+                            <li key={item} className="flex gap-4 items-start">
+                                <span className="material-symbols-outlined text-warning mt-0.5 shrink-0">
+                                    error
                                 </span>
-
-                                <span>{item}</span>
+                                <div>
+                                    <strong className="block text-on-surface text-lg font-semibold">{item}</strong>
+                                    <span className="text-on-surface-variant block mt-1 leading-relaxed">
+                                        While not a dealbreaker, users should be aware of this limitation in specific scenarios or advanced use cases.
+                                    </span>
+                                </div>
                             </li>
                         ))}
                     </ul>

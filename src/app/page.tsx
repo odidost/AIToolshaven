@@ -2,6 +2,7 @@ import { opportunities } from "@/lib/opportunities";
 import { workflows } from "@/lib/workflows";
 import { comparisons } from "@/lib/comparisons";
 import { articles } from "@/lib/articles";
+import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 
 import { SpotlightBanner } from "@/components/shared/SpotlightBanner";
 import { TrustedByMarquee } from "@/components/home/TrustedByMarquee";
@@ -48,6 +49,9 @@ export default function Home() {
                 Featured Tools
               </h2>
             </div>
+            <Link href="/category/all" className="text-[13px] font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
+              View All <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {featuredTools.map((tool) => (
@@ -64,7 +68,8 @@ export default function Home() {
       <RecommendationEngine />
 
       {/* 4. Featured Categories */}
-      <section className="mb-24 mt-16 relative overflow-hidden bg-surface-secondary/30 rounded-[32px] p-8 border border-border/50">
+      <section className="mb-24 mt-16 relative overflow-hidden bg-surface-section rounded-[32px] p-8 border border-border">
+        <BackgroundPattern type="sparkles" opacity={0.02} />
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none flex flex-wrap justify-around items-center overflow-hidden">
            <span className="material-symbols-outlined text-[120px] text-primary rotate-12">terminal</span>
            <span className="material-symbols-outlined text-[160px] text-secondary -rotate-12">edit_document</span>
@@ -108,9 +113,8 @@ export default function Home() {
       </section>
 
       {/* 6. Compare Popular AI Tools */}
-      <section className="mb-24 relative overflow-hidden bg-surface-secondary/40 rounded-[32px] p-8 md:p-12 border border-border/50">
-        {/* Subtle Grid Background */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+      <section className="mb-24 relative overflow-hidden bg-surface-section rounded-[32px] p-8 md:p-12 border border-border">
+        <BackgroundPattern type="grid" opacity={0.03} />
         
         <div className="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
@@ -136,20 +140,9 @@ export default function Home() {
       </section>
 
       {/* 7. AI Workflows */}
-      <section className="mb-24 relative overflow-hidden bg-gradient-to-b from-surface-secondary/80 to-surface-secondary/30 -mx-4 px-4 py-16 md:mx-0 md:px-12 md:rounded-[32px] border border-border shadow-sm">
-        {/* Neural Network Nodes Background */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="nodes" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-                <circle cx="20" cy="20" r="4" fill="#7C3AED" />
-                <circle cx="80" cy="60" r="6" fill="#A855F7" />
-                <path d="M20 20 L80 60" stroke="#7C3AED" strokeWidth="2" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#nodes)" />
-          </svg>
-        </div>
+      <section className="mb-24 relative overflow-hidden bg-gradient-to-b from-surface-section to-background -mx-4 px-4 py-16 md:mx-0 md:px-12 md:rounded-[32px] border border-border shadow-sm">
+        {/* Workflow Nodes Background */}
+        <BackgroundPattern type="workflow" opacity={0.03} className="text-primary" />
         
         <div className="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
           <div>
@@ -161,6 +154,9 @@ export default function Home() {
               Popular AI Workflows
             </h2>
           </div>
+          <Link href="/workflows" className="text-[13px] font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
+            View All Workflows <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -170,6 +166,7 @@ export default function Home() {
               title={workflow.title}
               tools={workflow.tools}
               icon={workflow.icon}
+              slug={workflow.slug}
             />
           ))}
         </div>
@@ -187,6 +184,9 @@ export default function Home() {
               Latest Additions
             </h2>
           </div>
+          <Link href="/category/all" className="text-[13px] font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
+            View All <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </Link>
         </div>
 
         <div className="flex overflow-x-auto pb-8 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory gap-6 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:overflow-visible [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
@@ -210,6 +210,9 @@ export default function Home() {
               Browse by Goal
             </h2>
           </div>
+          <Link href="/goals" className="text-[13px] font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
+            View All Goals <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
@@ -224,7 +227,12 @@ export default function Home() {
           ))}
         </div>
 
-        <h3 className="text-2xl font-bold text-foreground tracking-tight mb-6">Trending Opportunities</h3>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-4">
+          <h3 className="text-2xl font-bold text-foreground tracking-tight">Trending Opportunities</h3>
+          <Link href="/goals" className="text-[13px] font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
+            View All Opportunities <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </Link>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {opportunities.map((item) => (
             <OpportunityCard
@@ -232,6 +240,7 @@ export default function Home() {
               title={item.title}
               description={item.description}
               icon={item.icon}
+              slug={item.slug}
             />
           ))}
         </div>

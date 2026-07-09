@@ -42,7 +42,7 @@ export function RecommendationEngine() {
 
   return (
     <section className="mb-24 mt-12 px-4 md:px-0">
-      <div className="relative overflow-hidden rounded-[32px] border border-border/50 bg-surface-secondary p-8 md:p-12 shadow-sm">
+      <div className="relative overflow-hidden rounded-[32px] border border-border bg-surface-elevated backdrop-blur-md p-8 md:p-12 shadow-md">
 
         {/* Neural Network Nodes Background */}
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none">

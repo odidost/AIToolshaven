@@ -12,9 +12,11 @@ export default {
       colors: {
         surface: '#FFFFFF',
         'surface-secondary': '#F5F7FB',
+        'surface-section': 'var(--surface-section)',
+        'surface-elevated': 'var(--surface-elevated)',
         'surface-container': '#FFFFFF', // keep for compatibility if used
-        outline: '#E8ECF3',
-        'outline-variant': '#E8ECF3',
+        outline: '#E5EAF2',
+        'outline-variant': '#E5EAF2',
         primary: {
           DEFAULT: '#7C3AED',
           container: '#F3E8FF',
@@ -74,13 +76,14 @@ export default {
       },
       boxShadow: {
         'xs': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-        'sm': '0 10px 40px rgba(15, 23, 42, 0.06)',
-        'md': '0 20px 60px rgba(15, 23, 42, 0.10)',
-        'lg': '0 30px 80px rgba(15, 23, 42, 0.12)',
-        'xl': '0 40px 100px rgba(15, 23, 42, 0.14)',
-        '2xl': '0 50px 120px rgba(15, 23, 42, 0.16)',
-        'glow': '0 0 20px rgba(124, 58, 237, 0.15)', // Soft primary glow
-        'glow-primary': '0 0 20px rgba(124, 58, 237, 0.25)', // Primary glow
+        'sm': '0 2px 4px rgba(15, 23, 42, 0.04), 0 4px 6px rgba(15, 23, 42, 0.02)',
+        'md': '0 4px 6px rgba(15, 23, 42, 0.04), 0 8px 12px rgba(15, 23, 42, 0.03)',
+        'lg': '0 8px 16px rgba(15, 23, 42, 0.05), 0 16px 24px rgba(15, 23, 42, 0.03)',
+        'xl': '0 12px 24px rgba(15, 23, 42, 0.06), 0 24px 48px rgba(15, 23, 42, 0.04)',
+        'hover': '0 16px 32px rgba(15, 23, 42, 0.08), 0 32px 64px rgba(15, 23, 42, 0.05)',
+        '2xl': '0 20px 40px rgba(15, 23, 42, 0.08), 0 40px 80px rgba(15, 23, 42, 0.06)',
+        'glow': '0 0 20px rgba(124, 58, 237, 0.10)', // Soft primary glow
+        'glow-primary': '0 0 20px rgba(124, 58, 237, 0.20)', // Primary glow
       },
       keyframes: {
         marquee: {

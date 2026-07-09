@@ -1,20 +1,22 @@
+import Image from 'next/image';
 import Link from "next/link";
 import { HeroVisual } from "@/components/home/hero/HeroVisual";
+import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 
 export function SpotlightBanner() {
   return (
-    <section className="relative overflow-hidden rounded-[32px] bg-surface-secondary border border-border/50 shadow-md">
+    <section className="relative overflow-hidden rounded-[32px] bg-surface-section border border-border shadow-md">
       
       {/* Aurora Mesh Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,58,237,0.05),transparent_50%),radial-gradient(circle_at_bottom_left,rgba(20,184,166,0.05),transparent_50%)] pointer-events-none" />
+      <BackgroundPattern type="aurora" opacity={1} />
 
       {/* Subtle Grid Texture */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
-      <div className="relative z-10 grid items-center gap-12 px-8 py-16 md:px-12 lg:min-h-[700px] lg:grid-cols-2">
+      <div className="relative z-10 grid items-start gap-12 px-8 py-16 md:px-12 lg:min-h-[700px] lg:grid-cols-2">
 
         {/* ================= LEFT ================= */}
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-start">
 
           {/* Pulse Badge */}
           <div className="inline-flex items-center gap-2 self-start rounded-full border border-border bg-surface px-4 py-2 text-xs font-semibold text-primary shadow-sm transition-colors hover:bg-surface-secondary">
@@ -63,8 +65,7 @@ export function SpotlightBanner() {
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div key={i} className="h-10 w-10 overflow-hidden rounded-full border-2 border-surface bg-surface">
-                    <img 
-                      src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}&backgroundColor=transparent`} 
+                    <Image width={100} height={100} src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}&backgroundColor=transparent`} 
                       alt="User avatar" 
                       className="h-full w-full object-cover"
                     />

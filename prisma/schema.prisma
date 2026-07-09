@@ -1,0 +1,211 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// NextAuth Models
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  bio           String?   @db.Text
+  role          String    @default("USER") // USER, ADMIN
+  
+  accounts      Account[]
+  sessions      Session[]
+  reviews       Review[]
+  submissions   Submission[]
+  bookmarks     Bookmark[]
+  upvotes       Upvote[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// Domain Models
+model Category {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?  @db.Text
+  icon        String?
+  tools       Tool[]
+}
+
+model Goal {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String?  @db.Text
+  icon        String?
+  count       Int      @default(0)
+}
+
+model Workflow {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String?  @db.Text
+  icon        String?
+  audience    String?
+  color       String?
+  tools       String[] // List of tool names
+  meta        Json?
+}
+
+model Tool {
+  id              String   @id @default(cuid())
+  name            String
+  slug            String   @unique
+  company         String?
+  tagline         String   @db.Text
+  description     String   @db.Text
+  
+  categoryId      String
+  category        Category @relation(fields: [categoryId], references: [id])
+
+  priceModel      String   // Free, Freemium, Paid, Enterprise
+  price           String?
+
+  rating          Float    @default(0)
+  reviewCount     Int      @default(0)
+  easeOfUse       Float?
+  featureRating   Float?
+  valueForMoney   Float?
+  performance     Float?
+  support         Float?
+
+  logoUrl         String
+  imageUrl        String
+  screenshotUrl   String?
+  websiteUrl      String?
+
+  tags            String[]
+  features        Json?    // Array of objects
+  pricingPlans    Json?    // Array of objects
+  
+  verified        Boolean  @default(false)
+  featured        Boolean  @default(false)
+  popularity      Float    @default(0)
+
+  platform        String?
+  api             Boolean  @default(false)
+  mobileApp       Boolean  @default(false)
+  openSource      Boolean  @default(false)
+  freeTrial       Boolean  @default(false)
+  
+  socials         Json?    // Object
+  stats           Json?    // Object
+
+  pros            String[]
+  cons            String[]
+  bestFor         String[]
+  useCases        String[]
+
+  // References to goals and workflows
+  goals           String[]
+  workflows       String[]
+  collections     String[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  reviews         Review[]
+  bookmarks       Bookmark[]
+  upvotes         Upvote[]
+}
+
+model Review {
+  id          String   @id @default(cuid())
+  toolId      String
+  userId      String
+  rating      Int
+  content     String   @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  tool        Tool     @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Bookmark {
+  id          String   @id @default(cuid())
+  toolId      String
+  userId      String
+  createdAt   DateTime @default(now())
+
+  tool        Tool     @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, toolId])
+}
+
+model Upvote {
+  id          String   @id @default(cuid())
+  toolId      String
+  userId      String
+  createdAt   DateTime @default(now())
+
+  tool        Tool     @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, toolId])
+}
+
+model Submission {
+  id            String   @id @default(cuid())
+  toolName      String
+  websiteUrl    String
+  description   String   @db.Text
+  categoryId    String
+  pricingModel  String
+  price         String?
+  tagline       String?
+  
+  plan          String   // standard, priority, featured
+  status        String   @default("PENDING") // PENDING, APPROVED, REJECTED
+  
+  submitterId   String?
+  submitter     User?    @relation(fields: [submitterId], references: [id])
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}

@@ -8,7 +8,7 @@ type BreadcrumbItem = {
 
 export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
   return (
-    <nav className="flex items-center text-[13px] font-medium text-on-surface-variant mb-6 tracking-tight bg-surface-secondary/50 p-1.5 rounded-2xl w-fit border border-border/50">
+    <nav className="flex items-center text-[13px] font-medium text-on-surface-variant mb-6 tracking-tight bg-primary/5 p-1.5 rounded-2xl w-fit border border-border/50">
       <Link href="/" className="px-2 py-1 rounded-xl hover:bg-surface hover:text-on-surface hover:shadow-sm transition-all duration-300 flex items-center">
         <span className="material-symbols-outlined text-[16px]">home</span>
       </Link>

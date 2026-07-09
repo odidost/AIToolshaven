@@ -166,11 +166,7 @@ export function CommandPalette({ tools }: CommandPaletteProps) {
                     }}
                     onMouseEnter={() => setSelectedIndex(index)}
                   >
-                    <img 
-                      src={tool.logoUrl} 
-                      alt={tool.name} 
-                      className="w-10 h-10 rounded-lg border border-outline"
-                    />
+                    <img src={tool.logoUrl} alt={tool.name} className="w-8 h-8 rounded border border-border object-contain bg-surface" />
                     <div className="flex-1 overflow-hidden">
                       <div className="flex items-center gap-2">
                         <h4 className={`font-bold truncate ${index === selectedIndex ? "text-primary" : "text-on-surface"}`}>

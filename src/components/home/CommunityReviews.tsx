@@ -51,10 +51,10 @@ export function CommunityReviews() {
           <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
           <span className="text-sm font-bold uppercase tracking-widest">Loved by Creators</span>
         </div>
-        <h2 className="text-3xl font-black text-slate-900 tracking-tight md:text-5xl">
+        <h2 className="text-3xl font-black text-on-surface tracking-tight md:text-5xl">
           Don&apos;t just take our word for it.
         </h2>
-        <p className="mt-4 max-w-xl text-slate-500">
+        <p className="mt-4 max-w-xl text-on-surface-variant">
           Join 10,000+ creators, developers, and founders who use our platform to stay ahead in the AI revolution.
         </p>
       </div>
@@ -63,7 +63,7 @@ export function CommunityReviews() {
         {reviews.map((review, idx) => (
           <div 
             key={idx} 
-            className="break-inside-avoid rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+            className="break-inside-avoid rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-hover hover:-translate-y-1"
           >
             <div className="flex gap-1 text-yellow-500 mb-4">
               {[...Array(review.rating)].map((_, i) => (
@@ -73,17 +73,17 @@ export function CommunityReviews() {
               ))}
             </div>
             
-            <p className="text-slate-700 leading-relaxed font-medium mb-6">
+            <p className="text-on-surface leading-relaxed font-medium mb-6">
               &quot;{review.content}&quot;
             </p>
 
-            <div className="flex items-center gap-4 border-t border-slate-100 pt-4">
-              <div className="h-10 w-10 overflow-hidden rounded-full border border-slate-200 bg-slate-100">
+            <div className="flex items-center gap-4 border-t border-border pt-4">
+              <div className="h-10 w-10 overflow-hidden rounded-full border border-border bg-surface-section">
                 <img src={review.avatar} alt={review.name} className="h-full w-full" loading="lazy" />
               </div>
               <div>
-                <p className="text-sm font-bold text-slate-900">{review.name}</p>
-                <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">{review.role}</p>
+                <p className="text-sm font-bold text-on-surface">{review.name}</p>
+                <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">{review.role}</p>
               </div>
             </div>
           </div>

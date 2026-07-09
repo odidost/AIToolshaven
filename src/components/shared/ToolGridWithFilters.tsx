@@ -3,17 +3,19 @@
 import { useState, useMemo } from "react";
 import type { AITool } from "@/lib/types/tool";
 import { ToolCard } from "@/components/shared/ToolCard";
+import type { CategoryTheme } from "@/lib/data/categoryThemes";
 
 type SortOption = "popular" | "rating" | "newest";
 type FilterOption = "all" | "Free" | "Freemium" | "Paid" | "Enterprise";
 
 type ToolGridWithFiltersProps = {
   tools: AITool[];
+  theme?: CategoryTheme;
 };
 
 const PAGE_SIZE = 12;
 
-export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
+export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) {
   const [sortBy, setSortBy] = useState<SortOption>("popular");
   const [pricingFilter, setPricingFilter] = useState<FilterOption>("all");
   const [currentPage, setCurrentPage] = useState(1);
@@ -75,7 +77,7 @@ export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
                 }}
                 className={`px-3 py-1.5 text-[13px] font-medium rounded-lg whitespace-nowrap transition-all duration-200 ${
                   pricingFilter === option
-                    ? "bg-primary text-primary-foreground shadow-sm"
+                    ? "bg-[rgb(var(--category-accent))] text-white shadow-sm"
                     : "bg-surface text-muted-foreground border border-border hover:bg-muted hover:text-foreground hover:shadow-xs"
                 }`}
               >
@@ -119,11 +121,15 @@ export function ToolGridWithFilters({ tools }: ToolGridWithFiltersProps) {
           ))
         ) : (
           <div className="col-span-full py-16 text-center bg-muted/30 rounded-2xl border border-dashed border-border">
-            <span className="material-symbols-outlined text-4xl text-muted-foreground/50 mb-3 block">
+            <span className={`material-symbols-outlined text-4xl mb-3 block ${theme ? theme.accentColors.iconText : 'text-muted-foreground/50'}`}>
               search_off
             </span>
-            <p className="text-[15px] font-medium text-foreground">No tools found</p>
-            <p className="text-[13px] text-muted-foreground mt-1">Try adjusting your filters.</p>
+            <p className="text-[15px] font-medium text-foreground">
+              {theme ? theme.emptyState.message : "No tools found"}
+            </p>
+            <p className="text-[13px] text-muted-foreground mt-1">
+              {theme ? theme.emptyState.subMessage : "Try adjusting your filters."}
+            </p>
             <button 
               onClick={() => {
                 setPricingFilter("all");

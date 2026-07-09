@@ -16,7 +16,7 @@ export function TrustedByMarquee() {
   return (
     <section className="relative overflow-hidden py-12 mb-16 opacity-70 hover:opacity-100 transition-opacity duration-500">
       <div className="mb-8 text-center">
-        <p className="text-sm font-bold tracking-widest text-slate-400 uppercase">
+        <p className="text-sm font-bold tracking-widest text-muted-foreground uppercase">
           Trusted by top teams and creators
         </p>
       </div>

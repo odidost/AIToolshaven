@@ -105,9 +105,17 @@ export interface AITool {
 
     freeTrial?: boolean;
 
+    promptExamples?: PromptExample[];
+
     socials?: SocialLinks;
 
     stats?: ToolStats;
 
     lastUpdated?: string;
+}
+
+export interface PromptExample {
+    name: string;
+    prompt: string;
+    response: string;
 }

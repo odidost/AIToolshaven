@@ -175,6 +175,19 @@ export const aiChatbots: AITool[] = [
 
         freeTrial: true,
 
+        promptExamples: [
+            {
+                name: "Write a blog post",
+                prompt: "Write a short blog post about the benefits of AI in education.",
+                response: "Artificial Intelligence is transforming education by offering personalized learning experiences, automating administrative tasks for teachers, and providing 24/7 tutoring. With AI-driven tools, students can learn at their own pace while educators focus on fostering critical thinking and creativity."
+            },
+            {
+                name: "Write a Python script",
+                prompt: "Write a Python script to fetch the current weather for a city using an API.",
+                response: "```python\nimport requests\n\ndef get_weather(city, api_key):\n    url = f\"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric\"\n    response = requests.get(url)\n    if response.status_code == 200:\n        data = response.json()\n        print(f\"Weather in {city}: {data['weather'][0]['description']}, Temperature: {data['main']['temp']}°C\")\n    else:\n        print(\"City not found.\")\n```"
+            }
+        ],
+
         socials: {
             website: "https://chatgpt.com",
         },
@@ -259,6 +272,18 @@ export const aiChatbots: AITool[] = [
         mobileApp: true,
         openSource: false,
         freeTrial: true,
+        promptExamples: [
+            {
+                name: "Write a blog post",
+                prompt: "Write a short blog post about the benefits of AI in education.",
+                response: "The integration of AI in education marks a paradigm shift from a one-size-fits-all approach to highly tailored learning journeys. Intelligent tutoring systems adapt to individual student needs, identifying gaps in knowledge and providing targeted support. This not only improves student outcomes but empowers educators to dedicate more time to mentorship."
+            },
+            {
+                name: "Write a Python script",
+                prompt: "Write a Python script to fetch the current weather for a city using an API.",
+                response: "```python\nimport requests\nimport sys\n\ndef fetch_weather(city_name, api_key):\n    base_url = \"http://api.openweathermap.org/data/2.5/weather\"\n    params = {\"q\": city_name, \"appid\": api_key, \"units\": \"metric\"}\n    \n    try:\n        response = requests.get(base_url, params=params)\n        response.raise_for_status()\n        data = response.json()\n        \n        temp = data[\"main\"][\"temp\"]\n        desc = data[\"weather\"][0][\"description\"]\n        print(f\"The weather in {city_name} is currently {desc} with a temperature of {temp}°C.\")\n        \n    except requests.exceptions.RequestException as e:\n        print(f\"Error fetching weather data: {e}\", file=sys.stderr)\n```"
+            }
+        ],
         socials: { website: "https://claude.ai" },
         stats: { launchYear: 2023 },
         lastUpdated: "2026-07-01",

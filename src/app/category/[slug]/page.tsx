@@ -1,10 +1,17 @@
 import { notFound } from "next/navigation";
 import { getCategoryBySlug } from "@/lib/queries/categories";
 import { getToolsByCategoryId } from "@/lib/data/tools-service";
+import { getCategoryTheme } from "@/lib/data/categoryThemes";
 
 import { CategoryCapsuleBar } from "@/components/shared/CategoryCapsuleBar";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { ToolGridWithFilters } from "@/components/shared/ToolGridWithFilters";
+import { CategoryBackground } from "@/components/category/CategoryBackground";
+import { CategoryFAQ } from "@/components/category/CategoryFAQ";
+import { CategoryGuide } from "@/components/category/CategoryGuide";
+import { EEATFooter } from "@/components/category/EEATFooter";
+import { InternalLinks } from "@/components/category/InternalLinks";
+import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 import { Metadata } from "next";
 
 type Props = {
@@ -48,6 +55,7 @@ export default async function CategoryPage({
   }
 
   const categoryTools = getToolsByCategoryId(category.id);
+  const theme = getCategoryTheme(slug);
 
   // Calculate some dynamic stats for the premium header
   const totalReviews = categoryTools.reduce((acc, tool) => acc + (tool.reviewCount || 0), 0);
@@ -57,7 +65,14 @@ export default async function CategoryPage({
   const verifiedCount = categoryTools.filter(t => t.verified).length;
 
   return (
-    <main className="container mx-auto px-6 py-12">
+    <main 
+      className="container mx-auto px-6 py-12 relative"
+      style={{ '--category-accent': theme.accentColors.cssVar } as React.CSSProperties}
+    >
+      {/* Dynamic Category Page Background */}
+      {['coding-assistants', 'productivity'].includes(slug) && <BackgroundPattern type="workflow" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
+      {['image-generation', 'video-creation', 'audio-voice'].includes(slug) && <BackgroundPattern type="sparkles" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
+      {['text-generation', 'marketing-sales'].includes(slug) && <BackgroundPattern type="dots" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
       {/* Breadcrumb */}
       <nav className="mb-8">
         <Breadcrumbs
@@ -69,49 +84,49 @@ export default async function CategoryPage({
       </nav>
 
       {/* Premium Hero Section */}
-      <section className="relative overflow-hidden rounded-[32px] border border-border/50 bg-gradient-to-br from-surface-secondary/50 to-surface p-8 md:p-12 mb-12 shadow-sm">
-        <div className="absolute right-0 top-0 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(124,58,237,0.08)_0%,transparent_70%)] rounded-full pointer-events-none -z-10" />
+      <section className={`relative overflow-hidden rounded-[32px] border ${theme.accentColors.borderAccent} bg-gradient-to-br ${theme.accentColors.heroGradient} bg-surface-elevated p-8 md:p-12 mb-12 shadow-md backdrop-blur-md`}>
+        <CategoryBackground slug={category.slug} />
         
         <div className="flex flex-col lg:flex-row gap-8 items-start justify-between relative z-10">
           <div className="max-w-3xl">
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 mb-6">
-              <span className="material-symbols-outlined text-4xl text-primary">
+            <div className={`flex h-16 w-16 items-center justify-center rounded-2xl ${theme.accentColors.iconBg} mb-6 border ${theme.accentColors.borderAccent} shadow-sm backdrop-blur-md`}>
+              <span className={`material-symbols-outlined text-4xl ${theme.accentColors.iconText}`}>
                 {category.icon}
               </span>
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold text-on-surface tracking-tight mb-4">
-              Best {category.name} AI Tools
+              {theme.heroHeadline}
             </h1>
 
             <p className="text-xl text-on-surface-variant leading-relaxed max-w-2xl">
-              Explore the top {categoryTools.length} {category.name} solutions. Compare features, pricing, and reviews to find the perfect addition to your workflow.
+              {theme.heroDescription}
             </p>
           </div>
 
           {/* Stats Widget */}
-          <div className="w-full lg:w-72 bg-surface rounded-2xl border border-border/50 p-6 shadow-xs flex flex-col gap-4 shrink-0 mt-4 lg:mt-0 transition-all hover:shadow-sm">
+          <div className="w-full lg:w-72 bg-surface/80 backdrop-blur-md rounded-2xl border border-border/50 p-6 shadow-xs flex flex-col gap-4 shrink-0 mt-4 lg:mt-0 transition-all hover:shadow-sm">
             <div className="flex justify-between items-center border-b border-border/50 pb-3">
               <span className="text-[13px] font-medium text-on-surface-variant flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-[16px]">grid_view</span> Tools Listed
+                <span className={`material-symbols-outlined text-[16px] ${theme.accentColors.iconText}`}>grid_view</span> {theme.statsLabels.listed}
               </span>
               <span className="font-semibold text-on-surface">{categoryTools.length}</span>
             </div>
             <div className="flex justify-between items-center border-b border-border/50 pb-3">
               <span className="text-[13px] font-medium text-on-surface-variant flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-[16px]">reviews</span> Total Reviews
+                <span className={`material-symbols-outlined text-[16px] ${theme.accentColors.iconText}`}>reviews</span> Total Reviews
               </span>
               <span className="font-semibold text-on-surface">{totalReviews.toLocaleString()}+</span>
             </div>
             <div className="flex justify-between items-center border-b border-border/50 pb-3">
               <span className="text-[13px] font-medium text-on-surface-variant flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-[16px]">star</span> Avg Rating
+                <span className={`material-symbols-outlined text-[16px] ${theme.accentColors.iconText}`}>star</span> Avg Rating
               </span>
               <span className="font-semibold text-on-surface">{avgRating} / 5.0</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-[13px] font-medium text-on-surface-variant flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-[16px]">verified</span> Verified Tools
+                <span className={`material-symbols-outlined text-[16px] ${theme.accentColors.iconText}`}>verified</span> Verified Tools
               </span>
               <span className="font-semibold text-on-surface">{verifiedCount}</span>
             </div>
@@ -126,7 +141,14 @@ export default async function CategoryPage({
       </section>
 
       {/* Tools Grid */}
-      <ToolGridWithFilters tools={categoryTools} />
+      <ToolGridWithFilters tools={categoryTools} theme={theme} />
+
+      {/* Category Rich Content */}
+      <InternalLinks theme={theme} />
+      <CategoryFAQ theme={theme} />
+      <CategoryGuide theme={theme} />
+      <EEATFooter />
+
     </main>
   );
 }
