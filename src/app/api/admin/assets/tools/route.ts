@@ -2,13 +2,13 @@ import { NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 import { getAllTools } from '@/lib/data/tools-service';
-import { AssetStatus, AdminToolWithStatus, isPlaceholderUrl, getExpectedAssetFilename } from '@/lib/utils/assets';
+import { AssetStatus, AdminToolWithStatus, isPlaceholderUrl, getExpectedAssetFilename, AssetManifest } from '@/lib/utils/assets';
 
 export async function GET() {
   const tools = getAllTools();
   
   const manifestPath = path.join(process.cwd(), 'public', 'assets', 'manifest.json');
-  let manifest: Record<string, unknown> = {};
+  let manifest: AssetManifest = {};
   
   try {
     const data = await fs.readFile(manifestPath, 'utf8');

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getAllTools } from '@/lib/data/tools-service';
-import { AssetStatus, AdminToolWithStatus, isPlaceholderUrl } from '@/lib/utils/assets';
+import { AssetStatus, AdminToolWithStatus, isPlaceholderUrl, AssetManifest } from '@/lib/utils/assets';
 import { categories } from '@/lib/data/categories';
 import fs from 'fs/promises';
 import path from 'path';
@@ -11,7 +11,7 @@ export async function GET() {
   const tools = getAllTools();
   
   const manifestPath = path.join(process.cwd(), 'public', 'assets', 'manifest.json');
-  let manifest: Record<string, unknown> = {};
+  let manifest: AssetManifest = {};
   
   try {
     const data = await fs.readFile(manifestPath, 'utf8');
@@ -43,7 +43,7 @@ export async function GET() {
     }
 
     // Content Checks
-    const contentToSearch = `${tool.description} ${tool.editorial?.content || ''} ${tool.editorial?.verdict || ''}`.toLowerCase();
+    const contentToSearch = `${tool.description} ${tool.editorial?.overview || ''} ${tool.editorial?.verdict || ''}`.toLowerCase();
     if (contentToSearch.includes('lorem ipsum') || contentToSearch.includes('placeholder')) {
       placeholderContentCount++;
       issues.push('Placeholder Text Found');
@@ -62,14 +62,12 @@ export async function GET() {
   // --- 2. Broken Links & Routes Audit ---
   let brokenCategories = 0;
   for (const tool of tools) {
-    for (const cat of tool.categoryIds) {
-      if (!categories.find(c => c.id === cat)) {
-        brokenCategories++;
-        if (!toolsWithIssues.find(t => t.slug === tool.slug)) {
-           toolsWithIssues.push({ slug: tool.slug, issues: [] });
-        }
-        toolsWithIssues.find(t => t.slug === tool.slug)?.issues.push(`Invalid category: ${cat}`);
+    if (tool.category && !categories.find(c => c.id === tool.category)) {
+      brokenCategories++;
+      if (!toolsWithIssues.find(t => t.slug === tool.slug)) {
+         toolsWithIssues.push({ slug: tool.slug, issues: [] });
       }
+      toolsWithIssues.find(t => t.slug === tool.slug)?.issues.push(`Invalid category: ${tool.category}`);
     }
   }
 

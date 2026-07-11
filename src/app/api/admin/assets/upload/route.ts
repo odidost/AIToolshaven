@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
+import { AssetManifest } from '@/lib/utils/assets';
 
 export async function POST(req: NextRequest) {
   try {
@@ -35,7 +36,7 @@ export async function POST(req: NextRequest) {
 
     // Update manifest
     const manifestPath = path.join(process.cwd(), 'public', 'assets', 'manifest.json');
-    let manifest: Record<string, unknown> = {};
+    let manifest: AssetManifest = {};
     try {
       const manifestData = await fs.readFile(manifestPath, 'utf8');
       manifest = JSON.parse(manifestData);

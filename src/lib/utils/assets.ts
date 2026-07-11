@@ -13,8 +13,13 @@ export interface ToolAssetStatus {
 
 export type AdminToolWithStatus = AITool & { assetStatus: ToolAssetStatus };
 
+export interface AssetManifestEntry {
+  logo?: 'webp' | 'svg' | 'png' | 'jpg' | string;
+  screenshot?: 'webp' | 'svg' | 'png' | 'jpg' | string;
+}
 
-export function getExpectedAssetFilename(slug: string, type: 'logo' | 'screenshot', format: 'webp' | 'svg' = 'webp') {
+export type AssetManifest = Record<string, AssetManifestEntry>;
+export function getExpectedAssetFilename(slug: string, type: 'logo' | 'screenshot', format: string = 'webp') {
   const suffix = type === 'logo' ? 'logo' : 'interface';
   return `${slug}-${suffix}.${format}`;
 }

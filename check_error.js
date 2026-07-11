@@ -1,3 +1,4 @@
+/* eslint-disable */
 const fs = require('fs');
 const html = fs.readFileSync('err.html', 'utf8');
 const m = html.match(/Error: [^&<\"\\]+/gi);

@@ -81,7 +81,7 @@ export class JsonToolRepository implements IToolRepository {
             id: `v_${Date.now()}`,
             createdAt: now,
             createdBy: authorId,
-            data: doc.draftData // Snapshot what we are publishing
+            data: doc.draftData as unknown as Record<string, unknown> // Snapshot what we are publishing
         };
         doc.versions.push(version);
 
@@ -102,7 +102,7 @@ export class JsonToolRepository implements IToolRepository {
         const version = doc.versions.find(v => v.id === versionId);
         if (!version) throw new Error("Version not found");
 
-        doc.draftData = { ...version.data };
+        doc.draftData = { ...version.data } as unknown as AITool;
         doc.lastAutosavedAt = new Date().toISOString();
         // If it was published, reverting creates a draft of that old version
         await this.writeData(docs);

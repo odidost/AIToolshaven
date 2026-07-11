@@ -819,5 +819,22 @@
     },
     "tools": [],
     "steps": []
+  },
+  {
+    "id": "workflow-1783796760976",
+    "title": "Untitled Workflow",
+    "slug": "workflow-1783796760976",
+    "description": "",
+    "category": "general",
+    "difficulty": "Beginner",
+    "timeToComplete": "10 mins",
+    "cost": "Free",
+    "author": {
+      "name": "AIToolsHaven Editorial Team",
+      "role": "AI Workflow Specialist",
+      "avatar": "/avatars/editorial.webp"
+    },
+    "tools": [],
+    "steps": []
   }
 ]

@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { siteConfig } from "@/lib/config/site";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
@@ -94,7 +88,7 @@ export default function RootLayout({
   const manifest = getAssetManifest();
 
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className="h-full antialiased font-sans">
       <head>
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link

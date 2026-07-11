@@ -3,9 +3,16 @@ import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 
+interface MediaAsset {
+  url: string;
+  name: string;
+  type: string;
+  size: number;
+}
+
 export default async function MediaLibraryPage() {
   // In the real system, you'd want pagination. We'll list all for now.
-  let assets: any[] = [];
+  let assets: MediaAsset[] = [];
   try {
     assets = await MediaRepository.list();
   } catch (e) {

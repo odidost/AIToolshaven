@@ -13,7 +13,7 @@ export default async function GoalsListPage() {
   const goalsArray = Array.isArray(goalsData) ? goalsData : Object.keys(goalsData).map(key => ({
     id: key,
     name: key,
-    items: (goalsData as any)[key]
+    items: (goalsData as Record<string, unknown>)[key]
   }));
 
   return (

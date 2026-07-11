@@ -10,7 +10,7 @@ export const metadata = {
 export default function MediaKitPage() {
   return (
     <main className="min-h-screen bg-surface-secondary pb-24 relative overflow-hidden">
-      <BackgroundPattern />
+      <BackgroundPattern type="ambient" />
 
       {/* Hero Section */}
       <ContentContainer as="section" className="relative z-10 pt-24 pb-16">
