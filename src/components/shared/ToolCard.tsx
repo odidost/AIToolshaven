@@ -17,7 +17,7 @@ export function ToolCard({ tool }: { tool: AITool }) {
   return (
     <Link href={`/tool/${tool.slug}`} className="block group h-full">
       <article className="bg-card rounded-3xl p-6 sm:p-8 border border-border hover:border-primary/30 transition-all duration-300 h-full flex flex-col shadow-sm hover:shadow-hover relative group/card hover:-translate-y-1">
-        <div className="flex flex-wrap justify-between items-start gap-2 mb-4">
+        <div className="flex flex-wrap justify-start items-start gap-2 mb-4">
           <div className="flex gap-2">
             {tool.featured && (
               <div className="bg-accent/10 text-accent border border-accent/20 text-[11px] tracking-tight font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1">
@@ -29,16 +29,6 @@ export function ToolCard({ tool }: { tool: AITool }) {
               {tool.priceModel}
             </div>
           </div>
-          
-          <button 
-            onClick={handleBookmarkClick}
-            className="p-1.5 rounded-full bg-surface border border-outline hover:bg-primary group/btn transition-colors flex items-center justify-center shadow-sm z-10"
-            title={bookmarked ? "Remove Bookmark" : "Bookmark Tool"}
-          >
-            <span className={`material-symbols-outlined text-[16px] transition-colors ${bookmarked ? 'text-primary group-hover/btn:text-white' : 'text-on-surface-variant group-hover/btn:text-white'}`}>
-              {bookmarked ? 'bookmark' : 'bookmark_border'}
-            </span>
-          </button>
         </div>
 
         <div className="flex items-center gap-3 mb-4">
@@ -81,15 +71,27 @@ export function ToolCard({ tool }: { tool: AITool }) {
           </span>
         </div>
 
-        <div className="flex flex-wrap gap-1.5 mt-auto">
-          {tool.tags.slice(0, 3).map((tag) => (
-            <span
-              key={tag}
-              className="text-[11px] font-medium text-on-surface-variant bg-surface-secondary px-3 py-1 rounded-full border border-border/50 group-hover/card:border-border transition-colors"
-            >
-              {tag}
+        <div className="flex items-center justify-between mt-auto gap-2">
+          <div className="flex flex-wrap gap-1.5">
+            {tool.tags.slice(0, 3).map((tag) => (
+              <span
+                key={tag}
+                className="text-[11px] font-medium text-on-surface-variant bg-surface-secondary px-3 py-1 rounded-full border border-border/50 group-hover/card:border-border transition-colors"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <button 
+            onClick={handleBookmarkClick}
+            className="p-1.5 rounded-full bg-surface border border-outline hover:bg-primary group/btn transition-colors flex items-center justify-center shadow-sm z-10 shrink-0"
+            title={bookmarked ? "Remove Bookmark" : "Bookmark Tool"}
+          >
+            <span className={`material-symbols-outlined text-[16px] transition-colors ${bookmarked ? 'text-primary group-hover/btn:text-white' : 'text-on-surface-variant group-hover/btn:text-white'}`}>
+              {bookmarked ? 'bookmark' : 'bookmark_border'}
             </span>
-          ))}
+          </button>
         </div>
       </article>
     </Link>
