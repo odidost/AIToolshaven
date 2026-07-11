@@ -15711,5 +15711,29 @@
     },
     "publishedData": null,
     "versions": []
+  },
+  {
+    "id": "draft-1783797968280",
+    "status": "draft",
+    "publishedAt": null,
+    "lastAutosavedAt": "2026-07-11T19:26:08.978Z",
+    "draftData": {
+      "id": "draft-1783797968280",
+      "name": "Untitled AI Tool",
+      "slug": "draft-1783797968280",
+      "tagline": "",
+      "description": "",
+      "category": "productivity",
+      "pricing": [],
+      "features": [],
+      "useCases": [],
+      "editorial": {
+        "overview": "",
+        "verdict": "",
+        "pricing": ""
+      }
+    },
+    "publishedData": null,
+    "versions": []
   }
 ]
