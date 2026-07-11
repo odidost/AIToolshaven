@@ -30,7 +30,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  serverExternalPackages: ["@prisma/client", "bcryptjs"],
+  serverExternalPackages: ["bcryptjs"],
   
   // Production Headers
   async headers() {
