@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
 
 import { siteConfig } from "@/lib/config/site";
 
@@ -88,7 +91,7 @@ export default function RootLayout({
   const manifest = getAssetManifest();
 
   return (
-    <html lang="en" className="h-full antialiased font-sans">
+    <html lang="en" className={`h-full antialiased font-sans ${inter.className}`}>
       <head>
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
@@ -96,7 +99,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col font-sans bg-background text-on-surface relative">
+      <body className="min-h-full flex flex-col bg-background text-on-surface relative">
         <BackgroundPattern type="ambient" className="fixed inset-0 -z-10" opacity={1} />
         <AssetManifestProvider manifest={manifest}>
           <BookmarksProvider>
