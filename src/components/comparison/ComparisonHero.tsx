@@ -1,9 +1,11 @@
-import Image from 'next/image';
+
 import React from 'react';
 import Link from 'next/link';
 import { AITool } from '@/lib/types/tool';
+import { ToolImage } from "@/components/shared/ToolImage";
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { BackgroundPattern } from '@/components/shared/BackgroundPattern';
+import { PageContainer } from '@/components/layout/PageContainer';
 
 interface ComparisonHeroProps {
     mainTool: AITool;
@@ -22,7 +24,7 @@ export function ComparisonHero({ mainTool, compareTool, categoryName, categorySl
             <BackgroundPattern type="ambient" opacity={0.05} />
             <BackgroundPattern type="aurora" opacity={0.08} />
 
-            <div className="container mx-auto px-4 relative z-10">
+            <PageContainer className="relative z-10">
                 <div className="mb-8 flex justify-center">
                     <Breadcrumbs
                         items={[
@@ -62,7 +64,7 @@ export function ComparisonHero({ mainTool, compareTool, categoryName, categorySl
                         {/* Tool A */}
                         <div className="bg-surface/80 backdrop-blur-xl rounded-[24px] p-8 border border-border shadow-lg flex-1 w-full text-center hover:-translate-y-1 transition-transform duration-300">
                             <div className="w-24 h-24 mx-auto bg-surface border border-border rounded-2xl shadow-sm flex items-center justify-center p-2 mb-6">
-                                <Image width={100} height={100} src={mainTool.logoUrl} alt={mainTool.name} className="w-full h-full object-contain rounded-xl" />
+                                <ToolImage tool={mainTool} type="logo" className="w-full h-full object-contain rounded-xl" />
                             </div>
                             <h2 className="text-2xl font-bold text-on-surface mb-2">{mainTool.name}</h2>
                             <p className="text-on-surface-variant text-sm line-clamp-2">{mainTool.tagline}</p>
@@ -81,7 +83,7 @@ export function ComparisonHero({ mainTool, compareTool, categoryName, categorySl
                         {/* Tool B */}
                         <div className="bg-surface/80 backdrop-blur-xl rounded-[24px] p-8 border border-border shadow-lg flex-1 w-full text-center hover:-translate-y-1 transition-transform duration-300">
                             <div className="w-24 h-24 mx-auto bg-surface border border-border rounded-2xl shadow-sm flex items-center justify-center p-2 mb-6">
-                                <Image width={100} height={100} src={compareTool.logoUrl} alt={compareTool.name} className="w-full h-full object-contain rounded-xl" />
+                                <ToolImage tool={compareTool} type="logo" className="w-full h-full object-contain rounded-xl" />
                             </div>
                             <h2 className="text-2xl font-bold text-on-surface mb-2">{compareTool.name}</h2>
                             <p className="text-on-surface-variant text-sm line-clamp-2">{compareTool.tagline}</p>
@@ -98,7 +100,7 @@ export function ComparisonHero({ mainTool, compareTool, categoryName, categorySl
                         </Link>
                     </div>
                 </div>
-            </div>
+            </PageContainer>
         </section>
     );
 }

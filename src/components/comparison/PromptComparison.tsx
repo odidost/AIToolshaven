@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { AITool } from '@/lib/types/tool';
+import { ToolImage } from "@/components/shared/ToolImage";
 
 interface PromptComparisonProps {
     mainTool: AITool;
@@ -74,7 +75,7 @@ export function PromptComparison({ mainTool, compareTool }: PromptComparisonProp
                         {/* Tool A Response */}
                         <div className="flex flex-col">
                             <div className="flex items-center gap-2 mb-3">
-                                <img src={mainTool.logoUrl} alt={mainTool.name} className="w-6 h-6 rounded border border-border bg-surface p-0.5" />
+                                <ToolImage tool={mainTool} type="logo" className="w-6 h-6 rounded border border-border bg-surface p-0.5" />
                                 <span className="font-bold text-on-surface">{mainTool.name} Response</span>
                             </div>
                             <div className="bg-surface rounded-xl p-5 border border-border shadow-xs text-sm text-on-surface-variant leading-relaxed h-full whitespace-pre-wrap font-mono">
@@ -85,7 +86,7 @@ export function PromptComparison({ mainTool, compareTool }: PromptComparisonProp
                         {/* Tool B Response */}
                         <div className="flex flex-col">
                             <div className="flex items-center gap-2 mb-3">
-                                <img src={compareTool.logoUrl} alt={compareTool.name} className="w-6 h-6 rounded border border-border bg-surface p-0.5" />
+                                <ToolImage tool={compareTool} type="logo" className="w-6 h-6 rounded border border-border bg-surface p-0.5" />
                                 <span className="font-bold text-on-surface">{compareTool.name} Response</span>
                             </div>
                             <div className="bg-surface rounded-xl p-5 border border-border shadow-xs text-sm text-on-surface-variant leading-relaxed h-full whitespace-pre-wrap font-mono">
@@ -105,7 +106,7 @@ export function PromptComparison({ mainTool, compareTool }: PromptComparisonProp
                                 <p className="text-sm text-on-surface-variant mb-3">{winnerMessage}</p>
                                 <div className="inline-flex items-center gap-2 bg-surface px-3 py-1.5 rounded-lg border border-border shadow-xs">
                                     <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Winner:</span>
-                                    <img src={winner.logoUrl} alt={winner.name} className="w-4 h-4 rounded-sm" />
+                                    <ToolImage tool={winner} type="logo" className="w-4 h-4 rounded-sm" />
                                     <span className="text-sm font-bold text-on-surface">{winner.name}</span>
                                 </div>
                             </div>

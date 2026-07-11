@@ -5,7 +5,7 @@ export const goals = [
         icon: "smart_display",
         count: 24,
         description:
-            "Discover AI tools for scripting, voiceovers, editing, thumbnails, and publishing faceless YouTube videos.",
+            "Find the right tools to write scripts, generate voiceovers, edit clips, and publish videos without ever getting on camera.",
     },
 
     {
@@ -14,7 +14,7 @@ export const goals = [
         icon: "account_tree",
         count: 18,
         description:
-            "Create automated workflows using ChatGPT, Claude, n8n, Zapier, Make, and other AI automation tools.",
+            "Connect tools like ChatGPT, n8n, and Zapier to automate the boring parts of your day.",
     },
 
     {
@@ -23,7 +23,7 @@ export const goals = [
         icon: "photo_camera_front",
         count: 12,
         description:
-            "Generate realistic AI influencers, virtual creators, and digital personalities using modern AI tools.",
+            "Design realistic digital personalities and generate consistent content for Instagram, TikTok, or X.",
     },
 
     {
@@ -32,7 +32,7 @@ export const goals = [
         icon: "code",
         count: 16,
         description:
-            "Build websites, apps, SaaS products, and automations using AI coding assistants and no-code platforms.",
+            "Launch apps, websites, and SaaS products by letting AI handle the heavy lifting of writing code.",
     },
 
     {
@@ -41,7 +41,7 @@ export const goals = [
         icon: "trending_up",
         count: 31,
         description:
-            "Find AI tools that improve marketing, sales, customer support, operations, and productivity.",
+            "Find practical tools to help you write better marketing copy, close sales, and handle customer support.",
     },
 
     {
@@ -50,6 +50,6 @@ export const goals = [
         icon: "payments",
         count: 29,
         description:
-            "Explore AI tools that help freelancers, creators, entrepreneurs, and agencies generate income online.",
+            "Explore tools that actually help freelancers, creators, and agencies increase their income online.",
     },
 ];

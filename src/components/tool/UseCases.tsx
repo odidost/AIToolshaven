@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import type { AITool } from "@/lib/types/tool";
+import { getEditorialDescription } from "@/lib/editorialRegistry";
 
 type UseCasesProps = {
+    tool: AITool;
     useCases: string[];
 };
 
-export function UseCases({ useCases }: UseCasesProps) {
+export function UseCases({ tool, useCases }: UseCasesProps) {
     const [activeTab, setActiveTab] = useState(0);
 
     if (!useCases?.length) return null;
@@ -18,7 +21,7 @@ export function UseCases({ useCases }: UseCasesProps) {
                     Best Use Cases
                 </h2>
                 <p className="mt-3 text-lg leading-relaxed text-on-surface-variant">
-                    Discover how different professionals and teams use this tool to accelerate their workflows and achieve better results.
+                    Here's a breakdown of how people are actually using this tool in the real world to speed up their workflows.
                 </p>
             </div>
 
@@ -53,14 +56,18 @@ export function UseCases({ useCases }: UseCasesProps) {
                             Ideal for {useCases[activeTab]}
                         </h3>
 
-                        <p className="text-on-surface-variant leading-relaxed mb-6">
-                            This tool fits perfectly for {useCases[activeTab].toLowerCase()} by addressing specific pain points in their daily operations, enabling faster execution, and improving productivity. By adopting this tool, {useCases[activeTab].toLowerCase()} can automate redundant processes and focus on high-impact strategic goals.
-                        </p>
+                        {tool.editorial?.useCaseFocus ? (
+                            <div className="text-on-surface-variant leading-relaxed mb-6" dangerouslySetInnerHTML={{ __html: tool.editorial.useCaseFocus }} />
+                        ) : (
+                            <p className="text-on-surface-variant leading-relaxed mb-6">
+                                {getEditorialDescription("usecase", useCases[activeTab], `For ${useCases[activeTab].toLowerCase()}, the main draw is how much manual work it eliminates. Instead of getting bogged down in the mechanics of the task, you can pass the redundant steps off to the AI. This doesn't just save time—it frees you up to focus on the actual strategy and creative direction that moves the needle.`)}
+                            </p>
+                        )}
 
                         <div className="border-t border-border/50 pt-5 mt-6 flex items-center gap-2">
                             <span className="material-symbols-outlined text-primary text-[20px]">trending_up</span>
                             <span className="text-sm font-bold text-primary">
-                                Expected Outcome: High Efficiency & Optimized ROI
+                                Why it works: Less busywork, more focus on execution.
                             </span>
                         </div>
                     </div>

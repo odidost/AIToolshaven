@@ -31,7 +31,14 @@ export const videoCreationTools: AITool[] = [
         similarTools: ["opus-clip", "capcut"],
         collections: ["Top AI Video Makers", "YouTube Automation"],
         recommendationTags: ["video-editor", "creator", "youtube"],
-        audiences: ["Video Editors", "Content Creators"]
+        audiences: ["Video Editors", "Content Creators"],
+        editorial: {
+            overview: "<p>Runway Gen-2 is the premier commercially available AI for generating video from text or image prompts. Unlike deepfake or avatar tools, Runway focuses on generating cinematic b-roll, VFX, and artistic motion.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The 'Motion Brush' feature allows you to paint over a static image to define exactly which parts should move (like water flowing or clouds drifting), giving you precise directorial control.</p>",
+            verdict: "<p>If you're a filmmaker, video editor, or content creator looking to generate custom b-roll without stock footage subscriptions, Runway Gen-2 is an absolute necessity.</p>",
+            pricing: "<p>Video generation is extremely compute-heavy, so credits burn fast. The $15/month Standard plan is required to remove watermarks and upsize resolution.</p>",
+            comparison: "<p>Compared to Sora (which isn't fully public), Runway is slightly less realistic but offers far more granular control tools for actual video editors. Compared to HeyGen, it doesn't do human avatars or lip-sync.</p>",
+            useCaseFocus: "<p>Video editors use Runway to generate missing transition shots, animate static Midjourney concept art, and remove complex backgrounds from footage instantly.</p>"
+        }
     },
     {
         id: "sora",
@@ -63,7 +70,14 @@ export const videoCreationTools: AITool[] = [
         similarTools: ["runway-gen2", "heygen"],
         collections: ["Top AI Video Makers", "YouTube Automation"],
         recommendationTags: ["video-editor", "creator", "youtube"],
-        audiences: ["Video Editors", "Content Creators"]
+        audiences: ["Video Editors", "Content Creators"],
+        editorial: {
+            overview: "<p>Sora represents a quantum leap in generative AI video. Developed by OpenAI, it is capable of generating highly detailed, physically coherent video clips up to 60 seconds long from a single text prompt.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Object permanence and physics. Unlike older models where backgrounds warp and characters melt into each other, Sora understands 3D space, meaning objects remain consistent even when the camera moves.</p>",
+            verdict: "<p>While public access is still limited, Sora is positioned to disrupt the entire stock footage industry. If you have access, it is the most powerful video generator in existence.</p>",
+            pricing: "<p>Currently restricted to select researchers and creative professionals. Broad enterprise pricing details are expected to be premium given the massive compute costs.</p>",
+            comparison: "<p>Sora blows Runway Gen-2 out of the water in terms of sheer realism, physics, and clip length, though it currently lacks the surgical editing interfaces that Runway provides.</p>",
+            useCaseFocus: "<p>Filmmakers and agencies with early access are using Sora to generate entirely synthetic commercials, mood boards, and cinematic establishing shots.</p>"
+        }
     },
     {
         id: "heygen",
@@ -95,7 +109,14 @@ export const videoCreationTools: AITool[] = [
         similarTools: ["kaiber", "synthesia"],
         collections: ["Top AI Video Makers", "YouTube Automation"],
         recommendationTags: ["video-editor", "creator", "youtube"],
-        audiences: ["Video Editors", "Content Creators"]
+        audiences: ["Video Editors", "Content Creators"],
+        editorial: {
+            overview: "<p>HeyGen solves a very specific, very expensive problem: putting a human face on camera without hiring actors or renting a studio. It generates photorealistic AI avatars that lip-sync perfectly to your script.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The custom avatar cloning. You can record 2 minutes of yourself speaking, and HeyGen will create a digital twin that you can make say anything just by typing text.</p>",
+            verdict: "<p>For corporate training, sales outreach, and faceless YouTube channels, HeyGen is currently the market leader in avatar realism and voice cloning.</p>",
+            pricing: "<p>At $29/month, it's remarkably cheap compared to the cost of a video production crew, though enterprise features like API access scale up significantly.</p>",
+            comparison: "<p>Synthesia has been around longer, but HeyGen's avatar movements, micro-expressions, and voice cloning currently look and sound noticeably more natural.</p>",
+            useCaseFocus: "<p>Sales teams use HeyGen's API to automatically generate personalized video messages for hundreds of prospects, addressing each one by name using an AI avatar.</p>"
+        }
     },
     {
         id: "opus-clip",
@@ -127,7 +148,14 @@ export const videoCreationTools: AITool[] = [
         similarTools: ["sora", "heygen"],
         collections: ["Top AI Video Makers", "YouTube Automation"],
         recommendationTags: ["video-editor", "creator", "youtube"],
-        audiences: ["Video Editors", "Content Creators"]
+        audiences: ["Video Editors", "Content Creators"],
+        editorial: {
+            overview: "<p>Opus Clip is the ultimate arbitrage tool for social media. You paste a link to a long YouTube video (like a podcast), and the AI automatically chops it up into vertical shorts, complete with captions and b-roll.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The 'Viral Score'. Opus doesn't just cut randomly; it analyzes the transcript to find the most engaging hooks and grades each clip on its likelihood to go viral on TikTok.</p>",
+            verdict: "<p>If you run a podcast or create long-form content, Opus Clip is mandatory. It effectively replaces a junior video editor for repurposing content.</p>",
+            pricing: "<p>The $19/month Pro plan pays for itself immediately if it saves you from manually cutting and subtitling even one podcast episode.</p>",
+            comparison: "<p>CapCut can do automatic captions, but Opus Clip handles the actual curation—finding the interesting moments and framing the subject—which is where the real time savings live.</p>",
+            useCaseFocus: "<p>Content creators use Opus Clip to feed the algorithms of TikTok, Shorts, and Reels by generating 10-15 pieces of micro-content from a single long-form recording.</p>"
+        }
     },
     {
         id: "capcut",
@@ -159,6 +187,13 @@ export const videoCreationTools: AITool[] = [
         similarTools: ["kaiber", "synthesia"],
         collections: ["Top AI Video Makers", "YouTube Automation"],
         recommendationTags: ["video-editor", "creator", "youtube"],
-        audiences: ["Video Editors", "Content Creators"]
+        audiences: ["Video Editors", "Content Creators"],
+        editorial: {
+            overview: "<p>Owned by ByteDance (the parent company of TikTok), CapCut is a powerhouse video editor disguised as a simple mobile app. Its desktop version now rivals Adobe Premiere for social-first editing.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Auto-captions and one-click background removal. What used to take hours of rotoscoping and manual transcription in Premiere takes seconds in CapCut.</p>",
+            verdict: "<p>CapCut has democratized video editing. It is the undisputed king of short-form video creation, offering professional-grade AI tools entirely for free.</p>",
+            pricing: "<p>The free version is astonishingly fully featured. The $9.99/mo Pro tier unlocks advanced AI effects and cloud storage, but many creators never need it.</p>",
+            comparison: "<p>Unlike Runway or Sora, which generate video from nothing, CapCut is an editor for existing footage. It competes more directly with Adobe Premiere and Final Cut.</p>",
+            useCaseFocus: "<p>Practically every major TikTok and YouTube Shorts creator uses CapCut to quickly assemble fast-paced edits, apply trendy templates, and generate dynamic subtitles.</p>"
+        }
     }
 ];

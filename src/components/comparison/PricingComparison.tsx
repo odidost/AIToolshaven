@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import { AITool } from '@/lib/types/tool';
+import { ToolImage } from "@/components/shared/ToolImage";
 
 interface PricingComparisonProps {
     mainTool: AITool;
@@ -61,7 +61,7 @@ export function PricingComparison({ mainTool, compareTool }: PricingComparisonPr
                 {/* Tool A Pricing */}
                 <div className="bg-surface-secondary/30 rounded-[24px] p-6 border border-border">
                     <div className="flex items-center gap-3 mb-6">
-                        <Image width={100} height={100} src={mainTool.logoUrl} alt={mainTool.name} className="w-8 h-8 rounded-lg border border-border bg-surface object-contain" />
+                        <ToolImage tool={mainTool} type="logo" className="w-8 h-8 rounded-lg border border-border bg-surface object-contain" />
                         <h3 className="text-xl font-bold">{mainTool.name} Pricing</h3>
                     </div>
                     {renderPricingCards(mainTool)}
@@ -75,7 +75,7 @@ export function PricingComparison({ mainTool, compareTool }: PricingComparisonPr
                 {/* Tool B Pricing */}
                 <div className="bg-surface-secondary/30 rounded-[24px] p-6 border border-border">
                     <div className="flex items-center gap-3 mb-6">
-                        <Image width={100} height={100} src={compareTool.logoUrl} alt={compareTool.name} className="w-8 h-8 rounded-lg border border-border bg-surface object-contain" />
+                        <ToolImage tool={compareTool} type="logo" className="w-8 h-8 rounded-lg border border-border bg-surface object-contain" />
                         <h3 className="text-xl font-bold">{compareTool.name} Pricing</h3>
                     </div>
                     {renderPricingCards(compareTool)}

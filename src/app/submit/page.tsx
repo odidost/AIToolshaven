@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
+import { PageContainer } from "@/components/layout/PageContainer";
 
 const pricingTiers = [
   {
@@ -26,7 +27,7 @@ const pricingTiers = [
     name: "Priority Launch",
     price: "$49",
     priceDetail: "/one-time",
-    description: "Fast-track your listing with priority review",
+    description: "Skip the line and get reviewed within 24 hours.",
     recommended: true,
     features: [
       { text: "Everything in Standard", included: true },
@@ -68,26 +69,26 @@ const processSteps = [
   {
     step: 1,
     icon: "description",
-    title: "Submit Your Tool",
-    description: "Fill out the submission form with your tool's details, features, and media.",
+    title: "Submit Details",
+    description: "Tell us about your tool, what it does, and why people should use it.",
   },
   {
     step: 2,
     icon: "rate_review",
-    title: "Review Process",
-    description: "Our team reviews your submission for quality and accuracy within 24-48 hours.",
+    title: "Quick Review",
+    description: "We'll check everything over to ensure it meets our quality guidelines.",
   },
   {
     step: 3,
     icon: "rocket_launch",
     title: "Go Live",
-    description: "Once approved, your tool goes live and starts getting discovered by thousands of users.",
+    description: "Your listing gets published and sent out to our active community.",
   },
   {
     step: 4,
     icon: "trending_up",
-    title: "Grow & Iterate",
-    description: "Track analytics, collect reviews, and optimize your listing for maximum visibility.",
+    title: "Track Growth",
+    description: "Check your dashboard to see how many people are discovering your tool.",
   },
 ];
 
@@ -120,20 +121,20 @@ const faqItems = [
 
 export default function SubmitPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <PageContainer className="py-8 md:py-12">
       <Breadcrumbs items={[{ label: 'Submit Tool' }]} />
       
       {/* Hero Section */}
       <div className="max-w-3xl mx-auto text-center mb-16">
         <div className="inline-flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-2 rounded-full text-sm font-semibold mb-6">
           <span className="material-symbols-outlined text-sm">rocket_launch</span>
-          Get Discovered by Thousands
+          Get Noticed
         </div>
         <h1 className="text-4xl md:text-5xl font-bold text-on-surface mb-4 leading-tight">
-          Submit Your AI Tool
+          Add your tool to the directory
         </h1>
         <p className="text-xl text-on-surface-variant max-w-xl mx-auto">
-          Get your tool in front of thousands of AI enthusiasts, founders, and creators. Choose the plan that fits your launch goals.
+          We manually review every submission to keep the directory high quality. Choose a plan below to get started.
         </p>
       </div>
 
@@ -260,6 +261,6 @@ export default function SubmitPage() {
           </Link>
         </div>
       </div>
-    </div>
+    </PageContainer>
   );
 }

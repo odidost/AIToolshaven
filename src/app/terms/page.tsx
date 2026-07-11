@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ContentContainer } from "@/components/layout/ContentContainer";
 
 export const metadata: Metadata = {
   title: "Terms of Service | AIToolsHaven",
@@ -62,7 +63,7 @@ export default function TermsPage() {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-16 max-w-3xl">
+    <ContentContainer className="py-16 md:py-24">
       <div className="mb-12">
         <Link
           href="/"
@@ -94,6 +95,6 @@ export default function TermsPage() {
           ))}
         </div>
       </div>
-    </div>
+    </ContentContainer>
   );
 }

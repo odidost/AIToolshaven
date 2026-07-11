@@ -33,7 +33,7 @@ export function ToolReviews({ tool }: ToolReviewsProps) {
             rating: 5,
             helpfulCount: 42,
             useCase: "Developer",
-            content: `I've integrated ${tool.name} into our core product, and the results have been phenomenal. The API is lightning fast, and the documentation made it very easy to get started. Highly recommended for any engineering team looking to scale their AI capabilities without building from scratch.`
+            content: `I was skeptical at first, but ${tool.name} actually delivered on its core promises. The interface took a few hours to really figure out, but once it clicked, it started saving me a massive amount of time. It's not perfect, but it's easily one of the better tools in this space right now.`
         },
         {
             id: 2,
@@ -45,7 +45,7 @@ export function ToolReviews({ tool }: ToolReviewsProps) {
             rating: 4,
             helpfulCount: 18,
             useCase: "Marketer",
-            content: `As a marketer, I don't have time to write complex prompts. ${tool.name} simplifies everything. It saves me about 10 hours a week on content generation. My only gripe is that it can be a bit sluggish during peak hours, but overall it's a solid tool.`
+            content: `I use this mostly for the heavy lifting. ${tool.name} handles about 80% of the repetitive work, and then I step in to polish the rest. Honestly, the output can occasionally be generic if you don't prompt it well, but once you learn how to steer it, it becomes indispensable.`
         }
     ];
 

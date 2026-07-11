@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import { AITool } from '@/lib/types/tool';
+import { ToolImage } from "@/components/shared/ToolImage";
 
 interface QuickVerdictProps {
     mainTool: AITool;
@@ -31,7 +31,7 @@ export function QuickVerdict({ mainTool, compareTool }: QuickVerdictProps) {
                     
                     <div className="flex items-start justify-between mb-6 relative z-10">
                         <div className="flex items-center gap-4">
-                            <Image width={100} height={100} src={winner.logoUrl} alt={winner.name} className="w-16 h-16 rounded-xl border border-border object-contain bg-surface" />
+                            <ToolImage tool={winner} type="logo" className="w-16 h-16 rounded-xl border border-border object-contain bg-surface" />
                             <div>
                                 <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-warning/10 text-warning text-xs font-bold mb-1">
                                     <span className="material-symbols-outlined text-[14px]">trophy</span>
@@ -102,7 +102,7 @@ export function QuickVerdict({ mainTool, compareTool }: QuickVerdictProps) {
                             Strong Alternative
                         </div>
                         <div className="flex items-center gap-3 mb-4">
-                            <Image width={100} height={100} src={runnerUp.logoUrl} alt={runnerUp.name} className="w-10 h-10 rounded-lg border border-border object-contain" />
+                            <ToolImage tool={runnerUp} type="logo" className="w-10 h-10 rounded-lg border border-border object-contain" />
                             <h3 className="font-bold text-lg">{runnerUp.name}</h3>
                         </div>
                         <p className="text-sm text-on-surface-variant mb-4">

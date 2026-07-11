@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { WorkflowStep } from "@/lib/workflows";
-import { getToolBySlug, getTrendingTools } from "@/lib/data/tools-service";
+import { getToolBySlug } from "@/lib/data/tools-service";
 
 export function WorkflowStepCard({ step, index }: { step: WorkflowStep; index: number }) {
     const toolData = getToolBySlug(step.tool.toLowerCase().replace(/\s+/g, "-"));

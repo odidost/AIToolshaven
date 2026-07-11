@@ -6,6 +6,7 @@ import { goals } from "@/lib/goals";
 import { goalDetailsData } from "@/lib/data/goal-details";
 import { getAllTools } from "@/lib/queries/tools";
 import { StructuredData } from "@/components/shared/StructuredData";
+import { PageContainer } from "@/components/layout/PageContainer";
 
 type Props = {
     params: Promise<{ slug: string }>;
@@ -75,7 +76,7 @@ export default async function GoalPage({
     };
 
     return (
-        <div className="container mx-auto px-4 py-8">
+        <PageContainer className="py-8 md:py-12">
             <StructuredData data={jsonLd} />
             <Breadcrumbs
                 items={[
@@ -139,6 +140,6 @@ export default async function GoalPage({
                         ))}
                 </div>
             </section>
-        </div>
+        </PageContainer>
     );
 }

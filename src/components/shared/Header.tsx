@@ -1,15 +1,16 @@
 import Link from 'next/link';
 import { CommandPalette } from './CommandPalette';
 import { getAllTools } from '@/lib/queries/tools';
+import { BrandLogo } from './BrandLogo';
+import { PageContainer } from '../layout/PageContainer';
 
 export function Header() {
   const tools = getAllTools();
   return (
     <header className="w-full bg-background/80 backdrop-blur-md border-b border-border sticky top-0 z-40 transition-all">
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-primary text-3xl">auto_awesome</span>
-          <span className="font-bold text-xl text-on-surface">AIToolsHaven</span>
+      <PageContainer className="h-16 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2" aria-label="AIToolsHaven Home">
+          <BrandLogo size={0.9} />
         </Link>
         <div className="flex-1 max-w-md mx-8 relative hidden md:block">
           <CommandPalette tools={tools} />
@@ -25,7 +26,7 @@ export function Header() {
             Submit a Tool
           </Link>
         </nav>
-      </div>
+      </PageContainer>
     </header>
   );
 }

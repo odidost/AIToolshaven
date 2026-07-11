@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { goals } from "@/lib/goals";
 import { GoalCard } from "@/components/home/GoalCard";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { PageContainer } from "@/components/layout/PageContainer";
 
 export const metadata: Metadata = {
   title: "AI Goals & Collections | AIToolsHaven",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function GoalsIndexPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <PageContainer className="py-8 md:py-12">
       <Breadcrumbs items={[{ label: "Goals" }]} />
 
       <div className="max-w-3xl mb-12 mt-4">
@@ -37,6 +38,6 @@ export default function GoalsIndexPage() {
           />
         ))}
       </div>
-    </div>
+    </PageContainer>
   );
 }

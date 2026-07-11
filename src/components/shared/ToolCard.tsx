@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { AITool } from "@/lib/types/tool";
 import { useBookmarks } from "@/lib/contexts/BookmarksContext";
+import { ToolImage } from "@/components/shared/ToolImage";
 
 export function ToolCard({ tool }: { tool: AITool }) {
   const { isBookmarked, toggleBookmark } = useBookmarks();
@@ -15,7 +16,7 @@ export function ToolCard({ tool }: { tool: AITool }) {
 
   return (
     <Link href={`/tool/${tool.slug}`} className="block group h-full">
-      <article className="bg-card rounded-3xl p-6 border border-border hover:border-primary/30 transition-all duration-300 h-full flex flex-col shadow-sm hover:shadow-hover relative group/card hover:-translate-y-1">
+      <article className="bg-card rounded-3xl p-6 sm:p-8 border border-border hover:border-primary/30 transition-all duration-300 h-full flex flex-col shadow-sm hover:shadow-hover relative group/card hover:-translate-y-1">
         <div className="flex flex-wrap justify-between items-start gap-2 mb-4">
           <div className="flex gap-2">
             {tool.featured && (
@@ -42,10 +43,9 @@ export function ToolCard({ tool }: { tool: AITool }) {
 
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-xl overflow-hidden bg-outline flex-shrink-0 shadow-sm">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={tool.imageUrl}
-              alt={tool.name}
+            <ToolImage
+              tool={tool}
+              type="logo"
               className="w-full h-full object-cover"
             />
           </div>

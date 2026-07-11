@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { siteConfig } from "@/lib/config/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,9 +7,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/dashboard/", "/api/"],
+        disallow: ["/dashboard/", "/api/", "/admin/"],
       },
     ],
-    sitemap: "https://aitoolshaven.com/sitemap.xml",
+    sitemap: `${siteConfig.baseUrl}/sitemap.xml`,
   };
 }

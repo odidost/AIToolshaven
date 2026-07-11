@@ -12,6 +12,8 @@ import { CategoryGuide } from "@/components/category/CategoryGuide";
 import { EEATFooter } from "@/components/category/EEATFooter";
 import { InternalLinks } from "@/components/category/InternalLinks";
 import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
+import { AuthorAttribution } from "@/components/shared/AuthorAttribution";
+import { PageContainer } from "@/components/layout/PageContainer";
 import { Metadata } from "next";
 
 type Props = {
@@ -65,8 +67,9 @@ export default async function CategoryPage({
   const verifiedCount = categoryTools.filter(t => t.verified).length;
 
   return (
-    <main 
-      className="container mx-auto px-6 py-12 relative"
+    <PageContainer
+      as="main"
+      className="py-12 md:py-16 relative"
       style={{ '--category-accent': theme.accentColors.cssVar } as React.CSSProperties}
     >
       {/* Dynamic Category Page Background */}
@@ -99,9 +102,11 @@ export default async function CategoryPage({
               {theme.heroHeadline}
             </h1>
 
-            <p className="text-xl text-on-surface-variant leading-relaxed max-w-2xl">
+            <p className="text-xl text-on-surface-variant leading-relaxed max-w-2xl mb-6">
               {theme.heroDescription}
             </p>
+
+            <AuthorAttribution />
           </div>
 
           {/* Stats Widget */}
@@ -149,6 +154,6 @@ export default async function CategoryPage({
       <CategoryGuide theme={theme} />
       <EEATFooter />
 
-    </main>
+    </PageContainer>
   );
 }

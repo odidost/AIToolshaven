@@ -18,13 +18,13 @@ export function SubmitToolCTA() {
         </div>
         
         <h2 className="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
-          Get your AI tool in front of{" "}
-          <span className="bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent">100,000+</span>{" "}
-          early adopters.
+          Put your AI tool in front of the{" "}
+          <span className="bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent">right</span>{" "}
+          audience.
         </h2>
         
         <p className="text-lg text-slate-400 mb-10 max-w-2xl">
-          Join the fastest-growing AI directory on the internet. Gain high-quality backlinks, targeted traffic, and early feedback from power users.
+          Get listed on the directory people actually use to find their next workflow stack. Build backlinks, drive traffic, and collect early feedback.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4">

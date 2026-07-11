@@ -1,3 +1,5 @@
+import { getEditorialDescription } from "@/lib/editorialRegistry";
+
 type ProsConsProps = {
     pros?: string[];
     cons?: string[];
@@ -46,7 +48,7 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
                                 <div>
                                     <strong className="block text-on-surface text-lg font-semibold">{item}</strong>
                                     <span className="text-on-surface-variant block mt-1 leading-relaxed">
-                                        This advantage significantly improves user experience and provides reliable, high-quality outcomes for standard workflows.
+                                        {getEditorialDescription("pro", item, "This makes a noticeable difference in daily use, especially if you're working on tight deadlines.")}
                                     </span>
                                 </div>
                             </li>
@@ -78,7 +80,7 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
                                 <div>
                                     <strong className="block text-on-surface text-lg font-semibold">{item}</strong>
                                     <span className="text-on-surface-variant block mt-1 leading-relaxed">
-                                        While not a dealbreaker, users should be aware of this limitation in specific scenarios or advanced use cases.
+                                        {getEditorialDescription("con", item, "It's not a dealbreaker, but it is something to keep in mind if you rely heavily on this specific function.")}
                                     </span>
                                 </div>
                             </li>

@@ -1,8 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { AITool } from '@/lib/types/tool';
-
-import Image from 'next/image';
+import { ToolImage } from "@/components/shared/ToolImage";
 
 interface ComparisonSummaryProps {
     mainTool: AITool;
@@ -14,7 +13,7 @@ const ToolSummaryCard = ({ tool, categoryName }: { tool: AITool; categoryName: s
     <div className="bg-surface rounded-[24px] p-8 border border-border shadow-sm transition-all hover:shadow-md hover:-translate-y-1 group flex flex-col h-full">
         <div className="flex items-start justify-between mb-6">
             <div className="flex items-center gap-4">
-                <Image src={tool.logoUrl} alt={tool.name} width={64} height={64} className="w-16 h-16 rounded-2xl border border-border object-contain bg-surface p-1 shadow-xs" />
+                <ToolImage tool={tool} type="logo" className="w-16 h-16 rounded-2xl border border-border object-contain bg-surface p-1 shadow-xs" />
                 <div>
                     <h3 className="text-xl font-bold text-on-surface">{tool.name}</h3>
                     <p className="text-sm text-on-surface-variant font-medium">By {tool.company || 'Independent'}</p>

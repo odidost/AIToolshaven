@@ -17,7 +17,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["perplexity", "writesonic"],
       collections: ["Best AI Writing Tools", "Top Productivity Assistants"],
       recommendationTags: ["writer", "marketer", "business"],
-      audiences: ["Marketers", "Writers"]
+      audiences: ["Marketers", "Writers"],
+      editorial: {
+          overview: "<p>Perplexity Pro upgrades the standard Perplexity search engine into a formidable research assistant. It grants access to top-tier models like GPT-4 and Claude 3 Opus, allowing you to choose the 'brain' behind your searches, while offering unlimited Copilot queries for deep, guided investigations.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Unlimited file uploads. You can upload massive PDFs or data sets and use Perplexity's powerful search and synthesis engine to interrogate your own documents.</p>",
+          verdict: "<p>If your job involves heavy research, academic literature review, or synthesizing complex topics quickly, Perplexity Pro is currently the best search-based AI tool on the market.</p>",
+          pricing: "<p>At $20/month, it matches the price of ChatGPT Plus but is vastly superior for fact-finding and sourcing, as it natively browses the live internet with incredible accuracy.</p>",
+          comparison: "<p>ChatGPT is better for drafting long-form content or coding. Perplexity Pro is strictly better for finding answers, summarizing the web, and citing sources.</p>",
+          useCaseFocus: "<p>Market researchers use Perplexity Pro to upload competitor earnings reports and instantly cross-reference them against live industry news to build comprehensive market analyses.</p>"
+      }
 },
   {
     id: "tome-pro", name: "Tome Pro", slug: "tome-pro", tagline: "Unlimited AI storytelling.",
@@ -35,7 +42,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["superhuman", "notion-ai"],
       collections: ["Best Productivity Assistants", "Top AI Assistants"],
       recommendationTags: ["productivity", "student", "founder"],
-      audiences: ["Founders", "Students"]
+      audiences: ["Founders", "Students"],
+      editorial: {
+          overview: "<p>Tome Pro unlocks the enterprise capabilities of the popular AI presentation builder. It removes all usage limits on the AI generator, allows you to export your cinematic decks to high-resolution PDFs, and importantly, removes the Tome branding.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Custom branding. The Pro tier lets you upload custom fonts and set strict brand colors, ensuring that the AI-generated presentations adhere to your corporate identity.</p>",
+          verdict: "<p>If you are using Tome to pitch clients or investors, the Pro upgrade is absolutely mandatory simply to remove the watermarks and enable PDF exports.</p>",
+          pricing: "<p>The $16/month fee is standard for premium productivity tools, but it feels slightly steep if you only build one or two decks a month.</p>",
+          comparison: "<p>Gamma's paid tier is slightly cheaper and better for text-heavy documents, but Tome Pro remains the king of visually stunning, narrative-driven slide decks.</p>",
+          useCaseFocus: "<p>Creative agencies use Tome Pro to generate highly stylized pitch decks for prospective clients, using custom fonts to match the client's brand guidelines seamlessly.</p>"
+      }
 },
   {
     id: "runway-gen1", name: "Runway Gen-1", slug: "runway-gen1", tagline: "Video to video generation.",
@@ -53,7 +67,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["heygen", "opus-clip"],
       collections: ["Top AI Video Makers", "YouTube Automation"],
       recommendationTags: ["video-editor", "creator", "youtube"],
-      audiences: ["Video Editors", "Content Creators"]
+      audiences: ["Video Editors", "Content Creators"],
+      editorial: {
+          overview: "<p>Runway Gen-1 revolutionized video editing by introducing true 'video-to-video' AI. You can upload a video of a person walking down a street, prompt it with 'claymation style', and it will redraw the entire video frame-by-frame while keeping the underlying motion intact.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Style transfer. Unlike simple filters, Gen-1 actually understands the depth and structure of the original video, applying new textures and lighting with astonishing accuracy.</p>",
+          verdict: "<p>For VFX artists, music video directors, and experimental creators, Gen-1 is an incredibly powerful tool for rapidly prototyping complex visual styles without 3D rendering.</p>",
+          pricing: "<p>The $15/month Standard plan is required to remove watermarks and export in higher resolutions, though heavy users will quickly burn through the included credits.</p>",
+          comparison: "<p>Gen-2 is for text-to-video (generating from scratch). Gen-1 is specifically for modifying existing video footage, giving you much tighter control over the final animation.</p>",
+          useCaseFocus: "<p>Music video directors use Gen-1 to take standard green-screen footage of an artist and stylize it into animated anime sequences for a fraction of traditional animation costs.</p>"
+      }
 },
   {
     id: "kaiber", name: "Kaiber", slug: "kaiber", tagline: "Create videos with AI.",
@@ -71,7 +92,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["synthesia", "invideo"],
       collections: ["Top AI Video Makers", "YouTube Automation"],
       recommendationTags: ["video-editor", "creator", "youtube"],
-      audiences: ["Video Editors", "Content Creators"]
+      audiences: ["Video Editors", "Content Creators"],
+      editorial: {
+          overview: "<p>Kaiber focuses heavily on the intersection of AI and music. It is an animation tool that allows you to upload an audio track, provide a series of text prompts, and generate a music video that actually reacts and pulses to the beat of the audio.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Audio reactivity. The AI engine analyzes the stems of your uploaded track and ties the visual generation to the kick drum, bassline, or vocal hits.</p>",
+          verdict: "<p>If you are an independent musician looking to create a Spotify Canvas or a full YouTube music video on a zero-dollar budget, Kaiber is the definitive tool.</p>",
+          pricing: "<p>The $15/month Pro tier gives you enough credits to generate full-length songs and access to the higher quality rendering models.</p>",
+          comparison: "<p>Pika and Runway are better for realistic generation. Kaiber excels at highly stylized, trippy, continuously morphing animations that fit perfectly with music.</p>",
+          useCaseFocus: "<p>Indie musicians use Kaiber to generate highly engaging, audio-reactive visualizers for their new single releases, boosting engagement on YouTube and Instagram Reels.</p>"
+      }
 },
   {
     id: "krea-pro", name: "Krea Pro", slug: "krea-pro", tagline: "Professional real-time AI.",
@@ -89,7 +117,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["magicstudio", "krea"],
       collections: ["Best AI Image Generators", "Top Design Tools"],
       recommendationTags: ["designer", "creator", "artist"],
-      audiences: ["Designers", "Content Creators"]
+      audiences: ["Designers", "Content Creators"],
+      editorial: {
+          overview: "<p>Krea Pro takes the incredibly fast real-time rendering engine of Krea and packages it for commercial studios. It grants full commercial rights to everything you generate and keeps your prompts strictly private.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Priority Queue and Upscaling. Pro users bypass the often-crowded free server queues and unlock the highest tier of AI upscaling, turning low-res sketches into massive print-ready canvases.</p>",
+          verdict: "<p>If you use Krea's Live Canvas to generate client work, the Pro tier is a legal and practical necessity to ensure speed and copyright compliance.</p>",
+          pricing: "<p>At $30/month, it is a significant investment, but the speed of the real-time workflow often justifies the cost for active designers.</p>",
+          comparison: "<p>The free tier of Krea is a fun toy. Krea Pro transforms it into a reliable, high-resolution workhorse for professional concept art and UI design.</p>",
+          useCaseFocus: "<p>Advertising agencies use Krea Pro's private mode to rapidly ideate campaign visuals for unreleased products, ensuring their ideas aren't leaked to the public generation feed.</p>"
+      }
 },
   {
     id: "remove-bg", name: "Remove.bg", slug: "remove-bg", tagline: "Remove Image Background Automatically.",
@@ -107,7 +142,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["krea-pro", "magicstudio"],
       collections: ["Best AI Image Generators", "Top Design Tools"],
       recommendationTags: ["designer", "creator", "artist"],
-      audiences: ["Designers", "Content Creators"]
+      audiences: ["Designers", "Content Creators"],
+      editorial: {
+          overview: "<p>Remove.bg is a single-purpose utility tool that does one thing flawlessly: it removes the background from images. Using AI trained specifically on edges, hair, and fur, it provides incredibly clean cutouts in roughly 5 seconds.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The API and integrations. You can plug Remove.bg directly into Photoshop, Figma, or your custom e-commerce backend to automate thousands of cutouts instantly.</p>",
+          verdict: "<p>It is the gold standard for automated background removal. While many tools now include this feature, Remove.bg remains the fastest and most accurate standalone option.</p>",
+          pricing: "<p>The subscription model is credit-based (starting around $9/month), which is highly cost-effective if you process product photography in bulk.</p>",
+          comparison: "<p>Canva and Photoroom have built-in background removers, but Remove.bg's API allows developers to build the capability directly into their own software pipelines.</p>",
+          useCaseFocus: "<p>E-commerce managers use the Remove.bg bulk processing tool to instantly standardize the backgrounds of thousands of manufacturer photos before uploading them to Shopify.</p>"
+      }
 },
   {
     id: "lovo", name: "Lovo", slug: "lovo", tagline: "AI Voice Generator & Text to Speech.",
@@ -125,7 +167,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["play-ht", "fliki"],
       collections: ["Best AI Voice Generators", "Audio Production"],
       recommendationTags: ["audio", "podcaster", "creator"],
-      audiences: ["Podcasters", "Content Creators"]
+      audiences: ["Podcasters", "Content Creators"],
+      editorial: {
+          overview: "<p>Lovo is a comprehensive Text-to-Speech platform tailored heavily toward video producers and marketers. Beyond just generating voiceovers, it includes a built-in video editor, allowing you to sync the generated audio with your visuals in one workspace.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Emotion control. Lovo allows you to take a single voice profile and explicitly instruct it to sound happy, sad, angry, or whispering, giving you granular control over the performance.</p>",
+          verdict: "<p>For YouTube creators or corporate trainers who want a simple, all-in-one solution to generate audio and lay it over video clips without using Premiere Pro, Lovo is excellent.</p>",
+          pricing: "<p>The $19/month Basic plan provides a solid entry point, but you'll need the higher tiers for commercial rights and extended generation hours.</p>",
+          comparison: "<p>ElevenLabs is superior for pure voice realism. Lovo is better if you want a built-in timeline editor to manage the audio alongside video assets.</p>",
+          useCaseFocus: "<p>E-learning developers use Lovo to quickly generate engaging, emotionally varied voiceovers for training modules, tweaking pronunciations to handle complex corporate jargon perfectly.</p>"
+      }
 },
   {
     id: "replica-studios", name: "Replica Studios", slug: "replica-studios", tagline: "AI Voice Actors for Games and Film.",
@@ -143,7 +192,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["elevenlabs", "murf"],
       collections: ["Best AI Voice Generators", "Audio Production"],
       recommendationTags: ["audio", "podcaster", "creator"],
-      audiences: ["Podcasters", "Content Creators"]
+      audiences: ["Podcasters", "Content Creators"],
+      editorial: {
+          overview: "<p>Replica Studios is highly specialized for the gaming and animation industries. Instead of focusing on narrators or podcasters, they train their AI on professional voice actors to provide dynamic, emotive character voices.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The Unreal Engine plugin. Replica integrates directly into the game development pipeline, allowing developers to type dialogue and instantly hear an AI character speak it within the game engine.</p>",
+          verdict: "<p>If you are an indie game developer or animator who cannot afford SAG-AFTRA voice actors for early prototyping, Replica is an invaluable development tool.</p>",
+          pricing: "<p>They offer a very flexible Pay-As-You-Go model ($24 minimum), which is perfect for indie developers who only need voice acting during specific sprint cycles.</p>",
+          comparison: "<p>Play.ht is great for reading articles. Replica is specifically engineered for screaming, laughing, and dynamic character dialogue required in video games.</p>",
+          useCaseFocus: "<p>Indie game studios use Replica Studios to generate thousands of lines of 'placeholder' dialogue during development, allowing them to test the game's narrative flow before hiring expensive human actors for the final build.</p>"
+      }
 },
   {
     id: "resemble-ai", name: "Resemble AI", slug: "resemble-ai", tagline: "Generative Voice AI for Enterprise.",
@@ -161,7 +217,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["suno", "lovo"],
       collections: ["Best AI Voice Generators", "Audio Production"],
       recommendationTags: ["audio", "podcaster", "creator"],
-      audiences: ["Podcasters", "Content Creators"]
+      audiences: ["Podcasters", "Content Creators"],
+      editorial: {
+          overview: "<p>Resemble AI targets the enterprise market, focusing on creating highly secure, custom voice clones for large brands. They emphasize ethical AI use, requiring strict consent for cloning and offering robust deployment APIs.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Deepfake detection and security. Resemble builds an invisible watermark into its generated audio, allowing companies to detect if a voice clip was generated by their system, preventing malicious misuse.</p>",
+          verdict: "<p>For large corporations, call centers, or celebrities who want to license their voice securely, Resemble AI provides the necessary legal and technical safeguards.</p>",
+          pricing: "<p>They operate on a Custom Enterprise pricing model. This is not a consumer tool; it requires a sales conversation and a significant budget.</p>",
+          comparison: "<p>ElevenLabs is the mass-market darling. Resemble AI is the secure, compliant, enterprise-grade alternative built for call centers and massive automated deployments.</p>",
+          useCaseFocus: "<p>Major telecommunications companies use Resemble AI to clone the voice of their brand ambassador, deploying that secure AI voice across thousands of interactive customer support phone trees.</p>"
+      }
 },
   {
     id: "cody-ai", name: "Cody AI", slug: "cody-ai", tagline: "The magic AI business assistant.",
@@ -179,7 +242,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["fireflies", "gamma"],
       collections: ["Best Productivity Assistants", "Top AI Assistants"],
       recommendationTags: ["productivity", "student", "founder"],
-      audiences: ["Founders", "Students"]
+      audiences: ["Founders", "Students"],
+      editorial: {
+          overview: "<p>Cody AI (not to be confused with Sourcegraph's coding tool) is an AI assistant builder for businesses. You upload your company's PDFs, employee handbooks, and client histories, and Cody becomes a ChatGPT-like bot that knows your specific business inside and out.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The Slack integration. You can drop your custom-trained Cody bot directly into your company's Slack channel, allowing employees to ask HR or technical questions and get instant, cited answers.</p>",
+          verdict: "<p>If your team spends hours answering repetitive questions or searching through poorly organized Google Drives, Cody AI acts as an instantly accessible company brain.</p>",
+          pricing: "<p>The $29/month Basic plan is very affordable for small teams to start testing custom AI deployments before committing to enterprise solutions.</p>",
+          comparison: "<p>Standard ChatGPT only knows what was on the internet. Cody AI securely learns your private business data and provides answers based entirely on the documents you provide.</p>",
+          useCaseFocus: "<p>HR departments train Cody AI on their massive onboarding manuals and healthcare policies, deploying it to Slack so new hires can ask 'What is the dental copay?' and get an instant answer.</p>"
+      }
 },
   {
     id: "mutable-ai", name: "Mutable AI", slug: "mutable-ai", tagline: "Accelerate software development.",
@@ -197,7 +267,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["tabnine", "amazon-q"],
       collections: ["Top AI Code Editors", "Developer Tools"],
       recommendationTags: ["developer", "engineer", "startup"],
-      audiences: ["Developers", "Founders"]
+      audiences: ["Developers", "Founders"],
+      editorial: {
+          overview: "<p>Mutable AI is a highly specialized coding assistant focused heavily on refactoring and documentation. Instead of just autocompleting your next line of code, it analyzes entire files to suggest architectural improvements or automatically generate comprehensive Wikipedia-style documentation for your codebase.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The Auto-Document feature. It reads your raw, undocumented spaghetti code and generates incredibly clean, formatted markdown documentation explaining exactly what the code does.</p>",
+          verdict: "<p>If you have inherited a messy, undocumented legacy codebase and need to understand it quickly, Mutable AI is a fantastic tool for reverse-engineering and documenting the logic.</p>",
+          pricing: "<p>The $15/month Pro tier is standard for AI coding tools, making it accessible for individual developers tackling large refactoring projects.</p>",
+          comparison: "<p>Copilot is better for writing new code quickly. Mutable AI is vastly superior for documenting, testing, and cleaning up old code.</p>",
+          useCaseFocus: "<p>Engineering managers use Mutable AI to automatically generate and maintain documentation for their microservices, ensuring that tribal knowledge is properly recorded.</p>"
+      }
 },
   {
     id: "blackbox-ai", name: "Blackbox AI", slug: "blackbox-ai", tagline: "Code faster than ever.",
@@ -215,7 +292,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["mutable-ai", "codium-ai"],
       collections: ["Top AI Code Editors", "Developer Tools"],
       recommendationTags: ["developer", "engineer", "startup"],
-      audiences: ["Developers", "Founders"]
+      audiences: ["Developers", "Founders"],
+      editorial: {
+          overview: "<p>Blackbox AI started as an incredibly niche but useful tool: it allowed developers to copy code directly from YouTube videos. It has since expanded into a full-fledged coding assistant with chat capabilities and IDE extensions.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Code extraction. If you are watching a two-hour tutorial on YouTube, you can use the Blackbox extension to literally select the code on the video player and paste it into your editor.</p>",
+          verdict: "<p>If you learn to code primarily by watching YouTube tutorials or taking video-based online courses, Blackbox will save you countless hours of manually typing out examples.</p>",
+          pricing: "<p>At $9.99/month, it is cheaper than Copilot and highly affordable for students or junior developers.</p>",
+          comparison: "<p>Cursor and Copilot are better all-around coding assistants, but neither possesses Blackbox's unique ability to extract raw text from streaming video tutorials.</p>",
+          useCaseFocus: "<p>Computer science students use Blackbox AI to instantly copy snippets of code from their professors' recorded Zoom lectures directly into their local IDEs for testing.</p>"
+      }
 },
   {
     id: "codium-ai", name: "CodiumAI", slug: "codium-ai", tagline: "Meaningful tests for busy devs.",
@@ -233,7 +317,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["phind", "sourcegraph-cody"],
       collections: ["Top AI Code Editors", "Developer Tools"],
       recommendationTags: ["developer", "engineer", "startup"],
-      audiences: ["Developers", "Founders"]
+      audiences: ["Developers", "Founders"],
+      editorial: {
+          overview: "<p>CodiumAI solves one of the most hated tasks in software engineering: writing tests. It analyzes your source code and automatically generates edge-case tests, unit tests, and mock data to ensure your code won't break in production.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Meaningful test generation. It doesn't just write trivial '1+1=2' tests; it actually looks at your logic and attempts to generate inputs that will break your code, exposing edge cases you missed.</p>",
+          verdict: "<p>For professional developers working in strict CI/CD environments where high test coverage is mandatory, CodiumAI is a massive productivity multiplier.</p>",
+          pricing: "<p>The $19/month Teams plan is incredibly cheap considering the amount of developer time it saves during the QA and PR review process.</p>",
+          comparison: "<p>While Copilot can write tests if prompted, CodiumAI is explicitly designed for testing, offering a much more robust, automated approach to code validation.</p>",
+          useCaseFocus: "<p>Senior engineers use CodiumAI's PR Agent to automatically review pull requests from junior developers, immediately flagging missing test coverage and suggesting edge cases.</p>"
+      }
 },
   {
     id: "reply-io", name: "Reply.io", slug: "reply-io", tagline: "AI Sales Engagement Platform.",
@@ -251,7 +342,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["outbound", "anyword"],
       collections: ["Best Marketing Tools", "Sales Automation"],
       recommendationTags: ["marketer", "sales", "business"],
-      audiences: ["Marketers", "Sales Professionals"]
+      audiences: ["Marketers", "Sales Professionals"],
+      editorial: {
+          overview: "<p>Reply.io is a heavy-duty sales engagement platform that has aggressively integrated AI into its core workflow. It doesn't just draft emails; it uses AI to set up multi-channel sequences (Email, LinkedIn, SMS) and can even automatically book meetings on your behalf.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Jason AI. This is their built-in B2B conversational AI that handles the initial back-and-forth with a prospect, answering basic objections and booking the meeting before a human rep ever steps in.</p>",
+          verdict: "<p>If you run a B2B sales team and want to automate the top-of-funnel drudgery of cold outreach and scheduling, Reply.io is a highly capable, enterprise-grade solution.</p>",
+          pricing: "<p>At $60/month, it is a premium B2B tool, but it replaces the need for several disparate software subscriptions (email sender, LinkedIn automation, AI writer).</p>",
+          comparison: "<p>Smartwriter is better for hyper-personalizing a single cold email. Reply.io is better for managing the entire lifecycle of a massive, multi-channel outbound campaign.</p>",
+          useCaseFocus: "<p>Outbound sales agencies use Reply.io to manage dozens of client campaigns simultaneously, relying on Jason AI to automatically handle 'send me more info' responses without manual intervention.</p>"
+      }
 },
   {
     id: "smartwriter", name: "Smartwriter", slug: "smartwriter", tagline: "Personalize cold emails at scale.",
@@ -269,7 +367,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["gong", "surfer"],
       collections: ["Best Marketing Tools", "Sales Automation"],
       recommendationTags: ["marketer", "sales", "business"],
-      audiences: ["Marketers", "Sales Professionals"]
+      audiences: ["Marketers", "Sales Professionals"],
+      editorial: {
+          overview: "<p>Smartwriter is laser-focused on solving the cold start problem in B2B outreach: the icebreaker. It scrapes a prospect's LinkedIn profile, company news, or recent blog posts, and uses AI to generate a highly personalized opening sentence that proves you actually did your research.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Deep personalization at scale. You can feed it a CSV of 500 LinkedIn URLs, and it will generate 500 unique, highly specific compliments about their recent career changes or company awards.</p>",
+          verdict: "<p>If your cold outreach strategy is failing because your emails look like generic spam, Smartwriter is the fastest way to artificially inject 'research' into your pipeline.</p>",
+          pricing: "<p>The $49/month Basic plan is standard for the industry, paying for itself if it lands even one high-ticket B2B meeting.</p>",
+          comparison: "<p>Reply.io is an all-in-one sending platform. Smartwriter focuses specifically on generating the personalized copy, which you then export to your sending tool of choice.</p>",
+          useCaseFocus: "<p>SEO link builders use Smartwriter to rapidly scrape target blogs and generate hyper-personalized outreach emails referencing specific articles, dramatically increasing their backlink placement rates.</p>"
+      }
 },
   {
     id: "outbound", name: "Outbound", slug: "outbound", tagline: "The outbound sales OS.",
@@ -287,7 +392,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["reply-io", "smartwriter"],
       collections: ["Best Marketing Tools", "Sales Automation"],
       recommendationTags: ["marketer", "sales", "business"],
-      audiences: ["Marketers", "Sales Professionals"]
+      audiences: ["Marketers", "Sales Professionals"],
+      editorial: {
+          overview: "<p>Outbound acts as an 'AI SDR' (Sales Development Representative) for your company. It automates the absolute most tedious parts of B2B sales: finding intent data, researching the prospect, drafting the email, and sending the follow-ups.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Autonomous pipeline management. Instead of just giving you a tool to write emails faster, Outbound attempts to take the entire process off your plate, running the campaigns autonomously and only alerting you when a lead is warm.</p>",
+          verdict: "<p>For lean startup founders who need to do outbound sales but cannot afford to hire a full-time junior sales rep, Outbound AI serves as a competent digital employee.</p>",
+          pricing: "<p>At $99/month, it is expensive for a software tool, but incredibly cheap when viewed as a replacement for an entry-level SDR salary.</p>",
+          comparison: "<p>Smartwriter helps you write the email. Outbound wants to find the lead, write the email, send the email, and manage the reply.</p>",
+          useCaseFocus: "<p>Solo founders of B2B SaaS companies use Outbound to maintain a steady stream of cold outreach while they focus 100% of their actual time on product development.</p>"
+      }
 },
   {
     id: "sanebox", name: "SaneBox", slug: "sanebox", tagline: "Take back control of your inbox.",
@@ -305,7 +417,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["read-ai", "fireflies"],
       collections: ["Best Productivity Assistants", "Top AI Assistants"],
       recommendationTags: ["productivity", "student", "founder"],
-      audiences: ["Founders", "Students"]
+      audiences: ["Founders", "Students"],
+      editorial: {
+          overview: "<p>SaneBox is not a new AI tool—it has been using machine learning for over a decade to solve a single problem: email overload. It sits on top of your existing email provider (Gmail, Outlook) and automatically sorts incoming mail into folders like 'SaneLater' (unimportant) and 'SaneNews' (newsletters).</p><p><strong class='text-on-surface'>Where it stands out:</strong> The SaneBlackHole. If you drag an annoying PR pitch into the BlackHole folder, SaneBox ensures you will never see an email from that sender again, without having to mess with complex unsubscribe links.</p>",
+          verdict: "<p>If you wake up to 200 emails every morning and 180 of them are newsletters or automated alerts, SaneBox is the cheapest, most effective way to regain your sanity.</p>",
+          pricing: "<p>At $7/month, it is an absolute no-brainer for any busy professional whose inbox is currently out of control.</p>",
+          comparison: "<p>Superhuman is a luxury email client that costs $30/month. SaneBox works invisibly in the background of your free Gmail account for a fraction of the price.</p>",
+          useCaseFocus: "<p>Busy executives use SaneBox to automatically filter out all internal automated server alerts and newsletters, ensuring that their main inbox only contains emails from actual human beings.</p>"
+      }
 },
   {
     id: "read-ai", name: "Read AI", slug: "read-ai", tagline: "AI generated meeting notes & summaries.",
@@ -323,7 +442,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["tldv", "tome-pro"],
       collections: ["Best Productivity Assistants", "Top AI Assistants"],
       recommendationTags: ["productivity", "student", "founder"],
-      audiences: ["Founders", "Students"]
+      audiences: ["Founders", "Students"],
+      editorial: {
+          overview: "<p>Read AI joins your meetings to take notes, but it goes much further than simple transcription. It actively analyzes the 'vibe' of the room, providing metrics on participant engagement, sentiment, and who is dominating the conversation.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Engagement Scores. Read AI will tell you if your team actually paid attention during your presentation or if their engagement plummeted halfway through the slide deck.</p>",
+          verdict: "<p>For managers trying to run more efficient remote meetings, Read AI provides hard data on meeting performance rather than just a text transcript.</p>",
+          pricing: "<p>The $15/month Pro tier is standard for the category, unlocking the deeper analytics and longer recording times needed for professional use.</p>",
+          comparison: "<p>Fathom provides excellent, free summaries. Read AI provides deeper, data-driven insights into the actual psychological dynamics of the meeting.</p>",
+          useCaseFocus: "<p>Sales managers use Read AI to review discovery calls, checking the 'sentiment' score to see exactly which pricing argument caused the prospect to disengage.</p>"
+      }
 },
   {
     id: "magicstudio", name: "Magic Studio", slug: "magicstudio", tagline: "The AI design tool for everyone.",
@@ -341,7 +467,14 @@ export const extraTools2: AITool[] = [
       similarTools: ["stable-diffusion", "canva-magic-media"],
       collections: ["Best AI Image Generators", "Top Design Tools"],
       recommendationTags: ["designer", "creator", "artist"],
-      audiences: ["Designers", "Content Creators"]
+      audiences: ["Designers", "Content Creators"],
+      editorial: {
+          overview: "<p>Magic Studio is a collection of lightweight, incredibly simple AI design tools. It doesn't try to be Photoshop; it tries to be the absolute fastest way to remove a background, erase a photobomber, or generate a professional profile picture.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The Magic Eraser. You simply brush over a trash can in the background of your photo, and the AI seamlessly removes it and reconstructs the background behind it.</p>",
+          verdict: "<p>If you don't know how to use complex design software but constantly need to clean up photos for social media or presentations, Magic Studio is the perfect toolkit.</p>",
+          pricing: "<p>At $9.99/month, it is very affordable for casual creators or social media managers who need fast, reliable photo editing utilities.</p>",
+          comparison: "<p>Midjourney creates art from scratch. Magic Studio fixes the art (or photos) you already have with zero learning curve.</p>",
+          useCaseFocus: "<p>Real estate agents use Magic Studio on their phones to quickly erase ugly power lines or messy cars from the background of property listing photos before posting them online.</p>"
+      }
 },
   {
     id: "elevenlabs-dubbing", name: "ElevenLabs Dubbing", slug: "elevenlabs-dubbing", tagline: "Localize your videos automatically.",
@@ -359,6 +492,13 @@ export const extraTools2: AITool[] = [
       similarTools: ["luma", "suno"],
       collections: ["Best AI Voice Generators", "Audio Production"],
       recommendationTags: ["audio", "podcaster", "creator"],
-      audiences: ["Podcasters", "Content Creators"]
+      audiences: ["Podcasters", "Content Creators"],
+      editorial: {
+          overview: "<p>ElevenLabs Dubbing is a specialized tool from the industry leader in voice AI. You upload a video in English, and it automatically translates and dubs it into 29 different languages—critically, keeping the original speaker's exact voice, tone, and emotional delivery.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Voice preservation. If a YouTuber screams in excitement in English, the dubbed Spanish version will feature that exact same voice screaming in Spanish.</p>",
+          verdict: "<p>For YouTube creators, educators, and marketers looking to expand into international markets without hiring expensive translation agencies, this tool is an absolute game-changer.</p>",
+          pricing: "<p>The $22/month Creator plan is heavily reliant on character limits, so frequent dubbing of long-form videos will push you into the higher, more expensive enterprise tiers quickly.</p>",
+          comparison: "<p>Standard translation tools sound like robots. ElevenLabs sounds exactly like you, just speaking a language you don't actually know.</p>",
+          useCaseFocus: "<p>Large YouTube creators use ElevenLabs Dubbing to automatically translate their back catalog of viral videos into Spanish and Hindi, instantly opening up massive new revenue streams.</p>"
+      }
 }
 ];

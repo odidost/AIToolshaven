@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import React from 'react';
 import { AITool } from '@/lib/types/tool';
+import { ToolImage } from "@/components/shared/ToolImage";
 
 interface ProsConsProps {
     mainTool: AITool;
@@ -19,7 +19,7 @@ export function ProsCons({ mainTool, compareTool }: ProsConsProps) {
                 {/* Main Tool */}
                 <div className="bg-surface rounded-[24px] overflow-hidden border border-border shadow-sm">
                     <div className="p-6 border-b border-border bg-surface-secondary/30 flex items-center gap-3">
-                        <Image width={100} height={100} src={mainTool.logoUrl} alt={mainTool.name} className="w-10 h-10 rounded-xl border border-border bg-surface object-contain" />
+                        <ToolImage tool={mainTool} type="logo" className="w-10 h-10 rounded-xl border border-border bg-surface object-contain" />
                         <h3 className="text-xl font-bold">{mainTool.name}</h3>
                     </div>
                     <div className="p-6 md:p-8">
@@ -58,7 +58,7 @@ export function ProsCons({ mainTool, compareTool }: ProsConsProps) {
                 {/* Compare Tool */}
                 <div className="bg-surface rounded-[24px] overflow-hidden border border-border shadow-sm">
                     <div className="p-6 border-b border-border bg-surface-secondary/30 flex items-center gap-3">
-                        <Image width={100} height={100} src={compareTool.logoUrl} alt={compareTool.name} className="w-10 h-10 rounded-xl border border-border bg-surface object-contain" />
+                        <ToolImage tool={compareTool} type="logo" className="w-10 h-10 rounded-xl border border-border bg-surface object-contain" />
                         <h3 className="text-xl font-bold">{compareTool.name}</h3>
                     </div>
                     <div className="p-6 md:p-8">

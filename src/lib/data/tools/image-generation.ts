@@ -5,8 +5,8 @@ export const imageGenerationTools: AITool[] = [
         id: "midjourney",
         name: "Midjourney",
         slug: "midjourney",
-        tagline: "High-quality AI image generation via Discord.",
-        description: "Midjourney is an independent research lab producing an artificial intelligence program that creates images from textual descriptions, similar to OpenAI's DALL-E and Stable Diffusion.",
+        tagline: "Unrivaled artistic quality and photorealism",
+        description: "The gold standard for creative professionals. Midjourney consistently produces the most breathtaking, stylized, and photorealistic imagery available today, making it indispensable for concept artists, designers, and marketers demanding premium visual assets.",
         screenshotUrl: "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?auto=format&fit=crop&q=80&w=800",
         logoUrl: "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?auto=format&fit=crop&q=80&w=200",
@@ -31,14 +31,21 @@ export const imageGenerationTools: AITool[] = [
         similarTools: ["photoroom", "magnific"],
         collections: ["Best AI Image Generators", "Top Design Tools"],
         recommendationTags: ["designer", "creator", "artist"],
-        audiences: ["Designers", "Content Creators"]
+        audiences: ["Designers", "Content Creators"],
+        editorial: {
+            overview: "<p>Midjourney requires a Discord account to use, which is a major point of friction for some, but the results are undeniably worth it. It is widely considered the absolute best AI for highly stylized, artistic, and photorealistic imagery.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The sheer aesthetic quality. Unlike other generators that look distinctly 'AI-generated', Midjourney can convincingly mimic specific film stocks, lenses, and artistic mediums.</p>",
+            verdict: "<p>If you care about visual quality above all else, Midjourney is the only choice. It has a steeper learning curve than DALL-E 3, but the ceiling for what you can create is significantly higher.</p>",
+            pricing: "<p>The $10/month Basic plan is enough to learn the ropes, but anyone using it professionally will need the $30/month Standard plan for unlimited relaxed generations.</p>",
+            comparison: "<p>DALL-E 3 is much better at understanding complex prompts and rendering text, but Midjourney absolutely crushes it in terms of raw artistic beauty and realism.</p>",
+            useCaseFocus: "<p>Designers and concept artists use Midjourney to rapidly generate mood boards, concept art, and high-quality stock imagery that looks custom-made.</p>"
+        }
     },
     {
         id: "dall-e-3",
         name: "DALL-E 3",
         slug: "dall-e-3",
-        tagline: "Easily translate your ideas into exceptionally accurate images.",
-        description: "DALL-E 3 understands significantly more nuance and detail than our previous systems, allowing you to easily translate your ideas into exceptionally accurate images.",
+        tagline: "The most intuitive image generator, natively built into ChatGPT",
+        description: "DALL-E 3 democratizes AI art by seamlessly integrating directly into the ChatGPT interface. It excels at following complex, multi-layered prompts and accurately rendering legible text—tasks where other heavyweights often stumble.",
         screenshotUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
         logoUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=200",
@@ -63,14 +70,21 @@ export const imageGenerationTools: AITool[] = [
         similarTools: ["magnific", "midjourney"],
         collections: ["Best AI Image Generators", "Top Design Tools"],
         recommendationTags: ["designer", "creator", "artist"],
-        audiences: ["Designers", "Content Creators"]
+        audiences: ["Designers", "Content Creators"],
+        editorial: {
+            overview: "<p>DALL-E 3's superpower is its integration with ChatGPT. Instead of learning complex prompting syntax, you just converse with ChatGPT to refine your image. It is also one of the few models that can reliably generate legible text within an image.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Prompt adherence. If you ask for a very specific scene with exact character placements, DALL-E 3 will follow your instructions much more closely than Midjourney.</p>",
+            verdict: "<p>DALL-E 3 is the most accessible image generator available. Since it's included with ChatGPT Plus, it's a no-brainer for marketers and casual creators who need specific, cartoonish, or vector-style illustrations.</p>",
+            pricing: "<p>It's bundled with ChatGPT Plus ($20/month), making it an incredible value since you get a world-class text model and image generator for one price.</p>",
+            comparison: "<p>Midjourney creates better art, but DALL-E 3 is better at following instructions and generating text. DALL-E's outputs often have a noticeable 'AI sheen' to them.</p>",
+            useCaseFocus: "<p>Marketers use DALL-E 3 to quickly generate blog headers, social media graphics, and vector illustrations without leaving their ChatGPT workflow.</p>"
+        }
     },
     {
         id: "stable-diffusion",
         name: "Stable Diffusion",
         slug: "stable-diffusion",
-        tagline: "Open-source image generation model.",
-        description: "Stable Diffusion is a deep learning, text-to-image model that generates detailed images conditioned on text descriptions.",
+        tagline: "The open-source powerhouse for ultimate creative control",
+        description: "For creators who refuse to be boxed in by commercial guardrails, Stable Diffusion offers unparalleled control. Run it locally for total privacy, and leverage advanced tools like ControlNet to dictate exact poses, compositions, and lighting.",
         screenshotUrl: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=800",
         logoUrl: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=200",
@@ -95,7 +109,14 @@ export const imageGenerationTools: AITool[] = [
         similarTools: ["dall-e-3", "canva-magic-media"],
         collections: ["Best AI Image Generators", "Top Design Tools"],
         recommendationTags: ["designer", "creator", "artist"],
-        audiences: ["Designers", "Content Creators"]
+        audiences: ["Designers", "Content Creators"],
+        editorial: {
+            overview: "<p>Stable Diffusion is the open-source alternative to the walled gardens of Midjourney and OpenAI. It is infinitely customizable, provided you have the technical knowledge (and the GPU power) to run it locally.</p><p><strong class='text-on-surface'>Where it stands out:</strong> ControlNet integration. Stable Diffusion allows you to dictate the exact pose of a character or the precise composition of a scene using reference images.</p>",
+            verdict: "<p>If you are a developer or a technical artist who needs absolute pixel-perfect control over your generations, Stable Diffusion is the industry standard. It is not for the faint of heart.</p>",
+            pricing: "<p>It's completely free to run locally, assuming you already own a high-end graphics card. Cloud-hosted versions vary in price.</p>",
+            comparison: "<p>Midjourney and DALL-E are easier to use, but Stable Diffusion offers a level of precise control (like inpainting specific details or forcing specific poses) that the others cannot match.</p>",
+            useCaseFocus: "<p>Game developers and professional artists use Stable Diffusion (via tools like Automatic1111 or ComfyUI) to build production-ready assets with exact specifications.</p>"
+        }
     },
     {
         id: "canva-magic-media",
@@ -127,7 +148,14 @@ export const imageGenerationTools: AITool[] = [
         similarTools: ["midjourney", "dall-e-3"],
         collections: ["Best AI Image Generators", "Top Design Tools"],
         recommendationTags: ["designer", "creator", "artist"],
-        audiences: ["Designers", "Content Creators"]
+        audiences: ["Designers", "Content Creators"],
+        editorial: {
+            overview: "<p>Canva Magic Media brings AI generation directly into the world's most popular design tool. It removes the need to jump between Discord or ChatGPT and your actual design canvas.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Workflow integration. Generate an image, instantly remove its background, and drop it into a social media template without ever switching tabs.</p>",
+            verdict: "<p>For social media managers and marketers, this is a massive timesaver. The underlying models aren't quite as powerful as Midjourney, but the convenience factor is unbeatable.</p>",
+            pricing: "<p>Included with Canva Pro ($14.99/mo), which makes it a phenomenal value considering everything else Canva Pro offers.</p>",
+            comparison: "<p>It won't replace Midjourney for high-end concept art, but it completely eliminates the need for stock photo subscriptions for day-to-day marketing tasks.</p>",
+            useCaseFocus: "<p>Social media managers use Magic Media to generate bespoke background textures, vector graphics, and b-roll style images directly inside their post templates.</p>"
+        }
     },
     {
         id: "leonardo-ai",
@@ -159,7 +187,14 @@ export const imageGenerationTools: AITool[] = [
         similarTools: ["canva-magic-media", "krea-pro"],
         collections: ["Best AI Image Generators", "Top Design Tools"],
         recommendationTags: ["designer", "creator", "artist"],
-        audiences: ["Designers", "Content Creators"]
+        audiences: ["Designers", "Content Creators"],
+        editorial: {
+            overview: "<p>Leonardo.ai strikes a brilliant balance: it offers the deep control of Stable Diffusion but wraps it in an incredibly polished, accessible web interface. It has become a darling of the indie game development community.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Custom model training. You can upload a few images of your specific character or art style, and Leonardo will learn to generate endless variations in that exact style.</p>",
+            verdict: "<p>Leonardo is the perfect middle ground between the ease of Midjourney and the technical depth of Stable Diffusion. It's a powerhouse for creating consistent assets.</p>",
+            pricing: "<p>The free tier is generous (resetting daily), and the $10/mo Apprentice plan is very competitive for indie creators.</p>",
+            comparison: "<p>Unlike Midjourney, which struggles to keep character designs consistent across multiple prompts, Leonardo's custom models make consistency remarkably easy.</p>",
+            useCaseFocus: "<p>Indie game developers use Leonardo to rapidly generate hundreds of consistent item icons, character portraits, and background plates in a unified art style.</p>"
+        }
     },
     {
         id: "canva",
@@ -191,6 +226,13 @@ export const imageGenerationTools: AITool[] = [
         similarTools: ["midjourney"],
         collections: ["Top Design Tools", "Marketing Essentials"],
         recommendationTags: ["designer", "marketer", "creator"],
-        audiences: ["Designers", "Marketers", "Creators"]
+        audiences: ["Designers", "Marketers", "Creators"],
+        editorial: {
+            overview: "<p>Canva has transformed from a simple template editor into a full-fledged AI design suite. Beyond just generating images, its 'Magic Studio' suite includes AI presentation builders, automatic resizing, and copy generation.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The 'Magic Switch' feature is incredible. You can take a presentation, hit a button, and the AI will reformat it into a blog post, an email, or a series of social media posts automatically.</p>",
+            verdict: "<p>Canva is arguably the most essential tool for any modern marketer or solopreneur. The AI features aren't just gimmicks; they actively reduce the time spent on tedious design formatting.</p>",
+            pricing: "<p>At $15/month, Canva Pro provides more practical, day-to-day value for a business than almost any other single subscription.</p>",
+            comparison: "<p>Adobe Express is catching up with Firefly integration, but Canva remains the king of accessible, template-driven design with AI sprinkled exactly where you need it.</p>",
+            useCaseFocus: "<p>Founders and marketers use Canva to maintain a professional brand presence across multiple platforms without needing to hire a full-time graphic designer.</p>"
+        }
     }
 ];

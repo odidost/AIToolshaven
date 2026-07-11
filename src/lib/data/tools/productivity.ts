@@ -31,7 +31,14 @@ export const productivityTools: AITool[] = [
         similarTools: ["superhuman", "mem-ai"],
         collections: ["Best Productivity Assistants", "Top AI Assistants"],
         recommendationTags: ["productivity", "student", "founder"],
-        audiences: ["Founders", "Students"]
+        audiences: ["Founders", "Students"],
+        editorial: {
+            overview: "<p>Notion AI isn't a standalone chatbot; it's an intelligence layer built directly into your existing wikis and databases. It thrives on context, using the documents you've already written to generate highly relevant insights.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The Q&A feature. Instead of searching through dozens of onboarding docs, you can just ask Notion AI, 'What is our policy on remote work?' and it will instantly extract the answer from your company wiki.</p>",
+            verdict: "<p>If your team already uses Notion, adding the AI tier is a no-brainer. It drastically reduces the time spent organizing, summarizing, and searching for information.</p>",
+            pricing: "<p>At $10/month per user as an add-on, it's cheaper than a standalone ChatGPT Plus subscription, though it relies heavily on having a well-populated workspace to be truly useful.</p>",
+            comparison: "<p>Compared to Mem, Notion is much more structured. You still have to organize your pages and databases manually, whereas Mem attempts to organize everything automatically via tags.</p>",
+            useCaseFocus: "<p>Founders and project managers use Notion AI to automatically generate meeting action items, summarize complex project specs, and draft standardized company documentation.</p>"
+        }
     },
     {
         id: "mem-ai",
@@ -63,7 +70,14 @@ export const productivityTools: AITool[] = [
         similarTools: ["notion-ai", "otter-ai"],
         collections: ["Best Productivity Assistants", "Top AI Assistants"],
         recommendationTags: ["productivity", "student", "founder"],
-        audiences: ["Founders", "Students"]
+        audiences: ["Founders", "Students"],
+        editorial: {
+            overview: "<p>Mem is an AI-native workspace designed for people who hate organizing. Instead of folders and rigid hierarchies, Mem uses AI to connect your notes, emails, and calendar events automatically.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The 'Smart Search' and automatic tagging. You can dump a raw brain dump into Mem, and it will resurface it exactly when you are writing about a related topic weeks later.</p>",
+            verdict: "<p>For solo founders, researchers, and writers who struggle with rigid organization systems, Mem feels like magic. It is essentially a self-organizing second brain.</p>",
+            pricing: "<p>The $14.99/month Mem X plan is required to unlock the core AI features that make the app worthwhile, placing it in the premium tier of note-taking apps.</p>",
+            comparison: "<p>Notion is better for structured team collaboration and databases. Mem is vastly superior for rapid, unstructured personal knowledge management.</p>",
+            useCaseFocus: "<p>Researchers and students use Mem to rapidly capture raw notes and let the AI surface hidden connections between different lectures and reading materials.</p>"
+        }
     },
     {
         id: "otter-ai",
@@ -95,7 +109,14 @@ export const productivityTools: AITool[] = [
         similarTools: ["superhuman", "notion-ai"],
         collections: ["Best Productivity Assistants", "Top AI Assistants"],
         recommendationTags: ["productivity", "student", "founder"],
-        audiences: ["Founders", "Students"]
+        audiences: ["Founders", "Students"],
+        editorial: {
+            overview: "<p>Otter.ai was one of the first major AI transcription tools and remains an industry standard. It joins your Zoom, Meet, or Teams calls automatically, transcribes the conversation, and highlights key takeaways.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Live transcription. You can actively highlight, comment on, and share snippets of the transcript while the meeting is still happening.</p>",
+            verdict: "<p>If you spend more than three hours a week in meetings, Otter is an essential utility. It completely eliminates the need for manual note-taking.</p>",
+            pricing: "<p>The free tier offers decent baseline transcription, but the $16.99/month Pro tier is necessary for importing audio files and advanced search capabilities.</p>",
+            comparison: "<p>tl;dv offers better video clipping and CRM integrations for sales teams, but Otter's core transcription engine and collaborative live notes feel slightly more robust for general internal meetings.</p>",
+            useCaseFocus: "<p>Product managers use Otter to record user interviews, allowing them to search across dozens of calls for specific feature requests and instantly pull exact quotes.</p>"
+        }
     },
     {
         id: "zapier-central",
@@ -127,7 +148,14 @@ export const productivityTools: AITool[] = [
         similarTools: ["cody-ai", "sanebox"],
         collections: ["Best Productivity Assistants", "Top AI Assistants"],
         recommendationTags: ["productivity", "student", "founder"],
-        audiences: ["Founders", "Students"]
+        audiences: ["Founders", "Students"],
+        editorial: {
+            overview: "<p>Zapier Central bridges the gap between chatbots and actual automation. Instead of just generating text, you can teach bots to take action across thousands of apps using plain English instructions.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Data-driven triggers. You can tell a bot, 'Whenever a new high-priority lead is added to Salesforce, draft a personalized email and send me a Slack message to approve it.'</p>",
+            verdict: "<p>This is the future of no-code automation. It democratizes complex API integrations, allowing non-technical founders to build powerful operational workflows.</p>",
+            pricing: "<p>It ties into Zapier's existing task limits, meaning costs scale directly with how much automation you actually use. It can get expensive for high-volume tasks.</p>",
+            comparison: "<p>Traditional Zapier requires mapping out rigid step-by-step logic. Central allows for much more flexible, conversational workflows that can adapt to the context of the data.</p>",
+            useCaseFocus: "<p>Operations managers use Zapier Central to build custom AI assistants that triage incoming customer support tickets, categorized them, and draft initial responses automatically.</p>"
+        }
     },
     {
         id: "tldv",
@@ -159,7 +187,14 @@ export const productivityTools: AITool[] = [
         similarTools: ["beautiful-ai", "fathom"],
         collections: ["Best Productivity Assistants", "Top AI Assistants"],
         recommendationTags: ["productivity", "student", "founder"],
-        audiences: ["Founders", "Students"]
+        audiences: ["Founders", "Students"],
+        editorial: {
+            overview: "<p>tl;dv focuses heavily on the video aspect of meeting recordings. It doesn't just transcribe; it creates highly shareable, bite-sized video clips of crucial meeting moments to share with async teams.</p><p><strong class='text-on-surface'>Where it stands out:</strong> CRM integration. tl;dv automatically logs meeting summaries, timestamps, and video clips directly into Salesforce or HubSpot, saving sales reps hours of data entry.</p>",
+            verdict: "<p>For sales, customer success, and user research teams, tl;dv is arguably the best meeting recorder on the market due to its focus on clipping and CRM syncing.</p>",
+            pricing: "<p>The free tier is surprisingly generous for basic recording, but the Pro tier ($25/mo) is required for downloading clips and the crucial CRM integrations.</p>",
+            comparison: "<p>While Otter is slightly better for pure text transcription and live collaboration, tl;dv is far superior for creating video highlights and pushing data into sales pipelines.</p>",
+            useCaseFocus: "<p>Sales leaders use tl;dv to build 'highlight reels' of successful pitch calls to train new hires, and to quickly review specific moments where prospects raised objections.</p>"
+        }
     },
     {
         id: "clickup",
@@ -191,6 +226,13 @@ export const productivityTools: AITool[] = [
         similarTools: ["notion-ai", "taskade"],
         collections: ["Best Productivity Assistants"],
         recommendationTags: ["productivity", "founder"],
-        audiences: ["Agencies", "Founders"]
+        audiences: ["Agencies", "Founders"],
+        editorial: {
+            overview: "<p>ClickUp is an incredibly comprehensive project management tool that has aggressively integrated AI (ClickUp Brain) into every level of its hierarchy, from tasks to docs to company-wide search.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Deep contextual awareness. ClickUp Brain can generate daily standup summaries by analyzing what tasks a team member completed, what they commented on, and what docs they edited.</p>",
+            verdict: "<p>If you want a single tool to replace Jira, Asana, and Google Docs, ClickUp is the most powerful option. The AI features are just the cherry on top of an already massive feature set.</p>",
+            pricing: "<p>The core platform is very affordable, but the AI features require a paid add-on ($5/user/month), which is still cheaper than most standalone AI tools.</p>",
+            comparison: "<p>ClickUp is significantly more complex and feature-dense than Notion. While Notion is a wiki that can do project management, ClickUp is a hardcore project management tool that also does wikis.</p>",
+            useCaseFocus: "<p>Agencies use ClickUp Brain to instantly generate project briefs from scattered client emails, summarize long comment threads on overdue tasks, and automate status updates.</p>"
+        }
     }
 ];

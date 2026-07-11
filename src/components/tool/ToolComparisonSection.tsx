@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { AITool } from "@/lib/types/tool";
+import { ToolImage } from "@/components/shared/ToolImage";
 
 interface ToolComparisonSectionProps {
     tool: AITool;
@@ -25,10 +26,13 @@ export default function ToolComparisonSection({
                         <h2 className="mt-4 text-3xl font-bold tracking-tight text-on-surface">
                             Compare {tool.name} with Alternatives
                         </h2>
-                        <p className="mt-3 max-w-2xl text-lg leading-relaxed text-on-surface-variant">
-                            Discover how {tool.name} compares with other popular AI tools
-                            based on pricing, ratings, features, and ideal use cases.
-                        </p>
+                        {tool.editorial?.comparison ? (
+                            <div className="mt-3 max-w-2xl text-lg leading-relaxed text-on-surface-variant" dangerouslySetInnerHTML={{ __html: tool.editorial.comparison }} />
+                        ) : (
+                            <p className="mt-3 max-w-2xl text-lg leading-relaxed text-on-surface-variant">
+                                Still not sure if {tool.name} is the right fit? Here's how it stacks up against the closest alternatives on the market.
+                            </p>
+                        )}
                     </div>
                 </div>
 
@@ -45,9 +49,9 @@ export default function ToolComparisonSection({
                             )}
 
                             <div className="flex items-center justify-between mb-6 relative z-10">
-                                <img
-                                    src={comparisonTool.logoUrl}
-                                    alt={comparisonTool.name}
+                                <ToolImage
+                                    tool={comparisonTool}
+                                    type="logo"
                                     className="h-14 w-14 rounded-2xl border border-border/50 object-cover bg-white shadow-xs group-hover:scale-105 transition-transform"
                                 />
 
@@ -62,7 +66,7 @@ export default function ToolComparisonSection({
                             </h3>
 
                             <p className="text-sm leading-relaxed text-on-surface-variant mb-8 relative z-10">
-                                See how {tool.name} compares with {comparisonTool.name}. Discover which tool offers the best features and value for your specific needs.
+                                If you're debating between {tool.name} and {comparisonTool.name}, here is the breakdown of which one actually performs better for specific workflows.
                             </p>
 
                             <Link

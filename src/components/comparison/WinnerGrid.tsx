@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import React from 'react';
 import { AITool } from '@/lib/types/tool';
+import { ToolImage } from "@/components/shared/ToolImage";
 
 interface WinnerGridProps {
     mainTool: AITool;
@@ -43,13 +43,13 @@ export function WinnerGrid({ mainTool, compareTool }: WinnerGridProps) {
                             <div className="flex flex-col items-center gap-3 w-full">
                                 <div className="flex items-center gap-3 w-full justify-center p-2 rounded-xl bg-primary/5 border border-primary/10 relative overflow-hidden">
                                     <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
-                                    <Image width={100} height={100} src={winner.logoUrl} alt={winner.name} className="w-6 h-6 rounded-md object-contain" />
+                                    <ToolImage tool={winner} type="logo" className="w-6 h-6 rounded-md object-contain" />
                                     <span className="font-bold text-sm text-on-surface">{winner.name}</span>
                                     <span className="material-symbols-outlined text-[16px] text-primary ml-auto">verified</span>
                                 </div>
 
                                 <div className="flex items-center gap-3 w-full justify-center p-2 rounded-xl opacity-60">
-                                    <Image width={100} height={100} src={loser.logoUrl} alt={loser.name} className="w-6 h-6 rounded-md object-contain grayscale" />
+                                    <ToolImage tool={loser} type="logo" className="w-6 h-6 rounded-md object-contain grayscale" />
                                     <span className="font-medium text-sm text-on-surface-variant">{loser.name}</span>
                                 </div>
                             </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ContentContainer } from "@/components/layout/ContentContainer";
 
 export const metadata: Metadata = {
   title: "Contact Us | AIToolsHaven",
@@ -15,7 +16,7 @@ const reasons = [
 
 export default function ContactPage() {
   return (
-    <div className="container mx-auto px-4 py-16 max-w-4xl">
+    <ContentContainer className="py-16 md:py-24">
 
       {/* Header */}
       <div className="mb-16 text-center">
@@ -72,6 +73,6 @@ export default function ContactPage() {
         </a>
         <p className="text-xs text-slate-400 mt-6">We typically respond within 1-2 business days.</p>
       </div>
-    </div>
+    </ContentContainer>
   );
 }

@@ -10,10 +10,10 @@ export const aiChatbots: AITool[] = [
 
         company: "OpenAI",
 
-        tagline: "The world's leading AI assistant",
+        tagline: "The undisputed industry standard for generative AI",
 
         description:
-            "ChatGPT is a conversational AI assistant from OpenAI that helps users write, code, research, brainstorm ideas, analyze files, generate images, and automate everyday work.",
+            "ChatGPT is the flagship AI assistant from OpenAI. It remains our top overall pick for its unmatched versatility, serving as a reliable partner for everything from drafting complex Python scripts to summarizing dense market research.",
 
         category: "c1",
 
@@ -202,15 +202,22 @@ export const aiChatbots: AITool[] = [
         similarTools: ["copy-ai", "perplexity"],
         collections: ["Best AI Writing Tools", "Top Productivity Assistants"],
         recommendationTags: ["writer", "marketer", "business"],
-        audiences: ["Marketers", "Writers"]
+        audiences: ["Marketers", "Writers"],
+        editorial: {
+            overview: "<p>ChatGPT remains the undisputed heavyweight champion of AI chatbots. While competitors have caught up in specific niches, ChatGPT's sheer breadth of capabilities—from running Python code locally to generating images to browsing the live web—makes it the most versatile tool on the market.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Custom GPTs. The ability to upload your own knowledge base and instruct the AI to behave in a specific way allows you to create highly specialized workflows that you can save and reuse indefinitely.</p>",
+            verdict: "<p>If you are only going to pay for one AI subscription, ChatGPT Plus is the safest and most comprehensive choice. It is the Swiss Army knife of generative AI.</p>",
+            pricing: "<p>The free tier is perfectly adequate for casual queries. The $20/month Plus tier is arguably the best value software subscription in the world right now, granting access to the latest flagship models.</p>",
+            comparison: "<p>Claude is widely considered a better, more natural writer, and Gemini integrates better with Google Docs, but ChatGPT's coding, reasoning, and Custom GPTs keep it in the top spot overall.</p>",
+            useCaseFocus: "<p>Founders use ChatGPT to rapidly prototype code, summarize long PDF market reports, and draft foundational business documents all within a single chat interface.</p>"
+        }
     },
     {
         id: "claude",
         name: "Claude",
         slug: "claude",
         company: "Anthropic",
-        tagline: "Constitutional AI designed to be helpful, harmless, and honest",
-        description: "Claude is a next-generation AI assistant built by Anthropic. Known for its advanced reasoning, coding capabilities, and large context window, Claude helps with writing, analysis, coding, and mathematical reasoning.",
+        tagline: "The premier AI assistant for nuanced writing and complex coding",
+        description: "Anthropic's flagship assistant has quietly dethroned ChatGPT for pure writing tasks. Claude shines in long-form content generation and complex coding challenges, offering an incredibly natural conversational tone that rarely feels machine-generated.",
         category: "c1",
         priceModel: "Freemium",
         price: "From $0",
@@ -292,15 +299,22 @@ export const aiChatbots: AITool[] = [
         similarTools: ["novelai", "quillbot"],
         collections: ["Best AI Writing Tools", "Top Productivity Assistants"],
         recommendationTags: ["writer", "marketer", "business"],
-        audiences: ["Marketers", "Writers"]
+        audiences: ["Marketers", "Writers"],
+        editorial: {
+            overview: "<p>Claude 3.5 Sonnet has quietly become the preferred tool for power users, developers, and professional writers. It lacks the bells and whistles of ChatGPT (like image generation) but makes up for it with vastly superior reasoning and a much more natural, less 'AI-sounding' writing style.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Artifacts. Claude doesn't just output code or text in a chat bubble; it opens a side panel where you can instantly preview the website it just coded or the SVG graphic it just generated.</p>",
+            verdict: "<p>For coding and nuanced writing, Claude is currently the best model available. It feels less like a chatbot and more like a highly competent, intelligent collaborator.</p>",
+            pricing: "<p>The $20/month Pro tier is necessary if you use it daily, as the free tier imposes strict message limits very quickly on the Sonnet model.</p>",
+            comparison: "<p>Compared to ChatGPT, Claude's writing requires far less editing to sound human. It is also significantly better at understanding and analyzing massive documents thanks to its huge context window.</p>",
+            useCaseFocus: "<p>Senior software engineers use Claude 3.5 Sonnet to refactor complex legacy codebases and instantly prototype interactive web components using the Artifacts UI.</p>"
+        }
     },
     {
         id: "gemini",
         name: "Gemini",
         slug: "gemini",
         company: "Google",
-        tagline: "Google's most capable AI model family",
-        description: "Gemini is Google's multimodal AI assistant. Built from the ground up to be multimodal, it can seamlessly generalize and understand, operate across, and combine different kinds of information including text, code, images, audio, and video.",
+        tagline: "The most deeply integrated AI for Google Workspace power users",
+        description: "Gemini is Google's massive, multimodal response to OpenAI. Built from the ground up to analyze text, video, and audio simultaneously, it excels at processing massive datasets and integrates flawlessly with Docs, Drive, and Gmail.",
         category: "c1",
         priceModel: "Freemium",
         price: "From $0",
@@ -365,6 +379,13 @@ export const aiChatbots: AITool[] = [
         similarTools: ["grok", "chatgpt"],
         collections: ["Best AI Writing Tools", "Top Productivity Assistants"],
         recommendationTags: ["writer", "marketer", "business"],
-        audiences: ["Marketers", "Writers"]
+        audiences: ["Marketers", "Writers"],
+        editorial: {
+            overview: "<p>Gemini is Google's massive, multimodal response to OpenAI. It is deeply integrated into the Google ecosystem, making it the default choice for anyone living inside Google Docs, Drive, and Gmail.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The massive 1M+ token context window. You can upload entire books, hour-long video files, or massive code repositories, and Gemini will analyze the entire thing at once without losing context.</p>",
+            verdict: "<p>If you are a heavy Google Workspace user or need to analyze extremely large datasets (like 50-page PDFs or hour-long videos), Gemini Advanced is incredibly powerful.</p>",
+            pricing: "<p>The $20/month Advanced tier is bundled with 2TB of Google One cloud storage, making it the most cost-effective AI subscription if you already pay for Google Drive space.</p>",
+            comparison: "<p>Its writing and coding capabilities occasionally fall slightly behind Claude and ChatGPT, but its native ability to watch and understand uploaded video files is entirely unique.</p>",
+            useCaseFocus: "<p>Researchers and analysts use Gemini's massive context window to upload dozens of dense financial reports at once and ask comparative questions across all the documents simultaneously.</p>"
+        }
     }
 ];

@@ -31,7 +31,14 @@ export const codingAssistantTools: AITool[] = [
         similarTools: ["github-copilot", "v0"],
         collections: ["Top AI Code Editors", "Developer Tools"],
         recommendationTags: ["developer", "engineer", "startup"],
-        audiences: ["Developers", "Founders"]
+        audiences: ["Developers", "Founders"],
+        editorial: {
+            overview: "<p>Cursor is not just an extension; it's a dedicated fork of VS Code built from the ground up for AI-assisted programming. It represents the current bleeding edge of how code is written.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Codebase indexing. Cursor doesn't just look at the file you're working on; it indexes your entire repository, allowing you to ask questions like 'Where is the authentication logic handled?' and get highly accurate, context-aware answers.</p>",
+            verdict: "<p>If you are a professional developer or a founder building an MVP, Cursor is the best AI coding assistant on the market right now. It has largely surpassed GitHub Copilot in terms of capability.</p>",
+            pricing: "<p>The $20/month Pro tier pays for itself in about ten minutes of saved debugging time. It includes access to top-tier models like GPT-4 and Claude 3.5 Sonnet.</p>",
+            comparison: "<p>Unlike GitHub Copilot, which mostly just auto-completes the line you're typing, Cursor acts like a senior engineer sitting next to you, capable of writing entire files and refactoring logic across multiple components.</p>",
+            useCaseFocus: "<p>Indie hackers use Cursor's 'Composer' feature to rapidly prototype entire full-stack applications in a matter of days by describing features in plain English.</p>"
+        }
     },
     {
         id: "github-copilot",
@@ -63,7 +70,14 @@ export const codingAssistantTools: AITool[] = [
         similarTools: ["cursor", "v0"],
         collections: ["Top AI Code Editors", "Developer Tools"],
         recommendationTags: ["developer", "engineer", "startup"],
-        audiences: ["Developers", "Founders"]
+        audiences: ["Developers", "Founders"],
+        editorial: {
+            overview: "<p>GitHub Copilot was the first major AI coding assistant, and it remains the most widely used. It lives directly inside your existing IDE (VS Code, IntelliJ, Visual Studio) and predicts the code you're going to write next.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Speed and integration. Because it's deeply integrated into the Microsoft/GitHub ecosystem, it is incredibly fast at generating 'ghost text' suggestions as you type.</p>",
+            verdict: "<p>For enterprise developers who cannot switch their IDE or require strict security compliance, Copilot is the standard. However, it is starting to lag behind dedicated AI editors in complex reasoning.</p>",
+            pricing: "<p>At $10/month, it's cheaper than Cursor and often subsidized by employers, making it the default choice for many professional developers.</p>",
+            comparison: "<p>Copilot is essentially a highly advanced autocomplete. Cursor is a highly advanced pair-programmer. If you just want to type faster, use Copilot. If you want the AI to write the architecture, use Cursor.</p>",
+            useCaseFocus: "<p>Enterprise engineers use Copilot to instantly generate boilerplate code, write unit tests, and autocomplete repetitive configuration files.</p>"
+        }
     },
     {
         id: "v0",
@@ -95,7 +109,14 @@ export const codingAssistantTools: AITool[] = [
         similarTools: ["codium-ai", "codeium"],
         collections: ["Top AI Code Editors", "Developer Tools"],
         recommendationTags: ["developer", "engineer", "startup"],
-        audiences: ["Developers", "Founders"]
+        audiences: ["Developers", "Founders"],
+        editorial: {
+            overview: "<p>v0, built by Vercel, fundamentally changes front-end development. Instead of writing CSS or fighting with UI frameworks, you simply describe the interface you want, and v0 generates production-ready React components styled with Tailwind CSS.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Visual iteration. You can highlight a specific part of the generated UI—like a button or a sidebar—and tell the AI to 'make it rounder' or 'use a dark theme', and it updates instantly.</p>",
+            verdict: "<p>If you build web apps, v0 is a cheat code. It completely eliminates the 'blank page' problem of front-end design.</p>",
+            pricing: "<p>The free tier is excellent for prototyping. The $20/month Premium tier is required if you use it daily or need private generations (free generations are public).</p>",
+            comparison: "<p>Cursor is for logic and backend; v0 is purely for the visual frontend. They are often used together: generate the UI in v0, paste it into Cursor, and ask Cursor to wire up the database logic.</p>",
+            useCaseFocus: "<p>Full-stack developers who lack design skills use v0 to generate beautiful, accessible, Shadcn-based user interfaces without having to write a single line of raw CSS.</p>"
+        }
     },
     {
         id: "tabnine",
@@ -127,7 +148,14 @@ export const codingAssistantTools: AITool[] = [
         similarTools: ["codeium", "phind"],
         collections: ["Top AI Code Editors", "Developer Tools"],
         recommendationTags: ["developer", "engineer", "startup"],
-        audiences: ["Developers", "Founders"]
+        audiences: ["Developers", "Founders"],
+        editorial: {
+            overview: "<p>Tabnine is an AI coding assistant built primarily around privacy. While tools like Copilot send your code to OpenAI's servers, Tabnine offers models that can run completely locally or on secure corporate servers.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Intellectual Property (IP) protection. Tabnine explicitly states it does not train its public models on your code, which is a hard requirement for many enterprise security teams.</p>",
+            verdict: "<p>If you work for a bank, a healthcare company, or a defense contractor where Copilot is banned, Tabnine is the best alternative to get AI autocomplete without violating compliance.</p>",
+            pricing: "<p>The $12/month Pro tier is standard, but the real value is in their Enterprise tier, which allows companies to train a custom AI model exclusively on their private, secure codebase.</p>",
+            comparison: "<p>It is not as smart or as conversational as Cursor, but it is vastly more secure. You are trading raw capability for strict data privacy.</p>",
+            useCaseFocus: "<p>Enterprise security teams approve Tabnine for their developers because it guarantees that proprietary algorithms won't accidentally be leaked into public AI training data.</p>"
+        }
     },
     {
         id: "amazon-q",
@@ -159,7 +187,14 @@ export const codingAssistantTools: AITool[] = [
         similarTools: ["mutable-ai", "blackbox-ai"],
         collections: ["Top AI Code Editors", "Developer Tools"],
         recommendationTags: ["developer", "engineer", "startup"],
-        audiences: ["Developers", "Founders"]
+        audiences: ["Developers", "Founders"],
+        editorial: {
+            overview: "<p>Amazon Q Developer is AWS's answer to GitHub Copilot. While it does standard code completion, its real power lies in its deep integration with the AWS ecosystem.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Cloud architecture and legacy code transformation. Amazon Q can analyze your AWS environment, suggest cost optimizations, and even automate the process of upgrading a legacy Java application to the latest version.</p>",
+            verdict: "<p>If your entire infrastructure runs on AWS, Q is a highly valuable addition. If you use Vercel, GCP, or Azure, you are better off with Copilot or Cursor.</p>",
+            pricing: "<p>At $19/month for the Pro tier, it's priced competitively with Copilot, especially given the added value of cloud troubleshooting features.</p>",
+            comparison: "<p>As a pure code autocomplete tool, it trails behind Copilot. But as an infrastructure assistant—helping you debug a failing EC2 instance or write an IAM policy—it is unparalleled.</p>",
+            useCaseFocus: "<p>DevOps engineers use Amazon Q to rapidly generate complex CloudFormation templates and troubleshoot cryptic AWS permission errors directly in their IDE.</p>"
+        }
     },
     {
         id: "framer",
@@ -191,6 +226,13 @@ export const codingAssistantTools: AITool[] = [
         similarTools: ["v0-by-vercel"],
         collections: ["Best No Code Builders", "Top Design Tools"],
         recommendationTags: ["designer", "founder", "creator"],
-        audiences: ["Designers", "Founders", "Creators"]
+        audiences: ["Designers", "Founders", "Creators"],
+        editorial: {
+            overview: "<p>Framer is primarily a high-end website builder that feels like Figma, but it has aggressively integrated AI to speed up the design process. You can prompt it to build a 'dark mode landing page for a SaaS product' and it will generate the layout, copy, and color palette instantly.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Design-to-production speed. Unlike Figma, where you design a mockup and then have to code it, Framer designs *are* the actual live website.</p>",
+            verdict: "<p>For marketing sites, portfolios, and landing pages, Framer is arguably the best tool on the internet. It produces incredibly fast, visually stunning sites with zero coding required.</p>",
+            pricing: "<p>The free tier is fine for testing, but you'll need a paid plan (starting around $15/mo) to use a custom domain and remove the Framer watermark.</p>",
+            comparison: "<p>v0 generates React code that you take and put into your own app. Framer hosts the website for you. Use v0 for web apps; use Framer for marketing websites.</p>",
+            useCaseFocus: "<p>Startup founders use Framer to design, build, and launch highly polished, animated landing pages in a single afternoon without needing to hire a frontend developer.</p>"
+        }
     }
 ];

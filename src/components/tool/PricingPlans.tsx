@@ -1,3 +1,6 @@
+import type { AITool } from "@/lib/types/tool";
+import { getEditorialDescription } from "@/lib/editorialRegistry";
+
 type PricingPlan = {
     name: string;
     price: string;
@@ -7,11 +10,12 @@ type PricingPlan = {
 };
 
 type PricingPlansProps = {
+    tool: AITool;
     plans?: PricingPlan[];
     pricing?: { planName: string; price: number | string; period: string }[];
 };
 
-export function PricingPlans({ plans, pricing }: PricingPlansProps) {
+export function PricingPlans({ tool, plans, pricing }: PricingPlansProps) {
     const finalPlans: PricingPlan[] = plans || pricing?.map(p => ({
         name: p.planName,
         price: p.price === 0 ? "Free" : `$${p.price}`,
@@ -35,10 +39,14 @@ export function PricingPlans({ plans, pricing }: PricingPlansProps) {
     return (
         <section className="my-16">
             <div className="mb-12 max-w-3xl">
-                <h2 className="text-3xl font-bold tracking-tight text-on-surface">Pricing Plans</h2>
-                <p className="mt-4 text-lg leading-relaxed text-on-surface-variant">
-                    Choose the plan that best fits your needs. Whether you&apos;re a solo user or an enterprise team, there&apos;s a solution designed for your scale.
-                </p>
+                <h2 className="text-3xl font-bold tracking-tight text-on-surface">Pricing & Value</h2>
+                {tool.editorial?.pricing ? (
+                    <div className="mt-4 text-lg leading-relaxed text-on-surface-variant" dangerouslySetInnerHTML={{ __html: tool.editorial.pricing }} />
+                ) : (
+                    <p className="mt-4 text-lg leading-relaxed text-on-surface-variant">
+                        Is the paid plan actually worth it? Here&apos;s how the pricing breaks down, so you can decide if it makes sense for your budget.
+                    </p>
+                )}
             </div>
 
             <div className="grid gap-8 lg:grid-cols-3 items-end mt-12">
@@ -63,7 +71,7 @@ export function PricingPlans({ plans, pricing }: PricingPlansProps) {
                         </div>
 
                         <p className="mt-4 text-on-surface-variant leading-relaxed text-sm">
-                            {plan.description || `Ideal for users who want to maximize their use of ${plan.name} features.`}
+                            {plan.description || getEditorialDescription("pricing", plan.name, `The sweet spot if you need access to the core ${plan.name} features without overpaying.`)}
                         </p>
 
                         <button className={`w-full mt-8 py-3 px-6 rounded-xl font-semibold transition-all ${

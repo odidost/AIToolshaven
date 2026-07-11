@@ -112,7 +112,7 @@ export function RecommendationEngine() {
                   progress_activity
                 </span>
                 <p className="text-sm font-bold text-on-surface-variant tracking-widest uppercase animate-pulse">
-                  Analyzing million data points...
+                  Finding the best matches...
                 </p>
               </div>
             ) : (

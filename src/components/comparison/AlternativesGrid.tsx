@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import { AITool } from '@/lib/types/tool';
+import { ToolImage } from "@/components/shared/ToolImage";
 
 interface AlternativesGridProps {
     mainTool: AITool;
@@ -23,7 +23,7 @@ export function AlternativesGrid({ mainTool, compareTool, alternativeTools }: Al
                 {alternativeTools.slice(0, 3).map((tool) => (
                     <div key={tool.id} className="bg-surface rounded-[24px] p-6 border border-border shadow-sm transition-all hover:shadow-md hover:-translate-y-1 flex flex-col h-full">
                         <div className="flex items-center gap-3 mb-4">
-                            <Image width={100} height={100} src={tool.logoUrl} alt={tool.name} className="w-12 h-12 rounded-xl border border-border bg-surface object-contain" />
+                            <ToolImage tool={tool} type="logo" className="w-12 h-12 rounded-xl border border-border bg-surface object-contain" />
                             <div>
                                 <h3 className="font-bold text-on-surface">{tool.name}</h3>
                                 <div className="flex items-center gap-1 text-xs font-semibold text-warning">

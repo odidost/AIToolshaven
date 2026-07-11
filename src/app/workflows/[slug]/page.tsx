@@ -9,6 +9,7 @@ import { WhyThisOrderWorks } from "@/components/workflow/WhyThisOrderWorks";
 import { WorkflowAlternatives } from "@/components/workflow/WorkflowAlternatives";
 import { WorkflowSummary } from "@/components/workflow/WorkflowSummary";
 import { WorkflowDeliverables } from "@/components/workflow/WorkflowDeliverables";
+import { PageContainer } from "@/components/layout/PageContainer";
 
 type Props = {
     params: Promise<{
@@ -58,7 +59,7 @@ export default async function WorkflowPage({ params }: Props) {
     };
 
     return (
-        <main className="container mx-auto px-6 py-12">
+        <PageContainer as="main" className="py-12 md:py-16">
             <StructuredData data={jsonLd} />
             
             {/* Breadcrumb */}
@@ -114,6 +115,6 @@ export default async function WorkflowPage({ params }: Props) {
                     </div>
                 </aside>
             </div>
-        </main>
+        </PageContainer>
     );
 }

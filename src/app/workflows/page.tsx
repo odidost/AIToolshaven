@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { workflows } from "@/lib/workflows";
 import { WorkflowCard } from "@/components/home/WorkflowCard";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { PageContainer } from "@/components/layout/PageContainer";
 
 export const metadata: Metadata = {
   title: "AI Workflows & Guides | AIToolsHaven",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function WorkflowsIndexPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <PageContainer className="py-8 md:py-12">
       <Breadcrumbs items={[{ label: "Workflows" }]} />
 
       <div className="max-w-3xl mb-12 mt-4">
@@ -36,6 +37,6 @@ export default function WorkflowsIndexPage() {
           />
         ))}
       </div>
-    </div>
+    </PageContainer>
   );
 }

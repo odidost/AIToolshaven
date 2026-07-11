@@ -2,8 +2,9 @@ import { MetadataRoute } from "next";
 import { getAllTools } from "@/lib/queries/tools";
 import { getAllCategories } from "@/lib/queries/categories";
 import { comparisons } from "@/lib/comparisons";
+import { siteConfig } from "@/lib/config/site";
 
-const BASE_URL = "https://aitoolshaven.com";
+const BASE_URL = siteConfig.baseUrl;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const tools = getAllTools();

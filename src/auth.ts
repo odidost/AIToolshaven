@@ -24,7 +24,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (session.user) {
         session.user.id = user.id;
         // Type casting for added role
-        (session.user as any).role = (user as any).role;
+        (session.user as Record<string, unknown>).role = (user as Record<string, unknown>).role;
       }
       return session;
     },

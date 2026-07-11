@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { DashboardContainer } from "@/components/layout/DashboardContainer";
 
 const navItems = [
   { label: 'My Library', href: '/dashboard/library', icon: 'collections_bookmark' },
@@ -17,7 +18,7 @@ export default function DashboardLayout({
   const pathname = usePathname();
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <DashboardContainer className="py-8">
       <div className="flex flex-col md:flex-row gap-8">
         {/* Sidebar */}
         <aside className="w-full md:w-64 shrink-0">
@@ -74,6 +75,6 @@ export default function DashboardLayout({
           {children}
         </main>
       </div>
-    </div>
+    </DashboardContainer>
   );
 }

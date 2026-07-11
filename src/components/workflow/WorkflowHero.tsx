@@ -1,5 +1,5 @@
 import { Workflow } from "@/lib/workflows";
-
+import { AuthorAttribution } from "@/components/shared/AuthorAttribution";
 export function WorkflowHero({ workflow }: { workflow: Workflow }) {
     const meta = workflow.meta;
 
@@ -33,9 +33,11 @@ export function WorkflowHero({ workflow }: { workflow: Workflow }) {
                         {workflow.title} Workflow Guide
                     </h1>
 
-                    <p className="mt-4 text-lg text-on-surface-variant leading-relaxed">
+                    <p className="mt-4 text-lg text-on-surface-variant leading-relaxed mb-6">
                         {workflow.description} Learn how to combine these tools step-by-step to achieve high efficiency.
                     </p>
+
+                    <AuthorAttribution />
                 </div>
 
                 {/* Stats Widget */}

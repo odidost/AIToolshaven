@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import type { AITool } from "@/lib/types/tool";
+import { ToolImage } from "@/components/shared/ToolImage";
 
 type CommandPaletteProps = {
   tools: AITool[];
@@ -166,7 +167,7 @@ export function CommandPalette({ tools }: CommandPaletteProps) {
                     }}
                     onMouseEnter={() => setSelectedIndex(index)}
                   >
-                    <img src={tool.logoUrl} alt={tool.name} className="w-8 h-8 rounded border border-border object-contain bg-surface" />
+                    <ToolImage tool={tool} type="logo" className="w-8 h-8 rounded border border-border object-contain bg-surface" />
                     <div className="flex-1 overflow-hidden">
                       <div className="flex items-center gap-2">
                         <h4 className={`font-bold truncate ${index === selectedIndex ? "text-primary" : "text-on-surface"}`}>

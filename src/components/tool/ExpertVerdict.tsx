@@ -31,16 +31,18 @@ export function ExpertVerdict({ tool }: ExpertVerdictProps) {
                         <h2 className="text-3xl font-bold mb-6">Our Verdict on {tool.name}</h2>
                         
                         <div className="space-y-4 text-slate-300 leading-relaxed text-lg mb-8">
-                            <p>
-                                {tool.name} proves to be a robust and highly capable solution in its category. 
-                                During our comprehensive testing, it demonstrated exceptional AI capabilities, 
-                                particularly in handling complex, multi-step workflows.
-                            </p>
-                            <p>
-                                <strong>Overall Recommendation:</strong> We highly recommend {tool.name} for professionals 
-                                and teams who need reliable performance. While the pricing might be a barrier for casual users, 
-                                the ROI for power users makes it a worthwhile investment.
-                            </p>
+                            {tool.editorial?.verdict ? (
+                                <div dangerouslySetInnerHTML={{ __html: tool.editorial.verdict }} />
+                            ) : (
+                                <>
+                                    <p>
+                                        After spending time with {tool.name}, it's clear that it deserves its reputation. It handles complex tasks surprisingly well, and the outputs are generally reliable enough for professional use. That said, like any AI tool, it still requires human oversight to get the best results.
+                                    </p>
+                                    <p>
+                                        <strong>Overall Recommendation:</strong> We recommend {tool.name} for power users and teams who are willing to integrate it fully into their workflows. If you're just looking to experiment, the free or entry-level tier is plenty. But if you need to scale your operations, paying for the premium features is easily a worthwhile investment.
+                                    </p>
+                                </>
+                            )}
                         </div>
                     </div>
 

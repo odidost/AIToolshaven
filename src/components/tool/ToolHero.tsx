@@ -2,7 +2,8 @@ import Link from "next/link";
 import type { AITool } from "@/lib/types/tool";
 import { SocialShareBar } from "./SocialShareBar";
 import { getComparisonCandidates } from "@/lib/queries/comparisons";
-
+import { ToolImage } from "@/components/shared/ToolImage";
+import { AuthorAttribution } from "@/components/shared/AuthorAttribution";
 type ToolHeroProps = {
     tool: AITool;
 };
@@ -29,9 +30,9 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                         <div className="flex items-start gap-4">
 
-                            <img
-                                src={tool.logoUrl}
-                                alt={tool.name}
+                            <ToolImage
+                                tool={tool}
+                                type="logo"
                                 className="h-14 w-14 rounded-2xl border border-outline"
                             />
 
@@ -70,6 +71,10 @@ export function ToolHero({ tool }: ToolHeroProps) {
                                         by {tool.company}
                                     </p>
                                 )}
+
+                                <div className="mt-3">
+                                    <AuthorAttribution />
+                                </div>
 
                             </div>
 
@@ -115,9 +120,9 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                         </div>
 
-                        <img
-                            src={tool.screenshotUrl || tool.imageUrl}
-                            alt={tool.name}
+                        <ToolImage
+                            tool={tool}
+                            type="screenshot"
                             className="w-full transition duration-500 hover:scale-[1.02]"
                         />
 
@@ -187,9 +192,9 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                     <div className="flex flex-wrap gap-3">
 
-                        {(tool.websiteUrl || (tool as any).url) && (
+                        {(tool.websiteUrl || tool.url) && (
                             <Link
-                                href={tool.websiteUrl || (tool as any).url}
+                                href={tool.websiteUrl || tool.url || '#'}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-secondary px-6 py-4 font-semibold text-white transition-all shadow-glow hover:shadow-glow-primary hover:-translate-y-[0.5px]"

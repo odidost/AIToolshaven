@@ -3,11 +3,11 @@ export function NewsletterCTA() {
         <section className="mb-16">
             <div className="bg-primary-container rounded-3xl p-8 md:p-12 text-center border border-outline">
                 <h2 className="text-3xl font-bold text-on-surface mb-4">
-                    Stay Ahead of AI
+                    Get the Weekly Roundup
                 </h2>
 
                 <p className="text-on-surface-variant max-w-2xl mx-auto mb-8">
-                    Discover new AI tools, workflows, opportunities, and guides every week.
+                    Cut through the noise. We'll send you the most practical AI tools and workflows every week.
                 </p>
 
                 <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-4">

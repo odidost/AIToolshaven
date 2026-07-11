@@ -1,0 +1,57 @@
+[
+  {
+    "id": "Developer",
+    "name": "Developer",
+    "items": [
+      "Write Better Code",
+      "Deploy Faster",
+      "Learn New Stack",
+      "Fix Bugs"
+    ]
+  },
+  {
+    "id": "Marketer",
+    "name": "Marketer",
+    "items": [
+      "Write SEO Content",
+      "Run Ad Campaigns",
+      "Automate Socials",
+      "Analyze Data"
+    ]
+  },
+  {
+    "id": "Designer",
+    "name": "Designer",
+    "items": [
+      "Generate UI Assets",
+      "Edit Photos Faster",
+      "Create 3D Models",
+      "Find Inspiration"
+    ]
+  },
+  {
+    "id": "Founder",
+    "name": "Founder",
+    "items": [
+      "Build MVP",
+      "Pitch Deck Prep",
+      "Automate Ops",
+      "Market Research"
+    ]
+  },
+  {
+    "id": "Student",
+    "name": "Student",
+    "items": [
+      "Write Essays",
+      "Summarize Lectures",
+      "Study For Exams",
+      "Organize Notes"
+    ]
+  },
+  {
+    "id": "persona-1783781229385",
+    "name": "New Persona",
+    "items": []
+  }
+]

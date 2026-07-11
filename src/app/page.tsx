@@ -22,6 +22,8 @@ import Link from "next/link";
 
 import { CommunityReviews } from "@/components/home/CommunityReviews";
 import { SubmitToolCTA } from "@/components/home/SubmitToolCTA";
+import { PageContainer } from "@/components/layout/PageContainer";
+import { SectionContainer } from "@/components/layout/SectionContainer";
 
 export default function Home() {
   const featuredTools = getFeaturedTools(8);
@@ -29,21 +31,21 @@ export default function Home() {
   const latestTools = getLatestTools(8);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <PageContainer className="max-w-[1920px] 2xl:max-w-[2560px] py-8 md:py-12">
 
       {/* 1. Hero Section */}
-      <section className="mb-8">
+      <section className="mb-12 md:mb-20">
         <SpotlightBanner />
       </section>
 
       {/* 1b. Featured Tools */}
       {featuredTools.length > 0 && (
-        <section className="mb-16">
+        <SectionContainer className="mb-16">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
             <div>
               <div className="flex items-center gap-2 text-accent mb-2">
                 <span className="material-symbols-outlined text-xl">star</span>
-                <span className="text-xs font-semibold uppercase tracking-[0.2em]">Premium Picks</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.2em]">Editor's Choice</span>
               </div>
               <h2 className="text-3xl font-bold text-foreground tracking-tight">
                 Featured Tools
@@ -58,7 +60,7 @@ export default function Home() {
               <ToolCard key={tool.id} tool={tool} />
             ))}
           </div>
-        </section>
+        </SectionContainer>
       )}
 
       {/* 2. Trust Layer */}
@@ -68,7 +70,7 @@ export default function Home() {
       <RecommendationEngine />
 
       {/* 4. Featured Categories */}
-      <section className="mb-24 mt-16 relative overflow-hidden bg-surface-section rounded-[32px] p-8 border border-border">
+      <SectionContainer className="relative overflow-hidden bg-surface-section rounded-[32px] p-8 md:p-12 border border-border">
         <BackgroundPattern type="sparkles" opacity={0.02} />
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none flex flex-wrap justify-around items-center overflow-hidden">
            <span className="material-symbols-outlined text-[120px] text-primary rotate-12">terminal</span>
@@ -83,10 +85,10 @@ export default function Home() {
           </div>
           <CategoryCapsuleBar />
         </div>
-      </section>
+      </SectionContainer>
 
       {/* 5. Trending AI Tools */}
-      <section className="mb-24">
+      <SectionContainer>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
             <div className="flex items-center gap-2 text-accent mb-2">
@@ -110,20 +112,20 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </section>
+      </SectionContainer>
 
       {/* 6. Compare Popular AI Tools */}
-      <section className="mb-24 relative overflow-hidden bg-surface-section rounded-[32px] p-8 md:p-12 border border-border">
+      <SectionContainer className="relative overflow-hidden bg-surface-section rounded-[32px] p-8 md:p-12 border border-border">
         <BackgroundPattern type="grid" opacity={0.03} />
         
         <div className="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
             <div className="flex items-center gap-2 text-primary mb-2">
               <span className="material-symbols-outlined text-xl">compare_arrows</span>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em]">Versus Battles</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em]">Head-to-Head</span>
             </div>
             <h2 className="text-3xl font-bold text-foreground tracking-tight">
-              Compare Top AI Tools
+              Compare Alternatives
             </h2>
           </div>
         </div>
@@ -137,10 +139,10 @@ export default function Home() {
             />
           ))}
         </div>
-      </section>
+      </SectionContainer>
 
       {/* 7. AI Workflows */}
-      <section className="mb-24 relative overflow-hidden bg-gradient-to-b from-surface-section to-background -mx-4 px-4 py-16 md:mx-0 md:px-12 md:rounded-[32px] border border-border shadow-sm">
+      <SectionContainer className="relative overflow-hidden bg-gradient-to-b from-surface-section to-background -mx-4 px-4 py-16 md:mx-0 md:px-12 md:rounded-[32px] border border-border shadow-sm">
         {/* Workflow Nodes Background */}
         <BackgroundPattern type="workflow" opacity={0.03} className="text-primary" />
         
@@ -170,18 +172,18 @@ export default function Home() {
             />
           ))}
         </div>
-      </section>
+      </SectionContainer>
 
       {/* 8. New AI Tools */}
-      <section className="mb-24">
+      <SectionContainer>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
             <div className="flex items-center gap-2 text-accent mb-2">
               <span className="material-symbols-outlined text-xl">new_releases</span>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em]">Fresh Drops</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em]">New Arrivals</span>
             </div>
             <h2 className="text-3xl font-bold text-foreground tracking-tight">
-              Latest Additions
+              Just Added
             </h2>
           </div>
           <Link href="/category/all" className="text-[13px] font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
@@ -196,15 +198,15 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </section>
+      </SectionContainer>
 
       {/* 9. AI Collections (Goals & Opportunities combined into one large section idea) */}
-      <section className="mb-24">
+      <SectionContainer>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
             <div className="flex items-center gap-2 text-accent mb-2">
               <span className="material-symbols-outlined text-xl">interests</span>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em]">Curated</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em]">Curated Paths</span>
             </div>
             <h2 className="text-3xl font-bold text-foreground tracking-tight">
               Browse by Goal
@@ -244,13 +246,13 @@ export default function Home() {
             />
           ))}
         </div>
-      </section>
+      </SectionContainer>
 
       {/* 10. Community Reviews */}
       <CommunityReviews />
 
       {/* 11. Latest AI News */}
-      <section className="mb-24">
+      <SectionContainer>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
             <div className="flex items-center gap-2 text-muted-foreground mb-2">
@@ -258,7 +260,7 @@ export default function Home() {
               <span className="text-xs font-semibold uppercase tracking-[0.2em]">Resources</span>
             </div>
             <h2 className="text-3xl font-bold text-foreground tracking-tight">
-              Latest Guides & News
+              Guides & Insights
             </h2>
           </div>
         </div>
@@ -273,13 +275,15 @@ export default function Home() {
             />
           ))}
         </div>
-      </section>
+      </SectionContainer>
 
       {/* 12. Submit Your Tool */}
       <SubmitToolCTA />
 
       {/* 13. Newsletter CTA */}
-      <NewsletterCTA />
-    </div>
+      <SectionContainer>
+        <NewsletterCTA />
+      </SectionContainer>
+    </PageContainer>
   );
 }

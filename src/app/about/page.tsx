@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ContentContainer } from "@/components/layout/ContentContainer";
 
 export const metadata: Metadata = {
   title: "About AIToolsHaven | The Best AI Tools Directory",
@@ -43,7 +44,7 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 py-16 max-w-5xl">
+    <ContentContainer className="py-16 md:py-24">
 
       {/* Hero */}
       <div className="text-center mb-20">
@@ -125,6 +126,6 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-    </div>
+    </ContentContainer>
   );
 }

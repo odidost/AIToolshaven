@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import React from 'react';
 import { AITool } from '@/lib/types/tool';
+import { ToolImage } from "@/components/shared/ToolImage";
 
 interface FeatureMatrixProps {
     mainTool: AITool;
@@ -32,13 +32,13 @@ export function FeatureMatrix({ mainTool, compareTool }: FeatureMatrixProps) {
                                 </th>
                                 <th className="p-5 text-center font-bold text-on-surface w-1/3 border-l border-border">
                                     <div className="flex flex-col items-center gap-2">
-                                        <Image width={100} height={100} src={mainTool.logoUrl} alt={mainTool.name} className="w-8 h-8 rounded-md object-contain bg-surface p-0.5 border border-border" />
+                                        <ToolImage tool={mainTool} type="logo" className="w-8 h-8 rounded-md object-contain bg-surface p-0.5 border border-border" />
                                         <span>{mainTool.name}</span>
                                     </div>
                                 </th>
                                 <th className="p-5 text-center font-bold text-on-surface w-1/3 border-l border-border">
                                     <div className="flex flex-col items-center gap-2">
-                                        <Image width={100} height={100} src={compareTool.logoUrl} alt={compareTool.name} className="w-8 h-8 rounded-md object-contain bg-surface p-0.5 border border-border" />
+                                        <ToolImage tool={compareTool} type="logo" className="w-8 h-8 rounded-md object-contain bg-surface p-0.5 border border-border" />
                                         <span>{compareTool.name}</span>
                                     </div>
                                 </th>

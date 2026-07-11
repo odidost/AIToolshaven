@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ContentContainer } from "@/components/layout/ContentContainer";
 
 export const metadata: Metadata = {
   title: "Affiliate Disclosure",
@@ -11,7 +12,7 @@ export default function AffiliateDisclosurePage() {
   const lastUpdated = "July 5, 2026";
 
   return (
-    <div className="container mx-auto px-4 py-16 max-w-3xl">
+    <ContentContainer className="py-16 md:py-24">
       {/* Header */}
       <div className="mb-12">
         <div className="inline-flex items-center gap-2 text-primary text-sm font-bold uppercase tracking-widest mb-4">
@@ -85,6 +86,6 @@ export default function AffiliateDisclosurePage() {
           Terms of Service →
         </Link>
       </div>
-    </div>
+    </ContentContainer>
   );
 }

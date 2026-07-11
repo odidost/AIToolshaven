@@ -1,4 +1,5 @@
 import { ToolFeature } from "@/lib/types/tool";
+import { getEditorialDescription } from "@/lib/editorialRegistry";
 
 type FeatureGridProps = {
     features?: (ToolFeature | string)[];
@@ -14,7 +15,7 @@ export function FeatureGrid({ features }: FeatureGridProps) {
                     Key Features & Capabilities
                 </h2>
                 <p className="mt-3 text-lg leading-relaxed text-on-surface-variant">
-                    Discover the powerful features that make this AI tool stand out from its competitors. Every capability is designed to maximize your productivity and deliver exceptional results.
+                    These are the core features that actually matter. Instead of overwhelming you with options, this tool focuses on doing these specific tasks exceptionally well.
                 </p>
             </div>
 
@@ -40,7 +41,7 @@ export function FeatureGrid({ features }: FeatureGridProps) {
                                         {featObj.title}
                                     </h3>
                                     <p className="text-on-surface-variant leading-relaxed text-sm">
-                                        {featObj.description || "This feature provides seamless operation, optimizing performance and output quality for standard production workflows."}
+                                        {featObj.description || getEditorialDescription("feature", featObj.title, "It's built directly into the interface so you don't have to jump between different tabs to get the job done.")}
                                     </p>
                                 </div>
                             </div>

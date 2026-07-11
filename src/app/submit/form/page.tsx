@@ -4,18 +4,19 @@ import { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
+import { ContentContainer } from "@/components/layout/ContentContainer";
 import { categories } from '@/lib/data/categories';
 const pricingModels = ["Free", "Freemium", "Paid", "Enterprise"] as const;
 
 export default function SubmitFormPage() {
   return (
     <Suspense fallback={
-      <div className="container mx-auto px-4 py-8">
+      <ContentContainer className="py-8 md:py-12">
         <div className="max-w-2xl mx-auto text-center py-20">
           <span className="material-symbols-outlined text-4xl text-primary animate-spin block mb-4">progress_activity</span>
           <p className="text-on-surface-variant">Loading form...</p>
         </div>
-      </div>
+      </ContentContainer>
     }>
       <SubmitFormContent />
     </Suspense>
@@ -96,7 +97,7 @@ function SubmitFormContent() {
 
   if (submitted) {
     return (
-      <div className="container mx-auto px-4 py-8">
+      <ContentContainer className="py-8 md:py-12">
         <div className="max-w-lg mx-auto text-center py-20">
           <div className="w-20 h-20 rounded-full bg-secondary/10 flex items-center justify-center mx-auto mb-6">
             <span className="material-symbols-outlined text-secondary text-4xl">check_circle</span>
@@ -117,12 +118,12 @@ function SubmitFormContent() {
             </Link>
           </div>
         </div>
-      </div>
+      </ContentContainer>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <ContentContainer className="py-8 md:py-12">
       <Breadcrumbs items={[
         { label: 'Submit Tool', href: '/submit' },
         { label: 'Submission Form' }
@@ -340,6 +341,6 @@ function SubmitFormContent() {
           </div>
         </form>
       </div>
-    </div>
+    </ContentContainer>
   );
 }

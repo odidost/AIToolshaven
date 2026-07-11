@@ -1,0 +1,330 @@
+{
+  "chatgpt": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "claude": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "perplexity": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "quillbot": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "rytr": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "zapier-central": {
+    "screenshot": "webp",
+    "logo": "webp"
+  },
+  "gamma": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "perplexity-pro": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "jasper": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "copy-ai": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "writesonic": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "sudowrite": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "novelai": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "midjourney": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "dall-e-3": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "stable-diffusion": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "canva-magic-media": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "leonardo-ai": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "canva": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "runway-gen2": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "sora": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "heygen": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "opus-clip": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "capcut": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "cursor": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "github-copilot": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "v0": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "tabnine": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "amazon-q": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "framer": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "notion-ai": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "mem-ai": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "otter-ai": {
+    "screenshot": "webp",
+    "logo": "webp"
+  },
+  "tldv": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "clickup": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "elevenlabs": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "murf": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "descript": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "luma": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "suno": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "apollo": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "gong": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "surfer": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "instantly": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "clay": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "buffer": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "stripe": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "synthesia": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "invideo": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "pika": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "fliki": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "codeium": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "phind": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "sourcegraph-cody": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "fireflies": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "tome": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "krea": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "photoroom": {
+    "screenshot": "webp",
+    "logo": "webp"
+  },
+  "magnific": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "beautiful-ai": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "fathom": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "anyword": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "taskade": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "grok": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "superhuman": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "tome-pro": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "runway-gen1": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "kaiber": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "krea-pro": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "remove-bg": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "lovo": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "resemble-ai": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "cody-ai": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "blackbox-ai": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "codium-ai": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "reply-io": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "smartwriter": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "outbound": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "sanebox": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "read-ai": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "magicstudio": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "elevenlabs-dubbing": {
+    "logo": "webp",
+    "screenshot": "webp"
+  }
+}

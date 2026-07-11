@@ -27,6 +27,8 @@ import {
 } from "@/lib/queries/categories";
 
 import { getComparisonCandidates } from "@/lib/queries/comparisons";
+import { siteConfig } from "@/lib/config/site";
+import { PageContainer } from "@/components/layout/PageContainer";
 import { Metadata } from "next";
 
 type Props = {
@@ -41,25 +43,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!tool) {
     return {
-      title: "Tool Not Found | AIToolsHaven",
+      title: `Tool Not Found | ${siteConfig.name}`,
     };
   }
 
   return {
-    title: `${tool.name} Reviews, Pricing & Features | AIToolsHaven`,
+    title: `${tool.name} Reviews, Pricing & Features | ${siteConfig.name}`,
     description: tool.description,
     openGraph: {
-      title: `${tool.name} | AIToolsHaven`,
+      title: `${tool.name} | ${siteConfig.name}`,
       description: tool.description,
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${tool.name} | AIToolsHaven`,
+      title: `${tool.name} | ${siteConfig.name}`,
       description: tool.description,
     },
     alternates: {
-      canonical: `https://aitoolshaven.com/tool/${tool.slug}`,
+      canonical: `${siteConfig.baseUrl}/tool/${tool.slug}`,
     },
   };
 }
@@ -118,18 +120,18 @@ export default async function ToolDetailPage({
             reviewRating: { "@type": "Rating", ratingValue: "5" }
           }
         ],
-        url: tool.websiteUrl || `https://aitoolshaven.com/tool/${tool.slug}`,
-        image: `https://aitoolshaven.com${tool.logoUrl}`,
+        url: tool.websiteUrl || `${siteConfig.baseUrl}/tool/${tool.slug}`,
+        image: `${siteConfig.baseUrl}${tool.logoUrl}`,
       },
       {
         "@type": "WebPage",
-        "@id": `https://aitoolshaven.com/tool/${tool.slug}`,
-        url: `https://aitoolshaven.com/tool/${tool.slug}`,
+        "@id": `${siteConfig.baseUrl}/tool/${tool.slug}`,
+        url: `${siteConfig.baseUrl}/tool/${tool.slug}`,
         name: `${tool.name} Reviews, Pricing & Features`,
         publisher: {
           "@type": "Organization",
-          name: "AIToolsHaven",
-          url: "https://aitoolshaven.com"
+          name: siteConfig.name,
+          url: siteConfig.baseUrl
         }
       },
       {
@@ -139,13 +141,13 @@ export default async function ToolDetailPage({
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://aitoolshaven.com"
+            item: siteConfig.baseUrl
           },
           {
             "@type": "ListItem",
             position: 2,
             name: category?.name || "Category",
-            item: category ? `https://aitoolshaven.com/category/${category.slug}` : undefined
+            item: category ? `${siteConfig.baseUrl}/category/${category.slug}` : undefined
           },
           {
             "@type": "ListItem",
@@ -158,7 +160,7 @@ export default async function ToolDetailPage({
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <PageContainer className="py-8 md:py-12">
       <StructuredData data={jsonLd} />
       <Breadcrumbs
         items={[
@@ -176,19 +178,18 @@ export default async function ToolDetailPage({
       <div className="mt-16 grid lg:grid-cols-[minmax(0,1fr)_320px] gap-12">
         <main>
           <ToolOverview
-            title={tool.name}
-            description={tool.description}
+            tool={tool}
           />
 
           <ExpertVerdict tool={tool} />
 
           <ProsCons pros={tool.pros} cons={tool.cons} />
 
-          <UseCases useCases={tool.useCases} />
+          <UseCases tool={tool} useCases={tool.useCases} />
 
           <FeatureGrid features={tool.features} />
 
-          <PricingPlans plans={tool.pricingPlans} pricing={tool.pricing} />
+          <PricingPlans tool={tool} plans={tool.pricingPlans} pricing={tool.pricing} />
 
           <ToolComparisonSection
             tool={tool}
@@ -232,6 +233,6 @@ export default async function ToolDetailPage({
 
         <ToolShareEmbed tool={tool} />
       </div>
-    </div>
+    </PageContainer>
   );
 }

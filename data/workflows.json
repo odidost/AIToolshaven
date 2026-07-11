@@ -1,0 +1,823 @@
+[
+  {
+    "slug": "faceless-youtube",
+    "title": "Faceless YouTube",
+    "description": "Create YouTube videos without showing your face.",
+    "icon": "smart_display",
+    "audience": "Content Creators",
+    "color": "red",
+    "tools": [
+      "ChatGPT",
+      "ElevenLabs",
+      "CapCut",
+      "TubeBuddy"
+    ],
+    "meta": {
+      "outcome": "A fully finished, voice-guided YouTube video ready for upload.",
+      "time": "30-45 minutes",
+      "skill": "Beginner",
+      "cost": "Free (with paid upgrades)",
+      "toolsCount": 4,
+      "deliverables": [
+        "Engaging YouTube script",
+        "Studio-quality AI voiceover",
+        "Edited video with captions & B-roll",
+        "SEO-optimized title, description & tags"
+      ],
+      "bestFor": [
+        {
+          "audience": "Introverted Creators",
+          "reason": "Create high-quality content without being on camera."
+        },
+        {
+          "audience": "Agencies",
+          "reason": "Scale video production across multiple channels quickly."
+        }
+      ],
+      "steps": [
+        {
+          "role": "Script & Concept Writer",
+          "desc": "Use ChatGPT to write high-retention video scripts and outlines.",
+          "tool": "ChatGPT",
+          "goal": "Write a clear, structured script with a strong opening hook.",
+          "whyNow": "A good voiceover needs a good script. Always start with the narrative.",
+          "expectedOutput": "A formatted script with dialogue and visual cues.",
+          "estimatedTime": "10 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Ask ChatGPT to separate your script into 'Hook', 'Intro', 'Body', and 'Call to Action'.",
+          "commonMistake": "Publishing the first draft. Always rewrite the intro in your own voice so it doesn't sound robotic.",
+          "alternatives": [
+            "Claude",
+            "Gemini"
+          ]
+        },
+        {
+          "role": "Voice Generator",
+          "desc": "Generate realistic human voiceovers using ElevenLabs.",
+          "tool": "ElevenLabs",
+          "goal": "Turn your written script into natural-sounding audio.",
+          "whyNow": "Audio sets the pacing for your video edit. You need the voiceover before you start adding B-roll.",
+          "expectedOutput": "An MP3 or WAV file of the spoken script.",
+          "estimatedTime": "5 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Use the 'Stability' slider to dial in the emotion (lower stability means a more expressive voice).",
+          "commonMistake": "Ignoring mispronunciations. Use phonetic spelling if the AI struggles with specific words.",
+          "alternatives": [
+            "Murf AI",
+            "PlayHT"
+          ]
+        },
+        {
+          "role": "Video Editor",
+          "desc": "Combine your voice clips, stock footage, and subtitles in CapCut.",
+          "tool": "CapCut",
+          "goal": "Assemble the final video so it flows well and keeps attention.",
+          "whyNow": "Now that you have the story and pacing, you can bring it to life visually.",
+          "expectedOutput": "A final rendered MP4 file.",
+          "estimatedTime": "20 minutes",
+          "difficulty": "Intermediate",
+          "expertTip": "Use CapCut's 'Auto Captions' feature and color-code keywords to keep viewers engaged.",
+          "commonMistake": "Adding too many effects. Keep it clean so the visuals don't distract from what you're actually saying.",
+          "alternatives": [
+            "Premiere Pro",
+            "DaVinci Resolve"
+          ]
+        },
+        {
+          "role": "SEO Optimizer",
+          "desc": "Find the right keywords, titles, and tags with TubeBuddy.",
+          "tool": "TubeBuddy",
+          "goal": "Make sure your video actually shows up in YouTube search.",
+          "whyNow": "The video is done. Now you need the metadata to get it in front of people.",
+          "expectedOutput": "An optimized title, description, and keyword list.",
+          "estimatedTime": "10 minutes",
+          "difficulty": "Intermediate",
+          "expertTip": "Look for keywords with 'Fair' or 'Good' overall scores—high search volume but manageable competition.",
+          "commonMistake": "Publishing without checking if people are actually searching for your topic.",
+          "alternatives": [
+            "VidIQ"
+          ]
+        }
+      ]
+    },
+    "whyThisOrder": {
+      "explanation": "This follows the classic video production timeline: Scripting comes first, followed by audio, then video editing, and finally distribution.",
+      "impact": "If you try to edit video without a locked-in script or voiceover, you'll end up re-editing the same footage over and over."
+    },
+    "budgetMode": {
+      "tools": [
+        "ChatGPT (Free)",
+        "TTSMaker (Free)",
+        "CapCut Desktop (Free)",
+        "YouTube Auto-Suggest"
+      ],
+      "description": "A completely free pipeline for beginners just starting their channel."
+    },
+    "premiumMode": {
+      "tools": [
+        "Claude 3.5 Sonnet",
+        "ElevenLabs (Creator Plan)",
+        "Premiere Pro",
+        "VidIQ Pro"
+      ],
+      "description": "The professional stack for maximum retention and channel growth."
+    },
+    "faqs": [
+      {
+        "question": "Do I need a paid ElevenLabs account?",
+        "answer": "For commercial use (monetizing on YouTube), yes. However, you can test the workflow on the free tier."
+      },
+      {
+        "question": "Can I use AI generated images for B-roll?",
+        "answer": "Absolutely. Tools like Midjourney or Leonardo AI can generate custom visuals to use in CapCut."
+      }
+    ]
+  },
+  {
+    "slug": "ai-influencer",
+    "title": "AI Influencer",
+    "description": "Create realistic AI influencers for social media.",
+    "icon": "photo_camera_front",
+    "audience": "Creators",
+    "color": "pink",
+    "tools": [
+      "Midjourney",
+      "ChatGPT",
+      "Runway Gen-2",
+      "Canva"
+    ],
+    "meta": {
+      "outcome": "High-quality, consistent images and videos of a custom digital persona.",
+      "time": "1-2 hours",
+      "skill": "Intermediate",
+      "cost": "$20 - $50 / month",
+      "toolsCount": 4,
+      "deliverables": [
+        "Consistent AI character model",
+        "Engaging social media backstory",
+        "Short-form animated videos",
+        "Formatted IG/TikTok posts"
+      ],
+      "bestFor": [
+        {
+          "audience": "Digital Marketers",
+          "reason": "Create brand ambassadors without hiring talent."
+        },
+        {
+          "audience": "Social Media Managers",
+          "reason": "Maintain high posting volume with a consistent face."
+        }
+      ],
+      "steps": [
+        {
+          "role": "Character Generator",
+          "desc": "Generate consistent, high-fidelity model images in Midjourney using seed values.",
+          "tool": "Midjourney",
+          "goal": "Create a consistent and recognizable character base.",
+          "whyNow": "Visual identity must be established before you can create content or write a persona.",
+          "expectedOutput": "A master sheet of images with identical facial features.",
+          "estimatedTime": "30 minutes",
+          "difficulty": "Intermediate",
+          "expertTip": "Use the '--cref' and '--cw' parameters in Midjourney v6 to maintain character consistency.",
+          "commonMistake": "Changing the prompt too much between shots, resulting in a character that looks like different people.",
+          "alternatives": [
+            "Leonardo.ai",
+            "Stable Diffusion"
+          ]
+        },
+        {
+          "role": "Persona Writer",
+          "desc": "Establish the influencer's backstory and write social posts with ChatGPT.",
+          "tool": "ChatGPT",
+          "goal": "Give the character a compelling, relatable personality.",
+          "whyNow": "Once you have the look, you need the voice to match before creating your final posts.",
+          "expectedOutput": "A brief brand guideline and 10 ready-to-post captions.",
+          "estimatedTime": "15 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Set up a custom GPT with your influencer's backstory to keep the tone consistent across all posts.",
+          "commonMistake": "Making the personality too perfect. Real people have flaws—add some to make them relatable.",
+          "alternatives": [
+            "Claude 3"
+          ]
+        },
+        {
+          "role": "Animator",
+          "desc": "Animate static character images into short video clips with Runway Gen-2.",
+          "tool": "Runway Gen-2",
+          "goal": "Bring the static character to life for short-form video.",
+          "whyNow": "Video drives higher engagement than photos, but it needs to be built off your static visual foundation.",
+          "expectedOutput": "3-5 second realistic looping videos.",
+          "estimatedTime": "30 minutes",
+          "difficulty": "Intermediate",
+          "expertTip": "Use the 'Motion Brush' tool to isolate movement—like making just the hair or clothing sway.",
+          "commonMistake": "Pushing the motion slider too high, causing the face to distort.",
+          "alternatives": [
+            "Luma AI",
+            "Pika"
+          ]
+        },
+        {
+          "role": "Layout Designer",
+          "desc": "Format your images and stories for social platforms using Canva.",
+          "tool": "Canva",
+          "goal": "Package everything into polished, native-looking social posts.",
+          "whyNow": "The raw images and video clips need typography and branding before they go live.",
+          "expectedOutput": "A week's worth of scheduled visual content.",
+          "estimatedTime": "15 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Use Canva's Bulk Create feature with a CSV of your captions to churn out 30 posts in minutes.",
+          "commonMistake": "Using mismatched fonts and colors across different posts.",
+          "alternatives": [
+            "Figma"
+          ]
+        }
+      ]
+    },
+    "whyThisOrder": {
+      "explanation": "Nailing the visual consistency (Midjourney) is the hardest part. Once you have that, the persona (ChatGPT), movement (Runway), and formatting (Canva) fall into place naturally.",
+      "impact": "If you try writing captions before you know what the character looks like, the tone usually feels disconnected from the aesthetic."
+    },
+    "budgetMode": {
+      "tools": [
+        "Leonardo.ai (Free)",
+        "ChatGPT (Free)",
+        "Luma AI (Free tier)",
+        "Canva (Free)"
+      ],
+      "description": "A zero-cost setup utilizing daily free credits to build the persona slowly."
+    },
+    "premiumMode": {
+      "tools": [
+        "Midjourney Pro",
+        "Claude 3.5 Sonnet",
+        "Runway Unlimited",
+        "Canva Pro"
+      ],
+      "description": "Uncapped generation capabilities for running multiple influencer accounts."
+    },
+    "faqs": [
+      {
+        "question": "Do I have to disclose it's an AI influencer?",
+        "answer": "Yes, many platforms (like TikTok and Meta) now require AI-generated content labels to prevent user deception."
+      },
+      {
+        "question": "How hard is it to keep the face consistent?",
+        "answer": "Much easier now than a year ago! Midjourney's Character Reference (--cref) parameter makes it extremely reliable."
+      }
+    ]
+  },
+  {
+    "slug": "vibe-coding",
+    "title": "Vibe Coding",
+    "description": "Build apps faster using AI coding assistants.",
+    "icon": "code",
+    "audience": "Developers",
+    "color": "cyan",
+    "tools": [
+      "Claude 3",
+      "Cursor",
+      "GitHub Copilot",
+      "v0 by Vercel"
+    ],
+    "meta": {
+      "outcome": "A fully functional web application deployed live on a public URL.",
+      "time": "2-4 hours",
+      "skill": "Intermediate",
+      "cost": "Mostly Free",
+      "toolsCount": 4,
+      "deliverables": [
+        "Application architecture plan",
+        "Fully functioning source code",
+        "Modern UI/UX components",
+        "Live production URL"
+      ],
+      "bestFor": [
+        {
+          "audience": "Indie Hackers",
+          "reason": "Build and launch MVPs in days instead of months."
+        },
+        {
+          "audience": "Product Managers",
+          "reason": "Prototype functional features without waiting on engineering."
+        }
+      ],
+      "steps": [
+        {
+          "role": "AI Assistant",
+          "desc": "Map out your app's architecture and data models with Claude 3.",
+          "tool": "Claude 3",
+          "goal": "Get a clear technical plan on paper before writing any code.",
+          "whyNow": "Jumping into code without a plan usually leads to messy, hard-to-maintain code.",
+          "expectedOutput": "A markdown file outlining your tech stack, schema, and basic API routes.",
+          "estimatedTime": "30 minutes",
+          "difficulty": "Intermediate",
+          "expertTip": "Paste your existing package.json or database schema into Claude and ask it to write the spec around your current constraints.",
+          "commonMistake": "Skipping the planning phase and asking the AI to 'build the whole app' in one prompt.",
+          "alternatives": [
+            "ChatGPT",
+            "Perplexity AI"
+          ]
+        },
+        {
+          "role": "UI Generator",
+          "desc": "Generate your React components quickly with v0 by Vercel.",
+          "tool": "v0 by Vercel",
+          "goal": "Spin up a clean, responsive frontend layout.",
+          "whyNow": "Once you have the visual structure, wiring up the backend logic is much easier.",
+          "expectedOutput": "Copy-pasteable React and Tailwind code.",
+          "estimatedTime": "30 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Upload a screenshot of a UI you like—v0 is surprisingly good at recreating it.",
+          "commonMistake": "Trying to force v0 to handle complex business logic. Stick to using it for UI.",
+          "alternatives": [
+            "Bolt.new",
+            "Lovable"
+          ]
+        },
+        {
+          "role": "Core Code Editor",
+          "desc": "Write logic and debug in Cursor.",
+          "tool": "Cursor",
+          "goal": "Connect your frontend to your backend and fix any bugs.",
+          "whyNow": "Now that you have a plan and the UI, Cursor is the best place to do the actual heavy lifting.",
+          "expectedOutput": "A working, bug-free codebase on your local machine.",
+          "estimatedTime": "2 hours",
+          "difficulty": "Advanced",
+          "expertTip": "Use Cursor's '@Codebase' feature to give the AI context about your entire project directory, not just the file you're in.",
+          "commonMistake": "Forgetting to commit to Git frequently. AI can make sweeping changes that you might need to roll back.",
+          "alternatives": [
+            "Windsurf",
+            "Codeium"
+          ]
+        },
+        {
+          "role": "Autocomplete",
+          "desc": "Use GitHub Copilot for fast inline suggestions.",
+          "tool": "GitHub Copilot",
+          "goal": "Speed up the manual typing and boilerplate generation.",
+          "whyNow": "This runs constantly in the background while you work in Cursor.",
+          "expectedOutput": "Faster typing and fewer syntax errors.",
+          "estimatedTime": "Ongoing",
+          "difficulty": "Beginner",
+          "expertTip": "Write a descriptive comment like '// function to parse JWT token' and wait a second—Copilot will usually write it for you.",
+          "commonMistake": "Blindly hitting 'Tab' without reading what Copilot actually suggested.",
+          "alternatives": [
+            "Supermaven",
+            "Tabnine"
+          ]
+        }
+      ]
+    },
+    "whyThisOrder": {
+      "explanation": "Planning (Claude) → UI Scaffolding (v0) → Core Execution (Cursor) → Micro-refinements (Copilot).",
+      "impact": "If you execute without a solid plan, you'll burn through your AI token limits quickly and end up with code hallucinations."
+    },
+    "budgetMode": {
+      "tools": [
+        "Claude 3 (Sonnet free tier)",
+        "Cursor (Free)",
+        "v0 by Vercel (Free)"
+      ],
+      "description": "A highly capable setup that leverages the free tiers of the best tools."
+    },
+    "premiumMode": {
+      "tools": [
+        "Claude 3.5 Sonnet (Pro)",
+        "Cursor Pro",
+        "GitHub Copilot",
+        "v0 Premium"
+      ],
+      "description": "The ultimate 10x developer stack with maximum context windows and speed."
+    },
+    "faqs": [
+      {
+        "question": "Do I need to know how to code?",
+        "answer": "You need a basic understanding of logic, terminal commands, and how web apps work, but you don't need to memorize syntax anymore."
+      },
+      {
+        "question": "Why use Cursor instead of VS Code?",
+        "answer": "Cursor is a fork of VS Code built specifically for AI, offering features like multi-file edits and codebase-wide context that standard extensions can't match."
+      }
+    ]
+  },
+  {
+    "slug": "content-creator",
+    "title": "Content Creator",
+    "description": "Plan, design and publish content faster.",
+    "icon": "edit_note",
+    "audience": "Creators",
+    "color": "violet",
+    "tools": [
+      "ChatGPT",
+      "Canva",
+      "Opus Clip",
+      "Buffer"
+    ],
+    "meta": {
+      "outcome": "A week's worth of optimized social media posts and short-form video clips scheduled.",
+      "time": "1 hour",
+      "skill": "Beginner",
+      "cost": "Free - $20 / month",
+      "toolsCount": 4,
+      "deliverables": [
+        "Content calendar & scripts",
+        "High-converting thumbnail graphics",
+        "10+ viral short-form clips",
+        "Automated posting schedule"
+      ],
+      "bestFor": [
+        {
+          "audience": "YouTubers",
+          "reason": "Repurpose long-form videos into dozens of Shorts/Reels."
+        },
+        {
+          "audience": "Small Businesses",
+          "reason": "Maintain an active social presence with minimal weekly effort."
+        }
+      ],
+      "steps": [
+        {
+          "role": "Ideation & Copywriting",
+          "desc": "Brainstorm copy, hooks, and captions for multiple platforms with ChatGPT.",
+          "tool": "ChatGPT",
+          "goal": "Write a week's worth of engaging text content.",
+          "whyNow": "Content needs a message. Writing the copy first ensures your visuals align with the core idea.",
+          "expectedOutput": "A document with 7 distinct post ideas and captions.",
+          "estimatedTime": "15 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Feed ChatGPT your top performing past posts and ask it to extract the framework to write new ones.",
+          "commonMistake": "Using overly formal, AI-sounding language. Tell it to write in a 'conversational, punchy' tone.",
+          "alternatives": [
+            "Claude 3",
+            "Jasper"
+          ]
+        },
+        {
+          "role": "Visual Graphics",
+          "desc": "Design posts, carousels, and thumbnails in Canva.",
+          "tool": "Canva",
+          "goal": "Create eye-catching visuals that stop the scroll.",
+          "whyNow": "You need visuals to pair with the copy you just wrote.",
+          "expectedOutput": "Exported PNG/JPG graphics sized for specific platforms.",
+          "estimatedTime": "30 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Use the 'Magic Switch' tool to instantly resize an Instagram square post into a Pinterest Pin or Story.",
+          "commonMistake": "Cluttering the design. Try to keep text on images under 20% of the total area.",
+          "alternatives": [
+            "Figma"
+          ]
+        },
+        {
+          "role": "Shorts Extractor",
+          "desc": "Turn long-form videos into viral clips using Opus Clip.",
+          "tool": "Opus Clip",
+          "goal": "Get the most out of your existing video content.",
+          "whyNow": "Short-form video is the best way to grow right now, and this takes minutes instead of hours.",
+          "expectedOutput": "Vertical videos with burned-in captions.",
+          "estimatedTime": "10 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Review the clips before exporting—you can manually adjust the start/stop times if the AI missed the punchline.",
+          "commonMistake": "Publishing clips without double-checking the auto-captions for spelling errors.",
+          "alternatives": [
+            "Munch",
+            "Submagic"
+          ]
+        },
+        {
+          "role": "Scheduling & Analytics",
+          "desc": "Queue up your posts using Buffer.",
+          "tool": "Buffer",
+          "goal": "Post consistently without needing to log in every day.",
+          "whyNow": "The final step: getting the content you just made in front of an audience.",
+          "expectedOutput": "A fully scheduled content calendar.",
+          "estimatedTime": "5 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Look at your analytics and schedule posts for when your specific audience is online, not just the general 'best times'.",
+          "commonMistake": "Forgetting to tag relevant accounts or update the link in your bio.",
+          "alternatives": [
+            "Hootsuite",
+            "Later"
+          ]
+        }
+      ]
+    },
+    "whyThisOrder": {
+      "explanation": "Text/Strategy (ChatGPT) → Static Visuals (Canva) → Dynamic Assets (Opus Clip) → Distribution (Buffer).",
+      "impact": "If you try to design graphics before writing the copy, you'll spend hours resizing text boxes because the words never fit the layout."
+    },
+    "budgetMode": {
+      "tools": [
+        "ChatGPT (Free)",
+        "Canva (Free)",
+        "Opus Clip (Free Trial)",
+        "Buffer (Free Tier)"
+      ],
+      "description": "Perfect for new creators managing 3 or fewer social channels."
+    },
+    "premiumMode": {
+      "tools": [
+        "ChatGPT Plus",
+        "Canva Pro",
+        "Opus Clip Pro",
+        "Buffer Essentials"
+      ],
+      "description": "Unlocks brand kits, premium templates, and advanced analytics."
+    },
+    "faqs": [
+      {
+        "question": "Can I use this for a Faceless channel?",
+        "answer": "Yes, you can swap Opus Clip for a text-to-video generator if you don't have existing long-form content."
+      },
+      {
+        "question": "Does scheduling hurt reach?",
+        "answer": "No, platforms officially support scheduling via API. Content quality matters far more than how it was published."
+      }
+    ]
+  },
+  {
+    "slug": "agency",
+    "title": "Agency",
+    "description": "Run your client business with AI.",
+    "icon": "business_center",
+    "audience": "Agencies",
+    "color": "emerald",
+    "tools": [
+      "Notion AI",
+      "ChatGPT",
+      "Zapier Central",
+      "ClickUp"
+    ],
+    "meta": {
+      "outcome": "Automated onboarding, tracking pipelines, and highly organized client project spaces.",
+      "time": "3-5 hours",
+      "skill": "Advanced",
+      "cost": "$30 - $80 / month",
+      "toolsCount": 4,
+      "deliverables": [
+        "Automated client onboarding flow",
+        "AI-powered proposal generator",
+        "Centralized CRM and knowledge base",
+        "Integrated task management"
+      ],
+      "bestFor": [
+        {
+          "audience": "Creative Agencies",
+          "reason": "Streamline operations to focus more on billable creative work."
+        },
+        {
+          "audience": "Consultants",
+          "reason": "Provide a highly professional, white-glove client experience automatically."
+        }
+      ],
+      "steps": [
+        {
+          "role": "Central Hub",
+          "desc": "Set up your CRM, SOPs, and client portals in Notion AI.",
+          "tool": "Notion AI",
+          "goal": "Build a single, organized place for all your business operations.",
+          "whyNow": "You need a solid database before you can automate anything.",
+          "expectedOutput": "A workspace with linked databases for clients, projects, and tasks.",
+          "estimatedTime": "1.5 hours",
+          "difficulty": "Intermediate",
+          "expertTip": "Use Notion AI to automatically summarize your meeting notes and pull action items directly into your CRM.",
+          "commonMistake": "Overcomplicating the databases early on. Start simple and add new properties only when you actually need them.",
+          "alternatives": [
+            "Coda",
+            "Airtable"
+          ]
+        },
+        {
+          "role": "AI Coordinator",
+          "desc": "Draft proposals and handle client emails using ChatGPT.",
+          "tool": "ChatGPT",
+          "goal": "Cut down on the hours spent writing repetitive client emails.",
+          "whyNow": "With your CRM in place, you now need to efficiently communicate that information.",
+          "expectedOutput": "Email templates and drafted proposals ready for review.",
+          "estimatedTime": "30 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Set up a 'Custom Instruction' that explains your agency's tone, services, and pricing so ChatGPT doesn't guess.",
+          "commonMistake": "Sending AI emails without reading them first. Clients can easily spot a generic, unedited response.",
+          "alternatives": [
+            "Claude 3",
+            "Jasper"
+          ]
+        },
+        {
+          "role": "Integration Pipeline",
+          "desc": "Connect your apps and trigger actions with Zapier Central.",
+          "tool": "Zapier Central",
+          "goal": "Stop copying and pasting data between different platforms.",
+          "whyNow": "Automation is the glue that connects your CRM, emails, and task manager.",
+          "expectedOutput": "Active Zaps (e.g., 'When a Typeform is submitted, create a Notion page and ping Slack').",
+          "estimatedTime": "2 hours",
+          "difficulty": "Advanced",
+          "expertTip": "Use Zapier's built-in AI formatter to clean up messy data before pushing it into your CRM.",
+          "commonMistake": "Creating infinite loops by accidentally having two Zaps trigger each other.",
+          "alternatives": [
+            "Make"
+          ]
+        },
+        {
+          "role": "Task Manager",
+          "desc": "Track client progress and manage daily tasks in ClickUp.",
+          "tool": "ClickUp",
+          "goal": "Keep your team on track and actually execute the work.",
+          "whyNow": "This is where the actual work gets done, fed automatically by the tools you just set up.",
+          "expectedOutput": "A project dashboard with automated status updates.",
+          "estimatedTime": "1 hour",
+          "difficulty": "Intermediate",
+          "expertTip": "ClickUp Brain can instantly answer questions about project statuses, saving you from interrupting your team.",
+          "commonMistake": "Creating too many sub-tasks. If the system is too complicated, your team simply won't use it.",
+          "alternatives": [
+            "Asana",
+            "Monday.com"
+          ]
+        }
+      ]
+    },
+    "whyThisOrder": {
+      "explanation": "Foundation (Notion) → Communication (ChatGPT) → Connection (Zapier) → Execution (ClickUp).",
+      "impact": "Building automations before you have a clear CRM structure will just result in broken Zapier workflows."
+    },
+    "budgetMode": {
+      "tools": [
+        "Notion (Free)",
+        "ChatGPT (Free)",
+        "Make (Free tier)",
+        "ClickUp (Free tier)"
+      ],
+      "description": "Robust enough to handle your first 5-10 clients at near-zero cost."
+    },
+    "premiumMode": {
+      "tools": [
+        "Notion Plus + AI",
+        "ChatGPT Plus",
+        "Zapier Professional",
+        "ClickUp Business"
+      ],
+      "description": "Enterprise-grade automation with unlimited logic paths and custom branding."
+    },
+    "faqs": [
+      {
+        "question": "Should I use Make instead of Zapier?",
+        "answer": "Make is significantly cheaper and more visual, but Zapier integrates with more obscure tools out-of-the-box."
+      },
+      {
+        "question": "Is client data secure in these AI tools?",
+        "answer": "Always review Enterprise agreements. For high-security clients, ensure you opt-out of data training in ChatGPT and Notion."
+      }
+    ]
+  },
+  {
+    "slug": "solopreneur",
+    "title": "Solopreneur",
+    "description": "Launch and grow an online business with AI.",
+    "icon": "rocket_launch",
+    "audience": "Entrepreneurs",
+    "color": "amber",
+    "tools": [
+      "Claude 3",
+      "Canva",
+      "Framer",
+      "Stripe"
+    ],
+    "meta": {
+      "outcome": "A professional landing page with live payment integration, ready to accept customers.",
+      "time": "2-3 hours",
+      "skill": "Intermediate",
+      "cost": "$29 - $99 / month",
+      "toolsCount": 4,
+      "deliverables": [
+        "Persuasive copywriting and value props",
+        "Custom logos and brand assets",
+        "High-converting landing page",
+        "Secure checkout flow"
+      ],
+      "bestFor": [
+        {
+          "audience": "Course Creators",
+          "reason": "Quickly spin up sales pages for new info-products."
+        },
+        {
+          "audience": "SaaS Founders",
+          "reason": "Validate an idea and collect pre-orders before building the product."
+        }
+      ],
+      "steps": [
+        {
+          "role": "Strategist",
+          "desc": "Write your landing page copy and value props using Claude 3.",
+          "tool": "Claude 3",
+          "goal": "Draft a clear, convincing argument for why someone should buy your product.",
+          "whyNow": "Design needs to serve the copy. Writing the text first ensures your website actually makes sense.",
+          "expectedOutput": "A wireframe document with headlines, sub-headlines, and button text.",
+          "estimatedTime": "30 minutes",
+          "difficulty": "Intermediate",
+          "expertTip": "Claude 3 is great at nailing tone. Ask it to write using the 'Problem-Agitation-Solution' (PAS) framework.",
+          "commonMistake": "Focusing too much on technical features instead of the actual benefits to the customer.",
+          "alternatives": [
+            "ChatGPT",
+            "Copy.ai"
+          ]
+        },
+        {
+          "role": "Brand & Ad Assets",
+          "desc": "Create logos and marketing graphics in Canva.",
+          "tool": "Canva",
+          "goal": "Give your new business a clean, trustworthy look.",
+          "whyNow": "You need visual assets ready to plug into your website builder.",
+          "expectedOutput": "A logo, color palette, and a few supporting images.",
+          "estimatedTime": "45 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Set up Canva's Brand Hub with your colors and fonts so you can instantly apply them to any template.",
+          "commonMistake": "Spending three hours perfecting a logo for an idea you haven't even validated yet.",
+          "alternatives": [
+            "Figma",
+            "Midjourney"
+          ]
+        },
+        {
+          "role": "Website Builder",
+          "desc": "Build a fast, responsive landing page in Framer.",
+          "tool": "Framer",
+          "goal": "Get your site live on the internet without writing code.",
+          "whyNow": "This brings your copy and your visuals together into the final product.",
+          "expectedOutput": "A live website on a custom domain.",
+          "estimatedTime": "1 hour",
+          "difficulty": "Intermediate",
+          "expertTip": "Framer has an AI generator—type in a prompt and it will give you a baseline layout that you can tweak.",
+          "commonMistake": "Forgetting to check the mobile view. Most of your traffic will probably come from phones.",
+          "alternatives": [
+            "Webflow",
+            "v0 by Vercel"
+          ]
+        },
+        {
+          "role": "Checkout & Payments",
+          "desc": "Set up payment processing with Stripe.",
+          "tool": "Stripe",
+          "goal": "Actually make money from your traffic.",
+          "whyNow": "The very last step to turn your project into a real business.",
+          "expectedOutput": "A live checkout link connected to your website's buy buttons.",
+          "estimatedTime": "15 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Don't overcomplicate it. Just use Stripe Payment Links and attach the URL directly to your Framer buttons.",
+          "commonMistake": "Forgetting to configure tax settings before you launch.",
+          "alternatives": [
+            "Lemon Squeezy",
+            "Gumroad"
+          ]
+        }
+      ]
+    },
+    "whyThisOrder": {
+      "explanation": "Copywriting (Claude) → Branding (Canva) → Web Design (Framer) → Payments (Stripe).",
+      "impact": "If you design a site before writing the copy, you'll end up with awkward text that doesn't fit the layout."
+    },
+    "budgetMode": {
+      "tools": [
+        "Claude 3 (Free)",
+        "Canva (Free)",
+        "Framer (Free tier domain)",
+        "Stripe (Pay per transaction)"
+      ],
+      "description": "Launch an MVP for absolutely $0 upfront cost."
+    },
+    "premiumMode": {
+      "tools": [
+        "Claude 3.5 Sonnet",
+        "Canva Pro",
+        "Framer Mini/Basic Plan",
+        "Custom Domain"
+      ],
+      "description": "The professional standard to build trust and scale effectively."
+    },
+    "faqs": [
+      {
+        "question": "Do I need an LLC to use Stripe?",
+        "answer": "No, you can start as a Sole Proprietor in most countries, though forming an LLC is recommended later for liability protection."
+      },
+      {
+        "question": "Is Framer better than Webflow?",
+        "answer": "Framer is generally faster to learn for designers (similar to Figma) and excellent for landing pages, while Webflow is better for complex CMS sites."
+      }
+    ]
+  },
+  {
+    "id": "workflow-1783781230969",
+    "title": "Untitled Workflow",
+    "slug": "workflow-1783781230969",
+    "description": "",
+    "category": "general",
+    "difficulty": "Beginner",
+    "timeToComplete": "10 mins",
+    "cost": "Free",
+    "author": {
+      "name": "AIToolsHaven Editorial Team",
+      "role": "AI Workflow Specialist",
+      "avatar": "/avatars/editorial.webp"
+    },
+    "tools": [],
+    "steps": []
+  }
+]

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { AITool } from "@/lib/types/tool";
 import type { ToolCategory } from "@/lib/types/category";
 import { QuickFacts } from "./QuickFacts";
+import { ToolImage } from "@/components/shared/ToolImage";
 
 type ToolSidebarProps = {
     tool: AITool;
@@ -58,9 +59,9 @@ export function ToolSidebar({
                             href={`/tool/${t.slug}`}
                             className="group flex items-center gap-4 rounded-2xl p-3 transition-all duration-300 hover:bg-surface-secondary hover:translate-x-1 border border-transparent hover:border-border/50"
                         >
-                            <img
-                                src={t.logoUrl}
-                                alt={t.name}
+                            <ToolImage
+                                tool={t}
+                                type="logo"
                                 className="h-14 w-14 rounded-xl border border-border/50 bg-white object-cover shadow-xs transition-transform group-hover:scale-105"
                             />
 

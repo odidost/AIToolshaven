@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getToolBySlug, getToolsByCategoryId } from "@/lib/data/tools-service";
 import { getCategoryById } from "@/lib/queries/categories";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { PageContainer } from "@/components/layout/PageContainer";
 
 // Import all the new components
 import { ComparisonHero } from "@/components/comparison/ComparisonHero";
@@ -106,7 +107,7 @@ export default async function ComparePage({
 
   if (!compareTool) {
     return (
-      <div className="container mx-auto px-4 py-8">
+      <PageContainer className="py-8 md:py-12">
         <Breadcrumbs
           items={[{ label: "Compare" }, { label: mainTool.name }]}
         />
@@ -132,7 +133,7 @@ export default async function ComparePage({
             Back to {mainTool.name}
           </Link>
         </div>
-      </div>
+      </PageContainer>
     );
   }
 
@@ -153,7 +154,7 @@ export default async function ComparePage({
 
       <ComparisonStickyNav />
 
-      <div className="container mx-auto pb-10">
+      <PageContainer className="pb-10">
         <QuickVerdict mainTool={mainTool} compareTool={compareTool} />
         <ComparisonSummary mainTool={mainTool} compareTool={compareTool} categoryName={category?.name || "Category"} />
         <FeatureMatrix mainTool={mainTool} compareTool={compareTool} />
@@ -167,7 +168,7 @@ export default async function ComparePage({
         <ExpertVerdict mainTool={mainTool} compareTool={compareTool} />
         <ComparisonFAQ mainTool={mainTool} compareTool={compareTool} />
         <RelatedComparisons mainTool={mainTool} compareTool={compareTool} />
-      </div>
+      </PageContainer>
     </>
   );
 }

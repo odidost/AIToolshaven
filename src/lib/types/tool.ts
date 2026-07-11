@@ -28,6 +28,15 @@ export interface ToolStats {
     monthlyUsers?: string;
 }
 
+export interface ToolEditorial {
+    overview?: string;
+    verdict?: string;
+    pricing?: string;
+    comparison?: string;
+    useCaseFocus?: string;
+}
+
+
 export interface AITool {
     id: string;
     name: string;
@@ -110,6 +119,8 @@ export interface AITool {
     socials?: SocialLinks;
 
     stats?: ToolStats;
+
+    editorial?: ToolEditorial;
 
     lastUpdated?: string;
 }
