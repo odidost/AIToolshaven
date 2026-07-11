@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 import { siteConfig } from "@/lib/config/site";
 
@@ -91,7 +94,7 @@ export default function RootLayout({
   const manifest = getAssetManifest();
 
   return (
-    <html lang="en" className={`h-full antialiased font-sans ${inter.className}`}>
+    <html lang="en" className={`h-full antialiased ${inter.variable} font-sans`}>
       <head>
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
