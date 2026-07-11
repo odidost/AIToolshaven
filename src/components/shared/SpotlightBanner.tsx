@@ -27,14 +27,14 @@ export function SpotlightBanner() {
             <span className="tracking-wide uppercase">AI OS 2.0 Is Live</span>
           </div>
 
-          <h1 className="mt-8 max-w-2xl text-5xl font-black leading-[1.1] tracking-tight lg:text-6xl text-on-surface">
+          <h1 className="mt-8 w-full text-5xl font-black leading-[1.1] tracking-tight lg:text-[3.5rem] xl:text-6xl text-on-surface">
             <span>Discover the </span>
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Next Gen</span>
             <br />
             <span>of AI Tools.</span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-on-surface-variant">
+          <p className="mt-6 w-full text-lg leading-relaxed text-on-surface-variant">
             Your centralized operating system for artificial intelligence. Explore carefully curated tools to write, design, automate, and build faster.
           </p>
 
@@ -103,7 +103,7 @@ export function SpotlightBanner() {
         </div>
 
         {/* ================= RIGHT ================= */}
-        <div className="hidden lg:flex justify-end relative h-full">
+        <div className="hidden lg:flex justify-end relative h-full -mt-16 xl:-mt-24 pointer-events-none">
           <HeroVisual />
         </div>
 
