@@ -31,7 +31,7 @@ export default function Home() {
   const latestTools = getLatestTools(8);
 
   return (
-    <PageContainer className="max-w-[1920px] 2xl:max-w-[2560px] py-8 md:py-12">
+    <PageContainer className="max-w-[1920px] 2xl:max-w-[2560px] pt-2 pb-8 md:pt-4 md:pb-12">
 
       {/* 1. Hero Section */}
       <section className="mb-12 md:mb-20">

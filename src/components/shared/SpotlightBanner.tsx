@@ -13,7 +13,7 @@ export function SpotlightBanner() {
       {/* Subtle Grid Texture */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
-      <div className="relative z-10 grid items-start gap-12 px-8 py-16 md:px-12 lg:min-h-[700px] lg:grid-cols-2">
+      <div className="relative z-10 grid items-start gap-12 pt-16 pb-4 pl-4 md:pl-8 lg:min-h-[600px] lg:grid-cols-2">
 
         {/* ================= LEFT ================= */}
         <div className="flex flex-col justify-start">
@@ -58,13 +58,13 @@ export function SpotlightBanner() {
           </div>
 
           {/* Trust Signals & Stats */}
-          <div className="mt-16 flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-12">
+          <div className="mt-12 flex flex-wrap items-center gap-6 lg:gap-8">
             
-            {/* Avatars */}
-            <div className="flex flex-col gap-3">
-              <div className="flex -space-x-3">
+            {/* Avatars & Rating */}
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-2.5">
                 {[1, 2, 3, 4, 5].map((i) => (
-                  <div key={i} className="h-10 w-10 overflow-hidden rounded-full border-2 border-surface bg-surface">
+                  <div key={i} className="h-8 w-8 overflow-hidden rounded-full border-2 border-surface bg-surface">
                     <Image width={100} height={100} src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}&backgroundColor=transparent`} 
                       alt="User avatar" 
                       className="h-full w-full object-cover"
@@ -72,10 +72,10 @@ export function SpotlightBanner() {
                   </div>
                 ))}
               </div>
-              <div className="flex items-center gap-2 text-sm font-medium text-on-surface-variant">
-                <div className="flex gap-1 text-warning">
+              <div className="flex flex-col gap-0.5 text-xs font-medium text-on-surface-variant">
+                <div className="flex gap-0.5 text-warning">
                   {[1, 2, 3, 4, 5].map((i) => (
-                    <span key={i} className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+                    <span key={i} className="material-symbols-outlined text-[12px]" style={{ fontVariationSettings: "'FILL' 1" }}>
                       star
                     </span>
                   ))}
@@ -84,16 +84,16 @@ export function SpotlightBanner() {
               </div>
             </div>
 
-            <div className="hidden h-12 w-px bg-border sm:block"></div>
+            <div className="hidden h-8 w-px bg-border sm:block"></div>
 
             {/* Quick Stats */}
-            <div className="flex gap-8">
-              <div className="flex flex-col">
-                <span className="text-3xl font-black text-on-surface">5K+</span>
+            <div className="flex items-center gap-6">
+              <div className="flex flex-col gap-0.5">
+                <span className="text-xl font-black leading-none text-on-surface">5K+</span>
                 <span className="text-[10px] font-bold tracking-widest text-on-surface-variant/70 uppercase">AI Tools</span>
               </div>
-              <div className="flex flex-col">
-                <span className="text-3xl font-black text-on-surface">40+</span>
+              <div className="flex flex-col gap-0.5">
+                <span className="text-xl font-black leading-none text-on-surface">40+</span>
                 <span className="text-[10px] font-bold tracking-widest text-on-surface-variant/70 uppercase">Categories</span>
               </div>
             </div>
