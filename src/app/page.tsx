@@ -7,7 +7,7 @@ import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 import { SpotlightBanner } from "@/components/shared/SpotlightBanner";
 import { TrustedByMarquee } from "@/components/home/TrustedByMarquee";
 import { RecommendationEngine } from "@/components/home/RecommendationEngine";
-import { CategoryCapsuleBar } from "@/components/shared/CategoryCapsuleBar";
+import { HomepageCategories } from "@/components/home/HomepageCategories";
 import { WorkflowCard } from "@/components/home/WorkflowCard";
 import { OpportunityCard } from "@/components/home/OpportunityCard";
 import { ComparisonCard } from "@/components/home/ComparisonCard";
@@ -31,7 +31,8 @@ export default function Home() {
   const latestTools = getLatestTools(8);
 
   return (
-    <PageContainer className="max-w-[1920px] 2xl:max-w-[2560px] pt-2 pb-8 md:pt-4 md:pb-12">
+    <>
+      <PageContainer className="max-w-[1920px] 2xl:max-w-[2560px] pt-2 pb-8 md:pt-4 md:pb-12">
 
       {/* 1. Hero Section */}
       <section className="mb-12 md:mb-20">
@@ -69,25 +70,13 @@ export default function Home() {
       {/* 3. AI Recommendation Engine */}
       <RecommendationEngine />
 
-      {/* 4. Featured Categories */}
-      <SectionContainer className="relative overflow-hidden bg-surface-section rounded-[32px] p-8 md:p-12 border border-border">
-        <BackgroundPattern type="sparkles" opacity={0.02} />
-        <div className="absolute inset-0 opacity-[0.02] pointer-events-none flex flex-wrap justify-around items-center overflow-hidden">
-           <span className="material-symbols-outlined text-[120px] text-primary rotate-12">terminal</span>
-           <span className="material-symbols-outlined text-[160px] text-secondary -rotate-12">edit_document</span>
-           <span className="material-symbols-outlined text-[140px] text-accent rotate-45">palette</span>
-        </div>
-        <div className="relative z-10">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-foreground tracking-tight">
-              Explore Categories
-            </h2>
-          </div>
-          <CategoryCapsuleBar />
-        </div>
-      </SectionContainer>
+      </PageContainer>
 
-      {/* 5. Trending AI Tools */}
+      {/* 4. Featured Categories */}
+      <HomepageCategories />
+
+      <PageContainer className="max-w-[1920px] 2xl:max-w-[2560px] py-8 md:py-12">
+        {/* 5. Trending AI Tools */}
       <SectionContainer>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
@@ -284,6 +273,7 @@ export default function Home() {
       <SectionContainer>
         <NewsletterCTA />
       </SectionContainer>
-    </PageContainer>
+      </PageContainer>
+    </>
   );
 }
