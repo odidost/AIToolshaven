@@ -67,6 +67,7 @@ export const metadata: Metadata = {
 
 import { Header } from "@/components/shared/Header";
 import { Footer } from "@/components/shared/Footer";
+import { MobileNavBar } from "@/components/shared/MobileNavBar";
 import { BookmarksProvider } from "@/lib/contexts/BookmarksContext";
 import { AssetManifestProvider } from "@/lib/contexts/AssetManifestContext";
 import { AnalyticsProvider } from "@/components/providers/AnalyticsProvider";
@@ -108,10 +109,11 @@ export default function RootLayout({
           <BookmarksProvider>
             <AnalyticsProvider />
             <Header />
-            <main className="flex-grow">
+            <main className="flex-grow pb-24 md:pb-0">
               {children}
             </main>
             <Footer />
+            <MobileNavBar />
           </BookmarksProvider>
         </AssetManifestProvider>
       </body>

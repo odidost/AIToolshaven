@@ -12,7 +12,7 @@ export default function AdminAssetsPage() {
       <div className="max-w-7xl mx-auto mb-8">
         <div className="flex justify-between items-end">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">Asset Management System</h1>
+            <h1 className="text-fluid-h2 font-bold tracking-tight text-gray-900">Asset Management System</h1>
             <p className="mt-2 text-sm text-gray-500">
               Manage, optimize, and replace placeholder logos and screenshots across all tools.
             </p>

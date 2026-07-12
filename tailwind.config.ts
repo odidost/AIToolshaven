@@ -9,6 +9,12 @@ export default {
   ],
   theme: {
     extend: {
+      fontSize: {
+        'fluid-h1': ['clamp(1.35rem, 4.5vw, 3.5rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'fluid-h2': ['clamp(1.125rem, 3.5vw, 2.5rem)', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+        'fluid-h3': ['clamp(1rem, 2.5vw, 1.75rem)', { lineHeight: '1.3', letterSpacing: '-0.01em' }],
+        'fluid-base': ['clamp(0.875rem, 1.25vw, 1rem)', { lineHeight: '1.6' }],
+      },
       colors: {
         surface: '#FFFFFF',
         'surface-secondary': '#F5F7FB',
@@ -69,9 +75,9 @@ export default {
       },
       borderRadius: {
         xl: '0.75rem',
-        '2xl': '1rem', // Buttons (16px)
-        '3xl': '1.5rem', // Cards (24px)
-        'input': '1.125rem', // Inputs (18px)
+        '2xl': '1rem', // Buttons
+        '3xl': '1.25rem', // Cards (shrunk from 1.5rem for tighter feel)
+        'input': '1rem', // Inputs
         full: '9999px', // Badges
       },
       boxShadow: {

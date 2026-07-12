@@ -52,7 +52,7 @@ export default function AboutPage() {
           <span className="material-symbols-outlined text-[16px]">auto_awesome</span>
           About AIToolsHaven
         </div>
-        <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">
+        <h1 className="text-fluid-h1 font-black text-slate-900 mb-6 leading-tight">
           The world&apos;s most curated<br />
           <span className="text-primary">AI tools directory.</span>
         </h1>
@@ -77,7 +77,7 @@ export default function AboutPage() {
 
       {/* Our Values */}
       <div className="mb-24">
-        <h2 className="text-3xl font-black text-slate-900 mb-2">Our Values</h2>
+        <h2 className="text-fluid-h2 font-black text-slate-900 mb-2">Our Values</h2>
         <p className="text-slate-500 mb-10">What we stand for and how we operate.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -102,7 +102,7 @@ export default function AboutPage() {
       <div className="rounded-[32px] bg-slate-950 p-10 md:p-16 text-center relative overflow-hidden">
         <div className="absolute top-0 right-0 h-64 w-64 bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
         <div className="relative z-10">
-          <h2 className="text-3xl font-black text-white mb-4">
+          <h2 className="text-fluid-h2 font-black text-white mb-4">
             Have a tool we should feature?
           </h2>
           <p className="text-slate-400 mb-8 max-w-lg mx-auto">

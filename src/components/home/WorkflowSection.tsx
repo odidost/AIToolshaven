@@ -43,7 +43,7 @@ export function WorkflowSection() {
                             {/* Icon */}
                             <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
 
-                                <span className="material-symbols-outlined text-3xl text-primary">
+                                <span className="material-symbols-outlined text-fluid-h2 text-primary">
                                     {workflow.icon}
                                 </span>
 

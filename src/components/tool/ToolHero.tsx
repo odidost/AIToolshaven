@@ -26,53 +26,65 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                     {/* Logo + Name */}
 
-                    <div className="flex items-start justify-between mb-6">
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-6 gap-4">
 
-                        <div className="flex items-start gap-4">
+                        <div className="flex items-start gap-3 sm:gap-4 w-full">
 
                             <ToolImage
                                 tool={tool}
                                 type="logo"
-                                className="h-14 w-14 rounded-2xl border border-outline"
+                                className="h-12 w-12 sm:h-14 sm:w-14 rounded-2xl border border-outline shrink-0"
                             />
 
-                            <div>
+                            <div className="flex-1 min-w-0">
 
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-start justify-between gap-2">
+                                    <div className="flex items-center flex-wrap gap-1.5 sm:gap-2">
 
-                                    <h1 className="text-4xl font-bold">
-                                        {tool.name}
-                                    </h1>
+                                        <h1 className="text-2xl sm:text-fluid-h1 font-bold leading-tight">
+                                            {tool.name}
+                                        </h1>
 
-                                    {tool.verified && (
-                                        <span className="material-symbols-outlined text-primary">
-                                            verified
-                                        </span>
-                                    )}
+                                        {tool.verified && (
+                                            <span className="material-symbols-outlined text-primary text-xl sm:text-2xl">
+                                                verified
+                                            </span>
+                                        )}
 
+                                    </div>
+
+                                    {/* Mobile Icons */}
+                                    <div className="flex gap-2 shrink-0 sm:hidden">
+                                        <button className="h-9 w-9 sm:h-11 sm:w-11 rounded-xl border border-outline flex items-center justify-center hover:bg-surface-container hover:text-primary transition-colors">
+                                            <span className="material-symbols-outlined text-lg sm:text-xl">
+                                                bookmark
+                                            </span>
+                                        </button>
+                                        <SocialShareBar toolName={tool.name} urlPath={`/tool/${tool.slug}`} />
+                                    </div>
                                 </div>
 
-                                <div className="flex items-center gap-2 mt-2">
+                                <div className="flex items-center gap-1.5 mt-1 sm:mt-2 text-[12px] sm:text-base flex-wrap">
 
-                                    <span className="text-yellow-500">
+                                    <span className="text-yellow-500 tracking-tighter">
                                         ★★★★★
                                     </span>
 
-                                    <strong>{tool.rating}</strong>
+                                    <strong className="leading-none">{tool.rating}</strong>
 
-                                    <span className="text-on-surface-variant">
+                                    <span className="text-on-surface-variant leading-none truncate">
                                         ({tool.reviewCount.toLocaleString()} reviews)
                                     </span>
 
                                 </div>
 
                                 {tool.company && (
-                                    <p className="text-sm text-on-surface-variant mt-2">
+                                    <p className="text-xs sm:text-sm text-on-surface-variant mt-2">
                                         by {tool.company}
                                     </p>
                                 )}
 
-                                <div className="mt-3">
+                                <div className="mt-2 sm:mt-3">
                                     <AuthorAttribution />
                                 </div>
 
@@ -80,7 +92,8 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                         </div>
 
-                        <div className="flex gap-2">
+                        {/* Desktop Icons */}
+                        <div className="hidden sm:flex gap-2 self-start shrink-0">
 
                             <button className="h-11 w-11 rounded-xl border border-outline flex items-center justify-center hover:bg-surface-container hover:text-primary transition-colors">
                                 <span className="material-symbols-outlined">
@@ -112,7 +125,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                             </div>
 
-                            <div className="rounded-full bg-surface px-5 py-1 text-xs text-on-surface-variant">
+                            <div className="rounded-full bg-surface px-5 py-1 text-xs text-on-surface-variant truncate max-w-[180px] sm:max-w-none">
                                 {(tool.websiteUrl || tool.url || "").replace("https://", "")}
                             </div>
 
@@ -133,9 +146,9 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                 {/* RIGHT */}
 
-                <div className="sticky top-24 rounded-[32px] border border-border/50 bg-surface-secondary/30 p-8 shadow-sm backdrop-blur-sm">
+                <div className="sticky top-24 rounded-[32px] border border-border/50 bg-surface-secondary/30 p-6 sm:p-8 shadow-sm backdrop-blur-sm">
 
-                    <h2 className="text-2xl font-bold mb-5">
+                    <h2 className="text-fluid-h2 font-bold mb-5">
                         About {tool.name}
                     </h2>
 
@@ -197,7 +210,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
                                 href={tool.websiteUrl || tool.url || '#'}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-secondary px-6 py-4 font-semibold text-white transition-all shadow-glow hover:shadow-glow-primary hover:-translate-y-[0.5px]"
+                                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-secondary px-6 py-4 font-semibold text-white transition-all shadow-glow hover:shadow-glow-primary hover:-translate-y-[0.5px]"
                             >
                                 <span className="material-symbols-outlined">
                                     open_in_new
@@ -208,7 +221,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                         <Link
                             href={compareHref}
-                            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-surface px-6 py-4 font-semibold transition-all shadow-xs hover:shadow-sm hover:border-primary hover:bg-surface-secondary hover:-translate-y-[0.5px]"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-surface px-6 py-4 font-semibold transition-all shadow-xs hover:shadow-sm hover:border-primary hover:bg-surface-secondary hover:-translate-y-[0.5px]"
                         >
                             <span className="material-symbols-outlined">
                                 compare_arrows
@@ -217,7 +230,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
                         </Link>
 
                         <button
-                            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-surface px-6 py-4 font-semibold transition-all shadow-xs hover:shadow-sm hover:border-primary hover:bg-surface-secondary hover:-translate-y-[0.5px]"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-surface px-6 py-4 font-semibold transition-all shadow-xs hover:shadow-sm hover:border-primary hover:bg-surface-secondary hover:-translate-y-[0.5px]"
                         >
                             <span className="material-symbols-outlined">
                                 bookmark

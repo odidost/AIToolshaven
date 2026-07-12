@@ -130,7 +130,7 @@ export default function SubmitPage() {
           <span className="material-symbols-outlined text-sm">rocket_launch</span>
           Get Noticed
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-on-surface mb-4 leading-tight">
+        <h1 className="text-fluid-h1 font-bold text-on-surface mb-4 leading-tight">
           Add your tool to the directory
         </h1>
         <p className="text-xl text-on-surface-variant max-w-xl mx-auto">
@@ -194,7 +194,7 @@ export default function SubmitPage() {
       {/* Process Flow */}
       <div className="max-w-4xl mx-auto mb-24">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-on-surface mb-3">How It Works</h2>
+          <h2 className="text-fluid-h2 font-bold text-on-surface mb-3">How It Works</h2>
           <p className="text-on-surface-variant text-lg">From submission to discovery in four simple steps.</p>
         </div>
 
@@ -224,7 +224,7 @@ export default function SubmitPage() {
       {/* FAQ Section */}
       <div className="max-w-3xl mx-auto mb-24">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-on-surface mb-3">Frequently Asked Questions</h2>
+          <h2 className="text-fluid-h2 font-bold text-on-surface mb-3">Frequently Asked Questions</h2>
           <p className="text-on-surface-variant text-lg">Everything you need to know about submitting your tool.</p>
         </div>
 
@@ -248,7 +248,7 @@ export default function SubmitPage() {
       {/* CTA Banner */}
       <div className="max-w-3xl mx-auto mb-8">
         <div className="bg-primary rounded-2xl p-8 md:p-12 text-center text-primary-foreground">
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">Ready to Launch?</h2>
+          <h2 className="text-2xl md:text-fluid-h2 font-bold mb-3">Ready to Launch?</h2>
           <p className="opacity-80 mb-6 max-w-md mx-auto">
             Join hundreds of AI tools already growing with AIToolsHaven. Start with a free listing today.
           </p>

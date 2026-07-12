@@ -5,7 +5,7 @@ import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 
 export function SpotlightBanner() {
   return (
-    <section className="relative overflow-hidden rounded-[32px] bg-surface-section border border-border shadow-md">
+    <section className="relative mt-8 lg:mt-12 mb-20 rounded-[32px] border border-primary/20 bg-surface shadow-md overflow-hidden">
       
       {/* Aurora Mesh Background */}
       <BackgroundPattern type="aurora" opacity={1} />
@@ -13,7 +13,7 @@ export function SpotlightBanner() {
       {/* Subtle Grid Texture */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
-      <div className="relative z-10 grid items-start gap-12 pt-16 pb-4 pl-4 md:pl-8 lg:min-h-[600px] lg:grid-cols-2">
+      <div className="relative z-10 grid items-start gap-12 p-6 sm:p-8 md:p-10 lg:min-h-[600px] lg:grid-cols-2">
 
         {/* ================= LEFT ================= */}
         <div className="flex flex-col justify-start">
@@ -27,21 +27,21 @@ export function SpotlightBanner() {
             <span className="tracking-wide uppercase">AI OS 2.0 Is Live</span>
           </div>
 
-          <h1 className="mt-8 w-full text-5xl font-black leading-[1.1] tracking-tight lg:text-[3.5rem] xl:text-6xl text-on-surface">
+          <h1 className="mt-8 w-full text-fluid-h1 font-black tracking-tight text-on-surface">
             <span>Discover the </span>
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Next Gen</span>
             <br />
             <span>of AI Tools.</span>
           </h1>
 
-          <p className="mt-6 w-full text-lg leading-relaxed text-on-surface-variant">
+          <p className="mt-6 w-full text-base sm:text-lg leading-relaxed text-on-surface-variant">
             Your centralized operating system for artificial intelligence. Explore carefully curated tools to write, design, automate, and build faster.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
               href="/category/text-generation"
-              className="group relative inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-secondary px-8 py-4 font-bold text-white shadow-glow transition-all duration-300 hover:-translate-y-[0.5px] hover:shadow-glow-primary"
+              className="w-full sm:w-auto group relative inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-secondary px-8 py-4 font-bold text-white shadow-glow transition-all duration-300 hover:-translate-y-[0.5px] hover:shadow-glow-primary"
             >
               <span>Explore Platform</span>
               <span className="material-symbols-outlined ml-2 text-sm transition-transform duration-300 group-hover:translate-x-1">
@@ -51,7 +51,7 @@ export function SpotlightBanner() {
 
             <Link
               href="/submit"
-              className="inline-flex items-center justify-center rounded-2xl border border-outline bg-surface px-8 py-4 font-bold text-on-surface shadow-xs transition-all duration-300 hover:bg-surface-secondary hover:border-border hover:-translate-y-[0.5px]"
+              className="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl border border-outline bg-surface px-8 py-4 font-bold text-on-surface shadow-xs transition-all duration-300 hover:bg-surface-secondary hover:border-border hover:-translate-y-[0.5px]"
             >
               Submit a Tool
             </Link>
@@ -64,7 +64,7 @@ export function SpotlightBanner() {
             <div className="flex items-center gap-3">
               <div className="flex -space-x-2.5">
                 {[1, 2, 3, 4, 5].map((i) => (
-                  <div key={i} className="h-8 w-8 overflow-hidden rounded-full border-2 border-surface bg-surface">
+                  <div key={i} className="h-6 w-6 sm:h-8 sm:w-8 overflow-hidden rounded-full border-2 border-surface bg-surface">
                     <Image width={100} height={100} src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}&backgroundColor=transparent`} 
                       alt="User avatar" 
                       className="h-full w-full object-cover"

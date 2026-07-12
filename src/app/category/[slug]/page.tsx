@@ -98,7 +98,7 @@ export default async function CategoryPage({
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold text-on-surface tracking-tight mb-4">
+            <h1 className="text-fluid-h1 font-bold text-on-surface tracking-tight mb-4">
               {theme.heroHeadline}
             </h1>
 

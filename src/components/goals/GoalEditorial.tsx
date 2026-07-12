@@ -23,7 +23,7 @@ export function GoalEditorial({ content }: GoalEditorialProps) {
                         return <h3 key={index} className="text-2xl font-bold mt-8 mb-4">{trimmed.replace('### ', '')}</h3>;
                     }
                     if (trimmed.startsWith('## ')) {
-                        return <h2 key={index} className="text-3xl font-bold mt-10 mb-5">{trimmed.replace('## ', '')}</h2>;
+                        return <h2 key={index} className="text-fluid-h2 font-bold mt-10 mb-5">{trimmed.replace('## ', '')}</h2>;
                     }
                     if (trimmed.startsWith('# ')) {
                         return <h1 key={index} className="text-4xl font-bold mt-12 mb-6">{trimmed.replace('# ', '')}</h1>;

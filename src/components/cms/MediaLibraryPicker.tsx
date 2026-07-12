@@ -39,7 +39,7 @@ export function MediaLibraryPicker({ value, onChange, label }: MediaLibraryPicke
           </div>
         ) : (
           <div className="w-24 h-24 border-2 border-dashed border-slate-200 rounded-xl bg-slate-50 flex items-center justify-center shrink-0">
-            <span className="material-symbols-outlined text-slate-400 text-3xl">image</span>
+            <span className="material-symbols-outlined text-slate-400 text-fluid-h2">image</span>
           </div>
         )}
         
@@ -74,7 +74,7 @@ export function MediaLibraryPicker({ value, onChange, label }: MediaLibraryPicke
             <div className="p-6 overflow-y-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {/* Upload Button */}
               <button className="aspect-square border-2 border-dashed border-slate-200 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-slate-50 hover:border-primary text-slate-500 hover:text-primary transition-all">
-                <span className="material-symbols-outlined text-3xl">upload</span>
+                <span className="material-symbols-outlined text-fluid-h2">upload</span>
                 <span className="text-sm font-medium">Upload File</span>
               </button>
               

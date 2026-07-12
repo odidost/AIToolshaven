@@ -20,7 +20,7 @@ export default async function GoalsListPage() {
     <div className="p-8 max-w-7xl mx-auto">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">Goals</h1>
+          <h1 className="text-fluid-h2 font-bold text-slate-900 mb-2">Goals</h1>
           <p className="text-slate-500">Manage persona-based goal categories.</p>
         </div>
         <Link 

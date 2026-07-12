@@ -17,7 +17,7 @@ export function ExpertVerdict({ tool }: ExpertVerdictProps) {
 
     return (
         <section className="my-16">
-            <div className="rounded-[24px] bg-slate-900 text-white p-8 md:p-12 relative overflow-hidden shadow-xl">
+            <div className="rounded-[24px] bg-slate-900 text-white p-6 sm:p-8 relative overflow-hidden shadow-xl">
                 <div className="absolute right-0 top-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/3" />
                 <div className="absolute left-0 bottom-0 w-96 h-96 bg-secondary/20 rounded-full blur-3xl pointer-events-none translate-y-1/3 -translate-x-1/3" />
 
@@ -28,7 +28,7 @@ export function ExpertVerdict({ tool }: ExpertVerdictProps) {
                             AIToolsHaven Expert Review
                         </div>
                         
-                        <h2 className="text-3xl font-bold mb-6">Our Verdict on {tool.name}</h2>
+                        <h2 className="text-fluid-h2 font-bold mb-6">Our Verdict on {tool.name}</h2>
                         
                         <div className="space-y-4 text-slate-300 leading-relaxed text-lg mb-8">
                             {tool.editorial?.verdict ? (

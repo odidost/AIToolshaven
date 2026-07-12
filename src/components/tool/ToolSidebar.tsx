@@ -46,7 +46,7 @@ export function ToolSidebar({
             <QuickFacts tool={tool} />
 
             {/* Recommended Tools */}
-            <section className="rounded-[24px] border border-border/50 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-md">
+            <section className="rounded-[24px] border border-border/50 bg-white p-6 sm:p-8 shadow-sm transition-all duration-300 hover:shadow-md">
                 <h3 className="mb-6 flex items-center gap-2 text-xl font-bold text-on-surface">
                     <span className="material-symbols-outlined text-primary text-[24px]">smart_toy</span>
                     Alternative Tools
@@ -95,7 +95,7 @@ export function ToolSidebar({
             </section>
 
             {/* Categories */}
-            <section className="rounded-[24px] border border-border/50 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-md">
+            <section className="rounded-[24px] border border-border/50 bg-white p-6 sm:p-8 shadow-sm transition-all duration-300 hover:shadow-md">
                 <h3 className="mb-6 flex items-center gap-2 text-xl font-bold text-on-surface">
                     <span className="material-symbols-outlined text-primary text-[24px]">category</span>
                     Explore Categories

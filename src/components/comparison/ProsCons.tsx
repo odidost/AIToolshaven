@@ -11,7 +11,7 @@ export function ProsCons({ mainTool, compareTool }: ProsConsProps) {
     return (
         <section id="pros-cons" className="scroll-mt-32 max-w-5xl mx-auto mb-20 px-4">
             <div className="flex items-center gap-3 mb-8">
-                <span className="material-symbols-outlined text-3xl text-primary">thumbs_up_down</span>
+                <span className="material-symbols-outlined text-fluid-h2 text-primary">thumbs_up_down</span>
                 <h2 className="text-[34px] font-bold tracking-tight text-on-surface">Pros & Cons</h2>
             </div>
 

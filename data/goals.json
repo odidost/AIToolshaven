@@ -6,7 +6,9 @@
       "Write Better Code",
       "Deploy Faster",
       "Learn New Stack",
-      "Fix Bugs"
+      "Fix Bugs",
+      "Optimize Performance",
+      "Write Tests"
     ]
   },
   {
@@ -16,7 +18,9 @@
       "Write SEO Content",
       "Run Ad Campaigns",
       "Automate Socials",
-      "Analyze Data"
+      "Analyze Data",
+      "Generate Leads",
+      "Create Email Campaigns"
     ]
   },
   {
@@ -26,7 +30,9 @@
       "Generate UI Assets",
       "Edit Photos Faster",
       "Create 3D Models",
-      "Find Inspiration"
+      "Find Inspiration",
+      "Design Logos",
+      "Create Animations"
     ]
   },
   {
@@ -36,7 +42,9 @@
       "Build MVP",
       "Pitch Deck Prep",
       "Automate Ops",
-      "Market Research"
+      "Market Research",
+      "Manage Finances",
+      "Hire Talent"
     ]
   },
   {
@@ -46,27 +54,57 @@
       "Write Essays",
       "Summarize Lectures",
       "Study For Exams",
-      "Organize Notes"
+      "Organize Notes",
+      "Research Papers",
+      "Solve Math Problems"
     ]
   },
   {
-    "id": "persona-1783781229385",
-    "name": "New Persona",
-    "items": []
+    "id": "Content Creator",
+    "name": "Content Creator",
+    "items": [
+      "Edit Videos",
+      "Write Scripts",
+      "Grow Audience",
+      "Design Thumbnails",
+      "Repurpose Content",
+      "Generate Ideas"
+    ]
   },
   {
-    "id": "persona-1783796759407",
-    "name": "New Persona",
-    "items": []
+    "id": "Researcher",
+    "name": "Researcher",
+    "items": [
+      "Analyze Papers",
+      "Collect Data",
+      "Write Reports",
+      "Find Sources",
+      "Summarize Articles",
+      "Visualize Data"
+    ]
   },
   {
-    "id": "persona-1783797564874",
-    "name": "New Persona",
-    "items": []
+    "id": "Writer",
+    "name": "Writer",
+    "items": [
+      "Write Books",
+      "Edit Drafts",
+      "Outline Stories",
+      "Check Grammar",
+      "Overcome Writer's Block",
+      "Publish Content"
+    ]
   },
   {
-    "id": "persona-1783797966728",
-    "name": "New Persona",
-    "items": []
+    "id": "Consultant",
+    "name": "Consultant",
+    "items": [
+      "Create Presentations",
+      "Analyze Markets",
+      "Manage Clients",
+      "Schedule Meetings",
+      "Write Proposals",
+      "Streamline Communication"
+    ]
   }
 ]

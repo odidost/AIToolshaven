@@ -54,7 +54,7 @@ export function getRecommendationsByPersona(role: string, goal: string): AITool[
             t.goals?.some(g => g.toLowerCase().replace(/-/g, ' ').includes(goalLower) || goalLower.includes(g.toLowerCase().replace(/-/g, ' '))) ||
             t.tags?.some(tag => tag.toLowerCase().includes(goalLower) || goalLower.includes(tag.toLowerCase()));
         
-        return matchesRole || matchesGoal;
+        return matchesRole && matchesGoal;
     }).sort((a, b) => {
         // Boost if it matches both role AND goal
         const aMatchesRole = a.bestFor?.some(b => b.toLowerCase().includes(roleLower));

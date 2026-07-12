@@ -19,7 +19,7 @@ export default function GoalsIndexPage() {
           <span className="material-symbols-outlined text-xl">interests</span>
           <span className="text-xs font-semibold uppercase tracking-[0.2em]">Curated</span>
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-on-surface tracking-tight mb-4">
+        <h1 className="text-fluid-h1 font-bold text-on-surface tracking-tight mb-4">
           Browse by Goal
         </h1>
         <p className="text-xl text-on-surface-variant">

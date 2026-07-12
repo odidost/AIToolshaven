@@ -51,7 +51,7 @@ export function CommunityReviews() {
           <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
           <span className="text-sm font-bold uppercase tracking-widest">Loved by Creators</span>
         </div>
-        <h2 className="text-3xl font-black text-on-surface tracking-tight md:text-5xl">
+        <h2 className="text-fluid-h2 font-black text-on-surface tracking-tight md:text-5xl">
           Don&apos;t just take our word for it.
         </h2>
         <p className="mt-4 max-w-xl text-on-surface-variant">
@@ -62,10 +62,10 @@ export function CommunityReviews() {
       <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
         {reviews.map((review, idx) => (
           <div 
-            key={idx} 
+            key={idx}
             className="break-inside-avoid rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-hover hover:-translate-y-1"
           >
-            <div className="flex gap-1 text-yellow-500 mb-4">
+            <div className="flex flex-wrap gap-1 text-yellow-500 mb-4">
               {[...Array(review.rating)].map((_, i) => (
                 <span key={i} className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>
                   star
@@ -78,12 +78,12 @@ export function CommunityReviews() {
             </p>
 
             <div className="flex items-center gap-4 border-t border-border pt-4">
-              <div className="h-10 w-10 overflow-hidden rounded-full border border-border bg-surface-section">
+              <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full border border-border bg-surface-section">
                 <img src={review.avatar} alt={review.name} className="h-full w-full" loading="lazy" />
               </div>
-              <div>
-                <p className="text-sm font-bold text-on-surface">{review.name}</p>
-                <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">{review.role}</p>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-bold text-on-surface truncate">{review.name}</p>
+                <p className="text-[10px] sm:text-[11px] font-semibold text-muted-foreground uppercase tracking-wider truncate">{review.role}</p>
               </div>
             </div>
           </div>

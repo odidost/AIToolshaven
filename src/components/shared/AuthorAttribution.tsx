@@ -8,7 +8,7 @@ export function AuthorAttribution({
     lastUpdated = "July 11, 2026" 
 }: AuthorAttributionProps) {
     return (
-        <div className="flex items-center gap-2 text-[13px] text-on-surface-variant">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[13px] text-on-surface-variant">
             <span className="flex items-center gap-1">
                 <span className="material-symbols-outlined text-[16px]">edit_document</span>
                 By {authorName}

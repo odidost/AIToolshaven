@@ -27,7 +27,7 @@ export function PricingPlans({ tool, plans, pricing }: PricingPlansProps) {
         return (
             <section className="my-16">
                 <div className="mb-12 max-w-3xl">
-                    <h2 className="text-3xl font-bold tracking-tight text-on-surface">Pricing Options</h2>
+                    <h2 className="text-fluid-h2 font-bold tracking-tight text-on-surface">Pricing Options</h2>
                     <p className="mt-4 text-lg leading-relaxed text-on-surface-variant">
                         Please contact the vendor directly for detailed pricing information and enterprise options.
                     </p>
@@ -38,8 +38,8 @@ export function PricingPlans({ tool, plans, pricing }: PricingPlansProps) {
 
     return (
         <section className="my-16">
-            <div className="mb-12 max-w-3xl">
-                <h2 className="text-3xl font-bold tracking-tight text-on-surface">Pricing & Value</h2>
+            <div className="mb-10 max-w-3xl">
+                <h2 className="text-fluid-h2 font-bold tracking-tight text-on-surface">Pricing & Value</h2>
                 {tool.editorial?.pricing ? (
                     <div className="mt-4 text-lg leading-relaxed text-on-surface-variant" dangerouslySetInnerHTML={{ __html: tool.editorial.pricing }} />
                 ) : (

@@ -9,9 +9,9 @@ export function ToolOverview({
 }: ToolOverviewProps) {
     return (
         <section className="my-16">
-            <div className="rounded-[24px] border border-border/50 bg-white p-8 md:p-10 shadow-sm relative overflow-hidden">
+            <div className="rounded-[24px] border border-border/50 bg-white p-6 sm:p-8 shadow-sm relative overflow-hidden">
                 <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(124,58,237,0.03)_0%,transparent_70%)] pointer-events-none" />
-                <h2 className="text-3xl font-bold mb-8 tracking-tight">What is {tool.name}?</h2>
+                <h2 className="text-fluid-h2 font-bold mb-8 tracking-tight">What is {tool.name}?</h2>
                 
                 <div className="space-y-6 text-lg leading-relaxed text-on-surface-variant">
                     <p className="text-xl font-medium text-on-surface">

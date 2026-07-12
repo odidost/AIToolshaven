@@ -19,13 +19,13 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
 
     return (
         <section className="my-16">
-            <h2 className="text-3xl font-bold tracking-tight mb-8">
+            <h2 className="text-fluid-h2 font-bold tracking-tight mb-8">
                 Pros & Cons
             </h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Pros */}
-                <div className="rounded-[24px] border border-border/50 bg-white p-8 shadow-sm relative overflow-hidden">
+                <div className="rounded-[24px] border border-border/50 bg-white p-6 sm:p-8 shadow-sm relative overflow-hidden">
                     <div className="absolute top-0 right-0 h-32 w-32 bg-success/5 rounded-full blur-3xl pointer-events-none" />
                     
                     <div className="flex items-center gap-3 mb-8">
@@ -34,7 +34,7 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
                                 thumb_up
                             </span>
                         </div>
-                        <h3 className="text-2xl font-bold text-on-surface">
+                        <h3 className="text-fluid-h3 font-bold text-on-surface">
                             Pros
                         </h3>
                     </div>
@@ -57,7 +57,7 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
                 </div>
 
                 {/* Cons */}
-                <div className="rounded-[24px] border border-border/50 bg-white p-8 shadow-sm relative overflow-hidden">
+                <div className="rounded-[24px] border border-border/50 bg-white p-6 sm:p-8 shadow-sm relative overflow-hidden">
                     <div className="absolute top-0 right-0 h-32 w-32 bg-warning/5 rounded-full blur-3xl pointer-events-none" />
                     
                     <div className="flex items-center gap-3 mb-8">
@@ -66,7 +66,7 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
                                 warning
                             </span>
                         </div>
-                        <h3 className="text-2xl font-bold text-on-surface">
+                        <h3 className="text-fluid-h3 font-bold text-on-surface">
                             Cons
                         </h3>
                     </div>

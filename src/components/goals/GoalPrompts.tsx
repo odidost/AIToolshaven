@@ -21,7 +21,7 @@ export function GoalPrompts({ prompts }: GoalPromptsProps) {
     return (
         <section className="mb-16">
             <div className="flex items-center gap-3 mb-8">
-                <span className="material-symbols-outlined text-3xl text-primary">terminal</span>
+                <span className="material-symbols-outlined text-fluid-h2 text-primary">terminal</span>
                 <h2 className="text-2xl font-bold">Ready-to-Use Prompts</h2>
             </div>
             

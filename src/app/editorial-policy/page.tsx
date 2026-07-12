@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function EditorialPolicyPage() {
   return (
     <ContentContainer className="py-16 md:py-24">
-      <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
+      <h1 className="text-fluid-h1 font-black text-slate-900 mb-6">
         Editorial Policy
       </h1>
       <p className="text-lg text-slate-600 mb-10">

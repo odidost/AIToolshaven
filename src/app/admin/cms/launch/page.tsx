@@ -30,7 +30,7 @@ export default function LaunchChecklistPage() {
     <div className="p-8 max-w-5xl mx-auto">
       <div className="mb-8 flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-black text-slate-900 tracking-tight mb-2">Production Health Dashboard</h1>
+          <h1 className="text-fluid-h2 font-black text-slate-900 tracking-tight mb-2">Production Health Dashboard</h1>
           <p className="text-slate-500">Audit report to verify readiness for public launch.</p>
         </div>
         <div className="text-right">

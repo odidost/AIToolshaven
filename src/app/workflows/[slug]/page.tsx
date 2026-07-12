@@ -82,7 +82,7 @@ export default async function WorkflowPage({ params }: Props) {
                     <WhyThisOrderWorks workflow={workflow} />
 
                     <section id="workflow-start" className="mb-12">
-                        <h2 className="mb-8 text-2xl font-black text-on-surface flex items-center gap-2">
+                        <h2 className="mb-8 text-fluid-h2 font-black text-on-surface flex items-center gap-2">
                             <span className="material-symbols-outlined text-primary">route</span>
                             Step-by-Step Playbook
                         </h2>

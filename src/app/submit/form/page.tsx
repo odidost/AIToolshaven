@@ -102,7 +102,7 @@ function SubmitFormContent() {
           <div className="w-20 h-20 rounded-full bg-secondary/10 flex items-center justify-center mx-auto mb-6">
             <span className="material-symbols-outlined text-secondary text-4xl">check_circle</span>
           </div>
-          <h1 className="text-3xl font-bold text-on-surface mb-3">Submission Received!</h1>
+          <h1 className="text-fluid-h2 font-bold text-on-surface mb-3">Submission Received!</h1>
           <p className="text-on-surface-variant mb-2">
             Thank you for submitting <strong>{formData.toolName}</strong>.
           </p>
@@ -132,7 +132,7 @@ function SubmitFormContent() {
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-on-surface mb-3">Submit a Tool</h1>
+          <h1 className="text-fluid-h2 font-bold text-on-surface mb-3">Submit a Tool</h1>
           <p className="text-on-surface-variant">
             Fill out the form below to get your AI tool listed on AIToolsHaven.
           </p>

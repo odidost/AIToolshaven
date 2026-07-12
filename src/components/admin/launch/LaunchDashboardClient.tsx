@@ -151,7 +151,7 @@ function MetricCard({ title, value, isBad }: { title: string, value: number, isB
   return (
     <div className={`p-6 rounded-2xl border ${isBad ? 'bg-red-50 border-red-200' : 'bg-white border-slate-200'} shadow-sm`}>
       <div className="text-sm font-medium text-slate-500 mb-1">{title}</div>
-      <div className={`text-3xl font-bold ${isBad ? 'text-red-700' : 'text-slate-900'}`}>{value}</div>
+      <div className={`text-fluid-h2 font-bold ${isBad ? 'text-red-700' : 'text-slate-900'}`}>{value}</div>
     </div>
   );
 }

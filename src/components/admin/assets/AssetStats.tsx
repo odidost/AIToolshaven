@@ -20,7 +20,7 @@ const StatCard = ({ title, value, icon: Icon, colorClass, subtitle }: {
       </div>
     </div>
     <div className="flex items-baseline gap-2">
-      <span className="text-3xl font-bold text-gray-900">{value}</span>
+      <span className="text-fluid-h2 font-bold text-gray-900">{value}</span>
       {subtitle && <span className="text-sm text-gray-500">{subtitle}</span>}
     </div>
   </div>

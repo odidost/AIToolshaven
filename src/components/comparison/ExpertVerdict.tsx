@@ -17,7 +17,7 @@ export function ExpertVerdict({ mainTool, compareTool }: ExpertVerdictProps) {
                 
                 <div className="flex items-center justify-center mb-8 relative z-10">
                     <div className="w-16 h-16 rounded-full bg-surface border border-border shadow-sm flex items-center justify-center">
-                        <span className="material-symbols-outlined text-3xl text-primary">gavel</span>
+                        <span className="material-symbols-outlined text-fluid-h2 text-primary">gavel</span>
                     </div>
                 </div>
 

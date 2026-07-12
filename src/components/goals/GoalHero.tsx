@@ -23,7 +23,7 @@ export function GoalHero({
             <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
                 <div className="flex-1">
                     <div className="flex items-center gap-3 mb-6">
-                        <span className="material-symbols-outlined flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-3xl text-primary ring-1 ring-primary/20">
+                        <span className="material-symbols-outlined flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-fluid-h2 text-primary ring-1 ring-primary/20">
                             {icon}
                         </span>
                         <div className="inline-flex rounded-full bg-primary-container px-3 py-1 text-sm font-semibold text-on-primary-container">
@@ -31,7 +31,7 @@ export function GoalHero({
                         </div>
                     </div>
 
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-on-surface">
+                    <h1 className="text-fluid-h1 lg:text-6xl font-bold mb-6 tracking-tight text-on-surface">
                         {title}
                     </h1>
 

@@ -10,7 +10,7 @@ export default function LaunchDashboardPage() {
   return (
     <PageContainer className="py-8 max-w-7xl">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Production Launch Dashboard</h1>
+        <h1 className="text-fluid-h2 font-bold text-slate-900 tracking-tight">Production Launch Dashboard</h1>
         <p className="text-slate-500 mt-2">
           Real-time readiness audit covering content, performance, SEO, and build metrics.
         </p>

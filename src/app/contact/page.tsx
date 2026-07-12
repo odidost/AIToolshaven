@@ -27,7 +27,7 @@ export default function ContactPage() {
           <span className="material-symbols-outlined text-[16px]">arrow_back</span>
           Back to Home
         </Link>
-        <h1 className="text-4xl md:text-5xl font-black text-slate-900 mt-4 mb-4">
+        <h1 className="text-fluid-h1 font-black text-slate-900 mt-4 mb-4">
           Let&apos;s talk.
         </h1>
         <p className="text-xl text-slate-500 max-w-xl mx-auto">

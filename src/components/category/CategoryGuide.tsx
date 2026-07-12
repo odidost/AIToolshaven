@@ -7,7 +7,7 @@ export function CategoryGuide({ theme }: { theme: CategoryTheme }) {
     <article className="mt-16 mb-16 prose prose-slate dark:prose-invert max-w-none">
       <div className="bg-surface border border-border rounded-3xl p-8 md:p-12 shadow-sm">
         <header className="mb-10 text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-on-surface mb-4">
+          <h2 className="text-fluid-h2 font-bold text-on-surface mb-4">
             The Ultimate Guide to {theme.slug.replace("-", " ").replace(/\b\w/g, l => l.toUpperCase())}
           </h2>
           <p className="text-on-surface-variant text-lg">

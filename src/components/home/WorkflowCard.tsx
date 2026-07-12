@@ -12,7 +12,7 @@ export function WorkflowCard({
     slug?: string;
 }) {
     const CardContent = (
-        <div className="group bg-card border border-border rounded-[24px] p-6 sm:p-8 hover:border-primary/30 shadow-sm hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden h-full">
+        <div className="group bg-card border border-border rounded-[24px] p-6 hover:border-primary/30 shadow-sm hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden h-full">
             <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-primary/5 transition-transform duration-500 group-hover:scale-150 pointer-events-none" />
 
             <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">

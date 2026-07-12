@@ -53,7 +53,7 @@ export function ToolShareEmbed({ tool, className }: ToolShareEmbedProps) {
 
   return (
     <section className={cn("w-full my-12", className)}>
-      <div className="bg-gradient-to-br from-[#F0EDFF] via-[#F5F7FB] to-[#E0EBFF] rounded-[24px] border border-primary/15 p-6 md:p-8 shadow-sm relative overflow-hidden">
+      <div className="bg-gradient-to-br from-[#F0EDFF] via-[#F5F7FB] to-[#E0EBFF] rounded-[24px] border border-primary/15 p-6 sm:p-8 shadow-sm relative overflow-hidden">
         {/* Soft decorative glow */}
         <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(124,58,237,0.03)_0%,transparent_70%)] pointer-events-none" />
 
@@ -142,12 +142,12 @@ export function ToolShareEmbed({ tool, className }: ToolShareEmbedProps) {
         {activeTab === "embed" && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 animate-in fade-in slide-in-from-bottom-2 duration-300">
             {/* Left Column: Embed Options & Code Block */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-6 min-w-0">
               <div>
                 <label className="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-3">
                   Select Embed Format
                 </label>
-                <div className="flex flex-wrap gap-1.5 bg-surface-secondary/60 p-1.5 rounded-xl border border-border/50 max-w-max select-none">
+                <div className="flex flex-wrap gap-1.5 bg-surface-secondary/60 p-1.5 rounded-xl border border-border/50 select-none">
                   {([
                     { id: "html", label: "HTML Link" },
                     { id: "markdown", label: "Markdown" },
@@ -188,7 +188,7 @@ export function ToolShareEmbed({ tool, className }: ToolShareEmbedProps) {
             </div>
 
             {/* Right Column: Live Preview */}
-            <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-border/80 pt-6 lg:pt-0 lg:pl-8">
+            <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-border/80 pt-6 lg:pt-0 lg:pl-8 min-w-0">
               <EmbedPreview format={embedFormat} tool={tool} />
             </div>
           </div>

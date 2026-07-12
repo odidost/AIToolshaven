@@ -15,7 +15,7 @@ export default function ToolComparisonSection({
 
     return (
         <section className="mt-16">
-            <div className="rounded-[24px] border border-border/50 bg-white p-8 md:p-10 shadow-sm relative overflow-hidden">
+            <div className="rounded-[24px] border border-border/50 bg-white p-6 sm:p-8 shadow-sm relative overflow-hidden">
                 <div className="absolute right-0 bottom-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(124,58,237,0.03)_0%,transparent_70%)] pointer-events-none" />
 
                 <div className="flex flex-col gap-4 relative z-10">
@@ -23,7 +23,7 @@ export default function ToolComparisonSection({
                         <span className="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary tracking-wide uppercase">
                             Compare Options
                         </span>
-                        <h2 className="mt-4 text-3xl font-bold tracking-tight text-on-surface">
+                        <h2 className="mt-4 text-fluid-h2 font-bold tracking-tight text-on-surface">
                             Compare {tool.name} with Alternatives
                         </h2>
                         {tool.editorial?.comparison ? (

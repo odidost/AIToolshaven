@@ -1,8 +1,8 @@
 export function NewsletterCTA() {
     return (
         <section className="mb-16">
-            <div className="bg-primary-container rounded-3xl p-8 md:p-12 text-center border border-outline">
-                <h2 className="text-3xl font-bold text-on-surface mb-4">
+            <div className="bg-primary-container rounded-3xl p-6 sm:p-8 md:p-12 text-center border border-outline">
+                <h2 className="text-fluid-h2 font-bold text-on-surface mb-4">
                     Get the Weekly Roundup
                 </h2>
 

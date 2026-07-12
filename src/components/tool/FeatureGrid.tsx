@@ -11,7 +11,7 @@ export function FeatureGrid({ features }: FeatureGridProps) {
     return (
         <section className="my-16">
             <div className="mb-10 max-w-3xl">
-                <h2 className="text-3xl font-bold tracking-tight text-on-surface">
+                <h2 className="text-fluid-h2 font-bold tracking-tight text-on-surface">
                     Key Features & Capabilities
                 </h2>
                 <p className="mt-3 text-lg leading-relaxed text-on-surface-variant">
@@ -19,7 +19,7 @@ export function FeatureGrid({ features }: FeatureGridProps) {
                 </p>
             </div>
 
-            <div className="rounded-[24px] border border-border/50 bg-white p-8 shadow-sm">
+            <div className="rounded-[24px] border border-border/50 bg-white p-6 sm:p-8 shadow-sm">
                 <div className="divide-y divide-border/50">
                     {features.map((feature, idx) => {
                         const featObj = typeof feature === 'string'

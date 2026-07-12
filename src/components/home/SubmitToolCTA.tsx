@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function SubmitToolCTA() {
   return (
-    <section className="mb-24 relative overflow-hidden rounded-[40px] bg-slate-950 p-8 md:p-16 border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.5)]">
+    <section className="mb-24 relative overflow-hidden rounded-[40px] bg-slate-950 p-6 sm:p-8 md:p-16 border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.5)]">
       
       {/* Background ambient glows */}
       <div className="absolute top-0 right-0 h-full w-1/2 rounded-full bg-primary/20 blur-[150px] pointer-events-none" />
@@ -17,7 +17,7 @@ export function SubmitToolCTA() {
           <span className="text-sm font-bold uppercase tracking-widest">Grow Your Tool</span>
         </div>
         
-        <h2 className="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+        <h2 className="text-fluid-h1 font-black text-white leading-tight mb-6">
           Put your AI tool in front of the{" "}
           <span className="bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent">right</span>{" "}
           audience.

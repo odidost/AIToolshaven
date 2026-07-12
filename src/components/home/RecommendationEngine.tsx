@@ -7,15 +7,20 @@ import type { AITool } from "@/lib/types/tool";
 import { ROLES, GOALS } from "@/lib/data/goals";
 
 export function RecommendationEngine() {
-  const [role, setRole] = useState<keyof typeof GOALS>("Marketer");
-  const [goal, setGoal] = useState<string>(GOALS["Marketer"][0]);
+  const defaultRole = ROLES[0] || "Developer";
+  const [role, setRole] = useState<string>(defaultRole);
+  const [goal, setGoal] = useState<string>(GOALS[defaultRole]?.[0] || "");
   const [isLoading, setIsLoading] = useState(false);
   const [recommendedTools, setRecommendedTools] = useState<AITool[]>([]);
 
   useEffect(() => {
     // Reset goal when role changes
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setGoal(GOALS[role][0]);
+    if (GOALS[role] && GOALS[role].length > 0) {
+      setGoal(GOALS[role][0]);
+    } else {
+      setGoal("");
+    }
   }, [role]);
 
   useEffect(() => {
@@ -25,14 +30,8 @@ export function RecommendationEngine() {
     const timer = setTimeout(() => {
       const results = getRecommendationsByPersona(role, goal);
       
-      // If we don't have enough exact matches for the goal, fallback to some trending ones to fill the grid
-      if (results.length < 3) {
-        const fallback = searchTools("").sort(() => 0.5 - Math.random());
-        const combined = Array.from(new Set([...results, ...fallback]));
-        setRecommendedTools(combined.slice(0, 3));
-      } else {
-        setRecommendedTools(results.slice(0, 3));
-      }
+      // Do not use a random fallback to ensure we only recommend tools that best fit
+      setRecommendedTools(results.slice(0, 3));
       
       setIsLoading(false);
     }, 600);
@@ -41,11 +40,11 @@ export function RecommendationEngine() {
   }, [role, goal]);
 
   return (
-    <section className="mb-24 mt-12 px-4 md:px-0">
-      <div className="relative overflow-hidden rounded-[32px] border border-border bg-surface-elevated backdrop-blur-md p-8 md:p-12 shadow-md">
+    <section className="mb-24 mt-12">
+      <div className="rounded-[32px] border border-primary/15 bg-gradient-to-br from-[#F0EDFF] via-[#F5F7FB] to-[#E0EBFF] shadow-sm relative overflow-hidden p-6 sm:p-12">
 
         {/* Neural Network Nodes Background */}
-        <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="neural-nodes" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
@@ -71,16 +70,16 @@ export function RecommendationEngine() {
             <span className="text-sm font-bold tracking-widest uppercase">AI Recommendation Engine</span>
           </div>
 
-          <h2 className="mb-10 text-3xl md:text-5xl font-black text-on-surface leading-tight">
+          <h2 className="mb-10 text-fluid-h2 font-black text-on-surface leading-tight">
             I am a{" "}
             <div className="group relative mx-2 inline-flex">
               <select
                 value={role}
-                onChange={(e) => setRole(e.target.value as keyof typeof GOALS)}
-                className="appearance-none h-14 rounded-2xl border border-border bg-surface px-5 pr-12 font-semibold text-primary shadow-sm transition-all duration-300 hover:border-primary hover:bg-surface focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none cursor-pointer"
+                onChange={(e) => setRole(e.target.value)}
+                className="appearance-none h-14 rounded-2xl border border-border bg-surface px-5 pr-12 font-semibold text-primary shadow-sm transition-all duration-300 hover:border-primary hover:bg-surface focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none cursor-pointer text-xl md:text-2xl"
               >
                 {ROLES.map(r => (
-                  <option key={r} value={r} className="text-on-surface">{r}</option>
+                  <option key={r} value={r} className="text-base md:text-lg text-on-surface">{r}</option>
                 ))}
               </select>
               <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-xl text-primary/70 transition-all duration-300 group-hover:translate-y-[-45%] group-hover:text-primary pointer-events-none">
@@ -93,10 +92,10 @@ export function RecommendationEngine() {
               <select
                 value={goal}
                 onChange={(e) => setGoal(e.target.value)}
-                className="appearance-none h-14 rounded-2xl border border-border bg-surface px-5 pr-12 font-semibold text-secondary shadow-sm transition-all duration-300 hover:border-secondary hover:bg-surface focus:border-secondary focus:ring-4 focus:ring-secondary/20 outline-none cursor-pointer"
+                className="appearance-none h-14 rounded-2xl border border-border bg-surface px-5 pr-12 font-semibold text-secondary shadow-sm transition-all duration-300 hover:border-secondary hover:bg-surface focus:border-secondary focus:ring-4 focus:ring-secondary/20 outline-none cursor-pointer text-xl md:text-2xl"
               >
-                {GOALS[role].map(g => (
-                  <option key={g} value={g} className="text-on-surface">{g}</option>
+                {GOALS[role]?.map(g => (
+                  <option key={g} value={g} className="text-base md:text-lg text-on-surface">{g}</option>
                 ))}
               </select>
               <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-secondary/70 transition-all duration-300 group-hover:translate-y-[-45%] group-hover:text-secondary pointer-events-none">
@@ -117,11 +116,17 @@ export function RecommendationEngine() {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                {recommendedTools.map((tool) => (
-                  <div key={tool.id} className="text-left h-full">
-                    <ToolCard tool={tool} />
+                {recommendedTools.length > 0 ? (
+                  recommendedTools.map((tool) => (
+                    <div key={tool.id} className="text-left h-full">
+                      <ToolCard tool={tool} />
+                    </div>
+                  ))
+                ) : (
+                  <div className="col-span-full py-12 text-center text-on-surface-variant font-medium">
+                    No tools found that perfectly match your selection. Try exploring another combination!
                   </div>
-                ))}
+                )}
               </div>
             )}
           </div>

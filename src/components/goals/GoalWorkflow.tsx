@@ -9,7 +9,7 @@ export function GoalWorkflow({ steps }: GoalWorkflowProps) {
 
     return (
         <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Recommended AI Workflow</h2>
+            <h2 className="text-fluid-h2 font-bold mb-8">Recommended AI Workflow</h2>
             <div className="relative border-l-2 border-outline ml-6 space-y-12">
                 {steps.map((step, index) => (
                     <div key={index} className="relative pl-8">

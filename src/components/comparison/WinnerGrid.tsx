@@ -21,7 +21,7 @@ export function WinnerGrid({ mainTool, compareTool }: WinnerGridProps) {
     return (
         <section id="categories" className="scroll-mt-32 max-w-5xl mx-auto mb-20 px-4">
             <div className="flex items-center gap-3 mb-8">
-                <span className="material-symbols-outlined text-3xl text-primary">military_tech</span>
+                <span className="material-symbols-outlined text-fluid-h2 text-primary">military_tech</span>
                 <h2 className="text-[34px] font-bold tracking-tight text-on-surface">Winner by Category</h2>
             </div>
 

@@ -15,7 +15,7 @@ export default function MediaKitPage() {
       {/* Hero Section */}
       <ContentContainer as="section" className="relative z-10 pt-24 pb-16">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-black text-on-surface mb-6 tracking-tight">
+          <h1 className="text-fluid-h1 font-black text-on-surface mb-6 tracking-tight">
             Brand Assets & Media Kit
           </h1>
           <p className="text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">

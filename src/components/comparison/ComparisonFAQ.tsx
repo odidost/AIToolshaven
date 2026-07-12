@@ -33,7 +33,7 @@ export function ComparisonFAQ({ mainTool, compareTool }: ComparisonFAQProps) {
     return (
         <section id="faq" className="scroll-mt-32 max-w-3xl mx-auto mb-20 px-4">
             <div className="flex flex-col items-center text-center mb-10">
-                <span className="material-symbols-outlined text-3xl text-primary mb-4">help</span>
+                <span className="material-symbols-outlined text-fluid-h2 text-primary mb-4">help</span>
                 <h2 className="text-[34px] font-bold tracking-tight text-on-surface mb-2">Frequently Asked Questions</h2>
                 <p className="text-on-surface-variant">Common questions about comparing these tools.</p>
             </div>

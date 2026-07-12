@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { categories } from '@/lib/data/categories';
+import { goals } from '@/lib/goals';
 
 const pillColors = [
   'bg-purple-600 text-white border-purple-400/30 hover:bg-purple-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_4px_6px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(147,51,234,0.4)]',
@@ -13,19 +13,19 @@ const pillColors = [
 ];
 
 export function HomepageCategories() {
-  const validCategories = categories.filter((c) => !c.name.includes("Untitled"));
+  const validItems = goals;
   
   // Split into two rows
-  const midPoint = Math.ceil(validCategories.length / 2);
-  const topCategories = validCategories.slice(0, midPoint);
-  const bottomCategories = validCategories.slice(midPoint);
+  const midPoint = Math.ceil(validItems.length / 2);
+  const topItems = validItems.slice(0, midPoint);
+  const bottomItems = validItems.slice(midPoint);
 
   // Duplicate heavily for infinite marquee effect so it never runs out
-  const topMarquee = [...topCategories, ...topCategories, ...topCategories, ...topCategories, ...topCategories];
-  const bottomMarquee = [...bottomCategories, ...bottomCategories, ...bottomCategories, ...bottomCategories, ...bottomCategories];
+  const topMarquee = [...topItems, ...topItems, ...topItems, ...topItems, ...topItems, ...topItems, ...topItems];
+  const bottomMarquee = [...bottomItems, ...bottomItems, ...bottomItems, ...bottomItems, ...bottomItems, ...bottomItems, ...bottomItems];
 
   return (
-    <section className="relative w-full py-24 md:py-32 overflow-hidden bg-slate-50 dark:bg-[#05050A] border-y border-border/20 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]">
+    <section className="relative w-full py-20 md:py-24 overflow-hidden bg-slate-50 dark:bg-[#05050A] border-y border-border/20 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]">
       
       {/* Premium Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -54,11 +54,11 @@ export function HomepageCategories() {
         {/* Section Header */}
         <div className="flex flex-col items-center justify-center text-center mb-16 px-5 sm:px-8">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 backdrop-blur-md">
-             <span className="material-symbols-outlined text-sm text-primary">explore</span>
-             <span className="text-[11px] font-bold tracking-widest text-primary uppercase">Discover The Ecosystem</span>
+             <span className="material-symbols-outlined text-sm text-primary">interests</span>
+             <span className="text-[11px] font-bold tracking-widest text-primary uppercase">Curated Paths</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight bg-gradient-to-br from-foreground via-foreground to-muted-foreground bg-clip-text text-transparent">
-            Explore Categories
+          <h2 className="text-fluid-h1 font-black tracking-tight bg-gradient-to-br from-foreground via-foreground to-muted-foreground bg-clip-text text-transparent">
+            Browse by Goal
           </h2>
         </div>
 
@@ -72,39 +72,39 @@ export function HomepageCategories() {
           {/* Top Row (Moving Right to Left) */}
           <div className="flex overflow-hidden group">
             <div className="flex animate-marquee items-center gap-5 w-max shrink-0 pr-5">
-              {topMarquee.map((category, idx) => {
+              {topMarquee.map((item, idx) => {
                 const colorClass = pillColors[idx % pillColors.length];
                 return (
                   <Link
-                    key={`top1-${category.id}-${idx}`}
-                    href={`/category/${category.slug}`}
-                    className={`group flex items-center gap-3 px-7 py-4 rounded-full border transition-all duration-300 hover:-translate-y-[2px] whitespace-nowrap flex-shrink-0 backdrop-blur-sm ${colorClass}`}
+                    key={`top1-${item.slug}-${idx}`}
+                    href={`/goals/${item.slug}`}
+                    className={`group flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 hover:-translate-y-[2px] whitespace-nowrap flex-shrink-0 backdrop-blur-sm ${colorClass}`}
                   >
                     <span className="material-symbols-outlined text-[22px] leading-none transition-transform duration-300 group-hover:scale-110 drop-shadow-sm">
-                      {category.icon}
+                      {item.icon}
                     </span>
                     <span className="font-bold text-[15px] tracking-wide drop-shadow-sm">
-                      {category.name}
+                      {item.title}
                     </span>
                   </Link>
                 );
               })}
             </div>
             <div className="flex animate-marquee items-center gap-5 w-max shrink-0 pr-5" aria-hidden="true">
-              {topMarquee.map((category, idx) => {
+              {topMarquee.map((item, idx) => {
                 const colorClass = pillColors[idx % pillColors.length];
                 return (
                   <Link
-                    key={`top2-${category.id}-${idx}`}
-                    href={`/category/${category.slug}`}
-                    className={`group flex items-center gap-3 px-7 py-4 rounded-full border transition-all duration-300 hover:-translate-y-[2px] whitespace-nowrap flex-shrink-0 backdrop-blur-sm ${colorClass}`}
+                    key={`top2-${item.slug}-${idx}`}
+                    href={`/goals/${item.slug}`}
+                    className={`group flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 hover:-translate-y-[2px] whitespace-nowrap flex-shrink-0 backdrop-blur-sm ${colorClass}`}
                     tabIndex={-1}
                   >
                     <span className="material-symbols-outlined text-[22px] leading-none transition-transform duration-300 group-hover:scale-110 drop-shadow-sm">
-                      {category.icon}
+                      {item.icon}
                     </span>
                     <span className="font-bold text-[15px] tracking-wide drop-shadow-sm">
-                      {category.name}
+                      {item.title}
                     </span>
                   </Link>
                 );
@@ -115,39 +115,39 @@ export function HomepageCategories() {
           {/* Bottom Row (Moving Left to Right) */}
           <div className="flex overflow-hidden group">
             <div className="flex animate-marquee-reverse items-center gap-5 w-max shrink-0 pr-5">
-              {bottomMarquee.map((category, idx) => {
+              {bottomMarquee.map((item, idx) => {
                 const colorClass = pillColors[(idx + 3) % pillColors.length];
                 return (
                   <Link
-                    key={`bottom1-${category.id}-${idx}`}
-                    href={`/category/${category.slug}`}
-                    className={`group flex items-center gap-3 px-7 py-4 rounded-full border transition-all duration-300 hover:-translate-y-[2px] whitespace-nowrap flex-shrink-0 backdrop-blur-sm ${colorClass}`}
+                    key={`bottom1-${item.slug}-${idx}`}
+                    href={`/goals/${item.slug}`}
+                    className={`group flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 hover:-translate-y-[2px] whitespace-nowrap flex-shrink-0 backdrop-blur-sm ${colorClass}`}
                   >
                     <span className="material-symbols-outlined text-[22px] leading-none transition-transform duration-300 group-hover:scale-110 drop-shadow-sm">
-                      {category.icon}
+                      {item.icon}
                     </span>
                     <span className="font-bold text-[15px] tracking-wide drop-shadow-sm">
-                      {category.name}
+                      {item.title}
                     </span>
                   </Link>
                 );
               })}
             </div>
             <div className="flex animate-marquee-reverse items-center gap-5 w-max shrink-0 pr-5" aria-hidden="true">
-              {bottomMarquee.map((category, idx) => {
+              {bottomMarquee.map((item, idx) => {
                 const colorClass = pillColors[(idx + 3) % pillColors.length];
                 return (
                   <Link
-                    key={`bottom2-${category.id}-${idx}`}
-                    href={`/category/${category.slug}`}
-                    className={`group flex items-center gap-3 px-7 py-4 rounded-full border transition-all duration-300 hover:-translate-y-[2px] whitespace-nowrap flex-shrink-0 backdrop-blur-sm ${colorClass}`}
+                    key={`bottom2-${item.slug}-${idx}`}
+                    href={`/goals/${item.slug}`}
+                    className={`group flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 hover:-translate-y-[2px] whitespace-nowrap flex-shrink-0 backdrop-blur-sm ${colorClass}`}
                     tabIndex={-1}
                   >
                     <span className="material-symbols-outlined text-[22px] leading-none transition-transform duration-300 group-hover:scale-110 drop-shadow-sm">
-                      {category.icon}
+                      {item.icon}
                     </span>
                     <span className="font-bold text-[15px] tracking-wide drop-shadow-sm">
-                      {category.name}
+                      {item.title}
                     </span>
                   </Link>
                 );

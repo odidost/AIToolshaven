@@ -19,7 +19,7 @@ export default function WorkflowsIndexPage() {
           <span className="material-symbols-outlined text-xl">account_tree</span>
           <span className="text-xs font-semibold uppercase tracking-[0.2em]">Learn & Apply</span>
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-on-surface tracking-tight mb-4">
+        <h1 className="text-fluid-h1 font-bold text-on-surface tracking-tight mb-4">
           Popular AI Workflows
         </h1>
         <p className="text-xl text-on-surface-variant">

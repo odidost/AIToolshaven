@@ -7,6 +7,7 @@ import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 import { SpotlightBanner } from "@/components/shared/SpotlightBanner";
 import { TrustedByMarquee } from "@/components/home/TrustedByMarquee";
 import { RecommendationEngine } from "@/components/home/RecommendationEngine";
+import { EditorialRankingsSection } from "@/components/home/EditorialRankingsSection";
 import { HomepageCategories } from "@/components/home/HomepageCategories";
 import { WorkflowCard } from "@/components/home/WorkflowCard";
 import { OpportunityCard } from "@/components/home/OpportunityCard";
@@ -32,29 +33,29 @@ export default function Home() {
 
   return (
     <>
-      <PageContainer className="max-w-[1920px] 2xl:max-w-[2560px] pt-2 pb-8 md:pt-4 md:pb-12">
+      <PageContainer className="pt-2 pb-8 md:pt-4 md:pb-12">
 
       {/* 1. Hero Section */}
-      <section className="mb-12 md:mb-20">
+      <section className="mb-10 md:mb-16">
         <SpotlightBanner />
       </section>
 
       {/* 1b. Featured Tools */}
       {featuredTools.length > 0 && (
-        <SectionContainer className="mb-16">
+        <SectionContainer className="mb-12">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
             <div>
               <div className="flex items-center gap-2 text-accent mb-2">
                 <span className="material-symbols-outlined text-xl">star</span>
                 <span className="text-xs font-semibold uppercase tracking-[0.2em]">Editor's Choice</span>
               </div>
-              <h2 className="text-3xl font-bold text-foreground tracking-tight">
+              <h2 className="text-fluid-h2 font-bold text-foreground tracking-tight">
                 Featured Tools
               </h2>
             </div>
-            <Link href="/category/all" className="text-[13px] font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
-              View All <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-            </Link>
+            <Link href="/categories" className="text-[13px] font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
+            View All Categories <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {featuredTools.map((tool) => (
@@ -63,48 +64,26 @@ export default function Home() {
           </div>
         </SectionContainer>
       )}
+      </PageContainer>
 
+      {/* 3b. Editorial Rankings */}
+      <EditorialRankingsSection />
+
+      <PageContainer className="pb-8 md:pb-12">
       {/* 2. Trust Layer */}
       <TrustedByMarquee />
 
       {/* 3. AI Recommendation Engine */}
       <RecommendationEngine />
-
       </PageContainer>
 
       {/* 4. Featured Categories */}
       <HomepageCategories />
 
-      <PageContainer className="max-w-[1920px] 2xl:max-w-[2560px] py-8 md:py-12">
-        {/* 5. Trending AI Tools */}
-      <SectionContainer>
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-          <div>
-            <div className="flex items-center gap-2 text-accent mb-2">
-              <span className="material-symbols-outlined text-xl">local_fire_department</span>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em]">Trending Now</span>
-            </div>
-            <h2 className="text-3xl font-bold text-foreground tracking-tight">
-              Most Popular Tools
-            </h2>
-          </div>
-          <Link href="/category/all" className="text-[13px] font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
-            View All <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-          </Link>
-        </div>
-
-        {/* Swipeable on mobile, Grid on desktop */}
-        <div className="flex overflow-x-auto pb-8 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory gap-6 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:overflow-visible [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          {trendingTools.map((tool) => (
-            <div key={tool.id} className="min-w-[300px] md:min-w-0 snap-start">
-              <ToolCard tool={tool} />
-            </div>
-          ))}
-        </div>
-      </SectionContainer>
+      <PageContainer className="py-6 md:py-10">
 
       {/* 6. Compare Popular AI Tools */}
-      <SectionContainer className="relative overflow-hidden bg-surface-section rounded-[32px] p-8 md:p-12 border border-border">
+      <SectionContainer className="relative overflow-hidden bg-surface-section rounded-none sm:rounded-[32px] p-6 sm:p-8 border-y sm:border-x border-border">
         <BackgroundPattern type="grid" opacity={0.03} />
         
         <div className="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
@@ -113,7 +92,7 @@ export default function Home() {
               <span className="material-symbols-outlined text-xl">compare_arrows</span>
               <span className="text-xs font-semibold uppercase tracking-[0.2em]">Head-to-Head</span>
             </div>
-            <h2 className="text-3xl font-bold text-foreground tracking-tight">
+            <h2 className="text-fluid-h2 font-bold text-foreground tracking-tight">
               Compare Alternatives
             </h2>
           </div>
@@ -131,7 +110,7 @@ export default function Home() {
       </SectionContainer>
 
       {/* 7. AI Workflows */}
-      <SectionContainer className="relative overflow-hidden bg-gradient-to-b from-surface-section to-background -mx-4 px-4 py-16 md:mx-0 md:px-12 md:rounded-[32px] border border-border shadow-sm">
+      <SectionContainer className="relative overflow-hidden bg-gradient-to-b from-surface-section to-background rounded-none sm:rounded-[32px] p-6 sm:p-8 border-y sm:border-x border-border shadow-sm">
         {/* Workflow Nodes Background */}
         <BackgroundPattern type="workflow" opacity={0.03} className="text-primary" />
         
@@ -141,7 +120,7 @@ export default function Home() {
               <span className="material-symbols-outlined text-xl">account_tree</span>
               <span className="text-xs font-semibold uppercase tracking-[0.2em]">Learn & Apply</span>
             </div>
-            <h2 className="text-3xl font-bold text-foreground tracking-tight">
+            <h2 className="text-fluid-h2 font-bold text-foreground tracking-tight">
               Popular AI Workflows
             </h2>
           </div>
@@ -163,63 +142,11 @@ export default function Home() {
         </div>
       </SectionContainer>
 
-      {/* 8. New AI Tools */}
-      <SectionContainer>
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-          <div>
-            <div className="flex items-center gap-2 text-accent mb-2">
-              <span className="material-symbols-outlined text-xl">new_releases</span>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em]">New Arrivals</span>
-            </div>
-            <h2 className="text-3xl font-bold text-foreground tracking-tight">
-              Just Added
-            </h2>
-          </div>
-          <Link href="/category/all" className="text-[13px] font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
-            View All <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-          </Link>
-        </div>
-
-        <div className="flex overflow-x-auto pb-8 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory gap-6 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:overflow-visible [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          {latestTools.map((tool) => (
-            <div key={tool.id} className="min-w-[300px] md:min-w-0 snap-start">
-              <ToolCard tool={tool} />
-            </div>
-          ))}
-        </div>
-      </SectionContainer>
 
       {/* 9. AI Collections (Goals & Opportunities combined into one large section idea) */}
       <SectionContainer>
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-          <div>
-            <div className="flex items-center gap-2 text-accent mb-2">
-              <span className="material-symbols-outlined text-xl">interests</span>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em]">Curated Paths</span>
-            </div>
-            <h2 className="text-3xl font-bold text-foreground tracking-tight">
-              Browse by Goal
-            </h2>
-          </div>
-          <Link href="/goals" className="text-[13px] font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
-            View All Goals <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {goals.map((goal) => (
-            <GoalCard
-              key={goal.slug}
-              title={goal.title}
-              icon={goal.icon}
-              count={goal.count}
-              slug={goal.slug}
-            />
-          ))}
-        </div>
-
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-4">
-          <h3 className="text-2xl font-bold text-foreground tracking-tight">Trending Opportunities</h3>
+          <h3 className="text-fluid-h3 font-bold text-foreground tracking-tight">Trending Opportunities</h3>
           <Link href="/goals" className="text-[13px] font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
             View All Opportunities <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
           </Link>
@@ -248,7 +175,7 @@ export default function Home() {
               <span className="material-symbols-outlined text-xl">article</span>
               <span className="text-xs font-semibold uppercase tracking-[0.2em]">Resources</span>
             </div>
-            <h2 className="text-3xl font-bold text-foreground tracking-tight">
+            <h2 className="text-fluid-h2 font-bold text-foreground tracking-tight">
               Guides & Insights
             </h2>
           </div>

@@ -1,7 +1,7 @@
 export default function CMSDashboard() {
   return (
     <div className="p-8 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold text-slate-900 mb-2">Editorial Dashboard</h1>
+      <h1 className="text-fluid-h2 font-bold text-slate-900 mb-2">Editorial Dashboard</h1>
       <p className="text-slate-500 mb-8">Welcome back. Here is the health of your content.</p>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">

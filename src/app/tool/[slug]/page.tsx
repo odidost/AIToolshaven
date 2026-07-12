@@ -162,21 +162,23 @@ export default async function ToolDetailPage({
   return (
     <PageContainer className="py-8 md:py-12">
       <StructuredData data={jsonLd} />
-      <Breadcrumbs
-        items={[
-          {
-            label: category?.name || "Category",
-            href: category ? `/category/${category.slug}` : undefined,
-          },
-          { label: tool.name },
-        ]}
-      />
+      <div>
+        <Breadcrumbs
+          items={[
+            {
+              label: category?.name || "Category",
+              href: category ? `/category/${category.slug}` : undefined,
+            },
+            { label: tool.name },
+          ]}
+        />
+      </div>
 
       <ToolHero tool={tool} />
 
       {/* Grid containing content with sidebar */}
-      <div className="mt-16 grid lg:grid-cols-[minmax(0,1fr)_320px] gap-12">
-        <main>
+      <div className="mt-16 grid lg:grid-cols-[minmax(0,1fr)_320px] gap-8 lg:gap-10">
+        <main className="min-w-0">
           <ToolOverview
             tool={tool}
           />
@@ -197,19 +199,21 @@ export default async function ToolDetailPage({
           />
         </main>
 
-        <ToolSidebar
-          tool={tool}
-          relatedTools={relatedTools}
-          categories={getAllCategories()}
-          currentCategory={category}
-        />
+        <div className="min-w-0">
+          <ToolSidebar
+            tool={tool}
+            relatedTools={relatedTools}
+            categories={getAllCategories()}
+            currentCategory={category}
+          />
+        </div>
       </div>
 
       {/* Full-width sections at the bottom */}
       <div className="mt-16 space-y-16 border-t border-border/50 pt-16">
         {toolWorkflows.length > 0 && (
           <section>
-            <h3 className="text-2xl font-bold tracking-tight mb-6 text-on-surface">Workflows Using {tool.name}</h3>
+            <h3 className="text-fluid-h3 font-bold tracking-tight mb-6 text-on-surface">Workflows Using {tool.name}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {toolWorkflows.map(w => (
                 <WorkflowCard key={w.slug} title={w.title} tools={w.tools} icon={w.icon} />
@@ -220,7 +224,7 @@ export default async function ToolDetailPage({
 
         {toolGoals.length > 0 && (
           <section>
-            <h3 className="text-2xl font-bold tracking-tight mb-6 text-on-surface">Related Collections</h3>
+            <h3 className="text-fluid-h3 font-bold tracking-tight mb-6 text-on-surface">Related Collections</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {toolGoals.map(g => (
                 <GoalCard key={g.slug} title={g.title} icon={g.icon} count={g.count} slug={g.slug} />

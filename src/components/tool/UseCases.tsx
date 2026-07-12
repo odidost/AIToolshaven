@@ -17,7 +17,7 @@ export function UseCases({ tool, useCases }: UseCasesProps) {
     return (
         <section className="my-16">
             <div className="mb-10 max-w-3xl">
-                <h2 className="text-3xl font-bold tracking-tight text-on-surface">
+                <h2 className="text-fluid-h2 font-bold tracking-tight text-on-surface">
                     Best Use Cases
                 </h2>
                 <p className="mt-3 text-lg leading-relaxed text-on-surface-variant">
@@ -25,7 +25,7 @@ export function UseCases({ tool, useCases }: UseCasesProps) {
                 </p>
             </div>
 
-            <div className="rounded-[24px] border border-border/50 bg-white p-8 shadow-sm">
+            <div className="rounded-[24px] border border-border/50 bg-white p-6 sm:p-8 shadow-sm">
                 {/* Tabs Header */}
                 <div className="flex flex-wrap gap-2.5 border-b border-border/50 pb-6 mb-8">
                     {useCases.map((item, idx) => (
@@ -52,7 +52,7 @@ export function UseCases({ tool, useCases }: UseCasesProps) {
                             </span>
                         </div>
 
-                        <h3 className="text-2xl font-bold text-on-surface mb-4">
+                        <h3 className="text-fluid-h3 font-bold text-on-surface mb-4">
                             Ideal for {useCases[activeTab]}
                         </h3>
 

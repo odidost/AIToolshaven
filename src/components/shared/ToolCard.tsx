@@ -16,7 +16,7 @@ export function ToolCard({ tool }: { tool: AITool }) {
 
   return (
     <Link href={`/tool/${tool.slug}`} className="block group h-full">
-      <article className="bg-card rounded-3xl py-6 px-4 sm:py-8 sm:px-6 border border-border hover:border-primary/30 transition-all duration-300 h-full flex flex-col shadow-sm hover:shadow-hover relative group/card hover:-translate-y-1">
+      <article className="bg-card rounded-2xl p-4 sm:p-5 border border-border hover:border-primary/30 transition-all duration-300 h-full flex flex-col shadow-sm hover:shadow-hover relative group/card hover:-translate-y-1">
         <div className="flex flex-wrap justify-start items-start gap-2 mb-4">
           <div className="flex gap-2">
             {tool.featured && (
@@ -32,7 +32,7 @@ export function ToolCard({ tool }: { tool: AITool }) {
         </div>
 
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-xl overflow-hidden bg-outline flex-shrink-0 shadow-sm">
+          <div className="w-9 h-9 rounded-xl overflow-hidden bg-outline flex-shrink-0 shadow-sm">
             <ToolImage
               tool={tool}
               type="logo"
@@ -40,7 +40,7 @@ export function ToolCard({ tool }: { tool: AITool }) {
             />
           </div>
 
-          <h3 className="font-bold text-lg text-on-surface group-hover:text-primary transition-colors flex items-center">
+          <h3 className="font-bold text-base text-on-surface group-hover:text-primary transition-colors flex items-center">
             {tool.name}
             {tool.verified && (
               <span

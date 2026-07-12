@@ -51,11 +51,11 @@ export function ToolReviews({ tool }: ToolReviewsProps) {
 
     return (
         <section className="my-16">
-            <h2 className="text-3xl font-bold tracking-tight text-on-surface mb-8">Real User Reviews</h2>
+            <h2 className="text-fluid-h2 font-bold tracking-tight text-on-surface mb-8">Real User Reviews</h2>
 
-            <div className="grid gap-12 lg:grid-cols-[300px_1fr]">
+            <div className="grid gap-8 lg:gap-10 lg:grid-cols-[300px_1fr]">
                 {/* Left Sidebar: Ratings Summary */}
-                <div className="rounded-[24px] border border-primary/15 bg-gradient-to-br from-[#F0EDFF] via-[#F5F7FB] to-[#E0EBFF] p-8 shadow-sm h-fit">
+                <div className="rounded-[24px] border border-primary/15 bg-gradient-to-br from-[#F0EDFF] via-[#F5F7FB] to-[#E0EBFF] p-6 sm:p-8 shadow-sm h-fit">
                     <div className="text-center mb-6">
                         <div className="text-5xl font-extrabold text-on-surface">{rating.toFixed(1)}</div>
                         <div className="flex items-center justify-center gap-1 mt-2 text-warning">
@@ -122,33 +122,40 @@ export function ToolReviews({ tool }: ToolReviewsProps) {
 
                     <div className="space-y-6">
                         {mockReviews.map((review) => (
-                            <div key={review.id} className="rounded-[24px] border border-primary/15 bg-gradient-to-br from-[#F0EDFF] via-[#F5F7FB] to-[#E0EBFF] p-8 shadow-sm">
-                                <div className="flex items-start justify-between mb-4">
-                                    <div className="flex items-center gap-4">
-                                        <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">
+                            <div key={review.id} className="rounded-[24px] border border-primary/15 bg-gradient-to-br from-[#F0EDFF] via-[#F5F7FB] to-[#E0EBFF] p-6 sm:p-8 shadow-sm">
+                                <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-4 gap-4">
+                                    <div className="flex items-start gap-4">
+                                        <div className="h-10 w-10 sm:h-12 sm:w-12 shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-base sm:text-lg">
                                             {review.initials}
                                         </div>
-                                        <div>
-                                            <div className="flex items-center gap-2">
-                                                <h4 className="font-bold text-on-surface">{review.name}</h4>
+                                        <div className="min-w-0 flex-1">
+                                            <div className="flex items-center flex-wrap gap-2">
+                                                <h4 className="font-bold text-on-surface truncate">{review.name}</h4>
                                                 {review.verified && (
-                                                    <span className="material-symbols-outlined text-[16px] text-success" title="Verified Reviewer">
+                                                    <span className="material-symbols-outlined text-[16px] text-success shrink-0" title="Verified Reviewer">
                                                         verified
                                                     </span>
                                                 )}
+                                                <div className="flex text-warning sm:hidden ml-auto">
+                                                    {[1, 2, 3, 4, 5].map(star => (
+                                                        <span key={star} className="material-symbols-outlined fill-current text-[14px]">
+                                                            {star <= review.rating ? 'star' : 'star_border'}
+                                                        </span>
+                                                    ))}
+                                                </div>
                                             </div>
-                                            <div className="text-xs text-on-surface-variant flex items-center gap-2 mt-1">
-                                                <span>{review.source}</span>
-                                                <span>•</span>
-                                                <span>{review.date}</span>
-                                                <span>•</span>
-                                                <span className="font-medium bg-surface-secondary px-2 py-0.5 rounded-md">
+                                            <div className="text-[11px] sm:text-xs text-on-surface-variant flex flex-wrap items-center gap-1.5 sm:gap-2 mt-1">
+                                                <span className="whitespace-nowrap">{review.source}</span>
+                                                <span className="opacity-50">•</span>
+                                                <span className="whitespace-nowrap">{review.date}</span>
+                                                <span className="opacity-50 hidden sm:inline">•</span>
+                                                <span className="font-medium bg-surface-secondary px-2 py-0.5 rounded-md whitespace-nowrap mt-1 sm:mt-0">
                                                     {review.useCase}
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="flex text-warning">
+                                    <div className="hidden sm:flex text-warning shrink-0">
                                         {[1, 2, 3, 4, 5].map(star => (
                                             <span key={star} className="material-symbols-outlined fill-current text-[18px]">
                                                 {star <= review.rating ? 'star' : 'star_border'}
@@ -161,7 +168,7 @@ export function ToolReviews({ tool }: ToolReviewsProps) {
                                     {review.content}
                                 </p>
 
-                                <div className="flex items-center gap-4 text-sm text-on-surface-variant border-t border-border/50 pt-4 mt-4">
+                                <div className="flex flex-wrap items-center gap-4 text-sm text-on-surface-variant border-t border-border/50 pt-4 mt-4">
                                     <button className="flex items-center gap-1 hover:text-primary transition-colors">
                                         <span className="material-symbols-outlined text-[18px]">thumb_up</span>
                                         Helpful ({review.helpfulCount})

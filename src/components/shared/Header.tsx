@@ -22,7 +22,7 @@ export function Header() {
           <Link href="/dashboard" className="text-on-surface-variant hover:text-primary hidden md:block">
             <span className="material-symbols-outlined">person</span>
           </Link>
-          <Link href="/submit" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-5 py-2.5 rounded-2xl font-medium text-sm shadow-glow hover:shadow-glow-primary hover:-translate-y-0.5 transition-all duration-300">
+          <Link href="/submit" className="hidden md:block bg-gradient-to-r from-primary to-secondary text-primary-foreground px-5 py-2.5 rounded-2xl font-medium text-sm shadow-glow hover:shadow-glow-primary hover:-translate-y-0.5 transition-all duration-300">
             Submit a Tool
           </Link>
         </nav>

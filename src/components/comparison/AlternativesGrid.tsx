@@ -15,7 +15,7 @@ export function AlternativesGrid({ mainTool, compareTool, alternativeTools }: Al
     return (
         <section id="related" className="scroll-mt-32 max-w-5xl mx-auto mb-20 px-4">
             <div className="flex items-center gap-3 mb-8">
-                <span className="material-symbols-outlined text-3xl text-primary">diversity_2</span>
+                <span className="material-symbols-outlined text-fluid-h2 text-primary">diversity_2</span>
                 <h2 className="text-[34px] font-bold tracking-tight text-on-surface">Other Alternatives to Consider</h2>
             </div>
 
