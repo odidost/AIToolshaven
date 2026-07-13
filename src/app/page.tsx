@@ -26,10 +26,10 @@ import { SubmitToolCTA } from "@/components/home/SubmitToolCTA";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { SectionContainer } from "@/components/layout/SectionContainer";
 
-export default function Home() {
-  const featuredTools = getFeaturedTools(8);
-  const trendingTools = getTrendingTools(8);
-  const latestTools = getLatestTools(8);
+export default async function Home() {
+  const featuredTools = await getFeaturedTools(8);
+  const trendingTools = await getTrendingTools(8);
+  const latestTools = await getLatestTools(8);
 
   return (
     <>

@@ -2,8 +2,8 @@ import { getAllTools } from "@/lib/queries/tools";
 import { getAllCategories } from "@/lib/queries/categories";
 import { env } from "@/lib/env";
 
-export default function LaunchChecklistPage() {
-  const tools = getAllTools();
+export default async function LaunchChecklistPage() {
+  const tools = await getAllTools();
   const categories = getAllCategories();
 
   // 1. Content Checks

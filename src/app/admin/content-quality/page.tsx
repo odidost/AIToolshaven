@@ -59,8 +59,8 @@ function analyzeTool(tool: AITool) {
   return issues;
 }
 
-export default function ContentQualityDashboard() {
-  const allTools = getAllTools();
+export default async function ContentQualityDashboard() {
+  const allTools = await getAllTools();
   
   const analyzedTools = allTools.map(tool => ({
     tool,

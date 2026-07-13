@@ -10,7 +10,7 @@ type Props = {
 
 export default async function EmbedPage({ params }: Props) {
   const { slug } = await params;
-  const tool = getToolBySlug(slug);
+  const tool = await getToolBySlug(slug);
 
   if (!tool) {
     notFound();

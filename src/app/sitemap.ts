@@ -6,8 +6,8 @@ import { siteConfig } from "@/lib/config/site";
 
 const BASE_URL = siteConfig.baseUrl;
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const tools = getAllTools();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const tools = await getAllTools();
   const categories = getAllCategories();
 
   const toolEntries: MetadataRoute.Sitemap = tools.map((tool) => ({

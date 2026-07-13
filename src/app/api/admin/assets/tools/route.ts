@@ -5,7 +5,7 @@ import { getAllTools } from '@/lib/data/tools-service';
 import { AssetStatus, AdminToolWithStatus, isPlaceholderUrl, getExpectedAssetFilename, AssetManifest } from '@/lib/utils/assets';
 
 export async function GET() {
-  const tools = getAllTools();
+  const tools = await getAllTools();
   
   const manifestPath = path.join(process.cwd(), 'public', 'assets', 'manifest.json');
   let manifest: AssetManifest = {};

@@ -56,7 +56,7 @@ export default async function CategoryPage({
     notFound();
   }
 
-  const categoryTools = getToolsByCategoryId(category.id);
+  const categoryTools = await getToolsByCategoryId(category.id);
   const theme = getCategoryTheme(slug);
 
   // Calculate some dynamic stats for the premium header

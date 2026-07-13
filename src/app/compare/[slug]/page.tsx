@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     [mainToolSlug, compareToolSlug] = slug.split("-vs-");
   }
 
-  const mainTool = getToolBySlug(mainToolSlug);
+  const mainTool = await getToolBySlug(mainToolSlug);
 
   if (!mainTool) {
     return { title: "Comparison Not Found | AIToolsHaven" };
@@ -48,9 +48,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   let compareTool = null;
   if (compareToolSlug) {
-    compareTool = getToolBySlug(compareToolSlug);
+    compareTool = await getToolBySlug(compareToolSlug);
   } else {
-    const otherTools = getToolsByCategoryId(mainTool.category).filter(
+    const allTools = await getToolsByCategoryId(mainTool.category);
+    const otherTools = allTools.filter(
       (t) => t.id !== mainTool.id
     );
     compareTool = otherTools[0] || null;
@@ -85,7 +86,7 @@ export default async function ComparePage({
     [mainToolSlug, compareToolSlug] = slug.split("-vs-");
   }
 
-  const mainTool = getToolBySlug(mainToolSlug);
+  const mainTool = await getToolBySlug(mainToolSlug);
 
   if (!mainTool) {
     notFound();
@@ -95,11 +96,12 @@ export default async function ComparePage({
 
   let compareTool = null;
   if (compareToolSlug) {
-    compareTool = getToolBySlug(compareToolSlug) || null;
+    compareTool = await getToolBySlug(compareToolSlug) || null;
   }
   
   if (!compareTool) {
-    const otherTools = getToolsByCategoryId(mainTool.category).filter(
+    const allTools = await getToolsByCategoryId(mainTool.category);
+    const otherTools = allTools.filter(
       (t) => t.id !== mainTool.id
     );
     compareTool = otherTools.length > 0 ? otherTools[0] : null;
@@ -137,7 +139,8 @@ export default async function ComparePage({
     );
   }
 
-  const alternativeTools = getToolsByCategoryId(mainTool.category)
+  const allCatTools = await getToolsByCategoryId(mainTool.category);
+  const alternativeTools = allCatTools
     .filter((t) => t.id !== mainTool.id && t.id !== compareTool?.id)
     .slice(0, 3);
 

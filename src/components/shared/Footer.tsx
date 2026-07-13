@@ -4,7 +4,7 @@ import { PageContainer } from '../layout/PageContainer';
 
 const footerLinks = {
   "Explore": [
-    { label: "All Tools", href: "/category/text-generation" },
+    { label: "All Tools", href: "/categories" },
     { label: "Text Generation", href: "/category/text-generation" },
     { label: "Image Generation", href: "/category/image-generation" },
     { label: "Coding Assistants", href: "/category/coding-assistants" },

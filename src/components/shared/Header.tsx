@@ -4,8 +4,8 @@ import { getAllTools } from '@/lib/queries/tools';
 import { BrandLogo } from './BrandLogo';
 import { PageContainer } from '../layout/PageContainer';
 
-export function Header() {
-  const tools = getAllTools();
+export async function Header() {
+  const tools = await getAllTools();
   return (
     <header className="w-full bg-background/80 backdrop-blur-md border-b border-border sticky top-0 z-40 transition-all">
       <PageContainer className="h-16 flex items-center justify-between">

@@ -1,18 +1,11 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import { type NextRequest } from 'next/server'
+import { updateSession } from '@/lib/supabase/middleware'
 
-export function proxy(request: NextRequest) {
-  // Check if we're trying to access an admin route
-  if (request.nextUrl.pathname.startsWith('/admin')) {
-    // If ENABLE_ADMIN is not explicitly set to 'true', block access
-    if (process.env.ENABLE_ADMIN !== 'true') {
-      // We can either redirect to home or return a 404. Let's redirect to home for a smooth UX.
-      return NextResponse.redirect(new URL('/', request.url));
-    }
-  }
+export async function proxy(request: NextRequest) {
 
-  // Continue for all other routes
-  return NextResponse.next();
+
+  // Continue with Supabase Auth RBAC
+  return await updateSession(request)
 }
 
 export const config = {
@@ -26,4 +19,4 @@ export const config = {
      */
     '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
   ],
-};
+}

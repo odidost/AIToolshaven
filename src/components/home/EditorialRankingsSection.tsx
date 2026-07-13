@@ -3,11 +3,11 @@ import { RankingCard } from "./RankingCard";
 import { FloatingTooltip } from "./FloatingTooltip";
 import { getAllTools, getLatestTools, getTrendingTools } from "@/lib/data/tools-service";
 
-export function EditorialRankingsSection() {
-  const allTools = getAllTools();
+export async function EditorialRankingsSection() {
+  const allTools = await getAllTools();
 
   // 1. Latest AI Tools
-  const latestTools = getLatestTools(10);
+  const latestTools = await getLatestTools(10);
 
   // 2. Most Popular AI Tools
   // Using popularity score

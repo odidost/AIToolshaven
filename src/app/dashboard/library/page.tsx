@@ -11,16 +11,21 @@ export default function LibraryPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [mounted, setMounted] = useState(false);
 
-  // Avoid hydration mismatch by waiting for mount to render localStorage items
+  const [allTools, setAllTools] = useState<any[]>([]);
+
+  // Fetch tools and set mounted
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
+    async function fetchTools() {
+      const tools = await getAllTools();
+      setAllTools(tools);
+      setMounted(true);
+    }
+    fetchTools();
   }, []);
 
   const savedTools = (() => {
     if (!mounted) return [];
     
-    const allTools = getAllTools();
     let filtered = allTools.filter(tool => bookmarkedToolIds.includes(tool.id));
     
     if (searchQuery) {

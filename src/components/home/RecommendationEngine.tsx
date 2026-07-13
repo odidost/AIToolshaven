@@ -24,19 +24,30 @@ export function RecommendationEngine() {
   }, [role]);
 
   useEffect(() => {
-    // Simulate loading to make it feel like an "Engine"
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    let isMounted = true;
     setIsLoading(true);
+
+    async function fetchRecommendations() {
+      try {
+        const results = await getRecommendationsByPersona(role, goal);
+        if (isMounted) {
+          setRecommendedTools(results.slice(0, 3));
+          setIsLoading(false);
+        }
+      } catch (e) {
+        if (isMounted) setIsLoading(false);
+      }
+    }
+
+    // Small delay to simulate engine thinking
     const timer = setTimeout(() => {
-      const results = getRecommendationsByPersona(role, goal);
-      
-      // Do not use a random fallback to ensure we only recommend tools that best fit
-      setRecommendedTools(results.slice(0, 3));
-      
-      setIsLoading(false);
+      fetchRecommendations();
     }, 600);
 
-    return () => clearTimeout(timer);
+    return () => {
+      isMounted = false;
+      clearTimeout(timer);
+    };
   }, [role, goal]);
 
   return (

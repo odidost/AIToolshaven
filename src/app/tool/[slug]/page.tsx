@@ -39,7 +39,7 @@ export const revalidate = 86400; // 24 hours
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const tool = getToolBySlug(slug);
+  const tool = await getToolBySlug(slug);
 
   if (!tool) {
     return {
@@ -66,21 +66,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function ToolDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function ToolPage({ params }: Props) {
   const { slug } = await params;
+  const tool = await getToolBySlug(slug);
 
-  const tool = getToolBySlug(slug);
-  if (!tool) notFound();
+  if (!tool) {
+    notFound();
+  }
 
+  // Get category info
   const category = getCategoryById(tool.category);
 
-  const relatedTools = getToolsByCategoryId(tool.category).filter(
-    (t) => t.id !== tool.id
-  );
+  // Get alternatives (tools in the same category)
+  const categoryTools = await getToolsByCategoryId(tool.category);
+  const relatedTools = categoryTools
+    .filter((t) => t.id !== tool.id)
+    .slice(0, 4);
 
   const comparisonTools = getComparisonCandidates(tool);
 

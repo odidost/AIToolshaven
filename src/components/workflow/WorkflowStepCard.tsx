@@ -2,8 +2,8 @@ import Link from "next/link";
 import { WorkflowStep } from "@/lib/workflows";
 import { getToolBySlug } from "@/lib/data/tools-service";
 
-export function WorkflowStepCard({ step, index }: { step: WorkflowStep; index: number }) {
-    const toolData = getToolBySlug(step.tool.toLowerCase().replace(/\s+/g, "-"));
+export async function WorkflowStepCard({ step, index }: { step: WorkflowStep; index: number }) {
+    const toolData = await getToolBySlug(step.tool.toLowerCase().replace(/\s+/g, "-"));
 
     return (
         <div className="relative group">

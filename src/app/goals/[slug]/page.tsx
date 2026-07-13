@@ -56,7 +56,7 @@ export default async function GoalPage({
         notFound();
     }
 
-    const tools = getAllTools();
+    const tools = await getAllTools();
 
     // Show only tools mapped to this goal
     const goalTools = tools.filter((tool) =>
