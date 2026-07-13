@@ -4,7 +4,7 @@ import { env } from "@/lib/env";
 
 export default async function LaunchChecklistPage() {
   const tools = await getAllTools();
-  const categories = getAllCategories();
+  const categories = await getAllCategories();
 
   // 1. Content Checks
   const toolsMissingLogos = tools.filter(t => !t.logoUrl || t.logoUrl === "");

@@ -24,7 +24,7 @@ export const revalidate = 3600; // 1 hour
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const category = getCategoryBySlug(slug);
+  const category = await getCategoryBySlug(slug);
 
   if (!category) {
     return {
@@ -50,7 +50,7 @@ export default async function CategoryPage({
 }) {
   const { slug } = await params;
 
-  const category = getCategoryBySlug(slug);
+  const category = await getCategoryBySlug(slug);
 
   if (!category) {
     notFound();

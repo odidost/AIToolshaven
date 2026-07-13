@@ -17,6 +17,7 @@ const cmsNavItems = [
   { label: 'SEO', href: '/admin/cms/seo', icon: 'search' },
   { label: 'Editorial', href: '/admin/cms/editorial', icon: 'edit_document' },
   { label: 'Users', href: '/admin/cms/users', icon: 'group' },
+  { label: 'Reviews', href: '/admin/cms/reviews', icon: 'rate_review' },
   { label: 'Analytics', href: '/admin/cms/analytics', icon: 'bar_chart' },
   { label: 'Settings', href: '/admin/cms/settings', icon: 'settings' },
 ];

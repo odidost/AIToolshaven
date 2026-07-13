@@ -1,14 +1,22 @@
-import { categories } from "@/lib/data/categories";
+import { createClient } from "@supabase/supabase-js";
 import type { ToolCategory } from "@/lib/types/category";
 
-export function getAllCategories(): ToolCategory[] {
-    return categories;
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
+export async function getAllCategories(): Promise<ToolCategory[]> {
+    const { data } = await supabase.from('categories').select('*');
+    return data || [];
 }
 
-export function getCategoryById(id: string): ToolCategory | undefined {
-    return categories.find((category) => category.id === id);
+export async function getCategoryById(id: string): Promise<ToolCategory | undefined> {
+    const { data } = await supabase.from('categories').select('*').eq('id', id).single();
+    return data || undefined;
 }
 
-export function getCategoryBySlug(slug: string): ToolCategory | undefined {
-    return categories.find((category) => category.slug === slug);
+export async function getCategoryBySlug(slug: string): Promise<ToolCategory | undefined> {
+    const { data } = await supabase.from('categories').select('*').eq('slug', slug).single();
+    return data || undefined;
 }

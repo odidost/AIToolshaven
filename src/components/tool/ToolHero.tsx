@@ -4,6 +4,7 @@ import { SocialShareBar } from "./SocialShareBar";
 import { getComparisonCandidates } from "@/lib/queries/comparisons";
 import { ToolImage } from "@/components/shared/ToolImage";
 import { AuthorAttribution } from "@/components/shared/AuthorAttribution";
+import { BookmarkButton } from "./ToolCommunityFeatures";
 type ToolHeroProps = {
     tool: AITool;
 };
@@ -55,11 +56,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                                     {/* Mobile Icons */}
                                     <div className="flex gap-2 shrink-0 sm:hidden">
-                                        <button className="h-9 w-9 sm:h-11 sm:w-11 rounded-xl border border-outline flex items-center justify-center hover:bg-surface-container hover:text-primary transition-colors">
-                                            <span className="material-symbols-outlined text-lg sm:text-xl">
-                                                bookmark
-                                            </span>
-                                        </button>
+                                        <BookmarkButton toolSlug={tool.slug} className="h-9 w-9 sm:h-11 sm:w-11" />
                                         <SocialShareBar toolName={tool.name} urlPath={`/tool/${tool.slug}`} />
                                     </div>
                                 </div>
@@ -95,11 +92,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
                         {/* Desktop Icons */}
                         <div className="hidden sm:flex gap-2 self-start shrink-0">
 
-                            <button className="h-11 w-11 rounded-xl border border-outline flex items-center justify-center hover:bg-surface-container hover:text-primary transition-colors">
-                                <span className="material-symbols-outlined">
-                                    bookmark
-                                </span>
-                            </button>
+                            <BookmarkButton toolSlug={tool.slug} className="h-11 w-11" />
 
                             <SocialShareBar toolName={tool.name} urlPath={`/tool/${tool.slug}`} />
 
@@ -229,14 +222,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
                             Compare
                         </Link>
 
-                        <button
-                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-surface px-6 py-4 font-semibold transition-all shadow-xs hover:shadow-sm hover:border-primary hover:bg-surface-secondary hover:-translate-y-[0.5px]"
-                        >
-                            <span className="material-symbols-outlined">
-                                bookmark
-                            </span>
-                            Save
-                        </button>
+                        <BookmarkButton toolSlug={tool.slug} variant="button" className="w-full sm:w-auto" />
 
                     </div>
 

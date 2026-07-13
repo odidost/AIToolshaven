@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: "Browse all AI tool categories. Find the best artificial intelligence tools organized by use case, from text generation to video creation.",
 };
 
-export default function CategoriesIndexPage() {
-  const categories = getAllCategories();
+export default async function CategoriesIndexPage() {
+  const categories = await getAllCategories();
 
   return (
     <PageContainer className="py-8 md:py-12">

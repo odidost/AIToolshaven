@@ -887,5 +887,39 @@
     },
     "tools": [],
     "steps": []
+  },
+  {
+    "id": "workflow-1783913233882",
+    "title": "Untitled Workflow",
+    "slug": "workflow-1783913233882",
+    "description": "",
+    "category": "general",
+    "difficulty": "Beginner",
+    "timeToComplete": "10 mins",
+    "cost": "Free",
+    "author": {
+      "name": "AIToolsHaven Editorial Team",
+      "role": "AI Workflow Specialist",
+      "avatar": "/avatars/editorial.webp"
+    },
+    "tools": [],
+    "steps": []
+  },
+  {
+    "id": "workflow-1783915414500",
+    "title": "Untitled Workflow",
+    "slug": "workflow-1783915414500",
+    "description": "",
+    "category": "general",
+    "difficulty": "Beginner",
+    "timeToComplete": "10 mins",
+    "cost": "Free",
+    "author": {
+      "name": "AIToolsHaven Editorial Team",
+      "role": "AI Workflow Specialist",
+      "avatar": "/avatars/editorial.webp"
+    },
+    "tools": [],
+    "steps": []
   }
 ]

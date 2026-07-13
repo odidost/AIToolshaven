@@ -92,7 +92,7 @@ export default async function ComparePage({
     notFound();
   }
 
-  const category = getCategoryById(mainTool.category);
+  const category = await getCategoryById(mainTool.category);
 
   let compareTool = null;
   if (compareToolSlug) {

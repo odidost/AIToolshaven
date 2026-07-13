@@ -8,7 +8,7 @@ const BASE_URL = siteConfig.baseUrl;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const tools = await getAllTools();
-  const categories = getAllCategories();
+  const categories = await getAllCategories();
 
   const toolEntries: MetadataRoute.Sitemap = tools.map((tool) => ({
     url: `${BASE_URL}/tool/${tool.slug}`,

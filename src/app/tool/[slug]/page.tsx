@@ -14,6 +14,7 @@ import { GoalCard } from "@/components/home/GoalCard";
 import { ToolReviews } from "@/components/tool/ToolReviews";
 import { ToolShareEmbed } from "@/components/tool/ToolShareEmbed";
 import { ExpertVerdict } from "@/components/tool/ExpertVerdict";
+import { RecentlyViewedTracker } from "@/components/tool/ToolCommunityFeatures";
 import { workflows } from "@/lib/workflows";
 import { goals } from "@/lib/goals";
 import {
@@ -25,6 +26,7 @@ import {
   getAllCategories,
   getCategoryById,
 } from "@/lib/queries/categories";
+import { createClient } from "@/lib/supabase/server";
 
 import { getComparisonCandidates } from "@/lib/queries/comparisons";
 import { siteConfig } from "@/lib/config/site";
@@ -75,7 +77,7 @@ export default async function ToolPage({ params }: Props) {
   }
 
   // Get category info
-  const category = getCategoryById(tool.category);
+  const category = await getCategoryById(tool.category);
 
   // Get alternatives (tools in the same category)
   const categoryTools = await getToolsByCategoryId(tool.category);
@@ -93,6 +95,21 @@ export default async function ToolPage({ params }: Props) {
     (g) => tool.goals && tool.goals.includes(g.slug)
   );
 
+  const supabase = await createClient();
+  const { data: reviews } = await supabase
+    .from('reviews')
+    .select('*, profiles(username)')
+    .eq('tool_slug', tool.slug)
+    .eq('status', 'Approved');
+
+  const jsonLdReviews = reviews?.map((review: any) => ({
+    "@type": "Review",
+    author: { "@type": "Person", name: review.profiles?.username || "Anonymous" },
+    datePublished: new Date(review.created_at).toISOString().split('T')[0],
+    reviewBody: review.content,
+    reviewRating: { "@type": "Rating", ratingValue: review.rating.toString() }
+  })) || [];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -107,20 +124,12 @@ export default async function ToolPage({ params }: Props) {
           price: tool.price === "From $0" ? "0.00" : tool.price?.replace(/[^0-9.]/g, "") || "0.00",
           priceCurrency: "USD",
         },
-        aggregateRating: {
+        aggregateRating: tool.reviewCount > 0 ? {
           "@type": "AggregateRating",
           ratingValue: tool.rating.toString(),
           ratingCount: tool.reviewCount.toString(),
-        },
-        review: [
-          {
-            "@type": "Review",
-            author: { "@type": "Person", name: "Sarah Jenkins" },
-            datePublished: new Date().toISOString().split('T')[0],
-            reviewBody: `I've integrated ${tool.name} into our core product, and the results have been phenomenal.`,
-            reviewRating: { "@type": "Rating", ratingValue: "5" }
-          }
-        ],
+        } : undefined,
+        review: jsonLdReviews.length > 0 ? jsonLdReviews : undefined,
         url: tool.websiteUrl || `${siteConfig.baseUrl}/tool/${tool.slug}`,
         image: `${siteConfig.baseUrl}${tool.logoUrl}`,
       },
@@ -162,6 +171,7 @@ export default async function ToolPage({ params }: Props) {
 
   return (
     <PageContainer className="py-8 md:py-12">
+      <RecentlyViewedTracker toolSlug={tool.slug} />
       <StructuredData data={jsonLd} />
       <div>
         <Breadcrumbs
@@ -204,7 +214,7 @@ export default async function ToolPage({ params }: Props) {
           <ToolSidebar
             tool={tool}
             relatedTools={relatedTools}
-            categories={getAllCategories()}
+            categories={await getAllCategories()}
             currentCategory={category}
           />
         </div>

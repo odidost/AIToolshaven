@@ -15759,5 +15759,53 @@
     },
     "publishedData": null,
     "versions": []
+  },
+  {
+    "id": "draft-1783913233750",
+    "status": "draft",
+    "publishedAt": null,
+    "lastAutosavedAt": "2026-07-13T03:27:13.935Z",
+    "draftData": {
+      "id": "draft-1783913233750",
+      "name": "Untitled AI Tool",
+      "slug": "draft-1783913233750",
+      "tagline": "",
+      "description": "",
+      "category": "productivity",
+      "pricing": [],
+      "features": [],
+      "useCases": [],
+      "editorial": {
+        "overview": "",
+        "verdict": "",
+        "pricing": ""
+      }
+    },
+    "publishedData": null,
+    "versions": []
+  },
+  {
+    "id": "draft-1783915412175",
+    "status": "draft",
+    "publishedAt": null,
+    "lastAutosavedAt": "2026-07-13T04:03:32.262Z",
+    "draftData": {
+      "id": "draft-1783915412175",
+      "name": "Untitled AI Tool",
+      "slug": "draft-1783915412175",
+      "tagline": "",
+      "description": "",
+      "category": "productivity",
+      "pricing": [],
+      "features": [],
+      "useCases": [],
+      "editorial": {
+        "overview": "",
+        "verdict": "",
+        "pricing": ""
+      }
+    },
+    "publishedData": null,
+    "versions": []
   }
 ]
