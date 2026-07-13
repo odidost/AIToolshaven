@@ -32,7 +32,7 @@ export async function saveTool(data: ToolFormValues) {
     // Update existing
     result = await supabase
       .from("tools")
-      .update(dbRecord)
+      .update(dbRecord as any)
       .eq("id", toolData.id);
   } else {
     // Insert new
@@ -42,7 +42,7 @@ export async function saveTool(data: ToolFormValues) {
         ...dbRecord,
         created_by: user.id,
         created_at: new Date().toISOString(),
-      });
+      } as any);
   }
 
   if (result.error) {

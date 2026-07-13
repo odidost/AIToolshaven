@@ -23,7 +23,7 @@ export async function saveGoal(slug: string, data: GoalFormValues) {
 
   const { error } = await supabase
     .from('goals')
-    .upsert(/* @ts-ignore */ isNew ? { ...dbData, created_by: session.user.id } : dbData, { onConflict: 'slug' });
+    .upsert((isNew ? { ...dbData, created_by: session.user.id } : dbData) as any, { onConflict: 'slug' });
 
   if (error) return { success: false, error: error.message };
 

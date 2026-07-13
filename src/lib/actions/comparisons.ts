@@ -30,10 +30,7 @@ export async function saveComparison(slug: string, data: ComparisonFormValues) {
   // Upsert the comparison
   const { error } = await supabase
     .from('comparisons')
-    .upsert(/* @ts-ignore */ 
-      isNew ? { ...dbData, created_by: session.user.id } : dbData,
-      { onConflict: 'slug' }
-    );
+    .upsert((isNew ? { ...dbData, created_by: session.user.id } : dbData) as any, { onConflict: 'slug' });
 
   if (error) {
     console.error("Failed to save comparison:", error);
