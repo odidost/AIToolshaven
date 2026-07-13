@@ -68,7 +68,7 @@ export async function duplicateWorkflow(slug: string) {
     updated_at: new Date().toISOString(),
   };
 
-  const { error: insertErr } = await supabase.from('workflows').insert(copyData);
+  const { error: insertErr } = await supabase.from('workflows').insert(copyData as any);
 
   if (insertErr) return { success: false, error: insertErr.message };
 

@@ -85,7 +85,7 @@ export async function duplicateComparison(slug: string) {
     updated_at: new Date().toISOString(),
   };
 
-  const { error: insertErr } = await supabase.from('comparisons').insert(copyData);
+  const { error: insertErr } = await supabase.from('comparisons').insert(copyData as any);
 
   if (insertErr) {
     return { success: false, error: insertErr.message };

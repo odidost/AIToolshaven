@@ -68,7 +68,7 @@ export async function duplicateGoal(slug: string) {
     updated_at: new Date().toISOString(),
   };
 
-  const { error: insertErr } = await supabase.from('goals').insert(copyData);
+  const { error: insertErr } = await supabase.from('goals').insert(copyData as any);
 
   if (insertErr) return { success: false, error: insertErr.message };
 

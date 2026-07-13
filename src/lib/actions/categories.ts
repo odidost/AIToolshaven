@@ -23,7 +23,7 @@ export async function saveCategory(slug: string, data: CategoryFormValues) {
 
   const { error } = await supabase
     .from('categories')
-    .upsert(/* @ts-ignore */ isNew ? { ...dbData, /* @ts-ignore */ created_by: session.user.id } : dbData, { onConflict: 'slug' });
+    .upsert((isNew ? { ...dbData, created_by: session.user.id } : dbData) as any, { onConflict: 'slug' });
 
   if (error) return { success: false, error: error.message };
 
@@ -68,7 +68,7 @@ export async function duplicateCategory(slug: string) {
     updated_at: new Date().toISOString(),
   };
 
-  const { error: insertErr } = await supabase.from('categories').insert(copyData);
+  const { error: insertErr } = await supabase.from('categories').insert(copyData as any);
 
   if (insertErr) return { success: false, error: insertErr.message };
 
