@@ -5,6 +5,7 @@ import { toggleBookmark, trackRecentlyViewed } from '@/app/actions/community'
 import { createClient } from '@/lib/supabase/client'
 import { toast } from 'sonner'
 import { cn } from '@/lib/utils'
+import { useRouter } from 'next/navigation'
 
 export function RecentlyViewedTracker({ toolSlug }: { toolSlug: string }) {
   useEffect(() => {
@@ -26,6 +27,7 @@ export function BookmarkButton({
   const [isBookmarked, setIsBookmarked] = useState(false)
   const [isPending, startTransition] = useTransition()
   const supabase = createClient()
+  const router = useRouter()
 
   useEffect(() => {
     // Check initial status
@@ -49,7 +51,12 @@ export function BookmarkButton({
     startTransition(async () => {
       const result = await toggleBookmark(toolSlug)
       if (result.error) {
-        toast.error(result.error)
+        if (result.error.includes("logged in")) {
+          toast.error("Please sign up or log in to save bookmarks!")
+          router.push("/signup")
+        } else {
+          toast.error(result.error)
+        }
       } else {
         setIsBookmarked(!!result.bookmarked)
         toast.success(result.bookmarked ? 'Saved to bookmarks' : 'Removed from bookmarks')

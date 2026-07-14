@@ -358,6 +358,51 @@ export const categoryThemes: Record<string, CategoryTheme> = {
       { title: "Best AI Meeting Tools", href: "/category/productivity" },
       { title: "Notion AI Review", href: "/tool/notion-ai" },
     ]
+  },
+  "ai-chatbots": {
+    slug: "ai-chatbots",
+    accentColors: {
+      heroGradient: "from-sky-500/10 to-blue-500/5",
+      iconBg: "bg-sky-500/20",
+      iconText: "text-sky-500",
+      textAccent: "text-sky-500",
+      borderAccent: "border-sky-500/30",
+      cssVar: "14, 165, 233", // rgb for sky-500
+    },
+    heroHeadline: "Engage with the world's most advanced AI chatbots.",
+    heroDescription: "Discover conversational AI agents, LLM assistants, and virtual companions that can answer questions, write code, and brainstorm ideas.",
+    statsLabels: {
+      listed: "Chatbots Listed",
+      popular: "Total Conversations",
+    },
+    emptyState: {
+      message: "No AI Chatbots found.",
+      subMessage: "Try adjusting your filters to find conversational agents.",
+    },
+    faq: [
+      {
+        question: "What is an AI Chatbot?",
+        answer: "An AI chatbot is a software application designed to simulate human conversation, typically using advanced Large Language Models (LLMs) to understand context and provide helpful answers."
+      },
+      {
+        question: "Which AI Chatbot is the smartest?",
+        answer: "The 'smartest' chatbot depends on your needs. Models like GPT-4 (ChatGPT) and Claude 3.5 Sonnet are currently considered state-of-the-art for complex reasoning and coding."
+      }
+    ],
+    guide: [
+      {
+        title: "The Conversational AI Revolution",
+        content: "AI chatbots have evolved from simple scripted bots to highly capable assistants that can write essays, debug code, and analyze data in real-time."
+      },
+      {
+        title: "Choosing the Right Chatbot",
+        content: "For coding and logic, consider Claude or ChatGPT. For search and research, Perplexity is excellent. For open-source, try Llama 3 or HuggingChat."
+      }
+    ],
+    internalLinks: [
+      { title: "ChatGPT vs Claude", href: "/compare/chatgpt-vs-claude" },
+      { title: "Best AI Coding Assistants", href: "/category/coding-assistants" },
+    ]
   }
 };
 

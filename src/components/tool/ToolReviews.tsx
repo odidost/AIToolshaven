@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "next/navigation";
 
 type ToolReviewsProps = {
     tool: AITool;
@@ -22,8 +23,10 @@ export function ToolReviews({ tool }: ToolReviewsProps) {
     const [rating, setRating] = useState(5);
     const [content, setContent] = useState("");
     const [isPending, startTransition] = useTransition();
+    const [currentUser, setCurrentUser] = useState<any>(null);
 
     const supabase = createClient();
+    const router = useRouter();
 
     useEffect(() => {
         async function fetchReviews() {
@@ -37,6 +40,9 @@ export function ToolReviews({ tool }: ToolReviewsProps) {
                 
             if (data) setReviews(data);
             setLoading(false);
+            
+            const { data: userData } = await supabase.auth.getUser();
+            setCurrentUser(userData?.user || null);
         }
         fetchReviews();
     }, [tool.slug, sort, supabase]);
@@ -94,52 +100,65 @@ export function ToolReviews({ tool }: ToolReviewsProps) {
                             Based on {totalReviews.toLocaleString()} reviews
                         </div>
                     </div>
-
-                    <Dialog open={isWriting} onOpenChange={setIsWriting}>
-                        <DialogTrigger asChild>
-                            <button className="w-full mt-8 py-3 rounded-xl border border-border/50 font-semibold text-on-surface hover:bg-surface-secondary transition-colors bg-white">
+                    <div className="mt-8">
+                        {currentUser ? (
+                            <Dialog open={isWriting} onOpenChange={setIsWriting}>
+                                <DialogTrigger asChild>
+                                    <button className="w-full py-3 rounded-xl border border-border/50 font-semibold text-on-surface hover:bg-surface-secondary transition-colors bg-white">
+                                        Write a Review
+                                    </button>
+                                </DialogTrigger>
+                                <DialogContent>
+                                    <DialogHeader>
+                                        <DialogTitle>Review {tool.name}</DialogTitle>
+                                    </DialogHeader>
+                                    <form onSubmit={handleSubmit} className="space-y-4">
+                                        <div>
+                                            <Label>Rating</Label>
+                                            <div className="flex gap-2 mt-2">
+                                                {[1, 2, 3, 4, 5].map(star => (
+                                                    <button
+                                                        key={star}
+                                                        type="button"
+                                                        onClick={() => setRating(star)}
+                                                        className={`material-symbols-outlined text-3xl ${star <= rating ? 'text-warning fill-current' : 'text-on-surface-variant'}`}
+                                                        style={{ fontVariationSettings: star <= rating ? "'FILL' 1" : "'FILL' 0" }}
+                                                    >
+                                                        star
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <Label htmlFor="content">Your Review</Label>
+                                            <Textarea
+                                                id="content"
+                                                required
+                                                rows={5}
+                                                value={content}
+                                                onChange={(e) => setContent(e.target.value)}
+                                                placeholder={`What did you like or dislike about ${tool.name}?`}
+                                                className="mt-2"
+                                            />
+                                        </div>
+                                        <Button type="submit" disabled={isPending} className="w-full">
+                                            {isPending ? 'Submitting...' : 'Submit Review'}
+                                        </Button>
+                                    </form>
+                                </DialogContent>
+                            </Dialog>
+                        ) : (
+                            <button 
+                                onClick={() => {
+                                    toast.error("Please sign up or log in to write a review!");
+                                    router.push("/signup");
+                                }}
+                                className="w-full py-3 rounded-xl border border-border/50 font-semibold text-on-surface hover:bg-surface-secondary transition-colors bg-white"
+                            >
                                 Write a Review
                             </button>
-                        </DialogTrigger>
-                        <DialogContent>
-                            <DialogHeader>
-                                <DialogTitle>Review {tool.name}</DialogTitle>
-                            </DialogHeader>
-                            <form onSubmit={handleSubmit} className="space-y-4">
-                                <div>
-                                    <Label>Rating</Label>
-                                    <div className="flex gap-2 mt-2">
-                                        {[1, 2, 3, 4, 5].map(star => (
-                                            <button
-                                                key={star}
-                                                type="button"
-                                                onClick={() => setRating(star)}
-                                                className={`material-symbols-outlined text-3xl ${star <= rating ? 'text-warning fill-current' : 'text-on-surface-variant'}`}
-                                                style={{ fontVariationSettings: star <= rating ? "'FILL' 1" : "'FILL' 0" }}
-                                            >
-                                                star
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div>
-                                    <Label htmlFor="content">Your Review</Label>
-                                    <Textarea
-                                        id="content"
-                                        required
-                                        rows={5}
-                                        value={content}
-                                        onChange={(e) => setContent(e.target.value)}
-                                        placeholder={`What did you like or dislike about ${tool.name}?`}
-                                        className="mt-2"
-                                    />
-                                </div>
-                                <Button type="submit" disabled={isPending} className="w-full">
-                                    {isPending ? 'Submitting...' : 'Submit Review'}
-                                </Button>
-                            </form>
-                        </DialogContent>
-                    </Dialog>
+                        )}
+                    </div>
                 </div>
 
                 {/* Right Area: Reviews List */}

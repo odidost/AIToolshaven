@@ -22,6 +22,17 @@ export function RankingRow({ tool, rank, isStar, accentColor = "primary" }: Rank
 
   const activeHoverBg = hoverBackgrounds[accentColor] || hoverBackgrounds.primary;
 
+  const linkIconHoverColors: Record<string, string> = {
+    primary: "group-hover:border-primary/40 group-hover:bg-primary/10 group-hover:text-primary",
+    secondary: "group-hover:border-secondary/40 group-hover:bg-secondary/10 group-hover:text-secondary",
+    tertiary: "group-hover:border-tertiary/40 group-hover:bg-tertiary/10 group-hover:text-tertiary",
+    emerald: "group-hover:border-emerald-500/40 group-hover:bg-emerald-500/10 group-hover:text-emerald-600",
+    blue: "group-hover:border-blue-500/40 group-hover:bg-blue-500/10 group-hover:text-blue-600",
+    rose: "group-hover:border-rose-500/40 group-hover:bg-rose-500/10 group-hover:text-rose-600",
+  };
+
+  const activeLinkIconHover = linkIconHoverColors[accentColor] || linkIconHoverColors.primary;
+
   return (
     <Link
       href={`/tool/${tool.slug}`}
@@ -54,8 +65,8 @@ export function RankingRow({ tool, rank, isStar, accentColor = "primary" }: Rank
         </h4>
       </div>
 
-      <div className="flex shrink-0 items-center justify-center rounded-[4px] border border-[#a1dbb8] bg-[#f0fbf4] w-[18px] h-[18px] opacity-100 transition-opacity duration-200">
-        <span className="material-symbols-outlined text-[11px] text-[#4caf50]">open_in_new</span>
+      <div className={`flex shrink-0 items-center justify-center rounded-[3px] border border-gray-200 bg-transparent text-gray-300 w-[14px] h-[14px] opacity-60 transition-all duration-300 group-hover:opacity-100 ${activeLinkIconHover}`}>
+        <span className="material-symbols-outlined text-[9px]">open_in_new</span>
       </div>
     </Link>
   );

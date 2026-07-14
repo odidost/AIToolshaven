@@ -2,9 +2,24 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { createClient } from '@/lib/supabase/client';
 
 export function MobileNavBar() {
   const pathname = usePathname();
+  const [user, setUser] = useState<any>(null);
+  const supabase = createClient();
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => setUser(data?.user || null));
+    
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user || null);
+    });
+    
+    return () => subscription.unsubscribe();
+  }, [supabase]);
 
   const navItems = [
     {
@@ -24,13 +39,13 @@ export function MobileNavBar() {
       highlight: true,
     },
     {
-      name: 'Favorites',
-      href: '/dashboard/favorites',
-      icon: 'favorite',
+      name: 'Bookmarks',
+      href: '/dashboard/bookmarks',
+      icon: 'bookmark',
     },
     {
-      name: 'Profile',
-      href: '/dashboard',
+      name: user ? 'Profile' : 'Sign In',
+      href: user ? '/dashboard' : '/login',
       icon: 'person',
     },
   ];

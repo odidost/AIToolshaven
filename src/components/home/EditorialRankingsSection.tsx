@@ -1,46 +1,35 @@
 import Link from "next/link";
 import { RankingCard } from "./RankingCard";
 import { FloatingTooltip } from "./FloatingTooltip";
-import { getAllTools, getLatestTools, getTrendingTools } from "@/lib/data/tools-service";
+import { getAllTools, getLatestTools, getTrendingTools, getToolsByCategoryId } from "@/lib/data/tools-service";
+import { getCategoryBySlug } from "@/lib/queries/categories";
 
 export async function EditorialRankingsSection() {
+  // 1. Latest AI Tools (matches /latest-ai-tools)
+  const latestToolsFull = await getLatestTools(100);
+  const latestTools = latestToolsFull.slice(0, 10);
+  const latestTotal = latestToolsFull.length;
+
+  // 2. Most Popular AI Tools (matches /popular-ai-tools)
+  // getAllTools already orders by popularity descending
   const allTools = await getAllTools();
+  const popularTools = allTools.slice(0, 10);
+  const popularTotal = allTools.length;
 
-  // 1. Latest AI Tools
-  const latestTools = await getLatestTools(10);
-
-  // 2. Most Popular AI Tools
-  // Using popularity score
-  const popularTools = [...allTools]
-    .sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
-    .slice(0, 10);
-
-  // 3. Trending AI Tools
-  // Trending could prioritize recently updated + featured
-  const trendingTools = [...allTools]
-    .sort((a, b) => {
-      const aScore = (a.featured ? 50 : 0) + (a.popularity || 0) + (a.rating || 0) * 10;
-      const bScore = (b.featured ? 50 : 0) + (b.popularity || 0) + (b.rating || 0) * 10;
-      return bScore - aScore;
-    })
-    .slice(0, 10);
+  // 3. Trending AI Tools (matches /trending-ai-tools)
+  const trendingToolsFull = await getTrendingTools(100);
+  const trendingTools = trendingToolsFull.slice(0, 10);
+  const trendingTotal = trendingToolsFull.length;
 
   // 4. AI Chatbots
-  // Automatically pull tools from AI Chatbots category/tags
-  const chatbots = allTools
-    .filter((t) => {
-      const isChatbotCategory = t.category === "c7"; // Future-proof if c7 becomes chatbots
-      const hasChatbotTag = t.tags?.some((tag) => tag.toLowerCase().includes("chatbot"));
-      const hasChatbotUseCase = t.useCases?.some((uc) => uc.toLowerCase().includes("chatbot"));
-      return isChatbotCategory || hasChatbotTag || hasChatbotUseCase;
-    })
-    .sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
-    .slice(0, 10);
+  // Pull directly from the new ai-chatbots category
+  const chatbotsCategory = await getCategoryBySlug("ai-chatbots");
+  const chatbotsFull = chatbotsCategory 
+    ? await getToolsByCategoryId(chatbotsCategory.id)
+    : [];
 
-  // Fallback if no chatbots explicitly tagged (just grab from Text Generation "c1" that might be assistants)
-  const finalChatbots = chatbots.length >= 3 
-    ? chatbots 
-    : allTools.filter(t => t.category === "c1" || t.slug.includes("chat")).slice(0, 10);
+  const finalChatbots = chatbotsFull.slice(0, 10);
+  const chatbotsTotal = chatbotsFull.length;
 
   return (
     <section className="mb-12 w-full bg-[#f4f7fe]/60 py-16">
@@ -66,7 +55,8 @@ export async function EditorialRankingsSection() {
               title="Latest AI Tools"
               icon="new_releases"
               tools={latestTools}
-              categoryLink="/category/all"
+              totalCount={latestTotal}
+              categoryLink="/latest-ai-tools"
               accentColor="rose"
             />
           </div>
@@ -78,7 +68,8 @@ export async function EditorialRankingsSection() {
               title="Most Popular"
               icon="trending_up"
               tools={popularTools}
-              categoryLink="/category/all"
+              totalCount={popularTotal}
+              categoryLink="/popular-ai-tools"
               accentColor="primary"
             />
           </div>
@@ -90,7 +81,8 @@ export async function EditorialRankingsSection() {
               title="Trending AI Tools"
               icon="local_fire_department"
               tools={trendingTools}
-              categoryLink="/category/all"
+              totalCount={trendingTotal}
+              categoryLink="/trending-ai-tools"
               accentColor="emerald"
             />
           </div>
@@ -102,27 +94,37 @@ export async function EditorialRankingsSection() {
               title="Top AI Chatbots"
               icon="forum"
               tools={finalChatbots}
-              categoryLink="/category/text-generation"
+              totalCount={chatbotsTotal}
+              categoryLink="/category/ai-chatbots"
               accentColor="blue"
             />
           </div>
         </div>
 
-        {/* Large Bottom CTA matching the image */}
-        <div className="mt-14 flex justify-center">
-          <Link
-            href="/categories"
-            className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-white px-12 py-4 text-[14px] font-bold uppercase tracking-wider text-primary transition-all hover:-translate-y-0.5"
-          >
-            {/* Animated Shimmering Border behind */}
-            <div className="absolute -inset-[2px] -z-10 rounded-xl bg-gradient-to-r from-blue-500/30 via-primary/40 to-rose-500/30 bg-[length:200%_200%] opacity-70 animate-[gradient_4s_linear_infinite] group-hover:opacity-100 blur-[2px] transition-opacity" />
-            <div className="absolute inset-0 -z-10 rounded-xl bg-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.8),_0_8px_20px_rgb(0,0,0,0.04)]" />
+        {/* Large Bottom CTA matching the image exactly */}
+        <div className="mt-12 flex justify-center">
+          <div className="relative inline-flex group">
+            {/* The multi-colored gradient glow underneath */}
+            <div className="absolute -inset-1 top-2 -z-10 rounded-[14px] bg-gradient-to-r from-blue-300 via-fuchsia-300 to-orange-300 opacity-60 blur-md transition-all duration-300 group-hover:opacity-100 group-hover:blur-lg" />
             
-            SEE THE FULL LIST OF AI
-            <span className="material-symbols-outlined transition-transform duration-300 group-hover:translate-x-1 group-hover:text-blue-500">
-              arrow_forward
-            </span>
-          </Link>
+            {/* Button container with 4px track and moving ball animation */}
+            <div className="relative flex items-center justify-center rounded-[14px] p-[4px] overflow-hidden shadow-sm transition-transform hover:-translate-y-0.5">
+              
+              {/* Stylish static border color (acting as the track) */}
+              <div className="absolute inset-0 bg-[#E9D5FF]" />
+
+              {/* The moving "ball" of color (conic gradient with a bright tip and trailing tail) */}
+              <div className="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_85%,#ec4899_95%,#3b82f6_100%)]" />
+              
+              {/* Inner Button Content */}
+              <Link
+                href="/categories"
+                className="relative z-10 flex items-center justify-center gap-2 rounded-[10px] bg-white px-16 py-3.5 text-[14px] font-bold uppercase tracking-widest text-[#1e1b4b]"
+              >
+                SEE THE FULL LIST OF AI <span className="text-[16px] font-normal leading-none">&rarr;</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
       <FloatingTooltip />

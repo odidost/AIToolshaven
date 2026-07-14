@@ -6,6 +6,7 @@ interface RankingCardProps {
   title: string;
   icon: string;
   tools: AITool[];
+  totalCount: number;
   categoryLink: string;
   accentColor?: "primary" | "secondary" | "tertiary" | "emerald" | "blue" | "rose";
 }
@@ -14,6 +15,7 @@ export function RankingCard({
   title,
   icon,
   tools,
+  totalCount,
   categoryLink,
   accentColor = "primary",
 }: RankingCardProps) {
@@ -28,14 +30,14 @@ export function RankingCard({
     rose: "bg-gradient-to-r from-transparent via-rose-500/50 to-transparent",
   };
 
-  // Dynamic scrollbar thumb color based on accent
+  // Dynamic scrollbar thumb color based on accent, made more obvious
   const scrollbarThumbColors: Record<string, string> = {
-    primary: "[&::-webkit-scrollbar-thumb]:bg-primary/20 hover:[&::-webkit-scrollbar-thumb]:bg-primary/40",
-    secondary: "[&::-webkit-scrollbar-thumb]:bg-secondary/20 hover:[&::-webkit-scrollbar-thumb]:bg-secondary/40",
-    tertiary: "[&::-webkit-scrollbar-thumb]:bg-tertiary/20 hover:[&::-webkit-scrollbar-thumb]:bg-tertiary/40",
-    emerald: "[&::-webkit-scrollbar-thumb]:bg-emerald-500/20 hover:[&::-webkit-scrollbar-thumb]:bg-emerald-500/40",
-    blue: "[&::-webkit-scrollbar-thumb]:bg-blue-500/20 hover:[&::-webkit-scrollbar-thumb]:bg-blue-500/40",
-    rose: "[&::-webkit-scrollbar-thumb]:bg-rose-500/20 hover:[&::-webkit-scrollbar-thumb]:bg-rose-500/40",
+    primary: "[&::-webkit-scrollbar-thumb]:bg-primary/40 hover:[&::-webkit-scrollbar-thumb]:bg-primary/70",
+    secondary: "[&::-webkit-scrollbar-thumb]:bg-secondary/40 hover:[&::-webkit-scrollbar-thumb]:bg-secondary/70",
+    tertiary: "[&::-webkit-scrollbar-thumb]:bg-tertiary/40 hover:[&::-webkit-scrollbar-thumb]:bg-tertiary/70",
+    emerald: "[&::-webkit-scrollbar-thumb]:bg-emerald-500/40 hover:[&::-webkit-scrollbar-thumb]:bg-emerald-500/70",
+    blue: "[&::-webkit-scrollbar-thumb]:bg-blue-500/40 hover:[&::-webkit-scrollbar-thumb]:bg-blue-500/70",
+    rose: "[&::-webkit-scrollbar-thumb]:bg-rose-500/40 hover:[&::-webkit-scrollbar-thumb]:bg-rose-500/70",
   };
   const activeScrollbar = scrollbarThumbColors[accentColor] || scrollbarThumbColors.primary;
 
@@ -43,22 +45,28 @@ export function RankingCard({
   const extractedCategoryName = title.replace(/Most Popular|Latest|Trending|Top|AI/g, "").trim() || "category";
 
   return (
-    <div className="group/card relative flex h-[420px] flex-col overflow-hidden rounded-[16px] border border-white/60 bg-white/70 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.8),_0_4px_24px_rgb(0,0,0,0.02)] transition-all duration-500 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1">
+    <div className="group/card relative flex h-[420px] flex-col overflow-hidden rounded-[20px] border border-[#7C3AED]/15 bg-white/80 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.9),_0_4px_24px_rgba(124,58,237,0.04)] transition-all duration-500 hover:shadow-[0_16px_40px_rgba(124,58,237,0.12)] hover:-translate-y-1">
+      
+      {/* Subtle background glow effect */}
+      <div className="absolute top-0 right-0 -mr-8 -mt-8 h-32 w-32 rounded-full bg-[#7C3AED]/5 blur-2xl pointer-events-none transition-all duration-500 group-hover/card:bg-[#7C3AED]/10" />
+
       {/* Header */}
-      <div className="flex flex-col items-center pt-5 pb-3 px-6 relative">
-        <div className="flex items-center justify-center gap-2 mb-2.5">
-          <span className="material-symbols-outlined text-[16px] text-on-surface-variant/80">
-            {icon}
-          </span>
-          <h3 className="font-bold text-[14px] text-on-surface tracking-wide">
+      <div className="relative shrink-0 flex flex-col pt-5 pb-4 px-5 z-10">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#F3E8FF] to-white text-[#7C3AED] shadow-sm ring-1 ring-[#7C3AED]/15 group-hover/card:scale-105 transition-transform duration-500">
+            <span className="material-symbols-outlined text-[20px]">
+              {icon}
+            </span>
+          </div>
+          <h3 className="font-extrabold text-[16px] tracking-tight text-gray-900 group-hover/card:text-[#7C3AED] transition-colors duration-300">
             {title}
           </h3>
         </div>
-        <div className={`h-[1px] w-full ${lineGradients[accentColor]}`} />
+        <div className="h-[1px] w-full bg-gradient-to-r from-[#7C3AED]/20 via-[#7C3AED]/5 to-transparent" />
       </div>
 
       {/* Tools List - Scrollable */}
-      <div className={`flex flex-1 flex-col px-4 pb-2 overflow-y-auto [&::-webkit-scrollbar]:w-[3px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full transition-colors duration-300 ${activeScrollbar}`}>
+      <div className={`flex flex-1 flex-col px-4 pb-2 z-10 overflow-y-auto [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-track]:bg-black/5 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full transition-colors duration-300 ${activeScrollbar}`}>
         <div className="flex flex-col divide-y divide-border/30">
           {tools.map((tool, index) => (
             <RankingRow key={tool.id} tool={tool} rank={index + 1} isStar={isLatest} accentColor={accentColor} />
@@ -72,12 +80,12 @@ export function RankingCard({
       </div>
 
       {/* Footer */}
-      <div className="p-3 bg-white/40 backdrop-blur-md pt-1">
+      <div className="relative shrink-0 mt-auto p-4 z-10 bg-transparent">
         <Link
           href={categoryLink}
-          className="flex w-full items-center justify-center gap-1.5 rounded-lg bg-surface-variant/20 px-4 py-2 text-[12px] font-medium text-on-surface-variant/80 transition-all duration-300 hover:bg-white hover:shadow-sm hover:text-on-surface"
+          className="flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#F4F4F5] px-4 py-2.5 text-[12px] font-medium text-gray-700 transition-colors hover:bg-gray-200"
         >
-          See all {extractedCategoryName} ({tools.length * 8 + 1}) <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+          See all {extractedCategoryName} ({totalCount}) <span>&rarr;</span>
         </Link>
       </div>
     </div>
