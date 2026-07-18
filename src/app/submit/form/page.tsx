@@ -31,6 +31,7 @@ function SubmitFormContent() {
 
   const [formData, setFormData] = useState({
     toolName: '',
+    contactEmail: '',
     websiteUrl: '',
     description: '',
     category: '',
@@ -54,6 +55,8 @@ function SubmitFormContent() {
   function validate(): boolean {
     const newErrors: Record<string, string> = {};
     if (!formData.toolName.trim()) newErrors.toolName = 'Tool name is required';
+    if (!formData.contactEmail.trim()) newErrors.contactEmail = 'Contact email is required';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.contactEmail)) newErrors.contactEmail = 'Enter a valid email address';
     if (!formData.websiteUrl.trim()) newErrors.websiteUrl = 'Website URL is required';
     else if (!/^https?:\/\/.+\..+/.test(formData.websiteUrl)) newErrors.websiteUrl = 'Enter a valid URL';
     if (!formData.description.trim()) newErrors.description = 'Description is required';
@@ -76,7 +79,9 @@ function SubmitFormContent() {
         if (result.success) {
           setSubmitted(true);
         } else {
-          toast.error(result.error || "Failed to submit tool. Please try again.");
+          console.warn("Resend delivery failed:", result.error);
+          toast.warning(`Warning: Email could not be delivered to aitoolshaven@gmail.com (${result.error}). Proceeding anyway.`);
+          setSubmitted(true);
         }
       } catch (err) {
         toast.error("An unexpected error occurred during submission.");
@@ -176,6 +181,22 @@ function SubmitFormContent() {
               className={`w-full h-12 px-4 rounded-xl border bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm ${errors.toolName ? 'border-red-400' : 'border-outline'}`}
             />
             {errors.toolName && <p className="text-red-500 text-xs mt-1">{errors.toolName}</p>}
+          </div>
+
+          {/* Contact Email */}
+          <div>
+            <label htmlFor="contact-email" className="block text-sm font-semibold text-on-surface mb-2">
+              Contact Email <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="contact-email"
+              type="email"
+              placeholder="you@example.com"
+              value={formData.contactEmail}
+              onChange={(e) => setFormData(prev => ({ ...prev, contactEmail: e.target.value }))}
+              className={`w-full h-12 px-4 rounded-xl border bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm ${errors.contactEmail ? 'border-red-400' : 'border-outline'}`}
+            />
+            {errors.contactEmail && <p className="text-red-500 text-xs mt-1">{errors.contactEmail}</p>}
           </div>
 
           {/* Tagline */}

@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 const reasons = [
   { icon: "rocket_launch", title: "Submit a Tool", description: "Want to list your AI tool?", href: "/submit" },
   { icon: "business", title: "Sponsorships", description: "Advertise to our audience", href: "/submit" },
-  { icon: "newspaper", title: "Press & Media", description: "Press kit and interviews", href: "mailto:press@aitoolshaven.com" },
-  { icon: "bug_report", title: "Report an Issue", description: "Found a bug or bad listing?", href: "mailto:support@aitoolshaven.com" },
+  { icon: "newspaper", title: "Press & Media", description: "Press kit and interviews", href: "mailto:aitoolshaven@gmail.com?subject=Press Inquiry" },
+  { icon: "bug_report", title: "Report an Issue", description: "Found a bug or bad listing?", href: "mailto:aitoolshaven@gmail.com?subject=Report an Issue" },
 ];
 
 export default function ContactPage() {
@@ -65,10 +65,10 @@ export default function ContactPage() {
           For anything not covered above, drop us a line at:
         </p>
         <a
-          href="mailto:hello@aitoolshaven.com"
+          href="mailto:aitoolshaven@gmail.com?subject=General Inquiry"
           className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-8 py-4 font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
         >
-          hello@aitoolshaven.com
+          aitoolshaven@gmail.com
           <span className="material-symbols-outlined text-[18px]">open_in_new</span>
         </a>
         <p className="text-xs text-slate-400 mt-6">We typically respond within 1-2 business days.</p>

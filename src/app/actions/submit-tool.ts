@@ -4,6 +4,7 @@ import { Resend } from "resend";
 
 export async function sendSubmissionEmail(formData: {
   toolName: string;
+  contactEmail: string;
   websiteUrl: string;
   description: string;
   category: string;
@@ -29,6 +30,10 @@ export async function sendSubmissionEmail(formData: {
           <tr>
             <td style="padding: 8px 0; font-weight: bold; color: #475569; width: 150px;">Tool Name:</td>
             <td style="padding: 8px 0; color: #0f172a;">${formData.toolName}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #475569;">Contact Email:</td>
+            <td style="padding: 8px 0; color: #7C3AED;"><a href="mailto:${formData.contactEmail}" style="color: #7C3AED; text-decoration: none;">${formData.contactEmail}</a></td>
           </tr>
           <tr>
             <td style="padding: 8px 0; font-weight: bold; color: #475569;">Tagline:</td>
@@ -65,8 +70,9 @@ export async function sendSubmissionEmail(formData: {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: "AIToolsHaven Submissions <onboarding@resend.dev>",
+      from: "AIToolsHaven Submissions <submissions@aitoolshaven.com>",
       to: "aitoolshaven@gmail.com",
+      replyTo: formData.contactEmail,
       subject: `New AI Tool Submission: ${formData.toolName} (${formData.plan})`,
       html: emailHtml,
     });

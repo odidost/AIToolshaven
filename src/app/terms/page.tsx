@@ -58,7 +58,7 @@ export default function TermsPage() {
     },
     {
       title: "11. Contact",
-      content: `If you have questions about these Terms, please contact us at: legal@aitoolshaven.com`,
+      content: `If you have questions about these Terms, please contact us at: aitoolshaven@gmail.com`,
     },
   ];
 

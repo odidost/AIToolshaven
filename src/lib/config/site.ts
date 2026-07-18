@@ -24,7 +24,7 @@ export const siteConfig = {
   // Organization Info
   organization: {
     name: "AIToolsHaven",
-    email: "hello@aitoolshaven.com",
+    email: "aitoolshaven@gmail.com",
   },
   
   // Site author for metadata
