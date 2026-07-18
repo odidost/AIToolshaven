@@ -21,12 +21,19 @@ export async function proxy(request: NextRequest) {
     }
   );
 
+  // Normalize path to check both with and without trailing slash
+  const normalizedPath = pathname.length > 1 && pathname.endsWith('/') 
+    ? pathname.slice(0, -1) 
+    : pathname;
+  const pathWithSlash = normalizedPath + '/';
+
   const { data: redirectData } = await supabase
     .from('redirects')
     .select('new_path, status_code')
-    .eq('old_path', pathname)
+    .in('old_path', [normalizedPath, pathWithSlash])
     .eq('active', true)
-    .single();
+    .limit(1)
+    .maybeSingle();
 
   if (redirectData) {
     const url = request.nextUrl.clone();
