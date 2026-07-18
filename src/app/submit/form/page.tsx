@@ -64,6 +64,22 @@ function SubmitFormContent() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (validate()) {
+      const subject = encodeURIComponent(`AI Tool Submission: ${formData.toolName} (${planLabels[plan] || plan})`);
+      const body = encodeURIComponent(
+        `Hello AIToolsHaven Team,\n\n` +
+        `I would like to submit my AI tool for review. Here are the details:\n\n` +
+        `- Tool Name: ${formData.toolName}\n` +
+        `- Tagline: ${formData.tagline || 'N/A'}\n` +
+        `- Website URL: ${formData.websiteUrl}\n` +
+        `- Category: ${formData.category}\n` +
+        `- Pricing Model: ${formData.pricingModel}\n` +
+        `- Price: ${formData.price || 'N/A'}\n\n` +
+        `- Description:\n${formData.description}\n\n` +
+        `Plan Selected: ${planLabels[plan] || plan}\n\n` +
+        `Best regards`
+      );
+      
+      window.location.href = `mailto:aitoolshaven@gmail.com?subject=${subject}&body=${body}`;
       setSubmitted(true);
     }
   }
