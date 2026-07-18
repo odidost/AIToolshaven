@@ -6,6 +6,8 @@ import { useSearchParams } from 'next/navigation';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { categories } from '@/lib/data/categories';
+import { toast } from 'sonner';
+import { sendSubmissionEmail } from '@/app/actions/submit-tool';
 const pricingModels = ["Free", "Freemium", "Paid", "Enterprise"] as const;
 
 export default function SubmitFormPage() {
@@ -41,6 +43,7 @@ function SubmitFormContent() {
   const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const planLabels: Record<string, string> = {
     standard: 'Standard (Free)',
@@ -61,26 +64,25 @@ function SubmitFormContent() {
     return Object.keys(newErrors).length === 0;
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (validate()) {
-      const subject = encodeURIComponent(`AI Tool Submission: ${formData.toolName} (${planLabels[plan] || plan})`);
-      const body = encodeURIComponent(
-        `Hello AIToolsHaven Team,\n\n` +
-        `I would like to submit my AI tool for review. Here are the details:\n\n` +
-        `- Tool Name: ${formData.toolName}\n` +
-        `- Tagline: ${formData.tagline || 'N/A'}\n` +
-        `- Website URL: ${formData.websiteUrl}\n` +
-        `- Category: ${formData.category}\n` +
-        `- Pricing Model: ${formData.pricingModel}\n` +
-        `- Price: ${formData.price || 'N/A'}\n\n` +
-        `- Description:\n${formData.description}\n\n` +
-        `Plan Selected: ${planLabels[plan] || plan}\n\n` +
-        `Best regards`
-      );
-      
-      window.location.href = `mailto:aitoolshaven@gmail.com?subject=${subject}&body=${body}`;
-      setSubmitted(true);
+      setIsSubmitting(true);
+      try {
+        const result = await sendSubmissionEmail({
+          ...formData,
+          plan: planLabels[plan] || plan,
+        });
+        if (result.success) {
+          setSubmitted(true);
+        } else {
+          toast.error(result.error || "Failed to submit tool. Please try again.");
+        }
+      } catch (err) {
+        toast.error("An unexpected error occurred during submission.");
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   }
 
@@ -343,10 +345,20 @@ function SubmitFormContent() {
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <button
               type="submit"
-              className="flex-1 bg-primary text-primary-foreground px-8 py-3.5 rounded-xl font-bold hover:opacity-90 transition-opacity shadow-md shadow-primary/20 flex items-center justify-center gap-2"
+              disabled={isSubmitting}
+              className="flex-1 bg-primary text-primary-foreground px-8 py-3.5 rounded-xl font-bold hover:opacity-90 transition-opacity shadow-md shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span className="material-symbols-outlined text-sm">send</span>
-              Submit for Review
+              {isSubmitting ? (
+                <>
+                  <span className="material-symbols-outlined text-sm animate-spin">progress_activity</span>
+                  Submitting...
+                </>
+              ) : (
+                <>
+                  <span className="material-symbols-outlined text-sm">send</span>
+                  Submit for Review
+                </>
+              )}
             </button>
             <Link
               href="/submit"
