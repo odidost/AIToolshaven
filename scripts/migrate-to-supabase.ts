@@ -21,15 +21,32 @@ import { goals } from '../src/lib/goals';
 import { comparisons } from '../src/lib/comparisons';
 import tools from '../data/tools.json';
 
+// Helper to get existing mapping of slug -> id
+async function getExistingIds(table: string) {
+  const { data } = await supabase.from(table).select('id, slug');
+  const map: Record<string, string> = {};
+  if (data) {
+    data.forEach((row: any) => {
+      if (row.slug) map[row.slug] = row.id;
+    });
+  }
+  return map;
+}
+
 async function migrate() {
   console.log("Starting Supabase Migration...");
 
   try {
+    const existingCats = await getExistingIds('categories');
+    const existingTools = await getExistingIds('tools');
+    const existingGoals = await getExistingIds('goals');
+    const existingComps = await getExistingIds('comparisons');
+
     // 1. Migrate Categories
     console.log(`Migrating ${categories.length} categories...`);
     const { error: catError } = await supabase.from('categories').upsert(
       categories.map((c: any) => ({
-        id: c.id,
+        id: existingCats[c.slug] || c.id,
         name: c.name,
         slug: c.slug,
         icon: c.icon,
@@ -39,11 +56,14 @@ async function migrate() {
     );
     if (catError) throw catError;
 
+    // Refresh category ids in case new ones were inserted
+    const updatedCats = await getExistingIds('categories');
+
     // 2. Migrate Goals
     console.log(`Migrating ${goals.length} goals...`);
     const { error: goalError } = await supabase.from('goals').upsert(
       goals.map((g, i) => ({
-        id: `g${i + 1}`,
+        id: existingGoals[g.slug] || `g${i + 1}`,
         title: g.title,
         slug: g.slug,
         icon: g.icon,
@@ -57,7 +77,7 @@ async function migrate() {
     console.log(`Migrating ${comparisons.length} comparisons...`);
     const { error: compError } = await supabase.from('comparisons').upsert(
       comparisons.map((c, i) => ({
-        id: `comp${i + 1}`,
+        id: existingComps[c.slug] || `comp${i + 1}`,
         title: c.title,
         slug: c.slug,
         description: null
@@ -69,16 +89,27 @@ async function migrate() {
     console.log(`Migrating ${tools.length} tools...`);
     const { error: toolError } = await supabase.from('tools').upsert(
       tools.map((doc: any) => {
-        const t = doc.draftData || doc; // Handle both CmsToolDocument and flat AITool
-        const isValidCategory = categories.some((c: any) => c.id === t.category);
+        const t = doc.publishedData || doc.draftData || doc; // Handle both CmsToolDocument and flat AITool
+        
+        let categoryId = t.category || null;
+        if (categoryId) {
+          // Find the category in categories.json
+          const categoryObj = categories.find((c: any) => c.id === categoryId || c.slug === categoryId);
+          if (categoryObj && updatedCats[categoryObj.slug]) {
+            categoryId = updatedCats[categoryObj.slug];
+          } else if (updatedCats[categoryId]) {
+            categoryId = updatedCats[categoryId];
+          }
+        }
+
         return {
-          id: t.id,
+          id: existingTools[t.slug] || t.id,
           name: t.name,
           slug: t.slug,
           company: t.company || null,
           tagline: t.tagline || '',
           description: t.description || '',
-          category_id: isValidCategory ? t.category : null,
+          category_id: categoryId,
           price_model: t.priceModel || 'Free',
           price: t.price || null,
           rating: t.rating || 0,

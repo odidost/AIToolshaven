@@ -15,7 +15,7 @@ export const aiChatbots: AITool[] = [
         description:
             "ChatGPT is the flagship AI assistant from OpenAI. It remains our top overall pick for its unmatched versatility, serving as a reliable partner for everything from drafting complex Python scripts to summarizing dense market research.",
 
-        category: "c1",
+        category: "ai-chatbots",
 
         priceModel: "Freemium",
 
@@ -218,7 +218,7 @@ export const aiChatbots: AITool[] = [
         company: "Anthropic",
         tagline: "The premier AI assistant for nuanced writing and complex coding",
         description: "Anthropic's flagship assistant has quietly dethroned ChatGPT for pure writing tasks. Claude shines in long-form content generation and complex coding challenges, offering an incredibly natural conversational tone that rarely feels machine-generated.",
-        category: "c1",
+        category: "ai-chatbots",
         priceModel: "Freemium",
         price: "From $0",
         rating: 4.8,
@@ -315,7 +315,7 @@ export const aiChatbots: AITool[] = [
         company: "Google",
         tagline: "The most deeply integrated AI for Google Workspace power users",
         description: "Gemini is Google's massive, multimodal response to OpenAI. Built from the ground up to analyze text, video, and audio simultaneously, it excels at processing massive datasets and integrates flawlessly with Docs, Drive, and Gmail.",
-        category: "c1",
+        category: "ai-chatbots",
         priceModel: "Freemium",
         price: "From $0",
         rating: 4.7,

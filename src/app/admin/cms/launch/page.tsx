@@ -3,7 +3,7 @@ import { getAllCategories } from "@/lib/queries/categories";
 import { env } from "@/lib/env";
 
 export default async function LaunchChecklistPage() {
-  const tools = await getAllTools();
+  const tools = await getAllTools(true);
   const categories = await getAllCategories();
 
   // 1. Content Checks

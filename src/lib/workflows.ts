@@ -47,4 +47,6 @@ export type Workflow = {
 
 import workflowsJson from '../../data/workflows.json';
 
-export const workflows: Workflow[] = workflowsJson as Workflow[];
+export const workflows: Workflow[] = (workflowsJson as Workflow[]).filter(
+  (w) => w.title && !w.title.toLowerCase().includes("untitled") && w.slug && !w.slug.startsWith("workflow-")
+);

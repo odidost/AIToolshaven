@@ -5,7 +5,7 @@ import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 
 export function SpotlightBanner() {
   return (
-    <section className="relative mt-8 lg:mt-12 mb-20 rounded-[32px] border border-primary/20 bg-surface shadow-md overflow-hidden">
+    <section className="relative w-full border-b border-border bg-surface shadow-xs overflow-hidden">
       
       {/* Aurora Mesh Background */}
       <BackgroundPattern type="aurora" opacity={1} />
@@ -13,7 +13,7 @@ export function SpotlightBanner() {
       {/* Subtle Grid Texture */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
-      <div className="relative z-10 grid items-start gap-12 p-6 sm:p-8 md:p-10 lg:min-h-[600px] lg:grid-cols-2">
+      <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10 grid items-start gap-12 pt-12 sm:pt-16 md:pt-20 pb-0 lg:min-h-[600px] lg:grid-cols-2">
 
         {/* ================= LEFT ================= */}
         <div className="flex flex-col justify-start">

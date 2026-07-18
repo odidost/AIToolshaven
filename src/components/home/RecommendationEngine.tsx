@@ -51,8 +51,8 @@ export function RecommendationEngine() {
   }, [role, goal]);
 
   return (
-    <section className="mb-24 mt-12">
-      <div className="rounded-[32px] border border-primary/15 bg-gradient-to-br from-[#F0EDFF] via-[#F5F7FB] to-[#E0EBFF] shadow-sm relative overflow-hidden p-6 sm:p-12">
+    <section className="w-full relative overflow-hidden bg-gradient-to-br from-[#F0EDFF] via-[#F5F7FB] to-[#E0EBFF] border-y border-primary/15 shadow-xs py-12 sm:py-16 mb-24 mt-12">
+      <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
 
         {/* Neural Network Nodes Background */}
         <div className="absolute inset-0 opacity-[0.08] pointer-events-none">

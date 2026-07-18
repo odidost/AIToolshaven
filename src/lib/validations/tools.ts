@@ -34,9 +34,14 @@ export const toolSchema = z.object({
   
   platform: z.string().optional(),
   api: z.boolean().default(false),
-  mobile_app: z.boolean().default(false),
-  open_source: z.boolean().default(false),
-  free_trial: z.boolean().default(false),
+  mobileApp: z.boolean().default(false),
+  openSource: z.boolean().default(false),
+  freeTrial: z.boolean().default(false),
+  features: z.array(z.object({
+    title: z.string(),
+    description: z.string(),
+    icon: z.string().optional(),
+  })).optional().default([]),
   
   status: toolStatusSchema.default('Draft'),
 });

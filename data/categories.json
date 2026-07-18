@@ -97,5 +97,13 @@
     "slug": "category-1783915412055",
     "icon": "category",
     "count": 0
+  },
+  {
+    "id": "ai-chatbots",
+    "name": "AI Chatbots",
+    "slug": "ai-chatbots",
+    "icon": "smart_toy",
+    "count": 20,
+    "description": "The best conversational AI agents, LLM assistants, and virtual companions."
   }
 ]

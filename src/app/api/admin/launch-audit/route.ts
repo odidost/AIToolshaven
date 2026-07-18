@@ -8,7 +8,7 @@ import path from 'path';
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  const tools = await getAllTools();
+  const tools = await getAllTools(true);
   
   const manifestPath = path.join(process.cwd(), 'public', 'assets', 'manifest.json');
   let manifest: AssetManifest = {};

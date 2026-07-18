@@ -1,7 +1,7 @@
 export function NewsletterCTA() {
     return (
-        <section className="mb-16">
-            <div className="bg-primary-container rounded-3xl p-6 sm:p-8 md:p-12 text-center border border-outline">
+        <section className="w-full bg-primary-container border-y border-outline py-12 sm:py-16 md:py-20 mb-16">
+            <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 text-center">
                 <h2 className="text-fluid-h2 font-bold text-on-surface mb-4">
                     Get the Weekly Roundup
                 </h2>

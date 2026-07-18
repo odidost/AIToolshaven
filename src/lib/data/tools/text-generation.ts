@@ -166,7 +166,7 @@ export const textGenerationTools: AITool[] = [
         screenshotUrl: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800",
         logoUrl: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=200",
-        category: "c1",
+        category: "ai-chatbots",
         priceModel: "Freemium",
         pricing: [{ planName: "Pro", price: 20, period: "monthly" }],
         url: "https://perplexity.ai",

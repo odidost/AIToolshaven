@@ -1,7 +1,7 @@
 import { Workflow } from "@/lib/workflows";
 
 export function WorkflowDeliverables({ workflow }: { workflow: Workflow }) {
-    if (!workflow.meta.deliverables || workflow.meta.deliverables.length === 0) return null;
+    if (!workflow.meta?.deliverables || workflow.meta.deliverables.length === 0) return null;
 
     return (
         <div className="rounded-3xl border border-border bg-surface-secondary/30 p-8 shadow-sm">

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function SubmitToolCTA() {
   return (
-    <section className="mb-24 relative overflow-hidden rounded-[40px] bg-slate-950 p-6 sm:p-8 md:p-16 border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.5)]">
+    <section className="w-full mb-24 relative overflow-hidden bg-slate-950 border-y border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.5)]">
       
       {/* Background ambient glows */}
       <div className="absolute top-0 right-0 h-full w-1/2 rounded-full bg-primary/20 blur-[150px] pointer-events-none" />
@@ -11,7 +11,7 @@ export function SubmitToolCTA() {
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px] opacity-30 pointer-events-none" />
 
-      <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto">
+      <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10 py-12 sm:py-16 md:py-20 flex flex-col items-center text-center">
         <div className="flex items-center gap-2 text-primary mb-4">
           <span className="material-symbols-outlined text-xl">rocket_launch</span>
           <span className="text-sm font-bold uppercase tracking-widest">Grow Your Tool</span>

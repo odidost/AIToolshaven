@@ -464,7 +464,7 @@ export const extraTools: AITool[] = [
     screenshotUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
         imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
     logoUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=200",
-    category: "c1", priceModel: "Paid", pricing: [{ planName: "X Premium", price: 8, period: "monthly" }],
+    category: "ai-chatbots", priceModel: "Paid", pricing: [{ planName: "X Premium", price: 8, period: "monthly" }],
     url: "https://x.ai", tags: ["Chatbot", "Twitter", "Real-time"], features: ["Real-time Twitter Access", "Fun Mode", "Coding"],
     useCases: ["Research Topics", "Automate Socials"], rating: 4.4, reviewCount: 15000, featured: false, verified: true, popularity: 91,
     goals: ["Find Inspiration", "business-growth", "ai-workflows"], bestFor: ["Marketer", "Creator", "Founder"], stats: { launchYear: 2023 },

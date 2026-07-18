@@ -57,3 +57,7 @@ logs/
 
 # OS
 Thumbs.db
+
+# Scratch and test files
+/scratch/
+/test_query_*.ts

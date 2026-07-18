@@ -78,6 +78,7 @@ export async function submitReview(formData: FormData) {
 
   revalidatePath(`/tool/${toolSlug}`)
   revalidatePath('/dashboard/reviews')
+  revalidatePath('/admin/cms/reviews')
   
   return { success: true }
 }

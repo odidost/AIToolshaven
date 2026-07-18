@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { ReviewsTable } from "./ReviewsTable";
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminReviewsPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -23,10 +25,31 @@ export default async function AdminReviewsPage() {
   }
 
   // Fetch all reviews
-  const { data: reviews } = await supabase
+  const { data: reviewsData, error } = await supabase
     .from('reviews')
-    .select('*, profiles(username, email), tools:tool_slug(name)')
+    .select('*, profiles(username, email)')
     .order('created_at', { ascending: false });
+    
+  if (error) {
+    console.error("Error fetching reviews:", error);
+    return (
+      <PageContainer className="py-8 max-w-7xl">
+        <div className="bg-destructive/10 p-4 rounded-lg text-destructive">
+          Error fetching reviews: {error.message || JSON.stringify(error)}
+        </div>
+      </PageContainer>
+    );
+  }
+
+  // Fetch tools to map slug to name
+  const { getAllTools } = await import('@/lib/data/tools-service');
+  const allTools = await getAllTools(true);
+  const toolsBySlug = new Map(allTools.map(t => [t.slug, t.name]));
+
+  const reviews = reviewsData?.map(review => ({
+    ...review,
+    tools: { name: toolsBySlug.get(review.tool_slug) || review.tool_slug }
+  })) || [];
 
   return (
     <PageContainer className="py-8 max-w-7xl">

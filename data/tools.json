@@ -1,395 +1,5 @@
 [
   {
-    "id": "chatgpt",
-    "status": "published",
-    "publishedAt": "2026-07-11T11:46:48.303Z",
-    "lastAutosavedAt": null,
-    "draftData": {
-      "id": "chatgpt",
-      "name": "ChatGPT",
-      "slug": "chatgpt",
-      "tagline": "The world's most popular AI chatbot by OpenAI.",
-      "description": "ChatGPT is an advanced language model capable of generating human-like text, writing code, and answering complex queries.",
-      "screenshotUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-      "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-      "logoUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=200",
-      "category": "c1",
-      "priceModel": "Freemium",
-      "pricing": [
-        {
-          "planName": "Plus",
-          "price": 20,
-          "period": "monthly"
-        }
-      ],
-      "url": "https://chatgpt.com",
-      "workflows": [
-        "faceless-youtube",
-        "ai-influencer",
-        "content-creator",
-        "agency"
-      ],
-      "tags": [
-        "Chatbot",
-        "Writing",
-        "OpenAI",
-        "LLM"
-      ],
-      "features": [
-        "Voice mode",
-        "Web browsing",
-        "Custom GPTs"
-      ],
-      "useCases": [
-        "Write SEO Content",
-        "Write Essays",
-        "Research Topics"
-      ],
-      "rating": 4.9,
-      "reviewCount": 15420,
-      "featured": true,
-      "verified": true,
-      "popularity": 100,
-      "goals": [
-        "Write Better Code",
-        "Learn New Stack",
-        "business-growth",
-        "ai-workflows"
-      ],
-      "bestFor": [
-        "Developer",
-        "Marketer",
-        "Founder",
-        "Student"
-      ],
-      "stats": {
-        "launchYear": 2022,
-        "monthlyUsers": "100M+"
-      },
-      "compareWith": [
-        "copy-ai",
-        "perplexity"
-      ],
-      "relatedTools": [
-        "copy-ai",
-        "perplexity",
-        "capcut"
-      ],
-      "similarTools": [
-        "copy-ai",
-        "perplexity"
-      ],
-      "collections": [
-        "Best AI Writing Tools",
-        "Top Productivity Assistants"
-      ],
-      "recommendationTags": [
-        "writer",
-        "marketer",
-        "business"
-      ],
-      "audiences": [
-        "Marketers",
-        "Writers"
-      ],
-      "editorial": {
-        "overview": "<p>ChatGPT remains the Swiss Army knife of AI. While newer models like Claude might beat it in nuanced writing, ChatGPT’s sheer versatility—combining web search, data analysis, and custom GPTs—makes it an indispensable starting point for almost any workflow.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The ability to create custom GPTs for specific workflows means you can turn it into exactly what you need.</p>",
-        "verdict": "<p>If you're only going to pay for one AI subscription, ChatGPT Plus is currently the safest bet. It does everything reasonably well, and its consistent updates mean you're always on the cutting edge.</p>",
-        "pricing": "<p>The free tier is generous enough for casual queries, but power users will hit limits quickly. The $20/month Plus plan is widely considered the industry standard for value.</p>",
-        "comparison": "<p>Compared to Claude, ChatGPT can feel slightly more robotic in its writing. Compared to Gemini, it offers a more cohesive and predictable user experience.</p>",
-        "useCaseFocus": "<p>For general research and coding, ChatGPT's ability to browse the web and execute Python scripts locally gives it a massive advantage. You don't just get an answer; you get a working environment.</p>"
-      }
-    },
-    "publishedData": {
-      "id": "chatgpt",
-      "name": "ChatGPT",
-      "slug": "chatgpt",
-      "tagline": "The world's most popular AI chatbot by OpenAI.",
-      "description": "ChatGPT is an advanced language model capable of generating human-like text, writing code, and answering complex queries.",
-      "screenshotUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-      "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-      "logoUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=200",
-      "category": "c1",
-      "priceModel": "Freemium",
-      "pricing": [
-        {
-          "planName": "Plus",
-          "price": 20,
-          "period": "monthly"
-        }
-      ],
-      "url": "https://chatgpt.com",
-      "workflows": [
-        "faceless-youtube",
-        "ai-influencer",
-        "content-creator",
-        "agency"
-      ],
-      "tags": [
-        "Chatbot",
-        "Writing",
-        "OpenAI",
-        "LLM"
-      ],
-      "features": [
-        "Voice mode",
-        "Web browsing",
-        "Custom GPTs"
-      ],
-      "useCases": [
-        "Write SEO Content",
-        "Write Essays",
-        "Research Topics"
-      ],
-      "rating": 4.9,
-      "reviewCount": 15420,
-      "featured": true,
-      "verified": true,
-      "popularity": 100,
-      "goals": [
-        "Write Better Code",
-        "Learn New Stack",
-        "business-growth",
-        "ai-workflows"
-      ],
-      "bestFor": [
-        "Developer",
-        "Marketer",
-        "Founder",
-        "Student"
-      ],
-      "stats": {
-        "launchYear": 2022,
-        "monthlyUsers": "100M+"
-      },
-      "compareWith": [
-        "copy-ai",
-        "perplexity"
-      ],
-      "relatedTools": [
-        "copy-ai",
-        "perplexity",
-        "capcut"
-      ],
-      "similarTools": [
-        "copy-ai",
-        "perplexity"
-      ],
-      "collections": [
-        "Best AI Writing Tools",
-        "Top Productivity Assistants"
-      ],
-      "recommendationTags": [
-        "writer",
-        "marketer",
-        "business"
-      ],
-      "audiences": [
-        "Marketers",
-        "Writers"
-      ],
-      "editorial": {
-        "overview": "<p>ChatGPT remains the Swiss Army knife of AI. While newer models like Claude might beat it in nuanced writing, ChatGPT’s sheer versatility—combining web search, data analysis, and custom GPTs—makes it an indispensable starting point for almost any workflow.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The ability to create custom GPTs for specific workflows means you can turn it into exactly what you need.</p>",
-        "verdict": "<p>If you're only going to pay for one AI subscription, ChatGPT Plus is currently the safest bet. It does everything reasonably well, and its consistent updates mean you're always on the cutting edge.</p>",
-        "pricing": "<p>The free tier is generous enough for casual queries, but power users will hit limits quickly. The $20/month Plus plan is widely considered the industry standard for value.</p>",
-        "comparison": "<p>Compared to Claude, ChatGPT can feel slightly more robotic in its writing. Compared to Gemini, it offers a more cohesive and predictable user experience.</p>",
-        "useCaseFocus": "<p>For general research and coding, ChatGPT's ability to browse the web and execute Python scripts locally gives it a massive advantage. You don't just get an answer; you get a working environment.</p>"
-      }
-    },
-    "versions": []
-  },
-  {
-    "id": "claude",
-    "status": "published",
-    "publishedAt": "2026-07-11T11:46:48.305Z",
-    "lastAutosavedAt": null,
-    "draftData": {
-      "id": "claude",
-      "name": "Claude 3",
-      "slug": "claude",
-      "tagline": "Next-generation AI assistant by Anthropic.",
-      "description": "Claude is a family of foundational AI models that can be used in a variety of applications. You can talk directly to Claude to brainstorm ideas, analyze images, and process long documents.",
-      "screenshotUrl": "https://images.unsplash.com/photo-1684369176140-5fcd269866fb?auto=format&fit=crop&q=80&w=800",
-      "imageUrl": "https://images.unsplash.com/photo-1684369176140-5fcd269866fb?auto=format&fit=crop&q=80&w=800",
-      "logoUrl": "https://images.unsplash.com/photo-1684369176140-5fcd269866fb?auto=format&fit=crop&q=80&w=200",
-      "category": "c1",
-      "priceModel": "Freemium",
-      "pricing": [
-        {
-          "planName": "Pro",
-          "price": 20,
-          "period": "monthly"
-        }
-      ],
-      "url": "https://claude.ai",
-      "tags": [
-        "Chatbot",
-        "Anthropic",
-        "Writing",
-        "Analysis"
-      ],
-      "features": [
-        "200k Context Window",
-        "Artifacts",
-        "Code Generation"
-      ],
-      "useCases": [
-        "Analyze Data",
-        "Write Better Code",
-        "Summarize Notes"
-      ],
-      "rating": 4.8,
-      "reviewCount": 8400,
-      "featured": true,
-      "verified": true,
-      "popularity": 95,
-      "goals": [
-        "Fix Bugs",
-        "Build MVP",
-        "business-growth",
-        "ai-workflows"
-      ],
-      "bestFor": [
-        "Developer",
-        "Founder",
-        "Researcher"
-      ],
-      "stats": {
-        "launchYear": 2023
-      },
-      "workflows": [
-        "content-creator",
-        "agency"
-      ],
-      "compareWith": [
-        "novelai",
-        "quillbot"
-      ],
-      "relatedTools": [
-        "novelai",
-        "quillbot",
-        "tome-pro"
-      ],
-      "similarTools": [
-        "novelai",
-        "quillbot"
-      ],
-      "collections": [
-        "Best AI Writing Tools",
-        "Top Productivity Assistants"
-      ],
-      "recommendationTags": [
-        "writer",
-        "marketer",
-        "business"
-      ],
-      "audiences": [
-        "Marketers",
-        "Writers"
-      ],
-      "editorial": {
-        "overview": "<p>If you've been frustrated by ChatGPT's distinct 'AI tone', Claude 3 is the antidote. Anthropic's flagship model has quietly become the favorite among writers and coders for its shockingly human-like prose and its massive 200k context window.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The Artifacts feature transforms Claude from a simple chatbot into an interactive workspace, allowing you to preview code, edit documents, and iterate visually.</p>",
-        "verdict": "<p>Claude 3 (specifically the Opus and Sonnet models) currently holds the crown for nuanced writing and deep document analysis. It's the thinking person's AI assistant.</p>",
-        "pricing": "<p>Like its main rival, Claude costs $20/month for Pro. The value depends entirely on whether you need its superior writing style or massive context window over ChatGPT's web browsing.</p>",
-        "comparison": "<p>While ChatGPT is better at running code and searching the live web, Claude runs circles around it when asked to analyze a 100-page PDF or write an email that actually sounds like a human wrote it.</p>",
-        "useCaseFocus": "<p>For writers and analysts, the ability to dump entire books or codebases into Claude's context window and ask highly specific questions is game-changing.</p>"
-      }
-    },
-    "publishedData": {
-      "id": "claude",
-      "name": "Claude 3",
-      "slug": "claude",
-      "tagline": "Next-generation AI assistant by Anthropic.",
-      "description": "Claude is a family of foundational AI models that can be used in a variety of applications. You can talk directly to Claude to brainstorm ideas, analyze images, and process long documents.",
-      "screenshotUrl": "https://images.unsplash.com/photo-1684369176140-5fcd269866fb?auto=format&fit=crop&q=80&w=800",
-      "imageUrl": "https://images.unsplash.com/photo-1684369176140-5fcd269866fb?auto=format&fit=crop&q=80&w=800",
-      "logoUrl": "https://images.unsplash.com/photo-1684369176140-5fcd269866fb?auto=format&fit=crop&q=80&w=200",
-      "category": "c1",
-      "priceModel": "Freemium",
-      "pricing": [
-        {
-          "planName": "Pro",
-          "price": 20,
-          "period": "monthly"
-        }
-      ],
-      "url": "https://claude.ai",
-      "tags": [
-        "Chatbot",
-        "Anthropic",
-        "Writing",
-        "Analysis"
-      ],
-      "features": [
-        "200k Context Window",
-        "Artifacts",
-        "Code Generation"
-      ],
-      "useCases": [
-        "Analyze Data",
-        "Write Better Code",
-        "Summarize Notes"
-      ],
-      "rating": 4.8,
-      "reviewCount": 8400,
-      "featured": true,
-      "verified": true,
-      "popularity": 95,
-      "goals": [
-        "Fix Bugs",
-        "Build MVP",
-        "business-growth",
-        "ai-workflows"
-      ],
-      "bestFor": [
-        "Developer",
-        "Founder",
-        "Researcher"
-      ],
-      "stats": {
-        "launchYear": 2023
-      },
-      "workflows": [
-        "content-creator",
-        "agency"
-      ],
-      "compareWith": [
-        "novelai",
-        "quillbot"
-      ],
-      "relatedTools": [
-        "novelai",
-        "quillbot",
-        "tome-pro"
-      ],
-      "similarTools": [
-        "novelai",
-        "quillbot"
-      ],
-      "collections": [
-        "Best AI Writing Tools",
-        "Top Productivity Assistants"
-      ],
-      "recommendationTags": [
-        "writer",
-        "marketer",
-        "business"
-      ],
-      "audiences": [
-        "Marketers",
-        "Writers"
-      ],
-      "editorial": {
-        "overview": "<p>If you've been frustrated by ChatGPT's distinct 'AI tone', Claude 3 is the antidote. Anthropic's flagship model has quietly become the favorite among writers and coders for its shockingly human-like prose and its massive 200k context window.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The Artifacts feature transforms Claude from a simple chatbot into an interactive workspace, allowing you to preview code, edit documents, and iterate visually.</p>",
-        "verdict": "<p>Claude 3 (specifically the Opus and Sonnet models) currently holds the crown for nuanced writing and deep document analysis. It's the thinking person's AI assistant.</p>",
-        "pricing": "<p>Like its main rival, Claude costs $20/month for Pro. The value depends entirely on whether you need its superior writing style or massive context window over ChatGPT's web browsing.</p>",
-        "comparison": "<p>While ChatGPT is better at running code and searching the live web, Claude runs circles around it when asked to analyze a 100-page PDF or write an email that actually sounds like a human wrote it.</p>",
-        "useCaseFocus": "<p>For writers and analysts, the ability to dump entire books or codebases into Claude's context window and ask highly specific questions is game-changing.</p>"
-      }
-    },
-    "versions": []
-  },
-  {
     "id": "jasper",
     "status": "published",
     "publishedAt": "2026-07-11T11:46:48.305Z",
@@ -765,193 +375,6 @@
         "pricing": "<p>The free tier is surprisingly robust, making it easy to test out. The paid tiers offer unlimited words and advanced workflow automations, which justify the cost for active teams.</p>",
         "comparison": "<p>While Jasper leans heavily into enterprise and team management, Copy.ai feels a bit more agile and accessible for solo marketers or smaller teams.</p>",
         "useCaseFocus": "<p>Sales professionals use Copy.ai to draft personalized outreach emails in seconds, dramatically increasing their outbound volume without sounding spammy.</p>"
-      }
-    },
-    "versions": []
-  },
-  {
-    "id": "perplexity",
-    "status": "published",
-    "publishedAt": "2026-07-11T11:46:48.305Z",
-    "lastAutosavedAt": null,
-    "draftData": {
-      "id": "perplexity",
-      "name": "Perplexity AI",
-      "slug": "perplexity",
-      "tagline": "Where knowledge begins.",
-      "description": "Perplexity is an AI-powered search engine that provides direct answers to your queries, backed by real-time citations from the web.",
-      "screenshotUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800",
-      "imageUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800",
-      "logoUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=200",
-      "category": "c1",
-      "priceModel": "Freemium",
-      "pricing": [
-        {
-          "planName": "Pro",
-          "price": 20,
-          "period": "monthly"
-        }
-      ],
-      "url": "https://perplexity.ai",
-      "tags": [
-        "Search",
-        "Research",
-        "Education"
-      ],
-      "features": [
-        "Live Web Search",
-        "Citations",
-        "File Upload"
-      ],
-      "useCases": [
-        "Research Topics",
-        "Summarize Lectures",
-        "Market Research"
-      ],
-      "rating": 4.8,
-      "reviewCount": 4500,
-      "featured": true,
-      "verified": true,
-      "popularity": 90,
-      "goals": [
-        "Find Inspiration",
-        "business-growth",
-        "ai-workflows"
-      ],
-      "bestFor": [
-        "Student",
-        "Researcher",
-        "Founder"
-      ],
-      "stats": {
-        "launchYear": 2022
-      },
-      "workflows": [
-        "content-creator",
-        "agency"
-      ],
-      "compareWith": [
-        "grok",
-        "chatgpt"
-      ],
-      "relatedTools": [
-        "grok",
-        "chatgpt",
-        "reply-io"
-      ],
-      "similarTools": [
-        "grok",
-        "chatgpt"
-      ],
-      "collections": [
-        "Best AI Writing Tools",
-        "Top Productivity Assistants"
-      ],
-      "recommendationTags": [
-        "writer",
-        "marketer",
-        "business"
-      ],
-      "audiences": [
-        "Marketers",
-        "Writers"
-      ],
-      "editorial": {
-        "overview": "<p>Perplexity isn't a traditional chatbot; it's an AI search engine designed to give you direct answers backed by real-time citations. It effectively cuts out the noise of SEO-stuffed websites.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The absolute transparency. Every claim Perplexity makes is linked to a source, drastically reducing the risk of AI hallucinations.</p>",
-        "verdict": "<p>If you do any kind of research, Perplexity is a must-have. It has fundamentally changed how we look for information online, often replacing Google for complex queries.</p>",
-        "pricing": "<p>The free version is excellent, but Perplexity Pro unlocks access to top-tier models like GPT-4 and Claude 3 within the search interface, making it an incredible value.</p>",
-        "comparison": "<p>Unlike ChatGPT, which sometimes guesses or hallucinates facts, Perplexity prioritizes accuracy and sourcing. It's built for truth rather than creative writing.</p>",
-        "useCaseFocus": "<p>Students, researchers, and analysts use Perplexity to quickly gather information on obscure topics, instantly generating cited summaries that would take hours to compile manually.</p>"
-      }
-    },
-    "publishedData": {
-      "id": "perplexity",
-      "name": "Perplexity AI",
-      "slug": "perplexity",
-      "tagline": "Where knowledge begins.",
-      "description": "Perplexity is an AI-powered search engine that provides direct answers to your queries, backed by real-time citations from the web.",
-      "screenshotUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800",
-      "imageUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800",
-      "logoUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=200",
-      "category": "c1",
-      "priceModel": "Freemium",
-      "pricing": [
-        {
-          "planName": "Pro",
-          "price": 20,
-          "period": "monthly"
-        }
-      ],
-      "url": "https://perplexity.ai",
-      "tags": [
-        "Search",
-        "Research",
-        "Education"
-      ],
-      "features": [
-        "Live Web Search",
-        "Citations",
-        "File Upload"
-      ],
-      "useCases": [
-        "Research Topics",
-        "Summarize Lectures",
-        "Market Research"
-      ],
-      "rating": 4.8,
-      "reviewCount": 4500,
-      "featured": true,
-      "verified": true,
-      "popularity": 90,
-      "goals": [
-        "Find Inspiration",
-        "business-growth",
-        "ai-workflows"
-      ],
-      "bestFor": [
-        "Student",
-        "Researcher",
-        "Founder"
-      ],
-      "stats": {
-        "launchYear": 2022
-      },
-      "workflows": [
-        "content-creator",
-        "agency"
-      ],
-      "compareWith": [
-        "grok",
-        "chatgpt"
-      ],
-      "relatedTools": [
-        "grok",
-        "chatgpt",
-        "reply-io"
-      ],
-      "similarTools": [
-        "grok",
-        "chatgpt"
-      ],
-      "collections": [
-        "Best AI Writing Tools",
-        "Top Productivity Assistants"
-      ],
-      "recommendationTags": [
-        "writer",
-        "marketer",
-        "business"
-      ],
-      "audiences": [
-        "Marketers",
-        "Writers"
-      ],
-      "editorial": {
-        "overview": "<p>Perplexity isn't a traditional chatbot; it's an AI search engine designed to give you direct answers backed by real-time citations. It effectively cuts out the noise of SEO-stuffed websites.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The absolute transparency. Every claim Perplexity makes is linked to a source, drastically reducing the risk of AI hallucinations.</p>",
-        "verdict": "<p>If you do any kind of research, Perplexity is a must-have. It has fundamentally changed how we look for information online, often replacing Google for complex queries.</p>",
-        "pricing": "<p>The free version is excellent, but Perplexity Pro unlocks access to top-tier models like GPT-4 and Claude 3 within the search interface, making it an incredible value.</p>",
-        "comparison": "<p>Unlike ChatGPT, which sometimes guesses or hallucinates facts, Perplexity prioritizes accuracy and sourcing. It's built for truth rather than creative writing.</p>",
-        "useCaseFocus": "<p>Students, researchers, and analysts use Perplexity to quickly gather information on obscure topics, instantly generating cited summaries that would take hours to compile manually.</p>"
       }
     },
     "versions": []
@@ -9463,7 +8886,8 @@
         "pricing": "<p>The free tier is excellent for general debugging. The $20/month Pro tier gives you access to their finest tuned models (often based on GPT-4) and faster response times.</p>",
         "comparison": "<p>ChatGPT might invent a library that doesn't exist. Phind will link you directly to the official documentation of the library you actually need.</p>",
         "useCaseFocus": "<p>Engineers working with brand new frameworks (like an alpha release of Next.js) use Phind because it searches live documentation rather than relying on out-of-date training data.</p>"
-      }
+      },
+      "websiteUrl": "https://phind.com"
     },
     "publishedData": {
       "id": "phind",
@@ -9549,7 +8973,8 @@
         "pricing": "<p>The free tier is excellent for general debugging. The $20/month Pro tier gives you access to their finest tuned models (often based on GPT-4) and faster response times.</p>",
         "comparison": "<p>ChatGPT might invent a library that doesn't exist. Phind will link you directly to the official documentation of the library you actually need.</p>",
         "useCaseFocus": "<p>Engineers working with brand new frameworks (like an alpha release of Next.js) use Phind because it searches live documentation rather than relying on out-of-date training data.</p>"
-      }
+      },
+      "websiteUrl": "https://phind.com"
     },
     "versions": []
   },
@@ -11546,191 +10971,6 @@
         "pricing": "<p>At $19/month for the Pro tier, it is aggressively priced, especially considering it replaces several other software subscriptions.</p>",
         "comparison": "<p>Notion is more flexible but requires heavy manual setup. Taskade is more structured out of the box and focuses heavily on built-in task management and mind-mapping.</p>",
         "useCaseFocus": "<p>Remote startup teams use Taskade to brainstorm product features in a collaborative mind map, then use AI to instantly convert that map into actionable, assigned tasks.</p>"
-      }
-    },
-    "versions": []
-  },
-  {
-    "id": "grok",
-    "status": "published",
-    "publishedAt": "2026-07-11T11:46:48.305Z",
-    "lastAutosavedAt": null,
-    "draftData": {
-      "id": "grok",
-      "name": "Grok",
-      "slug": "grok",
-      "tagline": "An AI modeled after the Hitchhiker's Guide.",
-      "description": "Grok is an AI developed by xAI that has real-time knowledge of the world via the X platform.",
-      "screenshotUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-      "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-      "logoUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=200",
-      "category": "c1",
-      "priceModel": "Paid",
-      "pricing": [
-        {
-          "planName": "X Premium",
-          "price": 8,
-          "period": "monthly"
-        }
-      ],
-      "url": "https://x.ai",
-      "tags": [
-        "Chatbot",
-        "Twitter",
-        "Real-time"
-      ],
-      "features": [
-        "Real-time Twitter Access",
-        "Fun Mode",
-        "Coding"
-      ],
-      "useCases": [
-        "Research Topics",
-        "Automate Socials"
-      ],
-      "rating": 4.4,
-      "reviewCount": 15000,
-      "featured": false,
-      "verified": true,
-      "popularity": 91,
-      "goals": [
-        "Find Inspiration",
-        "business-growth",
-        "ai-workflows"
-      ],
-      "bestFor": [
-        "Marketer",
-        "Creator",
-        "Founder"
-      ],
-      "stats": {
-        "launchYear": 2023
-      },
-      "workflows": [
-        "content-creator",
-        "agency"
-      ],
-      "compareWith": [
-        "claude",
-        "gemini"
-      ],
-      "relatedTools": [
-        "claude",
-        "gemini",
-        "magicstudio"
-      ],
-      "similarTools": [
-        "claude",
-        "gemini"
-      ],
-      "collections": [
-        "Best AI Writing Tools",
-        "Top Productivity Assistants"
-      ],
-      "recommendationTags": [
-        "writer",
-        "marketer",
-        "business"
-      ],
-      "audiences": [
-        "Marketers",
-        "Writers"
-      ],
-      "editorial": {
-        "overview": "<p>Grok, developed by Elon Musk's xAI, differentiates itself through direct, real-time access to the X (formerly Twitter) data stream. It is designed to be highly conversational, uncensored, and occasionally humorous.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Real-time news analysis. Because it reads the live Twitter feed, Grok can answer questions about breaking news events hours or days before other AI models update their knowledge bases.</p>",
-        "verdict": "<p>If you rely on Twitter for news, finance, or cultural trends, Grok's integration with the platform provides a unique, real-time perspective that no other chatbot can match.</p>",
-        "pricing": "<p>It is bundled with the X Premium subscription ($8/month), making it an incredibly cheap add-on if you are already paying for Twitter verification.</p>",
-        "comparison": "<p>Claude is better for coding; ChatGPT is better for structured workflows. Grok is best for analyzing real-time social sentiment, breaking news, and engaging in casual, uncensored conversation.</p>",
-        "useCaseFocus": "<p>Social media managers and journalists use Grok to instantly summarize complex, rapidly evolving Twitter debates and track breaking news before traditional media covers it.</p>"
-      }
-    },
-    "publishedData": {
-      "id": "grok",
-      "name": "Grok",
-      "slug": "grok",
-      "tagline": "An AI modeled after the Hitchhiker's Guide.",
-      "description": "Grok is an AI developed by xAI that has real-time knowledge of the world via the X platform.",
-      "screenshotUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-      "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-      "logoUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=200",
-      "category": "c1",
-      "priceModel": "Paid",
-      "pricing": [
-        {
-          "planName": "X Premium",
-          "price": 8,
-          "period": "monthly"
-        }
-      ],
-      "url": "https://x.ai",
-      "tags": [
-        "Chatbot",
-        "Twitter",
-        "Real-time"
-      ],
-      "features": [
-        "Real-time Twitter Access",
-        "Fun Mode",
-        "Coding"
-      ],
-      "useCases": [
-        "Research Topics",
-        "Automate Socials"
-      ],
-      "rating": 4.4,
-      "reviewCount": 15000,
-      "featured": false,
-      "verified": true,
-      "popularity": 91,
-      "goals": [
-        "Find Inspiration",
-        "business-growth",
-        "ai-workflows"
-      ],
-      "bestFor": [
-        "Marketer",
-        "Creator",
-        "Founder"
-      ],
-      "stats": {
-        "launchYear": 2023
-      },
-      "workflows": [
-        "content-creator",
-        "agency"
-      ],
-      "compareWith": [
-        "claude",
-        "gemini"
-      ],
-      "relatedTools": [
-        "claude",
-        "gemini",
-        "magicstudio"
-      ],
-      "similarTools": [
-        "claude",
-        "gemini"
-      ],
-      "collections": [
-        "Best AI Writing Tools",
-        "Top Productivity Assistants"
-      ],
-      "recommendationTags": [
-        "writer",
-        "marketer",
-        "business"
-      ],
-      "audiences": [
-        "Marketers",
-        "Writers"
-      ],
-      "editorial": {
-        "overview": "<p>Grok, developed by Elon Musk's xAI, differentiates itself through direct, real-time access to the X (formerly Twitter) data stream. It is designed to be highly conversational, uncensored, and occasionally humorous.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Real-time news analysis. Because it reads the live Twitter feed, Grok can answer questions about breaking news events hours or days before other AI models update their knowledge bases.</p>",
-        "verdict": "<p>If you rely on Twitter for news, finance, or cultural trends, Grok's integration with the platform provides a unique, real-time perspective that no other chatbot can match.</p>",
-        "pricing": "<p>It is bundled with the X Premium subscription ($8/month), making it an incredibly cheap add-on if you are already paying for Twitter verification.</p>",
-        "comparison": "<p>Claude is better for coding; ChatGPT is better for structured workflows. Grok is best for analyzing real-time social sentiment, breaking news, and engaging in casual, uncensored conversation.</p>",
-        "useCaseFocus": "<p>Social media managers and journalists use Grok to instantly summarize complex, rapidly evolving Twitter debates and track breaking news before traditional media covers it.</p>"
       }
     },
     "versions": []
@@ -15806,6 +15046,2789 @@
       }
     },
     "publishedData": null,
+    "versions": []
+  },
+  {
+    "id": "chatgpt",
+    "status": "published",
+    "publishedAt": "2026-07-11T11:46:48.303Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "slug": "chatgpt",
+      "company": "OpenAI",
+      "tagline": "The undisputed industry standard for generative AI",
+      "description": "ChatGPT is the flagship AI assistant from OpenAI. It remains our top overall pick for its unmatched versatility, serving as a reliable partner for everything from drafting complex Python scripts to summarizing dense market research.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "price": "From $0",
+      "rating": 4.9,
+      "reviewCount": 18542,
+      "easeOfUse": 4.9,
+      "featureRating": 5,
+      "valueForMoney": 4.8,
+      "performance": 4.9,
+      "support": 4.7,
+      "logoUrl": "/logos/chatgpt.svg",
+      "screenshotUrl": "/screenshots/chatgpt.webp",
+      "imageUrl": "/screenshots/chatgpt.webp",
+      "websiteUrl": "https://chatgpt.com",
+      "tags": [
+        "AI Assistant",
+        "Writing",
+        "Coding",
+        "Research",
+        "Productivity"
+      ],
+      "features": [
+        {
+          "title": "GPT-5.5",
+          "description": "Latest flagship language model.",
+          "icon": "smart_toy"
+        },
+        {
+          "title": "Image Generation",
+          "description": "Create and edit images using AI.",
+          "icon": "image"
+        },
+        {
+          "title": "Deep Research",
+          "description": "Multi-step research with cited sources.",
+          "icon": "travel_explore"
+        },
+        {
+          "title": "Voice Mode",
+          "description": "Talk naturally with ChatGPT.",
+          "icon": "mic"
+        },
+        {
+          "title": "Projects",
+          "description": "Organize chats into reusable workspaces.",
+          "icon": "folder"
+        }
+      ],
+      "pricingPlans": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "description": "Great for everyday use.",
+          "features": [
+            "AI chat",
+            "Image generation",
+            "Web search"
+          ]
+        },
+        {
+          "name": "Plus",
+          "price": "$20/month",
+          "description": "Best for individuals.",
+          "recommended": true,
+          "features": [
+            "Higher limits",
+            "Advanced models",
+            "Projects",
+            "Voice mode"
+          ]
+        },
+        {
+          "name": "Pro",
+          "price": "$200/month",
+          "description": "Maximum performance and limits.",
+          "features": [
+            "Highest usage limits",
+            "Premium models",
+            "Advanced research"
+          ]
+        }
+      ],
+      "verified": true,
+      "featured": true,
+      "popularity": 100,
+      "compareWith": [
+        "claude",
+        "gemini",
+        "perplexity",
+        "copy-ai"
+      ],
+      "goals": [
+        "ai-workflows",
+        "business-growth",
+        "vibe-coding",
+        "make-money-online"
+      ],
+      "pros": [
+        "Excellent writing quality",
+        "Outstanding coding assistant",
+        "Strong image generation",
+        "Easy to use",
+        "Large ecosystem"
+      ],
+      "cons": [
+        "Free plan has usage limits",
+        "Some premium features require a subscription"
+      ],
+      "bestFor": [
+        "Students",
+        "Developers",
+        "Content creators",
+        "Businesses"
+      ],
+      "useCases": [
+        "Writing",
+        "Coding",
+        "Research",
+        "Learning",
+        "Brainstorming",
+        "Image generation"
+      ],
+      "platform": "Web, Windows, macOS, iOS, Android",
+      "api": true,
+      "mobileApp": true,
+      "openSource": false,
+      "freeTrial": true,
+      "promptExamples": [
+        {
+          "name": "Write a blog post",
+          "prompt": "Write a short blog post about the benefits of AI in education.",
+          "response": "Artificial Intelligence is transforming education by offering personalized learning experiences, automating administrative tasks for teachers, and providing 24/7 tutoring. With AI-driven tools, students can learn at their own pace while educators focus on fostering critical thinking and creativity."
+        },
+        {
+          "name": "Write a Python script",
+          "prompt": "Write a Python script to fetch the current weather for a city using an API.",
+          "response": "```python\nimport requests\n\ndef get_weather(city, api_key):\n    url = f\"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric\"\n    response = requests.get(url)\n    if response.status_code == 200:\n        data = response.json()\n        print(f\"Weather in {city}: {data['weather'][0]['description']}, Temperature: {data['main']['temp']}°C\")\n    else:\n        print(\"City not found.\")\n```"
+        }
+      ],
+      "socials": {
+        "website": "https://chatgpt.com"
+      },
+      "stats": {
+        "launchYear": 2022
+      },
+      "lastUpdated": "2026-07-02",
+      "workflows": [
+        "content-creator",
+        "agency"
+      ],
+      "relatedTools": [
+        "copy-ai",
+        "perplexity",
+        "capcut"
+      ],
+      "similarTools": [
+        "copy-ai",
+        "perplexity"
+      ],
+      "collections": [
+        "Best AI Writing Tools",
+        "Top Productivity Assistants"
+      ],
+      "recommendationTags": [
+        "writer",
+        "marketer",
+        "business"
+      ],
+      "audiences": [
+        "Marketers",
+        "Writers"
+      ],
+      "editorial": {
+        "overview": "<p>ChatGPT remains the undisputed heavyweight champion of AI chatbots. While competitors have caught up in specific niches, ChatGPT's sheer breadth of capabilities—from running Python code locally to generating images to browsing the live web—makes it the most versatile tool on the market.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Custom GPTs. The ability to upload your own knowledge base and instruct the AI to behave in a specific way allows you to create highly specialized workflows that you can save and reuse indefinitely.</p>",
+        "verdict": "<p>If you are only going to pay for one AI subscription, ChatGPT Plus is the safest and most comprehensive choice. It is the Swiss Army knife of generative AI.</p>",
+        "pricing": "<p>The free tier is perfectly adequate for casual queries. The $20/month Plus tier is arguably the best value software subscription in the world right now, granting access to the latest flagship models.</p>",
+        "comparison": "<p>Claude is widely considered a better, more natural writer, and Gemini integrates better with Google Docs, but ChatGPT's coding, reasoning, and Custom GPTs keep it in the top spot overall.</p>",
+        "useCaseFocus": "<p>Founders use ChatGPT to rapidly prototype code, summarize long PDF market reports, and draft foundational business documents all within a single chat interface.</p>"
+      },
+      "url": "https://chatgpt.com"
+    },
+    "publishedData": {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "slug": "chatgpt",
+      "company": "OpenAI",
+      "tagline": "The undisputed industry standard for generative AI",
+      "description": "ChatGPT is the flagship AI assistant from OpenAI. It remains our top overall pick for its unmatched versatility, serving as a reliable partner for everything from drafting complex Python scripts to summarizing dense market research.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "price": "From $0",
+      "rating": 4.9,
+      "reviewCount": 18542,
+      "easeOfUse": 4.9,
+      "featureRating": 5,
+      "valueForMoney": 4.8,
+      "performance": 4.9,
+      "support": 4.7,
+      "logoUrl": "/logos/chatgpt.svg",
+      "screenshotUrl": "/screenshots/chatgpt.webp",
+      "imageUrl": "/screenshots/chatgpt.webp",
+      "websiteUrl": "https://chatgpt.com",
+      "tags": [
+        "AI Assistant",
+        "Writing",
+        "Coding",
+        "Research",
+        "Productivity"
+      ],
+      "features": [
+        {
+          "title": "GPT-5.5",
+          "description": "Latest flagship language model.",
+          "icon": "smart_toy"
+        },
+        {
+          "title": "Image Generation",
+          "description": "Create and edit images using AI.",
+          "icon": "image"
+        },
+        {
+          "title": "Deep Research",
+          "description": "Multi-step research with cited sources.",
+          "icon": "travel_explore"
+        },
+        {
+          "title": "Voice Mode",
+          "description": "Talk naturally with ChatGPT.",
+          "icon": "mic"
+        },
+        {
+          "title": "Projects",
+          "description": "Organize chats into reusable workspaces.",
+          "icon": "folder"
+        }
+      ],
+      "pricingPlans": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "description": "Great for everyday use.",
+          "features": [
+            "AI chat",
+            "Image generation",
+            "Web search"
+          ]
+        },
+        {
+          "name": "Plus",
+          "price": "$20/month",
+          "description": "Best for individuals.",
+          "recommended": true,
+          "features": [
+            "Higher limits",
+            "Advanced models",
+            "Projects",
+            "Voice mode"
+          ]
+        },
+        {
+          "name": "Pro",
+          "price": "$200/month",
+          "description": "Maximum performance and limits.",
+          "features": [
+            "Highest usage limits",
+            "Premium models",
+            "Advanced research"
+          ]
+        }
+      ],
+      "verified": true,
+      "featured": true,
+      "popularity": 100,
+      "compareWith": [
+        "claude",
+        "gemini",
+        "perplexity",
+        "copy-ai"
+      ],
+      "goals": [
+        "ai-workflows",
+        "business-growth",
+        "vibe-coding",
+        "make-money-online"
+      ],
+      "pros": [
+        "Excellent writing quality",
+        "Outstanding coding assistant",
+        "Strong image generation",
+        "Easy to use",
+        "Large ecosystem"
+      ],
+      "cons": [
+        "Free plan has usage limits",
+        "Some premium features require a subscription"
+      ],
+      "bestFor": [
+        "Students",
+        "Developers",
+        "Content creators",
+        "Businesses"
+      ],
+      "useCases": [
+        "Writing",
+        "Coding",
+        "Research",
+        "Learning",
+        "Brainstorming",
+        "Image generation"
+      ],
+      "platform": "Web, Windows, macOS, iOS, Android",
+      "api": true,
+      "mobileApp": true,
+      "openSource": false,
+      "freeTrial": true,
+      "promptExamples": [
+        {
+          "name": "Write a blog post",
+          "prompt": "Write a short blog post about the benefits of AI in education.",
+          "response": "Artificial Intelligence is transforming education by offering personalized learning experiences, automating administrative tasks for teachers, and providing 24/7 tutoring. With AI-driven tools, students can learn at their own pace while educators focus on fostering critical thinking and creativity."
+        },
+        {
+          "name": "Write a Python script",
+          "prompt": "Write a Python script to fetch the current weather for a city using an API.",
+          "response": "```python\nimport requests\n\ndef get_weather(city, api_key):\n    url = f\"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric\"\n    response = requests.get(url)\n    if response.status_code == 200:\n        data = response.json()\n        print(f\"Weather in {city}: {data['weather'][0]['description']}, Temperature: {data['main']['temp']}°C\")\n    else:\n        print(\"City not found.\")\n```"
+        }
+      ],
+      "socials": {
+        "website": "https://chatgpt.com"
+      },
+      "stats": {
+        "launchYear": 2022
+      },
+      "lastUpdated": "2026-07-02",
+      "workflows": [
+        "content-creator",
+        "agency"
+      ],
+      "relatedTools": [
+        "copy-ai",
+        "perplexity",
+        "capcut"
+      ],
+      "similarTools": [
+        "copy-ai",
+        "perplexity"
+      ],
+      "collections": [
+        "Best AI Writing Tools",
+        "Top Productivity Assistants"
+      ],
+      "recommendationTags": [
+        "writer",
+        "marketer",
+        "business"
+      ],
+      "audiences": [
+        "Marketers",
+        "Writers"
+      ],
+      "editorial": {
+        "overview": "<p>ChatGPT remains the undisputed heavyweight champion of AI chatbots. While competitors have caught up in specific niches, ChatGPT's sheer breadth of capabilities—from running Python code locally to generating images to browsing the live web—makes it the most versatile tool on the market.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Custom GPTs. The ability to upload your own knowledge base and instruct the AI to behave in a specific way allows you to create highly specialized workflows that you can save and reuse indefinitely.</p>",
+        "verdict": "<p>If you are only going to pay for one AI subscription, ChatGPT Plus is the safest and most comprehensive choice. It is the Swiss Army knife of generative AI.</p>",
+        "pricing": "<p>The free tier is perfectly adequate for casual queries. The $20/month Plus tier is arguably the best value software subscription in the world right now, granting access to the latest flagship models.</p>",
+        "comparison": "<p>Claude is widely considered a better, more natural writer, and Gemini integrates better with Google Docs, but ChatGPT's coding, reasoning, and Custom GPTs keep it in the top spot overall.</p>",
+        "useCaseFocus": "<p>Founders use ChatGPT to rapidly prototype code, summarize long PDF market reports, and draft foundational business documents all within a single chat interface.</p>"
+      },
+      "url": "https://chatgpt.com"
+    },
+    "versions": []
+  },
+  {
+    "id": "claude",
+    "status": "published",
+    "publishedAt": "2026-07-11T11:46:48.305Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "claude",
+      "name": "Claude",
+      "slug": "claude",
+      "company": "Anthropic",
+      "tagline": "The premier AI assistant for nuanced writing and complex coding",
+      "description": "Anthropic's flagship assistant has quietly dethroned ChatGPT for pure writing tasks. Claude shines in long-form content generation and complex coding challenges, offering an incredibly natural conversational tone that rarely feels machine-generated.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "price": "From $0",
+      "rating": 4.8,
+      "reviewCount": 14210,
+      "easeOfUse": 4.8,
+      "featureRating": 4.9,
+      "valueForMoney": 4.7,
+      "performance": 4.9,
+      "support": 4.6,
+      "logoUrl": "/logos/claude.svg",
+      "screenshotUrl": "/screenshots/claude.webp",
+      "imageUrl": "/screenshots/claude.webp",
+      "websiteUrl": "https://claude.ai",
+      "tags": [
+        "AI Assistant",
+        "Writing",
+        "Coding",
+        "Research",
+        "Analysis"
+      ],
+      "features": [
+        {
+          "title": "Claude 3.5 Sonnet",
+          "description": "State-of-the-art reasoning and coding.",
+          "icon": "smart_toy"
+        },
+        {
+          "title": "Artifacts",
+          "description": "View and edit generated content in real-time.",
+          "icon": "preview"
+        },
+        {
+          "title": "Projects",
+          "description": "Collaborate with Claude on files and code.",
+          "icon": "folder"
+        }
+      ],
+      "pricingPlans": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "description": "Access to Claude on web and mobile.",
+          "features": [
+            "Basic chat",
+            "Claude 3.5 Sonnet access"
+          ]
+        },
+        {
+          "name": "Pro",
+          "price": "$20/month",
+          "description": "For heavy users.",
+          "recommended": true,
+          "features": [
+            "5x more usage",
+            "Priority access",
+            "Create projects"
+          ]
+        }
+      ],
+      "verified": true,
+      "featured": true,
+      "popularity": 95,
+      "compareWith": [
+        "chatgpt",
+        "gemini",
+        "novelai",
+        "quillbot"
+      ],
+      "goals": [
+        "vibe-coding",
+        "business-growth",
+        "ai-workflows"
+      ],
+      "pros": [
+        "Superior coding intelligence",
+        "Excellent writing tone",
+        "Large 200k context window"
+      ],
+      "cons": [
+        "No built-in image generator",
+        "Message limits on free plan can be reached quickly"
+      ],
+      "bestFor": [
+        "Developers",
+        "Writers",
+        "Researchers"
+      ],
+      "useCases": [
+        "Coding",
+        "Technical Writing",
+        "Data Analysis",
+        "Research"
+      ],
+      "platform": "Web, iOS, Android, macOS",
+      "api": true,
+      "mobileApp": true,
+      "openSource": false,
+      "freeTrial": true,
+      "promptExamples": [
+        {
+          "name": "Write a blog post",
+          "prompt": "Write a short blog post about the benefits of AI in education.",
+          "response": "The integration of AI in education marks a paradigm shift from a one-size-fits-all approach to highly tailored learning journeys. Intelligent tutoring systems adapt to individual student needs, identifying gaps in knowledge and providing targeted support. This not only improves student outcomes but empowers educators to dedicate more time to mentorship."
+        },
+        {
+          "name": "Write a Python script",
+          "prompt": "Write a Python script to fetch the current weather for a city using an API.",
+          "response": "```python\nimport requests\nimport sys\n\ndef fetch_weather(city_name, api_key):\n    base_url = \"http://api.openweathermap.org/data/2.5/weather\"\n    params = {\"q\": city_name, \"appid\": api_key, \"units\": \"metric\"}\n    \n    try:\n        response = requests.get(base_url, params=params)\n        response.raise_for_status()\n        data = response.json()\n        \n        temp = data[\"main\"][\"temp\"]\n        desc = data[\"weather\"][0][\"description\"]\n        print(f\"The weather in {city_name} is currently {desc} with a temperature of {temp}°C.\")\n        \n    except requests.exceptions.RequestException as e:\n        print(f\"Error fetching weather data: {e}\", file=sys.stderr)\n```"
+        }
+      ],
+      "socials": {
+        "website": "https://claude.ai"
+      },
+      "stats": {
+        "launchYear": 2023
+      },
+      "lastUpdated": "2026-07-01",
+      "workflows": [
+        "content-creator",
+        "agency"
+      ],
+      "relatedTools": [
+        "novelai",
+        "quillbot",
+        "tome-pro"
+      ],
+      "similarTools": [
+        "novelai",
+        "quillbot"
+      ],
+      "collections": [
+        "Best AI Writing Tools",
+        "Top Productivity Assistants"
+      ],
+      "recommendationTags": [
+        "writer",
+        "marketer",
+        "business"
+      ],
+      "audiences": [
+        "Marketers",
+        "Writers"
+      ],
+      "editorial": {
+        "overview": "<p>Claude 3.5 Sonnet has quietly become the preferred tool for power users, developers, and professional writers. It lacks the bells and whistles of ChatGPT (like image generation) but makes up for it with vastly superior reasoning and a much more natural, less 'AI-sounding' writing style.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Artifacts. Claude doesn't just output code or text in a chat bubble; it opens a side panel where you can instantly preview the website it just coded or the SVG graphic it just generated.</p>",
+        "verdict": "<p>For coding and nuanced writing, Claude is currently the best model available. It feels less like a chatbot and more like a highly competent, intelligent collaborator.</p>",
+        "pricing": "<p>The $20/month Pro tier is necessary if you use it daily, as the free tier imposes strict message limits very quickly on the Sonnet model.</p>",
+        "comparison": "<p>Compared to ChatGPT, Claude's writing requires far less editing to sound human. It is also significantly better at understanding and analyzing massive documents thanks to its huge context window.</p>",
+        "useCaseFocus": "<p>Senior software engineers use Claude 3.5 Sonnet to refactor complex legacy codebases and instantly prototype interactive web components using the Artifacts UI.</p>"
+      },
+      "url": "https://claude.ai"
+    },
+    "publishedData": {
+      "id": "claude",
+      "name": "Claude",
+      "slug": "claude",
+      "company": "Anthropic",
+      "tagline": "The premier AI assistant for nuanced writing and complex coding",
+      "description": "Anthropic's flagship assistant has quietly dethroned ChatGPT for pure writing tasks. Claude shines in long-form content generation and complex coding challenges, offering an incredibly natural conversational tone that rarely feels machine-generated.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "price": "From $0",
+      "rating": 4.8,
+      "reviewCount": 14210,
+      "easeOfUse": 4.8,
+      "featureRating": 4.9,
+      "valueForMoney": 4.7,
+      "performance": 4.9,
+      "support": 4.6,
+      "logoUrl": "/logos/claude.svg",
+      "screenshotUrl": "/screenshots/claude.webp",
+      "imageUrl": "/screenshots/claude.webp",
+      "websiteUrl": "https://claude.ai",
+      "tags": [
+        "AI Assistant",
+        "Writing",
+        "Coding",
+        "Research",
+        "Analysis"
+      ],
+      "features": [
+        {
+          "title": "Claude 3.5 Sonnet",
+          "description": "State-of-the-art reasoning and coding.",
+          "icon": "smart_toy"
+        },
+        {
+          "title": "Artifacts",
+          "description": "View and edit generated content in real-time.",
+          "icon": "preview"
+        },
+        {
+          "title": "Projects",
+          "description": "Collaborate with Claude on files and code.",
+          "icon": "folder"
+        }
+      ],
+      "pricingPlans": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "description": "Access to Claude on web and mobile.",
+          "features": [
+            "Basic chat",
+            "Claude 3.5 Sonnet access"
+          ]
+        },
+        {
+          "name": "Pro",
+          "price": "$20/month",
+          "description": "For heavy users.",
+          "recommended": true,
+          "features": [
+            "5x more usage",
+            "Priority access",
+            "Create projects"
+          ]
+        }
+      ],
+      "verified": true,
+      "featured": true,
+      "popularity": 95,
+      "compareWith": [
+        "chatgpt",
+        "gemini",
+        "novelai",
+        "quillbot"
+      ],
+      "goals": [
+        "vibe-coding",
+        "business-growth",
+        "ai-workflows"
+      ],
+      "pros": [
+        "Superior coding intelligence",
+        "Excellent writing tone",
+        "Large 200k context window"
+      ],
+      "cons": [
+        "No built-in image generator",
+        "Message limits on free plan can be reached quickly"
+      ],
+      "bestFor": [
+        "Developers",
+        "Writers",
+        "Researchers"
+      ],
+      "useCases": [
+        "Coding",
+        "Technical Writing",
+        "Data Analysis",
+        "Research"
+      ],
+      "platform": "Web, iOS, Android, macOS",
+      "api": true,
+      "mobileApp": true,
+      "openSource": false,
+      "freeTrial": true,
+      "promptExamples": [
+        {
+          "name": "Write a blog post",
+          "prompt": "Write a short blog post about the benefits of AI in education.",
+          "response": "The integration of AI in education marks a paradigm shift from a one-size-fits-all approach to highly tailored learning journeys. Intelligent tutoring systems adapt to individual student needs, identifying gaps in knowledge and providing targeted support. This not only improves student outcomes but empowers educators to dedicate more time to mentorship."
+        },
+        {
+          "name": "Write a Python script",
+          "prompt": "Write a Python script to fetch the current weather for a city using an API.",
+          "response": "```python\nimport requests\nimport sys\n\ndef fetch_weather(city_name, api_key):\n    base_url = \"http://api.openweathermap.org/data/2.5/weather\"\n    params = {\"q\": city_name, \"appid\": api_key, \"units\": \"metric\"}\n    \n    try:\n        response = requests.get(base_url, params=params)\n        response.raise_for_status()\n        data = response.json()\n        \n        temp = data[\"main\"][\"temp\"]\n        desc = data[\"weather\"][0][\"description\"]\n        print(f\"The weather in {city_name} is currently {desc} with a temperature of {temp}°C.\")\n        \n    except requests.exceptions.RequestException as e:\n        print(f\"Error fetching weather data: {e}\", file=sys.stderr)\n```"
+        }
+      ],
+      "socials": {
+        "website": "https://claude.ai"
+      },
+      "stats": {
+        "launchYear": 2023
+      },
+      "lastUpdated": "2026-07-01",
+      "workflows": [
+        "content-creator",
+        "agency"
+      ],
+      "relatedTools": [
+        "novelai",
+        "quillbot",
+        "tome-pro"
+      ],
+      "similarTools": [
+        "novelai",
+        "quillbot"
+      ],
+      "collections": [
+        "Best AI Writing Tools",
+        "Top Productivity Assistants"
+      ],
+      "recommendationTags": [
+        "writer",
+        "marketer",
+        "business"
+      ],
+      "audiences": [
+        "Marketers",
+        "Writers"
+      ],
+      "editorial": {
+        "overview": "<p>Claude 3.5 Sonnet has quietly become the preferred tool for power users, developers, and professional writers. It lacks the bells and whistles of ChatGPT (like image generation) but makes up for it with vastly superior reasoning and a much more natural, less 'AI-sounding' writing style.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Artifacts. Claude doesn't just output code or text in a chat bubble; it opens a side panel where you can instantly preview the website it just coded or the SVG graphic it just generated.</p>",
+        "verdict": "<p>For coding and nuanced writing, Claude is currently the best model available. It feels less like a chatbot and more like a highly competent, intelligent collaborator.</p>",
+        "pricing": "<p>The $20/month Pro tier is necessary if you use it daily, as the free tier imposes strict message limits very quickly on the Sonnet model.</p>",
+        "comparison": "<p>Compared to ChatGPT, Claude's writing requires far less editing to sound human. It is also significantly better at understanding and analyzing massive documents thanks to its huge context window.</p>",
+        "useCaseFocus": "<p>Senior software engineers use Claude 3.5 Sonnet to refactor complex legacy codebases and instantly prototype interactive web components using the Artifacts UI.</p>"
+      },
+      "url": "https://claude.ai"
+    },
+    "versions": []
+  },
+  {
+    "id": "gemini",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:47:40.690Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "gemini",
+      "name": "Gemini",
+      "slug": "gemini",
+      "company": "Google",
+      "tagline": "The most deeply integrated AI for Google Workspace power users",
+      "description": "Gemini is Google's massive, multimodal response to OpenAI. Built from the ground up to analyze text, video, and audio simultaneously, it excels at processing massive datasets and integrates flawlessly with Docs, Drive, and Gmail.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "price": "From $0",
+      "rating": 4.7,
+      "reviewCount": 9850,
+      "easeOfUse": 4.7,
+      "featureRating": 4.7,
+      "valueForMoney": 4.8,
+      "performance": 4.8,
+      "support": 4.5,
+      "logoUrl": "/logos/gemini.svg",
+      "screenshotUrl": "/screenshots/gemini.webp",
+      "imageUrl": "/screenshots/gemini.webp",
+      "websiteUrl": "https://gemini.google.com",
+      "tags": [
+        "AI Assistant",
+        "Multimodal",
+        "Google Workspace",
+        "Productivity"
+      ],
+      "features": [
+        {
+          "title": "Gemini 1.5 Pro",
+          "description": "1M+ token context window.",
+          "icon": "smart_toy"
+        },
+        {
+          "title": "Google Workspace Integration",
+          "description": "Access Gemini directly in Docs, Gmail, and Drive.",
+          "icon": "grid_view"
+        }
+      ],
+      "pricingPlans": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "description": "Access to standard Gemini.",
+          "features": [
+            "Multimodal chat",
+            "Google app integrations"
+          ]
+        },
+        {
+          "name": "Advanced",
+          "price": "$20/month",
+          "description": "For premium performance.",
+          "recommended": true,
+          "features": [
+            "Gemini 1.5 Pro",
+            "2TB Google One storage",
+            "Integration in Workspace"
+          ]
+        }
+      ],
+      "verified": true,
+      "featured": false,
+      "popularity": 90,
+      "compareWith": [
+        "chatgpt",
+        "claude",
+        "grok"
+      ],
+      "goals": [
+        "business-growth",
+        "make-money-online",
+        "ai-workflows"
+      ],
+      "pros": [
+        "Huge context window (up to 2M tokens)",
+        "Great integration with Google ecosystem",
+        "Handles video inputs natively"
+      ],
+      "cons": [
+        "Coding and reasoning sometimes lags behind Claude",
+        "Interface can occasionally feel cluttered"
+      ],
+      "bestFor": [
+        "Google power users",
+        "Students",
+        "Researchers looking at long documents"
+      ],
+      "useCases": [
+        "Long Document Analysis",
+        "Workspace Productivity",
+        "General Chat"
+      ],
+      "platform": "Web, Android, iOS",
+      "api": true,
+      "mobileApp": true,
+      "openSource": false,
+      "freeTrial": true,
+      "socials": {
+        "website": "https://gemini.google.com"
+      },
+      "stats": {
+        "launchYear": 2023
+      },
+      "lastUpdated": "2026-07-03",
+      "workflows": [
+        "content-creator",
+        "agency"
+      ],
+      "relatedTools": [
+        "grok",
+        "chatgpt",
+        "codium-ai"
+      ],
+      "similarTools": [
+        "grok",
+        "chatgpt"
+      ],
+      "collections": [
+        "Best AI Writing Tools",
+        "Top Productivity Assistants"
+      ],
+      "recommendationTags": [
+        "writer",
+        "marketer",
+        "business"
+      ],
+      "audiences": [
+        "Marketers",
+        "Writers"
+      ],
+      "editorial": {
+        "overview": "<p>Gemini is Google's massive, multimodal response to OpenAI. It is deeply integrated into the Google ecosystem, making it the default choice for anyone living inside Google Docs, Drive, and Gmail.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The massive 1M+ token context window. You can upload entire books, hour-long video files, or massive code repositories, and Gemini will analyze the entire thing at once without losing context.</p>",
+        "verdict": "<p>If you are a heavy Google Workspace user or need to analyze extremely large datasets (like 50-page PDFs or hour-long videos), Gemini Advanced is incredibly powerful.</p>",
+        "pricing": "<p>The $20/month Advanced tier is bundled with 2TB of Google One cloud storage, making it the most cost-effective AI subscription if you already pay for Google Drive space.</p>",
+        "comparison": "<p>Its writing and coding capabilities occasionally fall slightly behind Claude and ChatGPT, but its native ability to watch and understand uploaded video files is entirely unique.</p>",
+        "useCaseFocus": "<p>Researchers and analysts use Gemini's massive context window to upload dozens of dense financial reports at once and ask comparative questions across all the documents simultaneously.</p>"
+      },
+      "url": "https://gemini.google.com"
+    },
+    "publishedData": {
+      "id": "gemini",
+      "name": "Gemini",
+      "slug": "gemini",
+      "company": "Google",
+      "tagline": "The most deeply integrated AI for Google Workspace power users",
+      "description": "Gemini is Google's massive, multimodal response to OpenAI. Built from the ground up to analyze text, video, and audio simultaneously, it excels at processing massive datasets and integrates flawlessly with Docs, Drive, and Gmail.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "price": "From $0",
+      "rating": 4.7,
+      "reviewCount": 9850,
+      "easeOfUse": 4.7,
+      "featureRating": 4.7,
+      "valueForMoney": 4.8,
+      "performance": 4.8,
+      "support": 4.5,
+      "logoUrl": "/logos/gemini.svg",
+      "screenshotUrl": "/screenshots/gemini.webp",
+      "imageUrl": "/screenshots/gemini.webp",
+      "websiteUrl": "https://gemini.google.com",
+      "tags": [
+        "AI Assistant",
+        "Multimodal",
+        "Google Workspace",
+        "Productivity"
+      ],
+      "features": [
+        {
+          "title": "Gemini 1.5 Pro",
+          "description": "1M+ token context window.",
+          "icon": "smart_toy"
+        },
+        {
+          "title": "Google Workspace Integration",
+          "description": "Access Gemini directly in Docs, Gmail, and Drive.",
+          "icon": "grid_view"
+        }
+      ],
+      "pricingPlans": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "description": "Access to standard Gemini.",
+          "features": [
+            "Multimodal chat",
+            "Google app integrations"
+          ]
+        },
+        {
+          "name": "Advanced",
+          "price": "$20/month",
+          "description": "For premium performance.",
+          "recommended": true,
+          "features": [
+            "Gemini 1.5 Pro",
+            "2TB Google One storage",
+            "Integration in Workspace"
+          ]
+        }
+      ],
+      "verified": true,
+      "featured": false,
+      "popularity": 90,
+      "compareWith": [
+        "chatgpt",
+        "claude",
+        "grok"
+      ],
+      "goals": [
+        "business-growth",
+        "make-money-online",
+        "ai-workflows"
+      ],
+      "pros": [
+        "Huge context window (up to 2M tokens)",
+        "Great integration with Google ecosystem",
+        "Handles video inputs natively"
+      ],
+      "cons": [
+        "Coding and reasoning sometimes lags behind Claude",
+        "Interface can occasionally feel cluttered"
+      ],
+      "bestFor": [
+        "Google power users",
+        "Students",
+        "Researchers looking at long documents"
+      ],
+      "useCases": [
+        "Long Document Analysis",
+        "Workspace Productivity",
+        "General Chat"
+      ],
+      "platform": "Web, Android, iOS",
+      "api": true,
+      "mobileApp": true,
+      "openSource": false,
+      "freeTrial": true,
+      "socials": {
+        "website": "https://gemini.google.com"
+      },
+      "stats": {
+        "launchYear": 2023
+      },
+      "lastUpdated": "2026-07-03",
+      "workflows": [
+        "content-creator",
+        "agency"
+      ],
+      "relatedTools": [
+        "grok",
+        "chatgpt",
+        "codium-ai"
+      ],
+      "similarTools": [
+        "grok",
+        "chatgpt"
+      ],
+      "collections": [
+        "Best AI Writing Tools",
+        "Top Productivity Assistants"
+      ],
+      "recommendationTags": [
+        "writer",
+        "marketer",
+        "business"
+      ],
+      "audiences": [
+        "Marketers",
+        "Writers"
+      ],
+      "editorial": {
+        "overview": "<p>Gemini is Google's massive, multimodal response to OpenAI. It is deeply integrated into the Google ecosystem, making it the default choice for anyone living inside Google Docs, Drive, and Gmail.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The massive 1M+ token context window. You can upload entire books, hour-long video files, or massive code repositories, and Gemini will analyze the entire thing at once without losing context.</p>",
+        "verdict": "<p>If you are a heavy Google Workspace user or need to analyze extremely large datasets (like 50-page PDFs or hour-long videos), Gemini Advanced is incredibly powerful.</p>",
+        "pricing": "<p>The $20/month Advanced tier is bundled with 2TB of Google One cloud storage, making it the most cost-effective AI subscription if you already pay for Google Drive space.</p>",
+        "comparison": "<p>Its writing and coding capabilities occasionally fall slightly behind Claude and ChatGPT, but its native ability to watch and understand uploaded video files is entirely unique.</p>",
+        "useCaseFocus": "<p>Researchers and analysts use Gemini's massive context window to upload dozens of dense financial reports at once and ask comparative questions across all the documents simultaneously.</p>"
+      },
+      "url": "https://gemini.google.com"
+    },
+    "versions": []
+  },
+  {
+    "id": "perplexity",
+    "status": "published",
+    "publishedAt": "2026-07-11T11:46:48.305Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "perplexity",
+      "name": "Perplexity AI",
+      "slug": "perplexity",
+      "tagline": "Where knowledge begins.",
+      "description": "Perplexity is an AI-powered search engine that provides direct answers to your queries, backed by real-time citations from the web.",
+      "screenshotUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800",
+      "imageUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800",
+      "logoUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=200",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "pricing": [
+        {
+          "planName": "Pro",
+          "price": 20,
+          "period": "monthly"
+        }
+      ],
+      "url": "https://perplexity.ai",
+      "tags": [
+        "Search",
+        "Research",
+        "Education"
+      ],
+      "features": [
+        "Live Web Search",
+        "Citations",
+        "File Upload"
+      ],
+      "useCases": [
+        "Research Topics",
+        "Summarize Lectures",
+        "Market Research"
+      ],
+      "rating": 4.8,
+      "reviewCount": 4500,
+      "featured": true,
+      "verified": true,
+      "popularity": 90,
+      "goals": [
+        "Find Inspiration",
+        "business-growth",
+        "ai-workflows"
+      ],
+      "bestFor": [
+        "Student",
+        "Researcher",
+        "Founder"
+      ],
+      "stats": {
+        "launchYear": 2022
+      },
+      "workflows": [
+        "content-creator",
+        "agency"
+      ],
+      "compareWith": [
+        "grok",
+        "chatgpt"
+      ],
+      "relatedTools": [
+        "grok",
+        "chatgpt",
+        "reply-io"
+      ],
+      "similarTools": [
+        "grok",
+        "chatgpt"
+      ],
+      "collections": [
+        "Best AI Writing Tools",
+        "Top Productivity Assistants"
+      ],
+      "recommendationTags": [
+        "writer",
+        "marketer",
+        "business"
+      ],
+      "audiences": [
+        "Marketers",
+        "Writers"
+      ],
+      "editorial": {
+        "overview": "<p>Perplexity isn't a traditional chatbot; it's an AI search engine designed to give you direct answers backed by real-time citations. It effectively cuts out the noise of SEO-stuffed websites.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The absolute transparency. Every claim Perplexity makes is linked to a source, drastically reducing the risk of AI hallucinations.</p>",
+        "verdict": "<p>If you do any kind of research, Perplexity is a must-have. It has fundamentally changed how we look for information online, often replacing Google for complex queries.</p>",
+        "pricing": "<p>The free version is excellent, but Perplexity Pro unlocks access to top-tier models like GPT-4 and Claude 3 within the search interface, making it an incredible value.</p>",
+        "comparison": "<p>Unlike ChatGPT, which sometimes guesses or hallucinates facts, Perplexity prioritizes accuracy and sourcing. It's built for truth rather than creative writing.</p>",
+        "useCaseFocus": "<p>Students, researchers, and analysts use Perplexity to quickly gather information on obscure topics, instantly generating cited summaries that would take hours to compile manually.</p>"
+      },
+      "websiteUrl": "https://perplexity.ai"
+    },
+    "publishedData": {
+      "id": "perplexity",
+      "name": "Perplexity AI",
+      "slug": "perplexity",
+      "tagline": "Where knowledge begins.",
+      "description": "Perplexity is an AI-powered search engine that provides direct answers to your queries, backed by real-time citations from the web.",
+      "screenshotUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800",
+      "imageUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800",
+      "logoUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=200",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "pricing": [
+        {
+          "planName": "Pro",
+          "price": 20,
+          "period": "monthly"
+        }
+      ],
+      "url": "https://perplexity.ai",
+      "tags": [
+        "Search",
+        "Research",
+        "Education"
+      ],
+      "features": [
+        "Live Web Search",
+        "Citations",
+        "File Upload"
+      ],
+      "useCases": [
+        "Research Topics",
+        "Summarize Lectures",
+        "Market Research"
+      ],
+      "rating": 4.8,
+      "reviewCount": 4500,
+      "featured": true,
+      "verified": true,
+      "popularity": 90,
+      "goals": [
+        "Find Inspiration",
+        "business-growth",
+        "ai-workflows"
+      ],
+      "bestFor": [
+        "Student",
+        "Researcher",
+        "Founder"
+      ],
+      "stats": {
+        "launchYear": 2022
+      },
+      "workflows": [
+        "content-creator",
+        "agency"
+      ],
+      "compareWith": [
+        "grok",
+        "chatgpt"
+      ],
+      "relatedTools": [
+        "grok",
+        "chatgpt",
+        "reply-io"
+      ],
+      "similarTools": [
+        "grok",
+        "chatgpt"
+      ],
+      "collections": [
+        "Best AI Writing Tools",
+        "Top Productivity Assistants"
+      ],
+      "recommendationTags": [
+        "writer",
+        "marketer",
+        "business"
+      ],
+      "audiences": [
+        "Marketers",
+        "Writers"
+      ],
+      "editorial": {
+        "overview": "<p>Perplexity isn't a traditional chatbot; it's an AI search engine designed to give you direct answers backed by real-time citations. It effectively cuts out the noise of SEO-stuffed websites.</p><p><strong class='text-on-surface'>Where it stands out:</strong> The absolute transparency. Every claim Perplexity makes is linked to a source, drastically reducing the risk of AI hallucinations.</p>",
+        "verdict": "<p>If you do any kind of research, Perplexity is a must-have. It has fundamentally changed how we look for information online, often replacing Google for complex queries.</p>",
+        "pricing": "<p>The free version is excellent, but Perplexity Pro unlocks access to top-tier models like GPT-4 and Claude 3 within the search interface, making it an incredible value.</p>",
+        "comparison": "<p>Unlike ChatGPT, which sometimes guesses or hallucinates facts, Perplexity prioritizes accuracy and sourcing. It's built for truth rather than creative writing.</p>",
+        "useCaseFocus": "<p>Students, researchers, and analysts use Perplexity to quickly gather information on obscure topics, instantly generating cited summaries that would take hours to compile manually.</p>"
+      },
+      "websiteUrl": "https://perplexity.ai"
+    },
+    "versions": []
+  },
+  {
+    "id": "grok",
+    "status": "published",
+    "publishedAt": "2026-07-11T11:46:48.305Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "grok",
+      "name": "Grok",
+      "slug": "grok",
+      "tagline": "An AI modeled after the Hitchhiker's Guide.",
+      "description": "Grok is an AI developed by xAI that has real-time knowledge of the world via the X platform.",
+      "screenshotUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+      "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+      "logoUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=200",
+      "category": "ai-chatbots",
+      "priceModel": "Paid",
+      "pricing": [
+        {
+          "planName": "X Premium",
+          "price": 8,
+          "period": "monthly"
+        }
+      ],
+      "url": "https://x.ai",
+      "tags": [
+        "Chatbot",
+        "Twitter",
+        "Real-time"
+      ],
+      "features": [
+        "Real-time Twitter Access",
+        "Fun Mode",
+        "Coding"
+      ],
+      "useCases": [
+        "Research Topics",
+        "Automate Socials"
+      ],
+      "rating": 4.4,
+      "reviewCount": 15000,
+      "featured": false,
+      "verified": true,
+      "popularity": 91,
+      "goals": [
+        "Find Inspiration",
+        "business-growth",
+        "ai-workflows"
+      ],
+      "bestFor": [
+        "Marketer",
+        "Creator",
+        "Founder"
+      ],
+      "stats": {
+        "launchYear": 2023
+      },
+      "workflows": [
+        "content-creator",
+        "agency"
+      ],
+      "compareWith": [
+        "claude",
+        "gemini"
+      ],
+      "relatedTools": [
+        "claude",
+        "gemini",
+        "magicstudio"
+      ],
+      "similarTools": [
+        "claude",
+        "gemini"
+      ],
+      "collections": [
+        "Best AI Writing Tools",
+        "Top Productivity Assistants"
+      ],
+      "recommendationTags": [
+        "writer",
+        "marketer",
+        "business"
+      ],
+      "audiences": [
+        "Marketers",
+        "Writers"
+      ],
+      "editorial": {
+        "overview": "<p>Grok, developed by Elon Musk's xAI, differentiates itself through direct, real-time access to the X (formerly Twitter) data stream. It is designed to be highly conversational, uncensored, and occasionally humorous.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Real-time news analysis. Because it reads the live Twitter feed, Grok can answer questions about breaking news events hours or days before other AI models update their knowledge bases.</p>",
+        "verdict": "<p>If you rely on Twitter for news, finance, or cultural trends, Grok's integration with the platform provides a unique, real-time perspective that no other chatbot can match.</p>",
+        "pricing": "<p>It is bundled with the X Premium subscription ($8/month), making it an incredibly cheap add-on if you are already paying for Twitter verification.</p>",
+        "comparison": "<p>Claude is better for coding; ChatGPT is better for structured workflows. Grok is best for analyzing real-time social sentiment, breaking news, and engaging in casual, uncensored conversation.</p>",
+        "useCaseFocus": "<p>Social media managers and journalists use Grok to instantly summarize complex, rapidly evolving Twitter debates and track breaking news before traditional media covers it.</p>"
+      },
+      "websiteUrl": "https://x.ai"
+    },
+    "publishedData": {
+      "id": "grok",
+      "name": "Grok",
+      "slug": "grok",
+      "tagline": "An AI modeled after the Hitchhiker's Guide.",
+      "description": "Grok is an AI developed by xAI that has real-time knowledge of the world via the X platform.",
+      "screenshotUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+      "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+      "logoUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=200",
+      "category": "ai-chatbots",
+      "priceModel": "Paid",
+      "pricing": [
+        {
+          "planName": "X Premium",
+          "price": 8,
+          "period": "monthly"
+        }
+      ],
+      "url": "https://x.ai",
+      "tags": [
+        "Chatbot",
+        "Twitter",
+        "Real-time"
+      ],
+      "features": [
+        "Real-time Twitter Access",
+        "Fun Mode",
+        "Coding"
+      ],
+      "useCases": [
+        "Research Topics",
+        "Automate Socials"
+      ],
+      "rating": 4.4,
+      "reviewCount": 15000,
+      "featured": false,
+      "verified": true,
+      "popularity": 91,
+      "goals": [
+        "Find Inspiration",
+        "business-growth",
+        "ai-workflows"
+      ],
+      "bestFor": [
+        "Marketer",
+        "Creator",
+        "Founder"
+      ],
+      "stats": {
+        "launchYear": 2023
+      },
+      "workflows": [
+        "content-creator",
+        "agency"
+      ],
+      "compareWith": [
+        "claude",
+        "gemini"
+      ],
+      "relatedTools": [
+        "claude",
+        "gemini",
+        "magicstudio"
+      ],
+      "similarTools": [
+        "claude",
+        "gemini"
+      ],
+      "collections": [
+        "Best AI Writing Tools",
+        "Top Productivity Assistants"
+      ],
+      "recommendationTags": [
+        "writer",
+        "marketer",
+        "business"
+      ],
+      "audiences": [
+        "Marketers",
+        "Writers"
+      ],
+      "editorial": {
+        "overview": "<p>Grok, developed by Elon Musk's xAI, differentiates itself through direct, real-time access to the X (formerly Twitter) data stream. It is designed to be highly conversational, uncensored, and occasionally humorous.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Real-time news analysis. Because it reads the live Twitter feed, Grok can answer questions about breaking news events hours or days before other AI models update their knowledge bases.</p>",
+        "verdict": "<p>If you rely on Twitter for news, finance, or cultural trends, Grok's integration with the platform provides a unique, real-time perspective that no other chatbot can match.</p>",
+        "pricing": "<p>It is bundled with the X Premium subscription ($8/month), making it an incredibly cheap add-on if you are already paying for Twitter verification.</p>",
+        "comparison": "<p>Claude is better for coding; ChatGPT is better for structured workflows. Grok is best for analyzing real-time social sentiment, breaking news, and engaging in casual, uncensored conversation.</p>",
+        "useCaseFocus": "<p>Social media managers and journalists use Grok to instantly summarize complex, rapidly evolving Twitter debates and track breaking news before traditional media covers it.</p>"
+      },
+      "websiteUrl": "https://x.ai"
+    },
+    "versions": []
+  },
+  {
+    "id": "pi",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:56:30.274Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "pi",
+      "name": "Pi",
+      "slug": "pi",
+      "company": "Inflection AI",
+      "tagline": "Your personal AI.",
+      "description": "Pi is designed to be a kind and supportive companion.",
+      "category": "ai-chatbots",
+      "priceModel": "Free",
+      "price": "Free",
+      "rating": 4.6,
+      "reviewCount": 8000,
+      "logoUrl": "https://logo.clearbit.com/inflection.ai",
+      "imageUrl": "https://images.unsplash.com/photo-1616161560417-66d40653d4f4",
+      "screenshotUrl": "https://images.unsplash.com/photo-1616161560417-66d40653d4f4",
+      "websiteUrl": "https://pi.ai",
+      "url": "https://pi.ai",
+      "tags": [
+        "Companion",
+        "Assistant"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 85,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Companion",
+        "Assistant"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://pi.ai"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "publishedData": {
+      "id": "pi",
+      "name": "Pi",
+      "slug": "pi",
+      "company": "Inflection AI",
+      "tagline": "Your personal AI.",
+      "description": "Pi is designed to be a kind and supportive companion.",
+      "category": "ai-chatbots",
+      "priceModel": "Free",
+      "price": "Free",
+      "rating": 4.6,
+      "reviewCount": 8000,
+      "logoUrl": "https://logo.clearbit.com/inflection.ai",
+      "imageUrl": "https://images.unsplash.com/photo-1616161560417-66d40653d4f4",
+      "screenshotUrl": "https://images.unsplash.com/photo-1616161560417-66d40653d4f4",
+      "websiteUrl": "https://pi.ai",
+      "url": "https://pi.ai",
+      "tags": [
+        "Companion",
+        "Assistant"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 85,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Companion",
+        "Assistant"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://pi.ai"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "versions": []
+  },
+  {
+    "id": "mistral-le-chat",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:56:30.276Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "mistral-le-chat",
+      "name": "Mistral Le Chat",
+      "slug": "mistral-le-chat",
+      "company": "Mistral AI",
+      "tagline": "Open and powerful AI.",
+      "description": "Le Chat is Mistral AI's conversational interface.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.7,
+      "reviewCount": 12000,
+      "logoUrl": "https://logo.clearbit.com/mistral.ai",
+      "imageUrl": "https://images.unsplash.com/photo-1517433670267-08bbd4be890f",
+      "screenshotUrl": "https://images.unsplash.com/photo-1517433670267-08bbd4be890f",
+      "websiteUrl": "https://chat.mistral.ai",
+      "url": "https://chat.mistral.ai",
+      "tags": [
+        "LLM",
+        "European",
+        "Chat"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 88,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "LLM",
+        "European",
+        "Chat"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://chat.mistral.ai"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "publishedData": {
+      "id": "mistral-le-chat",
+      "name": "Mistral Le Chat",
+      "slug": "mistral-le-chat",
+      "company": "Mistral AI",
+      "tagline": "Open and powerful AI.",
+      "description": "Le Chat is Mistral AI's conversational interface.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.7,
+      "reviewCount": 12000,
+      "logoUrl": "https://logo.clearbit.com/mistral.ai",
+      "imageUrl": "https://images.unsplash.com/photo-1517433670267-08bbd4be890f",
+      "screenshotUrl": "https://images.unsplash.com/photo-1517433670267-08bbd4be890f",
+      "websiteUrl": "https://chat.mistral.ai",
+      "url": "https://chat.mistral.ai",
+      "tags": [
+        "LLM",
+        "European",
+        "Chat"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 88,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "LLM",
+        "European",
+        "Chat"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://chat.mistral.ai"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "versions": []
+  },
+  {
+    "id": "copilot",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:56:30.277Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "copilot",
+      "name": "Copilot",
+      "slug": "copilot",
+      "company": "Microsoft",
+      "tagline": "Your everyday AI companion.",
+      "description": "Microsoft Copilot integrates AI into Windows and web searching.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.7,
+      "reviewCount": 40000,
+      "logoUrl": "https://logo.clearbit.com/microsoft.com",
+      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "screenshotUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "websiteUrl": "https://copilot.microsoft.com",
+      "url": "https://copilot.microsoft.com",
+      "tags": [
+        "Assistant",
+        "Search",
+        "Windows"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 96,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Assistant",
+        "Search",
+        "Windows"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://copilot.microsoft.com"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "publishedData": {
+      "id": "copilot",
+      "name": "Copilot",
+      "slug": "copilot",
+      "company": "Microsoft",
+      "tagline": "Your everyday AI companion.",
+      "description": "Microsoft Copilot integrates AI into Windows and web searching.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.7,
+      "reviewCount": 40000,
+      "logoUrl": "https://logo.clearbit.com/microsoft.com",
+      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "screenshotUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "websiteUrl": "https://copilot.microsoft.com",
+      "url": "https://copilot.microsoft.com",
+      "tags": [
+        "Assistant",
+        "Search",
+        "Windows"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 96,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Assistant",
+        "Search",
+        "Windows"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://copilot.microsoft.com"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "versions": []
+  },
+  {
+    "id": "character-ai",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:56:30.277Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "character-ai",
+      "name": "Character.ai",
+      "slug": "character-ai",
+      "company": "Character.ai",
+      "tagline": "Chat with AI characters.",
+      "description": "Create and chat with user-created AI personalities.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.5,
+      "reviewCount": 50000,
+      "logoUrl": "https://logo.clearbit.com/character.ai",
+      "imageUrl": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5",
+      "screenshotUrl": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5",
+      "websiteUrl": "https://character.ai",
+      "url": "https://character.ai",
+      "tags": [
+        "Entertainment",
+        "Roleplay",
+        "Chat"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 92,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Entertainment",
+        "Roleplay",
+        "Chat"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://character.ai"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "publishedData": {
+      "id": "character-ai",
+      "name": "Character.ai",
+      "slug": "character-ai",
+      "company": "Character.ai",
+      "tagline": "Chat with AI characters.",
+      "description": "Create and chat with user-created AI personalities.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.5,
+      "reviewCount": 50000,
+      "logoUrl": "https://logo.clearbit.com/character.ai",
+      "imageUrl": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5",
+      "screenshotUrl": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5",
+      "websiteUrl": "https://character.ai",
+      "url": "https://character.ai",
+      "tags": [
+        "Entertainment",
+        "Roleplay",
+        "Chat"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 92,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Entertainment",
+        "Roleplay",
+        "Chat"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://character.ai"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "versions": []
+  },
+  {
+    "id": "poe",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:56:30.277Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "poe",
+      "name": "Poe",
+      "slug": "poe",
+      "company": "Quora",
+      "tagline": "Fast, helpful AI chat.",
+      "description": "Poe lets you ask questions, get instant answers, and have back-and-forth conversations with several AI bots.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.6,
+      "reviewCount": 10000,
+      "logoUrl": "https://logo.clearbit.com/quora.com",
+      "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+      "screenshotUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+      "websiteUrl": "https://poe.com",
+      "url": "https://poe.com",
+      "tags": [
+        "Aggregator",
+        "Assistant",
+        "Chat"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 86,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Aggregator",
+        "Assistant",
+        "Chat"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://poe.com"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "publishedData": {
+      "id": "poe",
+      "name": "Poe",
+      "slug": "poe",
+      "company": "Quora",
+      "tagline": "Fast, helpful AI chat.",
+      "description": "Poe lets you ask questions, get instant answers, and have back-and-forth conversations with several AI bots.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.6,
+      "reviewCount": 10000,
+      "logoUrl": "https://logo.clearbit.com/quora.com",
+      "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+      "screenshotUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+      "websiteUrl": "https://poe.com",
+      "url": "https://poe.com",
+      "tags": [
+        "Aggregator",
+        "Assistant",
+        "Chat"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 86,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Aggregator",
+        "Assistant",
+        "Chat"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://poe.com"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "versions": []
+  },
+  {
+    "id": "jasper-chat",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:56:30.277Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "jasper-chat",
+      "name": "Jasper Chat",
+      "slug": "jasper-chat",
+      "company": "Jasper",
+      "tagline": "AI for marketing teams.",
+      "description": "A conversational AI interface designed specifically for marketers.",
+      "category": "ai-chatbots",
+      "priceModel": "Paid",
+      "rating": 4.5,
+      "reviewCount": 8000,
+      "logoUrl": "https://logo.clearbit.com/jasper.ai",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+      "screenshotUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+      "websiteUrl": "https://jasper.ai",
+      "url": "https://jasper.ai",
+      "tags": [
+        "Marketing",
+        "Writing",
+        "Business"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 80,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Marketing",
+        "Writing",
+        "Business"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://jasper.ai"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "publishedData": {
+      "id": "jasper-chat",
+      "name": "Jasper Chat",
+      "slug": "jasper-chat",
+      "company": "Jasper",
+      "tagline": "AI for marketing teams.",
+      "description": "A conversational AI interface designed specifically for marketers.",
+      "category": "ai-chatbots",
+      "priceModel": "Paid",
+      "rating": 4.5,
+      "reviewCount": 8000,
+      "logoUrl": "https://logo.clearbit.com/jasper.ai",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+      "screenshotUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+      "websiteUrl": "https://jasper.ai",
+      "url": "https://jasper.ai",
+      "tags": [
+        "Marketing",
+        "Writing",
+        "Business"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 80,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Marketing",
+        "Writing",
+        "Business"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://jasper.ai"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "versions": []
+  },
+  {
+    "id": "replika",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:56:30.277Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "replika",
+      "name": "Replika",
+      "slug": "replika",
+      "company": "Luka",
+      "tagline": "The AI companion who cares.",
+      "description": "An AI companion that listens, talks, and grows with you.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.3,
+      "reviewCount": 60000,
+      "logoUrl": "https://logo.clearbit.com/replika.com",
+      "imageUrl": "https://images.unsplash.com/photo-1531746790731-6c08c26322d1",
+      "screenshotUrl": "https://images.unsplash.com/photo-1531746790731-6c08c26322d1",
+      "websiteUrl": "https://replika.ai",
+      "url": "https://replika.ai",
+      "tags": [
+        "Companion",
+        "Mental Health"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 88,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Companion",
+        "Mental Health"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://replika.ai"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "publishedData": {
+      "id": "replika",
+      "name": "Replika",
+      "slug": "replika",
+      "company": "Luka",
+      "tagline": "The AI companion who cares.",
+      "description": "An AI companion that listens, talks, and grows with you.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.3,
+      "reviewCount": 60000,
+      "logoUrl": "https://logo.clearbit.com/replika.com",
+      "imageUrl": "https://images.unsplash.com/photo-1531746790731-6c08c26322d1",
+      "screenshotUrl": "https://images.unsplash.com/photo-1531746790731-6c08c26322d1",
+      "websiteUrl": "https://replika.ai",
+      "url": "https://replika.ai",
+      "tags": [
+        "Companion",
+        "Mental Health"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 88,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Companion",
+        "Mental Health"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://replika.ai"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "versions": []
+  },
+  {
+    "id": "huggingchat",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:56:30.277Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "huggingchat",
+      "name": "HuggingChat",
+      "slug": "huggingchat",
+      "company": "Hugging Face",
+      "tagline": "Open source AI chat.",
+      "description": "An open-source alternative to ChatGPT, powered by various open models.",
+      "category": "ai-chatbots",
+      "priceModel": "Free",
+      "price": "Free",
+      "rating": 4.5,
+      "reviewCount": 4000,
+      "logoUrl": "https://logo.clearbit.com/huggingface.co",
+      "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+      "screenshotUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+      "websiteUrl": "https://huggingface.co/chat",
+      "url": "https://huggingface.co/chat",
+      "tags": [
+        "Open Source",
+        "LLM",
+        "Developer"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 75,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Open Source",
+        "LLM",
+        "Developer"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": true,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://huggingface.co/chat"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "publishedData": {
+      "id": "huggingchat",
+      "name": "HuggingChat",
+      "slug": "huggingchat",
+      "company": "Hugging Face",
+      "tagline": "Open source AI chat.",
+      "description": "An open-source alternative to ChatGPT, powered by various open models.",
+      "category": "ai-chatbots",
+      "priceModel": "Free",
+      "price": "Free",
+      "rating": 4.5,
+      "reviewCount": 4000,
+      "logoUrl": "https://logo.clearbit.com/huggingface.co",
+      "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+      "screenshotUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+      "websiteUrl": "https://huggingface.co/chat",
+      "url": "https://huggingface.co/chat",
+      "tags": [
+        "Open Source",
+        "LLM",
+        "Developer"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 75,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Open Source",
+        "LLM",
+        "Developer"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": true,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://huggingface.co/chat"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "versions": []
+  },
+  {
+    "id": "youchat",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:56:30.277Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "youchat",
+      "name": "YouChat",
+      "slug": "youchat",
+      "company": "You.com",
+      "tagline": "AI search engine and chatbot.",
+      "description": "A conversational interface integrated into the You.com search engine.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.4,
+      "reviewCount": 3500,
+      "logoUrl": "https://logo.clearbit.com/you.com",
+      "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      "screenshotUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      "websiteUrl": "https://you.com",
+      "url": "https://you.com",
+      "tags": [
+        "Search",
+        "Assistant"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 78,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Search",
+        "Assistant"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://you.com"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "publishedData": {
+      "id": "youchat",
+      "name": "YouChat",
+      "slug": "youchat",
+      "company": "You.com",
+      "tagline": "AI search engine and chatbot.",
+      "description": "A conversational interface integrated into the You.com search engine.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.4,
+      "reviewCount": 3500,
+      "logoUrl": "https://logo.clearbit.com/you.com",
+      "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      "screenshotUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      "websiteUrl": "https://you.com",
+      "url": "https://you.com",
+      "tags": [
+        "Search",
+        "Assistant"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 78,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Search",
+        "Assistant"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://you.com"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "versions": []
+  },
+  {
+    "id": "chatsonic",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:56:30.277Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "chatsonic",
+      "name": "Chatsonic",
+      "slug": "chatsonic",
+      "company": "Writesonic",
+      "tagline": "Like ChatGPT, but with real-time data.",
+      "description": "A conversational AI that accesses the internet in real-time.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.6,
+      "reviewCount": 6000,
+      "logoUrl": "https://logo.clearbit.com/writesonic.com",
+      "imageUrl": "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      "screenshotUrl": "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      "websiteUrl": "https://writesonic.com/chat",
+      "url": "https://writesonic.com/chat",
+      "tags": [
+        "Writing",
+        "Real-time",
+        "Marketing"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 81,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Writing",
+        "Real-time",
+        "Marketing"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://writesonic.com/chat"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "publishedData": {
+      "id": "chatsonic",
+      "name": "Chatsonic",
+      "slug": "chatsonic",
+      "company": "Writesonic",
+      "tagline": "Like ChatGPT, but with real-time data.",
+      "description": "A conversational AI that accesses the internet in real-time.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.6,
+      "reviewCount": 6000,
+      "logoUrl": "https://logo.clearbit.com/writesonic.com",
+      "imageUrl": "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      "screenshotUrl": "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      "websiteUrl": "https://writesonic.com/chat",
+      "url": "https://writesonic.com/chat",
+      "tags": [
+        "Writing",
+        "Real-time",
+        "Marketing"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 81,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Writing",
+        "Real-time",
+        "Marketing"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://writesonic.com/chat"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "versions": []
+  },
+  {
+    "id": "ora-sh",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:56:30.278Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "ora-sh",
+      "name": "Ora.sh",
+      "slug": "ora-sh",
+      "company": "Ora",
+      "tagline": "Build and share AI chatbots.",
+      "description": "A platform that allows you to create customized AI chatbots with just a prompt.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.3,
+      "reviewCount": 1500,
+      "logoUrl": "https://logo.clearbit.com/ora.sh",
+      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "screenshotUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "websiteUrl": "https://ora.sh",
+      "url": "https://ora.sh",
+      "tags": [
+        "Builder",
+        "Custom",
+        "Platform"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 70,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Builder",
+        "Custom",
+        "Platform"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://ora.sh"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "publishedData": {
+      "id": "ora-sh",
+      "name": "Ora.sh",
+      "slug": "ora-sh",
+      "company": "Ora",
+      "tagline": "Build and share AI chatbots.",
+      "description": "A platform that allows you to create customized AI chatbots with just a prompt.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.3,
+      "reviewCount": 1500,
+      "logoUrl": "https://logo.clearbit.com/ora.sh",
+      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "screenshotUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "websiteUrl": "https://ora.sh",
+      "url": "https://ora.sh",
+      "tags": [
+        "Builder",
+        "Custom",
+        "Platform"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 70,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Builder",
+        "Custom",
+        "Platform"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://ora.sh"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "versions": []
+  },
+  {
+    "id": "nomi",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:56:30.278Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "nomi",
+      "name": "Nomi",
+      "slug": "nomi",
+      "company": "Nomi AI",
+      "tagline": "AI with emotional intelligence.",
+      "description": "An emotionally intelligent AI companion for deep, meaningful conversations.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.7,
+      "reviewCount": 4500,
+      "logoUrl": "https://logo.clearbit.com/nomi.ai",
+      "imageUrl": "https://images.unsplash.com/photo-1507146426996-ef05306b995a",
+      "screenshotUrl": "https://images.unsplash.com/photo-1507146426996-ef05306b995a",
+      "websiteUrl": "https://nomi.ai",
+      "url": "https://nomi.ai",
+      "tags": [
+        "Companion",
+        "Emotional",
+        "Roleplay"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 74,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Companion",
+        "Emotional",
+        "Roleplay"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://nomi.ai"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "publishedData": {
+      "id": "nomi",
+      "name": "Nomi",
+      "slug": "nomi",
+      "company": "Nomi AI",
+      "tagline": "AI with emotional intelligence.",
+      "description": "An emotionally intelligent AI companion for deep, meaningful conversations.",
+      "category": "ai-chatbots",
+      "priceModel": "Freemium",
+      "rating": 4.7,
+      "reviewCount": 4500,
+      "logoUrl": "https://logo.clearbit.com/nomi.ai",
+      "imageUrl": "https://images.unsplash.com/photo-1507146426996-ef05306b995a",
+      "screenshotUrl": "https://images.unsplash.com/photo-1507146426996-ef05306b995a",
+      "websiteUrl": "https://nomi.ai",
+      "url": "https://nomi.ai",
+      "tags": [
+        "Companion",
+        "Emotional",
+        "Roleplay"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 74,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Companion",
+        "Emotional",
+        "Roleplay"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://nomi.ai"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "versions": []
+  },
+  {
+    "id": "jan",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:56:30.278Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "jan",
+      "name": "Jan",
+      "slug": "jan",
+      "company": "Jan AI",
+      "tagline": "Run AI locally.",
+      "description": "An open-source ChatGPT alternative that runs completely offline on your computer.",
+      "category": "ai-chatbots",
+      "priceModel": "Free",
+      "price": "Free",
+      "rating": 4.8,
+      "reviewCount": 3000,
+      "logoUrl": "https://logo.clearbit.com/jan.ai",
+      "imageUrl": "https://images.unsplash.com/photo-1535223289827-42f1e9919769",
+      "screenshotUrl": "https://images.unsplash.com/photo-1535223289827-42f1e9919769",
+      "websiteUrl": "https://jan.ai",
+      "url": "https://jan.ai",
+      "tags": [
+        "Local",
+        "Privacy",
+        "Open Source"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 79,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Local",
+        "Privacy",
+        "Open Source"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": true,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://jan.ai"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "publishedData": {
+      "id": "jan",
+      "name": "Jan",
+      "slug": "jan",
+      "company": "Jan AI",
+      "tagline": "Run AI locally.",
+      "description": "An open-source ChatGPT alternative that runs completely offline on your computer.",
+      "category": "ai-chatbots",
+      "priceModel": "Free",
+      "price": "Free",
+      "rating": 4.8,
+      "reviewCount": 3000,
+      "logoUrl": "https://logo.clearbit.com/jan.ai",
+      "imageUrl": "https://images.unsplash.com/photo-1535223289827-42f1e9919769",
+      "screenshotUrl": "https://images.unsplash.com/photo-1535223289827-42f1e9919769",
+      "websiteUrl": "https://jan.ai",
+      "url": "https://jan.ai",
+      "tags": [
+        "Local",
+        "Privacy",
+        "Open Source"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 79,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Local",
+        "Privacy",
+        "Open Source"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": true,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://jan.ai"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "versions": []
+  },
+  {
+    "id": "llama-3",
+    "status": "published",
+    "publishedAt": "2026-07-17T19:56:30.278Z",
+    "lastAutosavedAt": null,
+    "draftData": {
+      "id": "llama-3",
+      "name": "Llama 3",
+      "slug": "llama-3",
+      "company": "Meta",
+      "tagline": "Openly available foundation models.",
+      "description": "Meta's highly capable series of open-weights language models.",
+      "category": "ai-chatbots",
+      "priceModel": "Free",
+      "price": "Free",
+      "rating": 4.9,
+      "reviewCount": 10000,
+      "logoUrl": "https://logo.clearbit.com/meta.com",
+      "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+      "screenshotUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+      "websiteUrl": "https://llama.meta.com",
+      "url": "https://llama.meta.com",
+      "tags": [
+        "Open Weights",
+        "Foundation Model",
+        "Developer"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 94,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Open Weights",
+        "Foundation Model",
+        "Developer"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": true,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://llama.meta.com"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
+    "publishedData": {
+      "id": "llama-3",
+      "name": "Llama 3",
+      "slug": "llama-3",
+      "company": "Meta",
+      "tagline": "Openly available foundation models.",
+      "description": "Meta's highly capable series of open-weights language models.",
+      "category": "ai-chatbots",
+      "priceModel": "Free",
+      "price": "Free",
+      "rating": 4.9,
+      "reviewCount": 10000,
+      "logoUrl": "https://logo.clearbit.com/meta.com",
+      "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+      "screenshotUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+      "websiteUrl": "https://llama.meta.com",
+      "url": "https://llama.meta.com",
+      "tags": [
+        "Open Weights",
+        "Foundation Model",
+        "Developer"
+      ],
+      "features": [],
+      "pricingPlans": [],
+      "pricing": [],
+      "verified": true,
+      "featured": false,
+      "popularity": 94,
+      "pros": [],
+      "cons": [],
+      "bestFor": [
+        "Open Weights",
+        "Foundation Model",
+        "Developer"
+      ],
+      "useCases": [],
+      "platform": "Web",
+      "api": false,
+      "mobileApp": false,
+      "openSource": true,
+      "freeTrial": false,
+      "socials": {
+        "website": "https://llama.meta.com"
+      },
+      "stats": {},
+      "editorial": {},
+      "promptExamples": []
+    },
     "versions": []
   }
 ]

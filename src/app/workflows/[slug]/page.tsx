@@ -51,7 +51,7 @@ export default async function WorkflowPage({ params }: Props) {
         "@type": "HowTo",
         name: `${workflow.title} Workflow`,
         description: workflow.description,
-        step: workflow.meta.steps?.map((step, index) => ({
+        step: workflow.meta?.steps?.map((step, index) => ({
             "@type": "HowToStep",
             name: `Step ${index + 1}: ${step.tool}`,
             text: step.desc || `Use ${step.tool} to complete this step.`,
@@ -86,7 +86,7 @@ export default async function WorkflowPage({ params }: Props) {
                             <span className="material-symbols-outlined text-primary">route</span>
                             Step-by-Step Playbook
                         </h2>
-                        <WorkflowTimeline steps={workflow.meta.steps || []} />
+                        <WorkflowTimeline steps={workflow.meta?.steps || []} />
                     </section>
 
                     <WorkflowAlternatives workflow={workflow} />

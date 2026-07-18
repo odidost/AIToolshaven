@@ -123,6 +123,7 @@ export interface AITool {
     editorial?: ToolEditorial;
 
     lastUpdated?: string;
+    status?: string;
 }
 
 export interface PromptExample {

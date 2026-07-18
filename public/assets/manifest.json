@@ -326,5 +326,29 @@
   "elevenlabs-dubbing": {
     "logo": "webp",
     "screenshot": "webp"
+  },
+  "mistral-le-chat": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "gemini": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "pi": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "character-ai": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "poe": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "Lovable": {
+    "logo": "webp",
+    "screenshot": "webp"
   }
 }

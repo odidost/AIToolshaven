@@ -32,12 +32,12 @@ export function WhyThisOrderWorks({ workflow }: { workflow: Workflow }) {
                     {/* Visual representation */}
                     <div className="w-full md:w-64 bg-surface rounded-2xl p-5 border border-border/50 shadow-xs flex flex-col gap-3 justify-center shrink-0">
                         <div className="text-xs font-bold text-on-surface-variant uppercase tracking-wider text-center mb-1">Data Flow</div>
-                        {workflow.meta.steps?.map((step, idx) => (
+                        {workflow.meta?.steps?.map((step, idx) => (
                             <div key={idx} className="flex flex-col items-center">
                                 <div className="w-full bg-surface-secondary border border-border rounded-xl py-2 px-3 text-center text-xs font-semibold text-on-surface">
                                     {step.role}
                                 </div>
-                                {idx !== (workflow.meta.steps?.length || 0) - 1 && (
+                                {idx !== (workflow.meta?.steps?.length || 0) - 1 && (
                                     <span className="material-symbols-outlined text-primary text-[20px] my-1">arrow_drop_down</span>
                                 )}
                             </div>

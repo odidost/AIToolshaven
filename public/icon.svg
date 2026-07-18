@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill-rule="evenodd" clip-rule="evenodd">
+  <defs>
+    <linearGradient id="a-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22D3EE" />
+      <stop offset="100%" stop-color="#6366F1" />
+    </linearGradient>
+    <linearGradient id="i-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#F43F5E" />
+    </linearGradient>
+  </defs>
+  <g transform="translate(2.5, 40)">
+    <path d="M 10 90 L 45 15 L 65 15 L 100 90 L 75 90 L 66 70 L 34 70 L 25 90 Z M 41 55 L 59 55 L 50 37 Z" fill="url(#a-grad)" />
+    <path d="M 110 90 L 133.33 40 L 153.33 40 L 130 90 Z" fill="url(#i-grad)" />
+    <path d="M 138 30 L 145 15 L 165 15 L 158 30 Z" fill="url(#i-grad)" />
+  </g>
+</svg>
