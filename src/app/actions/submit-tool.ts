@@ -70,8 +70,8 @@ export async function sendSubmissionEmail(formData: {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: "AIToolsHaven Submissions <submissions@aitoolshaven.com>",
-      to: "aitoolshaven@gmail.com",
+      from: "onboarding@resend.dev", // Must use this until domain is verified
+      to: "odidosteph2020@gmail.com", // Resend sandbox ONLY allows sending to the registered account email
       replyTo: formData.contactEmail,
       subject: `New AI Tool Submission: ${formData.toolName} (${formData.plan})`,
       html: emailHtml,

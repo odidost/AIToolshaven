@@ -4,6 +4,8 @@ import { FloatingTooltip } from "./FloatingTooltip";
 import { getAllTools, getLatestTools, getTrendingTools, getToolsByCategoryId } from "@/lib/data/tools-service";
 import { getCategoryBySlug } from "@/lib/queries/categories";
 import { SectionContainer } from "../layout/SectionContainer";
+import { FadeIn } from "../animations/FadeIn";
+import { StaggerContainer, StaggerItem } from "../animations/StaggerContainer";
 
 export async function EditorialRankingsSection() {
   // 1. Latest AI Tools (matches /latest-ai-tools)
@@ -40,7 +42,7 @@ export async function EditorialRankingsSection() {
 
       <section className="relative overflow-visible pt-16 pb-24">
         <div className="mx-auto w-full">
-        <div className="mb-16 flex flex-col items-center md:items-start justify-center gap-2">
+        <FadeIn direction="up" className="mb-16 flex flex-col items-center md:items-start justify-center gap-2">
           <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-3xl border border-black/5 text-gray-900 shadow-xl px-4 py-1.5 rounded-full mb-4 group relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <span className="material-symbols-outlined text-[18px] text-emerald-500" style={{ fontVariationSettings: "'FILL' 1" }}>stars</span>
@@ -49,14 +51,11 @@ export async function EditorialRankingsSection() {
           <h2 className="text-fluid-h2 font-black tracking-tight text-gray-900 mb-2">
             Explore the Best AI Tools by Category
           </h2>
-          <p className="text-[17px] text-on-surface-variant text-center md:text-left max-w-2xl leading-relaxed">
-            Browse expertly curated rankings featuring the most popular, highest-rated, and most useful AI tools across every major category.
-          </p>
-        </div>
+        </FadeIn>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4 items-start pb-12">
+        <StaggerContainer className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4 items-start pb-12" staggerChildren={0.15}>
           {/* Card 1: Latest AI Tools */}
-          <div className="relative group/wrapper xl:mt-0 transition-transform hover:-translate-y-2 duration-500">
+          <StaggerItem direction="up" className="relative group/wrapper xl:mt-0 transition-transform hover:-translate-y-2 duration-500">
             <div className="absolute -inset-4 rounded-full bg-rose-500/10 blur-[80px] opacity-0 transition-opacity duration-700 group-hover/wrapper:opacity-100 pointer-events-none" />
             <RankingCard
               title="Latest AI Tools"
@@ -66,10 +65,10 @@ export async function EditorialRankingsSection() {
               categoryLink="/latest-ai-tools"
               accentColor="rose"
             />
-          </div>
+          </StaggerItem>
 
           {/* Card 2: Most Popular */}
-          <div className="relative group/wrapper xl:mt-12 transition-transform hover:-translate-y-2 duration-500">
+          <StaggerItem direction="up" className="relative group/wrapper xl:mt-12 transition-transform hover:-translate-y-2 duration-500">
             <div className="absolute -inset-4 rounded-full bg-primary/10 blur-[80px] opacity-0 transition-opacity duration-700 group-hover/wrapper:opacity-100 pointer-events-none" />
             <RankingCard
               title="Most Popular"
@@ -79,10 +78,10 @@ export async function EditorialRankingsSection() {
               categoryLink="/popular-ai-tools"
               accentColor="primary"
             />
-          </div>
+          </StaggerItem>
 
           {/* Card 3: Trending AI Tools */}
-          <div className="relative group/wrapper xl:mt-0 transition-transform hover:-translate-y-2 duration-500">
+          <StaggerItem direction="up" className="relative group/wrapper xl:mt-0 transition-transform hover:-translate-y-2 duration-500">
             <div className="absolute -inset-4 rounded-full bg-emerald-500/10 blur-[80px] opacity-0 transition-opacity duration-700 group-hover/wrapper:opacity-100 pointer-events-none" />
             <RankingCard
               title="Trending AI Tools"
@@ -92,10 +91,10 @@ export async function EditorialRankingsSection() {
               categoryLink="/trending-ai-tools"
               accentColor="emerald"
             />
-          </div>
+          </StaggerItem>
 
           {/* Card 4: Top AI Chatbots */}
-          <div className="relative group/wrapper xl:mt-12 transition-transform hover:-translate-y-2 duration-500">
+          <StaggerItem direction="up" className="relative group/wrapper xl:mt-12 transition-transform hover:-translate-y-2 duration-500">
             <div className="absolute -inset-4 rounded-full bg-blue-500/10 blur-[80px] opacity-0 transition-opacity duration-700 group-hover/wrapper:opacity-100 pointer-events-none" />
             <RankingCard
               title="Top AI Chatbots"
@@ -105,8 +104,8 @@ export async function EditorialRankingsSection() {
               categoryLink="/category/ai-chatbots"
               accentColor="blue"
             />
-          </div>
-        </div>
+          </StaggerItem>
+        </StaggerContainer>
 
         {/* Large Bottom CTA matching the image exactly */}
         <div className="mt-12 flex justify-center">

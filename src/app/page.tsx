@@ -18,6 +18,8 @@ import { ToolCard } from "@/components/shared/ToolCard";
 
 import { getFeaturedTools, getLatestTools, getTrendingTools, getAllTools } from "@/lib/data/tools-service";
 import Link from "next/link";
+import { FadeIn } from "@/components/animations/FadeIn";
+import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 
 import { CommunityReviews } from "@/components/home/CommunityReviews";
 import { SubmitToolCTA } from "@/components/home/SubmitToolCTA";
@@ -47,7 +49,9 @@ export default async function Home() {
       {/* Group Hero and Featured Tools with drastically reduced spacing */}
       <div className="flex flex-col gap-4 md:gap-8 lg:gap-10">
         {/* 1. Hero Section */}
-        <SpotlightBanner />
+        <FadeIn delay={0.1} duration={0.8} direction="up">
+          <SpotlightBanner />
+        </FadeIn>
 
         {/* Glowing Pedestal Transition */}
         {featuredTools.length > 0 && (
@@ -73,11 +77,13 @@ export default async function Home() {
                   View All Categories <span className="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
                 </Link>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 relative z-10">
+              <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 relative z-10" staggerChildren={0.1}>
                 {featuredTools.map((tool) => (
-                  <ToolCard key={tool.id} tool={tool} />
+                  <StaggerItem key={tool.id} direction="up">
+                    <ToolCard tool={tool} />
+                  </StaggerItem>
                 ))}
-              </div>
+              </StaggerContainer>
             </section>
           </div>
         )}
@@ -87,14 +93,16 @@ export default async function Home() {
       <EditorialRankingsSection />
 
       {/* 2. Trust Layer */}
-      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-        <section className="bg-card rounded-[2.5rem] md:rounded-[3rem] shadow-sm border border-border/50 p-6 sm:p-10 md:p-16 relative overflow-hidden">
+      <FadeIn delay={0.2} direction="up" className="w-full relative z-10">
+        <section className="bg-card border-y border-border/50 py-10 sm:py-16 relative overflow-hidden">
           <TrustedByMarquee />
         </section>
-      </div>
+      </FadeIn>
 
       {/* 3. AI Recommendation Engine */}
-      <RecommendationEngine />
+      <FadeIn direction="up">
+        <RecommendationEngine />
+      </FadeIn>
 
       {/* 4. Featured Categories */}
       <HomepageCategories />
@@ -129,14 +137,22 @@ export default async function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
-            {comparisons.map((comparison) => (
-              <ComparisonCard
-                key={comparison.slug}
-                data={comparison}
-              />
-            ))}
-          </div>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" staggerChildren={0.15}>
+            {comparisons.map((comparison) => {
+              const fullTool1 = allTools.find(t => t.name.toLowerCase() === comparison.tool1.name.toLowerCase());
+              const fullTool2 = allTools.find(t => t.name.toLowerCase() === comparison.tool2.name.toLowerCase());
+              
+              return (
+                <StaggerItem key={comparison.slug} direction="up">
+                  <ComparisonCard
+                    data={comparison}
+                    fullTool1={fullTool1}
+                    fullTool2={fullTool2}
+                  />
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
         </section>
       </div>
 
@@ -170,20 +186,21 @@ export default async function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 relative z-10">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 relative z-10" staggerChildren={0.15}>
             {workflows.map((workflow) => (
-              <WorkflowCard
-                key={workflow.slug}
-                title={workflow.title}
-                tools={workflow.tools.map(t => ({
-                  name: t,
-                  logoUrl: toolLogos[t.toLowerCase()] || undefined
-                }))}
-                icon={workflow.icon}
-                slug={workflow.slug}
-              />
+              <StaggerItem key={workflow.slug} direction="up">
+                <WorkflowCard
+                  title={workflow.title}
+                  tools={workflow.tools.map(t => ({
+                    name: t,
+                    logoUrl: toolLogos[t.toLowerCase()] || undefined
+                  }))}
+                  icon={workflow.icon}
+                  slug={workflow.slug}
+                />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </section>
       </div>
 
@@ -213,29 +230,30 @@ export default async function Home() {
               </span>
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" staggerChildren={0.15}>
             {opportunities.map((item) => (
-              <OpportunityCard
-                key={item.title}
-                title={item.title}
-                description={item.description}
-                icon={item.icon}
-                slug={item.slug}
-                difficulty={item.difficulty}
-                roi={item.roi}
-                color={item.color}
-              />
+              <StaggerItem key={item.title} direction="up">
+                <OpportunityCard
+                  title={item.title}
+                  description={item.description}
+                  icon={item.icon}
+                  slug={item.slug}
+                  difficulty={item.difficulty}
+                  roi={item.roi}
+                  color={item.color}
+                />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </section>
       </div>
 
       {/* 10. Community Reviews */}
-      <div className="w-full relative z-10">
+      <FadeIn direction="up" className="w-full relative z-10">
         <section className="py-16 sm:py-24 relative overflow-hidden">
           <CommunityReviews />
         </section>
-      </div>
+      </FadeIn>
 
       {/* 11. Latest AI News */}
       <div className="w-full relative z-10">

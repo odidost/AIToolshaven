@@ -51,72 +51,69 @@ export function MobileNavBar() {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[100] md:hidden">
-      {/* Soft gradient fade above the nav bar to seamlessly blend content */}
-      <div className="absolute bottom-full left-0 right-0 h-12 bg-gradient-to-t from-background to-transparent pointer-events-none opacity-80" />
+    <div className="fixed bottom-0 left-0 right-0 z-[100] md:hidden pb-4 px-4 flex justify-center pointer-events-none">
+      {/* Soft gradient fade behind the pill to ensure readability against complex backgrounds */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none -z-10" />
       
-      {/* Glassmorphic edge-to-edge container */}
-      <div className="bg-background/80 backdrop-blur-2xl border-t border-border/40 shadow-[0_-8px_32px_rgba(0,0,0,0.04)] px-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3">
-        <nav className="flex items-center justify-between max-w-md mx-auto">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
-            
-            if (item.highlight) {
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="group relative flex flex-col items-center justify-center -mt-8 px-2 transition-transform duration-300 active:scale-90"
-                >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-tr from-primary to-accent p-[2px] shadow-xl shadow-primary/25">
-                    <div className="flex h-full w-full items-center justify-center rounded-full bg-background transition-colors group-hover:bg-background/90">
-                      <span className="material-symbols-outlined text-[30px] text-primary transition-transform duration-300 group-hover:rotate-90">
-                        {item.icon}
-                      </span>
-                    </div>
-                  </div>
-                  <span className="mt-1.5 text-[10px] font-bold tracking-widest text-primary uppercase">
-                    {item.name}
-                  </span>
-                </Link>
-              );
-            }
-
+      {/* Glassmorphic Floating Capsule */}
+      <div className="pointer-events-auto bg-white/80 backdrop-blur-2xl border border-white shadow-[0_8px_32px_rgba(0,0,0,0.08)] rounded-[2rem] px-2 py-2 flex items-center justify-between w-full max-w-[24rem] mb-[env(safe-area-inset-bottom)] ring-1 ring-black/5 transition-all">
+        {navItems.map((item) => {
+          const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+          
+          if (item.highlight) {
             return (
               <Link
                 key={item.name}
                 href={item.href}
-                className="relative flex flex-col items-center justify-center w-16 gap-1 group transition-all duration-300 active:scale-95"
+                className="group relative flex items-center justify-center transition-transform duration-300 active:scale-90 px-1"
+                aria-label={item.name}
               >
-                {/* Active Indicator Glow/Pill */}
-                {isActive && (
-                  <div className="absolute inset-0 -z-10 bg-primary/10 rounded-xl scale-110" />
-                )}
-                
-                <span 
-                  className={`material-symbols-outlined text-[26px] transition-all duration-300 ${
-                    isActive 
-                      ? 'text-primary' 
-                      : 'text-muted-foreground group-hover:text-foreground'
-                  }`}
-                  style={{ fontVariationSettings: isActive ? "'FILL' 1" : "'FILL' 0" }}
-                >
-                  {item.icon}
-                </span>
-                
-                <span 
-                  className={`text-[10px] font-semibold tracking-wide transition-all duration-300 ${
-                    isActive 
-                      ? 'text-primary' 
-                      : 'text-muted-foreground group-hover:text-foreground'
-                  }`}
-                >
-                  {item.name}
-                </span>
+                <div className="relative flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-full bg-gradient-to-tr from-rose-400 via-primary to-orange-400 shadow-[0_8px_20px_rgba(255,95,109,0.4)] overflow-hidden">
+                  <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="material-symbols-outlined text-[28px] text-white transition-transform duration-500 group-hover:rotate-180 drop-shadow-sm">
+                    {item.icon}
+                  </span>
+                </div>
               </Link>
             );
-          })}
-        </nav>
+          }
+
+          return (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="relative flex flex-col items-center justify-center w-14 h-[3.25rem] rounded-[1.25rem] group transition-all duration-300 active:scale-90"
+            >
+              {/* Active Indicator Glow */}
+              <div 
+                className={`absolute inset-0 bg-primary/10 rounded-[1.25rem] -z-10 transition-all duration-500 ${
+                  isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                }`} 
+              />
+              
+              <span 
+                className={`material-symbols-outlined text-[24px] transition-all duration-500 ease-out ${
+                  isActive 
+                    ? 'text-primary -translate-y-2' 
+                    : 'text-slate-400 group-hover:text-slate-600 group-hover:-translate-y-1'
+                }`}
+                style={{ fontVariationSettings: isActive ? "'FILL' 1" : "'FILL' 0" }}
+              >
+                {item.icon}
+              </span>
+              
+              <span 
+                className={`absolute bottom-2 text-[10px] font-bold tracking-wide uppercase transition-all duration-500 ease-out ${
+                  isActive 
+                    ? 'text-primary opacity-100 translate-y-0' 
+                    : 'text-slate-400 opacity-0 translate-y-4'
+                }`}
+              >
+                {item.name}
+              </span>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

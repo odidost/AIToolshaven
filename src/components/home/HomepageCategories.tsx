@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { goals } from '@/lib/goals';
+import { FadeIn } from '@/components/animations/FadeIn';
+import { StaggerContainer, StaggerItem } from '@/components/animations/StaggerContainer';
 
 export function HomepageCategories() {
   // A set of vibrant gradients to use for the icon containers
@@ -26,14 +28,14 @@ export function HomepageCategories() {
       <section className="bg-gradient-to-b from-white to-primary/5 shadow-[0_8px_32px_rgba(0,0,0,0.02)] border-y border-black/5 py-16 sm:py-24 relative overflow-hidden">
         
         <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 relative z-10">
+          <FadeIn direction="up" className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 relative z-10">
             <div>
               <div className="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-full mb-6 shadow-sm border border-black/5">
                 <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>category</span>
                 <span className="text-[11px] font-black uppercase tracking-[0.2em]">Explore by Goal</span>
               </div>
               <h2 className="text-fluid-h2 font-black text-slate-900 tracking-tight leading-tight">
-                Browse Categories
+                Browse by your Goals
               </h2>
             </div>
             <Link 
@@ -46,19 +48,23 @@ export function HomepageCategories() {
                 arrow_forward
               </span>
             </Link>
-          </div>
+          </FadeIn>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 relative z-10">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 relative z-10" staggerChildren={0.1}>
             {goals.slice(0, 6).map((goal, index) => {
               const bgClass = badgeColors[index % badgeColors.length];
               const gradientClass = iconGradients[index % iconGradients.length];
 
               return (
-                <Link
+                <StaggerItem
                   key={goal.slug}
-                  href={`/goals/${goal.slug}`}
+                  direction="up"
                   className="group relative flex flex-col items-center p-6 bg-white rounded-[2rem] border border-black/5 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                 >
+                  <Link href={`/goals/${goal.slug}`} className="absolute inset-0 z-20">
+                    <span className="sr-only">{goal.title}</span>
+                  </Link>
+
                   <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${gradientClass} bg-opacity-10 flex items-center justify-center mb-4 relative z-10 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
                     <div className="absolute inset-0 bg-white/20 rounded-2xl backdrop-blur-sm" />
                     <span className="material-symbols-outlined text-[32px] text-white relative z-10 drop-shadow-sm" style={{ fontVariationSettings: "'FILL' 1" }}>
@@ -76,10 +82,10 @@ export function HomepageCategories() {
 
                   {/* Hover ambient glow */}
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                </Link>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
     </div>
