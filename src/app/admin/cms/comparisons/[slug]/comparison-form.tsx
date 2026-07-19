@@ -93,7 +93,7 @@ export function ComparisonForm({ initialData, comparisonSlug }: { initialData: a
           </div>
           <div className="flex items-center gap-3">
             {initialData && (
-              <a href={`/compare/${initialData.slug}`} target="_blank" rel="noreferrer">
+              <a href={`/compare-tools/${initialData.slug}`} target="_blank" rel="noreferrer">
                 <Button variant="outline" type="button">
                   <Eye className="mr-2 h-4 w-4" />
                   Preview

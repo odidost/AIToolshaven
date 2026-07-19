@@ -13,10 +13,11 @@ export function BackgroundPattern({ type, className = '', opacity = 0.03 }: Back
     switch (type) {
       case 'ambient':
         return (
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-0 left-0 w-[80%] h-[80%] rounded-full bg-primary/5 blur-[160px] pointer-events-none" />
-            <div className="absolute top-[20%] right-0 w-[70%] h-[70%] rounded-full bg-accent/5 blur-[160px] pointer-events-none" />
-            <div className="absolute bottom-0 left-[20%] w-[60%] h-[60%] rounded-full bg-secondary/5 blur-[160px] pointer-events-none" />
+          <div className="absolute inset-0 overflow-hidden bg-transparent">
+            <div className="absolute inset-0 opacity-[0.04] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay pointer-events-none z-0"></div>
+            <div className="absolute top-0 left-0 w-[80%] h-[80%] rounded-full bg-primary/10 blur-[160px] pointer-events-none z-0" />
+            <div className="absolute top-[20%] right-0 w-[70%] h-[70%] rounded-full bg-primary/5 blur-[160px] pointer-events-none z-0" />
+            <div className="absolute bottom-0 left-[20%] w-[60%] h-[60%] rounded-full bg-secondary/5 blur-[160px] pointer-events-none z-0" />
           </div>
         );
       case 'aurora':

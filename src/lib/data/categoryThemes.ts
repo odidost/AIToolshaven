@@ -76,7 +76,7 @@ export const categoryThemes: Record<string, CategoryTheme> = {
     ],
     internalLinks: [
       { title: "Best AI Copywriting Tools", href: "/category/marketing-sales" },
-      { title: "ChatGPT vs Jasper", href: "/compare/chatgpt-vs-jasper" },
+      { title: "ChatGPT vs Jasper", href: "/compare-tools/chatgpt-vs-jasper" },
       { title: "Automate Blog Writing", href: "/workflows/blog-automation" },
     ]
   },
@@ -176,7 +176,7 @@ export const categoryThemes: Record<string, CategoryTheme> = {
     ],
     internalLinks: [
       { title: "Best AI Audio Tools", href: "/category/audio-voice" },
-      { title: "HeyGen vs Synthesia", href: "/compare/heygen-vs-synthesia" },
+      { title: "HeyGen vs Synthesia", href: "/compare-tools/heygen-vs-synthesia" },
     ]
   },
   "audio-voice": {
@@ -265,7 +265,7 @@ export const categoryThemes: Record<string, CategoryTheme> = {
       }
     ],
     internalLinks: [
-      { title: "GitHub Copilot vs Cursor", href: "/compare/github-copilot-vs-cursor" },
+      { title: "GitHub Copilot vs Cursor", href: "/compare-tools/github-copilot-vs-cursor" },
       { title: "Best AI for Web Dev", href: "/workflows/web-development" },
     ]
   },
@@ -400,7 +400,7 @@ export const categoryThemes: Record<string, CategoryTheme> = {
       }
     ],
     internalLinks: [
-      { title: "ChatGPT vs Claude", href: "/compare/chatgpt-vs-claude" },
+      { title: "ChatGPT vs Claude", href: "/compare-tools/chatgpt-vs-claude" },
       { title: "Best AI Coding Assistants", href: "/category/coding-assistants" },
     ]
   }

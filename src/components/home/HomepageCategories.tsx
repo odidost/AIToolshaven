@@ -1,162 +1,87 @@
 import Link from 'next/link';
 import { goals } from '@/lib/goals';
 
-const pillColors = [
-  'bg-purple-600 text-white border-purple-400/30 hover:bg-purple-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_4px_6px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(147,51,234,0.4)]',
-  'bg-blue-600 text-white border-blue-400/30 hover:bg-blue-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_4px_6px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]',
-  'bg-emerald-600 text-white border-emerald-400/30 hover:bg-emerald-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_4px_6px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(5,150,105,0.4)]',
-  'bg-orange-600 text-white border-orange-400/30 hover:bg-orange-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_4px_6px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(234,88,12,0.4)]',
-  'bg-pink-600 text-white border-pink-400/30 hover:bg-pink-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_4px_6px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(219,39,119,0.4)]',
-  'bg-cyan-600 text-white border-cyan-400/30 hover:bg-cyan-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_4px_6px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(8,145,178,0.4)]',
-  'bg-indigo-600 text-white border-indigo-400/30 hover:bg-indigo-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_4px_6px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(79,70,229,0.4)]',
-  'bg-rose-600 text-white border-rose-400/30 hover:bg-rose-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_4px_6px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(225,29,72,0.4)]',
-];
-
 export function HomepageCategories() {
-  const validItems = goals;
-  
-  // Split into two rows
-  const midPoint = Math.ceil(validItems.length / 2);
-  const topItems = validItems.slice(0, midPoint);
-  const bottomItems = validItems.slice(midPoint);
+  // A set of vibrant gradients to use for the icon containers
+  const iconGradients = [
+    'from-rose-400 to-orange-400 text-rose-600',
+    'from-blue-400 to-indigo-400 text-blue-600',
+    'from-emerald-400 to-teal-400 text-emerald-600',
+    'from-purple-400 to-pink-400 text-purple-600',
+    'from-amber-400 to-orange-500 text-amber-600',
+    'from-cyan-400 to-blue-500 text-cyan-600',
+  ];
 
-  // Duplicate heavily for infinite marquee effect so it never runs out
-  const topMarquee = [...topItems, ...topItems, ...topItems, ...topItems, ...topItems, ...topItems, ...topItems];
-  const bottomMarquee = [...bottomItems, ...bottomItems, ...bottomItems, ...bottomItems, ...bottomItems, ...bottomItems, ...bottomItems];
+  const badgeColors = [
+    'bg-rose-50 text-rose-600 border-rose-100',
+    'bg-blue-50 text-blue-600 border-blue-100',
+    'bg-emerald-50 text-emerald-600 border-emerald-100',
+    'bg-purple-50 text-purple-600 border-purple-100',
+    'bg-amber-50 text-amber-600 border-amber-100',
+    'bg-cyan-50 text-cyan-600 border-cyan-100',
+  ];
 
   return (
-    <section className="relative w-full py-20 md:py-24 overflow-hidden bg-slate-50 dark:bg-[#05050A] border-y border-border/20 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]">
-      
-      {/* Premium Background Effects */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Deep mesh grid pattern */}
-        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.06] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay"></div>
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
-          <defs>
-            <pattern id="premium-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#premium-grid)" />
-        </svg>
-
-        {/* Ambient Glowing Orbs */}
-        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-primary/20 dark:bg-primary/10 blur-[120px]" />
-        <div className="absolute top-[60%] -right-[10%] w-[40%] h-[60%] rounded-full bg-secondary/20 dark:bg-secondary/10 blur-[120px]" />
-        <div className="absolute top-[20%] left-[40%] w-[30%] h-[30%] rounded-full bg-accent/20 dark:bg-accent/10 blur-[100px]" />
-      </div>
-
-      {/* Dynamic Edge Light */}
-      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-      
-      <div className="relative z-10 w-full max-w-[1920px] 2xl:max-w-[2560px] mx-auto">
+    <div className="w-full relative z-10">
+      <section className="bg-gradient-to-b from-white to-primary/5 shadow-[0_8px_32px_rgba(0,0,0,0.02)] border-y border-black/5 py-16 sm:py-24 relative overflow-hidden">
         
-        {/* Section Header */}
-        <div className="flex flex-col items-center justify-center text-center mb-16 px-5 sm:px-8">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 backdrop-blur-md">
-             <span className="material-symbols-outlined text-sm text-primary">interests</span>
-             <span className="text-[11px] font-bold tracking-widest text-primary uppercase">Curated Paths</span>
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 relative z-10">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-full mb-6 shadow-sm border border-black/5">
+                <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>category</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.2em]">Explore by Goal</span>
+              </div>
+              <h2 className="text-fluid-h2 font-black text-slate-900 tracking-tight leading-tight">
+                Browse Categories
+              </h2>
+            </div>
+            <Link 
+              href="/categories" 
+              className="group relative inline-flex items-center gap-2 px-6 py-2.5 bg-white rounded-full text-[14px] font-bold text-primary shadow-sm border border-black/5 hover:border-primary/20 hover:shadow-md transition-all overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="relative z-10">View All</span>
+              <span className="material-symbols-outlined text-[18px] relative z-10 group-hover:translate-x-1 transition-transform">
+                arrow_forward
+              </span>
+            </Link>
           </div>
-          <h2 className="text-fluid-h1 font-black tracking-tight bg-gradient-to-br from-foreground via-foreground to-muted-foreground bg-clip-text text-transparent">
-            Browse by Goal
-          </h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 relative z-10">
+            {goals.slice(0, 6).map((goal, index) => {
+              const bgClass = badgeColors[index % badgeColors.length];
+              const gradientClass = iconGradients[index % iconGradients.length];
+
+              return (
+                <Link
+                  key={goal.slug}
+                  href={`/goals/${goal.slug}`}
+                  className="group relative flex flex-col items-center p-6 bg-white rounded-[2rem] border border-black/5 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+                >
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${gradientClass} bg-opacity-10 flex items-center justify-center mb-4 relative z-10 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
+                    <div className="absolute inset-0 bg-white/20 rounded-2xl backdrop-blur-sm" />
+                    <span className="material-symbols-outlined text-[32px] text-white relative z-10 drop-shadow-sm" style={{ fontVariationSettings: "'FILL' 1" }}>
+                      {goal.icon}
+                    </span>
+                  </div>
+
+                  <h3 className="font-bold text-slate-900 text-center mb-2 group-hover:text-primary transition-colors relative z-10 line-clamp-2 min-h-[40px] flex items-center">
+                    {goal.title}
+                  </h3>
+
+                  <span className={`mt-auto text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${bgClass} relative z-10`}>
+                    {goal.count} Tools
+                  </span>
+
+                  {/* Hover ambient glow */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                </Link>
+              );
+            })}
+          </div>
         </div>
-
-        {/* Marquee Container */}
-        <div className="relative flex flex-col gap-6 overflow-hidden py-6">
-          
-          {/* Gradient Masks for smooth fade on the edges */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-64 bg-gradient-to-r from-slate-50 dark:from-[#05050A] to-transparent z-20"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-64 bg-gradient-to-l from-slate-50 dark:from-[#05050A] to-transparent z-20"></div>
-
-          {/* Top Row (Moving Right to Left) */}
-          <div className="flex overflow-hidden group">
-            <div className="flex animate-marquee items-center gap-5 w-max shrink-0 pr-5">
-              {topMarquee.map((item, idx) => {
-                const colorClass = pillColors[idx % pillColors.length];
-                return (
-                  <Link
-                    key={`top1-${item.slug}-${idx}`}
-                    href={`/goals/${item.slug}`}
-                    className={`group flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 hover:-translate-y-[2px] whitespace-nowrap flex-shrink-0 backdrop-blur-sm ${colorClass}`}
-                  >
-                    <span className="material-symbols-outlined text-[22px] leading-none transition-transform duration-300 group-hover:scale-110 drop-shadow-sm">
-                      {item.icon}
-                    </span>
-                    <span className="font-bold text-[15px] tracking-wide drop-shadow-sm">
-                      {item.title}
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
-            <div className="flex animate-marquee items-center gap-5 w-max shrink-0 pr-5" aria-hidden="true">
-              {topMarquee.map((item, idx) => {
-                const colorClass = pillColors[idx % pillColors.length];
-                return (
-                  <Link
-                    key={`top2-${item.slug}-${idx}`}
-                    href={`/goals/${item.slug}`}
-                    className={`group flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 hover:-translate-y-[2px] whitespace-nowrap flex-shrink-0 backdrop-blur-sm ${colorClass}`}
-                    tabIndex={-1}
-                  >
-                    <span className="material-symbols-outlined text-[22px] leading-none transition-transform duration-300 group-hover:scale-110 drop-shadow-sm">
-                      {item.icon}
-                    </span>
-                    <span className="font-bold text-[15px] tracking-wide drop-shadow-sm">
-                      {item.title}
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Bottom Row (Moving Left to Right) */}
-          <div className="flex overflow-hidden group">
-            <div className="flex animate-marquee-reverse items-center gap-5 w-max shrink-0 pr-5">
-              {bottomMarquee.map((item, idx) => {
-                const colorClass = pillColors[(idx + 3) % pillColors.length];
-                return (
-                  <Link
-                    key={`bottom1-${item.slug}-${idx}`}
-                    href={`/goals/${item.slug}`}
-                    className={`group flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 hover:-translate-y-[2px] whitespace-nowrap flex-shrink-0 backdrop-blur-sm ${colorClass}`}
-                  >
-                    <span className="material-symbols-outlined text-[22px] leading-none transition-transform duration-300 group-hover:scale-110 drop-shadow-sm">
-                      {item.icon}
-                    </span>
-                    <span className="font-bold text-[15px] tracking-wide drop-shadow-sm">
-                      {item.title}
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
-            <div className="flex animate-marquee-reverse items-center gap-5 w-max shrink-0 pr-5" aria-hidden="true">
-              {bottomMarquee.map((item, idx) => {
-                const colorClass = pillColors[(idx + 3) % pillColors.length];
-                return (
-                  <Link
-                    key={`bottom2-${item.slug}-${idx}`}
-                    href={`/goals/${item.slug}`}
-                    className={`group flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 hover:-translate-y-[2px] whitespace-nowrap flex-shrink-0 backdrop-blur-sm ${colorClass}`}
-                    tabIndex={-1}
-                  >
-                    <span className="material-symbols-outlined text-[22px] leading-none transition-transform duration-300 group-hover:scale-110 drop-shadow-sm">
-                      {item.icon}
-                    </span>
-                    <span className="font-bold text-[15px] tracking-wide drop-shadow-sm">
-                      {item.title}
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

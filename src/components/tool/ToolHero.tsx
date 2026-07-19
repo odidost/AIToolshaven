@@ -11,7 +11,7 @@ type ToolHeroProps = {
 
 export function ToolHero({ tool }: ToolHeroProps) {
     const compareTool = getComparisonCandidates(tool, 1)[0];
-    const compareHref = compareTool ? `/compare/${tool.slug}-vs-${compareTool.slug}` : `/compare/${tool.slug}`;
+    const compareHref = compareTool ? `/compare-tools/${tool.slug}-vs-${compareTool.slug}` : `/compare-tools/${tool.slug}`;
 
     return (
         <section className="relative mb-20">

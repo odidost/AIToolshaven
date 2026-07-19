@@ -7,7 +7,7 @@ interface SectionContainerProps extends React.HTMLAttributes<HTMLElement> {
 
 export function SectionContainer({ className, children, as: Component = "section", ...props }: SectionContainerProps) {
   return (
-    <Component className={cn("py-10 md:py-16 lg:py-20", className)} {...props}>
+    <Component className={cn("py-16 md:py-24 lg:py-28", className)} {...props}>
       {children}
     </Component>
   );

@@ -105,7 +105,7 @@ export const columns: ColumnDef<ComparisonRow>[] = [
             </DropdownMenuItem>
 
             <DropdownMenuItem asChild>
-              <a href={`/compare/${comparison.slug}`} target="_blank" rel="noreferrer" className="flex items-center cursor-pointer">
+              <a href={`/compare-tools/${comparison.slug}`} target="_blank" rel="noreferrer" className="flex items-center cursor-pointer">
                 <Globe className="mr-2 h-4 w-4" /> View Live
               </a>
             </DropdownMenuItem>

@@ -25,7 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const compareEntries: MetadataRoute.Sitemap = comparisons.map((c) => ({
-    url: `${BASE_URL}/compare/${c.slug}`,
+    url: `${BASE_URL}/compare-tools/${c.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.7,

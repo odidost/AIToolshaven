@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ 
+const plusJakartaSans = Plus_Jakarta_Sans({ 
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-plus-jakarta",
 });
 
 import { siteConfig } from "@/lib/config/site";
@@ -95,7 +95,7 @@ export default function RootLayout({
   const manifest = getAssetManifest();
 
   return (
-    <html lang="en" className={`h-full antialiased ${inter.variable} font-sans`}>
+    <html lang="en" className={`h-full antialiased ${plusJakartaSans.variable} font-sans`}>
       <head>
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link

@@ -39,7 +39,7 @@ export function AlternativesGrid({ mainTool, compareTool, alternativeTools }: Al
                             <Link href={tool.websiteUrl || `/tool/${tool.slug}`} className="text-center text-sm font-semibold text-primary bg-primary/10 hover:bg-primary/20 py-2.5 rounded-xl transition-colors">
                                 Try {tool.name}
                             </Link>
-                            <Link href={`/compare/${mainTool.slug}-vs-${tool.slug}`} className="text-center text-sm font-semibold text-on-surface hover:text-primary transition-colors">
+                            <Link href={`/compare-tools/${mainTool.slug}-vs-${tool.slug}`} className="text-center text-sm font-semibold text-on-surface hover:text-primary transition-colors">
                                 Compare vs {mainTool.name} &rarr;
                             </Link>
                         </div>

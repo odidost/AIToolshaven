@@ -227,7 +227,7 @@ export default async function ToolPage({ params }: Props) {
             <h3 className="text-fluid-h3 font-bold tracking-tight mb-6 text-on-surface">Workflows Using {tool.name}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {toolWorkflows.map(w => (
-                <WorkflowCard key={w.slug} title={w.title} tools={w.tools} icon={w.icon} />
+                <WorkflowCard key={w.slug} title={w.title} tools={w.tools.map(t => ({ name: t }))} icon={w.icon} slug={w.slug} />
               ))}
             </div>
           </section>

@@ -16,42 +16,41 @@ export default {
         'fluid-base': ['clamp(0.875rem, 1.25vw, 1rem)', { lineHeight: '1.6' }],
       },
       colors: {
-        surface: '#FFFFFF',
-        'surface-secondary': '#F5F7FB',
+        surface: 'var(--card)',
+        'surface-secondary': 'var(--muted)',
         'surface-section': 'var(--surface-section)',
         'surface-elevated': 'var(--surface-elevated)',
-        'surface-container': '#FFFFFF', // keep for compatibility if used
-        outline: '#E5EAF2',
-        'outline-variant': '#E5EAF2',
+        'surface-container': 'var(--card)',
+        outline: 'var(--border)',
+        'outline-variant': 'var(--border)',
         primary: {
-          DEFAULT: '#7C3AED',
-          container: '#F3E8FF',
-          foreground: '#FFFFFF',
+          DEFAULT: 'var(--primary)',
+          foreground: 'var(--primary-foreground)',
         },
         secondary: {
-          DEFAULT: '#A855F7',
-          foreground: '#FFFFFF',
+          DEFAULT: 'var(--secondary)',
+          foreground: 'var(--secondary-foreground)',
         },
         success: {
-          DEFAULT: '#22C55E',
-          foreground: '#FFFFFF',
+          DEFAULT: 'var(--success)',
+          foreground: 'var(--success-foreground)',
         },
         warning: {
-          DEFAULT: '#F59E0B',
-          foreground: '#FFFFFF',
+          DEFAULT: 'var(--warning)',
+          foreground: 'var(--warning-foreground)',
+        },
+        destructive: {
+          DEFAULT: 'var(--destructive)',
+          foreground: 'var(--destructive-foreground)',
         },
         on: {
-          surface: '#111827', // Headings
-          'surface-variant': '#6B7280', // Body Text
+          surface: 'var(--foreground)',
+          'surface-variant': 'var(--muted-foreground)',
         },
         accent: {
-          cyan: '#22D3EE',
-          indigo: '#6366F1',
-          DEFAULT: '#14B8A6',
-          container: '#CCFBF1',
-          foreground: '#FFFFFF',
+          DEFAULT: 'var(--accent)',
+          foreground: 'var(--accent-foreground)',
         },
-        // Semantic tokens map to CSS variables for potential theming
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         card: {
@@ -71,7 +70,7 @@ export default {
         ring: 'var(--ring)',
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'sans-serif'],
+        sans: ['var(--font-plus-jakarta)', 'sans-serif'],
       },
       borderRadius: {
         xl: '0.75rem',
@@ -81,15 +80,15 @@ export default {
         full: '9999px', // Badges
       },
       boxShadow: {
-        'xs': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-        'sm': '0 2px 4px rgba(15, 23, 42, 0.04), 0 4px 6px rgba(15, 23, 42, 0.02)',
-        'md': '0 4px 6px rgba(15, 23, 42, 0.04), 0 8px 12px rgba(15, 23, 42, 0.03)',
-        'lg': '0 8px 16px rgba(15, 23, 42, 0.05), 0 16px 24px rgba(15, 23, 42, 0.03)',
-        'xl': '0 12px 24px rgba(15, 23, 42, 0.06), 0 24px 48px rgba(15, 23, 42, 0.04)',
-        'hover': '0 16px 32px rgba(15, 23, 42, 0.08), 0 32px 64px rgba(15, 23, 42, 0.05)',
-        '2xl': '0 20px 40px rgba(15, 23, 42, 0.08), 0 40px 80px rgba(15, 23, 42, 0.06)',
-        'glow': '0 0 20px rgba(124, 58, 237, 0.10)', // Soft primary glow
-        'glow-primary': '0 0 20px rgba(124, 58, 237, 0.20)', // Primary glow
+        'xs': '0 1px 2px 0 rgba(15, 23, 42, 0.04)',
+        'sm': '0 2px 4px rgba(15, 23, 42, 0.02), 0 4px 6px rgba(15, 23, 42, 0.02)',
+        'md': '0 4px 6px rgba(15, 23, 42, 0.03), 0 8px 12px rgba(15, 23, 42, 0.02)',
+        'lg': '0 8px 16px rgba(15, 23, 42, 0.04), 0 16px 24px rgba(15, 23, 42, 0.02)',
+        'xl': '0 12px 24px rgba(15, 23, 42, 0.04), 0 24px 48px rgba(15, 23, 42, 0.02)',
+        'hover': '0 16px 40px rgba(15, 23, 42, 0.06), 0 32px 80px rgba(15, 23, 42, 0.04)',
+        '2xl': '0 20px 40px rgba(15, 23, 42, 0.06), 0 40px 80px rgba(15, 23, 42, 0.04)',
+        'glow': '0 0 40px rgba(146, 71, 242, 0.15)',
+        'glow-primary': '0 0 60px rgba(146, 71, 242, 0.25)',
       },
       keyframes: {
         marquee: {

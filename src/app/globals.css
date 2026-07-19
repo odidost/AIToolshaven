@@ -4,36 +4,48 @@
 
 @layer base {
   :root {
-    --background: #F3F5FA;
-    --foreground: #111827;
+    /* Background Layering (Soft Pearl Light Mode) */
+    --background: #FAFAFA;
+    --foreground: #0F172A;
 
-    --surface-section: #F7F9FC;
-    --card: #FBFCFE;
-    --card-foreground: #111827;
+    --surface-section: #FFFFFF;
+    --card: #FFFFFF;
+    --card-foreground: #0F172A;
 
-    --surface-elevated: rgba(255, 255, 255, 0.88);
+    --surface-elevated: #F8FAFC;
 
     --popover: #FFFFFF;
-    --popover-foreground: #111827;
+    --popover-foreground: #0F172A;
 
-    --primary: #7C3AED;
+    /* Brand Evolution (Sunset Ember) */
+    --primary: #FF5F6D;
     --primary-foreground: #FFFFFF;
 
-    --secondary: #A855F7;
-    --secondary-foreground: #FFFFFF;
+    --secondary: #FFC371;
+    --secondary-foreground: #0F172A;
 
-    --muted: #F7F9FC;
-    --muted-foreground: #667085;
-
-    --accent: #14B8A6;
+    /* Restrained Accent */
+    --accent: #FF8C69;
     --accent-foreground: #FFFFFF;
 
-    --destructive: #EF4444;
-    --destructive-foreground: #FAFAFA;
+    /* Muted & UI Elements */
+    --muted: #F1F5F9;
+    --muted-foreground: #64748B;
 
-    --border: #E5EAF2;
-    --input: #E5EAF2;
-    --ring: #7C3AED;
+    /* Semantic Status */
+    --success: #10B981;
+    --success-foreground: #FFFFFF;
+    
+    --warning: #F59E0B;
+    --warning-foreground: #FFFFFF;
+
+    --destructive: #EF4444;
+    --destructive-foreground: #FFFFFF;
+
+    /* Soft Glass Borders */
+    --border: #E2E8F0;
+    --input: #E2E8F0;
+    --ring: #FF5F6D;
 
     --radius: 1rem;
   }
@@ -45,8 +57,13 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary overflow-x-hidden;
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  ::selection {
+    background-color: rgba(255, 95, 109, 0.2);
+    color: #0F172A;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -158,4 +175,11 @@
 
 .animate-pulse-glow {
   animation: ai-pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes float-up {
+  0%, 25% { transform: translateY(0); }
+  33%, 58% { transform: translateY(-1rem); }
+  66%, 91% { transform: translateY(-2rem); }
+  100% { transform: translateY(0); }
 }

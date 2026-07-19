@@ -44,11 +44,13 @@ export function RankingRow({ tool, rank, isStar, accentColor = "primary" }: Rank
       <div className={`absolute -inset-x-2 inset-y-0 rounded-lg transition-colors -z-10 hidden md:block ${activeHoverBg}`} />
 
       <div className="flex items-center gap-3 min-w-0 flex-1 pl-1">
-        <div className="flex w-5 shrink-0 items-center justify-end text-[13px] text-on-surface-variant/70">
+        <div className="flex w-5 shrink-0 items-center justify-end text-[13px] font-bold">
           {isStar ? (
-            <span className="material-symbols-outlined text-[14px] text-[#ff6be1]">star</span>
+            <span className="material-symbols-outlined text-[14px] text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
           ) : (
-            `${rank}.`
+            <span className={`bg-clip-text text-transparent bg-gradient-to-br from-gray-900 to-gray-500 drop-shadow-sm`}>
+              {rank}.
+            </span>
           )}
         </div>
         
@@ -60,12 +62,12 @@ export function RankingRow({ tool, rank, isStar, accentColor = "primary" }: Rank
           />
         </div>
 
-        <h4 className="truncate text-[13px] font-medium text-on-surface/90 group-hover:text-primary transition-colors">
+        <h4 className="truncate text-[13px] font-medium text-gray-900/90 group-hover:text-gray-900 transition-colors">
           {tool.name}
         </h4>
       </div>
 
-      <div className={`flex shrink-0 items-center justify-center rounded-[3px] border border-gray-200 bg-transparent text-gray-300 w-[14px] h-[14px] opacity-60 transition-all duration-300 group-hover:opacity-100 ${activeLinkIconHover}`}>
+      <div className={`flex shrink-0 items-center justify-center rounded-[3px] border border-black/10 bg-black/5 text-gray-500 w-[14px] h-[14px] opacity-60 transition-all duration-300 group-hover:opacity-100 ${activeLinkIconHover}`}>
         <span className="material-symbols-outlined text-[9px]">open_in_new</span>
       </div>
     </Link>

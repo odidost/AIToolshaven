@@ -19,7 +19,7 @@ export const articles: Article[] = [
     readTime: "5 min read",
     author: "Alex Rivers",
     summary: "Learn how to launch and scale a faceless YouTube automation channel using tools like ChatGPT, ElevenLabs, and CapCut.",
-    imageUrl: "/assets/blog/faceless-youtube-v2.png",
+    imageUrl: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop",
     content: `
       <p class="lead text-lg text-on-surface-variant mb-6">Faceless YouTube channels, often referred to as "<a href="/category/video-creation" class="text-primary hover:underline font-semibold">YouTube Automation</a>," have become one of the most lucrative side hustles of 2026. By leveraging artificial intelligence, creators can write scripts, generate voices, create video clips, and design thumbnails in a fraction of the time.</p>
       
@@ -56,7 +56,7 @@ export const articles: Article[] = [
     readTime: "7 min read",
     author: "Elena Vance",
     summary: "A step-by-step guide to generating virtual influencers on Instagram and TikTok using Midjourney and stable diffusion models.",
-    imageUrl: "/assets/blog/ai-influencer-v2.png",
+    imageUrl: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop",
     content: `
       <p class="lead text-lg text-on-surface-variant mb-6">Virtual avatars and <a href="/category/image-generation" class="text-primary hover:underline font-semibold">AI influencers</a> are signing real-world modeling contracts, sponsorship deals, and gaining millions of followers. Building your own virtual persona is easier than ever with modern generative models.</p>
       
@@ -82,7 +82,7 @@ export const articles: Article[] = [
     readTime: "6 min read",
     author: "Devon Miller",
     summary: "What is vibe coding and which AI agents (Cursor, Lovable, Claude) you need to build software without writing code.",
-    imageUrl: "/assets/blog/vibe-coding-v2.png",
+    imageUrl: "https://images.unsplash.com/photo-1633412802994-5c058f151b66?q=80&w=800&auto=format&fit=crop",
     content: `
       <p class="lead text-lg text-on-surface-variant mb-6">"<a href="/category/coding-assistants" class="text-primary hover:underline font-semibold">Vibe Coding</a>" is the art of building production-grade web applications entirely via conversational prompts, letting AI agents handle compilation, syntax, and deployments while you direct the product vision.</p>
       
@@ -108,7 +108,7 @@ export const articles: Article[] = [
     readTime: "6 min read",
     author: "Marcus Chen",
     summary: "Boost productivity and automate client outreach, bookkeeping, and customer support using affordable AI software.",
-    imageUrl: "/assets/blog/small-business-v2.png",
+    imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop",
     content: `
       <p class="lead text-lg text-on-surface-variant mb-6">Small business owners wear a lot of hats: accountant, <a href="/category/marketing-sales" class="text-primary hover:underline font-semibold">marketer</a>, salesperson, and support representative. AI tools act as digital assistants, allowing small teams to operate with the capacity of large corporations.</p>
       
@@ -135,7 +135,7 @@ export const articles: Article[] = [
     readTime: "8 min read",
     author: "Sarah Jenkins",
     summary: "An in-depth comparison of Sora, Runway Gen-3, Luma Dream Machine, and Kling AI for high-fidelity video production.",
-    imageUrl: "/assets/blog/video-generators.png",
+    imageUrl: "https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?q=80&w=800&auto=format&fit=crop",
     content: `
       <p class="lead text-lg text-on-surface-variant mb-6">Text-to-video quality has evolved from uncanny animations to cinematic, photorealistic sequences. We compare the leading <a href="/category/video-creation" class="text-primary hover:underline font-semibold">video models</a> available to creators in 2026.</p>
       
@@ -163,7 +163,7 @@ export const articles: Article[] = [
     readTime: "5 min read",
     author: "Taylor Reed",
     summary: "Practical workflow templates connecting AI agents to automate your weekly content pipeline and meeting notes.",
-    imageUrl: "/assets/blog/ai-workflows.png",
+    imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop",
     content: `
       <p class="lead text-lg text-on-surface-variant mb-6">Copying and pasting text between different AI tools is a major time sink. The secret to 10x <a href="/category/productivity" class="text-primary hover:underline font-semibold">productivity</a> is chain-linking AI tools into automated workflows that trigger in the background.</p>
       

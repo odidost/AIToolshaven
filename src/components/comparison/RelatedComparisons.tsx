@@ -24,7 +24,7 @@ export function RelatedComparisons({ mainTool, compareTool }: RelatedComparisons
                 {allComparisons.map((slug, idx) => (
                     <Link 
                         key={idx} 
-                        href={`/compare/${mainTool.slug}-vs-${slug}`}
+                        href={`/compare-tools/${mainTool.slug}-vs-${slug}`}
                         className="bg-surface rounded-2xl p-5 border border-border shadow-sm transition-all hover:shadow-md hover:-translate-y-1 hover:border-primary/30 flex flex-col items-center text-center group"
                     >
                         <div className="flex items-center justify-center gap-2 mb-3">

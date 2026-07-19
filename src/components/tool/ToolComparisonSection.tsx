@@ -70,7 +70,7 @@ export default function ToolComparisonSection({
                             </p>
 
                             <Link
-                                href={`/compare/${tool.slug}-vs-${comparisonTool.slug}`}
+                                href={`/compare-tools/${tool.slug}-vs-${comparisonTool.slug}`}
                                 className="mt-auto flex w-full items-center justify-center gap-2 rounded-xl border border-border/50 bg-white px-4 py-3 text-sm font-semibold text-on-surface transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-white group-hover:shadow-glow-primary relative z-10"
                             >
                                 Compare Now
@@ -82,7 +82,7 @@ export default function ToolComparisonSection({
 
                 <div className="mt-10 flex justify-center relative z-10">
                     <Link
-                        href="/compare"
+                        href="/compare-tools"
                         className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
                     >
                         View All Comparisons

@@ -18,7 +18,7 @@ export function GoalCard({
             href={`/goals/${slug}`}
             className="group block h-full"
         >
-            <div className="h-full bg-card border border-border rounded-[20px] p-5 hover:border-primary/30 shadow-sm hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+            <div className="h-full bg-card border border-border/60 rounded-2xl p-5 hover:border-primary/30 shadow-sm hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
                 <div className="absolute -right-4 -bottom-4 h-24 w-24 rounded-full bg-primary/5 transition-transform duration-500 group-hover:scale-150 pointer-events-none" />
 
                 <div className="flex items-center gap-4 mb-4 relative z-10">
