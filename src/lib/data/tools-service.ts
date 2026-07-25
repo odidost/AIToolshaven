@@ -241,19 +241,19 @@ export async function getRecommendationsByPersona(role: string, goal: string): P
         const matchesRole = t.bestFor?.some(b => b.toLowerCase().includes(roleLower));
         
         const matchesGoal = 
-            t.useCases?.some(u => u.toLowerCase().includes(goalLower) || goalLower.includes(u.toLowerCase())) ||
+            t.useCases?.some(u => { const val = typeof u === 'string' ? u : u.title; return val.toLowerCase().includes(goalLower) || goalLower.includes(val.toLowerCase()); }) ||
             t.goals?.some(g => g.toLowerCase().replace(/-/g, ' ').includes(goalLower) || goalLower.includes(g.toLowerCase().replace(/-/g, ' '))) ||
             t.tags?.some(tag => tag.toLowerCase().includes(goalLower) || goalLower.includes(tag.toLowerCase()));
         
         return matchesRole && matchesGoal;
     }).sort((a, b) => {
         const aMatchesRole = a.bestFor?.some(b => b.toLowerCase().includes(roleLower));
-        const aMatchesGoal = a.useCases?.some(u => u.toLowerCase().includes(goalLower) || goalLower.includes(u.toLowerCase())) ||
+        const aMatchesGoal = a.useCases?.some(u => { const val = typeof u === 'string' ? u : u.title; return val.toLowerCase().includes(goalLower) || goalLower.includes(val.toLowerCase()); }) ||
             a.goals?.some(g => g.toLowerCase().replace(/-/g, ' ').includes(goalLower) || goalLower.includes(g.toLowerCase().replace(/-/g, ' '))) ||
             a.tags?.some(tag => tag.toLowerCase().includes(goalLower) || goalLower.includes(tag.toLowerCase()));
             
         const bMatchesRole = b.bestFor?.some(b => b.toLowerCase().includes(roleLower));
-        const bMatchesGoal = b.useCases?.some(u => u.toLowerCase().includes(goalLower) || goalLower.includes(u.toLowerCase())) ||
+        const bMatchesGoal = b.useCases?.some(u => { const val = typeof u === 'string' ? u : u.title; return val.toLowerCase().includes(goalLower) || goalLower.includes(val.toLowerCase()); }) ||
             b.goals?.some(g => g.toLowerCase().replace(/-/g, ' ').includes(goalLower) || goalLower.includes(g.toLowerCase().replace(/-/g, ' '))) ||
             b.tags?.some(tag => tag.toLowerCase().includes(goalLower) || goalLower.includes(tag.toLowerCase()));
 

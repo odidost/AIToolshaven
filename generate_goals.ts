@@ -7,7 +7,7 @@ tools.forEach(t => {
   const tRoles = t.bestFor || [];
   
   // Clean up and extract goals
-  const rawGoals = [...(t.useCases || []), ...(t.goals || []), ...(t.tags || [])];
+  const rawGoals = [...(t.useCases || []), ...(t.goals || []), ...(t.tags || [])].map(g => typeof g === 'string' ? g : g.title);
   
   // Optional: Clean and capitalize goals
   const cleanGoals = rawGoals.map(g => 
