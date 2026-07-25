@@ -6,7 +6,7 @@ import { getEditorialDescription } from "@/lib/editorialRegistry";
 
 type UseCasesProps = {
     tool: AITool;
-    useCases: string[];
+    useCases: (string | { title: string; description: string })[];
 };
 
 export function UseCases({ tool, useCases }: UseCasesProps) {
@@ -17,7 +17,7 @@ export function UseCases({ tool, useCases }: UseCasesProps) {
     return (
         <section className="my-16">
             <div className="mb-10 max-w-3xl">
-                <h2 className="text-fluid-h2 font-bold tracking-tight text-on-surface">
+                <h2 className="text-fluid-h3 animate-in fade-in slide-in-from-bottom-4 duration-700 font-bold tracking-tight text-on-surface">
                     Best Use Cases
                 </h2>
                 <p className="mt-3 text-lg leading-relaxed text-on-surface-variant">
@@ -28,19 +28,28 @@ export function UseCases({ tool, useCases }: UseCasesProps) {
             <div className="rounded-[24px] border border-border/50 bg-white p-6 sm:p-8 shadow-sm">
                 {/* Tabs Header */}
                 <div className="flex flex-wrap gap-2.5 border-b border-border/50 pb-6 mb-8">
-                    {useCases.map((item, idx) => (
-                        <button
-                            key={item}
-                            onClick={() => setActiveTab(idx)}
-                            className={`px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
-                                activeTab === idx
-                                ? "bg-primary text-white shadow-sm shadow-glow-primary"
-                                : "bg-surface-secondary text-on-surface-variant hover:bg-border/50"
-                            }`}
-                        >
-                            {item}
-                        </button>
-                    ))}
+                    {useCases.map((item, idx) => {
+                        let parsedItem = item;
+                        if (typeof item === 'string' && item.trim().startsWith('{')) {
+                            try {
+                                parsedItem = JSON.parse(item);
+                            } catch (e) {}
+                        }
+                        const title = typeof parsedItem === 'object' && parsedItem !== null ? parsedItem.title : parsedItem;
+                        return (
+                            <button
+                                key={title || idx}
+                                onClick={() => setActiveTab(idx)}
+                                className={`px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                                    activeTab === idx
+                                    ? "bg-primary text-white shadow-sm shadow-glow-primary"
+                                    : "bg-surface-secondary text-on-surface-variant hover:bg-border/50"
+                                }`}
+                            >
+                                {title}
+                            </button>
+                        );
+                    })}
                 </div>
 
                 {/* Tab Content */}
@@ -52,17 +61,27 @@ export function UseCases({ tool, useCases }: UseCasesProps) {
                             </span>
                         </div>
 
-                        <h3 className="text-fluid-h3 font-bold text-on-surface mb-4">
-                            Ideal for {useCases[activeTab]}
-                        </h3>
-
-                        {tool.editorial?.useCaseFocus ? (
-                            <div className="text-on-surface-variant leading-relaxed mb-6" dangerouslySetInnerHTML={{ __html: tool.editorial.useCaseFocus }} />
-                        ) : (
-                            <p className="text-on-surface-variant leading-relaxed mb-6">
-                                {getEditorialDescription("usecase", useCases[activeTab], `For ${useCases[activeTab].toLowerCase()}, the main draw is how much manual work it eliminates. Instead of getting bogged down in the mechanics of the task, you can pass the redundant steps off to the AI. This doesn't just save time—it frees you up to focus on the actual strategy and creative direction that moves the needle.`)}
-                            </p>
-                        )}
+                        {(() => {
+                            let activeItem = useCases[activeTab];
+                            if (typeof activeItem === 'string' && activeItem.trim().startsWith('{')) {
+                                try {
+                                    activeItem = JSON.parse(activeItem);
+                                } catch (e) {}
+                            }
+                            const isObj = typeof activeItem === 'object' && activeItem !== null;
+                            const title = isObj ? activeItem.title : activeItem;
+                            // Remove tool.editorial?.useCaseFocus from rendering for ALL tabs, let the object drive the unique description
+                            const desc = isObj ? activeItem.description : getEditorialDescription("usecase", title, "This is a prime example of where the tool demonstrates massive ROI. By leveraging its core feature set for this workflow, teams often see hours of manual work reduced to mere minutes.");
+                            
+                            return (
+                                <>
+                                    <h3 className="text-fluid-h3 font-bold text-on-surface mb-4">
+                                        Ideal for {title}
+                                    </h3>
+                                    <div className="text-on-surface-variant leading-relaxed mb-6" dangerouslySetInnerHTML={{ __html: desc }} />
+                                </>
+                            );
+                        })()}
 
                         <div className="border-t border-border/50 pt-5 mt-6 flex items-center gap-2">
                             <span className="material-symbols-outlined text-primary text-[20px]">trending_up</span>

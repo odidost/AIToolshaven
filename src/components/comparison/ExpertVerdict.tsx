@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { AITool } from '@/lib/types/tool';
+import { getEditorialTitle } from '@/lib/utils';
 
 interface ExpertVerdictProps {
     mainTool: AITool;
@@ -9,6 +10,11 @@ interface ExpertVerdictProps {
 
 export function ExpertVerdict({ mainTool, compareTool }: ExpertVerdictProps) {
     const mainWins = (mainTool.rating || 0) >= (compareTool.rating || 0);
+
+    const getSafeString = (val: any) => {
+        const str = getEditorialTitle(val);
+        return typeof str === 'string' ? str.toLowerCase() : str;
+    };
 
     return (
         <section id="verdict" className="scroll-mt-32 max-w-5xl mx-auto mb-20 px-4">
@@ -26,8 +32,8 @@ export function ExpertVerdict({ mainTool, compareTool }: ExpertVerdictProps) {
                     
                     <p className="text-lg text-on-surface-variant leading-relaxed mb-8">
                         Choosing between <strong>{mainTool.name}</strong> and <strong>{compareTool.name}</strong> comes down to your primary use case. 
-                        If your focus is on <strong>{mainTool.bestFor?.[0]?.toLowerCase() || 'general productivity'}</strong>, then <strong>{mainTool.name}</strong> provides a more robust and polished experience. 
-                        Conversely, if you specifically need <strong>{compareTool.bestFor?.[0]?.toLowerCase() || 'specialized tools'}</strong> and value <strong>{compareTool.pros?.[0]?.toLowerCase() || 'different features'}</strong>, <strong>{compareTool.name}</strong> is the clear winner.
+                        If your focus is on <strong>{getSafeString(mainTool.bestFor?.[0]) || 'general productivity'}</strong>, then <strong>{mainTool.name}</strong> provides a more robust and polished experience. 
+                        Conversely, if you specifically need <strong>{getSafeString(compareTool.bestFor?.[0]) || 'specialized tools'}</strong> and value <strong>{getSafeString(compareTool.pros?.[0]) || 'different features'}</strong>, <strong>{compareTool.name}</strong> is the clear winner.
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left bg-surface-secondary/50 rounded-2xl p-6 border border-border">
@@ -37,7 +43,7 @@ export function ExpertVerdict({ mainTool, compareTool }: ExpertVerdictProps) {
                                 Who should choose {mainTool.name}?
                             </h4>
                             <p className="text-sm text-on-surface-variant">
-                                Ideal for {mainTool.bestFor?.join(', ').toLowerCase() || 'individuals and teams'} who prioritize {mainTool.pros?.[1]?.toLowerCase() || 'a streamlined interface and core capabilities'}.
+                                Ideal for {mainTool.bestFor?.map(b => getSafeString(b)).join(', ') || 'individuals and teams'} who prioritize <strong>{getSafeString(mainTool.pros?.[1]) || 'a streamlined interface and core capabilities'}</strong>.
                             </p>
                         </div>
                         <div>
@@ -46,7 +52,7 @@ export function ExpertVerdict({ mainTool, compareTool }: ExpertVerdictProps) {
                                 Who should choose {compareTool.name}?
                             </h4>
                             <p className="text-sm text-on-surface-variant">
-                                Best for {compareTool.bestFor?.join(', ').toLowerCase() || 'professionals'} looking for {compareTool.pros?.[1]?.toLowerCase() || 'advanced controls and flexibility'}.
+                                Best for {compareTool.bestFor?.map(b => getSafeString(b)).join(', ') || 'professionals'} looking for <strong>{getSafeString(compareTool.pros?.[1]) || 'advanced controls and flexibility'}</strong>.
                             </p>
                         </div>
                     </div>

@@ -12,8 +12,10 @@ import { StructuredData } from "@/components/shared/StructuredData";
 import { WorkflowCard } from "@/components/home/WorkflowCard";
 import { GoalCard } from "@/components/home/GoalCard";
 import { ToolReviews } from "@/components/tool/ToolReviews";
+import { ToolFAQ } from "@/components/tool/ToolFAQ";
 import { ToolShareEmbed } from "@/components/tool/ToolShareEmbed";
 import { ExpertVerdict } from "@/components/tool/ExpertVerdict";
+import { HandsOnExperience } from "@/components/tool/HandsOnExperience";
 import { RecentlyViewedTracker } from "@/components/tool/ToolCommunityFeatures";
 import { workflows } from "@/lib/workflows";
 import { goals } from "@/lib/goals";
@@ -74,7 +76,8 @@ export default async function ToolPage({ params }: Props) {
 
   if (!tool) {
     notFound();
-  }
+  } // trigger HMR
+
 
   // Get category info
   const category = await getCategoryById(tool.category);
@@ -196,6 +199,8 @@ export default async function ToolPage({ params }: Props) {
 
           <ExpertVerdict tool={tool} />
 
+          <HandsOnExperience tool={tool} />
+
           <ProsCons pros={tool.pros} cons={tool.cons} />
 
           <UseCases tool={tool} useCases={tool.useCases} />
@@ -243,6 +248,8 @@ export default async function ToolPage({ params }: Props) {
             </div>
           </section>
         )}
+
+        <ToolFAQ tool={tool} />
 
         <ToolReviews tool={tool} />
 

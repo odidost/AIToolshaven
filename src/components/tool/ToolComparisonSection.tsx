@@ -23,7 +23,7 @@ export default function ToolComparisonSection({
                         <span className="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary tracking-wide uppercase">
                             Compare Options
                         </span>
-                        <h2 className="mt-4 text-fluid-h2 font-bold tracking-tight text-on-surface">
+                        <h2 className="mt-4 text-fluid-h3 animate-in fade-in slide-in-from-bottom-4 duration-700 font-bold tracking-tight text-on-surface">
                             Compare {tool.name} with Alternatives
                         </h2>
                         {tool.editorial?.comparison ? (
@@ -66,16 +66,18 @@ export default function ToolComparisonSection({
                             </h3>
 
                             <p className="text-sm leading-relaxed text-on-surface-variant mb-8 relative z-10">
-                                If you're debating between {tool.name} and {comparisonTool.name}, here is the breakdown of which one actually performs better for specific workflows.
+                                {tool.editorial?.compareWithBreakdown?.[comparisonTool.id] || tool.editorial?.compareWithBreakdown?.[comparisonTool.slug] || `If you're debating between ${tool.name} and ${comparisonTool.name}, here is the breakdown of which one actually performs better for specific workflows.`}
                             </p>
 
-                            <Link
-                                href={`/compare-tools/${tool.slug}-vs-${comparisonTool.slug}`}
-                                className="mt-auto flex w-full items-center justify-center gap-2 rounded-xl border border-border/50 bg-white px-4 py-3 text-sm font-semibold text-on-surface transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-white group-hover:shadow-glow-primary relative z-10"
-                            >
-                                Compare Now
-                                <span className="material-symbols-outlined text-[18px]">compare_arrows</span>
-                            </Link>
+                            <div className="mt-auto pt-6 border-t border-border/50 relative z-10">
+                                <Link
+                                    href={`/compare-tools/${tool.slug}-vs-${comparisonTool.slug}`}
+                                    className="flex w-full items-center justify-center gap-2 rounded-xl border border-border/50 bg-white px-4 py-3 text-sm font-semibold text-on-surface transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-white group-hover:shadow-glow-primary relative z-10"
+                                >
+                                    Compare Now
+                                    <span className="material-symbols-outlined text-[18px]">compare_arrows</span>
+                                </Link>
+                            </div>
                         </div>
                     ))}
                 </div>

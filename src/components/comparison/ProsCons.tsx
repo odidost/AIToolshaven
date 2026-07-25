@@ -1,6 +1,7 @@
 import React from 'react';
 import { AITool } from '@/lib/types/tool';
 import { ToolImage } from "@/components/shared/ToolImage";
+import { getEditorialTitle, getEditorialDescription } from "@/lib/utils";
 
 interface ProsConsProps {
     mainTool: AITool;
@@ -33,7 +34,10 @@ export function ProsCons({ mainTool, compareTool }: ProsConsProps) {
                                     <div className="w-6 h-6 rounded-full bg-success/10 flex items-center justify-center shrink-0 mt-0.5">
                                         <span className="material-symbols-outlined text-[14px] text-success">check</span>
                                     </div>
-                                    <span className="text-on-surface-variant leading-relaxed">{pro}</span>
+                                    <span className="text-on-surface-variant leading-relaxed">
+                                        <strong className="text-on-surface">{getEditorialTitle(pro)}: </strong>
+                                        {getEditorialDescription(pro)}
+                                    </span>
                                 </li>
                             ))}
                         </ul>
@@ -48,7 +52,10 @@ export function ProsCons({ mainTool, compareTool }: ProsConsProps) {
                                     <div className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center shrink-0 mt-0.5">
                                         <span className="material-symbols-outlined text-[14px] text-destructive">close</span>
                                     </div>
-                                    <span className="text-on-surface-variant leading-relaxed">{con}</span>
+                                    <span className="text-on-surface-variant leading-relaxed">
+                                        <strong className="text-on-surface">{getEditorialTitle(con)}: </strong>
+                                        {getEditorialDescription(con)}
+                                    </span>
                                 </li>
                             ))}
                         </ul>
@@ -72,7 +79,10 @@ export function ProsCons({ mainTool, compareTool }: ProsConsProps) {
                                     <div className="w-6 h-6 rounded-full bg-success/10 flex items-center justify-center shrink-0 mt-0.5">
                                         <span className="material-symbols-outlined text-[14px] text-success">check</span>
                                     </div>
-                                    <span className="text-on-surface-variant leading-relaxed">{pro}</span>
+                                    <span className="text-on-surface-variant leading-relaxed">
+                                        <strong className="text-on-surface">{getEditorialTitle(pro)}: </strong>
+                                        {getEditorialDescription(pro)}
+                                    </span>
                                 </li>
                             ))}
                         </ul>
@@ -87,7 +97,10 @@ export function ProsCons({ mainTool, compareTool }: ProsConsProps) {
                                     <div className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center shrink-0 mt-0.5">
                                         <span className="material-symbols-outlined text-[14px] text-destructive">close</span>
                                     </div>
-                                    <span className="text-on-surface-variant leading-relaxed">{con}</span>
+                                    <span className="text-on-surface-variant leading-relaxed">
+                                        <strong className="text-on-surface">{getEditorialTitle(con)}: </strong>
+                                        {getEditorialDescription(con)}
+                                    </span>
                                 </li>
                             ))}
                         </ul>

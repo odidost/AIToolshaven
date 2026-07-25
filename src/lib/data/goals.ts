@@ -7,8 +7,8 @@ const rolesMap = new Map<string, Set<string>>();
 
 // Build roles and goals dynamically from the tools database to ensure 100% match rate
 tools.forEach(t => {
-    const tRoles = t.bestFor || [];
-    const tGoals = [...(t.useCases || []), ...(t.goals || [])];
+    const tRoles = (t.bestFor || []).filter(r => typeof r === 'string');
+    const tGoals = [...(t.useCases || []), ...(t.goals || [])].filter(g => typeof g === 'string');
     
     // Clean and filter sensible goals
     const cleanGoals = tGoals

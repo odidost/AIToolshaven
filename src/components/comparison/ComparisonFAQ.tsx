@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { AITool } from '@/lib/types/tool';
+import { getEditorialTitle } from '@/lib/utils';
 
 interface ComparisonFAQProps {
     mainTool: AITool;
@@ -11,10 +12,15 @@ interface ComparisonFAQProps {
 export function ComparisonFAQ({ mainTool, compareTool }: ComparisonFAQProps) {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
+    const getSafeString = (val: any) => {
+        const str = getEditorialTitle(val);
+        return typeof str === 'string' ? str.toLowerCase() : str;
+    };
+
     const faqs = [
         {
             question: `Is ${mainTool.name} better than ${compareTool.name}?`,
-            answer: `It depends on your needs. ${mainTool.name} excels at ${mainTool.useCases?.[0]?.toLowerCase() || 'general tasks'}, while ${compareTool.name} is often preferred for ${compareTool.useCases?.[0]?.toLowerCase() || 'specialized workflows'}. Review our detailed performance analysis above to see which aligns better with your goals.`
+            answer: `It depends on your needs. ${mainTool.name} excels at ${getSafeString(mainTool.useCases?.[0]) || 'general tasks'}, while ${compareTool.name} is often preferred for ${getSafeString(compareTool.useCases?.[0]) || 'specialized workflows'}. Review our detailed performance analysis above to see which aligns better with your goals.`
         },
         {
             question: `Which one is more affordable: ${mainTool.name} or ${compareTool.name}?`,
@@ -22,7 +28,7 @@ export function ComparisonFAQ({ mainTool, compareTool }: ComparisonFAQProps) {
         },
         {
             question: `Can I use ${mainTool.name} and ${compareTool.name} together?`,
-            answer: `Yes, many professionals use both in tandem. You might use ${mainTool.name} for ${mainTool.useCases?.[1]?.toLowerCase() || 'initial drafting'} and then switch to ${compareTool.name} for ${compareTool.useCases?.[1]?.toLowerCase() || 'final polish'}.`
+            answer: `Yes, many professionals use both in tandem. You might use ${mainTool.name} for ${getSafeString(mainTool.useCases?.[1]) || 'initial drafting'} and then switch to ${compareTool.name} for ${getSafeString(compareTool.useCases?.[1]) || 'final polish'}.`
         },
         {
             question: `Do both tools offer API access?`,

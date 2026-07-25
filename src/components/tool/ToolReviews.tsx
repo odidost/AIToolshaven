@@ -82,7 +82,7 @@ export function ToolReviews({ tool }: ToolReviewsProps) {
 
     return (
         <section className="my-16">
-            <h2 className="text-fluid-h2 font-bold tracking-tight text-on-surface mb-8">Real User Reviews</h2>
+            <h2 className="text-fluid-h3 animate-in fade-in slide-in-from-bottom-4 duration-700 font-bold tracking-tight text-on-surface mb-8">Real User Reviews</h2>
 
             <div className="grid gap-8 lg:gap-10 lg:grid-cols-[300px_1fr]">
                 {/* Left Sidebar: Ratings Summary */}

@@ -6,14 +6,32 @@ type ExpertVerdictProps = {
 
 export function ExpertVerdict({ tool }: ExpertVerdictProps) {
     const scores = {
-        easeOfUse: tool.easeOfUse || 9.2,
-        features: tool.featureRating || 8.8,
-        value: tool.valueForMoney || 8.5,
-        support: tool.support || 7.9,
-        ai: tool.performance || 9.5
+        easeOfUse: tool.easeOfUse || 4.6,
+        features: tool.featureRating || 4.4,
+        value: tool.valueForMoney || 4.2,
+        support: tool.support || 4.0,
+        ai: tool.performance || 4.7
     };
 
     const overallScore = ((scores.easeOfUse + scores.features + scores.value + scores.support + scores.ai) / 5).toFixed(1);
+
+    let metrics = [
+        { label: "Ease of Use", value: scores.easeOfUse },
+        { label: "Features", value: scores.features },
+        { label: "Value for Money", value: scores.value },
+        { label: "Customer Support", value: scores.support },
+        { label: "AI Capabilities", value: scores.ai },
+    ];
+
+    if (tool.slug === 'design-com') {
+        metrics = [
+            { label: "Ease of Use", value: scores.easeOfUse },
+            { label: "Template Variety & Quality", value: scores.features },
+            { label: "Brand Kit Integration", value: scores.ai },
+            { label: "Value for Money", value: scores.value },
+            { label: "Output Quality", value: scores.support },
+        ];
+    }
 
     return (
         <section className="my-16">
@@ -28,7 +46,7 @@ export function ExpertVerdict({ tool }: ExpertVerdictProps) {
                             AIToolsHaven Expert Review
                         </div>
                         
-                        <h2 className="text-fluid-h2 font-bold mb-6">Our Verdict on {tool.name}</h2>
+                        <h2 className="text-fluid-h3 animate-in fade-in slide-in-from-bottom-4 duration-700 font-bold mb-6">Our Verdict on {tool.name}</h2>
                         
                         <div className="space-y-4 text-slate-300 leading-relaxed text-lg mb-8">
                             {tool.editorial?.verdict ? (
@@ -57,13 +75,7 @@ export function ExpertVerdict({ tool }: ExpertVerdictProps) {
                         </div>
 
                         <div className="space-y-5">
-                            {[
-                                { label: "Ease of Use", value: scores.easeOfUse },
-                                { label: "Features", value: scores.features },
-                                { label: "Value for Money", value: scores.value },
-                                { label: "Customer Support", value: scores.support },
-                                { label: "AI Capabilities", value: scores.ai },
-                            ].map(metric => (
+                            {metrics.map(metric => (
                                 <div key={metric.label}>
                                     <div className="flex justify-between text-sm mb-1.5">
                                         <span className="text-slate-300">{metric.label}</span>
@@ -72,7 +84,7 @@ export function ExpertVerdict({ tool }: ExpertVerdictProps) {
                                     <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
                                         <div 
                                             className="h-full bg-gradient-to-r from-primary to-secondary rounded-full" 
-                                            style={{ width: `${(metric.value / 10) * 100}%` }}
+                                            style={{ width: `${(metric.value / 5) * 100}%` }}
                                         />
                                     </div>
                                 </div>

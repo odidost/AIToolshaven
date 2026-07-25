@@ -1,8 +1,8 @@
 import { getEditorialDescription } from "@/lib/editorialRegistry";
 
 type ProsConsProps = {
-    pros?: string[];
-    cons?: string[];
+    pros?: (string | { title: string; description: string })[];
+    cons?: (string | { title: string; description: string })[];
 };
 
 export function ProsCons({ pros, cons }: ProsConsProps) {
@@ -19,7 +19,7 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
 
     return (
         <section className="my-16">
-            <h2 className="text-fluid-h2 font-bold tracking-tight mb-8">
+            <h2 className="text-fluid-h3 animate-in fade-in slide-in-from-bottom-4 duration-700 font-bold tracking-tight mb-8">
                 Pros & Cons
             </h2>
 
@@ -40,19 +40,30 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
                     </div>
 
                     <ul className="space-y-6">
-                        {displayPros.map((item) => (
-                            <li key={item} className="flex gap-4 items-start">
-                                <span className="material-symbols-outlined text-success mt-0.5 shrink-0">
-                                    check_circle
-                                </span>
-                                <div>
-                                    <strong className="block text-on-surface text-lg font-semibold">{item}</strong>
-                                    <span className="text-on-surface-variant block mt-1 leading-relaxed">
-                                        {getEditorialDescription("pro", item, "This makes a noticeable difference in daily use, especially if you're working on tight deadlines.")}
+                        {displayPros.map((item, idx) => {
+                            let parsedItem = item;
+                            if (typeof item === 'string' && item.trim().startsWith('{')) {
+                                try {
+                                    parsedItem = JSON.parse(item);
+                                } catch (e) {}
+                            }
+                            const isObj = typeof parsedItem === 'object' && parsedItem !== null;
+                            const title = isObj ? parsedItem.title : parsedItem;
+                            const desc = isObj ? parsedItem.description : getEditorialDescription("pro", title, "This makes a noticeable difference in daily use, especially if you're working on tight deadlines.");
+                            return (
+                                <li key={title || idx} className="flex gap-4 items-start">
+                                    <span className="material-symbols-outlined text-success mt-0.5 shrink-0">
+                                        check_circle
                                     </span>
-                                </div>
-                            </li>
-                        ))}
+                                    <div>
+                                        <strong className="block text-on-surface text-lg font-semibold">{title}</strong>
+                                        <span className="text-on-surface-variant block mt-1 leading-relaxed">
+                                            {desc}
+                                        </span>
+                                    </div>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </div>
 
@@ -72,19 +83,30 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
                     </div>
 
                     <ul className="space-y-6">
-                        {displayCons.map((item) => (
-                            <li key={item} className="flex gap-4 items-start">
-                                <span className="material-symbols-outlined text-warning mt-0.5 shrink-0">
-                                    error
-                                </span>
-                                <div>
-                                    <strong className="block text-on-surface text-lg font-semibold">{item}</strong>
-                                    <span className="text-on-surface-variant block mt-1 leading-relaxed">
-                                        {getEditorialDescription("con", item, "It's not a dealbreaker, but it is something to keep in mind if you rely heavily on this specific function.")}
+                        {displayCons.map((item, idx) => {
+                            let parsedItem = item;
+                            if (typeof item === 'string' && item.trim().startsWith('{')) {
+                                try {
+                                    parsedItem = JSON.parse(item);
+                                } catch (e) {}
+                            }
+                            const isObj = typeof parsedItem === 'object' && parsedItem !== null;
+                            const title = isObj ? parsedItem.title : parsedItem;
+                            const desc = isObj ? parsedItem.description : getEditorialDescription("con", title, "It's not a dealbreaker, but it is something to keep in mind if you rely heavily on this specific function.");
+                            return (
+                                <li key={title || idx} className="flex gap-4 items-start">
+                                    <span className="material-symbols-outlined text-warning mt-0.5 shrink-0">
+                                        error
                                     </span>
-                                </div>
-                            </li>
-                        ))}
+                                    <div>
+                                        <strong className="block text-on-surface text-lg font-semibold">{title}</strong>
+                                        <span className="text-on-surface-variant block mt-1 leading-relaxed">
+                                            {desc}
+                                        </span>
+                                    </div>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </div>
 

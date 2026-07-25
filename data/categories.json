@@ -51,52 +51,10 @@
   {
     "id": "category-1783781229083",
     "name": "Logo Generators",
-    "slug": "Logo Generators",
+    "slug": "logo-generators",
     "icon": "category",
     "count": 0,
     "description": "best logo generators"
-  },
-  {
-    "id": "category-1783796759327",
-    "name": "Untitled Category",
-    "slug": "category-1783796759327",
-    "icon": "category",
-    "count": 0
-  },
-  {
-    "id": "category-1783797564795",
-    "name": "Untitled Category",
-    "slug": "category-1783797564795",
-    "icon": "category",
-    "count": 0
-  },
-  {
-    "id": "category-1783797966642",
-    "name": "Untitled Category",
-    "slug": "category-1783797966642",
-    "icon": "category",
-    "count": 0
-  },
-  {
-    "id": "category-1783864832344",
-    "name": "Untitled Category",
-    "slug": "category-1783864832344",
-    "icon": "category",
-    "count": 0
-  },
-  {
-    "id": "category-1783913233613",
-    "name": "Untitled Category",
-    "slug": "category-1783913233613",
-    "icon": "category",
-    "count": 0
-  },
-  {
-    "id": "category-1783915412055",
-    "name": "Untitled Category",
-    "slug": "category-1783915412055",
-    "icon": "category",
-    "count": 0
   },
   {
     "id": "ai-chatbots",

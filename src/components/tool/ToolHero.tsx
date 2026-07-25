@@ -141,7 +141,7 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                 <div className="sticky top-24 rounded-[32px] border border-border/50 bg-surface-secondary/30 p-6 sm:p-8 shadow-sm backdrop-blur-sm">
 
-                    <h2 className="text-fluid-h2 font-bold mb-5">
+                    <h2 className="text-fluid-h3 animate-in fade-in slide-in-from-bottom-4 duration-700 font-bold mb-5">
                         About {tool.name}
                     </h2>
 

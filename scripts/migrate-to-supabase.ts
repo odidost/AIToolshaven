@@ -138,6 +138,7 @@ async function migrate() {
           socials: t.socials || {},
           stats: t.stats || {},
           editorial: t.editorial || {},
+          status: t.status || 'Published',
           prompt_examples: t.promptExamples || []
         };
       })

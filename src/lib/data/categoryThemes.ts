@@ -403,6 +403,51 @@ export const categoryThemes: Record<string, CategoryTheme> = {
       { title: "ChatGPT vs Claude", href: "/compare-tools/chatgpt-vs-claude" },
       { title: "Best AI Coding Assistants", href: "/category/coding-assistants" },
     ]
+  },
+  "logo-generators": {
+    slug: "logo-generators",
+    accentColors: {
+      heroGradient: "from-primary/10 to-primary/5",
+      iconBg: "bg-primary/20",
+      iconText: "text-primary",
+      textAccent: "text-primary",
+      borderAccent: "border-primary/30",
+      cssVar: "255, 95, 109", // Sunset Ember (#FF5F6D)
+    },
+    heroHeadline: "Design a professional logo in seconds with AI.",
+    heroDescription: "Explore the best AI logo generators to instantly create beautiful, custom logos for your startup, brand, or project.",
+    statsLabels: {
+      listed: "Logo Makers",
+      popular: "Most Exported",
+    },
+    emptyState: {
+      message: "No AI Logo Generators found.",
+      subMessage: "Try adjusting your filters.",
+    },
+    faq: [
+      {
+        question: "Can I use AI generated logos for commercial use?",
+        answer: "Most premium AI logo generators provide full commercial rights once you purchase the high-resolution files, but always check the specific tool's terms of service."
+      },
+      {
+        question: "Do AI logo makers provide vector files?",
+        answer: "Yes, top tools like Looka and Logo.ai allow you to download SVGs or EPS files, which are essential for printing your logo on merchandise or large displays."
+      }
+    ],
+    guide: [
+      {
+        title: "Why use an AI Logo Generator?",
+        content: "AI logo makers save time and money by instantly generating dozens of concepts based on your industry and design preferences, giving you a professional brand identity without hiring an agency."
+      },
+      {
+        title: "Choosing the Right Tool",
+        content: "If you want a complete brand kit, tools like Looka or Brandmark are ideal. If you're looking for high creative freedom, advanced generative models like Ideogram might be a better fit."
+      }
+    ],
+    internalLinks: [
+      { title: "Best Image Generation Tools", href: "/category/image-generation" },
+      { title: "Marketing & Sales Essentials", href: "/category/marketing-sales" },
+    ]
   }
 };
 

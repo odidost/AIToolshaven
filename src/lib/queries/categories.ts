@@ -41,14 +41,16 @@ export async function getCategoryById(id: string): Promise<ToolCategory | undefi
     }
 }
 
-export async function getCategoryBySlug(slug: string): Promise<ToolCategory | undefined> {
+export async function getCategoryBySlug(rawSlug: string): Promise<ToolCategory | undefined> {
     try {
+        const slug = decodeURIComponent(rawSlug);
         const { data, error } = await supabase.from('categories').select('*').eq('slug', slug).single();
         if (error || !data) {
             return localCategories.find(c => c.slug === slug);
         }
         return data;
     } catch (err) {
+        const slug = decodeURIComponent(rawSlug);
         console.error(`Error fetching category with slug ${slug} from Supabase, falling back to local data:`, err);
         return localCategories.find(c => c.slug === slug);
     }

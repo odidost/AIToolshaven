@@ -6,19 +6,26 @@ export function getComparisonCandidates(
     limit = 3
 ): AITool[] {
 
+    let candidates: AITool[] = [];
+
     // 1. Manual overrides
     if (currentTool.compareWith?.length) {
-
-        return currentTool.compareWith
+        candidates = currentTool.compareWith
             .map(slug => tools.find(tool => tool.slug === slug))
-            .filter(Boolean)
-            .slice(0, limit) as AITool[];
+            .filter(Boolean) as AITool[];
     }
 
-    // 2. Automatic recommendations
-    return tools
-        .filter(tool => tool.id !== currentTool.id)
-        .filter(tool => tool.category === currentTool.category)
-        .sort((a, b) => b.popularity - a.popularity)
-        .slice(0, limit);
+    // 2. Fill remaining slots with automatic recommendations
+    if (candidates.length < limit) {
+        const autoRecs = tools
+            .filter(tool => tool.id !== currentTool.id)
+            .filter(tool => !candidates.some(c => c.id === tool.id))
+            .filter(tool => tool.category === currentTool.category)
+            .sort((a, b) => b.popularity - a.popularity)
+            .slice(0, limit - candidates.length);
+        
+        candidates = [...candidates, ...autoRecs];
+    }
+
+    return candidates.slice(0, limit);
 }

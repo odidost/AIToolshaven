@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { AITool } from '@/lib/types/tool';
+import { getEditorialTitle } from '@/lib/utils';
 
 interface WorkflowRecommendationsProps {
     mainTool: AITool;
@@ -11,7 +12,7 @@ export function WorkflowRecommendations({ mainTool, compareTool }: WorkflowRecom
     // Generate some mock workflows based on tool category and useCases
     const workflows = [
         {
-            title: `The Ultimate ${mainTool.useCases?.[0] || 'Productivity'} Stack`,
+            title: `The Ultimate ${mainTool.useCases?.[0] ? getEditorialTitle(mainTool.useCases[0]) : 'Productivity'} Stack`,
             description: `Combine ${mainTool.name} with these tools for maximum efficiency.`,
             steps: [
                 { name: mainTool.name, action: 'Draft & Ideate', icon: 'edit' },
@@ -20,7 +21,7 @@ export function WorkflowRecommendations({ mainTool, compareTool }: WorkflowRecom
             ]
         },
         {
-            title: `The Advanced ${compareTool.useCases?.[0] || 'Research'} Workflow`,
+            title: `The Advanced ${compareTool.useCases?.[0] ? getEditorialTitle(compareTool.useCases[0]) : 'Research'} Workflow`,
             description: `Leverage ${compareTool.name}'s strengths with this specialized stack.`,
             steps: [
                 { name: 'Perplexity', action: 'Research', icon: 'travel_explore' },

@@ -1,6 +1,7 @@
 import React from 'react';
 import { AITool } from '@/lib/types/tool';
 import { ToolImage } from "@/components/shared/ToolImage";
+import { getEditorialTitle } from "@/lib/utils";
 
 interface FeatureMatrixProps {
     mainTool: AITool;
@@ -10,8 +11,8 @@ interface FeatureMatrixProps {
 export function FeatureMatrix({ mainTool, compareTool }: FeatureMatrixProps) {
     const allFeatureTitles = Array.from(
         new Set([
-            ...mainTool.features.map(f => typeof f === 'string' ? f : f.title),
-            ...compareTool.features.map(f => typeof f === 'string' ? f : f.title)
+            ...mainTool.features.map(f => getEditorialTitle(f)),
+            ...compareTool.features.map(f => getEditorialTitle(f))
         ])
     ).sort();
 
@@ -46,8 +47,8 @@ export function FeatureMatrix({ mainTool, compareTool }: FeatureMatrixProps) {
                         </thead>
                         <tbody>
                             {allFeatureTitles.map((featureTitle, i) => {
-                                const hasA = mainTool.features.some(f => (typeof f === 'string' ? f : f.title) === featureTitle);
-                                const hasB = compareTool.features.some(f => (typeof f === 'string' ? f : f.title) === featureTitle);
+                                const hasA = mainTool.features.some(f => getEditorialTitle(f) === featureTitle);
+                                const hasB = compareTool.features.some(f => getEditorialTitle(f) === featureTitle);
 
                                 return (
                                     <tr 

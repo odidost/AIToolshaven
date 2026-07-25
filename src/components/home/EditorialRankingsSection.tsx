@@ -6,6 +6,7 @@ import { getCategoryBySlug } from "@/lib/queries/categories";
 import { SectionContainer } from "../layout/SectionContainer";
 import { FadeIn } from "../animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "../animations/StaggerContainer";
+import { aiChatbots } from "@/lib/data/tools/ai-chatbots";
 
 export async function EditorialRankingsSection() {
   // 1. Latest AI Tools (matches /latest-ai-tools)
@@ -26,13 +27,8 @@ export async function EditorialRankingsSection() {
 
   // 4. AI Chatbots
   // Pull directly from the new ai-chatbots category
-  const chatbotsCategory = await getCategoryBySlug("ai-chatbots");
-  const chatbotsFull = chatbotsCategory 
-    ? await getToolsByCategoryId(chatbotsCategory.id)
-    : [];
-
-  const finalChatbots = chatbotsFull.slice(0, 10);
-  const chatbotsTotal = chatbotsFull.length;
+  const finalChatbots = aiChatbots.slice(0, 10);
+  const chatbotsTotal = aiChatbots.length;
 
   return (
     <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -45,7 +41,7 @@ export async function EditorialRankingsSection() {
         <FadeIn direction="up" className="mb-16 flex flex-col items-center md:items-start justify-center gap-2">
           <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-3xl border border-black/5 text-gray-900 shadow-xl px-4 py-1.5 rounded-full mb-4 group relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <span className="material-symbols-outlined text-[18px] text-emerald-500" style={{ fontVariationSettings: "'FILL' 1" }}>stars</span>
+            <span className="material-symbols-outlined text-[18px] text-emerald-500" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
             <span className="text-xs font-bold uppercase tracking-widest text-emerald-600">Editor's Picks</span>
           </div>
           <h2 className="text-fluid-h2 font-black tracking-tight text-gray-900 mb-2">

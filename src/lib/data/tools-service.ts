@@ -15,8 +15,13 @@ const supabase = createClient(
   }
 );
 
+const isValidTool = (t: AITool) => t && t.name && t.name.trim() !== '' && t.name !== 'Untitled AI Tool';
+
 function mapDatabaseRowToAITool(row: any): AITool {
   if (!row) return {} as AITool;
+
+  const localTool = localTools.find(t => t.id === row.id || t.slug === row.slug);
+
   return {
     id: row.id,
     name: row.name,
@@ -52,10 +57,19 @@ function mapDatabaseRowToAITool(row: any): AITool {
     freeTrial: row.free_trial,
     socials: row.socials || undefined,
     stats: row.stats || undefined,
-    editorial: row.editorial || undefined,
-    promptExamples: row.prompt_examples || undefined,
-    lastUpdated: row.updated_at,
-    status: row.status,
+    editorial: row.editorial || localTool?.editorial,
+    promptExamples: row.prompt_examples || localTool?.promptExamples,
+    lastUpdated: row.updated_at || localTool?.lastUpdated,
+    status: row.status || localTool?.status,
+    
+    // Arrays not in Supabase schema but in local JSON
+    compareWith: localTool?.compareWith || [],
+    similarTools: localTool?.similarTools || [],
+    relatedTools: localTool?.relatedTools || [],
+    recommendationTags: localTool?.recommendationTags || [],
+    collections: localTool?.collections || [],
+    audiences: localTool?.audiences || [],
+    workflows: localTool?.workflows || [],
   };
 }
 
@@ -68,9 +82,9 @@ export async function getAllTools(includeDrafts: boolean = false): Promise<AIToo
         const { data, error } = await query.order('popularity', { ascending: false });
         if (error) {
             console.error("Error fetching all tools from Supabase, falling back to local data:", error);
-            return localTools;
+            return localTools.filter(isValidTool);
         }
-        return (data || []).map(mapDatabaseRowToAITool);
+        return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
     } catch (err) {
         console.error("Error connecting to Supabase in getAllTools, falling back to local data:", err);
         return localTools;
@@ -143,19 +157,19 @@ export async function getFeaturedTools(limit?: number): Promise<AITool[]> {
 
 export async function getTrendingTools(limit?: number): Promise<AITool[]> {
     try {
-        let query = supabase.from('tools').select('*').eq('status', 'Published').order('popularity', { ascending: false });
+        let query = supabase.from('tools').select('*').eq('status', 'Published').order('review_count', { ascending: false });
         if (limit) query = query.limit(limit);
         
         const { data, error } = await query;
         if (error) {
             console.error("Error fetching trending tools from Supabase, falling back to local data:", error);
-            const sorted = [...localTools].sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+            const sorted = [...localTools].filter(isValidTool).sort((a, b) => (b.reviewCount || 0) - (a.reviewCount || 0));
             return limit ? sorted.slice(0, limit) : sorted;
         }
-        return (data || []).map(mapDatabaseRowToAITool);
+        return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
     } catch (err) {
         console.error("Error connecting to Supabase in getTrendingTools, falling back to local data:", err);
-        const sorted = [...localTools].sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+        const sorted = [...localTools].filter(isValidTool).sort((a, b) => (b.reviewCount || 0) - (a.reviewCount || 0));
         return limit ? sorted.slice(0, limit) : sorted;
     }
 }
@@ -168,13 +182,13 @@ export async function getLatestTools(limit?: number): Promise<AITool[]> {
         const { data, error } = await query;
         if (error) {
             console.error("Error fetching latest tools from Supabase, falling back to local data:", error);
-            const sorted = [...localTools].sort((a, b) => new Date(b.lastUpdated || '').getTime() - new Date(a.lastUpdated || '').getTime());
+            const sorted = [...localTools].filter(isValidTool).sort((a, b) => new Date(b.lastUpdated || '').getTime() - new Date(a.lastUpdated || '').getTime());
             return limit ? sorted.slice(0, limit) : sorted;
         }
-        return (data || []).map(mapDatabaseRowToAITool);
+        return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
     } catch (err) {
         console.error("Error connecting to Supabase in getLatestTools, falling back to local data:", err);
-        const sorted = [...localTools].sort((a, b) => new Date(b.lastUpdated || '').getTime() - new Date(a.lastUpdated || '').getTime());
+        const sorted = [...localTools].filter(isValidTool).sort((a, b) => new Date(b.lastUpdated || '').getTime() - new Date(a.lastUpdated || '').getTime());
         return limit ? sorted.slice(0, limit) : sorted;
     }
 }

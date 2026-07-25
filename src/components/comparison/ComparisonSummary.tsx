@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { AITool } from '@/lib/types/tool';
 import { ToolImage } from "@/components/shared/ToolImage";
+import { getEditorialTitle } from "@/lib/utils";
 
 interface ComparisonSummaryProps {
     mainTool: AITool;
@@ -46,10 +47,10 @@ const ToolSummaryCard = ({ tool, categoryName }: { tool: AITool; categoryName: s
             <h4 className="text-sm font-bold text-on-surface uppercase tracking-wider mb-3">Top Features</h4>
             <ul className="space-y-3">
                 {tool.features.slice(0, 4).map((feature, idx) => {
-                    const title = typeof feature === 'string' ? feature : feature.title;
+                    const title = getEditorialTitle(feature);
                     return (
-                        <li key={idx} className="flex items-center gap-2 text-sm text-on-surface-variant">
-                            <span className="material-symbols-outlined text-[16px] text-primary/70">check</span>
+                        <li key={idx} className="flex items-start gap-2 text-sm text-on-surface-variant">
+                            <span className="material-symbols-outlined text-[16px] text-primary mt-0.5 shrink-0">check</span>
                             <span>{title}</span>
                         </li>
                     );

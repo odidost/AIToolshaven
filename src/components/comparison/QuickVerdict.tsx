@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { AITool } from '@/lib/types/tool';
 import { ToolImage } from "@/components/shared/ToolImage";
+import { getEditorialTitle } from "@/lib/utils";
 
 interface QuickVerdictProps {
     mainTool: AITool;
@@ -64,7 +65,7 @@ export function QuickVerdict({ mainTool, compareTool }: QuickVerdictProps) {
                                     {winner.pros?.slice(0, 3).map((pro, idx) => (
                                         <li key={idx} className="flex items-start gap-2">
                                             <span className="material-symbols-outlined text-[16px] text-success/70 mt-0.5">add</span>
-                                            <span>{pro}</span>
+                                            <span>{getEditorialTitle(pro)}</span>
                                         </li>
                                     )) || <li>Consistently high performance across tasks.</li>}
                                 </ul>
@@ -78,7 +79,7 @@ export function QuickVerdict({ mainTool, compareTool }: QuickVerdictProps) {
                                     {winner.cons?.slice(0, 3).map((con, idx) => (
                                         <li key={idx} className="flex items-start gap-2">
                                             <span className="material-symbols-outlined text-[16px] text-destructive/70 mt-0.5">remove</span>
-                                            <span>{con}</span>
+                                            <span>{getEditorialTitle(con)}</span>
                                         </li>
                                     )) || <li>May have a learning curve.</li>}
                                 </ul>

@@ -11,7 +11,7 @@ export function FeatureGrid({ features }: FeatureGridProps) {
     return (
         <section className="my-16">
             <div className="mb-10 max-w-3xl">
-                <h2 className="text-fluid-h2 font-bold tracking-tight text-on-surface">
+                <h2 className="text-fluid-h3 animate-in fade-in slide-in-from-bottom-4 duration-700 font-bold tracking-tight text-on-surface">
                     Key Features & Capabilities
                 </h2>
                 <p className="mt-3 text-lg leading-relaxed text-on-surface-variant">
@@ -22,9 +22,15 @@ export function FeatureGrid({ features }: FeatureGridProps) {
             <div className="rounded-[24px] border border-border/50 bg-white p-6 sm:p-8 shadow-sm">
                 <div className="divide-y divide-border/50">
                     {features.map((feature, idx) => {
-                        const featObj = typeof feature === 'string'
-                            ? { title: feature, description: "", icon: "done_all" }
-                            : feature;
+                        let parsedFeature = feature;
+                        if (typeof feature === 'string' && feature.trim().startsWith('{')) {
+                            try {
+                                parsedFeature = JSON.parse(feature);
+                            } catch (e) {}
+                        }
+                        const featObj = typeof parsedFeature === 'string'
+                            ? { title: parsedFeature, description: "", icon: "done_all" }
+                            : parsedFeature as ToolFeature;
                         
                         return (
                             <div 

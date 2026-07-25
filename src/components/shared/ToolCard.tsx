@@ -103,7 +103,7 @@ export function ToolCard({ tool }: { tool: AITool }) {
 
           <div className="flex items-center justify-between mt-auto gap-2">
             <div className="flex flex-wrap gap-1.5">
-              {tool.tags.slice(0, 3).map((tag) => (
+              {(tool.tags || []).slice(0, 3).map((tag) => (
                 <span
                   key={tag}
                   className="text-[11px] font-medium text-on-surface-variant bg-surface-secondary px-3 py-1 rounded-full border border-border/50 group-hover/card:border-border transition-colors"

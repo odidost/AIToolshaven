@@ -103,10 +103,6 @@
     "logo": "webp",
     "screenshot": "webp"
   },
-  "v0": {
-    "logo": "webp",
-    "screenshot": "webp"
-  },
   "tabnine": {
     "logo": "webp",
     "screenshot": "webp"
@@ -335,10 +331,6 @@
     "logo": "webp",
     "screenshot": "webp"
   },
-  "pi": {
-    "logo": "webp",
-    "screenshot": "webp"
-  },
   "character-ai": {
     "logo": "webp",
     "screenshot": "webp"
@@ -348,6 +340,70 @@
     "screenshot": "webp"
   },
   "Lovable": {
+    "logo": "webp",
+    "screenshot": "webp"
+  },
+  "looka": {
+    "logo": "png"
+  },
+  "logoai": {
+    "logo": "png"
+  },
+  "brandmark": {
+    "logo": "png"
+  },
+  "tailor-brands": {
+    "logo": "png"
+  },
+  "hatchful": {
+    "logo": "png"
+  },
+  "canva-logo-maker": {
+    "logo": "jpg"
+  },
+  "wix-logo-maker": {
+    "logo": "png"
+  },
+  "fiverr-logo-maker": {
+    "logo": "png"
+  },
+  "designhill-logo-maker": {
+    "logo": "png"
+  },
+  "renderforest-logo-maker": {
+    "logo": "png"
+  },
+  "zarla": {
+    "logo": "png"
+  },
+  "placeit": {
+    "logo": "png"
+  },
+  "logomasterai": {
+    "logo": "png"
+  },
+  "turbologo": {
+    "logo": "png"
+  },
+  "fotor-ai-logo-generator": {
+    "logo": "png"
+  },
+  "ideogram": {
+    "logo": "png"
+  },
+  "recraft": {
+    "logo": "png"
+  },
+  "logopony": {
+    "logo": "png"
+  },
+  "smashinglogo": {
+    "logo": "png"
+  },
+  "myfreelogomaker": {
+    "logo": "png"
+  },
+  "design-com": {
     "logo": "webp",
     "screenshot": "webp"
   }

@@ -34,6 +34,8 @@ export interface ToolEditorial {
     pricing?: string;
     comparison?: string;
     useCaseFocus?: string;
+    compareWithBreakdown?: Record<string, string>;
+    faqs?: { question: string; answer: string }[];
 }
 
 
@@ -96,13 +98,13 @@ export interface AITool {
 
     audiences?: string[];
 
-    pros?: string[];
+    pros?: (string | { title: string; description: string })[];
 
-    cons?: string[];
+    cons?: (string | { title: string; description: string })[];
 
     bestFor: string[];
 
-    useCases: string[];
+    useCases: (string | { title: string; description: string })[];
 
     platform?: string;
 

@@ -24,7 +24,8 @@ export const revalidate = 3600; // 1 hour
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const category = await getCategoryBySlug(slug);
+  const decodedSlug = decodeURIComponent(slug);
+  const category = await getCategoryBySlug(decodedSlug);
 
   if (!category) {
     return {
@@ -50,14 +51,15 @@ export default async function CategoryPage({
 }) {
   const { slug } = await params;
 
-  const category = await getCategoryBySlug(slug);
+  const decodedSlug = decodeURIComponent(slug);
+  const category = await getCategoryBySlug(decodedSlug);
 
   if (!category) {
     notFound();
   }
 
   const categoryTools = await getToolsByCategoryId(category.id);
-  const theme = getCategoryTheme(slug);
+  const theme = getCategoryTheme(decodedSlug);
 
   // Calculate some dynamic stats for the premium header
   const totalReviews = categoryTools.reduce((acc, tool) => acc + (tool.reviewCount || 0), 0);
