@@ -27,7 +27,7 @@ export default function SubmitFormPage() {
 
 function SubmitFormContent() {
   const searchParams = useSearchParams();
-  const plan = searchParams.get('plan') || 'standard';
+  const plan = searchParams.get('plan') || 'launch';
 
   const [formData, setFormData] = useState({
     toolName: '',
@@ -47,9 +47,9 @@ function SubmitFormContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const planLabels: Record<string, string> = {
-    standard: 'Standard (Free)',
-    priority: 'Priority Launch ($49)',
-    featured: 'Featured Spotlight ($149/mo)',
+    launch: 'Launch Plan ($50)',
+    growth: 'Growth Plan ($100)',
+    premium: 'Premium Spotlight ($150)',
   };
 
   function validate(): boolean {
@@ -161,7 +161,7 @@ function SubmitFormContent() {
           </p>
           <div className="inline-flex items-center gap-2 mt-4 bg-primary-container text-on-primary-container px-4 py-2 rounded-full text-sm font-semibold">
             <span className="material-symbols-outlined text-sm">verified</span>
-            Plan: {planLabels[plan] || planLabels.standard}
+            Plan: {planLabels[plan] || planLabels.launch}
           </div>
         </div>
 

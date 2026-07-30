@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { articles } from "@/lib/articles";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { StructuredData } from "@/components/shared/StructuredData";
+import { BlogNewsletterForm } from "@/components/blog/BlogNewsletterForm";
 
 type Props = {
   params: Promise<{
@@ -147,21 +148,7 @@ export default async function ArticlePage({ params }: Props) {
             <p className="text-sm text-on-surface-variant mb-6">
               Get the best new AI tools and automated workflows sent to your inbox weekly.
             </p>
-            <form className="space-y-3">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full h-12 px-4 rounded-xl border border-outline bg-surface text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                required
-              />
-              <button 
-                type="submit"
-                className="w-full h-12 bg-primary text-primary-foreground font-bold rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
-              >
-                <span>Subscribe</span>
-                <span className="material-symbols-outlined text-sm">arrow_forward</span>
-              </button>
-            </form>
+            <BlogNewsletterForm />
           </div>
 
           {/* Related Articles */}

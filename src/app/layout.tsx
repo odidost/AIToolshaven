@@ -87,6 +87,7 @@ function getAssetManifest() {
   return {};
 }
 
+
 export default function RootLayout({
   children,
 }: Readonly<{

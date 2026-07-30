@@ -7,8 +7,8 @@
     "category": "category-1783781229083",
     "description": "Design.com is an all-in-one AI branding suite for entrepreneurs and small businesses. It generates thousands of exclusive logo concepts in seconds and automatically applies your new visual identity across social media templates, business cards, websites, and more.",
     "priceModel": "Freemium",
-    "rating": 4.9,
-    "reviewCount": 1250,
+    "rating": 0,
+    "reviewCount": 0,
     "url": "https://www.design.com",
     "imageUrl": "/images/tools/design-com-logo.jpg",
     "publishedData": {
@@ -398,7 +398,9 @@
         "useCaseFocus": "<p>Marketing teams use Jasper to scale their content production without losing their unique brand voice. It's especially useful for generating variations of ad copy for A/B testing.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "copy-ai",
@@ -583,7 +585,9 @@
         "useCaseFocus": "<p>Sales professionals use Copy.ai to draft personalized outreach emails in seconds, dramatically increasing their outbound volume without sounding spammy.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "writesonic",
@@ -766,7 +770,9 @@
         "useCaseFocus": "<p>Niche site builders and content marketers use Writesonic to rapidly prototype and publish SEO-optimized articles, scaling their content operations effortlessly.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "rytr",
@@ -947,7 +953,9 @@
         "useCaseFocus": "<p>Freelancers and students use Rytr to quickly blast through writer's block for short-form content like emails and ad copy.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "sudowrite",
@@ -1130,7 +1138,9 @@
         "useCaseFocus": "<p>Novelists use Sudowrite to get unstuck, using its brainstorming and 'rewrite' tools to expand scenes or generate sensory descriptions when they run out of steam.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "novelai",
@@ -1311,7 +1321,9 @@
         "useCaseFocus": "<p>Hobbyist writers and roleplayers use NovelAI to co-write stories interactively, enjoying the lack of restrictive content filters found in mainstream models.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "quillbot",
@@ -1494,7 +1506,9 @@
         "useCaseFocus": "<p>Students and academics use QuillBot to simplify complex jargon or rephrase research material to ensure original expression and improve readability.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "midjourney",
@@ -1685,7 +1699,9 @@
         "useCaseFocus": "<p>Designers and concept artists use Midjourney to rapidly generate mood boards, concept art, and high-quality stock imagery that looks custom-made.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "dall-e-3",
@@ -1870,7 +1886,9 @@
         "useCaseFocus": "<p>Marketers use DALL-E 3 to quickly generate blog headers, social media graphics, and vector illustrations without leaving their ChatGPT workflow.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "stable-diffusion",
@@ -2053,7 +2071,9 @@
         "useCaseFocus": "<p>Game developers and professional artists use Stable Diffusion (via tools like Automatic1111 or ComfyUI) to build production-ready assets with exact specifications.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "canva-magic-media",
@@ -2236,7 +2256,9 @@
         "useCaseFocus": "<p>Social media managers use Magic Media to generate bespoke background textures, vector graphics, and b-roll style images directly inside their post templates.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "leonardo-ai",
@@ -2419,7 +2441,9 @@
         "useCaseFocus": "<p>Indie game developers use Leonardo to rapidly generate hundreds of consistent item icons, character portraits, and background plates in a unified art style.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "canva",
@@ -2608,7 +2632,9 @@
         "useCaseFocus": "<p>Founders and marketers use Canva to maintain a professional brand presence across multiple platforms without needing to hire a full-time graphic designer.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "runway-gen2",
@@ -2793,7 +2819,9 @@
         "useCaseFocus": "<p>Video editors use Runway to generate missing transition shots, animate static Midjourney concept art, and remove complex backgrounds from footage instantly.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "sora",
@@ -2976,7 +3004,9 @@
         "useCaseFocus": "<p>Filmmakers and agencies with early access are using Sora to generate entirely synthetic commercials, mood boards, and cinematic establishing shots.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "heygen",
@@ -3159,7 +3189,9 @@
         "useCaseFocus": "<p>Sales teams use HeyGen's API to automatically generate personalized video messages for hundreds of prospects, addressing each one by name using an AI avatar.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "opus-clip",
@@ -3340,7 +3372,9 @@
         "useCaseFocus": "<p>Content creators use Opus Clip to feed the algorithms of TikTok, Shorts, and Reels by generating 10-15 pieces of micro-content from a single long-form recording.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "capcut",
@@ -3523,7 +3557,9 @@
         "useCaseFocus": "<p>Practically every major TikTok and YouTube Shorts creator uses CapCut to quickly assemble fast-paced edits, apply trendy templates, and generate dynamic subtitles.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "cursor",
@@ -3710,7 +3746,9 @@
         "useCaseFocus": "<p>Indie hackers use Cursor's 'Composer' feature to rapidly prototype entire full-stack applications in a matter of days by describing features in plain English.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "github-copilot",
@@ -3893,7 +3931,9 @@
         "useCaseFocus": "<p>Enterprise engineers use Copilot to instantly generate boilerplate code, write unit tests, and autocomplete repetitive configuration files.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "v0",
@@ -4080,7 +4120,9 @@
         "useCaseFocus": "<p>Full-stack developers who lack design skills use v0 to generate beautiful, accessible, Shadcn-based user interfaces without having to write a single line of raw CSS.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "tabnine",
@@ -4263,7 +4305,9 @@
         "useCaseFocus": "<p>Enterprise security teams approve Tabnine for their developers because it guarantees that proprietary algorithms won't accidentally be leaked into public AI training data.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "amazon-q",
@@ -4448,7 +4492,9 @@
         "useCaseFocus": "<p>DevOps engineers use Amazon Q to rapidly generate complex CloudFormation templates and troubleshoot cryptic AWS permission errors directly in their IDE.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "framer",
@@ -4631,7 +4677,9 @@
         "useCaseFocus": "<p>Startup founders use Framer to design, build, and launch highly polished, animated landing pages in a single afternoon without needing to hire a frontend developer.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "notion-ai",
@@ -4820,7 +4868,9 @@
         "useCaseFocus": "<p>Founders and project managers use Notion AI to automatically generate meeting action items, summarize complex project specs, and draft standardized company documentation.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "mem-ai",
@@ -5003,7 +5053,9 @@
         "useCaseFocus": "<p>Researchers and students use Mem to rapidly capture raw notes and let the AI surface hidden connections between different lectures and reading materials.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "otter-ai",
@@ -5188,7 +5240,9 @@
         "useCaseFocus": "<p>Product managers use Otter to record user interviews, allowing them to search across dozens of calls for specific feature requests and instantly pull exact quotes.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "zapier-central",
@@ -5377,7 +5431,9 @@
         "useCaseFocus": "<p>Operations managers use Zapier Central to build custom AI assistants that triage incoming customer support tickets, categorized them, and draft initial responses automatically.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "tldv",
@@ -5562,7 +5618,9 @@
         "useCaseFocus": "<p>Sales leaders use tl;dv to build 'highlight reels' of successful pitch calls to train new hires, and to quickly review specific moments where prospects raised objections.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "clickup",
@@ -5741,7 +5799,9 @@
         "useCaseFocus": "<p>Agencies use ClickUp Brain to instantly generate project briefs from scattered client emails, summarize long comment threads on overdue tasks, and automate status updates.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "elevenlabs",
@@ -5924,7 +5984,9 @@
         "useCaseFocus": "<p>YouTube creators use ElevenLabs to generate high-quality voiceovers for video essays, while independent authors use it to affordably turn their manuscripts into audiobooks.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "murf",
@@ -6103,7 +6165,9 @@
         "useCaseFocus": "<p>E-learning developers use Murf to rapidly generate course narrations, allowing them to easily update a script and re-generate the audio months later without re-hiring the original voice actor.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "descript",
@@ -6286,7 +6350,9 @@
         "useCaseFocus": "<p>Podcasters use Descript to instantly remove all 'umms' and 'ahhs' from an hour-long interview with a single click, saving hours of manual editing.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "luma",
@@ -6469,7 +6535,9 @@
         "useCaseFocus": "<p>VFX artists use Luma to quickly generate chaotic background plates or surreal transition shots, while 3D artists use the app to scan real-world objects into usable game assets.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "suno",
@@ -6654,7 +6722,9 @@
         "useCaseFocus": "<p>Content creators use Suno to generate custom intro themes for their podcasts or perfectly timed, genre-specific background music for YouTube videos without worrying about copyright strikes.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "apollo",
@@ -6839,7 +6909,9 @@
         "useCaseFocus": "<p>Sales Development Reps (SDRs) use Apollo to build hyper-targeted lists of decision-makers and instantly drop them into automated, multi-step email sequences.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "gong",
@@ -7022,7 +7094,9 @@
         "useCaseFocus": "<p>VP of Sales use Gong to identify why their best reps are closing deals, extracting those winning talk tracks, and using them to train new hires.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "surfer",
@@ -7205,7 +7279,9 @@
         "useCaseFocus": "<p>Content marketers use Surfer to build highly structured content briefs for freelance writers, ensuring every article is mathematically optimized to rank on page one.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "instantly",
@@ -7390,7 +7466,9 @@
         "useCaseFocus": "<p>Lead generation agencies use Instantly to manage hundreds of client inboxes from a single dashboard, executing massive cold outreach campaigns without triggering spam filters.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "clay",
@@ -7577,7 +7655,9 @@
         "useCaseFocus": "<p>Growth engineers use Clay to execute 'hyper-personalized' cold outreach at scale, achieving open and reply rates that are impossible with standard templated emails.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "buffer",
@@ -7750,7 +7830,9 @@
         "useCaseFocus": "<p>Solo founders use Buffer to batch-create a week's worth of Twitter and LinkedIn content on Sunday, letting the tool handle the actual posting throughout the week.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "stripe",
@@ -7921,7 +8003,9 @@
         "useCaseFocus": "<p>SaaS founders use Stripe to handle complex, usage-based billing models, while relying on Stripe's AI to automatically retry failed credit cards and prevent fraud.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "synthesia",
@@ -8106,7 +8190,9 @@
         "useCaseFocus": "<p>HR departments use Synthesia to translate complex onboarding manuals into engaging, multi-lingual video courses without ever turning on a camera.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "invideo",
@@ -8285,7 +8371,9 @@
         "useCaseFocus": "<p>Social media managers use InVideo to rapidly convert text-heavy blog posts into highly engaging, bite-sized TikTok videos to drive top-of-funnel traffic.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "pika",
@@ -8466,7 +8554,9 @@
         "useCaseFocus": "<p>Digital artists use Pika to take static Midjourney creations, animate the background elements (like flowing water or smoke), and stitch them together into stylized music videos.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "play-ht",
@@ -8643,7 +8733,9 @@
         "useCaseFocus": "<p>News publishers use Play.ht's API to automatically generate and attach high-quality audio narration to every breaking news article the moment it is published.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "fliki",
@@ -8822,7 +8914,9 @@
         "useCaseFocus": "<p>Marketing agencies use Fliki to quickly convert their clients' evergreen blog content into a steady stream of YouTube Shorts and Pinterest video pins.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "codeium",
@@ -9001,7 +9095,9 @@
         "useCaseFocus": "<p>Freelance developers use Codeium in VS Code to get high-quality boilerplate generation and syntax autocomplete without adding another subscription to their overhead.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "phind",
@@ -9182,7 +9278,9 @@
       },
       "websiteUrl": "https://phind.com"
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "sourcegraph-cody",
@@ -9363,7 +9461,9 @@
         "useCaseFocus": "<p>New engineers use Cody to drastically reduce their onboarding time, asking the AI to explain undocumented legacy services and trace complex data flows.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "fireflies",
@@ -9542,7 +9642,9 @@
         "useCaseFocus": "<p>Sales managers use Fireflies to review the exact moments a prospect raised an objection, using the transcript to coach junior reps on better responses.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "gamma",
@@ -9723,7 +9825,9 @@
         "useCaseFocus": "<p>Agency owners use Gamma to instantly convert boring text proposals into interactive, visually stunning web-based pitch decks that impress clients.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "tome",
@@ -9906,7 +10010,9 @@
         "useCaseFocus": "<p>Startup founders use Tome to design highly visual seed-stage pitch decks that stand out from the thousands of generic PowerPoints investors see every day.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "krea",
@@ -10087,7 +10193,9 @@
         "useCaseFocus": "<p>Concept artists use Krea's Live Canvas to rapidly block out compositions with crude shapes and instantly see how the lighting and textures will look in a final render.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "photoroom",
@@ -10272,7 +10380,9 @@
         "useCaseFocus": "<p>E-commerce sellers use Photoroom to take smartphone photos of inventory in their living room and instantly convert them into cohesive, professional product catalogs.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "magnific",
@@ -10451,7 +10561,9 @@
         "useCaseFocus": "<p>3D Artists use Magnific to take standard, low-resolution texture maps and upscale them into massive 8K textures with hyper-realistic, generated micro-details.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "beautiful-ai",
@@ -10630,7 +10742,9 @@
         "useCaseFocus": "<p>Sales teams use Beautiful.ai to quickly build standardized, visually flawless client proposals without needing to run them past the graphic design department.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "fathom",
@@ -10811,7 +10925,9 @@
         "useCaseFocus": "<p>Freelancers use Fathom to record client discovery calls, allowing them to remain fully present in the conversation while relying on the AI to capture all the project requirements.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "anyword",
@@ -10994,7 +11110,9 @@
         "useCaseFocus": "<p>Performance marketers use Anyword to generate dozens of variations for Facebook Ad headlines, relying on the predictive score to select the winners before spending ad budget.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "taskade",
@@ -11179,7 +11297,9 @@
         "useCaseFocus": "<p>Remote startup teams use Taskade to brainstorm product features in a collaborative mind map, then use AI to instantly convert that map into actionable, assigned tasks.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "superhuman",
@@ -11362,7 +11482,9 @@
         "useCaseFocus": "<p>CEOs and venture capitalists use Superhuman to rapidly process massive inboxes, using the AI to draft polite, context-aware rejections or quick follow-ups with a single keystroke.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "perplexity-pro",
@@ -11543,7 +11665,9 @@
         "useCaseFocus": "<p>Market researchers use Perplexity Pro to upload competitor earnings reports and instantly cross-reference them against live industry news to build comprehensive market analyses.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "tome-pro",
@@ -11722,7 +11846,9 @@
         "useCaseFocus": "<p>Creative agencies use Tome Pro to generate highly stylized pitch decks for prospective clients, using custom fonts to match the client's brand guidelines seamlessly.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "runway-gen1",
@@ -11901,7 +12027,9 @@
         "useCaseFocus": "<p>Music video directors use Gen-1 to take standard green-screen footage of an artist and stylize it into animated anime sequences for a fraction of traditional animation costs.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "kaiber",
@@ -12078,7 +12206,9 @@
         "useCaseFocus": "<p>Indie musicians use Kaiber to generate highly engaging, audio-reactive visualizers for their new single releases, boosting engagement on YouTube and Instagram Reels.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "krea-pro",
@@ -12255,7 +12385,9 @@
         "useCaseFocus": "<p>Advertising agencies use Krea Pro's private mode to rapidly ideate campaign visuals for unreleased products, ensuring their ideas aren't leaked to the public generation feed.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "remove-bg",
@@ -12436,7 +12568,9 @@
         "useCaseFocus": "<p>E-commerce managers use the Remove.bg bulk processing tool to instantly standardize the backgrounds of thousands of manufacturer photos before uploading them to Shopify.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "lovo",
@@ -12615,7 +12749,9 @@
         "useCaseFocus": "<p>E-learning developers use Lovo to quickly generate engaging, emotionally varied voiceovers for training modules, tweaking pronunciations to handle complex corporate jargon perfectly.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "replica-studios",
@@ -12794,7 +12930,9 @@
         "useCaseFocus": "<p>Indie game studios use Replica Studios to generate thousands of lines of 'placeholder' dialogue during development, allowing them to test the game's narrative flow before hiring expensive human actors for the final build.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "resemble-ai",
@@ -12973,7 +13111,9 @@
         "useCaseFocus": "<p>Major telecommunications companies use Resemble AI to clone the voice of their brand ambassador, deploying that secure AI voice across thousands of interactive customer support phone trees.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "cody-ai",
@@ -13154,7 +13294,9 @@
         "useCaseFocus": "<p>HR departments train Cody AI on their massive onboarding manuals and healthcare policies, deploying it to Slack so new hires can ask 'What is the dental copay?' and get an instant answer.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "mutable-ai",
@@ -13333,7 +13475,9 @@
         "useCaseFocus": "<p>Engineering managers use Mutable AI to automatically generate and maintain documentation for their microservices, ensuring that tribal knowledge is properly recorded.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "blackbox-ai",
@@ -13514,7 +13658,9 @@
         "useCaseFocus": "<p>Computer science students use Blackbox AI to instantly copy snippets of code from their professors' recorded Zoom lectures directly into their local IDEs for testing.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "codium-ai",
@@ -13695,7 +13841,9 @@
         "useCaseFocus": "<p>Senior engineers use CodiumAI's PR Agent to automatically review pull requests from junior developers, immediately flagging missing test coverage and suggesting edge cases.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "reply-io",
@@ -13876,7 +14024,9 @@
         "useCaseFocus": "<p>Outbound sales agencies use Reply.io to manage dozens of client campaigns simultaneously, relying on Jason AI to automatically handle 'send me more info' responses without manual intervention.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "smartwriter",
@@ -14055,7 +14205,9 @@
         "useCaseFocus": "<p>SEO link builders use Smartwriter to rapidly scrape target blogs and generate hyper-personalized outreach emails referencing specific articles, dramatically increasing their backlink placement rates.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "outbound",
@@ -14236,7 +14388,9 @@
         "useCaseFocus": "<p>Solo founders of B2B SaaS companies use Outbound to maintain a steady stream of cold outreach while they focus 100% of their actual time on product development.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "sanebox",
@@ -14417,7 +14571,9 @@
         "useCaseFocus": "<p>Busy executives use SaneBox to automatically filter out all internal automated server alerts and newsletters, ensuring that their main inbox only contains emails from actual human beings.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "read-ai",
@@ -14598,7 +14754,9 @@
         "useCaseFocus": "<p>Sales managers use Read AI to review discovery calls, checking the 'sentiment' score to see exactly which pricing argument caused the prospect to disengage.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "magicstudio",
@@ -14779,7 +14937,9 @@
         "useCaseFocus": "<p>Real estate agents use Magic Studio on their phones to quickly erase ugly power lines or messy cars from the background of property listing photos before posting them online.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "elevenlabs-dubbing",
@@ -14964,7 +15124,9 @@
         "useCaseFocus": "<p>Large YouTube creators use ElevenLabs Dubbing to automatically translate their back catalog of viral videos into Spanish and Hindi, instantly opening up massive new revenue streams.</p>"
       }
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "draft-1783772132248",
@@ -14988,7 +15150,9 @@
       }
     },
     "publishedData": null,
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "draft-1783772158566",
@@ -15012,7 +15176,9 @@
       }
     },
     "publishedData": null,
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "draft-1783772159110",
@@ -15036,7 +15202,9 @@
       }
     },
     "publishedData": null,
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "draft-1783772161061",
@@ -15060,7 +15228,9 @@
       }
     },
     "publishedData": null,
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "draft-1783772167479",
@@ -15084,7 +15254,9 @@
       }
     },
     "publishedData": null,
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "draft-1783781230912",
@@ -15108,7 +15280,9 @@
       }
     },
     "publishedData": null,
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "draft-1783796760943",
@@ -15132,7 +15306,9 @@
       }
     },
     "publishedData": null,
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "draft-1783797565707",
@@ -15156,7 +15332,9 @@
       }
     },
     "publishedData": null,
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "draft-1783797968280",
@@ -15180,7 +15358,9 @@
       }
     },
     "publishedData": null,
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "draft-1783864842249",
@@ -15204,7 +15384,9 @@
       }
     },
     "publishedData": null,
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "draft-1783913233750",
@@ -15228,7 +15410,9 @@
       }
     },
     "publishedData": null,
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "draft-1783915412175",
@@ -15252,7 +15436,9 @@
       }
     },
     "publishedData": null,
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "chatgpt",
@@ -15635,7 +15821,9 @@
       },
       "url": "https://chatgpt.com"
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "claude",
@@ -15962,7 +16150,9 @@
       },
       "url": "https://claude.ai"
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "gemini",
@@ -16249,7 +16439,9 @@
       },
       "url": "https://gemini.google.com"
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "perplexity",
@@ -16438,7 +16630,9 @@
       },
       "websiteUrl": "https://perplexity.ai"
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "grok",
@@ -16625,7 +16819,9 @@
       },
       "websiteUrl": "https://x.ai"
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "pi",
@@ -16724,7 +16920,9 @@
       "editorial": {},
       "promptExamples": []
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "mistral-le-chat",
@@ -16825,7 +17023,9 @@
       "editorial": {},
       "promptExamples": []
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "copilot",
@@ -16926,7 +17126,9 @@
       "editorial": {},
       "promptExamples": []
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "character-ai",
@@ -17027,7 +17229,9 @@
       "editorial": {},
       "promptExamples": []
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "poe",
@@ -17128,7 +17332,9 @@
       "editorial": {},
       "promptExamples": []
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "jasper-chat",
@@ -17229,7 +17435,9 @@
       "editorial": {},
       "promptExamples": []
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "replika",
@@ -17326,7 +17534,9 @@
       "editorial": {},
       "promptExamples": []
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "huggingchat",
@@ -17429,7 +17639,9 @@
       "editorial": {},
       "promptExamples": []
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "youchat",
@@ -17526,7 +17738,9 @@
       "editorial": {},
       "promptExamples": []
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "chatsonic",
@@ -17627,7 +17841,9 @@
       "editorial": {},
       "promptExamples": []
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "ora-sh",
@@ -17728,7 +17944,9 @@
       "editorial": {},
       "promptExamples": []
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "nomi",
@@ -17829,7 +18047,9 @@
       "editorial": {},
       "promptExamples": []
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "jan",
@@ -17932,7 +18152,9 @@
       "editorial": {},
       "promptExamples": []
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "llama-3",
@@ -18035,7 +18257,9 @@
       "editorial": {},
       "promptExamples": []
     },
-    "versions": []
+    "versions": [],
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "looka",
@@ -18209,7 +18433,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "logoai",
@@ -18383,7 +18609,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "brandmark",
@@ -18557,7 +18785,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "tailor-brands",
@@ -18731,7 +18961,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "hatchful",
@@ -18906,7 +19138,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "canva-logo-maker",
@@ -19080,7 +19314,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "wix-logo-maker",
@@ -19254,7 +19490,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "fiverr-logo-maker",
@@ -19428,7 +19666,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "designhill-logo-maker",
@@ -19602,7 +19842,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "renderforest-logo-maker",
@@ -19776,7 +20018,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "zarla",
@@ -19950,7 +20194,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "placeit",
@@ -20124,7 +20370,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "logomasterai",
@@ -20298,7 +20546,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "turbologo",
@@ -20472,7 +20722,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "fotor-ai-logo-generator",
@@ -20646,7 +20898,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "ideogram",
@@ -20820,7 +21074,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "recraft",
@@ -20994,7 +21250,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "logopony",
@@ -21168,7 +21426,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "smashinglogo",
@@ -21342,7 +21602,9 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   },
   {
     "id": "myfreelogomaker",
@@ -21517,6 +21779,8 @@
           "recommended": true
         }
       ]
-    }
+    },
+    "rating": 0,
+    "reviewCount": 0
   }
 ]

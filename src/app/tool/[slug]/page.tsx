@@ -22,6 +22,7 @@ import { goals } from "@/lib/goals";
 import {
   getToolBySlug,
   getToolsByCategoryId,
+  getAllTools,
 } from "@/lib/data/tools-service";
 
 import {
@@ -89,6 +90,7 @@ export default async function ToolPage({ params }: Props) {
     .slice(0, 4);
 
   const comparisonTools = getComparisonCandidates(tool);
+  const allTools = await getAllTools();
 
   const toolWorkflows = workflows.filter(
     (w) => w.tools.includes(tool.name) || (tool.workflows && tool.workflows.includes(w.slug))
@@ -232,7 +234,10 @@ export default async function ToolPage({ params }: Props) {
             <h3 className="text-fluid-h3 font-bold tracking-tight mb-6 text-on-surface">Workflows Using {tool.name}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {toolWorkflows.map(w => (
-                <WorkflowCard key={w.slug} title={w.title} tools={w.tools.map(t => ({ name: t }))} icon={w.icon} slug={w.slug} />
+                <WorkflowCard key={w.slug} title={w.title} tools={w.tools.map(t => {
+                  const fullTool = allTools.find(at => at.name.toLowerCase() === t.toLowerCase());
+                  return { name: t, fullTool, logoUrl: fullTool?.logoUrl };
+                })} icon={w.icon} slug={w.slug} />
               ))}
             </div>
           </section>

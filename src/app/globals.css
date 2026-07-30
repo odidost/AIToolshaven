@@ -183,3 +183,52 @@
   66%, 91% { transform: translateY(-2rem); }
   100% { transform: translateY(0); }
 }
+
+/* Premium Submit Page Effects */
+.mesh-bg {
+  background-color: #FAFAFA;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(255, 95, 109, 0.08) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, rgba(255, 195, 113, 0.08) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, rgba(255, 95, 109, 0.05) 0, transparent 50%);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.03);
+}
+
+@keyframes spin-gradient {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animated-border {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.animated-border::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent 0%, rgba(255,95,109,0.8) 25%, rgba(255,195,113,0.8) 50%, transparent 50%);
+  animation: spin-gradient 4s linear infinite;
+  z-index: 0;
+}
+
+.animated-border-content {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  margin: 2px;
+  border-radius: calc(1rem - 2px);
+  height: calc(100% - 4px);
+}

@@ -1,266 +1,391 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
-import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
-import { PageContainer } from "@/components/layout/PageContainer";
+
+export const metadata: Metadata = {
+  title: 'Submit Your AI Tool | AIToolsHaven',
+  description: 'Get your AI product discovered by thousands of founders, marketers, developers, creators, and businesses actively searching for the best AI tools.',
+  openGraph: {
+    title: 'Submit Your AI Tool | AIToolsHaven',
+    description: 'Get your AI product discovered by thousands of founders, marketers, developers, creators, and businesses actively searching for the best AI tools.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Submit Your AI Tool | AIToolsHaven',
+    description: 'Get your AI product discovered by thousands of founders, marketers, developers, creators, and businesses actively searching for the best AI tools.',
+  }
+};
 
 const pricingTiers = [
   {
-    name: "Standard",
-    price: "Free",
-    priceDetail: null,
-    description: "Get listed on AIToolsHaven at no cost",
+    name: "🚀 Launch Plan",
+    price: "$50",
+    priceDetail: "One-Time",
+    description: "Perfect for startups launching a new AI product.",
     recommended: false,
     features: [
-      { text: "Standard directory listing", included: true },
-      { text: "Basic analytics dashboard", included: true },
-      { text: "User reviews enabled", included: true },
+      { text: "Editorial review", included: true },
+      { text: "Premium AI Tool page", included: true },
       { text: "Category placement", included: true },
-      { text: "Featured placement", included: false },
-      { text: "Priority review (48h)", included: false },
-      { text: "Social media promotion", included: false },
-      { text: "Competitor ad-free page", included: false },
+      { text: "SEO-optimized listing", included: true },
+      { text: "Product logo & screenshots", included: true },
+      { text: "Pricing information", included: true },
+      { text: "Features section", included: true },
+      { text: "Pros & Cons", included: true },
+      { text: "Website & social links", included: true },
+      { text: "Included in search results", included: true },
+      { text: "Lifetime listing", included: true },
+      { text: "Future page improvements included", included: true },
     ],
-    cta: "Get Started Free",
-    ctaHref: "/submit/form?plan=standard",
-    variant: "outline" as const,
+    bestFor: "New startups and indie makers.",
+    cta: "Select Launch Plan",
+    ctaHref: "/submit/form?plan=launch",
   },
   {
-    name: "Priority Launch",
-    price: "$49",
-    priceDetail: "/one-time",
-    description: "Skip the line and get reviewed within 24 hours.",
+    name: "⭐ Growth Plan",
+    price: "$100",
+    priceDetail: "One-Time",
+    description: "Everything in Launch, plus additional visibility.",
     recommended: true,
     features: [
-      { text: "Everything in Standard", included: true },
-      { text: "Priority review (24h)", included: true },
-      { text: "Featured in \"New Arrivals\"", included: true },
-      { text: "Social media shoutout", included: true },
-      { text: "Enhanced analytics", included: true },
-      { text: "Homepage spotlight", included: false },
-      { text: "Newsletter feature", included: false },
-      { text: "Competitor ad-free page", included: false },
+      { text: "Everything in Launch", included: true },
+      { text: "Priority editorial review", included: true },
+      { text: "\"Editor's Verified\" badge", included: true },
+      { text: "Featured placement within your category", included: true },
+      { text: "Inclusion in related workflow pages", included: true },
+      { text: "Inclusion in goal pages", included: true },
+      { text: "Higher visibility in recommendations", included: true },
+      { text: "Social media announcement", included: true },
     ],
-    cta: "Launch with Priority",
-    ctaHref: "/submit/form?plan=priority",
-    variant: "primary" as const,
+    bestFor: "Companies looking for faster exposure and increased discovery.",
+    cta: "Select Growth Plan",
+    ctaHref: "/submit/form?plan=growth",
   },
   {
-    name: "Featured Spotlight",
-    price: "$149",
-    priceDetail: "/month",
-    description: "Maximum visibility and premium placement",
+    name: "👑 Premium Spotlight",
+    price: "$150",
+    priceDetail: "One-Time",
+    description: "Maximum visibility across AIToolsHaven.",
     recommended: false,
     features: [
-      { text: "Everything in Priority", included: true },
-      { text: "Homepage spotlight banner", included: true },
-      { text: "Weekly newsletter feature", included: true },
-      { text: "Competitor ad-free page", included: true },
-      { text: "Premium analytics & insights", included: true },
-      { text: "Dedicated account manager", included: true },
-      { text: "Custom badge & verification", included: true },
-      { text: "API promotion placement", included: true },
+      { text: "Everything in Growth", included: true },
+      { text: "Homepage featured placement", included: true },
+      { text: "Featured on relevant category pages", included: true },
+      { text: "Featured in comparison recommendations", included: true },
+      { text: "Priority indexing and internal linking", included: true },
+      { text: "Dedicated editorial review", included: true },
+      { text: "Premium \"Featured Tool\" badge", included: true },
+      { text: "Highest submission priority", included: true },
     ],
-    cta: "Get Featured",
-    ctaHref: "/submit/form?plan=featured",
-    variant: "accent" as const,
+    bestFor: "Established AI companies launching new products or major updates.",
+    cta: "Select Premium Spotlight",
+    ctaHref: "/submit/form?plan=premium",
   },
 ];
 
 const processSteps = [
   {
     step: 1,
-    icon: "description",
-    title: "Submit Details",
-    description: "Tell us about your tool, what it does, and why people should use it.",
+    title: "Submit and Choose",
+    description: "Submit your AI tool and choose a launch plan.",
+    icon: "rocket_launch"
   },
   {
     step: 2,
-    icon: "rate_review",
-    title: "Quick Review",
-    description: "We'll check everything over to ensure it meets our quality guidelines.",
+    title: "Editorial Review",
+    description: "Our editorial team reviews your submission.",
+    icon: "rate_review"
   },
   {
     step: 3,
-    icon: "rocket_launch",
-    title: "Go Live",
-    description: "Your listing gets published and sent out to our active community.",
+    title: "Verification",
+    description: "We verify the information provided.",
+    icon: "verified_user"
   },
   {
     step: 4,
-    icon: "trending_up",
-    title: "Track Growth",
-    description: "Check your dashboard to see how many people are discovering your tool.",
+    title: "SEO Optimization",
+    description: "We optimize your listing for search engines.",
+    icon: "search"
   },
+  {
+    step: 5,
+    title: "Publication",
+    description: "Your tool is published and becomes discoverable across AIToolsHaven.",
+    icon: "public"
+  }
+];
+
+const guidelines = [
+  "Use AI or machine learning as a core feature.",
+  "Have a working website.",
+  "Provide genuine value to users.",
+  "Contain accurate and complete information.",
+  "Do not promote spam, scams or misleading claims.",
 ];
 
 const faqItems = [
   {
-    question: "How long does the review process take?",
-    answer: "Standard listings are reviewed within 48 hours. Priority Launch submissions get expedited 24-hour review. Featured Spotlight submissions are typically reviewed within a few hours.",
+    question: "Does payment guarantee publication?",
+    answer: "No. Payment covers the editorial review and listing process. Every submission is reviewed against our quality guidelines. If your submission doesn't meet our standards, it may be rejected.",
   },
   {
-    question: "Can I upgrade my plan later?",
-    answer: "Absolutely! You can upgrade your listing plan at any time from your dashboard. The new pricing tier benefits will take effect immediately.",
+    question: "How long does the review take?",
+    answer: "Most submissions are reviewed within 1–3 business days.",
   },
   {
-    question: "What are the submission requirements?",
-    answer: "You'll need your tool's name, website URL, a short description, category classification, pricing model, and at least one screenshot or logo. Video demos are encouraged for better engagement.",
+    question: "Is my listing permanent?",
+    answer: "Yes. All approved listings remain in our directory. We also update listings over time to keep information accurate.",
   },
   {
-    question: "Do you accept all AI tools?",
-    answer: "We review all submissions for quality and relevance. Tools must be functional, AI-powered, and provide genuine value. We do not accept tools that violate our content policies.",
+    question: "Can I update my listing later?",
+    answer: "Yes. You can contact us whenever your product changes, including pricing, features, branding or screenshots.",
   },
   {
-    question: "Can I edit my listing after submission?",
-    answer: "Yes, you can update your listing details, screenshots, and descriptions at any time through your dashboard. Major changes may require a brief re-review.",
+    question: "Will my tool appear on Google?",
+    answer: "Every listing is built with SEO best practices and is eligible to be indexed by search engines. While no platform can guarantee rankings, we optimize each listing for maximum visibility.",
   },
   {
-    question: "What metrics can I track?",
-    answer: "Standard listings get basic view counts. Premium tiers unlock detailed analytics including click-through rates, comparison appearances, bookmark counts, and user demographics.",
+    question: "Can I submit multiple AI tools?",
+    answer: "Absolutely. Each AI tool requires its own submission and launch plan.",
   },
 ];
 
 export default function SubmitPage() {
   return (
-    <PageContainer className="py-8 md:py-12">
-      <Breadcrumbs items={[{ label: 'Submit Tool' }]} />
+    <div className="min-h-screen bg-background text-foreground font-sans overflow-hidden">
       
       {/* Hero Section */}
-      <div className="max-w-3xl mx-auto text-center mb-16">
-        <div className="inline-flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-2 rounded-full text-sm font-semibold mb-6">
-          <span className="material-symbols-outlined text-sm">rocket_launch</span>
-          Get Noticed
-        </div>
-        <h1 className="text-fluid-h1 font-bold text-on-surface mb-4 leading-tight">
-          Add your tool to the directory
-        </h1>
-        <p className="text-xl text-on-surface-variant max-w-xl mx-auto">
-          We manually review every submission to keep the directory high quality. Choose a plan below to get started.
-        </p>
-      </div>
-
-      {/* Pricing Tiers */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-24">
-        {pricingTiers.map((tier) => (
-          <div
-            key={tier.name}
-            className={`rounded-2xl p-6 flex flex-col relative transition-all duration-300 hover:-translate-y-1 ${
-              tier.recommended
-                ? 'bg-surface-container border-2 border-primary shadow-lg shadow-primary/10'
-                : 'bg-surface-container border border-outline shadow-sm hover:border-primary/50'
-            }`}
-          >
-            {tier.recommended && (
-              <div className="absolute top-0 right-6 -translate-y-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                <span className="material-symbols-outlined text-xs">star</span>
-                Popular
-              </div>
-            )}
-
-            <h2 className="text-lg font-bold text-on-surface mb-1">{tier.name}</h2>
-            <p className="text-sm text-on-surface-variant mb-4">{tier.description}</p>
-
-            <div className="mb-6">
-              <span className="text-4xl font-bold text-on-surface">{tier.price}</span>
-              {tier.priceDetail && (
-                <span className="text-on-surface-variant text-sm">{tier.priceDetail}</span>
-              )}
-            </div>
-
-            <ul className="space-y-3 mb-8 flex-grow">
-              {tier.features.map((feature) => (
-                <li key={feature.text} className={`flex items-start gap-2.5 text-sm ${feature.included ? 'text-on-surface-variant' : 'text-on-surface-variant opacity-40'}`}>
-                  <span className={`material-symbols-outlined text-base shrink-0 mt-0.5 ${feature.included ? 'text-secondary' : ''}`}>
-                    {feature.included ? 'check_circle' : 'cancel'}
-                  </span>
-                  {feature.text}
-                </li>
-              ))}
-            </ul>
-
-            <Link
-              href={tier.ctaHref}
-              className={`block text-center px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200 ${
-                tier.recommended
-                  ? 'bg-primary text-primary-foreground hover:opacity-90 shadow-md shadow-primary/20'
-                  : 'bg-surface border border-outline text-on-surface hover:border-primary hover:bg-surface-container'
-              }`}
-            >
-              {tier.cta}
-            </Link>
+      <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 px-4 border-b border-black/5 mesh-bg">
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] z-0"></div>
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur-md border border-black/10 text-foreground px-5 py-2 rounded-full text-sm font-semibold mb-8 animate-float-slow shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            Reach Active AI Buyers
           </div>
-        ))}
-      </div>
+          
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
+            Submit Your AI Tool to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">AIToolsHaven</span>
+          </h1>
+          
+          <p className="text-xl text-foreground/70 max-w-2xl mx-auto mb-12 leading-relaxed">
+            Get your AI product discovered by thousands of founders, marketers, developers, creators, and businesses actively searching for the best AI tools.
+          </p>
 
-      {/* Process Flow */}
-      <div className="max-w-4xl mx-auto mb-24">
-        <div className="text-center mb-12">
-          <h2 className="text-fluid-h2 font-bold text-on-surface mb-3">How It Works</h2>
-          <p className="text-on-surface-variant text-lg">From submission to discovery in four simple steps.</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {processSteps.map((step, index) => (
-            <div key={step.step} className="relative text-center group">
-              {/* Connector line (hidden on mobile, shown on desktop between items) */}
-              {index < processSteps.length - 1 && (
-                <div className="hidden md:block absolute top-8 left-[calc(50%+2rem)] right-[calc(-50%+2rem)] h-0.5 bg-outline z-0" />
-              )}
-
-              <div className="relative z-10 flex flex-col items-center">
-                <div className="w-16 h-16 rounded-2xl bg-primary-container flex items-center justify-center mb-4 group-hover:bg-primary transition-colors duration-300">
-                  <span className="material-symbols-outlined text-primary text-2xl group-hover:text-primary-foreground transition-colors duration-300">{step.icon}</span>
+          {/* Social Proof */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-foreground/60">
+            <div className="flex -space-x-3">
+              {[1,2,3,4].map((i) => (
+                <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gradient-to-br from-black/5 to-black/10 flex items-center justify-center backdrop-blur-md shadow-sm">
+                   <span className="material-symbols-outlined text-foreground/40 text-sm">person</span>
                 </div>
-                <div className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
-                  Step {step.step}
-                </div>
-                <h3 className="font-bold text-on-surface mb-2">{step.title}</h3>
-                <p className="text-sm text-on-surface-variant leading-relaxed">{step.description}</p>
+              ))}
+              <div className="w-10 h-10 rounded-full border-2 border-white bg-primary flex items-center justify-center text-white font-bold text-xs z-10 shadow-sm">
+                500+
               </div>
             </div>
-          ))}
+            <p>Join 500+ AI startups already growing with us</p>
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* FAQ Section */}
-      <div className="max-w-3xl mx-auto mb-24">
-        <div className="text-center mb-12">
-          <h2 className="text-fluid-h2 font-bold text-on-surface mb-3">Frequently Asked Questions</h2>
-          <p className="text-on-surface-variant text-lg">Everything you need to know about submitting your tool.</p>
+      {/* Pricing Section */}
+      <section className="py-24 px-4 relative z-10 -mt-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Choose Your Launch Plan</h2>
+            <p className="text-foreground/60 text-lg">Every submission is reviewed by our editorial team to ensure quality.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            {pricingTiers.map((tier) => {
+              const isPopular = tier.recommended;
+              
+              const CardContent = (
+                <div className={`flex flex-col h-full p-8 ${isPopular ? 'animated-border-content' : 'glass-card rounded-2xl'} transition-transform duration-300 hover:-translate-y-2`}>
+                  
+                  {isPopular && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-secondary text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-[0_0_15px_rgba(255,95,109,0.5)] z-20">
+                      Most Popular
+                    </div>
+                  )}
+
+                  <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
+                  <p className="text-foreground/50 text-sm mb-6 min-h-[40px]">{tier.description}</p>
+                  
+                  <div className="mb-6 flex items-baseline gap-2 border-b border-black/10 pb-6">
+                    <span className="text-5xl font-extrabold">{tier.price}</span>
+                    <span className="text-foreground/40 text-sm uppercase tracking-wide">{tier.priceDetail}</span>
+                  </div>
+
+                  <div className="mb-8">
+                    <p className="text-sm font-medium text-foreground/80 mb-1">Best for:</p>
+                    <p className="text-sm text-foreground/50">{tier.bestFor}</p>
+                  </div>
+                  
+                  <ul className="space-y-4 mb-8 flex-grow">
+                    {tier.features.map((feature, i) => (
+                      <li key={i} className={`flex items-start gap-3 text-sm ${feature.included ? 'text-foreground/80' : 'text-foreground/30'}`}>
+                        <span className={`material-symbols-outlined text-[20px] shrink-0 ${feature.included ? 'text-primary' : ''}`}>
+                          {feature.included ? 'check_circle' : 'do_not_disturb_on'}
+                        </span>
+                        {feature.text}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link
+                    href={tier.ctaHref}
+                    className={`block w-full text-center py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
+                      isPopular 
+                        ? 'bg-foreground text-white hover:bg-foreground/90 shadow-md hover:scale-[1.02]' 
+                        : 'bg-black/5 text-foreground hover:bg-black/10 border border-black/5'
+                    }`}
+                  >
+                    {tier.cta}
+                  </Link>
+                </div>
+              );
+
+              if (isPopular) {
+                return (
+                  <div key={tier.name} className="animated-border rounded-2xl p-[2px] transform scale-100 lg:scale-105 z-10 shadow-[0_0_40px_rgba(255,95,109,0.15)] relative bg-white">
+                    {CardContent}
+                  </div>
+                );
+              }
+
+              return <div key={tier.name}>{CardContent}</div>;
+            })}
+          </div>
         </div>
+      </section>
 
-        <div className="space-y-3">
-          {faqItems.map((item) => (
-            <details key={item.question} className="group bg-surface-container rounded-xl border border-outline overflow-hidden">
-              <summary className="flex items-center justify-between cursor-pointer p-5 hover:bg-surface transition-colors">
-                <span className="font-semibold text-on-surface text-sm pr-4">{item.question}</span>
-                <span className="material-symbols-outlined text-on-surface-variant shrink-0 transition-transform duration-200 group-open:rotate-180">
-                  expand_more
-                </span>
-              </summary>
-              <div className="px-5 pb-5 pt-0 text-sm text-on-surface-variant leading-relaxed border-t border-outline mt-0 pt-4">
-                {item.answer}
+      {/* Bento Grid: Why List */}
+      <section className="py-24 px-4 bg-black/5 border-y border-black/5">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Why List on AIToolsHaven?</h2>
+            <p className="text-foreground/60 text-lg">More than just a directory. We're a growth engine.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="col-span-1 md:col-span-2 glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-colors duration-500"></div>
+              <span className="material-symbols-outlined text-4xl text-primary mb-6 block">visibility</span>
+              <h3 className="text-2xl font-bold mb-3">Targeted Reach</h3>
+              <p className="text-foreground/60 text-lg leading-relaxed max-w-md">Reach a targeted audience actively searching for AI tools. We connect your product with founders, marketers, and developers looking for exact solutions.</p>
+            </div>
+            
+            <div className="col-span-1 glass-card rounded-3xl p-8 relative overflow-hidden">
+              <span className="material-symbols-outlined text-4xl text-secondary mb-6 block">trending_up</span>
+              <h3 className="text-xl font-bold mb-3">SEO Optimized</h3>
+              <p className="text-foreground/60">Gain a professionally designed, SEO-optimized product page that increases your visibility on search engines.</p>
+            </div>
+            
+            <div className="col-span-1 glass-card rounded-3xl p-8 relative overflow-hidden">
+              <span className="material-symbols-outlined text-4xl text-accent mb-6 block">category</span>
+              <h3 className="text-xl font-bold mb-3">Smart Placement</h3>
+              <p className="text-foreground/60">Be included in relevant categories, workflows, and goal pages where users have high intent.</p>
+            </div>
+            
+            <div className="col-span-1 md:col-span-2 glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden group">
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 group-hover:bg-secondary/20 transition-colors duration-500"></div>
+              <span className="material-symbols-outlined text-4xl text-foreground mb-6 block">workspace_premium</span>
+              <h3 className="text-2xl font-bold mb-3">Long-term Credibility</h3>
+              <p className="text-foreground/60 text-lg leading-relaxed max-w-md">Receive long-term organic exposure instead of short-lived promotions. Improve brand credibility with an editorial review and verification process.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Vertical Timeline Process */}
+      <section className="py-24 px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">What Happens After Submission?</h2>
+            <p className="text-foreground/60 text-lg">Most submissions are reviewed within <span className="text-foreground font-semibold">1–3 business days</span>.</p>
+          </div>
+
+          <div className="relative border-l border-black/10 ml-6 md:ml-12 space-y-12 pb-12">
+            {processSteps.map((step, index) => (
+              <div key={index} className="relative pl-12 md:pl-16 group">
+                {/* Timeline Dot */}
+                <div className="absolute -left-[20px] top-1 w-10 h-10 rounded-full bg-white border border-black/10 flex items-center justify-center text-primary group-hover:border-primary group-hover:scale-110 transition-all duration-300 shadow-sm">
+                  <span className="material-symbols-outlined text-sm">{step.icon}</span>
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-2 text-foreground/90 group-hover:text-foreground transition-colors">{step.title}</h3>
+                <p className="text-foreground/50 text-lg">{step.description}</p>
               </div>
-            </details>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* CTA Banner */}
-      <div className="max-w-3xl mx-auto mb-8">
-        <div className="bg-primary rounded-2xl p-8 md:p-12 text-center text-primary-foreground">
-          <h2 className="text-2xl md:text-fluid-h2 font-bold mb-3">Ready to Launch?</h2>
-          <p className="opacity-80 mb-6 max-w-md mx-auto">
-            Join hundreds of AI tools already growing with AIToolsHaven. Start with a free listing today.
+      {/* Guidelines & FAQ */}
+      <section className="py-24 px-4 bg-black/5 border-t border-black/5">
+        <div className="max-w-3xl mx-auto space-y-24">
+          
+          {/* Guidelines */}
+          <div>
+            <h2 className="text-3xl font-bold mb-8 text-center">Submission Guidelines</h2>
+            <div className="glass-card rounded-3xl p-8 md:p-12">
+              <ul className="space-y-4 mb-8">
+                {guidelines.map((guideline, index) => (
+                  <li key={index} className="flex items-start gap-4">
+                    <span className="material-symbols-outlined text-primary shrink-0">check</span>
+                    <span className="text-foreground/70 text-lg">{guideline}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-sm text-foreground/40 text-center border-t border-black/5 pt-6">
+                We reserve the right to reject submissions that do not meet our editorial standards.
+              </p>
+            </div>
+          </div>
+
+          {/* FAQ */}
+          <div>
+            <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              {faqItems.map((item, index) => (
+                <details key={index} className="group glass-card rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+                  <summary className="flex items-center justify-between cursor-pointer p-6 hover:bg-black/5 transition-colors">
+                    <span className="font-semibold text-lg text-foreground/90">{item.question}</span>
+                    <span className="material-symbols-outlined text-foreground/40 transition-transform duration-300 group-open:rotate-180">
+                      expand_more
+                    </span>
+                  </summary>
+                  <div className="px-6 pb-6 pt-0 text-foreground/60 leading-relaxed">
+                    {item.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Premium CTA */}
+      <section className="py-24 px-4 relative overflow-hidden border-t border-black/5">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 z-0"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">Ready to Reach More Users?</h2>
+          <p className="text-xl text-foreground/60 mb-10 max-w-2xl mx-auto">
+            Join hundreds of AI companies using AIToolsHaven to increase visibility, attract new users and grow through high-quality organic discovery.
           </p>
           <Link
-            href="/submit/form?plan=standard"
-            className="inline-flex items-center gap-2 bg-white text-primary px-8 py-3 rounded-xl font-bold hover:bg-white/90 transition-colors shadow-lg"
+            href="/submit/form?plan=growth"
+            className="inline-flex items-center gap-3 bg-primary text-white px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-transform duration-300 shadow-lg shadow-primary/20"
           >
-            Submit Your Tool
-            <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            Choose Your Launch Plan
+            <span className="material-symbols-outlined">rocket_launch</span>
           </Link>
         </div>
-      </div>
-    </PageContainer>
+      </section>
+      
+    </div>
   );
 }

@@ -17,7 +17,8 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL.replace(/\/$/, "");
 
 export const env = {
   NEXT_PUBLIC_BASE_URL: baseUrl,
-  // Add other required env vars here as the project grows (e.g. Supabase URLs, analytics IDs)
-  NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID || "",
+  // Google Analytics 4
+  NEXT_PUBLIC_GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "",
+  // Microsoft Clarity
   NEXT_PUBLIC_CLARITY_ID: process.env.NEXT_PUBLIC_CLARITY_ID || "",
 } as const;

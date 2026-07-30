@@ -52,10 +52,14 @@ export default async function WorkflowsIndexPage() {
               <WorkflowCard
                 key={workflow.slug}
                 title={workflow.title}
-                tools={workflow.tools.map((t) => ({
-                  name: t,
-                  logoUrl: toolLogos[t.toLowerCase()] || undefined,
-                }))}
+                tools={workflow.tools.map((t) => {
+                  const fullTool = allTools.find(at => at.name.toLowerCase() === t.toLowerCase());
+                  return {
+                    name: t,
+                    logoUrl: toolLogos[t.toLowerCase()] || undefined,
+                    fullTool
+                  };
+                })}
                 icon={workflow.icon}
                 slug={workflow.slug}
               />

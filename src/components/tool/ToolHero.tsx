@@ -5,6 +5,7 @@ import { getComparisonCandidates } from "@/lib/queries/comparisons";
 import { ToolImage } from "@/components/shared/ToolImage";
 import { AuthorAttribution } from "@/components/shared/AuthorAttribution";
 import { BookmarkButton } from "./ToolCommunityFeatures";
+import { TrackedExternalLink } from "./TrackedExternalLink";
 type ToolHeroProps = {
     tool: AITool;
 };
@@ -199,17 +200,17 @@ export function ToolHero({ tool }: ToolHeroProps) {
                     <div className="flex flex-wrap gap-3">
 
                         {(tool.websiteUrl || tool.url) && (
-                            <Link
+                            <TrackedExternalLink
                                 href={tool.websiteUrl || tool.url || '#'}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                toolName={tool.name}
+                                toolSlug={tool.slug}
                                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-secondary px-6 py-4 font-semibold text-white transition-all shadow-glow hover:shadow-glow-primary hover:-translate-y-[0.5px]"
                             >
                                 <span className="material-symbols-outlined">
                                     open_in_new
                                 </span>
                                 Visit Website
-                            </Link>
+                            </TrackedExternalLink>
                         )}
 
                         <Link

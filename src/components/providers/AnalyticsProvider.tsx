@@ -1,10 +1,55 @@
 "use client";
 
 import Script from "next/script";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect, Suspense } from "react";
+import { GA_MEASUREMENT_ID, trackPageView } from "@/lib/analytics/gtag";
 import { env } from "@/lib/env";
 
+/**
+ * Tracks route changes and sends page views to GA4.
+ * Wrapped in Suspense because useSearchParams() can suspend.
+ */
+function RouteChangeTracker() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (!pathname) return;
+
+    const url = searchParams?.toString()
+      ? `${pathname}?${searchParams.toString()}`
+      : pathname;
+
+    // Track page view in GA4
+    trackPageView(url);
+
+    // Also send to custom telemetry endpoint
+    fetch("/api/analytics/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        eventName: "page_view",
+        url: pathname,
+        title: typeof document !== "undefined" ? document.title : pathname,
+        referrer: typeof document !== "undefined" ? document.referrer : "",
+      }),
+    }).catch(() => {
+      // Ignore silently — non-blocking telemetry
+    });
+  }, [pathname, searchParams]);
+
+  return null;
+}
+
+/**
+ * Global analytics provider. Loads GA4 and Clarity scripts,
+ * and automatically tracks route changes.
+ *
+ * Renders in the root layout — loads once, never duplicated.
+ */
 export function AnalyticsProvider() {
-  const gaId = env.NEXT_PUBLIC_GA_ID;
+  const gaId = GA_MEASUREMENT_ID;
   const clarityId = env.NEXT_PUBLIC_CLARITY_ID;
 
   return (
@@ -26,6 +71,7 @@ export function AnalyticsProvider() {
                 gtag('js', new Date());
                 gtag('config', '${gaId}', {
                   page_path: window.location.pathname,
+                  send_page_view: true,
                 });
               `,
             }}
@@ -49,6 +95,11 @@ export function AnalyticsProvider() {
           }}
         />
       )}
+
+      {/* Route change tracking (GA4 + custom telemetry) */}
+      <Suspense fallback={null}>
+        <RouteChangeTracker />
+      </Suspense>
     </>
   );
 }
