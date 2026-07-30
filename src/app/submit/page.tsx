@@ -176,12 +176,17 @@ export default function SubmitPage() {
           {/* Social Proof */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-foreground/60">
             <div className="flex -space-x-3">
-              {[1,2,3,4].map((i) => (
-                <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gradient-to-br from-black/5 to-black/10 flex items-center justify-center backdrop-blur-md shadow-sm">
-                   <span className="material-symbols-outlined text-foreground/40 text-sm">person</span>
+              {['design.com', 'openai.com', 'anthropic.com', 'midjourney.com'].map((domain, i) => (
+                <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-white flex items-center justify-center shadow-sm overflow-hidden z-0 relative">
+                   {/* eslint-disable-next-line @next/next/no-img-element */}
+                   <img 
+                     src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`} 
+                     alt={`${domain} logo`} 
+                     className="w-full h-full object-contain p-1" 
+                   />
                 </div>
               ))}
-              <div className="w-10 h-10 rounded-full border-2 border-white bg-primary flex items-center justify-center text-white font-bold text-xs z-10 shadow-sm">
+              <div className="w-10 h-10 rounded-full border-2 border-white bg-primary flex items-center justify-center text-white font-bold text-xs z-10 shadow-sm relative">
                 500+
               </div>
             </div>
