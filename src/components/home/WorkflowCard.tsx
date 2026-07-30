@@ -15,30 +15,22 @@ export function WorkflowCard({
     icon: string;
     slug?: string;
 }) {
-    const bgImageUrl = slug ? `/images/workflows/${slug}.png` : undefined;
-
     const CardContent = (
-        <div className="group rounded-[2rem] border border-white/10 shadow-lg hover:shadow-2xl hover:border-white/30 transition-all duration-700 relative overflow-hidden h-full flex flex-col justify-between min-h-[240px] bg-slate-950/80 backdrop-blur-xl">
+        <div className="group rounded-[2rem] border border-white/10 shadow-xl hover:shadow-2xl hover:border-white/30 transition-all duration-700 relative overflow-hidden h-full flex flex-col justify-between min-h-[240px] bg-slate-950/40 backdrop-blur-3xl">
             
-            {/* Background Image */}
-            {bgImageUrl && (
-                <img 
-                    src={bgImageUrl} 
-                    alt={title} 
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-            )}
-
-            {/* Aurora / Mesh Gradient Blobs */}
-            <div className="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-primary/20 blur-[80px] group-hover:bg-primary/30 transition-colors duration-700 pointer-events-none" />
-            <div className="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] rounded-full bg-secondary/20 blur-[80px] group-hover:bg-secondary/30 transition-colors duration-700 pointer-events-none" />
-
-            {/* Dark Gradient Overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-950/20 pointer-events-none z-0" />
+            {/* Alive & Colorful Animated Orbs */}
+            <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-purple-500/40 rounded-full mix-blend-screen filter blur-[80px] animate-pulse pointer-events-none group-hover:scale-110 transition-transform duration-1000" style={{ animationDuration: '4s' }} />
+            <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-cyan-400/40 rounded-full mix-blend-screen filter blur-[80px] animate-pulse pointer-events-none group-hover:scale-110 transition-transform duration-1000" style={{ animationDuration: '6s', animationDelay: '1s' }} />
+            <div className="absolute top-[20%] right-[-10%] w-[50%] h-[50%] bg-pink-500/30 rounded-full mix-blend-screen filter blur-[80px] animate-pulse pointer-events-none group-hover:-translate-x-10 group-hover:scale-125 transition-transform duration-1000" style={{ animationDuration: '5s' }} />
+            <div className="absolute bottom-[10%] left-[-10%] w-[50%] h-[50%] bg-amber-400/30 rounded-full mix-blend-screen filter blur-[80px] animate-pulse pointer-events-none group-hover:translate-x-10 group-hover:scale-125 transition-transform duration-1000" style={{ animationDuration: '7s', animationDelay: '2s' }} />
+            
+            {/* Glassy Inner Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none z-0 rounded-[2rem]" />
+            <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(255,255,255,0.1)] rounded-[2rem] pointer-events-none z-0" />
 
             {/* Header: Title and Category Icon */}
             <div className="flex items-start justify-between gap-4 mb-4 mt-5 mx-6 relative z-10">
-                <h3 className="font-black text-2xl bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/60 group-hover:from-white group-hover:via-primary/20 group-hover:to-primary/80 transition-all duration-500 leading-tight drop-shadow-md">
+                <h3 className="font-semibold text-lg tracking-wide text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.4)] transition-all duration-500 leading-tight">
                     {title}
                 </h3>
                 <div className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 backdrop-blur-xl text-white/80 group-hover:bg-primary/20 group-hover:text-white transition-all duration-500 border border-white/10 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_rgba(255,95,109,0.3)] shadow-lg relative overflow-hidden">
