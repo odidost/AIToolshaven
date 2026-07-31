@@ -64,8 +64,8 @@ export default function MediaKitPage() {
                 <p className="text-sm text-on-surface-variant">For dark backgrounds.</p>
               </div>
               <a 
-                href="/logo.svg" 
-                download="AIToolsHaven-Logo.svg"
+                href="/logo-white.svg" 
+                download="AIToolsHaven-Logo-White.svg"
                 className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-bold text-sm transition-colors flex items-center gap-2"
               >
                 <span className="material-symbols-outlined text-[18px]">download</span>
@@ -117,8 +117,8 @@ export default function MediaKitPage() {
                 <p className="text-sm text-on-surface-variant">For vertical or square containers.</p>
               </div>
               <a 
-                href="/logo.svg" 
-                download="AIToolsHaven-Logo.svg"
+                href="/logo-stacked.svg" 
+                download="AIToolsHaven-Logo-Stacked.svg"
                 className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-bold text-sm transition-colors flex items-center gap-2"
               >
                 <span className="material-symbols-outlined text-[18px]">download</span>

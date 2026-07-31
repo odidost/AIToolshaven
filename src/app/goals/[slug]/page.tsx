@@ -60,7 +60,7 @@ export default async function GoalPage({
 
     // Show only tools mapped to this goal
     const goalTools = tools.filter((tool) =>
-        tool.goals?.includes(goal.slug)
+        tool.goals?.includes(goal.slug) || tool.goals?.includes(goal.title)
     );
 
     const jsonLd = {
@@ -92,16 +92,19 @@ export default async function GoalPage({
                 icon={goal.icon}
                 toolCount={goalTools.length}
                 details={details}
+                tools={goalTools.slice(0, 5)}
             />
 
             {/* Metrics */}
             <GoalMetrics details={details} />
 
             {/* Workflow */}
-            <GoalWorkflow steps={details.workflowSteps} />
+            <div id="workflow">
+                <GoalWorkflow steps={details.workflowSteps} />
+            </div>
 
             {/* Tools */}
-            <div className="mb-16">
+            <div id="tools" className="mb-16">
                 <GoalToolGrid tools={goalTools} />
             </div>
 

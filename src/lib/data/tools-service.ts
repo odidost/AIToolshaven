@@ -70,6 +70,7 @@ function mapDatabaseRowToAITool(row: any): AITool {
     collections: localTool?.collections || [],
     audiences: localTool?.audiences || [],
     workflows: localTool?.workflows || [],
+    goals: localTool?.goals || [],
   };
 }
 

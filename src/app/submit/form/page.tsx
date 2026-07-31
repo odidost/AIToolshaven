@@ -7,7 +7,8 @@ import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { categories } from '@/lib/data/categories';
 import { toast } from 'sonner';
-import { sendSubmissionEmail } from '@/app/actions/submit-tool';
+import { sendSubmissionEmail, verifyBacklink } from '@/app/actions/submit-tool';
+import { PublisherBadgeEmbed } from '@/components/shared/PublisherBadgeEmbed';
 const pricingModels = ["Free", "Freemium", "Paid", "Enterprise"] as const;
 
 export default function SubmitFormPage() {
@@ -38,6 +39,7 @@ function SubmitFormContent() {
     pricingModel: '' as string,
     price: '',
     tagline: '',
+    backlinkUrl: '',
   });
 
   const [dragActive, setDragActive] = useState(false);
@@ -47,6 +49,7 @@ function SubmitFormContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const planLabels: Record<string, string> = {
+    free: 'Free Plan ($0)',
     launch: 'Launch Plan ($50)',
     growth: 'Growth Plan ($100)',
     premium: 'Premium Spotlight ($150)',
@@ -59,6 +62,10 @@ function SubmitFormContent() {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.contactEmail)) newErrors.contactEmail = 'Enter a valid email address';
     if (!formData.websiteUrl.trim()) newErrors.websiteUrl = 'Website URL is required';
     else if (!/^https?:\/\/.+\..+/.test(formData.websiteUrl)) newErrors.websiteUrl = 'Enter a valid URL';
+    if (plan === 'free') {
+      if (!formData.backlinkUrl.trim()) newErrors.backlinkUrl = 'Backlink URL is required for the free plan';
+      else if (!/^https?:\/\/.+\..+/.test(formData.backlinkUrl)) newErrors.backlinkUrl = 'Enter a valid URL';
+    }
     if (!formData.description.trim()) newErrors.description = 'Description is required';
     else if (formData.description.length < 20) newErrors.description = 'Description must be at least 20 characters';
     if (!formData.category) newErrors.category = 'Please select a category';
@@ -72,6 +79,17 @@ function SubmitFormContent() {
     if (validate()) {
       setIsSubmitting(true);
       try {
+        if (plan === 'free') {
+          const verification = await verifyBacklink(formData.backlinkUrl);
+          if (!verification.success) {
+            setErrors(prev => ({ ...prev, backlinkUrl: verification.error || "Verification failed." }));
+            toast.error(verification.error || "Failed to verify backlink.");
+            setIsSubmitting(false);
+            return;
+          }
+          toast.success("Backlink verified successfully!");
+        }
+
         const result = await sendSubmissionEmail({
           ...formData,
           plan: planLabels[plan] || plan,
@@ -229,6 +247,31 @@ function SubmitFormContent() {
             />
             {errors.websiteUrl && <p className="text-red-500 text-xs mt-1">{errors.websiteUrl}</p>}
           </div>
+
+          {/* Backlink URL (Free Plan Only) */}
+          {plan === 'free' && (
+            <div>
+              <PublisherBadgeEmbed />
+              
+              <div className="bg-primary/5 border border-primary/20 p-5 rounded-xl mt-6">
+                <label htmlFor="backlink-url" className="block text-sm font-semibold text-on-surface mb-1">
+                  Verify Badge URL <span className="text-red-500">*</span>
+                </label>
+                <p className="text-xs text-on-surface-variant mb-3">
+                  Please provide the exact URL where you placed the AIToolsHaven badge. Our system will automatically verify the link is present.
+                </p>
+              <input
+                id="backlink-url"
+                type="url"
+                placeholder="https://yourtool.com/partners (where you placed our link)"
+                value={formData.backlinkUrl}
+                onChange={(e) => setFormData(prev => ({ ...prev, backlinkUrl: e.target.value }))}
+                className={`w-full h-12 px-4 rounded-xl border bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm ${errors.backlinkUrl ? 'border-red-400' : 'border-outline'}`}
+              />
+              {errors.backlinkUrl && <p className="text-red-500 text-sm font-semibold mt-2">{errors.backlinkUrl}</p>}
+              </div>
+            </div>
+          )}
 
           {/* Description */}
           <div>

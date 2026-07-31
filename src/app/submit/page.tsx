@@ -18,28 +18,24 @@ export const metadata: Metadata = {
 
 const pricingTiers = [
   {
-    name: "🚀 Launch Plan",
-    price: "$50",
-    priceDetail: "One-Time",
+    name: "🌱 Free Plan",
+    price: "$0",
+    priceDetail: "Free Forever",
     description: "Perfect for startups launching a new AI product.",
     recommended: false,
     features: [
+      { text: "Featured on AIToolsHaven badge", included: true, isBadge: true },
       { text: "Editorial review", included: true },
-      { text: "Premium AI Tool page", included: true },
+      { text: "Standard AI Tool page", included: true },
       { text: "Category placement", included: true },
       { text: "SEO-optimized listing", included: true },
       { text: "Product logo & screenshots", included: true },
-      { text: "Pricing information", included: true },
-      { text: "Features section", included: true },
-      { text: "Pros & Cons", included: true },
-      { text: "Website & social links", included: true },
       { text: "Included in search results", included: true },
       { text: "Lifetime listing", included: true },
-      { text: "Future page improvements included", included: true },
     ],
     bestFor: "New startups and indie makers.",
-    cta: "Select Launch Plan",
-    ctaHref: "/submit/form?plan=launch",
+    cta: "Select Free Plan",
+    ctaHref: "/submit/form?plan=free",
   },
   {
     name: "⭐ Growth Plan",
@@ -48,7 +44,7 @@ const pricingTiers = [
     description: "Everything in Launch, plus additional visibility.",
     recommended: true,
     features: [
-      { text: "Everything in Launch", included: true },
+      { text: "Everything in Free", included: true },
       { text: "Priority editorial review", included: true },
       { text: "\"Editor's Verified\" badge", included: true },
       { text: "Featured placement within your category", included: true },
@@ -230,14 +226,30 @@ export default function SubmitPage() {
                   </div>
                   
                   <ul className="space-y-4 mb-8 flex-grow">
-                    {tier.features.map((feature, i) => (
-                      <li key={i} className={`flex items-start gap-3 text-sm ${feature.included ? 'text-foreground/80' : 'text-foreground/30'}`}>
-                        <span className={`material-symbols-outlined text-[20px] shrink-0 ${feature.included ? 'text-primary' : ''}`}>
-                          {feature.included ? 'check_circle' : 'do_not_disturb_on'}
-                        </span>
-                        {feature.text}
-                      </li>
-                    ))}
+                    {tier.features.map((feature: any, i) => {
+                      if (feature.isBadge) {
+                        return (
+                          <li key={i} className="bg-primary/5 border border-primary/20 rounded-xl p-4 flex flex-col gap-3 -mx-2 my-2">
+                            <div className="flex items-start gap-2">
+                              <span className="material-symbols-outlined text-[20px] shrink-0 text-primary mt-0.5">verified</span>
+                              <div>
+                                <p className="text-sm font-bold text-foreground/90 leading-tight mb-1">Get listed for free + display your badge</p>
+                                <p className="text-xs text-foreground/60 leading-relaxed">Display the "Featured on AIToolsHaven" publisher badge on your website to qualify for the free tier.</p>
+                              </div>
+                            </div>
+                          </li>
+                        );
+                      }
+                      
+                      return (
+                        <li key={i} className={`flex items-start gap-3 text-sm ${feature.included ? 'text-foreground/80' : 'text-foreground/30'}`}>
+                          <span className={`material-symbols-outlined text-[20px] shrink-0 ${feature.included ? 'text-primary' : ''}`}>
+                            {feature.included ? 'check_circle' : 'do_not_disturb_on'}
+                          </span>
+                          {feature.text}
+                        </li>
+                      );
+                    })}
                   </ul>
 
                   <Link
