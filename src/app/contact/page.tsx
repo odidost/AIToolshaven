@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
+import { SocialLinks } from "@/components/shared/SocialLinks";
 
 export const metadata: Metadata = {
   title: "Contact Us | AIToolsHaven",
@@ -56,7 +57,7 @@ export default function ContactPage() {
       </div>
 
       {/* General Email */}
-      <div className="rounded-[32px] bg-slate-50 border border-slate-100 p-10 md:p-14 text-center">
+      <div className="rounded-[32px] bg-slate-50 border border-slate-100 p-10 md:p-14 text-center mb-16">
         <span className="material-symbols-outlined text-5xl text-primary mb-4 block">mail</span>
         <h2 className="text-2xl font-black text-slate-900 mb-3">
           General Enquiries
@@ -72,6 +73,14 @@ export default function ContactPage() {
           <span className="material-symbols-outlined text-[18px]">open_in_new</span>
         </a>
         <p className="text-xs text-slate-400 mt-6">We typically respond within 1-2 business days.</p>
+      </div>
+
+      {/* Social CTA */}
+      <div className="text-center flex flex-col items-center">
+        <h3 className="text-fluid-h3 font-black text-slate-900 tracking-tight mb-6">
+          Connect With AIToolsHaven
+        </h3>
+        <SocialLinks variant="cta" />
       </div>
     </ContentContainer>
   );

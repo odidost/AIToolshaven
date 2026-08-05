@@ -16,9 +16,9 @@ export const siteConfig = {
 
   // Social handles
   socialLinks: {
-    twitter: "https://twitter.com/aitoolshaven",
-    github: "https://github.com/aitoolshaven",
-    linkedin: "https://linkedin.com/company/aitoolshaven",
+    x: "https://x.com/aitoolshaven",
+    facebook: "https://web.facebook.com/AIToolsHaven",
+    youtube: "https://www.youtube.com/@Aitoolshaven",
   },
   
   // Organization Info

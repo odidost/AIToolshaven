@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
+import { SocialLinks } from "@/components/shared/SocialLinks";
 
 export const metadata: Metadata = {
   title: "About AIToolsHaven | The Best AI Tools Directory",
@@ -99,7 +100,7 @@ export default function AboutPage() {
       </div>
 
       {/* CTA */}
-      <div className="rounded-[32px] bg-slate-950 p-10 md:p-16 text-center relative overflow-hidden">
+      <div className="rounded-[32px] bg-slate-950 p-10 md:p-16 text-center relative overflow-hidden mb-16">
         <div className="absolute top-0 right-0 h-64 w-64 bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
         <div className="relative z-10">
           <h2 className="text-fluid-h2 font-black text-white mb-4">
@@ -125,6 +126,20 @@ export default function AboutPage() {
             </Link>
           </div>
         </div>
+      </div>
+
+      {/* Social CTA */}
+      <div className="text-center flex flex-col items-center">
+        <h3 className="text-fluid-h3 font-black text-slate-900 tracking-tight mb-3">
+          Follow AIToolsHaven
+        </h3>
+        <p className="text-slate-500 max-w-lg mx-auto mb-2">
+          We&apos;re building a better way to discover useful AI tools.
+        </p>
+        <p className="text-slate-500 max-w-lg mx-auto mb-6">
+          Follow us for AI tool discoveries, product launches, resources and updates.
+        </p>
+        <SocialLinks variant="cta" />
       </div>
     </ContentContainer>
   );

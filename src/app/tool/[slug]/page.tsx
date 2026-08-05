@@ -35,6 +35,7 @@ import { getComparisonCandidates } from "@/lib/queries/comparisons";
 import { siteConfig } from "@/lib/config/site";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Metadata } from "next";
+import { SocialLinks } from "@/components/shared/SocialLinks";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -146,7 +147,12 @@ export default async function ToolPage({ params }: Props) {
         publisher: {
           "@type": "Organization",
           name: siteConfig.name,
-          url: siteConfig.baseUrl
+          url: siteConfig.baseUrl,
+          sameAs: [
+            siteConfig.socialLinks.x,
+            siteConfig.socialLinks.facebook,
+            siteConfig.socialLinks.youtube
+          ]
         }
       },
       {
@@ -259,6 +265,17 @@ export default async function ToolPage({ params }: Props) {
         <ToolReviews tool={tool} />
 
         <ToolShareEmbed tool={tool} />
+
+        {/* Social CTA */}
+        <section className="text-center flex flex-col items-center pt-8 border-t border-border/50">
+          <h3 className="text-fluid-h3 font-bold tracking-tight mb-3 text-on-surface">
+            Discover More AI Tools
+          </h3>
+          <p className="text-on-surface-variant max-w-lg mx-auto mb-6">
+            Follow AIToolsHaven for new AI tools, reviews, comparisons and resources.
+          </p>
+          <SocialLinks variant="cta" />
+        </section>
       </div>
     </PageContainer>
   );

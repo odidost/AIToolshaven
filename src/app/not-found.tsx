@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/lib/config/site";
 import { headers } from "next/headers";
 import { logNotFoundPath } from "@/lib/actions/redirects";
+import { SocialLinks } from "@/components/shared/SocialLinks";
 
 export const metadata: Metadata = {
   title: `Page Not Found | ${siteConfig.name}`,
@@ -62,6 +63,17 @@ export default async function NotFound() {
           <span className="material-symbols-outlined text-[18px]">explore</span>
           Explore Tools
         </Link>
+      </div>
+
+      {/* Social CTA */}
+      <div className="mt-16 pt-12 border-t border-slate-200 w-full max-w-lg text-center flex flex-col items-center">
+        <h3 className="text-xl font-bold text-slate-900 mb-2">
+          Still Looking for AI Tools?
+        </h3>
+        <p className="text-slate-500 mb-6">
+          Follow AIToolsHaven for new AI tools and updates.
+        </p>
+        <SocialLinks variant="cta" />
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 import { AuthorAttribution } from "@/components/shared/AuthorAttribution";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Metadata } from "next";
+import { SocialLinks } from "@/components/shared/SocialLinks";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -155,6 +156,17 @@ export default async function CategoryPage({
       <CategoryFAQ theme={theme} />
       <CategoryGuide theme={theme} />
       <EEATFooter />
+
+      {/* Social CTA */}
+      <section className="text-center flex flex-col items-center mt-12 pt-12 border-t border-border/50">
+        <h3 className="text-fluid-h3 font-bold tracking-tight mb-3 text-on-surface">
+          Keep Discovering AI
+        </h3>
+        <p className="text-on-surface-variant max-w-lg mx-auto mb-6">
+          Follow AIToolsHaven for new AI tools, workflows and useful AI resources.
+        </p>
+        <SocialLinks variant="cta" />
+      </section>
 
     </PageContainer>
   );

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { BrandLogo } from './BrandLogo';
 import { PageContainer } from '../layout/PageContainer';
+import { SocialLinks } from './SocialLinks';
 
 const footerLinks = {
   "Explore": [
@@ -50,6 +51,13 @@ export function Footer() {
               </Link>{" "}
               for details.
             </p>
+            <div className="mt-8">
+              <h4 className="font-bold text-on-surface mb-3 text-sm">Follow AIToolsHaven</h4>
+              <p className="text-xs text-on-surface-variant/80 leading-relaxed mb-4">
+                Stay updated with new AI tools, discoveries, resources and directory updates.
+              </p>
+              <SocialLinks variant="footer" />
+            </div>
           </div>
 
           {/* Links */}

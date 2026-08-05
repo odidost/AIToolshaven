@@ -7,6 +7,7 @@ import { goalDetailsData } from "@/lib/data/goal-details";
 import { getAllTools } from "@/lib/queries/tools";
 import { StructuredData } from "@/components/shared/StructuredData";
 import { PageContainer } from "@/components/layout/PageContainer";
+import { SocialLinks } from "@/components/shared/SocialLinks";
 
 type Props = {
     params: Promise<{ slug: string }>;
@@ -142,6 +143,17 @@ export default async function GoalPage({
                             </Link>
                         ))}
                 </div>
+            </section>
+
+            {/* Social CTA */}
+            <section className="text-center flex flex-col items-center mt-12 pt-12 border-t border-border/50">
+                <h3 className="text-fluid-h3 font-bold tracking-tight mb-3 text-on-surface">
+                    Keep Discovering AI
+                </h3>
+                <p className="text-on-surface-variant max-w-lg mx-auto mb-6">
+                    Follow AIToolsHaven for new AI tools, workflows and useful AI resources.
+                </p>
+                <SocialLinks variant="cta" />
             </section>
         </PageContainer>
     );

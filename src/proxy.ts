@@ -2,8 +2,29 @@ import { NextResponse, type NextRequest } from 'next/server'
 import { updateSession } from '@/lib/supabase/middleware'
 import { createServerClient } from '@supabase/ssr'
 
+// In-memory cache for edge isolate to reduce DB egress for rapid repeated requests
+// Caches both hits and misses for 60 seconds
+type RedirectData = { new_path: string; status_code: number } | null;
+const redirectCache = new Map<string, { data: RedirectData, expiry: number }>();
+const MAX_CACHE_SIZE = 10000;
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // Normalize path to check both with and without trailing slash
+  const normalizedPath = pathname.length > 1 && pathname.endsWith('/') 
+    ? pathname.slice(0, -1) 
+    : pathname;
+    
+  const now = Date.now();
+  let redirectData = null;
+  let cacheHit = false;
+
+  const cached = redirectCache.get(normalizedPath);
+  if (cached && cached.expiry > now) {
+    redirectData = cached.data;
+    cacheHit = true;
+  }
 
   // 1. Check for Active Redirects
   const supabase = createServerClient(
@@ -21,19 +42,26 @@ export async function proxy(request: NextRequest) {
     }
   );
 
-  // Normalize path to check both with and without trailing slash
-  const normalizedPath = pathname.length > 1 && pathname.endsWith('/') 
-    ? pathname.slice(0, -1) 
-    : pathname;
-  const pathWithSlash = normalizedPath + '/';
-
-  const { data: redirectData } = await supabase
-    .from('redirects')
-    .select('new_path, status_code')
-    .in('old_path', [normalizedPath, pathWithSlash])
-    .eq('active', true)
-    .limit(1)
-    .maybeSingle();
+  if (!cacheHit) {
+    const pathWithSlash = normalizedPath + '/';
+    const { data } = await supabase
+      .from('redirects')
+      .select('new_path, status_code')
+      .in('old_path', [normalizedPath, pathWithSlash])
+      .eq('active', true)
+      .limit(1)
+      .maybeSingle();
+      
+    redirectData = data;
+    
+    // Prevent memory leaks in long-running edge isolates
+    if (redirectCache.size >= MAX_CACHE_SIZE) {
+      redirectCache.clear();
+    }
+    
+    // Cache for 60 seconds
+    redirectCache.set(normalizedPath, { data, expiry: now + 60000 });
+  }
 
   if (redirectData) {
     const url = request.nextUrl.clone();

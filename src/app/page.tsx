@@ -15,8 +15,9 @@ import { ComparisonCard } from "@/components/home/ComparisonCard";
 import { ArticleCard } from "@/components/home/ArticleCard";
 import { NewsletterCTA } from "@/components/home/NewsletterCTA";
 import { ToolCard } from "@/components/shared/ToolCard";
+import { SocialLinks } from "@/components/shared/SocialLinks";
 
-import { getFeaturedTools, getLatestTools, getTrendingTools, getAllTools } from "@/lib/data/tools-service";
+import { getFeaturedTools, getLatestTools, getTrendingTools, getAllTools, getToolsByNames } from "@/lib/data/tools-service";
 import Link from "next/link";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
@@ -28,8 +29,18 @@ import { SectionContainer } from "@/components/layout/SectionContainer";
 
 export default async function Home() {
   const featuredTools = await getFeaturedTools(8);
-  const allTools = await getAllTools();
   
+  // Extract only the tool names we actually need for the homepage widgets
+  const requiredToolNames = new Set<string>();
+  
+  workflows.forEach(w => w.tools.forEach(t => requiredToolNames.add(t)));
+  comparisons.forEach(c => {
+    requiredToolNames.add(c.tool1.name);
+    requiredToolNames.add(c.tool2.name);
+  });
+
+  const allTools = await getToolsByNames(Array.from(requiredToolNames));
+
   const toolLogos = allTools.reduce((acc, tool) => {
     if (tool.name && tool.logoUrl) {
       acc[tool.name.toLowerCase()] = tool.logoUrl;
@@ -305,6 +316,17 @@ export default async function Home() {
       {/* 13. Newsletter CTA */}
       <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <NewsletterCTA />
+      </div>
+
+      {/* 14. Social CTA */}
+      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-16 text-center flex flex-col items-center">
+        <h3 className="text-fluid-h3 font-black text-slate-900 tracking-tight mb-3">
+          Follow AIToolsHaven
+        </h3>
+        <p className="text-slate-600 max-w-md mx-auto mb-6">
+          Discover new AI tools, useful resources and the latest AI updates.
+        </p>
+        <SocialLinks variant="cta" />
       </div>
     </main>
   );

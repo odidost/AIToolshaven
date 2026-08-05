@@ -122,32 +122,13 @@ export async function logNotFoundPath(path: string) {
   // if RLS doesn't allow public inserts. Or we just use the default client if RLS is configured.
   const supabase = await createClient();
   
-  // Try to find existing
-  const { data: existing } = await supabase
-    .from("not_found_logs")
-    .select("id, hit_count")
-    .eq("requested_path", path)
-    .single();
+  // Use atomic RPC function to prevent 406/409 duplicate key races
+  const { error } = await supabase.rpc('increment_not_found_log', {
+    p_requested_path: path
+  });
 
-  if (existing) {
-    // Update hit count
-    await supabase
-      .from("not_found_logs")
-      .update({
-        hit_count: existing.hit_count + 1,
-        last_seen: new Date().toISOString()
-      })
-      .eq("id", existing.id);
-  } else {
-    // Insert new
-    await supabase
-      .from("not_found_logs")
-      .insert({
-        requested_path: path,
-        hit_count: 1,
-        last_seen: new Date().toISOString(),
-        resolved: false
-      });
+  if (error) {
+    console.error("Error executing increment_not_found_log RPC:", error);
   }
 }
 

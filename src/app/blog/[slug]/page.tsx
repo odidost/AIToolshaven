@@ -4,7 +4,9 @@ import { Metadata } from "next";
 import { articles } from "@/lib/articles";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { StructuredData } from "@/components/shared/StructuredData";
+import { siteConfig } from "@/lib/config/site";
 import { BlogNewsletterForm } from "@/components/blog/BlogNewsletterForm";
+import { SocialLinks } from "@/components/shared/SocialLinks";
 
 type Props = {
   params: Promise<{
@@ -66,7 +68,12 @@ export default async function ArticlePage({ params }: Props) {
       logo: {
         "@type": "ImageObject",
         url: "https://aitoolshaven.com/assets/logo.png"
-      }
+      },
+      sameAs: [
+        siteConfig.socialLinks.x,
+        siteConfig.socialLinks.facebook,
+        siteConfig.socialLinks.youtube
+      ]
     },
     datePublished: new Date(article.date).toISOString(),
     mainEntityOfPage: {
@@ -134,9 +141,20 @@ export default async function ArticlePage({ params }: Props) {
 
           {/* Article Body */}
           <div 
-            className="prose prose-purple max-w-none text-on-surface-variant leading-relaxed space-y-6"
+            className="prose prose-purple max-w-none text-on-surface-variant leading-relaxed space-y-6 mb-12"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
+
+          {/* Social CTA */}
+          <div className="mt-12 pt-8 border-t border-outline">
+            <h3 className="text-xl font-bold text-on-surface mb-2">
+              Follow AIToolsHaven
+            </h3>
+            <p className="text-sm text-on-surface-variant mb-4">
+              Get more AI tool discoveries, comparisons, resources and updates.
+            </p>
+            <SocialLinks variant="cta" />
+          </div>
         </article>
 
         {/* Sidebar */}

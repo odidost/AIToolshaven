@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { SocialLinks } from '@/components/shared/SocialLinks';
 
 export const metadata: Metadata = {
   title: 'Submit Your AI Tool | AIToolsHaven',
@@ -403,6 +404,17 @@ export default function SubmitPage() {
         </div>
       </section>
       
+      {/* Social CTA */}
+      <section className="text-center flex flex-col items-center py-16 border-t border-black/5">
+        <h3 className="text-2xl font-bold mb-3">
+          Stay Connected With AIToolsHaven
+        </h3>
+        <p className="text-foreground/60 max-w-md mx-auto mb-6">
+          Follow us for AI tool discoveries, product launches and directory updates.
+        </p>
+        <SocialLinks variant="cta" />
+      </section>
+
     </div>
   );
 }
