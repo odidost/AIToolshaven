@@ -46,9 +46,11 @@ export function FeatureGrid({ features }: FeatureGridProps) {
                                     <h3 className="text-lg font-bold text-on-surface mb-1 group-hover:text-primary transition-colors">
                                         {featObj.title}
                                     </h3>
-                                    <p className="text-on-surface-variant leading-relaxed text-sm">
-                                        {featObj.description || getEditorialDescription("feature", featObj.title, "It's built directly into the interface so you don't have to jump between different tabs to get the job done.")}
-                                    </p>
+                                    {(featObj.description || getEditorialDescription("feature", featObj.title, "")) && (
+                                        <p className="text-on-surface-variant leading-relaxed text-sm">
+                                            {featObj.description || getEditorialDescription("feature", featObj.title, "")}
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         );

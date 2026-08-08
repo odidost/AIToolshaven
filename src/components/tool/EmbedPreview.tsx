@@ -116,10 +116,8 @@ export function EmbedPreview({ format, tool, className }: EmbedPreviewProps) {
                 <div className="flex justify-between items-center mb-1">
                   <div className="flex items-center gap-1 text-[#F59E0B]">
                     <span className="material-symbols-outlined text-[16px] fill-current">star</span>
-                    <span className="text-[13px] font-bold text-on-surface">{tool.rating}</span>
-                    <span className="text-[11px] text-on-surface-variant font-medium">
-                      ({tool.reviewCount})
-                    </span>
+                    <span className="text-gray-900 font-bold">{tool.rating?.toFixed(1) || "0.0"}</span>
+                    <span className="text-gray-500 font-medium">({(tool.reviewCount || 0).toLocaleString()})</span>
                   </div>
 
                   <a
@@ -146,8 +144,8 @@ export function EmbedPreview({ format, tool, className }: EmbedPreviewProps) {
             {/* The Badge Box */}
             <div className="w-[200px] bg-card rounded-2xl border border-border p-4 shadow-sm text-center flex flex-col items-center select-none bg-gradient-to-b from-surface to-surface-secondary/40 border-t-4 border-t-primary">
               <div className="flex items-center justify-center gap-1 text-[#F59E0B] text-xs font-bold mb-1">
-                <span>{renderStars(tool.rating)}</span>
-                <span className="text-on-surface ml-1">{tool.rating}</span>
+                <span>{renderStars(tool.rating || 0)}</span>
+                <span className="text-on-surface ml-1">{tool.rating || 0}</span>
               </div>
               <h4 className="font-bold text-sm text-on-surface mb-2 line-clamp-1">
                 {tool.name}

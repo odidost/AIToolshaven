@@ -130,7 +130,7 @@ export default async function ToolPage({ params }: Props) {
           price: tool.price === "From $0" ? "0.00" : tool.price?.replace(/[^0-9.]/g, "") || "0.00",
           priceCurrency: "USD",
         },
-        aggregateRating: tool.reviewCount > 0 ? {
+        aggregateRating: (tool.reviewCount && tool.reviewCount > 0 && tool.rating) ? {
           "@type": "AggregateRating",
           ratingValue: tool.rating.toString(),
           ratingCount: tool.reviewCount.toString(),

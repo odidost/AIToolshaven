@@ -47,7 +47,7 @@ export function ComparisonHero({ mainTool, compareTool, categoryName, categorySl
                     <div className="flex flex-wrap items-center justify-center gap-6 text-on-surface-variant text-sm font-medium mb-10">
                         <div className="flex items-center gap-2">
                             <span className="material-symbols-outlined text-warning text-xl">star</span>
-                            <span>Editorial Rating: {(mainTool.rating + compareTool.rating) / 2 > 4.8 ? 'Excellent' : 'Great'}</span>
+                            <span>Editorial Rating: {(mainTool.rating && compareTool.rating && (mainTool.rating + compareTool.rating) / 2 > 4.8) ? 'Excellent' : 'Great'}</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <span className="material-symbols-outlined text-success text-xl">verified_user</span>

@@ -28,13 +28,14 @@ export default function GoalsIndexPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-        {goals.map((goal) => (
+        {goals.map((goal, index) => (
           <GoalCard
             key={goal.slug}
             title={goal.title}
             icon={goal.icon}
             count={goal.count}
             slug={goal.slug}
+            index={index}
           />
         ))}
       </div>

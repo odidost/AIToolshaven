@@ -406,5 +406,9 @@
   "design-com": {
     "logo": "webp",
     "screenshot": "webp"
+  },
+  "crewai": {
+    "logo": "webp",
+    "screenshot": "webp"
   }
 }

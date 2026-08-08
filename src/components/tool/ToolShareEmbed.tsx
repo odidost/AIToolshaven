@@ -22,7 +22,7 @@ export function ToolShareEmbed({ tool, className }: ToolShareEmbedProps) {
   const embedUrl = `${baseUrl}/embed/${tool.slug}`;
 
   // Generate dynamic embed snippets
-  const roundedRating = Math.round(tool.rating);
+  const roundedRating = Math.round(tool.rating || 0);
   const starsString = "★".repeat(roundedRating) + "☆".repeat(Math.max(0, 5 - roundedRating));
 
   const snippets = {
@@ -37,18 +37,24 @@ export function ToolShareEmbed({ tool, className }: ToolShareEmbedProps) {
   style="border:none;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08);"
   loading="lazy">
 </iframe>`,
-    badge: `<div style="display:inline-block;border:1px solid #E8ECF3;border-radius:16px;padding:16px;background-color:#FFFFFF;text-align:center;box-shadow:0 4px 20px rgba(15,23,42,0.04);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;width:200px;box-sizing:border-box;">
-  <div style="display:flex;align-items:center;justify-content:center;gap:4px;color:#F59E0B;font-size:14px;margin-bottom:8px;line-height:1;">
-    <span style="letter-spacing:1px;">${starsString}</span>
-    <span style="color:#111827;font-weight:600;font-size:13px;margin-left:2px;">${tool.rating}</span>
+    badge: (() => {
+      const rating = Math.min(5, Math.max(0, tool.rating || 0));
+      const starsString = "★".repeat(Math.round(tool.rating || 0)) + "☆".repeat(5 - Math.round(tool.rating || 0));
+      return `<div style="font-family: system-ui, -apple-system, sans-serif; max-width: 320px; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+    ${tool.logoUrl ? `<img src="${tool.logoUrl}" alt="${tool.name} logo" style="width: 48px; height: 48px; border-radius: 8px;" />` : ''}
+    <div>
+      <h3 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">${tool.name}</h3>
+      <div style="display: flex; align-items: center; gap: 4px; margin-top: 4px;">
+        <span style="color: #f59e0b; font-size: 14px;">${starsString}</span>
+        <span style="font-size: 12px; color: #6b7280;">(${tool.rating?.toFixed(1) || "0.0"})</span>
+      </div>
+    </div>
   </div>
-  <a href="${toolUrl}" target="_blank" style="text-decoration:none;display:block;">
-    <h4 style="margin:0 0 6px 0;font-size:16px;font-weight:bold;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${tool.name}</h4>
-  </a>
-  <div style="font-size:11px;color:#6B7280;">
-    Verified on <a href="${baseUrl}" target="_blank" style="color:#7C3AED;text-decoration:none;font-weight:600;">AIToolsHaven</a>
-  </div>
-</div>`,
+  <p style="margin: 0 0 16px 0; font-size: 14px; color: #4b5563; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${tool.description}</p>
+  <a href="https://aitoolshaven.com/tool/${tool.slug}" target="_blank" rel="noopener noreferrer" style="display: block; width: 100%; padding: 8px 0; text-align: center; background: #6366f1; color: white; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 500;">View on AIToolsHaven</a>
+</div>`;
+    })(),
   };
 
   return (

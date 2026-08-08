@@ -1,6 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import { ToolForm } from "./tool-form";
+import { workflows } from "@/lib/workflows";
+import { goals } from "@/lib/goals";
 
 export const metadata = {
   title: "Edit Tool - Editorial OS",
@@ -24,6 +26,21 @@ export default async function EditToolPage({ params }: { params: Promise<{ slug:
       notFound();
     }
     toolData = data;
+    
+    // Parse arrays that are stored as JSON strings
+    const parseArray = (arr: any[]) => {
+      if (!Array.isArray(arr)) return [];
+      return arr.map(item => {
+        if (typeof item === 'string' && item.trim().startsWith('{')) {
+          try { return JSON.parse(item); } catch (e) {}
+        }
+        return item;
+      });
+    };
+    
+    if (toolData.pros) toolData.pros = parseArray(toolData.pros);
+    if (toolData.cons) toolData.cons = parseArray(toolData.cons);
+    if (toolData.use_cases) toolData.use_cases = parseArray(toolData.use_cases);
   }
 
   // Fetch all categories for the dropdown
@@ -37,6 +54,8 @@ export default async function EditToolPage({ params }: { params: Promise<{ slug:
       <ToolForm 
         initialData={toolData} 
         categories={categories || []} 
+        allWorkflows={workflows}
+        allGoals={goals}
       />
     </div>
   );

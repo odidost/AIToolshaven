@@ -34,7 +34,7 @@ export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) 
         case "popular":
           return (b.popularity || 0) - (a.popularity || 0);
         case "rating":
-          return b.rating - a.rating;
+          return (b.rating || 0) - (a.rating || 0);
         case "newest":
           // using launchYear, fallback to popularity if missing
           const yearA = a.stats?.launchYear || 0;

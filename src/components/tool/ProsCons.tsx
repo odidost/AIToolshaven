@@ -49,7 +49,7 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
                             }
                             const isObj = typeof parsedItem === 'object' && parsedItem !== null;
                             const title = isObj ? (parsedItem as any).title : parsedItem as string;
-                            const desc = isObj ? (parsedItem as any).description : getEditorialDescription("pro", title, "This makes a noticeable difference in daily use, especially if you're working on tight deadlines.");
+                            const desc = isObj ? (parsedItem as any).description : getEditorialDescription("pro", title, "");
                             return (
                                 <li key={title || idx} className="flex gap-4 items-start">
                                     <span className="material-symbols-outlined text-success mt-0.5 shrink-0">
@@ -57,9 +57,11 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
                                     </span>
                                     <div>
                                         <strong className="block text-on-surface text-lg font-semibold">{title}</strong>
-                                        <span className="text-on-surface-variant block mt-1 leading-relaxed">
-                                            {desc}
-                                        </span>
+                                        {desc && (
+                                            <span className="text-on-surface-variant block mt-1 leading-relaxed">
+                                                {desc}
+                                            </span>
+                                        )}
                                     </div>
                                 </li>
                             );
@@ -92,7 +94,7 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
                             }
                             const isObj = typeof parsedItem === 'object' && parsedItem !== null;
                             const title = isObj ? (parsedItem as any).title : parsedItem as string;
-                            const desc = isObj ? (parsedItem as any).description : getEditorialDescription("con", title, "It's not a dealbreaker, but it is something to keep in mind if you rely heavily on this specific function.");
+                            const desc = isObj ? (parsedItem as any).description : getEditorialDescription("con", title, "");
                             return (
                                 <li key={title || idx} className="flex gap-4 items-start">
                                     <span className="material-symbols-outlined text-warning mt-0.5 shrink-0">
@@ -100,9 +102,11 @@ export function ProsCons({ pros, cons }: ProsConsProps) {
                                     </span>
                                     <div>
                                         <strong className="block text-on-surface text-lg font-semibold">{title}</strong>
-                                        <span className="text-on-surface-variant block mt-1 leading-relaxed">
-                                            {desc}
-                                        </span>
+                                        {desc && (
+                                            <span className="text-on-surface-variant block mt-1 leading-relaxed">
+                                                {desc}
+                                            </span>
+                                        )}
                                     </div>
                                 </li>
                             );

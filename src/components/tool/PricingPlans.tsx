@@ -70,9 +70,11 @@ export function PricingPlans({ tool, plans, pricing }: PricingPlansProps) {
                             <span className="text-4xl font-extrabold tracking-tight text-on-surface">{plan.price}</span>
                         </div>
 
-                        <p className="mt-4 text-on-surface-variant leading-relaxed text-sm">
-                            {plan.description || getEditorialDescription("pricing", plan.name, `The sweet spot if you need access to the core ${plan.name} features without overpaying.`)}
-                        </p>
+                        {(plan.description || getEditorialDescription("pricing", plan.name, "")) && (
+                            <p className="mt-4 text-on-surface-variant leading-relaxed text-sm">
+                                {plan.description || getEditorialDescription("pricing", plan.name, "")}
+                            </p>
+                        )}
 
                         <button className={`w-full mt-8 py-3 px-6 rounded-xl font-semibold transition-all ${
                             plan.recommended 

@@ -6,7 +6,7 @@ import { getCategoryBySlug } from "@/lib/queries/categories";
 import { SectionContainer } from "../layout/SectionContainer";
 import { FadeIn } from "../animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "../animations/StaggerContainer";
-import { aiChatbots } from "@/lib/data/tools/ai-chatbots";
+
 
 export async function EditorialRankingsSection() {
   // 1. Latest AI Tools (matches /latest-ai-tools)
@@ -26,9 +26,10 @@ export async function EditorialRankingsSection() {
   const trendingTotal = trendingToolsFull.length;
 
   // 4. AI Chatbots
-  // Pull directly from the new ai-chatbots category
-  const finalChatbots = aiChatbots.slice(0, 10);
-  const chatbotsTotal = aiChatbots.length;
+  // Pull directly from the database using getToolsByCategoryId
+  const chatbotsFull = await getToolsByCategoryId("ai-chatbots");
+  const finalChatbots = chatbotsFull.slice(0, 10);
+  const chatbotsTotal = chatbotsFull.length;
 
   return (
     <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

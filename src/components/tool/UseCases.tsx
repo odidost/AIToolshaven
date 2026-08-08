@@ -71,14 +71,16 @@ export function UseCases({ tool, useCases }: UseCasesProps) {
                             const isObj = typeof activeItem === 'object' && activeItem !== null;
                             const title = isObj ? (activeItem as any).title : activeItem as string;
                             // Remove tool.editorial?.useCaseFocus from rendering for ALL tabs, let the object drive the unique description
-                            const desc = isObj ? (activeItem as any).description : getEditorialDescription("usecase", title, "This is a prime example of where the tool demonstrates massive ROI. By leveraging its core feature set for this workflow, teams often see hours of manual work reduced to mere minutes.");
+                            const desc = isObj ? (activeItem as any).description : getEditorialDescription("usecase", title, "");
                             
                             return (
                                 <>
                                     <h3 className="text-fluid-h3 font-bold text-on-surface mb-4">
                                         Ideal for {title}
                                     </h3>
-                                    <div className="text-on-surface-variant leading-relaxed mb-6" dangerouslySetInnerHTML={{ __html: desc }} />
+                                    {desc && (
+                                        <div className="text-on-surface-variant leading-relaxed mb-6" dangerouslySetInnerHTML={{ __html: desc }} />
+                                    )}
                                 </>
                             );
                         })()}

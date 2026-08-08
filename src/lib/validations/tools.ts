@@ -42,6 +42,45 @@ export const toolSchema = z.object({
     description: z.string(),
     icon: z.string().optional(),
   })).optional().default([]),
+
+  pros: z.array(z.object({
+    title: z.string(),
+    description: z.string().optional(),
+  })).optional().default([]),
+
+  cons: z.array(z.object({
+    title: z.string(),
+    description: z.string().optional(),
+  })).optional().default([]),
+
+  useCases: z.array(z.object({
+    title: z.string(),
+    description: z.string().optional(),
+  })).optional().default([]),
+
+  pricingPlans: z.array(z.object({
+    name: z.string(),
+    price: z.string(),
+    description: z.string(),
+    features: z.array(z.string()).optional().default([]),
+    recommended: z.boolean().optional(),
+  })).optional().default([]),
+
+  bestFor: z.array(z.string()).optional().default([]),
+  goals: z.array(z.string()).optional().default([]),
+  workflows: z.array(z.string()).optional().default([]),
+
+  editorial: z.object({
+    overview: z.string().optional(),
+    verdict: z.string().optional(),
+    pricing: z.string().optional(),
+    comparison: z.string().optional(),
+    useCaseFocus: z.string().optional(),
+    faqs: z.array(z.object({
+      question: z.string(),
+      answer: z.string(),
+    })).optional().default([]),
+  }).optional().default({ faqs: [] }),
   
   status: toolStatusSchema.default('Draft'),
 });

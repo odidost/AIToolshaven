@@ -70,8 +70,8 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                                     <strong className="leading-none">{tool.rating}</strong>
 
-                                    <span className="text-on-surface-variant leading-none truncate">
-                                        ({tool.reviewCount.toLocaleString()} reviews)
+                                    <span className="text-on-surface-variant text-[15px] font-medium leading-none">
+                                        ({(tool.reviewCount || 0).toLocaleString()} reviews)
                                     </span>
 
                                 </div>

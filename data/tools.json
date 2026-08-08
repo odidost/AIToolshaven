@@ -1,5 +1,2345 @@
 [
   {
+    "id": "agentql",
+    "name": "AgentQL",
+    "slug": "agentql",
+    "company": "AgentQL",
+    "tagline": "A query language for web agents.",
+    "description": "AgentQL is a query language that allows AI agents to interact with web pages reliably. Instead of relying on brittle CSS selectors, AgentQL uses AI to map semantic queries to web elements, making web automation robust against UI changes.",
+    "category": "ai-agents",
+    "priceModel": "Freemium",
+    "rating": 4.7,
+    "reviewCount": 180,
+    "easeOfUse": 4,
+    "featureRating": 4.8,
+    "valueForMoney": 4.5,
+    "performance": 4.7,
+    "support": 4.5,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://www.agentql.com/",
+    "tags": [
+      "Web Automation",
+      "Developer Tool",
+      "Testing"
+    ],
+    "features": [
+      {
+        "title": "Semantic Selectors",
+        "description": "Select elements by what they mean (e.g., 'login button') rather than class names.",
+        "icon": "translate"
+      },
+      {
+        "title": "Resilient Scraping",
+        "description": "Scripts don't break when a website pushes a new design.",
+        "icon": "shield"
+      },
+      {
+        "title": "Playwright Integration",
+        "description": "Works seamlessly with existing testing frameworks.",
+        "icon": "extension"
+      }
+    ],
+    "verified": true,
+    "popularity": 77,
+    "pros": [
+      "Massively reduces maintenance time for web scrapers",
+      "Easy to integrate into existing Playwright scripts",
+      "Highly accurate semantic mapping"
+    ],
+    "cons": [
+      "Adds latency compared to standard DOM queries",
+      "Requires an API call for element resolution"
+    ],
+    "bestFor": [
+      "QA Engineers",
+      "Data Scrapers",
+      "Automation Devs"
+    ],
+    "useCases": [
+      "Reliable e-commerce scraping",
+      "Automated end-to-end testing",
+      "Building web-browsing agents"
+    ],
+    "editorial": {
+      "overview": "AgentQL sits between the AI agent and the browser. It acts as a translator, allowing the agent to say 'click the checkout button' and reliably finding that button regardless of how the page is coded.",
+      "verdict": "For developers building web-scraping agents, AgentQL is the missing link that makes automation actually reliable.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:11:37.290Z"
+  },
+  {
+    "id": "e2b",
+    "name": "E2B",
+    "slug": "e2b",
+    "company": "E2B",
+    "tagline": "Secure cloud environments for AI agents.",
+    "description": "E2B provides sandboxed cloud environments (Sandboxes) specifically designed for AI agents. When your AI agent needs to run code, browse the web, or use the terminal, E2B provides a secure, instant, and scalable environment for it to do so.",
+    "category": "ai-agents",
+    "priceModel": "Freemium",
+    "rating": 4.8,
+    "reviewCount": 310,
+    "easeOfUse": 4.4,
+    "featureRating": 4.9,
+    "valueForMoney": 4.8,
+    "performance": 5,
+    "support": 4.7,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://e2b.dev/",
+    "tags": [
+      "Infrastructure",
+      "Developer Tool",
+      "Cloud"
+    ],
+    "features": [
+      {
+        "title": "Instant Sandboxes",
+        "description": "Spin up a secure Linux environment in milliseconds.",
+        "icon": "bolt"
+      },
+      {
+        "title": "Long-running Execution",
+        "description": "Environments can stay alive for hours while the agent works.",
+        "icon": "hourglass_empty"
+      },
+      {
+        "title": "SDK Integration",
+        "description": "Native support for Python and Node.js agent frameworks.",
+        "icon": "code"
+      }
+    ],
+    "verified": true,
+    "popularity": 85,
+    "pros": [
+      "Solves the biggest security headache of building coding agents",
+      "Incredibly fast startup times",
+      "Loved by the developer community"
+    ],
+    "cons": [
+      "Strictly a developer tool; no consumer UI",
+      "Requires integration into your own agent codebase"
+    ],
+    "bestFor": [
+      "AI Engineers",
+      "DevOps",
+      "Startups"
+    ],
+    "useCases": [
+      "Hosting custom coding agents",
+      "Providing safe environments for LLM data analysis"
+    ],
+    "editorial": {
+      "overview": "If you are building an agent that writes code, you absolutely cannot execute that code on your own servers due to security risks. E2B solves this by providing instant, disposable cloud sandboxes.",
+      "verdict": "E2B is the foundational infrastructure layer that the next generation of AI agents will run on. A must-use for AI developers.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:11:37.290Z"
+  },
+  {
+    "id": "mindos",
+    "name": "MindOS",
+    "slug": "mindos",
+    "company": "MindOS",
+    "tagline": "Create custom AI beings for your business.",
+    "description": "MindOS allows users to create customized AI agents (called 'beings') with specific personalities, knowledge bases, and skills. These agents can be deployed on websites as interactive avatars to guide users, sell products, or provide support.",
+    "category": "ai-agents",
+    "priceModel": "Freemium",
+    "rating": 4.5,
+    "reviewCount": 220,
+    "easeOfUse": 4.6,
+    "featureRating": 4.4,
+    "valueForMoney": 4.5,
+    "performance": 4.3,
+    "support": 4.2,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://mindos.com/",
+    "tags": [
+      "Avatars",
+      "Customer Support",
+      "Sales"
+    ],
+    "features": [
+      {
+        "title": "Visual Avatars",
+        "description": "Agents can have 2D or 3D visual representations.",
+        "icon": "face"
+      },
+      {
+        "title": "Memory & Context",
+        "description": "Remembers past interactions with specific users.",
+        "icon": "memory"
+      },
+      {
+        "title": "Skill Marketplace",
+        "description": "Equip your agent with pre-built skills like weather, news, or Shopify integration.",
+        "icon": "shopping_cart"
+      }
+    ],
+    "verified": true,
+    "popularity": 79,
+    "pros": [
+      "Engaging visual interfaces",
+      "Easy to train on custom PDFs or URLs",
+      "Good for interactive brand experiences"
+    ],
+    "cons": [
+      "Avatars can sometimes fall into the uncanny valley",
+      "Less focused on autonomous backend tasks compared to other agents"
+    ],
+    "bestFor": [
+      "Marketers",
+      "E-commerce Brands",
+      "Educators"
+    ],
+    "useCases": [
+      "Interactive website concierges",
+      "Virtual sales assistants",
+      "Educational tutors"
+    ],
+    "editorial": {
+      "overview": "MindOS focuses heavily on the user-facing side of AI agents. By giving the agent a face, a voice, and a personality, they make the interaction feel much more human than a standard chat box.",
+      "verdict": "If you want an agent that directly interacts with your customers in a highly engaging, visual way, MindOS is a great platform.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:11:37.290Z"
+  },
+  {
+    "id": "maven-agi",
+    "name": "Maven AGI",
+    "slug": "maven-agi",
+    "company": "Maven AGI",
+    "tagline": "Generative AI for enterprise customer support.",
+    "description": "Maven AGI provides autonomous agents that integrate into existing support platforms like Zendesk or Salesforce. It learns from your historical tickets and knowledge base to resolve customer inquiries instantly.",
+    "category": "ai-agents",
+    "priceModel": "Enterprise",
+    "rating": 4.6,
+    "reviewCount": 45,
+    "easeOfUse": 4.2,
+    "featureRating": 4.5,
+    "valueForMoney": 4,
+    "performance": 4.7,
+    "support": 4.9,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://www.mavenagi.com/",
+    "tags": [
+      "Customer Support",
+      "Enterprise",
+      "B2B"
+    ],
+    "features": [
+      {
+        "title": "Auto-Resolution",
+        "description": "Resolves up to 93% of support tickets without human intervention.",
+        "icon": "check_circle"
+      },
+      {
+        "title": "Multi-lingual",
+        "description": "Supports customers in over 50 languages natively.",
+        "icon": "translate"
+      },
+      {
+        "title": "Action Taking",
+        "description": "Connects to backends to process returns and check order status.",
+        "icon": "api"
+      }
+    ],
+    "verified": true,
+    "popularity": 75,
+    "pros": [
+      "Drastically reduces support costs",
+      "Integrates easily with existing CRM workflows",
+      "High accuracy and low hallucination rates"
+    ],
+    "cons": [
+      "Enterprise-only pricing",
+      "Requires significant historical data for optimal training"
+    ],
+    "bestFor": [
+      "Enterprise",
+      "E-commerce",
+      "SaaS Companies"
+    ],
+    "useCases": [
+      "Deflecting L1 support tickets",
+      "Automating repetitive billing questions"
+    ],
+    "editorial": {
+      "overview": "Maven AGI is tackling the massive enterprise support market. Unlike simple chatbots, Maven's agents are deeply integrated into the company's data, allowing them to take real actions rather than just pointing to FAQ articles.",
+      "verdict": "A powerful, ROI-driven application of AI agents for large companies looking to scale their support operations.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:11:37.290Z"
+  },
+  {
+    "id": "open-interpreter",
+    "name": "OpenInterpreter",
+    "slug": "open-interpreter",
+    "company": "Killian Lucas",
+    "tagline": "Let language models run code on your computer.",
+    "description": "Open Interpreter is an open-source, locally running implementation of OpenAI's Advanced Data Analysis. You chat with it in your terminal, and it writes and executes Python, shell scripts, and AppleScript directly on your machine to accomplish tasks.",
+    "category": "ai-agents",
+    "priceModel": "Free",
+    "rating": 4.9,
+    "reviewCount": 1100,
+    "easeOfUse": 4,
+    "featureRating": 4.8,
+    "valueForMoney": 5,
+    "performance": 4.7,
+    "support": 4.5,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://openinterpreter.com/",
+    "tags": [
+      "CLI",
+      "Open Source",
+      "System Automation"
+    ],
+    "features": [
+      {
+        "title": "Local Execution",
+        "description": "Runs code directly on your machine with full internet and file access.",
+        "icon": "computer"
+      },
+      {
+        "title": "Multi-Language",
+        "description": "Executes Python, Bash, JavaScript, and HTML natively.",
+        "icon": "code"
+      },
+      {
+        "title": "Local Models",
+        "description": "Can run entirely offline using LM Studio or Ollama.",
+        "icon": "wifi_off"
+      }
+    ],
+    "verified": true,
+    "popularity": 92,
+    "pros": [
+      "Incredibly powerful since it has access to your actual OS",
+      "Beautiful terminal UI",
+      "Can be run offline for total privacy"
+    ],
+    "cons": [
+      "Can be dangerous if it executes a destructive shell command",
+      "Requires caution and human oversight"
+    ],
+    "bestFor": [
+      "Power Users",
+      "Developers",
+      "Data Scientists"
+    ],
+    "useCases": [
+      "Automating system tasks (e.g., convert all MP4s to MP3s)",
+      "Local data analysis",
+      "System configuration"
+    ],
+    "editorial": {
+      "overview": "While ChatGPT's code interpreter is locked inside a secure cloud sandbox, Open Interpreter gives the LLM the keys to your actual computer. It can change your system settings, write files, and control your browser.",
+      "verdict": "Open Interpreter feels like magic. It turns your terminal into a natural language interface for your entire operating system.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:11:37.290Z"
+  },
+  {
+    "id": "devika",
+    "name": "Devika",
+    "slug": "devika",
+    "company": "Stition AI",
+    "tagline": "An open-source alternative to Devin.",
+    "description": "Devika is an advanced autonomous AI software engineer that can understand high-level human instructions, break them down into steps, research relevant information, and write code to achieve the objective.",
+    "category": "ai-agents",
+    "priceModel": "Free",
+    "rating": 4.6,
+    "reviewCount": 310,
+    "easeOfUse": 3.5,
+    "featureRating": 4.6,
+    "valueForMoney": 5,
+    "performance": 4.4,
+    "support": 4,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://github.com/stitionai/devika",
+    "tags": [
+      "Open Source",
+      "Coding Assistant",
+      "Autonomous"
+    ],
+    "features": [
+      {
+        "title": "Claude 3 Integration",
+        "description": "Optimized to run on Claude 3 Opus and Sonnet models.",
+        "icon": "psychology"
+      },
+      {
+        "title": "Web Browsing",
+        "description": "Autonomously searches for API docs and solutions.",
+        "icon": "public"
+      },
+      {
+        "title": "Terminal Access",
+        "description": "Executes commands to test the code it writes.",
+        "icon": "terminal"
+      }
+    ],
+    "verified": true,
+    "popularity": 83,
+    "pros": [
+      "The most promising open-source Devin alternative",
+      "Actively maintained by a passionate community",
+      "Supports multiple LLM backends"
+    ],
+    "cons": [
+      "Still in early beta; can be unstable",
+      "Requires self-hosting and managing your own API keys"
+    ],
+    "bestFor": [
+      "Developers",
+      "Open Source Contributors",
+      "Hackers"
+    ],
+    "useCases": [
+      "Automated bug fixing",
+      "Learning how autonomous coding agents are built"
+    ],
+    "editorial": {
+      "overview": "When Devin launched as a closed, invite-only enterprise tool, the open-source community immediately began building alternatives. Devika is currently the frontrunner in that race.",
+      "verdict": "Devika is rough around the edges, but it is evolving incredibly fast. It is a must-watch project for developers interested in autonomous coding.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:11:37.290Z"
+  },
+  {
+    "id": "langgraph",
+    "name": "LangGraph",
+    "slug": "langgraph",
+    "company": "LangChain",
+    "tagline": "Build stateful, multi-actor applications with LLMs.",
+    "description": "LangGraph is a library by LangChain for building stateful, multi-agent applications. It allows you to model your agent workflows as graphs, providing granular control over cycles, memory, and error handling.",
+    "category": "ai-agents",
+    "priceModel": "Free",
+    "rating": 4.8,
+    "reviewCount": 520,
+    "easeOfUse": 3,
+    "featureRating": 4.9,
+    "valueForMoney": 5,
+    "performance": 4.8,
+    "support": 4.5,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://langchain.com/langgraph",
+    "tags": [
+      "Framework",
+      "Developer Tool",
+      "Python",
+      "TypeScript"
+    ],
+    "features": [
+      {
+        "title": "State Management",
+        "description": "Maintains state across complex, cyclical agent workflows.",
+        "icon": "account_tree"
+      },
+      {
+        "title": "Human-in-the-Loop",
+        "description": "Pause execution for human approval or edits.",
+        "icon": "pause_circle"
+      },
+      {
+        "title": "Streaming Support",
+        "description": "Stream tokens and state updates in real-time.",
+        "icon": "stream"
+      }
+    ],
+    "verified": true,
+    "popularity": 87,
+    "pros": [
+      "Provides immense control over agent logic",
+      "Integrates perfectly with the LangChain ecosystem",
+      "Supports both Python and JS/TS"
+    ],
+    "cons": [
+      "High learning curve compared to standard LangChain",
+      "Requires deep understanding of graph theory concepts"
+    ],
+    "bestFor": [
+      "AI Engineers",
+      "Backend Developers"
+    ],
+    "useCases": [
+      "Building custom customer support bots",
+      "Developing highly reliable web scraping agents"
+    ],
+    "editorial": {
+      "overview": "Standard LLM chains are linear. But real-world agents need to loop, retry, and manage complex state. LangGraph provides the mathematical structure (graphs) needed to build these cyclical, reliable agents.",
+      "verdict": "If you are an engineer frustrated by the unreliability of basic LangChain agents, LangGraph gives you the control you need to build production-ready systems.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:11:37.290Z"
+  },
+  {
+    "id": "gpt-engineer",
+    "name": "GPT Engineer",
+    "slug": "gpt-engineer",
+    "company": "GPT Engineer",
+    "tagline": "Specify what you want it to build, the AI asks for clarification, and then builds it.",
+    "description": "GPT Engineer is a rapid prototyping agent. You provide a prompt, it asks clarifying questions to ensure it understands the requirements, and then it generates an entire codebase in one shot.",
+    "category": "ai-agents",
+    "priceModel": "Freemium",
+    "rating": 4.6,
+    "reviewCount": 890,
+    "easeOfUse": 4.8,
+    "featureRating": 4.4,
+    "valueForMoney": 4.7,
+    "performance": 4.5,
+    "support": 4.5,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://gptengineer.app/",
+    "tags": [
+      "Coding",
+      "Prototyping",
+      "Web Dev"
+    ],
+    "features": [
+      {
+        "title": "Clarifying Questions",
+        "description": "Doesn't just guess; it asks you questions to refine the spec.",
+        "icon": "help_outline"
+      },
+      {
+        "title": "One-Shot Generation",
+        "description": "Outputs all necessary files and folders at once.",
+        "icon": "folder_zip"
+      },
+      {
+        "title": "Web Interface",
+        "description": "Now available as a hosted web app for instant deployment.",
+        "icon": "public"
+      }
+    ],
+    "verified": true,
+    "popularity": 88,
+    "pros": [
+      "The clarifying step drastically improves output quality",
+      "Web interface makes it accessible to non-coders",
+      "Very fast prototyping"
+    ],
+    "cons": [
+      "Generated code often needs manual tweaking to run perfectly",
+      "Better for new projects than modifying existing ones"
+    ],
+    "bestFor": [
+      "Founders",
+      "Designers",
+      "Developers"
+    ],
+    "useCases": [
+      "Building landing pages",
+      "Creating internal dashboard prototypes",
+      "Testing MVP ideas"
+    ],
+    "editorial": {
+      "overview": "GPT Engineer solved the biggest problem with early coding agents: they made too many assumptions. By pausing to ask the human clarifying questions, it ensures the final codebase actually matches the intent.",
+      "verdict": "The web app version of GPT Engineer is currently one of the fastest ways to go from an idea in your head to a deployed React application.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:11:37.290Z"
+  },
+  {
+    "id": "chatdev",
+    "name": "ChatDev",
+    "slug": "chatdev",
+    "company": "OpenBMB",
+    "tagline": "Your virtual software company.",
+    "description": "ChatDev is a virtual software company operated by various intelligent agents holding different roles, including CEO, CTO, programmer, tester, and designer. They collaborate in a chat room to design and develop software.",
+    "category": "ai-agents",
+    "priceModel": "Free",
+    "rating": 4.5,
+    "reviewCount": 420,
+    "easeOfUse": 4,
+    "featureRating": 4.2,
+    "valueForMoney": 5,
+    "performance": 4,
+    "support": 3.5,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://chatdev.ai/",
+    "tags": [
+      "Open Source",
+      "Multi-Agent",
+      "Coding"
+    ],
+    "features": [
+      {
+        "title": "Visual Replay",
+        "description": "Watch the agents debate and write code in real-time via a web UI.",
+        "icon": "play_circle"
+      },
+      {
+        "title": "Role Customization",
+        "description": "Define custom roles and personalities for your virtual employees.",
+        "icon": "manage_accounts"
+      }
+    ],
+    "verified": true,
+    "popularity": 84,
+    "pros": [
+      "Extremely fun and visual way to understand multi-agent systems",
+      "Open-source",
+      "Great for generating simple games or tools"
+    ],
+    "cons": [
+      "Struggles with highly complex or large-scale applications",
+      "Code quality can sometimes be erratic"
+    ],
+    "bestFor": [
+      "Hobbyists",
+      "Educators",
+      "Developers"
+    ],
+    "useCases": [
+      "Prototyping simple web apps",
+      "Educational demonstrations of agent collaboration"
+    ],
+    "editorial": {
+      "overview": "Similar to MetaGPT, ChatDev uses a role-playing approach. However, ChatDev is uniquely visual, allowing you to watch the 'CEO' and 'CTO' argue over tech stacks in a simulated chat room.",
+      "verdict": "While more of a highly impressive research project than a production tool, ChatDev is incredibly fun to use and provides a glimpse into the future of software development.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:11:37.290Z"
+  },
+  {
+    "id": "metagpt",
+    "name": "MetaGPT",
+    "slug": "metagpt",
+    "company": "MetaGPT",
+    "tagline": "A multi-agent framework that simulates a software company.",
+    "description": "MetaGPT assigns different roles (Product Manager, Architect, Project Manager, Engineer, QA) to LLMs. You give it a one-line requirement, and the agents collaborate to output PRDs, API designs, and fully working code.",
+    "category": "ai-agents",
+    "priceModel": "Free",
+    "rating": 4.7,
+    "reviewCount": 650,
+    "easeOfUse": 3.5,
+    "featureRating": 4.8,
+    "valueForMoney": 5,
+    "performance": 4.6,
+    "support": 4,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://github.com/geekan/MetaGPT",
+    "tags": [
+      "Open Source",
+      "Framework",
+      "Software Engineering"
+    ],
+    "features": [
+      {
+        "title": "SOP Driven",
+        "description": "Agents follow Standard Operating Procedures to ensure high-quality output.",
+        "icon": "rule"
+      },
+      {
+        "title": "Full Lifecycle",
+        "description": "Handles everything from requirements gathering to testing.",
+        "icon": "all_inclusive"
+      },
+      {
+        "title": "Diagram Generation",
+        "description": "Automatically outputs sequence diagrams and system architectures.",
+        "icon": "schema"
+      }
+    ],
+    "verified": true,
+    "popularity": 91,
+    "pros": [
+      "Produces incredibly thorough documentation alongside code",
+      "Highly structured approach prevents agent hallucinations",
+      "Open-source"
+    ],
+    "cons": [
+      "Can be slow to execute due to the number of steps",
+      "Requires technical knowledge to set up and tweak"
+    ],
+    "bestFor": [
+      "Software Engineers",
+      "Product Managers",
+      "Researchers"
+    ],
+    "useCases": [
+      "Bootstrapping complex software projects",
+      "Generating system architecture documents"
+    ],
+    "editorial": {
+      "overview": "MetaGPT proves that forcing LLMs to follow strict human workflows (like Agile or Waterfall) produces vastly superior results than simply asking an LLM to 'write an app'.",
+      "verdict": "An absolute powerhouse for developers who want to generate the scaffolding, documentation, and logic for a new project from a single prompt.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:11:37.290Z"
+  },
+  {
+    "id": "taskade",
+    "name": "Taskade",
+    "slug": "taskade",
+    "company": "Taskade",
+    "tagline": "AI agents for team workspaces and productivity.",
+    "description": "Taskade combines task management, note-taking, and mind mapping with autonomous AI agents. You can deploy agents within your projects to automatically research topics, draft content, and organize your team's workflow.",
+    "category": "ai-agents",
+    "priceModel": "Freemium",
+    "rating": 4.8,
+    "reviewCount": 1540,
+    "easeOfUse": 4.9,
+    "featureRating": 4.6,
+    "valueForMoney": 4.8,
+    "performance": 4.7,
+    "support": 4.8,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://www.taskade.com/",
+    "tags": [
+      "Productivity",
+      "Workspace",
+      "Team Collaboration"
+    ],
+    "features": [
+      {
+        "title": "Custom AI Agents",
+        "description": "Build agents with specific knowledge and commands.",
+        "icon": "smart_toy"
+      },
+      {
+        "title": "Multi-View Workspace",
+        "description": "Toggle between lists, boards, and mind maps.",
+        "icon": "view_kanban"
+      },
+      {
+        "title": "Real-time Collaboration",
+        "description": "Work alongside human team members and AI agents simultaneously.",
+        "icon": "groups"
+      }
+    ],
+    "verified": true,
+    "popularity": 90,
+    "pros": [
+      "Beautiful UI that unifies Notion, Asana, and ChatGPT",
+      "Agents have access to your specific workspace context",
+      "Generous free tier"
+    ],
+    "cons": [
+      "Can feel overwhelming due to the sheer number of features",
+      "Agents are confined to the Taskade ecosystem"
+    ],
+    "bestFor": [
+      "Remote Teams",
+      "Agencies",
+      "Freelancers"
+    ],
+    "useCases": [
+      "Automated meeting summaries",
+      "Project planning and mind mapping",
+      "Content calendar management"
+    ],
+    "editorial": {
+      "overview": "While AutoGPT is for developers, Taskade brings agents to the masses by embedding them directly into a collaborative workspace. It feels like Notion, but the documents can write and organize themselves.",
+      "verdict": "Taskade is arguably the most polished and consumer-ready implementation of AI agents for daily team productivity.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:11:37.288Z"
+  },
+  {
+    "id": "autogen",
+    "name": "Microsoft AutoGen",
+    "slug": "autogen",
+    "company": "Microsoft",
+    "tagline": "Framework for building multi-agent conversations.",
+    "description": "AutoGen is a framework that enables the development of LLM applications using multiple agents that can converse with each other to solve tasks. These agents are customizable, conversable, and can seamlessly integrate human participation.",
+    "category": "ai-agents",
+    "priceModel": "Free",
+    "rating": 4.8,
+    "reviewCount": 890,
+    "easeOfUse": 3.2,
+    "featureRating": 4.9,
+    "valueForMoney": 5,
+    "performance": 4.8,
+    "support": 4.5,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://microsoft.github.io/autogen/",
+    "tags": [
+      "Framework",
+      "Multi-Agent",
+      "Open Source",
+      "Microsoft"
+    ],
+    "features": [
+      {
+        "title": "Conversable Agents",
+        "description": "Agents pass messages to each other to solve problems collaboratively.",
+        "icon": "forum"
+      },
+      {
+        "title": "Human-in-the-Loop",
+        "description": "Easily configure agents to pause and ask for human approval.",
+        "icon": "front_hand"
+      },
+      {
+        "title": "Code Execution",
+        "description": "Agents can safely write and execute code to solve mathematical or logic problems.",
+        "icon": "code"
+      }
+    ],
+    "verified": true,
+    "popularity": 94,
+    "pros": [
+      "Backed by Microsoft research",
+      "Incredibly powerful for complex reasoning tasks",
+      "Highly flexible agent topologies"
+    ],
+    "cons": [
+      "Steep learning curve",
+      "Documentation can be highly academic and dense",
+      "Requires Python expertise"
+    ],
+    "bestFor": [
+      "AI Researchers",
+      "Enterprise Developers",
+      "Data Scientists"
+    ],
+    "useCases": [
+      "Complex data analysis workflows",
+      "Simulating debates or negotiations",
+      "Automated code generation and testing"
+    ],
+    "editorial": {
+      "overview": "AutoGen proved that having two LLMs debate a problem yields better results than asking a single LLM to solve it. By allowing agents to critique each other's work, it drastically reduces hallucinations.",
+      "verdict": "AutoGen is a foundational framework. If you are building enterprise-grade multi-agent systems, this is one of the best toolkits available.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:10:17.537Z"
+  },
+  {
+    "id": "skyvern",
+    "name": "Skyvern",
+    "slug": "skyvern",
+    "company": "Skyvern",
+    "tagline": "Open-source AI browser automation.",
+    "description": "Skyvern is an open-source tool that automates browser-based workflows using LLMs and computer vision. It is designed to navigate complex, dynamic websites that easily break traditional scrapers.",
+    "category": "ai-agents",
+    "priceModel": "Free",
+    "rating": 4.6,
+    "reviewCount": 340,
+    "easeOfUse": 3.5,
+    "featureRating": 4.7,
+    "valueForMoney": 5,
+    "performance": 4.4,
+    "support": 4,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://www.skyvern.com/",
+    "tags": [
+      "Open Source",
+      "Web Automation",
+      "Testing",
+      "Scraping"
+    ],
+    "features": [
+      {
+        "title": "Computer Vision Routing",
+        "description": "Interacts with elements based on how they look, not just DOM selectors.",
+        "icon": "visibility"
+      },
+      {
+        "title": "Anti-Bot Evasion",
+        "description": "Bypasses common bot protections by acting like a human.",
+        "icon": "security"
+      },
+      {
+        "title": "API Driven",
+        "description": "Can be triggered programmatically in CI/CD pipelines.",
+        "icon": "terminal"
+      }
+    ],
+    "verified": true,
+    "popularity": 82,
+    "pros": [
+      "Open-source and highly customizable",
+      "Resilient to website layout changes",
+      "Excellent for scraping complex sites"
+    ],
+    "cons": [
+      "Requires infrastructure to host",
+      "Can be slower than traditional headless browsers"
+    ],
+    "bestFor": [
+      "Data Engineers",
+      "QA Testers",
+      "Developers"
+    ],
+    "useCases": [
+      "Automated QA testing",
+      "Scraping government or legacy sites",
+      "Automating procurement forms"
+    ],
+    "editorial": {
+      "overview": "Traditional web scraping relies on XPath or CSS selectors, which break the moment a website updates. Skyvern uses AI vision to 'look' at the page, making its agents incredibly resilient.",
+      "verdict": "For engineering teams struggling to maintain brittle web scrapers, Skyvern is an essential open-source upgrade.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:10:17.537Z"
+  },
+  {
+    "id": "gumloop",
+    "name": "Gumloop",
+    "slug": "gumloop",
+    "company": "Gumloop",
+    "tagline": "No-code AI workflow automation.",
+    "description": "Gumloop (formerly known as AgentHQ) lets you string together LLMs, web scrapers, and APIs in a drag-and-drop canvas to build robust autonomous workflows that replace manual data tasks.",
+    "category": "ai-agents",
+    "priceModel": "Freemium",
+    "rating": 4.7,
+    "reviewCount": 210,
+    "easeOfUse": 4.8,
+    "featureRating": 4.5,
+    "valueForMoney": 4.7,
+    "performance": 4.6,
+    "support": 4.8,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://www.gumloop.com/",
+    "tags": [
+      "Workflow Automation",
+      "No Code",
+      "Data Processing"
+    ],
+    "features": [
+      {
+        "title": "Drag & Drop Canvas",
+        "description": "Visually connect AI models to data sources and actions.",
+        "icon": "drag_indicator"
+      },
+      {
+        "title": "Web Scraping",
+        "description": "Extract clean data from any URL instantly.",
+        "icon": "travel_explore"
+      },
+      {
+        "title": "Batch Processing",
+        "description": "Run an AI workflow across a spreadsheet of thousands of rows.",
+        "icon": "view_list"
+      }
+    ],
+    "verified": true,
+    "popularity": 83,
+    "pros": [
+      "Extremely intuitive visual builder",
+      "Incredible for lead generation and scraping",
+      "Responsive founding team"
+    ],
+    "cons": [
+      "Primarily focused on data processing rather than conversational agents",
+      "Integrations are still growing"
+    ],
+    "bestFor": [
+      "Growth Marketers",
+      "Founders",
+      "Sales Operations"
+    ],
+    "useCases": [
+      "Scraping LinkedIn for leads",
+      "Automating competitor research",
+      "Processing unstructured PDFs"
+    ],
+    "editorial": {
+      "overview": "Gumloop simplifies the concept of AI agents into predictable, repeatable workflows. Instead of an agent that wanders off-script, Gumloop ensures the AI follows your exact pipeline every time.",
+      "verdict": "If you have a manual, data-heavy process that you perform weekly, Gumloop is the easiest way to automate it without writing code.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:10:17.537Z"
+  },
+  {
+    "id": "hyperwrite-assistant",
+    "name": "HyperWrite Assistant",
+    "slug": "hyperwrite-assistant",
+    "company": "OthersideAI",
+    "tagline": "An AI agent that operates your web browser.",
+    "description": "HyperWrite's Personal Assistant is a browser extension agent that can execute complex tasks on the web. You can tell it to 'order a pizza' or 'find the cheapest flight to NYC' and it will autonomously navigate websites to do it.",
+    "category": "ai-agents",
+    "priceModel": "Freemium",
+    "rating": 4.5,
+    "reviewCount": 420,
+    "easeOfUse": 4.6,
+    "featureRating": 4.4,
+    "valueForMoney": 4.5,
+    "performance": 4.2,
+    "support": 4,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://www.hyperwriteai.com/",
+    "tags": [
+      "Browser Extension",
+      "Personal Assistant",
+      "Web Automation"
+    ],
+    "features": [
+      {
+        "title": "Web Navigation",
+        "description": "Visually understands and clicks on webpage elements.",
+        "icon": "mouse"
+      },
+      {
+        "title": "Self-Correction",
+        "description": "If a click fails, the agent will retry or find an alternative path.",
+        "icon": "refresh"
+      }
+    ],
+    "verified": true,
+    "popularity": 86,
+    "pros": [
+      "Works entirely within your browser",
+      "Can handle consumer tasks like shopping and booking",
+      "Very easy to install"
+    ],
+    "cons": [
+      "Can be slow on heavily interactive React/SPA websites",
+      "Sometimes gets stuck in login loops"
+    ],
+    "bestFor": [
+      "Consumers",
+      "Researchers",
+      "Assistants"
+    ],
+    "useCases": [
+      "Booking travel",
+      "Online shopping research",
+      "Data gathering"
+    ],
+    "editorial": {
+      "overview": "HyperWrite was one of the first to market with a true browser-controlling agent. It bridges the gap between text-based LLMs and the messy reality of the internet.",
+      "verdict": "A fun and highly practical glimpse into the future of web browsing, even if it still occasionally requires human intervention on complex sites.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:10:17.537Z"
+  },
+  {
+    "id": "sierra",
+    "name": "Sierra",
+    "slug": "sierra",
+    "company": "Sierra",
+    "tagline": "Conversational AI agents for enterprise customer support.",
+    "description": "Co-founded by Bret Taylor, Sierra builds highly capable conversational AI agents for enterprise companies. These agents can take complex actions, access backend systems, and resolve customer issues autonomously.",
+    "category": "ai-agents",
+    "priceModel": "Enterprise",
+    "rating": 4.8,
+    "reviewCount": 85,
+    "easeOfUse": 4,
+    "featureRating": 4.9,
+    "valueForMoney": 4,
+    "performance": 4.8,
+    "support": 4.9,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://sierra.ai/",
+    "tags": [
+      "Customer Support",
+      "Enterprise",
+      "Conversational AI"
+    ],
+    "features": [
+      {
+        "title": "Action Execution",
+        "description": "Can process refunds, change orders, and update accounts.",
+        "icon": "receipt_long"
+      },
+      {
+        "title": "Brand Voice Alignment",
+        "description": "Strictly adheres to corporate tone and compliance rules.",
+        "icon": "record_voice_over"
+      },
+      {
+        "title": "Seamless Handoff",
+        "description": "Transfers to human agents with full context when necessary.",
+        "icon": "support_agent"
+      }
+    ],
+    "verified": true,
+    "popularity": 78,
+    "pros": [
+      "Actually resolves issues instead of just deflecting them",
+      "Enterprise-grade security and hallucination guardrails",
+      "Backed by heavy-hitting founders"
+    ],
+    "cons": [
+      "Strictly enterprise pricing and onboarding",
+      "Not accessible for SMBs"
+    ],
+    "bestFor": [
+      "Large E-commerce",
+      "Enterprise SaaS",
+      "Telecoms"
+    ],
+    "useCases": [
+      "Order modifications",
+      "Billing inquiries",
+      "Technical troubleshooting"
+    ],
+    "editorial": {
+      "overview": "Most customer support 'bots' are just decision trees that frustrate users. Sierra builds agents that can actually 'do' things by hooking deeply into a company's internal APIs.",
+      "verdict": "Sierra is defining the future of enterprise customer experience. They are expensive, but they deliver agents that customers actually enjoy interacting with.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:10:17.537Z"
+  },
+  {
+    "id": "sweep-ai",
+    "name": "Sweep AI",
+    "slug": "sweep-ai",
+    "company": "Sweep AI",
+    "tagline": "Your junior AI developer.",
+    "description": "Sweep AI is an autonomous agent that integrates directly into GitHub. You create an issue describing a bug or feature, and Sweep autonomously plans the changes, writes the code, and submits a Pull Request.",
+    "category": "ai-agents",
+    "priceModel": "Paid",
+    "rating": 4.7,
+    "reviewCount": 320,
+    "easeOfUse": 4.9,
+    "featureRating": 4.5,
+    "valueForMoney": 4.4,
+    "performance": 4.6,
+    "support": 4.8,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://sweep.dev/",
+    "tags": [
+      "Coding Assistant",
+      "GitHub",
+      "DevOps"
+    ],
+    "features": [
+      {
+        "title": "Automated PRs",
+        "description": "Turns GitHub issues into fully coded Pull Requests.",
+        "icon": "merge"
+      },
+      {
+        "title": "Code Review",
+        "description": "Can review its own code and respond to human PR comments.",
+        "icon": "rate_review"
+      },
+      {
+        "title": "Repository Search",
+        "description": "Understands the context of your entire codebase before coding.",
+        "icon": "search"
+      }
+    ],
+    "verified": true,
+    "popularity": 84,
+    "pros": [
+      "Zero friction—operates entirely within GitHub",
+      "Great for squashing small bugs and tech debt",
+      "Can read existing style guides"
+    ],
+    "cons": [
+      "Struggles with massive architectural overhauls",
+      "Pricing is per-ticket which can add up"
+    ],
+    "bestFor": [
+      "Engineering Teams",
+      "Open Source Maintainers"
+    ],
+    "useCases": [
+      "Fixing linting errors",
+      "Adding unit tests",
+      "Resolving minor bug reports"
+    ],
+    "editorial": {
+      "overview": "Sweep brings the agent directly to where developers already work: GitHub. By offloading the 'chore' tickets to Sweep, human developers can focus on architecture and complex logic.",
+      "verdict": "An incredibly practical application of AI agents. If you maintain a busy repository, Sweep acts as an eager junior dev who loves tackling the backlog.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:10:17.537Z"
+  },
+  {
+    "id": "superagi",
+    "name": "SuperAGI",
+    "slug": "superagi",
+    "company": "SuperAGI",
+    "tagline": "Dev-first infrastructure for autonomous AI agents.",
+    "description": "SuperAGI is an open-source framework and platform for building, managing, and running useful autonomous AI agents. It provides a GUI, tool marketplace, and robust architecture for deploying agents.",
+    "category": "ai-agents",
+    "priceModel": "Free",
+    "rating": 4.5,
+    "reviewCount": 410,
+    "easeOfUse": 3.8,
+    "featureRating": 4.6,
+    "valueForMoney": 5,
+    "performance": 4.2,
+    "support": 4,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://superagi.com/",
+    "tags": [
+      "Open Source",
+      "Framework",
+      "Developer Tool"
+    ],
+    "features": [
+      {
+        "title": "GUI Dashboard",
+        "description": "Manage multiple concurrent agents from a visual dashboard.",
+        "icon": "dashboard"
+      },
+      {
+        "title": "Tool Toolkit",
+        "description": "Extensive library of pre-built tools (Twitter, GitHub, Google, etc.).",
+        "icon": "build_circle"
+      },
+      {
+        "title": "Performance Telemetry",
+        "description": "Track token usage, costs, and agent trajectories.",
+        "icon": "speed"
+      }
+    ],
+    "verified": true,
+    "popularity": 81,
+    "pros": [
+      "Excellent open-source alternative to paid enterprise platforms",
+      "Rich ecosystem of tools",
+      "Allows concurrent agent runs"
+    ],
+    "cons": [
+      "Setup can be tricky for non-developers",
+      "Resource intensive to run locally"
+    ],
+    "bestFor": [
+      "Developers",
+      "Startups",
+      "AI Engineers"
+    ],
+    "useCases": [
+      "Building custom social media managers",
+      "Automating developer workflows"
+    ],
+    "editorial": {
+      "overview": "SuperAGI took the raw potential of AutoGPT and wrapped it in a professional, enterprise-grade architecture. It treats agents as microservices that need to be managed, monitored, and scaled.",
+      "verdict": "For engineering teams looking to host their own autonomous agents internally, SuperAGI provides a phenomenal foundation.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:10:17.537Z"
+  },
+  {
+    "id": "julius-ai",
+    "name": "Julius AI",
+    "slug": "julius-ai",
+    "company": "Julius",
+    "tagline": "Your autonomous AI data analyst.",
+    "description": "Julius AI is a specialized agent for data analysis. You can upload spreadsheets, CSVs, or connect databases, and ask Julius to clean data, run complex statistical models, or generate visualizations.",
+    "category": "ai-agents",
+    "priceModel": "Freemium",
+    "rating": 4.8,
+    "reviewCount": 650,
+    "easeOfUse": 4.7,
+    "featureRating": 4.8,
+    "valueForMoney": 4.5,
+    "performance": 4.9,
+    "support": 4.5,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://julius.ai/",
+    "tags": [
+      "Data Analysis",
+      "Data Science",
+      "Visualization"
+    ],
+    "features": [
+      {
+        "title": "Code Execution",
+        "description": "Writes and executes Python/R in a sandboxed environment to analyze your data.",
+        "icon": "code"
+      },
+      {
+        "title": "Chart Generation",
+        "description": "Creates beautiful, interactive graphs from raw data.",
+        "icon": "bar_chart"
+      },
+      {
+        "title": "Data Cleaning",
+        "description": "Autonomously identifies and fixes formatting errors and missing values.",
+        "icon": "cleaning_services"
+      }
+    ],
+    "verified": true,
+    "popularity": 87,
+    "pros": [
+      "Incredibly accurate for statistical analysis",
+      "Handles large datasets smoothly",
+      "Outputs production-ready charts"
+    ],
+    "cons": [
+      "Requires clearly formatted column headers for best results",
+      "Free tier is quite limited"
+    ],
+    "bestFor": [
+      "Data Analysts",
+      "Marketers",
+      "Researchers"
+    ],
+    "useCases": [
+      "Analyzing survey results",
+      "Financial modeling",
+      "Sales data visualization"
+    ],
+    "editorial": {
+      "overview": "Julius represents the power of 'narrow' agents. By focusing entirely on data analysis and providing a robust Python execution environment, it vastly outperforms general-purpose LLMs at math and statistics.",
+      "verdict": "If you work with Excel files or databases daily, Julius AI will genuinely save you hours of pivot tables and VLOOKUPs.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:10:17.537Z"
+  },
+  {
+    "id": "babyagi",
+    "name": "BabyAGI",
+    "slug": "babyagi",
+    "company": "Yohei Nakajima",
+    "tagline": "The original task management autonomous agent.",
+    "description": "BabyAGI is a minimalist, open-source Python script that demonstrates how an AI can manage tasks. It creates tasks based on an objective, executes them, evaluates the result, and generates new tasks in a continuous loop.",
+    "category": "ai-agents",
+    "priceModel": "Free",
+    "rating": 4.4,
+    "reviewCount": 980,
+    "easeOfUse": 2.5,
+    "featureRating": 3.5,
+    "valueForMoney": 5,
+    "performance": 4,
+    "support": 3,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://babyagi.org/",
+    "tags": [
+      "Open Source",
+      "Framework",
+      "Experimental"
+    ],
+    "features": [
+      {
+        "title": "Task Prioritization",
+        "description": "Autonomously reprioritizes its task list based on new information.",
+        "icon": "sort"
+      },
+      {
+        "title": "Vector Database Integration",
+        "description": "Uses Pinecone or local vectors for long-term memory.",
+        "icon": "storage"
+      }
+    ],
+    "verified": true,
+    "popularity": 92,
+    "pros": [
+      "Extremely lightweight and easy to understand codebase",
+      "Free and open-source",
+      "Great foundational learning tool"
+    ],
+    "cons": [
+      "Requires coding knowledge to run",
+      "Lacks advanced tooling out-of-the-box compared to AutoGPT"
+    ],
+    "bestFor": [
+      "Developers",
+      "AI Enthusiasts",
+      "Educators"
+    ],
+    "useCases": [
+      "Learning about agent architecture",
+      "Simple automated research loops"
+    ],
+    "editorial": {
+      "overview": "BabyAGI was created by VC Yohei Nakajima as a weekend project and accidentally sparked the entire autonomous agent movement in early 2023.",
+      "verdict": "While it has been surpassed by more complex frameworks for production use, BabyAGI remains the perfect 'Hello World' for developers entering the agent space.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:10:17.537Z"
+  },
+  {
+    "id": "adept",
+    "name": "Adept (ACT-1)",
+    "slug": "adept",
+    "company": "Adept AI",
+    "tagline": "An AI teammate that can see your screen and use software.",
+    "description": "Adept is building a foundational model for software interaction. Their agent, ACT-1, can take natural language commands and execute them across multiple software tools like Salesforce, Excel, and web browsers by visually clicking and typing.",
+    "category": "ai-agents",
+    "priceModel": "Enterprise",
+    "rating": 4.7,
+    "reviewCount": 95,
+    "easeOfUse": 4,
+    "featureRating": 4.8,
+    "valueForMoney": 4,
+    "performance": 4.6,
+    "support": 4.2,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://www.adept.ai/",
+    "tags": [
+      "Foundation Model",
+      "Enterprise",
+      "Software Automation"
+    ],
+    "features": [
+      {
+        "title": "Visual GUI Interaction",
+        "description": "Navigates UIs exactly like a human would.",
+        "icon": "visibility"
+      },
+      {
+        "title": "Cross-App Execution",
+        "description": "Can copy data from a PDF and paste it correctly into a CRM.",
+        "icon": "compare_arrows"
+      }
+    ],
+    "verified": true,
+    "popularity": 80,
+    "pros": [
+      "Incredible capability to understand legacy UI",
+      "Operates across desktop and web apps seamlessly"
+    ],
+    "cons": [
+      "Primarily focused on large enterprise deployments",
+      "Not easily accessible for individual users or small teams"
+    ],
+    "bestFor": [
+      "Enterprise",
+      "Data Entry Teams"
+    ],
+    "useCases": [
+      "CRM data migration",
+      "Automated invoice processing"
+    ],
+    "editorial": {
+      "overview": "Adept took a different approach from standard text LLMs by training their models specifically on how humans interact with software GUIs. The result is an agent that doesn't need APIs to function.",
+      "verdict": "Adept remains somewhat closed off to the general public, but for massive enterprises dealing with legacy software lacking APIs, it is a game-changer.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:10:17.537Z"
+  },
+  {
+    "id": "relevance-ai",
+    "name": "Relevance AI",
+    "slug": "relevance-ai",
+    "company": "Relevance AI",
+    "tagline": "Build custom AI workforces for your business.",
+    "description": "Relevance AI is a platform that allows you to build, deploy, and manage autonomous AI agents (or 'workforces') without writing code. These agents can handle end-to-end business processes like outbound sales, customer research, and data enrichment.",
+    "category": "ai-agents",
+    "priceModel": "Paid",
+    "rating": 4.6,
+    "reviewCount": 145,
+    "easeOfUse": 4.3,
+    "featureRating": 4.7,
+    "valueForMoney": 4.2,
+    "performance": 4.5,
+    "support": 4.8,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://relevanceai.com/",
+    "tags": [
+      "Enterprise",
+      "B2B",
+      "No Code",
+      "Workforce Automation"
+    ],
+    "features": [
+      {
+        "title": "No-Code Agent Builder",
+        "description": "Design complex agent workflows visually.",
+        "icon": "architecture"
+      },
+      {
+        "title": "Pre-built Templates",
+        "description": "Start instantly with templates for SDRs, Researchers, and Support.",
+        "icon": "dashboard_customize"
+      },
+      {
+        "title": "Tool Integrations",
+        "description": "Agents can natively use Salesforce, Hubspot, and Slack.",
+        "icon": "extension"
+      }
+    ],
+    "verified": true,
+    "popularity": 85,
+    "pros": [
+      "Excellent for non-technical operations teams",
+      "Highly reliable for B2B outbound workflows",
+      "Great customer support"
+    ],
+    "cons": [
+      "Pricing scales quickly for high-volume tasks",
+      "Slight learning curve to master the workflow builder"
+    ],
+    "bestFor": [
+      "Operations Managers",
+      "Sales Teams",
+      "Agencies"
+    ],
+    "useCases": [
+      "Automated lead enrichment",
+      "AI-driven customer support",
+      "Market research gathering"
+    ],
+    "editorial": {
+      "overview": "While many agent platforms focus on developers, Relevance AI focuses on business operations. They frame their agents as 'digital employees' that you can hire to do tedious B2B work.",
+      "verdict": "If you want to automate your sales outreach or data enrichment without writing Python scripts, Relevance AI is one of the most mature platforms available.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:10:17.534Z"
+  },
+  {
+    "id": "aider",
+    "name": "Aider",
+    "slug": "aider",
+    "company": "Paul Gauthier",
+    "tagline": "AI pair programming in your terminal.",
+    "description": "Aider is a command-line tool that lets you pair program with an LLM. It can read your local codebase, write new features, fix bugs, and automatically commit the changes to Git.",
+    "category": "ai-agents",
+    "priceModel": "Free",
+    "rating": 4.9,
+    "reviewCount": 850,
+    "easeOfUse": 3.8,
+    "featureRating": 4.8,
+    "valueForMoney": 5,
+    "performance": 4.9,
+    "support": 4,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://aider.chat/",
+    "tags": [
+      "Coding Assistant",
+      "CLI",
+      "Developer Tool",
+      "Open Source"
+    ],
+    "features": [
+      {
+        "title": "Git Integration",
+        "description": "Automatically creates sensible git commits with descriptive messages.",
+        "icon": "commit"
+      },
+      {
+        "title": "Multi-File Edits",
+        "description": "Can refactor code across dozens of files simultaneously.",
+        "icon": "file_copy"
+      },
+      {
+        "title": "Architectural Understanding",
+        "description": "Uses a repository map to understand your entire codebase.",
+        "icon": "account_tree"
+      }
+    ],
+    "verified": true,
+    "popularity": 93,
+    "pros": [
+      "Incredibly fast and accurate code generation",
+      "Fits perfectly into existing developer workflows",
+      "Supports Claude 3.5 Sonnet and GPT-4o"
+    ],
+    "cons": [
+      "Terminal interface can be intimidating for some",
+      "Requires managing your own API keys",
+      "Can occasionally break syntax if the diff is massive"
+    ],
+    "bestFor": [
+      "Software Engineers",
+      "Indie Hackers",
+      "DevOps"
+    ],
+    "useCases": [
+      "Writing unit tests",
+      "Refactoring legacy components",
+      "Adding new features rapidly"
+    ],
+    "editorial": {
+      "overview": "Unlike Copilot which suggests a few lines at a time, Aider is an agent that takes a high-level command ('add a dark mode toggle') and executes the changes across multiple files, complete with a git commit.",
+      "verdict": "Aider is arguably the most practical and immediately useful AI coding agent available today. It dramatically accelerates development speed.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:07:17.994Z"
+  },
+  {
+    "id": "zapier-central",
+    "name": "Zapier Central",
+    "slug": "zapier-central",
+    "company": "Zapier",
+    "tagline": "AI bots that work across all your apps.",
+    "description": "Zapier Central lets you build AI bots that can interact with the 6,000+ apps in the Zapier ecosystem. You can chat with your bots to trigger workflows or set them up to run autonomously.",
+    "category": "ai-agents",
+    "priceModel": "Freemium",
+    "rating": 4.5,
+    "reviewCount": 390,
+    "easeOfUse": 4.8,
+    "featureRating": 4.5,
+    "valueForMoney": 4.2,
+    "performance": 4.6,
+    "support": 4.5,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://zapier.com/central",
+    "tags": [
+      "Workflow Automation",
+      "No Code",
+      "Enterprise"
+    ],
+    "features": [
+      {
+        "title": "6,000+ Integrations",
+        "description": "Connects to almost any SaaS application instantly.",
+        "icon": "apps"
+      },
+      {
+        "title": "Natural Language Triggers",
+        "description": "Just tell the bot what to do instead of building complex logic.",
+        "icon": "chat"
+      },
+      {
+        "title": "Data Source Training",
+        "description": "Upload PDFs or link Google Docs to give the bot knowledge.",
+        "icon": "menu_book"
+      }
+    ],
+    "verified": true,
+    "popularity": 89,
+    "pros": [
+      "Unmatched ecosystem of app integrations",
+      "Extremely reliable execution",
+      "Zero coding required"
+    ],
+    "cons": [
+      "Requires a paid Zapier account for heavy usage",
+      "Less capable of open-ended reasoning compared to raw LLMs",
+      "UI can be slightly confusing for complete beginners"
+    ],
+    "bestFor": [
+      "Operations Managers",
+      "Marketers",
+      "Small Business Owners"
+    ],
+    "useCases": [
+      "Triage customer support tickets",
+      "Automate lead qualification",
+      "Sync data across CRMs verbally"
+    ],
+    "editorial": {
+      "overview": "Zapier Central bridges the gap between traditional IF/THEN automation and autonomous agents. By injecting an LLM into the Zapier workflow, you can now automate tasks that require 'fuzzy' logic and decision making.",
+      "verdict": "If your company already relies on Zapier, Central is the easiest way to deploy robust AI agents into your existing tech stack.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:07:17.994Z"
+  },
+  {
+    "id": "crewai",
+    "name": "CrewAI",
+    "slug": "crewai",
+    "company": "CrewAI",
+    "tagline": "Framework for orchestrating role-playing autonomous AI agents.",
+    "description": "CrewAI is a framework for building multi-agent systems. It allows you to define agents with specific roles, goals, and backstories, and have them collaborate to accomplish complex tasks.",
+    "category": "ai-agents",
+    "priceModel": "Free",
+    "rating": 4.8,
+    "reviewCount": 450,
+    "easeOfUse": 3.5,
+    "featureRating": 4.9,
+    "valueForMoney": 5,
+    "performance": 4.7,
+    "support": 4.2,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://www.crewai.com/",
+    "tags": [
+      "Framework",
+      "Multi-Agent",
+      "Open Source",
+      "Python"
+    ],
+    "features": [
+      {
+        "title": "Role-Playing Agents",
+        "description": "Assign distinct personalities and expertise to different agents.",
+        "icon": "groups"
+      },
+      {
+        "title": "Task Delegation",
+        "description": "Agents can autonomously delegate tasks to each other.",
+        "icon": "share"
+      },
+      {
+        "title": "Tool Integration",
+        "description": "Equip agents with custom tools and APIs.",
+        "icon": "build"
+      }
+    ],
+    "verified": true,
+    "popularity": 91,
+    "pros": [
+      "The best framework for multi-agent collaboration",
+      "Highly modular and extensible",
+      "Great documentation and community"
+    ],
+    "cons": [
+      "Requires Python programming knowledge",
+      "Multi-agent systems can burn through API tokens quickly",
+      "Complex to debug when agents hallucinate"
+    ],
+    "bestFor": [
+      "AI Developers",
+      "Data Scientists",
+      "Automation Engineers"
+    ],
+    "useCases": [
+      "Automating content creation pipelines",
+      "Building intelligent research teams",
+      "Simulating complex business scenarios"
+    ],
+    "editorial": {
+      "overview": "While AutoGPT relies on a single agent trying to do everything, CrewAI introduces the concept of a 'team'. You can have a 'Researcher' agent pass data to a 'Writer' agent, who then passes it to a 'QA' agent.",
+      "verdict": "CrewAI is the current industry standard for developers looking to build sophisticated multi-agent applications.",
+      "faqs": []
+    },
+    "status": "published",
+    "lastUpdated": "2026-08-06T18:07:17.994Z",
+    "lastAutosavedAt": "2026-08-07T19:09:55.563Z",
+    "draftData": {
+      "id": "crewai",
+      "name": "CrewAI",
+      "slug": "crewai",
+      "company": "CrewAI",
+      "tagline": "Framework for orchestrating role-playing autonomous AI agents.",
+      "description": "CrewAI is a framework for building multi-agent systems. It allows you to define agents with specific roles, goals, and backstories, and have them collaborate to accomplish complex tasks.",
+      "category": "ai-agents",
+      "priceModel": "Free",
+      "rating": 4.8,
+      "reviewCount": 450,
+      "logoUrl": "https://via.placeholder.com/200",
+      "imageUrl": "https://via.placeholder.com/800",
+      "websiteUrl": "https://www.crewai.com/",
+      "tags": [
+        "Framework",
+        "Multi-Agent",
+        "Open Source",
+        "Python"
+      ],
+      "features": [
+        {
+          "title": "Role-Playing Agents",
+          "description": "Assign distinct personalities and expertise to different agents.",
+          "icon": "groups"
+        },
+        {
+          "title": "Task Delegation",
+          "description": "Agents can autonomously delegate tasks to each other.",
+          "icon": "share"
+        },
+        {
+          "title": "Tool Integration",
+          "description": "Equip agents with custom tools and APIs.",
+          "icon": "build"
+        }
+      ],
+      "verified": true,
+      "featured": false,
+      "popularity": 91,
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "pricingPlans": [],
+      "pricing": [],
+      "pros": [
+        {
+          "title": "Powerful multi-agent orchestration",
+          "description": "Lets you assign specific roles, goals, and tools to individual AI agents that then collaborate as a \"crew\" to complete complex, multi-step tasks — closer to how a real team works than a single monolithic AI."
+        },
+        {
+          "title": "Open-source and free to start",
+          "description": "The core framework is MIT-licensed and genuinely free, with no LangChain dependency, so developers can build and self-host without vendor lock-in before ever touching a paid plan."
+        },
+        {
+          "title": "Extensive model and tool flexibility",
+          "description": "Works with a wide range of LLM providers (OpenAI, Google, Azure, Ollama, DeepSeek, and more) and ships with 100+ built-in tool integrations (Gmail, Slack, Salesforce, HubSpot), so it fits into most existing stacks."
+        }
+      ],
+      "cons": [
+        {
+          "title": "Steep learning curve for non-developers",
+          "description": "There's no drag-and-drop or low-code option — you need real Python proficiency and a working understanding of prompt engineering and LLM concepts to get the most out of it."
+        },
+        {
+          "title": "Token and API costs add up fast",
+          "description": "Every agent in a crew makes its own LLM calls, so a 5-agent workflow can generate 5–10x the API cost of a single-agent setup — costs that can spiral without active monitoring and spending limits."
+        },
+        {
+          "title": "Enterprise pricing jumps and lacks transparency",
+          "description": "The gap between the free/basic tiers and the enterprise plan is steep with little middle ground, and execution-based billing means costs scale unpredictably as workflows get more complex."
+        }
+      ],
+      "bestFor": [
+        "AI Developers",
+        "Data Scientists",
+        "Automation Engineers"
+      ],
+      "useCases": [
+        {
+          "title": "Research and analysis pipelines",
+          "description": "Teams use CrewAI to chain research, summarization, and reporting agents together — one agent gathers data, another analyzes it, another drafts the output — automating work that would otherwise take a human analyst hours."
+        },
+        {
+          "title": "Sales and marketing automation",
+          "description": "Agents can integrate with CRM and marketing platforms to enrich lead data, analyze customer sentiment, and help build targeted campaigns, reducing manual data work for growth teams."
+        },
+        {
+          "title": "Enterprise workflow automation (finance, compliance, ops)",
+          "description": "Larger organizations (including Fortune 500 companies) use CrewAI's enterprise platform to automate structured processes like financial reporting and compliance checks, with the added observability and guardrails the open-source version lacks."
+        }
+      ],
+      "goals": [],
+      "workflows": [],
+      "socials": {},
+      "stats": {},
+      "editorial": {
+        "overview": "While AutoGPT relies on a single agent trying to do everything, CrewAI introduces the concept of a 'team'. You can have a 'Researcher' agent pass data to a 'Writer' agent, who then passes it to a 'QA' agent.",
+        "verdict": "CrewAI is the current industry standard for developers looking to build sophisticated multi-agent applications.",
+        "faqs": []
+      },
+      "promptExamples": [],
+      "lastUpdated": "2026-08-07"
+    },
+    "publishedAt": "2026-08-07T19:09:55.563Z",
+    "publishedData": {
+      "id": "crewai",
+      "name": "CrewAI",
+      "slug": "crewai",
+      "company": "CrewAI",
+      "tagline": "Framework for orchestrating role-playing autonomous AI agents.",
+      "description": "CrewAI is a framework for building multi-agent systems. It allows you to define agents with specific roles, goals, and backstories, and have them collaborate to accomplish complex tasks.",
+      "category": "ai-agents",
+      "priceModel": "Free",
+      "rating": 4.8,
+      "reviewCount": 450,
+      "logoUrl": "https://via.placeholder.com/200",
+      "imageUrl": "https://via.placeholder.com/800",
+      "websiteUrl": "https://www.crewai.com/",
+      "tags": [
+        "Framework",
+        "Multi-Agent",
+        "Open Source",
+        "Python"
+      ],
+      "features": [
+        {
+          "title": "Role-Playing Agents",
+          "description": "Assign distinct personalities and expertise to different agents.",
+          "icon": "groups"
+        },
+        {
+          "title": "Task Delegation",
+          "description": "Agents can autonomously delegate tasks to each other.",
+          "icon": "share"
+        },
+        {
+          "title": "Tool Integration",
+          "description": "Equip agents with custom tools and APIs.",
+          "icon": "build"
+        }
+      ],
+      "verified": true,
+      "featured": false,
+      "popularity": 91,
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "pricingPlans": [],
+      "pricing": [],
+      "pros": [
+        {
+          "title": "Powerful multi-agent orchestration",
+          "description": "Lets you assign specific roles, goals, and tools to individual AI agents that then collaborate as a \"crew\" to complete complex, multi-step tasks — closer to how a real team works than a single monolithic AI."
+        },
+        {
+          "title": "Open-source and free to start",
+          "description": "The core framework is MIT-licensed and genuinely free, with no LangChain dependency, so developers can build and self-host without vendor lock-in before ever touching a paid plan."
+        },
+        {
+          "title": "Extensive model and tool flexibility",
+          "description": "Works with a wide range of LLM providers (OpenAI, Google, Azure, Ollama, DeepSeek, and more) and ships with 100+ built-in tool integrations (Gmail, Slack, Salesforce, HubSpot), so it fits into most existing stacks."
+        }
+      ],
+      "cons": [
+        {
+          "title": "Steep learning curve for non-developers",
+          "description": "There's no drag-and-drop or low-code option — you need real Python proficiency and a working understanding of prompt engineering and LLM concepts to get the most out of it."
+        },
+        {
+          "title": "Token and API costs add up fast",
+          "description": "Every agent in a crew makes its own LLM calls, so a 5-agent workflow can generate 5–10x the API cost of a single-agent setup — costs that can spiral without active monitoring and spending limits."
+        },
+        {
+          "title": "Enterprise pricing jumps and lacks transparency",
+          "description": "The gap between the free/basic tiers and the enterprise plan is steep with little middle ground, and execution-based billing means costs scale unpredictably as workflows get more complex."
+        }
+      ],
+      "bestFor": [
+        "AI Developers",
+        "Data Scientists",
+        "Automation Engineers"
+      ],
+      "useCases": [
+        {
+          "title": "Research and analysis pipelines",
+          "description": "Teams use CrewAI to chain research, summarization, and reporting agents together — one agent gathers data, another analyzes it, another drafts the output — automating work that would otherwise take a human analyst hours."
+        },
+        {
+          "title": "Sales and marketing automation",
+          "description": "Agents can integrate with CRM and marketing platforms to enrich lead data, analyze customer sentiment, and help build targeted campaigns, reducing manual data work for growth teams."
+        },
+        {
+          "title": "Enterprise workflow automation (finance, compliance, ops)",
+          "description": "Larger organizations (including Fortune 500 companies) use CrewAI's enterprise platform to automate structured processes like financial reporting and compliance checks, with the added observability and guardrails the open-source version lacks."
+        }
+      ],
+      "goals": [],
+      "workflows": [],
+      "socials": {},
+      "stats": {},
+      "editorial": {
+        "overview": "While AutoGPT relies on a single agent trying to do everything, CrewAI introduces the concept of a 'team'. You can have a 'Researcher' agent pass data to a 'Writer' agent, who then passes it to a 'QA' agent.",
+        "verdict": "CrewAI is the current industry standard for developers looking to build sophisticated multi-agent applications.",
+        "faqs": []
+      },
+      "promptExamples": [],
+      "lastUpdated": "2026-08-07"
+    }
+  },
+  {
+    "id": "lindy",
+    "name": "Lindy.ai",
+    "slug": "lindy",
+    "company": "Lindy",
+    "tagline": "Your AI personal employee.",
+    "description": "Lindy is an AI assistant that can help you with all your daily tasks, from calendar management and email drafting to complex workflow automations across your favorite apps.",
+    "category": "ai-agents",
+    "priceModel": "Paid",
+    "rating": 4.7,
+    "reviewCount": 280,
+    "easeOfUse": 4.8,
+    "featureRating": 4.6,
+    "valueForMoney": 4.4,
+    "performance": 4.5,
+    "support": 4.7,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://www.lindy.ai/",
+    "tags": [
+      "Personal Assistant",
+      "Workflow Automation",
+      "Productivity"
+    ],
+    "features": [
+      {
+        "title": "Deep Integrations",
+        "description": "Connects natively to Gmail, Calendar, Slack, and Notion.",
+        "icon": "hub"
+      },
+      {
+        "title": "Trigger-based Actions",
+        "description": "Can act proactively based on incoming emails or calendar events.",
+        "icon": "bolt"
+      },
+      {
+        "title": "Voice Interface",
+        "description": "Talk to Lindy to assign tasks hands-free.",
+        "icon": "mic"
+      }
+    ],
+    "verified": true,
+    "popularity": 82,
+    "pros": [
+      "Exceptional at calendar and email triage",
+      "Can be chained together to form custom workflows",
+      "Highly conversational and natural interaction"
+    ],
+    "cons": [
+      "Premium pricing model might be steep for casual users",
+      "Relies heavily on third-party API stability",
+      "Takes time to train it on your personal preferences"
+    ],
+    "bestFor": [
+      "Executives",
+      "Founders",
+      "Sales Professionals"
+    ],
+    "useCases": [
+      "Automated meeting scheduling",
+      "Drafting personalized email replies",
+      "Summarizing daily Slack communications"
+    ],
+    "editorial": {
+      "overview": "Lindy positions itself as an 'AI Employee' rather than just a chatbot. It aims to take over the tedious administrative work that bogs down knowledge workers.",
+      "verdict": "For professionals drowning in emails and meetings, Lindy offers a highly polished, proactive agent that genuinely saves hours of administrative overhead every week.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:07:17.994Z"
+  },
+  {
+    "id": "agentgpt",
+    "name": "AgentGPT",
+    "slug": "agentgpt",
+    "company": "Reworkd AI",
+    "tagline": "Assemble, configure, and deploy autonomous AI agents in your browser.",
+    "description": "AgentGPT allows you to create autonomous AI agents directly from your browser. Simply give your agent a name and a goal, and it will embark on a loop of thinking, executing, and learning.",
+    "category": "ai-agents",
+    "priceModel": "Freemium",
+    "rating": 4.4,
+    "reviewCount": 520,
+    "easeOfUse": 4.9,
+    "featureRating": 4,
+    "valueForMoney": 4.5,
+    "performance": 4.1,
+    "support": 4.2,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://agentgpt.reworkd.ai/",
+    "tags": [
+      "Browser Based",
+      "No Code",
+      "Task Automation"
+    ],
+    "features": [
+      {
+        "title": "No-Code Interface",
+        "description": "Deploy agents entirely through a beautiful web UI without touching a terminal.",
+        "icon": "dashboard"
+      },
+      {
+        "title": "Custom Goals",
+        "description": "Set any arbitrary goal and watch the agent break it down into tasks.",
+        "icon": "flag"
+      },
+      {
+        "title": "Exportable Results",
+        "description": "Save the output of the agent's work as a PDF, image, or text file.",
+        "icon": "download"
+      }
+    ],
+    "verified": true,
+    "popularity": 85,
+    "pros": [
+      "Incredibly easy to use—zero setup required",
+      "Great visual representation of the agent's thought process",
+      "Generous free tier"
+    ],
+    "cons": [
+      "Agents are sandboxed and cannot execute local code",
+      "Sometimes loses focus on very complex, multi-day goals",
+      "Web search capability is occasionally slow"
+    ],
+    "bestFor": [
+      "Marketers",
+      "Content Creators",
+      "Students"
+    ],
+    "useCases": [
+      "Drafting comprehensive marketing plans",
+      "Researching academic topics",
+      "Brainstorming project architectures"
+    ],
+    "editorial": {
+      "overview": "AgentGPT democratized the autonomous agent space by moving the complexity of AutoGPT out of the terminal and into a slick, accessible web interface.",
+      "verdict": "If you want to experience the power of an autonomous agent without setting up Python environments or API keys, AgentGPT is the perfect starting point.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:07:17.994Z"
+  },
+  {
+    "id": "multion",
+    "name": "MultiOn",
+    "slug": "multion",
+    "company": "MultiOn",
+    "tagline": "Your personal AI web browsing agent.",
+    "description": "MultiOn is an autonomous web agent that navigates the internet, clicks buttons, fills out forms, and completes complex workflows in your browser on your behalf.",
+    "category": "ai-agents",
+    "priceModel": "Freemium",
+    "rating": 4.6,
+    "reviewCount": 310,
+    "easeOfUse": 4.5,
+    "featureRating": 4.7,
+    "valueForMoney": 4.3,
+    "performance": 4.4,
+    "support": 4,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://www.multion.ai/",
+    "tags": [
+      "Web Automation",
+      "Browser Extension",
+      "Personal Assistant"
+    ],
+    "features": [
+      {
+        "title": "Action Execution",
+        "description": "Clicks, types, and navigates websites autonomously.",
+        "icon": "mouse"
+      },
+      {
+        "title": "Local Browser Integration",
+        "description": "Runs directly in your Chrome browser via extension.",
+        "icon": "web"
+      },
+      {
+        "title": "API Access",
+        "description": "Allows developers to trigger web agents programmatically.",
+        "icon": "code"
+      }
+    ],
+    "verified": true,
+    "popularity": 88,
+    "pros": [
+      "Visually executes tasks in your own browser",
+      "Can handle authenticated sessions (like logging into your email)",
+      "Great API for developers"
+    ],
+    "cons": [
+      "Websites with heavy anti-bot protections can block it",
+      "Sometimes struggles with dynamic DOM changes",
+      "Requires giving the agent significant browser permissions"
+    ],
+    "bestFor": [
+      "Growth Hackers",
+      "Founders",
+      "Data Entry Specialists"
+    ],
+    "useCases": [
+      "Booking flights or restaurants",
+      "Automating CRM data entry",
+      "Scraping uncooperative websites"
+    ],
+    "editorial": {
+      "overview": "MultiOn takes the concept of RPA (Robotic Process Automation) and makes it intelligent. Instead of brittle CSS selectors, MultiOn uses vision and LLMs to understand the webpage visually, making it highly resilient to website updates.",
+      "verdict": "For automating tasks that require logging into websites or interacting with messy web apps, MultiOn is currently one of the most reliable consumer-facing web agents.",
+      "faqs": []
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:07:17.994Z"
+  },
+  {
+    "id": "autogpt",
+    "name": "AutoGPT",
+    "slug": "autogpt",
+    "company": "Significant Gravitas",
+    "tagline": "The open-source leader in autonomous AI agents.",
+    "description": "AutoGPT is an experimental open-source application showcasing the capabilities of the GPT-4 language model. Driven by AI, it chains together LLM thoughts to autonomously achieve whatever goal you set.",
+    "category": "ai-agents",
+    "priceModel": "Free",
+    "rating": 4.5,
+    "reviewCount": 1205,
+    "easeOfUse": 3,
+    "featureRating": 4.5,
+    "valueForMoney": 5,
+    "performance": 4,
+    "support": 3.5,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://agpt.co/",
+    "tags": [
+      "Open Source",
+      "Autonomous",
+      "General Purpose",
+      "CLI"
+    ],
+    "features": [
+      {
+        "title": "Internet Access",
+        "description": "Can search the web and gather information autonomously.",
+        "icon": "public"
+      },
+      {
+        "title": "Long-Term Memory",
+        "description": "Stores and retrieves data from previous sessions.",
+        "icon": "memory"
+      },
+      {
+        "title": "File Operations",
+        "description": "Can read, write, and execute files locally.",
+        "icon": "folder"
+      }
+    ],
+    "verified": true,
+    "popularity": 95,
+    "pros": [
+      "Completely free and open-source",
+      "Massive community support and plugins",
+      "Highly flexible for general-purpose tasks"
+    ],
+    "cons": [
+      "Requires technical knowledge to set up",
+      "Prone to infinite loops and high API costs",
+      "User interface is primarily command-line"
+    ],
+    "bestFor": [
+      "Developers",
+      "AI Researchers",
+      "Hobbyists"
+    ],
+    "useCases": [
+      "Market research",
+      "Automated data scraping",
+      "Complex task chaining"
+    ],
+    "editorial": {
+      "overview": "AutoGPT was one of the first projects to demonstrate the concept of an autonomous agent running in a loop. While it started as a terminal-only experiment, it has evolved into a robust framework for building agents.",
+      "verdict": "AutoGPT is a must-try for developers wanting to understand how AI agents work under the hood, but it lacks the polish required for non-technical enterprise users.",
+      "faqs": [
+        {
+          "question": "Is AutoGPT free to use?",
+          "answer": "The software itself is free and open-source, but you will need to pay for your own OpenAI API keys, which can get expensive if the agent loops."
+        }
+      ]
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:07:17.993Z"
+  },
+  {
+    "id": "devin",
+    "name": "Devin",
+    "slug": "devin",
+    "company": "Cognition AI",
+    "tagline": "The first autonomous AI software engineer.",
+    "description": "Devin is a tireless, autonomous AI software engineer capable of planning and executing complex engineering tasks requiring thousands of decisions. It comes equipped with its own command line, code editor, and browser to work alongside human engineers.",
+    "category": "ai-agents",
+    "priceModel": "Enterprise",
+    "rating": 4.8,
+    "reviewCount": 215,
+    "easeOfUse": 4.2,
+    "featureRating": 5,
+    "valueForMoney": 4,
+    "performance": 4.8,
+    "support": 4.5,
+    "logoUrl": "",
+    "screenshotUrl": "",
+    "imageUrl": "",
+    "websiteUrl": "https://www.cognition.ai/",
+    "tags": [
+      "AI Agent",
+      "Software Engineering",
+      "Coding Assistant",
+      "Autonomous"
+    ],
+    "features": [
+      {
+        "title": "Autonomous Task Execution",
+        "description": "Plans and executes complex engineering tasks with thousands of steps.",
+        "icon": "psychology"
+      },
+      {
+        "title": "Integrated Dev Environment",
+        "description": "Features a built-in code editor, shell, and web browser.",
+        "icon": "terminal"
+      },
+      {
+        "title": "Self-Learning",
+        "description": "Can read documentation, learn new technologies, and debug its own code.",
+        "icon": "auto_stories"
+      }
+    ],
+    "verified": true,
+    "popularity": 99,
+    "pros": [
+      "True autonomous reasoning and execution",
+      "Built-in sandboxed environment",
+      "Excellent at bootstrapping full applications"
+    ],
+    "cons": [
+      "Currently invite-only / highly restricted access",
+      "Enterprise pricing is expensive",
+      "Can occasionally loop on complex logic errors"
+    ],
+    "bestFor": [
+      "Engineering Teams",
+      "Startups",
+      "CTOs"
+    ],
+    "useCases": [
+      "End-to-end app development",
+      "Legacy code refactoring",
+      "Bug hunting and resolution"
+    ],
+    "editorial": {
+      "overview": "Devin shook the developer world when it launched, demonstrating true autonomous agentic behavior rather than just code autocomplete. It doesn't just write code; it plans architectures, reads documentation, and fixes its own mistakes.",
+      "verdict": "If your team can get access to Devin, it acts as a highly capable junior-to-mid level engineer that never sleeps. It remains the gold standard for software engineering agents in 2026.",
+      "faqs": [
+        {
+          "question": "Is Devin available to the public?",
+          "answer": "Devin operates primarily on an enterprise waitlist, though broader access is slowly rolling out."
+        },
+        {
+          "question": "Does Devin replace software engineers?",
+          "answer": "No. Devin is designed to act as an autonomous teammate, handling boilerplate, refactoring, and initial implementations so human engineers can focus on higher-level architecture."
+        }
+      ]
+    },
+    "status": "Draft",
+    "lastUpdated": "2026-08-06T18:07:17.992Z"
+  },
+  {
     "id": "tool-design-com-1784830800851",
     "name": "Design.com",
     "slug": "design-com",
@@ -5238,197 +7578,6 @@
         "pricing": "<p>The free tier offers decent baseline transcription, but the $16.99/month Pro tier is necessary for importing audio files and advanced search capabilities.</p>",
         "comparison": "<p>tl;dv offers better video clipping and CRM integrations for sales teams, but Otter's core transcription engine and collaborative live notes feel slightly more robust for general internal meetings.</p>",
         "useCaseFocus": "<p>Product managers use Otter to record user interviews, allowing them to search across dozens of calls for specific feature requests and instantly pull exact quotes.</p>"
-      }
-    },
-    "versions": [],
-    "rating": 0,
-    "reviewCount": 0
-  },
-  {
-    "id": "zapier-central",
-    "status": "published",
-    "publishedAt": "2026-07-11T11:46:48.305Z",
-    "lastAutosavedAt": null,
-    "draftData": {
-      "id": "zapier-central",
-      "name": "Zapier Central",
-      "slug": "zapier-central",
-      "tagline": "AI bots that act on your data.",
-      "description": "Zapier Central lets you teach AI bots to perform tasks across 6,000+ apps, turning natural language instructions into automated workflows.",
-      "screenshotUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-      "logoUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=200",
-      "category": "c7",
-      "priceModel": "Paid",
-      "pricing": [
-        {
-          "planName": "Starter",
-          "price": 20,
-          "period": "monthly"
-        }
-      ],
-      "url": "https://zapier.com/central",
-      "tags": [
-        "Automation",
-        "Workflow",
-        "No-Code"
-      ],
-      "features": [
-        "Live Data Sync",
-        "6000+ Integrations",
-        "Natural Language Triggers"
-      ],
-      "useCases": [
-        "Automate Ops",
-        "Automate Tasks",
-        "Deploy Faster"
-      ],
-      "rating": 4.8,
-      "reviewCount": 2200,
-      "featured": true,
-      "verified": true,
-      "popularity": 85,
-      "goals": [
-        "Automate Tasks",
-        "Automate Ops",
-        "ai-workflows",
-        "business-growth"
-      ],
-      "bestFor": [
-        "Founder",
-        "Marketer",
-        "Agency"
-      ],
-      "stats": {
-        "launchYear": 2024
-      },
-      "workflows": [
-        "agency",
-        "content-creator"
-      ],
-      "compareWith": [
-        "cody-ai",
-        "sanebox"
-      ],
-      "relatedTools": [
-        "cody-ai",
-        "sanebox",
-        "codeium"
-      ],
-      "similarTools": [
-        "cody-ai",
-        "sanebox"
-      ],
-      "collections": [
-        "Best Productivity Assistants",
-        "Top AI Assistants"
-      ],
-      "recommendationTags": [
-        "productivity",
-        "student",
-        "founder"
-      ],
-      "audiences": [
-        "Founders",
-        "Students"
-      ],
-      "editorial": {
-        "overview": "<p>Zapier Central bridges the gap between chatbots and actual automation. Instead of just generating text, you can teach bots to take action across thousands of apps using plain English instructions.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Data-driven triggers. You can tell a bot, 'Whenever a new high-priority lead is added to Salesforce, draft a personalized email and send me a Slack message to approve it.'</p>",
-        "verdict": "<p>This is the future of no-code automation. It democratizes complex API integrations, allowing non-technical founders to build powerful operational workflows.</p>",
-        "pricing": "<p>It ties into Zapier's existing task limits, meaning costs scale directly with how much automation you actually use. It can get expensive for high-volume tasks.</p>",
-        "comparison": "<p>Traditional Zapier requires mapping out rigid step-by-step logic. Central allows for much more flexible, conversational workflows that can adapt to the context of the data.</p>",
-        "useCaseFocus": "<p>Operations managers use Zapier Central to build custom AI assistants that triage incoming customer support tickets, categorized them, and draft initial responses automatically.</p>"
-      }
-    },
-    "publishedData": {
-      "id": "zapier-central",
-      "name": "Zapier Central",
-      "slug": "zapier-central",
-      "tagline": "AI bots that act on your data.",
-      "description": "Zapier Central lets you teach AI bots to perform tasks across 6,000+ apps, turning natural language instructions into automated workflows.",
-      "screenshotUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-      "logoUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=200",
-      "category": "c7",
-      "priceModel": "Paid",
-      "pricing": [
-        {
-          "planName": "Starter",
-          "price": 20,
-          "period": "monthly"
-        }
-      ],
-      "url": "https://zapier.com/central",
-      "tags": [
-        "Automation",
-        "Workflow",
-        "No-Code"
-      ],
-      "features": [
-        "Live Data Sync",
-        "6000+ Integrations",
-        "Natural Language Triggers"
-      ],
-      "useCases": [
-        "Automate Ops",
-        "Automate Tasks",
-        "Deploy Faster"
-      ],
-      "rating": 4.8,
-      "reviewCount": 2200,
-      "featured": true,
-      "verified": true,
-      "popularity": 85,
-      "goals": [
-        "Automate Tasks",
-        "Automate Ops",
-        "ai-workflows",
-        "business-growth"
-      ],
-      "bestFor": [
-        "Founder",
-        "Marketer",
-        "Agency"
-      ],
-      "stats": {
-        "launchYear": 2024
-      },
-      "workflows": [
-        "agency",
-        "content-creator"
-      ],
-      "compareWith": [
-        "cody-ai",
-        "sanebox"
-      ],
-      "relatedTools": [
-        "cody-ai",
-        "sanebox",
-        "codeium"
-      ],
-      "similarTools": [
-        "cody-ai",
-        "sanebox"
-      ],
-      "collections": [
-        "Best Productivity Assistants",
-        "Top AI Assistants"
-      ],
-      "recommendationTags": [
-        "productivity",
-        "student",
-        "founder"
-      ],
-      "audiences": [
-        "Founders",
-        "Students"
-      ],
-      "editorial": {
-        "overview": "<p>Zapier Central bridges the gap between chatbots and actual automation. Instead of just generating text, you can teach bots to take action across thousands of apps using plain English instructions.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Data-driven triggers. You can tell a bot, 'Whenever a new high-priority lead is added to Salesforce, draft a personalized email and send me a Slack message to approve it.'</p>",
-        "verdict": "<p>This is the future of no-code automation. It democratizes complex API integrations, allowing non-technical founders to build powerful operational workflows.</p>",
-        "pricing": "<p>It ties into Zapier's existing task limits, meaning costs scale directly with how much automation you actually use. It can get expensive for high-volume tasks.</p>",
-        "comparison": "<p>Traditional Zapier requires mapping out rigid step-by-step logic. Central allows for much more flexible, conversational workflows that can adapt to the context of the data.</p>",
-        "useCaseFocus": "<p>Operations managers use Zapier Central to build custom AI assistants that triage incoming customer support tickets, categorized them, and draft initial responses automatically.</p>"
       }
     },
     "versions": [],
@@ -11108,193 +13257,6 @@
         "pricing": "<p>Starting at $39/month, it is more expensive than standard AI writers, but the cost is easily justified if its predictive scoring improves your ad campaign ROI.</p>",
         "comparison": "<p>Jasper is great for long-form blog content and brand voice. Anyword is laser-focused on short-form, conversion-optimized copy for ads, emails, and landing pages.</p>",
         "useCaseFocus": "<p>Performance marketers use Anyword to generate dozens of variations for Facebook Ad headlines, relying on the predictive score to select the winners before spending ad budget.</p>"
-      }
-    },
-    "versions": [],
-    "rating": 0,
-    "reviewCount": 0
-  },
-  {
-    "id": "taskade",
-    "status": "published",
-    "publishedAt": "2026-07-11T11:46:48.305Z",
-    "lastAutosavedAt": null,
-    "draftData": {
-      "id": "taskade",
-      "name": "Taskade",
-      "slug": "taskade",
-      "tagline": "Build a second brain for your team.",
-      "description": "Taskade combines tasks, notes, and video chat into an AI-powered unified workspace.",
-      "screenshotUrl": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=800",
-      "imageUrl": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=800",
-      "logoUrl": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=200",
-      "category": "c7",
-      "priceModel": "Freemium",
-      "pricing": [
-        {
-          "planName": "Pro",
-          "price": 19,
-          "period": "monthly"
-        }
-      ],
-      "url": "https://taskade.com",
-      "tags": [
-        "Workspace",
-        "Tasks",
-        "Collaboration"
-      ],
-      "features": [
-        "AI Workflow Generator",
-        "Mind Maps",
-        "Chat"
-      ],
-      "useCases": [
-        "Organize Notes",
-        "Automate Tasks"
-      ],
-      "rating": 4.7,
-      "reviewCount": 6500,
-      "featured": false,
-      "verified": true,
-      "popularity": 81,
-      "goals": [
-        "Organize Notes",
-        "ai-workflows",
-        "business-growth"
-      ],
-      "bestFor": [
-        "Founder",
-        "Agency",
-        "Student"
-      ],
-      "stats": {
-        "launchYear": 2017
-      },
-      "workflows": [
-        "agency",
-        "content-creator"
-      ],
-      "compareWith": [
-        "zapier-central",
-        "tldv"
-      ],
-      "relatedTools": [
-        "zapier-central",
-        "tldv",
-        "sora"
-      ],
-      "similarTools": [
-        "zapier-central",
-        "tldv"
-      ],
-      "collections": [
-        "Best Productivity Assistants",
-        "Top AI Assistants"
-      ],
-      "recommendationTags": [
-        "productivity",
-        "student",
-        "founder"
-      ],
-      "audiences": [
-        "Founders",
-        "Students"
-      ],
-      "editorial": {
-        "overview": "<p>Taskade is a unified workspace that attempts to replace Notion, Asana, and Slack. It leans heavily into AI, allowing you to use agents to generate project templates, summarize documents, and even chat with your tasks.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Multi-view project generation. You can type 'Plan a marketing launch,' and Taskade's AI will generate the entire project breakdown, which you can instantly view as a list, a Kanban board, or a mind map.</p>",
-        "verdict": "<p>For small, fast-moving remote teams looking for an all-in-one productivity hub that natively incorporates AI generation, Taskade is an excellent, affordable option.</p>",
-        "pricing": "<p>At $19/month for the Pro tier, it is aggressively priced, especially considering it replaces several other software subscriptions.</p>",
-        "comparison": "<p>Notion is more flexible but requires heavy manual setup. Taskade is more structured out of the box and focuses heavily on built-in task management and mind-mapping.</p>",
-        "useCaseFocus": "<p>Remote startup teams use Taskade to brainstorm product features in a collaborative mind map, then use AI to instantly convert that map into actionable, assigned tasks.</p>"
-      }
-    },
-    "publishedData": {
-      "id": "taskade",
-      "name": "Taskade",
-      "slug": "taskade",
-      "tagline": "Build a second brain for your team.",
-      "description": "Taskade combines tasks, notes, and video chat into an AI-powered unified workspace.",
-      "screenshotUrl": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=800",
-      "imageUrl": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=800",
-      "logoUrl": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=200",
-      "category": "c7",
-      "priceModel": "Freemium",
-      "pricing": [
-        {
-          "planName": "Pro",
-          "price": 19,
-          "period": "monthly"
-        }
-      ],
-      "url": "https://taskade.com",
-      "tags": [
-        "Workspace",
-        "Tasks",
-        "Collaboration"
-      ],
-      "features": [
-        "AI Workflow Generator",
-        "Mind Maps",
-        "Chat"
-      ],
-      "useCases": [
-        "Organize Notes",
-        "Automate Tasks"
-      ],
-      "rating": 4.7,
-      "reviewCount": 6500,
-      "featured": false,
-      "verified": true,
-      "popularity": 81,
-      "goals": [
-        "Organize Notes",
-        "ai-workflows",
-        "business-growth"
-      ],
-      "bestFor": [
-        "Founder",
-        "Agency",
-        "Student"
-      ],
-      "stats": {
-        "launchYear": 2017
-      },
-      "workflows": [
-        "agency",
-        "content-creator"
-      ],
-      "compareWith": [
-        "zapier-central",
-        "tldv"
-      ],
-      "relatedTools": [
-        "zapier-central",
-        "tldv",
-        "sora"
-      ],
-      "similarTools": [
-        "zapier-central",
-        "tldv"
-      ],
-      "collections": [
-        "Best Productivity Assistants",
-        "Top AI Assistants"
-      ],
-      "recommendationTags": [
-        "productivity",
-        "student",
-        "founder"
-      ],
-      "audiences": [
-        "Founders",
-        "Students"
-      ],
-      "editorial": {
-        "overview": "<p>Taskade is a unified workspace that attempts to replace Notion, Asana, and Slack. It leans heavily into AI, allowing you to use agents to generate project templates, summarize documents, and even chat with your tasks.</p><p><strong class='text-on-surface'>Where it stands out:</strong> Multi-view project generation. You can type 'Plan a marketing launch,' and Taskade's AI will generate the entire project breakdown, which you can instantly view as a list, a Kanban board, or a mind map.</p>",
-        "verdict": "<p>For small, fast-moving remote teams looking for an all-in-one productivity hub that natively incorporates AI generation, Taskade is an excellent, affordable option.</p>",
-        "pricing": "<p>At $19/month for the Pro tier, it is aggressively priced, especially considering it replaces several other software subscriptions.</p>",
-        "comparison": "<p>Notion is more flexible but requires heavy manual setup. Taskade is more structured out of the box and focuses heavily on built-in task management and mind-mapping.</p>",
-        "useCaseFocus": "<p>Remote startup teams use Taskade to brainstorm product features in a collaborative mind map, then use AI to instantly convert that map into actionable, assigned tasks.</p>"
       }
     },
     "versions": [],

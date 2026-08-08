@@ -54,8 +54,8 @@ export interface AITool {
     priceModel: "Free" | "Freemium" | "Paid" | "Enterprise";
     price?: string;
 
-    rating: number;
-    reviewCount: number;
+    rating?: number;
+    reviewCount?: number;
 
     easeOfUse?: number;
     featureRating?: number;

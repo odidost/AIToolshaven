@@ -21,7 +21,7 @@ export function QuickFacts({
         {
             icon: "reviews",
             label: "Reviews",
-            value: tool.reviewCount.toLocaleString(),
+            value: (tool.reviewCount || 0) > 0 ? `${(tool.reviewCount || 0).toLocaleString()} reviews` : "No reviews yet",
         },
         {
             icon: "verified",

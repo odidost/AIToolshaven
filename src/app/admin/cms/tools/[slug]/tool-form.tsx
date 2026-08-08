@@ -36,9 +36,11 @@ import { useRouter } from "next/navigation";
 interface ToolFormProps {
   initialData?: any; // To be fully typed later
   categories: { id: string; name: string }[];
+  allWorkflows?: { slug: string; title: string }[];
+  allGoals?: { slug: string; title: string }[];
 }
 
-export function ToolForm({ initialData, categories }: ToolFormProps) {
+export function ToolForm({ initialData, categories, allWorkflows = [], allGoals = [] }: ToolFormProps) {
   const { toast } = useToast();
   const router = useRouter();
   const [isSaving, setIsSaving] = useState(false);
@@ -74,6 +76,14 @@ export function ToolForm({ initialData, categories }: ToolFormProps) {
       openSource: initialData.openSource ?? initialData.open_source ?? false,
       freeTrial: initialData.freeTrial ?? initialData.free_trial ?? false,
       features: initialData.features || [],
+      pros: initialData.pros || [],
+      cons: initialData.cons || [],
+      useCases: initialData.useCases || initialData.use_cases || [],
+      pricingPlans: initialData.pricingPlans || initialData.pricing_plans || [],
+      bestFor: initialData.bestFor || initialData.best_for || [],
+      goals: initialData.goals || [],
+      workflows: initialData.workflows || [],
+      editorial: initialData.editorial || {},
       status: initialData.status || "Draft",
     } : {
       name: "",
@@ -100,6 +110,8 @@ export function ToolForm({ initialData, categories }: ToolFormProps) {
       openSource: false,
       freeTrial: false,
       features: [],
+      goals: [],
+      workflows: [],
       status: "Draft",
     },
   });
@@ -107,6 +119,9 @@ export function ToolForm({ initialData, categories }: ToolFormProps) {
   async function onSubmit(data: ToolFormValues) {
     setIsSaving(true);
     try {
+      if (initialData?.id && !data.id) {
+        data.id = initialData.id;
+      }
       const result = await saveTool(data);
       
       if (result.success) {
@@ -186,6 +201,7 @@ export function ToolForm({ initialData, categories }: ToolFormProps) {
                 <TabsTrigger value="pricing">Pricing</TabsTrigger>
                 <TabsTrigger value="features">Features</TabsTrigger>
                 <TabsTrigger value="editorial">Editorial</TabsTrigger>
+                <TabsTrigger value="classification">Classification</TabsTrigger>
               </TabsList>
               
               <div className="mt-6">
@@ -453,6 +469,99 @@ export function ToolForm({ initialData, categories }: ToolFormProps) {
                       />
                     </CardContent>
                   </Card>
+                  
+                  <Card>
+                    <CardHeader>
+                      <div className="flex items-center justify-between">
+                        <CardTitle>Detailed Pricing Plans</CardTitle>
+                        <Button 
+                          type="button" 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => {
+                            const current = form.getValues("pricingPlans") || [];
+                            form.setValue("pricingPlans", [...current, { name: "", price: "", description: "", features: [], recommended: false }]);
+                          }}
+                        >
+                          <Plus className="w-4 h-4 mr-2" /> Add Plan
+                        </Button>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      {((form.watch("pricingPlans") as any) || []).map((_: any, index: number) => (
+                        <div key={index} className="border p-4 rounded-xl space-y-3 relative bg-slate-50/50">
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="icon"
+                            className="absolute right-2 top-2 text-red-500 hover:text-red-700 hover:bg-red-50"
+                            onClick={() => {
+                              const current = form.getValues("pricingPlans") || [];
+                              form.setValue("pricingPlans", current.filter((_, i) => i !== index));
+                            }}
+                          >
+                            <Trash className="w-4 h-4" />
+                          </Button>
+                          
+                          <div className="grid grid-cols-2 gap-3">
+                            <FormField
+                              control={form.control as any}
+                              name={`pricingPlans.${index}.name`}
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-xs font-semibold">Plan Name</FormLabel>
+                                  <FormControl>
+                                    <Input placeholder="e.g. Pro Plan" {...field} />
+                                  </FormControl>
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={form.control as any}
+                              name={`pricingPlans.${index}.price`}
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-xs font-semibold">Price</FormLabel>
+                                  <FormControl>
+                                    <Input placeholder="e.g. $29/mo" {...field} />
+                                  </FormControl>
+                                </FormItem>
+                              )}
+                            />
+                          </div>
+                          
+                          <FormField
+                            control={form.control as any}
+                            name={`pricingPlans.${index}.description`}
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="text-xs font-semibold">Description</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Best for small teams..." {...field} />
+                                </FormControl>
+                              </FormItem>
+                            )}
+                          />
+
+                          <FormField
+                            control={form.control as any}
+                            name={`pricingPlans.${index}.recommended`}
+                            render={({ field }) => (
+                              <FormItem className="flex flex-row items-center space-x-3 space-y-0 p-2">
+                                <FormControl>
+                                  <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                                </FormControl>
+                                <FormLabel className="text-sm font-normal">Recommend this plan</FormLabel>
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                      ))}
+                      {(!form.watch("pricingPlans") || form.watch("pricingPlans")?.length === 0) && (
+                        <p className="text-sm text-center py-6 text-muted-foreground border-2 border-dashed rounded-xl">No detailed plans added.</p>
+                      )}
+                    </CardContent>
+                  </Card>
                 </TabsContent>
 
                 {/* Features Tab */}
@@ -633,6 +742,201 @@ export function ToolForm({ initialData, categories }: ToolFormProps) {
                           )}
                         </div>
                       </div>
+
+                      {/* Dynamic Pros List */}
+                      <div className="border-t pt-6">
+                        <div className="flex items-center justify-between mb-4">
+                          <div>
+                            <h3 className="text-md font-bold">Pros List</h3>
+                          </div>
+                          <Button 
+                            type="button" 
+                            size="sm" 
+                            variant="outline"
+                            onClick={() => {
+                              const current = form.getValues("pros") || [];
+                              form.setValue("pros", [...current, { title: "", description: "" }]);
+                            }}
+                          >
+                            <Plus className="w-4 h-4 mr-2" /> Add Pros
+                          </Button>
+                        </div>
+                        <div className="space-y-4">
+                          {((form.watch("pros") as any) || []).map((_: any, index: number) => (
+                            <div key={index} className="border p-4 rounded-xl space-y-3 relative bg-slate-50/50">
+                              <Button
+                                type="button"
+                                variant="ghost"
+                                size="icon"
+                                className="absolute right-2 top-2 text-red-500 hover:text-red-700 hover:bg-red-50"
+                                onClick={() => {
+                                  const current = form.getValues("pros") || [];
+                                  form.setValue("pros", current.filter((_, i) => i !== index));
+                                }}
+                              >
+                                <Trash className="w-4 h-4" />
+                              </Button>
+                              <FormField
+                                control={form.control as any}
+                                name={`pros.${index}.title`}
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel className="text-xs font-semibold">Pro Title</FormLabel>
+                                    <FormControl>
+                                      <Input placeholder="e.g. Incredibly Fast" {...field} />
+                                    </FormControl>
+                                  </FormItem>
+                                )}
+                              />
+                              <FormField
+                                control={form.control as any}
+                                name={`pros.${index}.description`}
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel className="text-xs font-semibold">Description (Optional)</FormLabel>
+                                    <FormControl>
+                                      <Textarea placeholder="..." className="min-h-[70px]" {...field} />
+                                    </FormControl>
+                                  </FormItem>
+                                )}
+                              />
+                            </div>
+                          ))}
+                          {(!form.watch("pros") || form.watch("pros")?.length === 0) && (
+                            <p className="text-sm text-center py-6 text-muted-foreground border-2 border-dashed rounded-xl">No pros added yet.</p>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Dynamic Cons List */}
+                      <div className="border-t pt-6">
+                        <div className="flex items-center justify-between mb-4">
+                          <div>
+                            <h3 className="text-md font-bold">Cons List</h3>
+                          </div>
+                          <Button 
+                            type="button" 
+                            size="sm" 
+                            variant="outline"
+                            onClick={() => {
+                              const current = form.getValues("cons") || [];
+                              form.setValue("cons", [...current, { title: "", description: "" }]);
+                            }}
+                          >
+                            <Plus className="w-4 h-4 mr-2" /> Add Cons
+                          </Button>
+                        </div>
+                        <div className="space-y-4">
+                          {((form.watch("cons") as any) || []).map((_: any, index: number) => (
+                            <div key={index} className="border p-4 rounded-xl space-y-3 relative bg-slate-50/50">
+                              <Button
+                                type="button"
+                                variant="ghost"
+                                size="icon"
+                                className="absolute right-2 top-2 text-red-500 hover:text-red-700 hover:bg-red-50"
+                                onClick={() => {
+                                  const current = form.getValues("cons") || [];
+                                  form.setValue("cons", current.filter((_, i) => i !== index));
+                                }}
+                              >
+                                <Trash className="w-4 h-4" />
+                              </Button>
+                              <FormField
+                                control={form.control as any}
+                                name={`cons.${index}.title`}
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel className="text-xs font-semibold">Con Title</FormLabel>
+                                    <FormControl>
+                                      <Input placeholder="e.g. Steep Learning Curve" {...field} />
+                                    </FormControl>
+                                  </FormItem>
+                                )}
+                              />
+                              <FormField
+                                control={form.control as any}
+                                name={`cons.${index}.description`}
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel className="text-xs font-semibold">Description (Optional)</FormLabel>
+                                    <FormControl>
+                                      <Textarea placeholder="..." className="min-h-[70px]" {...field} />
+                                    </FormControl>
+                                  </FormItem>
+                                )}
+                              />
+                            </div>
+                          ))}
+                          {(!form.watch("cons") || form.watch("cons")?.length === 0) && (
+                            <p className="text-sm text-center py-6 text-muted-foreground border-2 border-dashed rounded-xl">No cons added yet.</p>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Dynamic UseCases List */}
+                      <div className="border-t pt-6">
+                        <div className="flex items-center justify-between mb-4">
+                          <div>
+                            <h3 className="text-md font-bold">UseCases List</h3>
+                          </div>
+                          <Button 
+                            type="button" 
+                            size="sm" 
+                            variant="outline"
+                            onClick={() => {
+                              const current = form.getValues("useCases") || [];
+                              form.setValue("useCases", [...current, { title: "", description: "" }]);
+                            }}
+                          >
+                            <Plus className="w-4 h-4 mr-2" /> Add UseCases
+                          </Button>
+                        </div>
+                        <div className="space-y-4">
+                          {((form.watch("useCases") as any) || []).map((_: any, index: number) => (
+                            <div key={index} className="border p-4 rounded-xl space-y-3 relative bg-slate-50/50">
+                              <Button
+                                type="button"
+                                variant="ghost"
+                                size="icon"
+                                className="absolute right-2 top-2 text-red-500 hover:text-red-700 hover:bg-red-50"
+                                onClick={() => {
+                                  const current = form.getValues("useCases") || [];
+                                  form.setValue("useCases", current.filter((_, i) => i !== index));
+                                }}
+                              >
+                                <Trash className="w-4 h-4" />
+                              </Button>
+                              <FormField
+                                control={form.control as any}
+                                name={`useCases.${index}.title`}
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel className="text-xs font-semibold">UseCase Title</FormLabel>
+                                    <FormControl>
+                                      <Input placeholder="e.g. For Content Creators" {...field} />
+                                    </FormControl>
+                                  </FormItem>
+                                )}
+                              />
+                              <FormField
+                                control={form.control as any}
+                                name={`useCases.${index}.description`}
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel className="text-xs font-semibold">Description (Optional)</FormLabel>
+                                    <FormControl>
+                                      <Textarea placeholder="..." className="min-h-[70px]" {...field} />
+                                    </FormControl>
+                                  </FormItem>
+                                )}
+                              />
+                            </div>
+                          ))}
+                          {(!form.watch("useCases") || form.watch("useCases")?.length === 0) && (
+                            <p className="text-sm text-center py-6 text-muted-foreground border-2 border-dashed rounded-xl">No use cases added yet.</p>
+                          )}
+                        </div>
+                      </div>
                     </CardContent>
                   </Card>
                 </TabsContent>
@@ -672,6 +976,268 @@ export function ToolForm({ initialData, categories }: ToolFormProps) {
                           )}
                         />
                       </div>
+                      
+                      <FormField
+                        control={form.control as any}
+                        name="editorial.overview"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Editorial Overview (HTML allowed)</FormLabel>
+                            <FormControl>
+                              <Textarea placeholder="<p>Full overview...</p>" className="min-h-[150px]" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control as any}
+                        name="editorial.verdict"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Expert Verdict (HTML allowed)</FormLabel>
+                            <FormControl>
+                              <Textarea placeholder="<p>Our verdict...</p>" className="min-h-[150px]" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </CardContent>
+                  </Card>
+                  
+                  <Card>
+                    <CardHeader>
+                      <div className="flex items-center justify-between">
+                        <CardTitle>Frequently Asked Questions</CardTitle>
+                        <Button 
+                          type="button" 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => {
+                            const current = form.getValues("editorial.faqs") || [];
+                            form.setValue("editorial.faqs", [...current, { question: "", answer: "" }]);
+                          }}
+                        >
+                          <Plus className="w-4 h-4 mr-2" /> Add FAQ
+                        </Button>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      {((form.watch("editorial.faqs") as any) || []).map((_: any, index: number) => (
+                        <div key={index} className="border p-4 rounded-xl space-y-3 relative bg-slate-50/50">
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="icon"
+                            className="absolute right-2 top-2 text-red-500 hover:text-red-700 hover:bg-red-50"
+                            onClick={() => {
+                              const current = form.getValues("editorial.faqs") || [];
+                              form.setValue("editorial.faqs", current.filter((_, i) => i !== index));
+                            }}
+                          >
+                            <Trash className="w-4 h-4" />
+                          </Button>
+                          <FormField
+                            control={form.control as any}
+                            name={`editorial.faqs.${index}.question`}
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="text-xs font-semibold">Question</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="e.g. Is it free?" {...field} />
+                                </FormControl>
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control as any}
+                            name={`editorial.faqs.${index}.answer`}
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="text-xs font-semibold">Answer</FormLabel>
+                                <FormControl>
+                                  <Textarea placeholder="Yes..." className="min-h-[70px]" {...field} />
+                                </FormControl>
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                      ))}
+                      {(!form.watch("editorial.faqs") || form.watch("editorial.faqs")?.length === 0) && (
+                        <p className="text-sm text-center py-6 text-muted-foreground border-2 border-dashed rounded-xl">No FAQs added yet.</p>
+                      )}
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+
+                {/* Classification Tab */}
+                <TabsContent value="classification" className="space-y-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Tags & Best For</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <FormLabel className="font-bold">Tags List</FormLabel>
+                          <Button 
+                            type="button" 
+                            size="sm" 
+                            variant="outline"
+                            onClick={() => {
+                              const current = form.getValues("tags") || [];
+                              form.setValue("tags", [...current, ""]);
+                            }}
+                          >
+                            <Plus className="w-4 h-4 mr-2" /> Add Tag
+                          </Button>
+                        </div>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                          {((form.watch("tags") as string[]) || []).map((_, index) => (
+                            <div key={index} className="relative">
+                              <FormField
+                                control={form.control as any}
+                                name={`tags.${index}`}
+                                render={({ field }) => (
+                                  <Input {...field} className="pr-8" placeholder="e.g. video-editing" />
+                                )}
+                              />
+                              <Button
+                                type="button"
+                                variant="ghost"
+                                size="icon"
+                                className="absolute right-0 top-0 h-full text-red-500 hover:text-red-700"
+                                onClick={() => {
+                                  const current = form.getValues("tags") || [];
+                                  form.setValue("tags", current.filter((_, i) => i !== index));
+                                }}
+                              >
+                                <Trash className="w-4 h-4" />
+                              </Button>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="space-y-4 border-t pt-4">
+                        <div className="flex items-center justify-between">
+                          <FormLabel className="font-bold">Best For List</FormLabel>
+                          <Button 
+                            type="button" 
+                            size="sm" 
+                            variant="outline"
+                            onClick={() => {
+                              const current = form.getValues("bestFor") || [];
+                              form.setValue("bestFor", [...current, ""]);
+                            }}
+                          >
+                            <Plus className="w-4 h-4 mr-2" /> Add Best For
+                          </Button>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                          {((form.watch("bestFor") as string[]) || []).map((_, index) => (
+                            <div key={index} className="relative">
+                              <FormField
+                                control={form.control as any}
+                                name={`bestFor.${index}`}
+                                render={({ field }) => (
+                                  <Input {...field} className="pr-8" placeholder="e.g. Independent Creators" />
+                                )}
+                              />
+                              <Button
+                                type="button"
+                                variant="ghost"
+                                size="icon"
+                                className="absolute right-0 top-0 h-full text-red-500 hover:text-red-700"
+                                onClick={() => {
+                                  const current = form.getValues("bestFor") || [];
+                                  form.setValue("bestFor", current.filter((_, i) => i !== index));
+                                }}
+                              >
+                                <Trash className="w-4 h-4" />
+                              </Button>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Collections & Workflows</CardTitle>
+                      <CardDescription>Select which goals and workflows this tool belongs to.</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                      <div className="space-y-3">
+                        <FormLabel className="font-bold">Related Goals</FormLabel>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                          {allGoals.map((goal) => (
+                            <FormField
+                              key={goal.slug}
+                              control={form.control as any}
+                              name="goals"
+                              render={({ field }) => {
+                                const current = field.value || [];
+                                const isChecked = current.includes(goal.slug);
+                                return (
+                                  <FormItem className="flex flex-row items-center space-x-3 space-y-0 rounded-md border p-3">
+                                    <FormControl>
+                                      <Checkbox
+                                        checked={isChecked}
+                                        onCheckedChange={(checked) => {
+                                          if (checked) {
+                                            field.onChange([...current, goal.slug]);
+                                          } else {
+                                            field.onChange(current.filter((val: string) => val !== goal.slug));
+                                          }
+                                        }}
+                                      />
+                                    </FormControl>
+                                    <FormLabel className="font-normal text-sm cursor-pointer">{goal.title}</FormLabel>
+                                  </FormItem>
+                                );
+                              }}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-3 border-t pt-4">
+                        <FormLabel className="font-bold">Related Workflows</FormLabel>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                          {allWorkflows.map((workflow) => (
+                            <FormField
+                              key={workflow.slug}
+                              control={form.control as any}
+                              name="workflows"
+                              render={({ field }) => {
+                                const current = field.value || [];
+                                const isChecked = current.includes(workflow.slug);
+                                return (
+                                  <FormItem className="flex flex-row items-center space-x-3 space-y-0 rounded-md border p-3">
+                                    <FormControl>
+                                      <Checkbox
+                                        checked={isChecked}
+                                        onCheckedChange={(checked) => {
+                                          if (checked) {
+                                            field.onChange([...current, workflow.slug]);
+                                          } else {
+                                            field.onChange(current.filter((val: string) => val !== workflow.slug));
+                                          }
+                                        }}
+                                      />
+                                    </FormControl>
+                                    <FormLabel className="font-normal text-sm cursor-pointer">{workflow.title}</FormLabel>
+                                  </FormItem>
+                                );
+                              }}
+                            />
+                          ))}
+                        </div>
+                      </div>
                     </CardContent>
                   </Card>
                 </TabsContent>
@@ -679,7 +1245,7 @@ export function ToolForm({ initialData, categories }: ToolFormProps) {
             </Tabs>
           </div>
 
-          {/* Right Sidebar */}
+          {/* Right Sidebar Area */}
           <div className="space-y-6">
             <Card>
               <CardHeader>
@@ -700,9 +1266,7 @@ export function ToolForm({ initialData, categories }: ToolFormProps) {
                         </FormControl>
                         <SelectContent>
                           {categories.map((cat) => (
-                            <SelectItem key={cat.id} value={cat.id}>
-                              {cat.name}
-                            </SelectItem>
+                            <SelectItem key={cat.id} value={cat.id}>{cat.name}</SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
@@ -724,7 +1288,7 @@ export function ToolForm({ initialData, categories }: ToolFormProps) {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Status</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Select status" />

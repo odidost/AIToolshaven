@@ -63,5 +63,13 @@
     "icon": "smart_toy",
     "count": 20,
     "description": "The best conversational AI agents, LLM assistants, and virtual companions."
+  },
+  {
+    "id": "ai-agents",
+    "name": "AI Agents",
+    "slug": "ai-agents",
+    "icon": "smart_toy",
+    "count": 0,
+    "description": "Autonomous AI agents that can execute complex, multi-step tasks on your behalf."
   }
 ]
