@@ -318,6 +318,11 @@ export async function getToolsByCategoryId(categoryId: string): Promise<AITool[]
             // Unbounded limits are unsafe, using a safe upper bound or pagination if this is a directory page
             const { data, error } = await supabase.from('tools').select(TOOL_CARD_FIELDS).eq('category_id', categoryId).eq('status', 'Published').limit(48);
             if (error) throw error;
+            
+            if (!data || data.length === 0) {
+                return localTools.filter(t => t.category === categoryId);
+            }
+            
             return (data || []).map(mapDatabaseRowToAITool);
         } catch (err) {
             console.error(`Error fetching tools by category ${categoryId} from Supabase, falling back to local data:`, err);
