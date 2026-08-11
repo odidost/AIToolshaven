@@ -82,10 +82,12 @@ export async function saveTool(data: ToolFormValues) {
       if (!result.error) supabaseSuccess = true;
     } else {
       // Insert new
+      toolId = crypto.randomUUID();
       result = await adminSupabase
         .from("tools")
         .insert({
           ...dbRecord,
+          id: toolId,
           created_by: user.id,
           created_at: new Date().toISOString(),
         } as any)
