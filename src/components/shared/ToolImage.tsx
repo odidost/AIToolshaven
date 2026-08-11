@@ -18,7 +18,7 @@ export function ToolImage({ tool, type, className, alt, ...props }: ToolImagePro
   const metadata = getGeneratedSeoMetadata(tool.name, type);
   const finalAlt = alt || metadata.alt;
 
-  if (uploadedFormat) {
+  if (uploadedFormat && !src?.includes('supabase.co')) {
     const expectedFilename = getExpectedAssetFilename(tool.slug, type, uploadedFormat);
     src = `/assets/${type === 'logo' ? 'logos' : 'screenshots'}/${expectedFilename}`;
   }

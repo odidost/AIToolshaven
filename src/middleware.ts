@@ -8,7 +8,7 @@ type RedirectData = { new_path: string; status_code: number } | null;
 const redirectCache = new Map<string, { data: RedirectData, expiry: number }>();
 const MAX_CACHE_SIZE = 10000;
 
-export async function proxy(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Normalize path to check both with and without trailing slash

@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
-import { AssetManifest } from '@/lib/utils/assets';
+import { createAdminClient } from '@/lib/supabase/server';
 
 export async function POST(req: NextRequest) {
   try {
@@ -17,44 +15,38 @@ export async function POST(req: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Determine extension from file type (client should send image/webp or image/svg+xml)
+    // Determine extension from file type
     const isSvg = file.type === 'image/svg+xml';
     const extension = isSvg ? 'svg' : 'webp';
     const suffix = type === 'logo' ? 'logo' : 'interface';
     const filename = `${slug}-${suffix}.${extension}`;
-
     const dirName = type === 'logo' ? 'logos' : 'screenshots';
-    const uploadDir = path.join(process.cwd(), 'public', 'assets', dirName);
+    const path = `${dirName}/${filename}`;
 
-    // Ensure directory exists
-    await fs.mkdir(uploadDir, { recursive: true });
+    const supabase = await createAdminClient();
 
-    const filePath = path.join(uploadDir, filename);
+    const { data, error } = await supabase.storage
+      .from('assets')
+      .upload(path, buffer, {
+        contentType: file.type,
+        upsert: true,
+      });
 
-    // Save the file
-    await fs.writeFile(filePath, buffer);
-
-    // Update manifest
-    const manifestPath = path.join(process.cwd(), 'public', 'assets', 'manifest.json');
-    let manifest: AssetManifest = {};
-    try {
-      const manifestData = await fs.readFile(manifestPath, 'utf8');
-      manifest = JSON.parse(manifestData);
-    } catch (e) {
-      // file might not exist yet
+    if (error) {
+      throw error;
     }
 
-    if (!manifest[slug]) manifest[slug] = {};
-    manifest[slug][type] = extension;
-    await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+    const { data: publicUrlData } = supabase.storage
+      .from('assets')
+      .getPublicUrl(path);
 
     return NextResponse.json({
       success: true,
-      url: `/assets/${dirName}/${filename}`,
+      url: publicUrlData.publicUrl,
       filename,
     });
   } catch (error) {
     console.error('Error uploading asset:', error);
-    return NextResponse.json({ error: 'Failed to upload asset' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to upload asset: ' + (error instanceof Error ? error.message : String(error)) }, { status: 500 });
   }
 }

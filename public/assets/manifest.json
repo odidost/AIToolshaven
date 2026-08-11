@@ -410,5 +410,9 @@
   "crewai": {
     "logo": "webp",
     "screenshot": "webp"
+  },
+  "agentql": {
+    "logo": "webp",
+    "screenshot": "webp"
   }
 }
