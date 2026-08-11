@@ -156,7 +156,14 @@ export function ToolForm({ initialData, categories, allWorkflows = [], allGoals 
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit as any)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit as any, (errors) => {
+        const errorFields = Object.keys(errors).join(', ');
+        toast({
+          title: "Validation Error",
+          description: `Please fix the errors in the following fields: ${errorFields}`,
+          variant: "destructive",
+        });
+      })} className="space-y-8">
         
         {/* Top Header Actions */}
         <div className="flex items-center justify-between bg-white p-4 border rounded-lg relative shadow-sm mb-6">
