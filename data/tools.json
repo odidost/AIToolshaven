@@ -1603,8 +1603,222 @@
       "verdict": "Aider is arguably the most practical and immediately useful AI coding agent available today. It dramatically accelerates development speed.",
       "faqs": []
     },
-    "status": "Draft",
-    "lastUpdated": "2026-08-06T18:07:17.994Z"
+    "status": "published",
+    "lastUpdated": "2026-08-06T18:07:17.994Z",
+    "lastAutosavedAt": "2026-08-11T15:03:11.219Z",
+    "draftData": {
+      "id": "aider",
+      "name": "Aider",
+      "slug": "aider",
+      "company": "Paul Gauthier",
+      "tagline": "AI pair programming in your terminal.",
+      "description": "Aider is a command-line tool that lets you pair program with an LLM. It can read your local codebase, write new features, fix bugs, and automatically commit the changes to Git.",
+      "category": "ai-agents",
+      "priceModel": "Free",
+      "rating": 4.9,
+      "reviewCount": 850,
+      "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/aider-logo.webp",
+      "imageUrl": "https://via.placeholder.com/800",
+      "screenshotUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/aider-interface.webp",
+      "websiteUrl": "https://aider.chat/",
+      "tags": [
+        "Coding Assistant",
+        "CLI",
+        "Developer Tool",
+        "Open Source"
+      ],
+      "features": [
+        {
+          "title": "Git Integration",
+          "description": "Automatically creates sensible git commits with descriptive messages.",
+          "icon": "commit"
+        },
+        {
+          "title": "Multi-File Edits",
+          "description": "Can refactor code across dozens of files simultaneously.",
+          "icon": "file_copy"
+        },
+        {
+          "title": "Architectural Understanding",
+          "description": "Uses a repository map to understand your entire codebase.",
+          "icon": "account_tree"
+        }
+      ],
+      "verified": true,
+      "featured": false,
+      "popularity": 93,
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "pricingPlans": [],
+      "pricing": [],
+      "pros": [
+        {
+          "title": "Free, open-source, and BYOK",
+          "description": "Aider itself is completely free (Apache 2.0 license) with no subscriptions or usage limits,  you bring your own API key and pay only for token usage, typically just a few dollars a month for light use."
+        },
+        {
+          "title": "Native Git integration with auto-commits",
+          "description": "Every AI-made change is automatically committed with a descriptive commit message, giving you a complete, revertible history of edits, a standout feature reviewers consistently praise for making rollbacks and code review effortless."
+        },
+        {
+          "title": "Broad model support and codebase awareness",
+          "description": "Works with virtually any major LLM (Claude, GPT-4o, Gemini, DeepSeek, local models via Ollama) and builds a repository map to keep large, multi-file codebases in context for more accurate, coordinated edits."
+        }
+      ],
+      "cons": [
+        {
+          "title": "Terminal-only interface",
+          "description": "Aider runs purely in the command line — no inline diffs, tab completion, split panes, or visual file tree, so developers who want an IDE-style experience often end up running Aider alongside a separate editor."
+        },
+        {
+          "title": "Steep comfort barrier for non-CLI users",
+          "description": "Getting real value out of Aider requires being comfortable with command-line workflows and Git, which can be a hurdle for developers used to point-and-click AI coding tools like Cursor or Windsurf."
+        },
+        {
+          "title": "Single-agent, single-model-per-session design",
+          "description": "Aider operates as one agent using one model per session, it doesn't orchestrate multiple agents together or let you switch models mid-session, unlike some newer multi-agent or model-hopping tools."
+        }
+      ],
+      "bestFor": [
+        "Software Engineers",
+        "Indie Hackers",
+        "DevOps"
+      ],
+      "useCases": [
+        {
+          "title": "Legacy code refactoring and multi-file operations",
+          "description": "Aider excels at large-scale refactors and coordinated changes across many files, using its repo map and explicit file-scope control to keep edits accurate and consistent."
+        },
+        {
+          "title": "Rapid prototyping in unfamiliar languages or frameworks",
+          "description": "With support for 100+ programming languages, developers use Aider to quickly experiment with new stacks or start new projects without getting bogged down by setup and syntax friction."
+        },
+        {
+          "title": "Git-centric collaborative development",
+          "description": "Teams that want every AI-assisted change tracked as a clean, auditable commit history use Aider to keep codebase integrity intact across contributors and projects.\n\nWant me to keep going through your tool list in this same batch style, or adjust anything about tone/length first?"
+        }
+      ],
+      "goals": [],
+      "workflows": [],
+      "socials": {},
+      "stats": {},
+      "editorial": {
+        "overview": "Unlike Copilot which suggests a few lines at a time, Aider is an agent that takes a high-level command ('add a dark mode toggle') and executes the changes across multiple files, complete with a git commit.",
+        "verdict": "Aider is arguably the most practical and immediately useful AI coding agent available today. It dramatically accelerates development speed.",
+        "faqs": []
+      },
+      "promptExamples": [],
+      "lastUpdated": "2026-08-11"
+    },
+    "publishedAt": "2026-08-11T15:03:11.219Z",
+    "publishedData": {
+      "id": "aider",
+      "name": "Aider",
+      "slug": "aider",
+      "company": "Paul Gauthier",
+      "tagline": "AI pair programming in your terminal.",
+      "description": "Aider is a command-line tool that lets you pair program with an LLM. It can read your local codebase, write new features, fix bugs, and automatically commit the changes to Git.",
+      "category": "ai-agents",
+      "priceModel": "Free",
+      "rating": 4.9,
+      "reviewCount": 850,
+      "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/aider-logo.webp",
+      "imageUrl": "https://via.placeholder.com/800",
+      "screenshotUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/aider-interface.webp",
+      "websiteUrl": "https://aider.chat/",
+      "tags": [
+        "Coding Assistant",
+        "CLI",
+        "Developer Tool",
+        "Open Source"
+      ],
+      "features": [
+        {
+          "title": "Git Integration",
+          "description": "Automatically creates sensible git commits with descriptive messages.",
+          "icon": "commit"
+        },
+        {
+          "title": "Multi-File Edits",
+          "description": "Can refactor code across dozens of files simultaneously.",
+          "icon": "file_copy"
+        },
+        {
+          "title": "Architectural Understanding",
+          "description": "Uses a repository map to understand your entire codebase.",
+          "icon": "account_tree"
+        }
+      ],
+      "verified": true,
+      "featured": false,
+      "popularity": 93,
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "pricingPlans": [],
+      "pricing": [],
+      "pros": [
+        {
+          "title": "Free, open-source, and BYOK",
+          "description": "Aider itself is completely free (Apache 2.0 license) with no subscriptions or usage limits,  you bring your own API key and pay only for token usage, typically just a few dollars a month for light use."
+        },
+        {
+          "title": "Native Git integration with auto-commits",
+          "description": "Every AI-made change is automatically committed with a descriptive commit message, giving you a complete, revertible history of edits, a standout feature reviewers consistently praise for making rollbacks and code review effortless."
+        },
+        {
+          "title": "Broad model support and codebase awareness",
+          "description": "Works with virtually any major LLM (Claude, GPT-4o, Gemini, DeepSeek, local models via Ollama) and builds a repository map to keep large, multi-file codebases in context for more accurate, coordinated edits."
+        }
+      ],
+      "cons": [
+        {
+          "title": "Terminal-only interface",
+          "description": "Aider runs purely in the command line — no inline diffs, tab completion, split panes, or visual file tree, so developers who want an IDE-style experience often end up running Aider alongside a separate editor."
+        },
+        {
+          "title": "Steep comfort barrier for non-CLI users",
+          "description": "Getting real value out of Aider requires being comfortable with command-line workflows and Git, which can be a hurdle for developers used to point-and-click AI coding tools like Cursor or Windsurf."
+        },
+        {
+          "title": "Single-agent, single-model-per-session design",
+          "description": "Aider operates as one agent using one model per session, it doesn't orchestrate multiple agents together or let you switch models mid-session, unlike some newer multi-agent or model-hopping tools."
+        }
+      ],
+      "bestFor": [
+        "Software Engineers",
+        "Indie Hackers",
+        "DevOps"
+      ],
+      "useCases": [
+        {
+          "title": "Legacy code refactoring and multi-file operations",
+          "description": "Aider excels at large-scale refactors and coordinated changes across many files, using its repo map and explicit file-scope control to keep edits accurate and consistent."
+        },
+        {
+          "title": "Rapid prototyping in unfamiliar languages or frameworks",
+          "description": "With support for 100+ programming languages, developers use Aider to quickly experiment with new stacks or start new projects without getting bogged down by setup and syntax friction."
+        },
+        {
+          "title": "Git-centric collaborative development",
+          "description": "Teams that want every AI-assisted change tracked as a clean, auditable commit history use Aider to keep codebase integrity intact across contributors and projects.\n\nWant me to keep going through your tool list in this same batch style, or adjust anything about tone/length first?"
+        }
+      ],
+      "goals": [],
+      "workflows": [],
+      "socials": {},
+      "stats": {},
+      "editorial": {
+        "overview": "Unlike Copilot which suggests a few lines at a time, Aider is an agent that takes a high-level command ('add a dark mode toggle') and executes the changes across multiple files, complete with a git commit.",
+        "verdict": "Aider is arguably the most practical and immediately useful AI coding agent available today. It dramatically accelerates development speed.",
+        "faqs": []
+      },
+      "promptExamples": [],
+      "lastUpdated": "2026-08-11"
+    }
   },
   {
     "id": "zapier-central",

@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createAdminClient } from "@/lib/supabase/server";
 import { toolSchema, type ToolFormValues } from "@/lib/validations/tools";
 import { revalidatePath } from "next/cache";
 import fs from "fs";
@@ -21,6 +21,9 @@ export async function saveTool(data: ToolFormValues) {
   if (!user) {
     return { success: false, error: "Unauthorized" };
   }
+
+  // Use the admin client to bypass RLS for database writes in the CMS
+  const adminSupabase = await createAdminClient();
 
   const toolData = parsedData.data;
   
@@ -48,8 +51,6 @@ export async function saveTool(data: ToolFormValues) {
     use_cases: (toolData.useCases || []).map(u => typeof u === 'object' ? JSON.stringify(u) : u),
     pricing_plans: toolData.pricingPlans || [],
     best_for: toolData.bestFor || [],
-    goals: toolData.goals || [],
-    workflows: toolData.workflows || [],
     editorial: toolData.editorial || {},
     verified: toolData.verified,
     featured: toolData.featured,
@@ -71,7 +72,7 @@ export async function saveTool(data: ToolFormValues) {
   try {
     if (toolId) {
       // Update existing
-      result = await supabase
+      result = await adminSupabase
         .from("tools")
         .update({
           ...dbRecord,
@@ -81,7 +82,7 @@ export async function saveTool(data: ToolFormValues) {
       if (!result.error) supabaseSuccess = true;
     } else {
       // Insert new
-      result = await supabase
+      result = await adminSupabase
         .from("tools")
         .insert({
           ...dbRecord,
@@ -99,9 +100,11 @@ export async function saveTool(data: ToolFormValues) {
     
     if (result?.error) {
       console.warn("Supabase save operation completed with warning/error:", result.error.message);
+      return { success: false, error: `Database error: ${result.error.message}` };
     }
   } catch (err: any) {
     console.warn("Supabase connection offline. Falling back to local filesystem storage. Detail:", err.message);
+    return { success: false, error: `Server error: ${err.message}` };
   }
 
   // Generate local ID if we are offline and this is a new tool
