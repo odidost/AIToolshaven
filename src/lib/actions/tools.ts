@@ -203,7 +203,8 @@ export async function saveTool(data: ToolFormValues) {
   revalidatePath("/admin/cms/tools");
   revalidatePath(`/admin/cms/tools/${toolData.slug}`);
   revalidatePath(`/tool/${toolData.slug}`);
-  revalidatePath("/");
+  // Clear the entire app cache since a tool update can affect categories, latest lists, etc.
+  revalidatePath("/", "layout");
 
   return { success: true, slug: toolData.slug, id: toolId };
 }
