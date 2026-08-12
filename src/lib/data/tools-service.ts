@@ -89,12 +89,12 @@ export async function getAllTools(includeDrafts: boolean = false): Promise<AIToo
             const { data, error } = await query.order('popularity', { ascending: false });
             if (error) {
                 console.error("Error fetching all tools from Supabase, falling back to local data:", error);
-                return localTools.filter(t => isValidTool(t) && (includeDrafts || t.status === 'Published'));
+                return localTools.filter(t => isValidTool(t) && (includeDrafts || (t.status === "Published" || t.status === "published")));
             }
             return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error("Error connecting to Supabase in getAllTools, falling back to local data:", err);
-            return localTools.filter(t => isValidTool(t) && (includeDrafts || t.status === 'Published'));
+            return localTools.filter(t => isValidTool(t) && (includeDrafts || (t.status === "Published" || t.status === "published")));
         }
     };
     return unstable_cache(fetchAll, ['all_tools_fetch', includeDrafts.toString()], { revalidate: 3600 })();
@@ -159,7 +159,7 @@ export async function getFeaturedTools(limit?: number): Promise<AITool[]> {
             return (data || []).map(mapDatabaseRowToAITool);
         } catch (err) {
             console.error("Error connecting to Supabase in getFeaturedTools, falling back to local data:", err);
-            const featured = localTools.filter(t => t.featured && t.status === 'Published');
+            const featured = localTools.filter(t => t.featured && (t.status === "Published" || t.status === "published"));
             return limit ? featured.slice(0, limit) : featured;
         }
     };
@@ -177,7 +177,7 @@ export async function getTrendingTools(limit?: number): Promise<AITool[]> {
             return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error("Error connecting to Supabase in getTrendingTools, falling back to local data:", err);
-            const sorted = [...localTools].filter(t => isValidTool(t) && t.status === 'Published').sort((a, b) => (b.reviewCount || 0) - (a.reviewCount || 0));
+            const sorted = [...localTools].filter(t => isValidTool(t) && (t.status === "Published" || t.status === "published")).sort((a, b) => (b.reviewCount || 0) - (a.reviewCount || 0));
             return limit ? sorted.slice(0, limit) : sorted;
         }
     };
@@ -195,7 +195,7 @@ export async function getLatestTools(limit?: number): Promise<AITool[]> {
             return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error("Error connecting to Supabase in getLatestTools, falling back to local data:", err);
-            const sorted = [...localTools].filter(t => isValidTool(t) && t.status === 'Published').sort((a, b) => new Date(b.lastUpdated || '').getTime() - new Date(a.lastUpdated || '').getTime());
+            const sorted = [...localTools].filter(t => isValidTool(t) && (t.status === "Published" || t.status === "published")).sort((a, b) => new Date(b.lastUpdated || '').getTime() - new Date(a.lastUpdated || '').getTime());
             return limit ? sorted.slice(0, limit) : sorted;
         }
     };
@@ -211,7 +211,7 @@ export async function getToolsBySlugs(slugs: string[], fields: string = TOOL_CAR
             return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error("Error fetching tools by slugs from Supabase, falling back to local data:", err);
-            return localTools.filter(t => slugs.includes(t.slug) && t.status === 'Published');
+            return localTools.filter(t => slugs.includes(t.slug) && (t.status === "Published" || t.status === "published"));
         }
     };
     // Cache key based on sorted slugs to maximize cache hits
@@ -229,7 +229,7 @@ export async function getToolsByNames(names: string[], fields: string = TOOL_CAR
         } catch (err) {
             console.error("Error fetching tools by names from Supabase, falling back to local data:", err);
             const namesLower = names.map(n => n.toLowerCase());
-            return localTools.filter(t => namesLower.includes(t.name.toLowerCase()) && t.status === 'Published');
+            return localTools.filter(t => namesLower.includes(t.name.toLowerCase()) && (t.status === "Published" || t.status === "published"));
         }
     };
     const cacheKey = names.slice().sort().join(',');
@@ -246,14 +246,14 @@ export async function getToolsByWorkflow(workflowSlug: string): Promise<AITool[]
             .eq('workflow_id', workflowSlug);
             
         if (error || !data) {
-            return localTools.filter(t => t.workflows?.includes(workflowSlug) && t.status === 'Published');
+            return localTools.filter(t => t.workflows?.includes(workflowSlug) && (t.status === "Published" || t.status === "published"));
         }
         return data
             .map((row: any) => mapDatabaseRowToAITool(row.tools))
-            .filter((t: AITool) => !t.status || t.status === 'Published');
+            .filter((t: AITool) => !t.status || (t.status === "Published" || t.status === "published"));
     } catch (err) {
         console.error(`Error fetching tools for workflow ${workflowSlug} from Supabase, falling back to local data:`, err);
-        return localTools.filter(t => t.workflows?.includes(workflowSlug) && t.status === 'Published');
+        return localTools.filter(t => t.workflows?.includes(workflowSlug) && (t.status === "Published" || t.status === "published"));
     }
 }
 
@@ -270,7 +270,7 @@ export async function getToolsByRecommendationTag(tag: string): Promise<AITool[]
             return (data || []).map(mapDatabaseRowToAITool);
         } catch (err) {
             console.error(`Error fetching tools by tag ${tag} from Supabase, falling back to local data:`, err);
-            return localTools.filter(t => t.tags?.includes(tag) && t.status === 'Published');
+            return localTools.filter(t => t.tags?.includes(tag) && (t.status === "Published" || t.status === "published"));
         }
     };
     return unstable_cache(fetchByTag, ['tools_by_tag', tag], { revalidate: 3600 })();
@@ -320,13 +320,13 @@ export async function getToolsByCategoryId(categoryId: string): Promise<AITool[]
             if (error) throw error;
             
             if (!data || data.length === 0) {
-                return localTools.filter(t => t.category === categoryId && t.status === 'Published');
+                return localTools.filter(t => t.category === categoryId && (t.status === "Published" || t.status === "published"));
             }
             
             return (data || []).map(mapDatabaseRowToAITool);
         } catch (err) {
             console.error(`Error fetching tools by category ${categoryId} from Supabase, falling back to local data:`, err);
-            return localTools.filter(t => t.category === categoryId && t.status === 'Published');
+            return localTools.filter(t => t.category === categoryId && (t.status === "Published" || t.status === "published"));
         }
     };
     return unstable_cache(fetchByCategory, ['tools_by_category', categoryId], { revalidate: 3600 })();
@@ -349,7 +349,7 @@ export async function searchTools(query: string): Promise<AITool[]> {
         const queryLower = query.toLowerCase();
         return localTools.filter(t => 
             (t.name.toLowerCase().includes(queryLower) || 
-            t.description.toLowerCase().includes(queryLower)) && t.status === 'Published'
+            t.description.toLowerCase().includes(queryLower)) && (t.status === "Published" || t.status === "published")
         ).slice(0, 20);
     }
 }

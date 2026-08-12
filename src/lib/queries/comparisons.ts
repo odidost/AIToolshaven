@@ -11,7 +11,7 @@ export function getComparisonCandidates(
     // 1. Manual overrides
     if (currentTool.compareWith?.length) {
         candidates = currentTool.compareWith
-            .map(slug => tools.find(tool => tool.slug === slug && tool.status === 'Published'))
+            .map(slug => tools.find(tool => tool.slug === slug && (tool.status === 'Published' || tool.status === 'published')))
             .filter(Boolean) as AITool[];
     }
 
@@ -21,7 +21,7 @@ export function getComparisonCandidates(
             .filter(tool => tool.id !== currentTool.id)
             .filter(tool => !candidates.some(c => c.id === tool.id))
             .filter(tool => tool.category === currentTool.category)
-            .filter(tool => tool.status === 'Published')
+            .filter(tool => tool.status === 'Published' || tool.status === 'published')
             .sort((a, b) => b.popularity - a.popularity)
             .slice(0, limit - candidates.length);
         
