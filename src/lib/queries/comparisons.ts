@@ -19,6 +19,7 @@ export function getComparisonCandidates(
     if (candidates.length < limit) {
         const autoRecs = tools
             .filter(tool => tool.id !== currentTool.id)
+            .filter(tool => tool.name && tool.name.trim() !== '' && tool.name !== 'Untitled AI Tool')
             .filter(tool => !candidates.some(c => c.id === tool.id))
             .filter(tool => tool.category === currentTool.category)
             .filter(tool => tool.status === 'Published' || tool.status === 'published')

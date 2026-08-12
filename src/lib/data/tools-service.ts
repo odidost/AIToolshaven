@@ -156,10 +156,10 @@ export async function getFeaturedTools(limit?: number): Promise<AITool[]> {
             
             const { data, error } = await query;
             if (error) throw error;
-            return (data || []).map(mapDatabaseRowToAITool);
+            return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error("Error connecting to Supabase in getFeaturedTools, falling back to local data:", err);
-            const featured = localTools.filter(t => t.featured && (t.status === "Published" || t.status === "published"));
+            const featured = localTools.filter(t => isValidTool(t) && t.featured && (t.status === "Published" || t.status === "published"));
             return limit ? featured.slice(0, limit) : featured;
         }
     };
@@ -246,14 +246,15 @@ export async function getToolsByWorkflow(workflowSlug: string): Promise<AITool[]
             .eq('workflow_id', workflowSlug);
             
         if (error || !data) {
-            return localTools.filter(t => t.workflows?.includes(workflowSlug) && (t.status === "Published" || t.status === "published"));
+            return localTools.filter(t => isValidTool(t) && t.workflows?.includes(workflowSlug) && (t.status === "Published" || t.status === "published"));
         }
         return data
             .map((row: any) => mapDatabaseRowToAITool(row.tools))
+            .filter(isValidTool)
             .filter((t: AITool) => !t.status || (t.status === "Published" || t.status === "published"));
     } catch (err) {
         console.error(`Error fetching tools for workflow ${workflowSlug} from Supabase, falling back to local data:`, err);
-        return localTools.filter(t => t.workflows?.includes(workflowSlug) && (t.status === "Published" || t.status === "published"));
+        return localTools.filter(t => isValidTool(t) && t.workflows?.includes(workflowSlug) && (t.status === "Published" || t.status === "published"));
     }
 }
 
@@ -267,10 +268,10 @@ export async function getToolsByRecommendationTag(tag: string): Promise<AITool[]
             // Using a limit of 24 for recommendation tags rather than returning unbounded results
             const { data, error } = await supabase.from('tools').select(TOOL_CARD_FIELDS).contains('tags', [tag]).eq('status', 'Published').limit(24);
             if (error) throw error;
-            return (data || []).map(mapDatabaseRowToAITool);
+            return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error(`Error fetching tools by tag ${tag} from Supabase, falling back to local data:`, err);
-            return localTools.filter(t => t.tags?.includes(tag) && (t.status === "Published" || t.status === "published"));
+            return localTools.filter(t => isValidTool(t) && t.tags?.includes(tag) && (t.status === "Published" || t.status === "published"));
         }
     };
     return unstable_cache(fetchByTag, ['tools_by_tag', tag], { revalidate: 3600 })();
@@ -320,13 +321,13 @@ export async function getToolsByCategoryId(categoryId: string): Promise<AITool[]
             if (error) throw error;
             
             if (!data || data.length === 0) {
-                return localTools.filter(t => t.category === categoryId && (t.status === "Published" || t.status === "published"));
+                return localTools.filter(t => isValidTool(t) && t.category === categoryId && (t.status === "Published" || t.status === "published"));
             }
             
-            return (data || []).map(mapDatabaseRowToAITool);
+            return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error(`Error fetching tools by category ${categoryId} from Supabase, falling back to local data:`, err);
-            return localTools.filter(t => t.category === categoryId && (t.status === "Published" || t.status === "published"));
+            return localTools.filter(t => isValidTool(t) && t.category === categoryId && (t.status === "Published" || t.status === "published"));
         }
     };
     return unstable_cache(fetchByCategory, ['tools_by_category', categoryId], { revalidate: 3600 })();
@@ -343,11 +344,12 @@ export async function searchTools(query: string): Promise<AITool[]> {
             .limit(20);
             
         if (error) throw error;
-        return (data || []).map(mapDatabaseRowToAITool);
+        return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
     } catch (err) {
         console.error(`Error searching tools for query "${query}" from Supabase, falling back to local data:`, err);
         const queryLower = query.toLowerCase();
         return localTools.filter(t => 
+            isValidTool(t) &&
             (t.name.toLowerCase().includes(queryLower) || 
             t.description.toLowerCase().includes(queryLower)) && (t.status === "Published" || t.status === "published")
         ).slice(0, 20);
