@@ -56,6 +56,32 @@ export async function middleware(request: NextRequest) {
     ? pathname.slice(0, -1) 
     : pathname;
 
+  // 1.5. Block known hacked/spam URLs with a 410 Gone response
+  if (normalizedPath.startsWith('/video') || normalizedPath.includes('-crack-')) {
+    return new NextResponse('Gone', { status: 410 });
+  }
+
+  // 1.6. Global wildcard redirects for old WordPress paths
+  if (normalizedPath.startsWith('/ai-tool/')) {
+    const newPath = normalizedPath.replace('/ai-tool/', '/tool/');
+    const targetUrl = new URL(newPath, request.url);
+    const cleanSearchStr = cleanSearchParams.toString();
+    targetUrl.search = cleanSearchStr ? `?${cleanSearchStr}` : '';
+    return NextResponse.redirect(targetUrl, { status: 301 });
+  }
+
+  if (normalizedPath.startsWith('/ai-tool-category/')) {
+    const newPath = normalizedPath.replace('/ai-tool-category/', '/category/');
+    const targetUrl = new URL(newPath, request.url);
+    const cleanSearchStr = cleanSearchParams.toString();
+    targetUrl.search = cleanSearchStr ? `?${cleanSearchStr}` : '';
+    return NextResponse.redirect(targetUrl, { status: 301 });
+  }
+
+  if (normalizedPath === '/ai-tool' || normalizedPath === '/ai-tool-category') {
+    return NextResponse.redirect(new URL('/categories', request.url), { status: 301 });
+  }
+
   // 2. Check Static Canonical Redirects Fast-Path
   let redirectTarget = STATIC_CANONICAL_REDIRECTS[normalizedPath] || STATIC_CANONICAL_REDIRECTS[normalizedPath + '/'];
   let statusCode = 301;

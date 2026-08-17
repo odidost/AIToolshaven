@@ -165,7 +165,8 @@ async function fetchTelemetryMetrics(): Promise<{ data: TelemetryMetrics | null;
 // ─────────────────────────────────────────────────
 
 function checkIntegrations(): IntegrationStatus[] {
-  const gaId = process.env.NEXT_PUBLIC_GA_ID || '';
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || process.env.NEXT_PUBLIC_GA_ID || '';
+  const gscConfigured = !!(process.env.GSC_CLIENT_EMAIL && process.env.GSC_PRIVATE_KEY);
   const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID || '';
 
   return [
@@ -174,14 +175,14 @@ function checkIntegrations(): IntegrationStatus[] {
       id: gaId || 'Not configured',
       status: gaId ? 'connected' : 'not_configured',
       lastSync: gaId ? null : null,
-      errorMessage: gaId ? undefined : 'Set NEXT_PUBLIC_GA_ID in environment variables. Required for traffic, users, geography, devices, browsers, and traffic source analytics.',
+      errorMessage: gaId ? undefined : 'Set NEXT_PUBLIC_GA_MEASUREMENT_ID in environment variables. Required for traffic, users, geography, devices, browsers, and traffic source analytics.',
     },
     {
       name: 'Google Search Console',
-      id: 'Not configured',
-      status: 'not_configured',
+      id: gscConfigured ? (process.env.GSC_SITE_URL || 'Configured') : 'Not configured',
+      status: gscConfigured ? 'connected' : 'not_configured',
       lastSync: null,
-      errorMessage: 'Google Search Console API integration not configured. Required for organic search queries, impressions, CTR, and average position data.',
+      errorMessage: gscConfigured ? undefined : 'Google Search Console API integration not configured. Required for organic search queries, impressions, CTR, and average position data.',
     },
     {
       name: 'Microsoft Clarity',

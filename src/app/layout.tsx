@@ -72,7 +72,7 @@ import { Footer } from "@/components/shared/Footer";
 import { MobileNavBar } from "@/components/shared/MobileNavBar";
 import { BookmarksProvider } from "@/lib/contexts/BookmarksContext";
 import { AssetManifestProvider } from "@/lib/contexts/AssetManifestContext";
-import { AnalyticsProvider } from "@/components/providers/AnalyticsProvider";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 import fs from 'fs';
 import path from 'path';
@@ -110,7 +110,7 @@ export default function RootLayout({
         <BackgroundPattern type="ambient" className="fixed inset-0 -z-10" opacity={1} />
         <AssetManifestProvider manifest={manifest}>
           <BookmarksProvider>
-            <AnalyticsProvider />
+            <GoogleAnalytics />
             <Header />
             <main className="flex-grow pb-24 md:pb-0">
               {children}
