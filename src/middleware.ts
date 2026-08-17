@@ -61,27 +61,6 @@ export async function middleware(request: NextRequest) {
     return new NextResponse('Gone', { status: 410 });
   }
 
-  // 1.6. Global wildcard redirects for old WordPress paths
-  if (normalizedPath.startsWith('/ai-tool/')) {
-    const newPath = normalizedPath.replace('/ai-tool/', '/tool/');
-    const targetUrl = new URL(newPath, request.url);
-    const cleanSearchStr = cleanSearchParams.toString();
-    targetUrl.search = cleanSearchStr ? `?${cleanSearchStr}` : '';
-    return NextResponse.redirect(targetUrl, { status: 301 });
-  }
-
-  if (normalizedPath.startsWith('/ai-tool-category/')) {
-    const newPath = normalizedPath.replace('/ai-tool-category/', '/category/');
-    const targetUrl = new URL(newPath, request.url);
-    const cleanSearchStr = cleanSearchParams.toString();
-    targetUrl.search = cleanSearchStr ? `?${cleanSearchStr}` : '';
-    return NextResponse.redirect(targetUrl, { status: 301 });
-  }
-
-  if (normalizedPath === '/ai-tool' || normalizedPath === '/ai-tool-category') {
-    return NextResponse.redirect(new URL('/categories', request.url), { status: 301 });
-  }
-
   // 2. Check Static Canonical Redirects Fast-Path
   let redirectTarget = STATIC_CANONICAL_REDIRECTS[normalizedPath] || STATIC_CANONICAL_REDIRECTS[normalizedPath + '/'];
   let statusCode = 301;
@@ -136,6 +115,20 @@ export async function middleware(request: NextRequest) {
     if (redirectData) {
       redirectTarget = redirectData.new_path;
       statusCode = redirectData.status_code || 301;
+    }
+  }
+
+  // 2.5. Wildcard Fallbacks (Executes only if no specific redirect was found in Static or DB)
+  if (!redirectTarget) {
+    if (normalizedPath.startsWith('/ai-tool/')) {
+      redirectTarget = normalizedPath.replace('/ai-tool/', '/tool/');
+      statusCode = 301;
+    } else if (normalizedPath.startsWith('/ai-tool-category/')) {
+      redirectTarget = normalizedPath.replace('/ai-tool-category/', '/category/');
+      statusCode = 301;
+    } else if (normalizedPath === '/ai-tool' || normalizedPath === '/ai-tool-category') {
+      redirectTarget = '/categories';
+      statusCode = 301;
     }
   }
 
