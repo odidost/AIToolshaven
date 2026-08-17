@@ -116,21 +116,32 @@ export async function getNotFoundLogs(): Promise<NotFoundLogRecord[]> {
   return data as NotFoundLogRecord[];
 }
 
-export async function logNotFoundPath(path: string) {
-  // This is typically called by the public-facing site (not-found.tsx)
-  // We don't require authentication here, but we use an admin/service client 
-  // if RLS doesn't allow public inserts. Or we just use the default client if RLS is configured.
-  const supabase = await createClient();
-  
-  // Use atomic RPC function to prevent 406/409 duplicate key races
-  const { error } = await supabase.rpc('increment_not_found_log', {
-    p_requested_path: path
-  });
+import { createClient as createSupabaseAdmin } from "@supabase/supabase-js";
 
-  if (error) {
-    console.error("Error executing increment_not_found_log RPC:", error);
+export async function logNotFoundPath(path: string) {
+  try {
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://fygifuwuseksxpcetsbo.supabase.co';
+
+    if (serviceKey) {
+      const adminClient = createSupabaseAdmin(supabaseUrl, serviceKey, {
+        auth: { persistSession: false, autoRefreshToken: false }
+      });
+      await adminClient.rpc('increment_not_found_log', {
+        p_requested_path: path
+      });
+      return;
+    }
+
+    const supabase = await createClient();
+    await supabase.rpc('increment_not_found_log', {
+      p_requested_path: path
+    });
+  } catch (err) {
+    // Silent catch for telemetry
   }
 }
+
 
 export async function resolveNotFoundLog(id: string) {
   const supabase = await createClient();

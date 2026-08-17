@@ -100,6 +100,23 @@ export async function saveTool(data: ToolFormValues) {
       }
     }
     
+    if (supabaseSuccess && toolId) {
+      // Sync tool_categories
+      await adminSupabase.from('tool_categories').delete().eq('tool_id', toolId);
+      
+      const categoryIds = new Set<string>();
+      if (toolData.category_id) categoryIds.add(toolData.category_id);
+      (toolData.additionalCategories || []).forEach(c => categoryIds.add(c));
+      
+      if (categoryIds.size > 0) {
+        const relationships = Array.from(categoryIds).map(c => ({
+          tool_id: toolId,
+          category_id: c
+        }));
+        await adminSupabase.from('tool_categories').insert(relationships);
+      }
+    }
+    
     if (result?.error) {
       console.warn("Supabase save operation completed with warning/error:", result.error.message);
       return { success: false, error: `Database error: ${result.error.message}` };
@@ -135,6 +152,7 @@ export async function saveTool(data: ToolFormValues) {
         tagline: toolData.tagline,
         description: toolData.description,
         category: toolData.category_id,
+        additionalCategories: toolData.additionalCategories || [],
         priceModel: toolData.price_model as any,
         price: toolData.price || undefined,
         rating: toolData.rating,

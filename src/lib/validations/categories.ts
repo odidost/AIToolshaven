@@ -9,6 +9,9 @@ export const categorySchema = z.object({
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug must contain only lowercase letters, numbers, and hyphens"),
   description: z.string().optional().or(z.literal('')),
   icon: z.string().default('category'),
+  parentId: z.string().optional(),
+  type: z.enum(['category', 'subcategory', 'collection']).default('category'),
+  indexable: z.boolean().default(true),
   status: toolStatusSchema.default('Draft'),
 });
 

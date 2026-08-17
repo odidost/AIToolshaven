@@ -24,10 +24,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: `${goal.title} AI Tools & Workflows | AIToolsHaven`,
         description: goal.description,
+        alternates: {
+            canonical: `https://aitoolshaven.com/goals/${goal.slug}`,
+        },
         openGraph: {
             title: `${goal.title} AI Tools | AIToolsHaven`,
             description: goal.description,
             type: "website",
+            url: `https://aitoolshaven.com/goals/${goal.slug}`,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `${goal.title} AI Tools | AIToolsHaven`,
+            description: goal.description,
         },
     };
 }

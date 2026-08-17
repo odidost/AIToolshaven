@@ -5,4 +5,8 @@ export interface ToolCategory {
     description?: string;
     icon: string;
     count: number;
+    parentId?: string;
+    type?: 'category' | 'subcategory' | 'collection';
+    indexable?: boolean;
+    status?: string;
 }

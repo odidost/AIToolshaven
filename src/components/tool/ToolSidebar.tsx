@@ -86,10 +86,10 @@ export function ToolSidebar({
                 </div>
 
                 <Link
-                    href={`/category/${currentCategory?.slug}`}
+                    href={currentCategory?.slug ? `/category/${currentCategory.slug}` : "/categories"}
                     className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl border border-border/50 bg-surface-secondary/50 px-5 py-3 text-sm font-semibold text-on-surface transition-all duration-300 hover:bg-surface-secondary hover:border-primary/50"
                 >
-                    View All {currentCategory?.name}
+                    {currentCategory?.name ? `View All ${currentCategory.name}` : "Explore All Categories"}
                     <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                 </Link>
             </section>

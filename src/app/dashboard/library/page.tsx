@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { getAllTools } from '@/lib/data/tools-service';
+import { fetchBookmarkedToolsAction } from '@/app/actions/library';
 import { ToolCard } from '@/components/shared/ToolCard';
 import { useBookmarks } from '@/lib/contexts/BookmarksContext';
 
@@ -11,22 +11,36 @@ export default function LibraryPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [mounted, setMounted] = useState(false);
 
-  const [allTools, setAllTools] = useState<any[]>([]);
+  const [savedToolsList, setSavedToolsList] = useState<any[]>([]);
 
-  // Fetch tools and set mounted
+  // Fetch only bookmarked tools when bookmarkedToolIds changes
   useEffect(() => {
+    let isMounted = true;
     async function fetchTools() {
-      const tools = await getAllTools();
-      setAllTools(tools);
-      setMounted(true);
+      if (bookmarkedToolIds.length === 0) {
+        if (isMounted) {
+          setSavedToolsList([]);
+          setMounted(true);
+        }
+        return;
+      }
+      const tools = await fetchBookmarkedToolsAction(bookmarkedToolIds);
+      if (isMounted) {
+        setSavedToolsList(tools);
+        setMounted(true);
+      }
     }
     fetchTools();
-  }, []);
+    return () => {
+      isMounted = false;
+    };
+  }, [bookmarkedToolIds]);
 
   const savedTools = (() => {
     if (!mounted) return [];
     
-    let filtered = allTools.filter(tool => bookmarkedToolIds.includes(tool.id));
+    let filtered = savedToolsList;
+
     
     if (searchQuery) {
       const q = searchQuery.toLowerCase();

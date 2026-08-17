@@ -16,36 +16,26 @@ type PricingPlansProps = {
 };
 
 export function PricingPlans({ tool, plans, pricing }: PricingPlansProps) {
-    const finalPlans: PricingPlan[] = plans || pricing?.map(p => ({
+    const finalPlans: PricingPlan[] = (plans || pricing?.map(p => ({
         name: p.planName,
         price: p.price === 0 ? "Free" : `$${p.price}`,
         description: `Billed ${p.period}`,
         features: []
-    })) || [];
+    })) || []).map(p => ({
+        ...p,
+        features: Array.isArray(p.features) ? p.features : []
+    }));
 
-    if (!finalPlans.length) {
-        return (
-            <section className="my-16">
-                <div className="mb-12 max-w-3xl">
-                    <h2 className="text-fluid-h3 animate-in fade-in slide-in-from-bottom-4 duration-700 font-bold tracking-tight text-on-surface">Pricing Options</h2>
-                    <p className="mt-4 text-lg leading-relaxed text-on-surface-variant">
-                        Please contact the vendor directly for detailed pricing information and enterprise options.
-                    </p>
-                </div>
-            </section>
-        );
+    if (!finalPlans.length && !tool.editorial?.pricing) {
+        return null;
     }
 
     return (
         <section className="my-16">
             <div className="mb-10 max-w-3xl">
                 <h2 className="text-fluid-h3 animate-in fade-in slide-in-from-bottom-4 duration-700 font-bold tracking-tight text-on-surface">Pricing & Value</h2>
-                {tool.editorial?.pricing ? (
+                {tool.editorial?.pricing && (
                     <div className="mt-4 text-lg leading-relaxed text-on-surface-variant" dangerouslySetInnerHTML={{ __html: tool.editorial.pricing }} />
-                ) : (
-                    <p className="mt-4 text-lg leading-relaxed text-on-surface-variant">
-                        Is the paid plan actually worth it? Here&apos;s how the pricing breaks down, so you can decide if it makes sense for your budget.
-                    </p>
                 )}
             </div>
 

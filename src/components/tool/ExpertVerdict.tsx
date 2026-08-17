@@ -5,12 +5,16 @@ type ExpertVerdictProps = {
 };
 
 export function ExpertVerdict({ tool }: ExpertVerdictProps) {
+    if (!tool.editorial?.verdict) {
+        return null;
+    }
+
     const scores = {
-        easeOfUse: tool.easeOfUse || 4.6,
-        features: tool.featureRating || 4.4,
-        value: tool.valueForMoney || 4.2,
-        support: tool.support || 4.0,
-        ai: tool.performance || 4.7
+        easeOfUse: typeof tool.easeOfUse === 'number' && !isNaN(tool.easeOfUse) ? tool.easeOfUse : 4.6,
+        features: typeof tool.featureRating === 'number' && !isNaN(tool.featureRating) ? tool.featureRating : 4.4,
+        value: typeof tool.valueForMoney === 'number' && !isNaN(tool.valueForMoney) ? tool.valueForMoney : 4.2,
+        support: typeof tool.support === 'number' && !isNaN(tool.support) ? tool.support : 4.0,
+        ai: typeof tool.performance === 'number' && !isNaN(tool.performance) ? tool.performance : 4.7
     };
 
     const overallScore = ((scores.easeOfUse + scores.features + scores.value + scores.support + scores.ai) / 5).toFixed(1);
@@ -48,20 +52,7 @@ export function ExpertVerdict({ tool }: ExpertVerdictProps) {
                         
                         <h2 className="text-fluid-h3 animate-in fade-in slide-in-from-bottom-4 duration-700 font-bold mb-6">Our Verdict on {tool.name}</h2>
                         
-                        <div className="space-y-4 text-slate-300 leading-relaxed text-lg mb-8">
-                            {tool.editorial?.verdict ? (
-                                <div dangerouslySetInnerHTML={{ __html: tool.editorial.verdict }} />
-                            ) : (
-                                <>
-                                    <p>
-                                        After spending time with {tool.name}, it's clear that it deserves its reputation. It handles complex tasks surprisingly well, and the outputs are generally reliable enough for professional use. That said, like any AI tool, it still requires human oversight to get the best results.
-                                    </p>
-                                    <p>
-                                        <strong>Overall Recommendation:</strong> We recommend {tool.name} for power users and teams who are willing to integrate it fully into their workflows. If you're just looking to experiment, the free or entry-level tier is plenty. But if you need to scale your operations, paying for the premium features is easily a worthwhile investment.
-                                    </p>
-                                </>
-                            )}
-                        </div>
+                        <div className="prose prose-invert prose-slate max-w-none text-slate-300 space-y-4" dangerouslySetInnerHTML={{ __html: tool.editorial.verdict }} />
                     </div>
 
                     <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">

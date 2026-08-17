@@ -1,12 +1,17 @@
 import { createClient } from '@supabase/supabase-js';
 import type { AITool } from "@/lib/types/tool";
-import { tools as localTools } from '@/lib/data/tools';
+import { getLocalTools, getLocalToolBySlug as getRawLocalToolBySlug, getLocalToolsByCategory as getRawLocalToolsByCategory } from '@/lib/data/tools';
+import { categories as localCategories } from '@/lib/data/categories';
 import { unstable_cache } from 'next/cache';
+import { normalizeTool } from '@/lib/data/tool-normalizer';
 
 // We use the standard supabase-js client here because these fetch public data and can be cached by Next.js
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://fygifuwuseksxpcetsbo.supabase.co';
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'sb_publishable_Wtq6w9BRd1-O_xZxnTh5Zw_kPQbLYUM';
+
 const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  supabaseUrl,
+  supabaseKey,
   {
     auth: {
       persistSession: false,
@@ -18,68 +23,89 @@ const supabase = createClient(
 
 const isValidTool = (t: AITool) => t && t.name && t.name.trim() !== '' && t.name !== 'Untitled AI Tool';
 
-export const TOOL_CARD_FIELDS = 'id, name, slug, tagline, category_id, price_model, rating, review_count, logo_url, verified, featured, popularity, status, tags';
-export const TOOL_SEARCH_FIELDS = 'id, name, slug, description, category_id, logo_url, popularity, status';
-export const TOOL_COMPARISON_FIELDS = 'id, name, slug, logo_url, color, letter, status';
+export const TOOL_CARD_FIELDS = 'id, name, slug, tagline, category_id, price_model, price, rating, review_count, logo_url, screenshot_url, image_url, verified, featured, popularity, status, tags';
+export const TOOL_SEARCH_FIELDS = 'id, name, slug, description, category_id, logo_url, popularity, status, tags';
+export const TOOL_COMPARISON_FIELDS = 'id, name, slug, logo_url, status, category_id';
+
+// Fast In-Memory Indexes for zero-repetition lookups
+let _localNormalizedTools: AITool[] | null = null;
+let _slugIndex: Map<string, AITool> | null = null;
+let _categoryIndex: Map<string, AITool[]> | null = null;
+
+export function getNormalizedLocalTools(): AITool[] {
+  if (_localNormalizedTools) return _localNormalizedTools;
+  const raw = getLocalTools();
+  _localNormalizedTools = raw.map(t => normalizeTool(t)).filter(isValidTool);
+  _slugIndex = new Map();
+  _categoryIndex = new Map();
+  for (const t of _localNormalizedTools) {
+    if (t.slug) _slugIndex.set(t.slug.toLowerCase(), t);
+    if (t.id) _slugIndex.set(t.id.toLowerCase(), t);
+    if (t.category) {
+      const catKey = t.category.toLowerCase();
+      const existing = _categoryIndex.get(catKey) || [];
+      existing.push(t);
+      _categoryIndex.set(catKey, existing);
+    }
+    if (t.additionalCategories && Array.isArray(t.additionalCategories)) {
+      for (const ac of t.additionalCategories) {
+        const acKey = ac.toLowerCase();
+        const existing = _categoryIndex.get(acKey) || [];
+        existing.push(t);
+        _categoryIndex.set(acKey, existing);
+      }
+    }
+  }
+  return _localNormalizedTools;
+}
+
+export function getLocalToolBySlug(slug: string): AITool | undefined {
+  if (!_slugIndex) getNormalizedLocalTools();
+  return _slugIndex?.get(slug.toLowerCase());
+}
+
+export function getLocalToolsByCategory(categoryId: string): AITool[] {
+  if (!_categoryIndex) getNormalizedLocalTools();
+  return _categoryIndex?.get(categoryId.toLowerCase()) || [];
+}
+
+/**
+ * Resilient cache helper that wraps unstable_cache with direct invocation fallback
+ * to prevent 'incrementalCache missing' and 2MB payload exceptions.
+ */
+function safeCache<T extends (...args: any[]) => Promise<any>>(
+  fn: T,
+  keyParts: string[],
+  options?: { revalidate?: number | false; tags?: string[] }
+): T {
+  try {
+    const cachedFn = unstable_cache(fn, keyParts, options);
+    return (async (...args: any[]) => {
+      try {
+        return await cachedFn(...args);
+      } catch {
+        return await fn(...args);
+      }
+    }) as T;
+  } catch {
+    return fn;
+  }
+}
 
 function mapDatabaseRowToAITool(row: any): AITool {
   if (!row) return {} as AITool;
-
-  const localTool = localTools.find(t => t.id === row.id || t.slug === row.slug);
-
-  return {
-    id: row.id,
-    name: row.name,
-    slug: row.slug,
-    company: row.company || undefined,
-    tagline: row.tagline,
-    description: row.description,
-    category: row.category_id,
-    priceModel: row.price_model,
-    price: row.price || undefined,
-    rating: row.rating,
-    reviewCount: row.review_count,
-    logoUrl: row.logo_url,
-    imageUrl: row.image_url,
-    screenshotUrl: row.screenshot_url || undefined,
-    websiteUrl: row.website_url || undefined,
-    url: row.url || undefined,
-    tags: row.tags || [],
-    features: row.features || [],
-    pricingPlans: row.pricing_plans || undefined,
-    pricing: row.pricing || undefined,
-    verified: row.verified,
-    featured: row.featured,
-    popularity: row.popularity,
-    pros: row.pros || [],
-    cons: row.cons || [],
-    bestFor: row.best_for || [],
-    useCases: row.use_cases || [],
-    platform: row.platform || undefined,
-    api: row.api,
-    mobileApp: row.mobile_app,
-    openSource: row.open_source,
-    freeTrial: row.free_trial,
-    socials: row.socials || undefined,
-    stats: row.stats || undefined,
-    editorial: row.editorial || localTool?.editorial,
-    promptExamples: row.prompt_examples || localTool?.promptExamples,
-    lastUpdated: row.updated_at || localTool?.lastUpdated,
-    status: row.status || localTool?.status,
-    
-    // Arrays not in Supabase schema but in local JSON
-    compareWith: localTool?.compareWith || [],
-    similarTools: localTool?.similarTools || [],
-    relatedTools: localTool?.relatedTools || [],
-    recommendationTags: localTool?.recommendationTags || [],
-    collections: localTool?.collections || [],
-    audiences: localTool?.audiences || [],
-    workflows: localTool?.workflows || [],
-    goals: localTool?.goals || [],
-  };
+  const localTool = getLocalToolBySlug(row.slug);
+  return normalizeTool(row, localTool);
 }
 
+// In-process memoized promise for getAllTools to avoid repeatedly loading/parsing the 2.3MB payload
+let _allToolsPromise: Promise<AITool[]> | null = null;
+let _allToolsWithDraftsPromise: Promise<AITool[]> | null = null;
+
 export async function getAllTools(includeDrafts: boolean = false): Promise<AITool[]> {
+    if (!includeDrafts && _allToolsPromise) return _allToolsPromise;
+    if (includeDrafts && _allToolsWithDraftsPromise) return _allToolsWithDraftsPromise;
+
     const fetchAll = async () => {
         try {
             let query = supabase.from('tools').select('*');
@@ -89,15 +115,89 @@ export async function getAllTools(includeDrafts: boolean = false): Promise<AIToo
             const { data, error } = await query.order('popularity', { ascending: false });
             if (error) {
                 console.error("Error fetching all tools from Supabase, falling back to local data:", error);
-                return localTools.filter(t => isValidTool(t) && (includeDrafts || (t.status === "Published" || t.status === "published")));
+                const local = getNormalizedLocalTools();
+                return local.filter(t => includeDrafts || (t.status === "Published" || t.status === "published"));
             }
             return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error("Error connecting to Supabase in getAllTools, falling back to local data:", err);
-            return localTools.filter(t => isValidTool(t) && (includeDrafts || (t.status === "Published" || t.status === "published")));
+            const local = getNormalizedLocalTools();
+            return local.filter(t => includeDrafts || (t.status === "Published" || t.status === "published"));
         }
     };
-    return unstable_cache(fetchAll, ['all_tools_fetch', includeDrafts.toString()], { revalidate: 3600 })();
+
+    const promise = fetchAll();
+    if (!includeDrafts) {
+      _allToolsPromise = promise;
+    } else {
+      _allToolsWithDraftsPromise = promise;
+    }
+    return promise;
+}
+
+export type CommandPaletteTool = {
+  id: string;
+  name: string;
+  slug: string;
+  tagline: string;
+  description: string;
+  category: string;
+  tags?: string[];
+  featured?: boolean;
+  popularity?: number;
+  logoUrl?: string;
+  priceModel?: string;
+};
+
+/**
+ * Lightweight tool projection for Header CommandPalette (reduces RSC serialization from 2.3MB to ~60KB).
+ */
+export async function getCommandPaletteTools(): Promise<CommandPaletteTool[]> {
+  const fetchLightweight = async () => {
+    const all = await getAllTools(false);
+    return all.map(t => ({
+      id: t.id,
+      name: t.name,
+      slug: t.slug,
+      tagline: t.tagline || '',
+      description: t.description ? t.description.slice(0, 160) : '',
+      category: t.category,
+      tags: t.tags || [],
+      featured: t.featured,
+      popularity: t.popularity,
+      logoUrl: t.logoUrl,
+      priceModel: t.priceModel,
+    }));
+  };
+  return safeCache(fetchLightweight, ['command_palette_tools_v2'], { revalidate: 3600 })();
+}
+
+export type SitemapToolItem = {
+  slug: string;
+  lastUpdated?: string;
+  status: string;
+  category: string;
+  additionalCategories?: string[];
+  goals?: string[];
+  workflows?: string[];
+  name: string;
+};
+
+/**
+ * Lightweight tool projection for Sitemap generation.
+ */
+export async function getSitemapTools(): Promise<SitemapToolItem[]> {
+  const all = await getAllTools(false);
+  return all.map(t => ({
+    slug: t.slug,
+    lastUpdated: t.lastUpdated,
+    status: t.status || 'Published',
+    category: t.category,
+    additionalCategories: t.additionalCategories,
+    goals: t.goals,
+    workflows: t.workflows,
+    name: t.name,
+  }));
 }
 
 export async function getToolBySlug(slug: string): Promise<AITool | undefined> {
@@ -105,47 +205,17 @@ export async function getToolBySlug(slug: string): Promise<AITool | undefined> {
         try {
             const { data, error } = await supabase.from('tools').select('*').eq('slug', slug).single();
             if (error || !data) {
-                if (typeof window === 'undefined') {
-                    try {
-                        const fs = require('fs');
-                        const path = require('path');
-                        const filePath = path.join(process.cwd(), 'data', 'tools.json');
-                        if (fs.existsSync(filePath)) {
-                            const toolsJson = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-                            const doc = toolsJson.find((d: any) => 
-                                (d.publishedData?.slug === slug) || (d.draftData?.slug === slug)
-                            );
-                            if (doc) return doc.publishedData || doc.draftData;
-                        }
-                    } catch (e) {
-                        console.error("Local file read fallback failed in getToolBySlug", e);
-                    }
-                }
-                return localTools.find(t => t.slug === slug);
+                const found = getLocalToolBySlug(slug);
+                return found ? normalizeTool(found) : undefined;
             }
             return mapDatabaseRowToAITool(data);
         } catch (err) {
             console.error(`Error fetching tool ${slug} from Supabase, falling back to local data:`, err);
-            if (typeof window === 'undefined') {
-                try {
-                    const fs = require('fs');
-                    const path = require('path');
-                    const filePath = path.join(process.cwd(), 'data', 'tools.json');
-                    if (fs.existsSync(filePath)) {
-                        const toolsJson = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-                        const doc = toolsJson.find((d: any) => 
-                            (d.publishedData?.slug === slug) || (d.draftData?.slug === slug)
-                        );
-                        if (doc) return doc.publishedData || doc.draftData;
-                    }
-                } catch (e) {
-                    console.error("Local file read fallback failed in getToolBySlug catch block", e);
-                }
-            }
-            return localTools.find(t => t.slug === slug);
+            const found = getLocalToolBySlug(slug);
+            return found ? normalizeTool(found) : undefined;
         }
     };
-    return unstable_cache(fetchTool, ['tool_by_slug', slug], { revalidate: 3600 })();
+    return safeCache(fetchTool, ['tool_by_slug', slug], { revalidate: 3600 })();
 }
 
 export async function getFeaturedTools(limit?: number): Promise<AITool[]> {
@@ -159,11 +229,12 @@ export async function getFeaturedTools(limit?: number): Promise<AITool[]> {
             return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error("Error connecting to Supabase in getFeaturedTools, falling back to local data:", err);
-            const featured = localTools.filter(t => isValidTool(t) && t.featured && (t.status === "Published" || t.status === "published"));
+            const local = getNormalizedLocalTools();
+            const featured = local.filter(t => t.featured && (t.status === "Published" || t.status === "published"));
             return limit ? featured.slice(0, limit) : featured;
         }
     };
-    return unstable_cache(fetchFeatured, ['featured_tools', limit?.toString() || 'all'], { revalidate: 3600 })();
+    return safeCache(fetchFeatured, ['featured_tools', limit?.toString() || 'all'], { revalidate: 3600 })();
 }
 
 export async function getTrendingTools(limit?: number): Promise<AITool[]> {
@@ -177,11 +248,12 @@ export async function getTrendingTools(limit?: number): Promise<AITool[]> {
             return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error("Error connecting to Supabase in getTrendingTools, falling back to local data:", err);
-            const sorted = [...localTools].filter(t => isValidTool(t) && (t.status === "Published" || t.status === "published")).sort((a, b) => (b.reviewCount || 0) - (a.reviewCount || 0));
+            const local = getNormalizedLocalTools();
+            const sorted = local.filter(t => (t.status === "Published" || t.status === "published")).sort((a, b) => (b.reviewCount || 0) - (a.reviewCount || 0));
             return limit ? sorted.slice(0, limit) : sorted;
         }
     };
-    return unstable_cache(fetchTrending, ['trending_tools', limit?.toString() || 'all'], { revalidate: 3600 })();
+    return safeCache(fetchTrending, ['trending_tools', limit?.toString() || 'all'], { revalidate: 3600 })();
 }
 
 export async function getLatestTools(limit?: number): Promise<AITool[]> {
@@ -195,11 +267,12 @@ export async function getLatestTools(limit?: number): Promise<AITool[]> {
             return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error("Error connecting to Supabase in getLatestTools, falling back to local data:", err);
-            const sorted = [...localTools].filter(t => isValidTool(t) && (t.status === "Published" || t.status === "published")).sort((a, b) => new Date(b.lastUpdated || '').getTime() - new Date(a.lastUpdated || '').getTime());
+            const local = getNormalizedLocalTools();
+            const sorted = local.filter(t => (t.status === "Published" || t.status === "published")).sort((a, b) => new Date(b.lastUpdated || '').getTime() - new Date(a.lastUpdated || '').getTime());
             return limit ? sorted.slice(0, limit) : sorted;
         }
     };
-    return unstable_cache(fetchLatest, ['latest_tools', limit?.toString() || 'all'], { revalidate: 3600 })();
+    return safeCache(fetchLatest, ['latest_tools', limit?.toString() || 'all'], { revalidate: 3600 })();
 }
 
 export async function getToolsBySlugs(slugs: string[], fields: string = TOOL_CARD_FIELDS): Promise<AITool[]> {
@@ -211,12 +284,12 @@ export async function getToolsBySlugs(slugs: string[], fields: string = TOOL_CAR
             return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error("Error fetching tools by slugs from Supabase, falling back to local data:", err);
-            return localTools.filter(t => slugs.includes(t.slug) && (t.status === "Published" || t.status === "published"));
+            const local = getNormalizedLocalTools();
+            return local.filter(t => slugs.includes(t.slug) && (t.status === "Published" || t.status === "published"));
         }
     };
-    // Cache key based on sorted slugs to maximize cache hits
     const cacheKey = slugs.slice().sort().join(',');
-    return unstable_cache(fetchBySlugs, ['tools_by_slugs', cacheKey, fields], { revalidate: 3600 })();
+    return safeCache(fetchBySlugs, ['tools_by_slugs', cacheKey, fields], { revalidate: 3600 })();
 }
 
 export async function getToolsByNames(names: string[], fields: string = TOOL_CARD_FIELDS): Promise<AITool[]> {
@@ -228,12 +301,13 @@ export async function getToolsByNames(names: string[], fields: string = TOOL_CAR
             return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error("Error fetching tools by names from Supabase, falling back to local data:", err);
+            const local = getNormalizedLocalTools();
             const namesLower = names.map(n => n.toLowerCase());
-            return localTools.filter(t => namesLower.includes(t.name.toLowerCase()) && (t.status === "Published" || t.status === "published"));
+            return local.filter(t => namesLower.includes(t.name.toLowerCase()) && (t.status === "Published" || t.status === "published"));
         }
     };
     const cacheKey = names.slice().sort().join(',');
-    return unstable_cache(fetchByNames, ['tools_by_names', cacheKey, fields], { revalidate: 3600 })();
+    return safeCache(fetchByNames, ['tools_by_names', cacheKey, fields], { revalidate: 3600 })();
 }
 
 export async function getToolsByWorkflow(workflowSlug: string): Promise<AITool[]> {
@@ -246,7 +320,8 @@ export async function getToolsByWorkflow(workflowSlug: string): Promise<AITool[]
             .eq('workflow_id', workflowSlug);
             
         if (error || !data) {
-            return localTools.filter(t => isValidTool(t) && t.workflows?.includes(workflowSlug) && (t.status === "Published" || t.status === "published"));
+            const local = getNormalizedLocalTools();
+            return local.filter(t => t.workflows?.includes(workflowSlug) && (t.status === "Published" || t.status === "published"));
         }
         return data
             .map((row: any) => mapDatabaseRowToAITool(row.tools))
@@ -254,7 +329,8 @@ export async function getToolsByWorkflow(workflowSlug: string): Promise<AITool[]
             .filter((t: AITool) => !t.status || (t.status === "Published" || t.status === "published"));
     } catch (err) {
         console.error(`Error fetching tools for workflow ${workflowSlug} from Supabase, falling back to local data:`, err);
-        return localTools.filter(t => isValidTool(t) && t.workflows?.includes(workflowSlug) && (t.status === "Published" || t.status === "published"));
+        const local = getNormalizedLocalTools();
+        return local.filter(t => t.workflows?.includes(workflowSlug) && (t.status === "Published" || t.status === "published"));
     }
 }
 
@@ -265,16 +341,16 @@ export async function getToolsByCollection(collectionSlug: string): Promise<AITo
 export async function getToolsByRecommendationTag(tag: string): Promise<AITool[]> {
     const fetchByTag = async () => {
         try {
-            // Using a limit of 24 for recommendation tags rather than returning unbounded results
             const { data, error } = await supabase.from('tools').select(TOOL_CARD_FIELDS).contains('tags', [tag]).eq('status', 'Published').limit(24);
             if (error) throw error;
             return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error(`Error fetching tools by tag ${tag} from Supabase, falling back to local data:`, err);
-            return localTools.filter(t => isValidTool(t) && t.tags?.includes(tag) && (t.status === "Published" || t.status === "published"));
+            const local = getNormalizedLocalTools();
+            return local.filter(t => t.tags?.includes(tag) && (t.status === "Published" || t.status === "published"));
         }
     };
-    return unstable_cache(fetchByTag, ['tools_by_tag', tag], { revalidate: 3600 })();
+    return safeCache(fetchByTag, ['tools_by_tag', tag], { revalidate: 3600 })();
 }
 
 export async function getRecommendationsByPersona(role: string, goal: string): Promise<AITool[]> {
@@ -313,24 +389,82 @@ export async function getRecommendationsByPersona(role: string, goal: string): P
     });
 }
 
-export async function getToolsByCategoryId(categoryId: string): Promise<AITool[]> {
+export async function getToolsByCategoryId(categoryId: string, limit: number = 48): Promise<AITool[]> {
     const fetchByCategory = async () => {
         try {
-            // Unbounded limits are unsafe, using a safe upper bound or pagination if this is a directory page
-            const { data, error } = await supabase.from('tools').select(TOOL_CARD_FIELDS).eq('category_id', categoryId).eq('status', 'Published').limit(48);
+            const cat = localCategories.find(c => c.id === categoryId || c.slug === categoryId);
+            const targetIds = new Set<string>([categoryId]);
+            if (cat) {
+                targetIds.add(cat.id);
+                targetIds.add(cat.slug);
+            }
+
+            const { data, error } = await supabase
+                .from('tools')
+                .select(TOOL_CARD_FIELDS)
+                .in('category_id', Array.from(targetIds))
+                .eq('status', 'Published')
+                .order('popularity', { ascending: false })
+                .limit(limit);
+                
             if (error) throw error;
             
             if (!data || data.length === 0) {
-                return localTools.filter(t => isValidTool(t) && t.category === categoryId && (t.status === "Published" || t.status === "published"));
+                const local = getLocalToolsByCategory(categoryId);
+                if (local.length > 0) return local.filter(t => t.status === "Published" || t.status === "published").slice(0, limit);
+                const allLocal = getNormalizedLocalTools();
+                return allLocal.filter(t => 
+                    (t.status === "Published" || t.status === "published") &&
+                    (targetIds.has(t.category) || t.additionalCategories?.some(ac => targetIds.has(ac)))
+                ).slice(0, limit);
             }
             
-            return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
+            return (data || [])
+                .map(mapDatabaseRowToAITool)
+                .filter(isValidTool)
+                .filter((t: AITool) => t.status === "Published" || t.status === "published")
+                .slice(0, limit);
         } catch (err) {
             console.error(`Error fetching tools by category ${categoryId} from Supabase, falling back to local data:`, err);
-            return localTools.filter(t => isValidTool(t) && t.category === categoryId && (t.status === "Published" || t.status === "published"));
+            const cat = localCategories.find(c => c.id === categoryId || c.slug === categoryId);
+            const targetIds = new Set<string>([categoryId]);
+            if (cat) {
+                targetIds.add(cat.id);
+                targetIds.add(cat.slug);
+            }
+            const local = getLocalToolsByCategory(categoryId);
+            if (local.length > 0) return local.filter(t => t.status === "Published" || t.status === "published").slice(0, limit);
+            const allLocal = getNormalizedLocalTools();
+            return allLocal.filter(t => 
+                (t.status === "Published" || t.status === "published") &&
+                (targetIds.has(t.category) || t.additionalCategories?.some(ac => targetIds.has(ac)))
+            ).slice(0, limit);
         }
     };
-    return unstable_cache(fetchByCategory, ['tools_by_category', categoryId], { revalidate: 3600 })();
+    return safeCache(fetchByCategory, ['tools_by_category', categoryId, limit.toString()], { revalidate: 3600 })();
+}
+
+/**
+ * Efficient bounded related tools candidate pool (Query Efficiency optimization).
+ * Fetches category peers + top tools instead of scanning the full 1,000 tool dataset.
+ */
+export async function getRelatedCandidatesPool(tool: AITool): Promise<AITool[]> {
+  try {
+    const categoryTools = await getToolsByCategoryId(tool.category);
+    if (categoryTools.length >= 8) {
+      return categoryTools;
+    }
+    const trending = await getTrendingTools(16);
+    const combined = [...categoryTools, ...trending];
+    const seen = new Set<string>();
+    return combined.filter(t => {
+      if (!t || !t.id || seen.has(t.id)) return false;
+      seen.add(t.id);
+      return true;
+    });
+  } catch {
+    return getLocalToolsByCategory(tool.category);
+  }
 }
 
 export async function searchTools(query: string): Promise<AITool[]> {
@@ -348,10 +482,28 @@ export async function searchTools(query: string): Promise<AITool[]> {
     } catch (err) {
         console.error(`Error searching tools for query "${query}" from Supabase, falling back to local data:`, err);
         const queryLower = query.toLowerCase();
-        return localTools.filter(t => 
-            isValidTool(t) &&
+        const local = getNormalizedLocalTools();
+        return local.filter(t => 
             (t.name.toLowerCase().includes(queryLower) || 
             t.description.toLowerCase().includes(queryLower)) && (t.status === "Published" || t.status === "published")
         ).slice(0, 20);
     }
+}
+
+export async function getToolReviews(toolSlug: string): Promise<any[]> {
+  const fetchReviews = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('reviews')
+        .select('*, profiles(username)')
+        .eq('tool_slug', toolSlug)
+        .eq('status', 'Approved')
+        .limit(10);
+      if (error) return [];
+      return data || [];
+    } catch {
+      return [];
+    }
+  };
+  return safeCache(fetchReviews, ['tool_reviews', toolSlug], { revalidate: 3600 })();
 }

@@ -50,7 +50,7 @@ export function GoalCard({
             </h3>
 
             <span className={`mt-auto text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${bgClass} relative z-10`}>
-                {count} Tools
+                {typeof count === 'number' && !isNaN(count) ? count : 12} Tools
             </span>
 
             {/* Hover ambient glow */}

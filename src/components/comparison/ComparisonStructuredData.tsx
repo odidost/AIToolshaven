@@ -25,11 +25,13 @@ export function ComparisonStructuredData({ mainTool, compareTool }: ComparisonSt
                         "price": mainTool.price?.replace(/[^0-9.]/g, '') || "0.00",
                         "priceCurrency": "USD"
                     },
-                    "aggregateRating": {
-                        "@type": "AggregateRating",
-                        "ratingValue": mainTool.rating,
-                        "reviewCount": mainTool.reviewCount
-                    }
+                    ...(mainTool.rating && mainTool.reviewCount && mainTool.reviewCount > 0 ? {
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": mainTool.rating,
+                            "reviewCount": mainTool.reviewCount
+                        }
+                    } : {}),
                 },
                 {
                     "@type": "SoftwareApplication",
@@ -41,11 +43,13 @@ export function ComparisonStructuredData({ mainTool, compareTool }: ComparisonSt
                         "price": compareTool.price?.replace(/[^0-9.]/g, '') || "0.00",
                         "priceCurrency": "USD"
                     },
-                    "aggregateRating": {
-                        "@type": "AggregateRating",
-                        "ratingValue": compareTool.rating,
-                        "reviewCount": compareTool.reviewCount
-                    }
+                    ...(compareTool.rating && compareTool.reviewCount && compareTool.reviewCount > 0 ? {
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": compareTool.rating,
+                            "reviewCount": compareTool.reviewCount
+                        }
+                    } : {}),
                 }
             ]
         }

@@ -1,6 +1,10 @@
 import type { ToolCategory } from "@/lib/types/category";
+import categoriesData from "../../../data/categories.json";
 
-import categoriesJson from '../../../data/categories.json';
+const rawCategories = categoriesData as ToolCategory[];
 
-// The frontend directly consumes the CMS JSON data.
-export const categories: ToolCategory[] = categoriesJson as ToolCategory[];
+export const getLocalCategories = (): ToolCategory[] => {
+  return rawCategories;
+};
+
+export const categories: ToolCategory[] = rawCategories;

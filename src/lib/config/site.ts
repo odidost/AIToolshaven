@@ -6,7 +6,7 @@ import { env } from "@/lib/env";
  */
 export const siteConfig = {
   name: "AIToolsHaven",
-  description: "Discover, compare, and review the best AI tools of 2026. AIToolsHaven is the #1 directory for AI software across writing, coding, image generation, and more.",
+  description: "The human-curated AI tools directory. Discover, compare, and choose from 1,000+ verified AI tools across writing, coding, image generation, and more.",
   
   // The base URL of the site (e.g. "https://aitoolshaven.com" or "http://localhost:3000")
   baseUrl: env.NEXT_PUBLIC_BASE_URL,

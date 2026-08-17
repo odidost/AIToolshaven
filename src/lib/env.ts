@@ -1,19 +1,12 @@
 /**
- * Validates and exposes required environment variables.
- * Fails fast if required variables are missing.
+ * Validates and exposes required environment variables with safe production fallbacks.
  */
 
-// We require NEXT_PUBLIC_BASE_URL to be set in all environments,
-// as it is the single source of truth for canonical URLs, metadata, etc.
-if (!process.env.NEXT_PUBLIC_BASE_URL) {
-  throw new Error(
-    "❌ FATAL ERROR: NEXT_PUBLIC_BASE_URL environment variable is missing. " +
-    "This must be set in your .env file or Vercel environment variables (e.g. 'https://aitoolshaven.com' or 'http://localhost:3000')."
-  );
-}
+const rawBaseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
+  (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://aitoolshaven.com');
 
 // Ensure it doesn't end with a trailing slash to prevent double slashes in generated URLs
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL.replace(/\/$/, "");
+const baseUrl = rawBaseUrl.replace(/\/$/, "");
 
 export const env = {
   NEXT_PUBLIC_BASE_URL: baseUrl,

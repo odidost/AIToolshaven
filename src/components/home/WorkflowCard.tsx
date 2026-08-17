@@ -109,7 +109,8 @@ export function WorkflowCard({
 
 function ToolLogo({ name, logoUrl, fullTool }: { name: string; logoUrl?: string; fullTool?: AITool }) {
     const [error, setError] = useState(false);
-    const letter = name.charAt(0).toUpperCase();
+    const safeName = typeof name === 'string' && name.trim().length > 0 ? name.trim() : 'AI Tool';
+    const letter = safeName.charAt(0).toUpperCase();
 
     if (error || (!logoUrl && !fullTool)) {
         // Consistent gradient colors based on the letter
@@ -123,8 +124,8 @@ function ToolLogo({ name, logoUrl, fullTool }: { name: string; logoUrl?: string;
             "from-pink-500 to-rose-600",
             "from-cyan-500 to-blue-600"
         ];
-        const colorIndex = letter.charCodeAt(0) % colors.length;
-        const gradient = colors[colorIndex];
+        const colorIndex = (letter.charCodeAt(0) || 65) % colors.length;
+        const gradient = colors[colorIndex] || colors[0];
 
         return (
             <div className={`w-full h-full bg-gradient-to-br ${gradient} flex items-center justify-center rounded-2xl`}>
@@ -144,7 +145,7 @@ function ToolLogo({ name, logoUrl, fullTool }: { name: string; logoUrl?: string;
     return (
         <img 
             src={logoUrl} 
-            alt={name} 
+            alt={safeName} 
             className="w-full h-full object-cover p-1.5" 
             onError={() => setError(true)} 
         />

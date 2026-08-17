@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
-import { getCategoryBySlug } from "@/lib/queries/categories";
+import { getCategoryBySlug, getCategoryById } from "@/lib/queries/categories";
+import { siteConfig } from "@/lib/config/site";
 import { getToolsByCategoryId } from "@/lib/data/tools-service";
 import { getCategoryTheme } from "@/lib/data/categoryThemes";
 
@@ -16,6 +17,8 @@ import { AuthorAttribution } from "@/components/shared/AuthorAttribution";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Metadata } from "next";
 import { SocialLinks } from "@/components/shared/SocialLinks";
+
+import { StructuredData } from "@/components/shared/StructuredData";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -34,13 +37,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const categoryTools = await getToolsByCategoryId(category.id);
+  const isNoIndex = category.indexable === false || categoryTools.length < 5;
+  const countPrefix = categoryTools.length > 0 ? `${categoryTools.length} ` : "";
+
+  const theme = getCategoryTheme(category.slug);
+  const title = `${countPrefix}${category.name} AI Tools | Verified Directory & Comparison | AIToolsHaven`;
+  const description = theme?.heroDescription || `Explore verified ${category.name} AI tools to enhance your workflow, streamline tasks, and compare pricing plans.`;
+
   return {
-    title: `Best ${category.name} AI Tools in 2026 | AIToolsHaven`,
-    description: `Explore the top ${category.name} AI tools to enhance your workflow and productivity.`,
+    title,
+    description,
+    robots: {
+      index: !isNoIndex,
+      follow: true,
+    },
+    alternates: {
+      canonical: `${siteConfig.baseUrl}/category/${category.slug}`,
+    },
     openGraph: {
-      title: `${category.name} AI Tools | AIToolsHaven`,
-      description: `Explore the top ${category.name} AI tools to enhance your workflow and productivity.`,
+      title,
+      description,
       type: "website",
+      url: `${siteConfig.baseUrl}/category/${category.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
     },
   };
 }
@@ -68,6 +92,61 @@ export default async function CategoryPage({
     ? (categoryTools.reduce((acc, tool) => acc + (tool.rating || 0), 0) / categoryTools.length).toFixed(1) 
     : "N/A";
   const verifiedCount = categoryTools.filter(t => t.verified).length;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${siteConfig.baseUrl}/category/${category.slug}#webpage`,
+        url: `${siteConfig.baseUrl}/category/${category.slug}`,
+        name: `Best ${category.name} AI Tools in 2026`,
+        description: theme.heroDescription || category.description,
+        breadcrumb: {
+          "@id": `${siteConfig.baseUrl}/category/${category.slug}#breadcrumb`
+        },
+        mainEntity: {
+          "@type": "ItemList",
+          numberOfItems: categoryTools.length,
+          itemListElement: categoryTools.slice(0, 20).map((tool, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            item: {
+              "@type": "SoftwareApplication",
+              name: tool.name,
+              url: `${siteConfig.baseUrl}/tool/${tool.slug}`,
+              applicationCategory: category.name,
+              operatingSystem: "Web-based",
+              description: tool.tagline || tool.description
+            }
+          }))
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${siteConfig.baseUrl}/category/${category.slug}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: siteConfig.baseUrl
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Categories",
+            item: `${siteConfig.baseUrl}/categories`
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: category.name,
+            item: `${siteConfig.baseUrl}/category/${category.slug}`
+          }
+        ]
+      }
+    ]
+  };
 
   return (
     <PageContainer
@@ -75,6 +154,7 @@ export default async function CategoryPage({
       className="py-12 md:py-16 relative"
       style={{ '--category-accent': theme.accentColors.cssVar } as React.CSSProperties}
     >
+      <StructuredData data={jsonLd} />
       {/* Dynamic Category Page Background */}
       {['coding-assistants', 'productivity'].includes(slug) && <BackgroundPattern type="workflow" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
       {['image-generation', 'video-creation', 'audio-voice'].includes(slug) && <BackgroundPattern type="sparkles" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
@@ -83,7 +163,11 @@ export default async function CategoryPage({
       <nav className="mb-8">
         <Breadcrumbs
           items={[
-            { label: "Categories" },
+            { label: "Categories", href: "/categories" },
+            ...(category.parentId ? await (async () => {
+              const parent = await getCategoryById(category.parentId!);
+              return parent ? [{ label: parent.name, href: `/category/${parent.slug}` }] : [];
+            })() : []),
             { label: category.name },
           ]}
         />

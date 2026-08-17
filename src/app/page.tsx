@@ -103,12 +103,38 @@ export default async function Home() {
       {/* 3b. Editorial Rankings */}
       <EditorialRankingsSection />
 
+      {/* 2b. High-Intent Quick Discovery Links */}
+      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 py-3.5 px-5 bg-white/70 backdrop-blur-xl border border-black/5 rounded-2xl shadow-xs text-xs sm:text-sm text-on-surface-variant">
+          <span className="font-semibold text-on-surface flex items-center gap-1.5 mr-1">
+            <span className="material-symbols-outlined text-[16px] text-primary">trending_up</span>
+            Popular Searches:
+          </span>
+          <Link href="/compare-tools/chatgpt-vs-claude" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+            ChatGPT vs Claude
+          </Link>
+          <Link href="/tool/writesonic" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+            Writesonic
+          </Link>
+          <Link href="/category/ai-writing-tools" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+            AI Writing Tools
+          </Link>
+          <Link href="/category/coding-assistants" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+            Coding Assistants
+          </Link>
+          <Link href="/alternatives/chatgpt" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+            ChatGPT Alternatives
+          </Link>
+        </div>
+      </div>
+
       {/* 2. Trust Layer */}
       <FadeIn delay={0.2} direction="up" className="w-full relative z-10">
         <section className="bg-card border-y border-border/50 py-10 sm:py-16 relative overflow-hidden">
           <TrustedByMarquee />
         </section>
       </FadeIn>
+
 
       {/* 3. AI Recommendation Engine */}
       <FadeIn direction="up">

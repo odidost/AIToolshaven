@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { CommandPalette } from './CommandPalette';
-import { getAllTools } from '@/lib/queries/tools';
 import { BrandLogo } from './BrandLogo';
 import { PageContainer } from '../layout/PageContainer';
 
@@ -8,7 +7,6 @@ import { createClient } from '@/lib/supabase/server';
 import { Button } from '../ui/button';
 
 export async function Header() {
-  const tools = await getAllTools();
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   return (
@@ -18,7 +16,7 @@ export async function Header() {
           <BrandLogo size={0.9} />
         </Link>
         <div className="flex-1 max-w-md mx-8 relative hidden md:block">
-          <CommandPalette tools={tools} />
+          <CommandPalette />
         </div>
         <nav className="flex items-center gap-4">
           {user ? (

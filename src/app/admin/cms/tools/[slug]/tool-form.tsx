@@ -31,6 +31,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Save, Eye, ArrowLeft, Clock, Copy, MoreVertical, Trash, Plus } from "lucide-react";
 import Link from "next/link";
 import { saveTool } from "@/lib/actions/tools";
+import { scrapeToolAssetsAction } from "@/lib/actions/scraper";
 import { useRouter } from "next/navigation";
 
 interface ToolFormProps {
@@ -44,6 +45,8 @@ export function ToolForm({ initialData, categories, allWorkflows = [], allGoals 
   const { toast } = useToast();
   const router = useRouter();
   const [isSaving, setIsSaving] = useState(false);
+  const [isScrapingLogo, setIsScrapingLogo] = useState(false);
+  const [isScrapingScreenshot, setIsScrapingScreenshot] = useState(false);
   const [isAutosaving, setIsAutosaving] = useState(false);
 
   const form = useForm<ToolFormValues>({
@@ -57,6 +60,7 @@ export function ToolForm({ initialData, categories, allWorkflows = [], allGoals 
       tagline: initialData.tagline || "",
       description: initialData.description || "",
       category_id: initialData.category_id || initialData.categoryId || "",
+      additionalCategories: initialData.additionalCategories || [],
       price_model: initialData.price_model || initialData.priceModel || "Free",
       price: initialData.price || "",
       rating: initialData.rating ?? 0,
@@ -91,6 +95,7 @@ export function ToolForm({ initialData, categories, allWorkflows = [], allGoals 
       tagline: "",
       description: "",
       category_id: "",
+      additionalCategories: [],
       price_model: "Free",
       price: "",
       logo_url: "",
@@ -333,6 +338,34 @@ export function ToolForm({ initialData, categories, allWorkflows = [], allGoals 
                                     }}
                                   />
                                 </Button>
+                                <Button
+                                  type="button"
+                                  variant="secondary"
+                                  disabled={isScrapingLogo || !form.watch("website_url")}
+                                  onClick={async () => {
+                                    setIsScrapingLogo(true);
+                                    toast({ title: 'Scraping logo...' });
+                                    try {
+                                      const res = await scrapeToolAssetsAction(form.watch("website_url") || "", form.watch("slug") || "unnamed", {
+                                        existingLogoUrl: form.watch("logo_url"),
+                                        forceLogoRefresh: true,
+                                        toolId: form.watch("id")
+                                      });
+                                      if (res.success && res.result?.logoUrl) {
+                                        form.setValue('logo_url', res.result.logoUrl);
+                                        toast({ title: 'Logo scraped successfully' });
+                                      } else {
+                                        toast({ title: 'Scrape failed or no logo found', variant: 'destructive' });
+                                      }
+                                    } catch (err) {
+                                      toast({ title: 'Error scraping logo', variant: 'destructive' });
+                                    } finally {
+                                      setIsScrapingLogo(false);
+                                    }
+                                  }}
+                                >
+                                  {isScrapingLogo ? "Scraping..." : "Auto Refresh Logo"}
+                                </Button>
                               </div>
                             </div>
                             <FormMessage />
@@ -394,6 +427,34 @@ export function ToolForm({ initialData, categories, allWorkflows = [], allGoals 
                                       }
                                     }}
                                   />
+                                </Button>
+                                <Button
+                                  type="button"
+                                  variant="secondary"
+                                  disabled={isScrapingScreenshot || !form.watch("website_url")}
+                                  onClick={async () => {
+                                    setIsScrapingScreenshot(true);
+                                    toast({ title: 'Capturing screenshot...' });
+                                    try {
+                                      const res = await scrapeToolAssetsAction(form.watch("website_url") || "", form.watch("slug") || "unnamed", {
+                                        existingScreenshotUrl: form.watch("screenshot_url"),
+                                        forceScreenshotRefresh: true,
+                                        toolId: form.watch("id")
+                                      });
+                                      if (res.success && res.result?.screenshotUrl) {
+                                        form.setValue('screenshot_url', res.result.screenshotUrl);
+                                        toast({ title: 'Screenshot captured successfully' });
+                                      } else {
+                                        toast({ title: 'Screenshot capture failed', variant: 'destructive' });
+                                      }
+                                    } catch (err) {
+                                      toast({ title: 'Error capturing screenshot', variant: 'destructive' });
+                                    } finally {
+                                      setIsScrapingScreenshot(false);
+                                    }
+                                  }}
+                                >
+                                  {isScrapingScreenshot ? "Capturing..." : "Auto Refresh Screenshot"}
                                 </Button>
                               </div>
                             </div>
@@ -1278,6 +1339,38 @@ export function ToolForm({ initialData, categories, allWorkflows = [], allGoals 
                         </SelectContent>
                       </Select>
                       <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control as any}
+                  name="additionalCategories"
+                  render={({ field }) => (
+                    <FormItem className="pt-4 border-t mt-4">
+                      <FormLabel>Additional Categories</FormLabel>
+                      <FormDescription className="text-xs">Select other categories this tool belongs to (do not include the Primary Category).</FormDescription>
+                      <div className="space-y-2 max-h-[300px] overflow-y-auto pr-2 mt-2">
+                        {categories.map((cat) => {
+                          const isPrimary = form.watch("category_id") === cat.id;
+                          return (
+                            <div key={cat.id} className={`flex flex-row items-center space-x-3 space-y-0 rounded-md border p-2 ${isPrimary ? 'opacity-50 bg-slate-50' : ''}`}>
+                              <Checkbox
+                                checked={field.value?.includes(cat.id)}
+                                disabled={isPrimary}
+                                onCheckedChange={(checked) => {
+                                  if (checked) {
+                                    field.onChange([...(field.value || []), cat.id]);
+                                  } else {
+                                    field.onChange((field.value || []).filter((val: string) => val !== cat.id));
+                                  }
+                                }}
+                              />
+                              <FormLabel className="font-normal text-sm cursor-pointer">{cat.name}{isPrimary ? " (Primary)" : ""}</FormLabel>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </FormItem>
                   )}
                 />

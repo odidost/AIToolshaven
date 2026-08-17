@@ -65,7 +65,7 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
 
         <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
           <span className="text-[11px] font-black tracking-widest uppercase text-slate-400 group-hover:text-primary transition-colors">
-            Explore Collection
+            Explore Category
           </span>
           <div className="h-1 w-1 rounded-full bg-slate-300 group-hover:bg-primary group-hover:scale-150 transition-all duration-300" />
         </div>

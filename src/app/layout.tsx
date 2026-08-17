@@ -12,18 +12,19 @@ import { siteConfig } from "@/lib/config/site";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
   title: {
-    default: `${siteConfig.name} | AI Tools Discovery Hub`,
+    default: "AIToolsHaven — Discover, Compare & Choose the Best AI Tools",
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [
     "AI tools",
-    "AI software directory",
-    "best AI tools 2026",
+    "AI tools directory",
+    "AI tool discovery",
+    "AI tool finder",
     "compare AI tools",
-    "AI tool reviews",
-    "ChatGPT alternatives",
-    "AI productivity tools",
+    "best AI tools 2026",
+    "verified AI software",
+    "discover AI tools",
   ],
   authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],
   creator: siteConfig.name,
@@ -32,14 +33,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.baseUrl,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} | AI Tools Discovery Hub`,
+    title: "AIToolsHaven — Discover, Compare & Choose the Best AI Tools",
     description: siteConfig.description,
     images: [
       {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} — Premium AI Tools Directory`,
+        alt: `${siteConfig.name} — Human-Curated AI Tools Directory`,
       },
     ],
   },
@@ -48,10 +49,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | AI Tools Discovery Hub`,
+    title: "AIToolsHaven — Discover, Compare & Choose the Best AI Tools",
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
+
   robots: {
     index: true,
     follow: true,

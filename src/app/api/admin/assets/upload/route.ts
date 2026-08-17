@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createAdminClient } from '@/lib/supabase/server';
+import { uploadAssetBuffer } from '@/lib/utils/storage';
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,35 +15,16 @@ export async function POST(req: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Determine extension from file type
-    const isSvg = file.type === 'image/svg+xml';
-    const extension = isSvg ? 'svg' : 'webp';
-    const suffix = type === 'logo' ? 'logo' : 'interface';
-    const filename = `${slug}-${suffix}.${extension}`;
-    const dirName = type === 'logo' ? 'logos' : 'screenshots';
-    const path = `${dirName}/${filename}`;
+    const result = await uploadAssetBuffer(buffer, slug, type, file.type);
 
-    const supabase = await createAdminClient();
-
-    const { data, error } = await supabase.storage
-      .from('assets')
-      .upload(path, buffer, {
-        contentType: file.type,
-        upsert: true,
-      });
-
-    if (error) {
-      throw error;
+    if (!result.success) {
+      return NextResponse.json({ error: result.error }, { status: 500 });
     }
-
-    const { data: publicUrlData } = supabase.storage
-      .from('assets')
-      .getPublicUrl(path);
 
     return NextResponse.json({
       success: true,
-      url: publicUrlData.publicUrl,
-      filename,
+      url: result.url,
+      filename: result.filename,
     });
   } catch (error) {
     console.error('Error uploading asset:', error);

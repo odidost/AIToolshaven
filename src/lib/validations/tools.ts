@@ -13,6 +13,7 @@ export const toolSchema = z.object({
   tagline: z.string().min(10, "Tagline must be at least 10 characters").max(160),
   description: z.string().min(50, "Description should be detailed (at least 50 characters)"),
   category_id: z.string().min(1, "Category is required"),
+  additionalCategories: z.array(z.string()).default([]),
   
   price_model: z.enum(['Free', 'Freemium', 'Paid', 'Enterprise']),
   price: z.string().optional(),

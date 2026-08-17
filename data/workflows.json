@@ -802,5 +802,274 @@
         "answer": "Framer is generally faster to learn for designers (similar to Figma) and excellent for landing pages, while Webflow is better for complex CMS sites."
       }
     ]
+  },
+  {
+    "slug": "faceless-youtube-channel",
+    "title": "Faceless YouTube Channel Automation",
+    "description": "End-to-end production workflow for scripting, voice synthesis, B-roll assembly, and publishing faceless YouTube videos.",
+    "icon": "smart_display",
+    "audience": "Content Creators",
+    "color": "red",
+    "tools": [
+      "ChatGPT",
+      "ElevenLabs",
+      "CapCut",
+      "TubeBuddy"
+    ],
+    "meta": {
+      "outcome": "A fully finished, voice-guided YouTube video ready for upload.",
+      "time": "30-45 minutes",
+      "skill": "Beginner",
+      "cost": "Free (with paid upgrades)",
+      "toolsCount": 4,
+      "deliverables": [
+        "Engaging YouTube script",
+        "Studio-quality AI voiceover",
+        "Edited video with captions & B-roll",
+        "SEO-optimized title, description & tags"
+      ],
+      "bestFor": [
+        {
+          "audience": "Introverted Creators",
+          "reason": "Create high-quality content without being on camera."
+        },
+        {
+          "audience": "Agencies",
+          "reason": "Scale video production across multiple channels quickly."
+        }
+      ],
+      "steps": [
+        {
+          "role": "Script & Concept Writer",
+          "desc": "Use ChatGPT to write high-retention video scripts and outlines.",
+          "tool": "ChatGPT",
+          "goal": "Write a clear, structured script with a strong opening hook.",
+          "whyNow": "A good voiceover needs a good script. Always start with the narrative.",
+          "expectedOutput": "A formatted script with dialogue and visual cues.",
+          "estimatedTime": "10 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Ask ChatGPT to separate your script into 'Hook', 'Intro', 'Body', and 'Call to Action'.",
+          "commonMistake": "Publishing the first draft. Always rewrite the intro in your own voice so it doesn't sound robotic.",
+          "alternatives": [
+            "Claude",
+            "Gemini"
+          ]
+        },
+        {
+          "role": "Voice Generator",
+          "desc": "Generate realistic human voiceovers using ElevenLabs.",
+          "tool": "ElevenLabs",
+          "goal": "Turn your written script into natural-sounding audio.",
+          "whyNow": "Audio sets the pacing for your video edit. You need the voiceover before you start adding B-roll.",
+          "expectedOutput": "An MP3 or WAV file of the spoken script.",
+          "estimatedTime": "5 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Use the 'Stability' slider to dial in the emotion (lower stability means a more expressive voice).",
+          "commonMistake": "Ignoring mispronunciations. Use phonetic spelling if the AI struggles with specific words.",
+          "alternatives": [
+            "Murf AI",
+            "PlayHT"
+          ]
+        },
+        {
+          "role": "Video Editor",
+          "desc": "Combine your voice clips, stock footage, and subtitles in CapCut.",
+          "tool": "CapCut",
+          "goal": "Assemble the final video so it flows well and keeps attention.",
+          "whyNow": "Now that you have the story and pacing, you can bring it to life visually.",
+          "expectedOutput": "A final rendered MP4 file.",
+          "estimatedTime": "20 minutes",
+          "difficulty": "Intermediate",
+          "expertTip": "Use CapCut's 'Auto Captions' feature and color-code keywords to keep viewers engaged.",
+          "commonMistake": "Adding too many effects. Keep it clean so the visuals don't distract from what you're actually saying.",
+          "alternatives": [
+            "Premiere Pro",
+            "DaVinci Resolve"
+          ]
+        },
+        {
+          "role": "SEO Optimizer",
+          "desc": "Find the right keywords, titles, and tags with TubeBuddy.",
+          "tool": "TubeBuddy",
+          "goal": "Make sure your video actually shows up in YouTube search.",
+          "whyNow": "The video is done. Now you need the metadata to get it in front of people.",
+          "expectedOutput": "An optimized title, description, and keyword list.",
+          "estimatedTime": "10 minutes",
+          "difficulty": "Intermediate",
+          "expertTip": "Look for keywords with 'Fair' or 'Good' overall scores—high search volume but manageable competition.",
+          "commonMistake": "Publishing without checking if people are actually searching for your topic.",
+          "alternatives": [
+            "VidIQ"
+          ]
+        }
+      ]
+    },
+    "whyThisOrder": {
+      "explanation": "This follows the classic video production timeline: Scripting comes first, followed by audio, then video editing, and finally distribution.",
+      "impact": "If you try to edit video without a locked-in script or voiceover, you'll end up re-editing the same footage over and over."
+    },
+    "budgetMode": {
+      "tools": [
+        "ChatGPT (Free)",
+        "TTSMaker (Free)",
+        "CapCut Desktop (Free)",
+        "YouTube Auto-Suggest"
+      ],
+      "description": "A completely free pipeline for beginners just starting their channel."
+    },
+    "premiumMode": {
+      "tools": [
+        "Claude 3.5 Sonnet",
+        "ElevenLabs (Creator Plan)",
+        "Premiere Pro",
+        "VidIQ Pro"
+      ],
+      "description": "The professional stack for maximum retention and channel growth."
+    },
+    "faqs": [
+      {
+        "question": "Do I need a paid ElevenLabs account?",
+        "answer": "For commercial use (monetizing on YouTube), yes. However, you can test the workflow on the free tier."
+      },
+      {
+        "question": "Can I use AI generated images for B-roll?",
+        "answer": "Absolutely. Tools like Midjourney or Leonardo AI can generate custom visuals to use in CapCut."
+      }
+    ]
+  },
+  {
+    "slug": "automated-lead-enrichment",
+    "title": "Automated B2B Lead Enrichment & Outbound",
+    "description": "Discover verified prospect data, enrich company intelligence using AI web research, and send high-converting cold email sequences at scale.",
+    "icon": "contacts",
+    "audience": "B2B Sales Teams & Agency Owners",
+    "color": "blue",
+    "tools": [
+      "Apollo.io",
+      "Clay",
+      "Claude",
+      "Instantly"
+    ],
+    "meta": {
+      "outcome": "A fully automated B2B prospecting pipeline sending 500+ personalized emails weekly with 40%+ open rates.",
+      "time": "2-3 hours setup",
+      "skill": "Intermediate",
+      "cost": "$150 - $350 / month",
+      "toolsCount": 4,
+      "deliverables": [
+        "Verified ICP contact list (1,000+ verified emails)",
+        "AI-enriched prospect research table with personalized hooks",
+        "3-step automated follow-up email sequence",
+        "Warmed-up sending infrastructure with inbox rotation"
+      ],
+      "bestFor": [
+        {
+          "audience": "B2B SaaS Founders",
+          "reason": "Book outbound discovery calls without hiring expensive SDR teams."
+        },
+        {
+          "audience": "Lead Generation Agencies",
+          "reason": "Scale outbound client campaigns with dynamic waterfall enrichment."
+        }
+      ],
+      "steps": [
+        {
+          "role": "List Discovery & Filtering",
+          "desc": "Extract ideal customer profile (ICP) leads using Apollo.io database filters.",
+          "tool": "Apollo.io",
+          "goal": "Build a raw target list of 1,000 verified decision-maker emails in your niche.",
+          "whyNow": "Outbound success begins with accurate audience targeting and verified email addresses.",
+          "expectedOutput": "A CSV file containing prospect names, titles, LinkedIn URLs, and company domains.",
+          "estimatedTime": "30 minutes",
+          "difficulty": "Beginner",
+          "expertTip": "Filter by 'Buying Intent' and 'Recently Hired' triggers for 2x higher reply rates.",
+          "commonMistake": "Targeting generic info@ or contact@ email addresses instead of direct decision makers.",
+          "alternatives": [
+            "ZoomInfo",
+            "LinkedIn Sales Navigator"
+          ]
+        },
+        {
+          "role": "Waterfall Data Enrichment",
+          "desc": "Pass domain and contact data through Clay to verify emails and scrape latest news.",
+          "tool": "Clay",
+          "goal": "Enrich each row with funding data, hiring trends, tech stack details, and recent LinkedIn posts.",
+          "whyNow": "Generic cold emails get marked as spam. Contextual company research enables genuine personalization.",
+          "expectedOutput": "Enriched table with custom columns (e.g. recent product launches, hiring priorities).",
+          "estimatedTime": "45 minutes",
+          "difficulty": "Intermediate",
+          "expertTip": "Use Clay's Claude 3.5 Sonnet integration to write 1-sentence custom opening observations based on company websites.",
+          "commonMistake": "Relying on a single email verification source instead of multi-provider waterfall validation.",
+          "alternatives": [
+            "Clearbit",
+            "FullEnrich"
+          ]
+        },
+        {
+          "role": "AI Email Copywriting",
+          "desc": "Draft personalized, low-friction cold email templates using Claude.",
+          "tool": "Claude",
+          "goal": "Create a 3-touch sequence focusing on quick problem identification and low-friction calls to action.",
+          "whyNow": "Concise, personalized emails (under 75 words) drastically outperform long sales pitches.",
+          "expectedOutput": "3 personalized email copy templates with dynamic merge tags.",
+          "estimatedTime": "20 minutes",
+          "difficulty": "Intermediate",
+          "expertTip": "Keep cold emails under 75 words and ask for interest ('Open to learning how?'), not a 30-minute calendar call.",
+          "commonMistake": "Pitching product features immediately instead of highlighting the specific pain point.",
+          "alternatives": [
+            "ChatGPT",
+            "Copy.ai"
+          ]
+        },
+        {
+          "role": "Outbound Sending & Inbox Warmup",
+          "desc": "Connect multiple secondary sending domains to Instantly for automated sending and warmup.",
+          "tool": "Instantly",
+          "goal": "Schedule automated drip sequences across rotated inboxes to maintain 99%+ deliverability.",
+          "whyNow": "Never send cold outbound from your primary corporate domain to avoid domain blacklisting.",
+          "expectedOutput": "Live campaign sending 50-75 emails per day per inbox with automated warmup.",
+          "estimatedTime": "30 minutes",
+          "difficulty": "Intermediate",
+          "expertTip": "Keep sending volume capped at 30-40 emails per inbox per day with random sending delays.",
+          "commonMistake": "Launching high-volume sending without warming up new secondary domains for at least 14 days.",
+          "alternatives": [
+            "Smartlead",
+            "Lemlist"
+          ]
+        }
+      ]
+    },
+    "whyThisOrder": {
+      "explanation": "Data Discovery (Apollo) → Enrichment & Personalization (Clay/Claude) → Scaled Sending (Instantly).",
+      "impact": "Personalizing emails with verified data before sending guarantees high deliverability and protects domain reputation."
+    },
+    "budgetMode": {
+      "tools": [
+        "Apollo.io Free Tier",
+        "Claude 3 (Free)",
+        "Google Workspace Secondary Domain",
+        "Instantly Growth Plan ($37/mo)"
+      ],
+      "description": "Launch targeted cold outbound under $50/month."
+    },
+    "premiumMode": {
+      "tools": [
+        "Apollo Professional",
+        "Clay Explorer Plan",
+        "Claude 3.5 Sonnet API",
+        "Instantly Hypergrowth Plan with 10 Secondary Domains"
+      ],
+      "description": "Enterprise outbound engine generating 50+ qualified sales calls monthly."
+    },
+    "faqs": [
+      {
+        "question": "How long should I warm up new domains before sending?",
+        "answer": "Warm up secondary sending domains for a minimum of 14 to 21 days before launching live outreach."
+      },
+      {
+        "question": "What is a healthy cold email reply rate?",
+        "answer": "A well-targeted, AI-personalized outbound campaign typically achieves a 3% to 8% positive reply rate."
+      }
+    ]
   }
 ]

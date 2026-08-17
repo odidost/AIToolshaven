@@ -21,21 +21,20 @@ import { workflows } from "@/lib/workflows";
 import { goals } from "@/lib/goals";
 import {
   getToolBySlug,
-  getToolsByCategoryId,
-  getAllTools,
+  getRelatedCandidatesPool,
+  getToolReviews,
 } from "@/lib/data/tools-service";
-
+import { getDeterministicRelatedTools } from "@/lib/data/related-tools";
 import {
   getAllCategories,
   getCategoryById,
 } from "@/lib/queries/categories";
-import { createClient } from "@/lib/supabase/server";
-
 import { getComparisonCandidates } from "@/lib/queries/comparisons";
 import { siteConfig } from "@/lib/config/site";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Metadata } from "next";
 import { SocialLinks } from "@/components/shared/SocialLinks";
+import { logToolSectionError } from "@/lib/observability/logger";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -47,24 +46,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const tool = await getToolBySlug(slug);
 
-  if (!tool) {
+  const isPublished = tool && (tool.status === "Published" || tool.status === "published" || !tool.status);
+  if (!tool || !isPublished) {
     return {
       title: `Tool Not Found | ${siteConfig.name}`,
     };
   }
 
+  const desc = tool.description || tool.tagline || `Learn more about ${tool.name} on ${siteConfig.name}.`;
+
   return {
     title: `${tool.name} Reviews, Pricing & Features | ${siteConfig.name}`,
-    description: tool.description,
+    description: desc,
     openGraph: {
       title: `${tool.name} | ${siteConfig.name}`,
-      description: tool.description,
+      description: desc,
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title: `${tool.name} | ${siteConfig.name}`,
-      description: tool.description,
+      description: desc,
     },
     alternates: {
       canonical: `${siteConfig.baseUrl}/tool/${tool.slug}`,
@@ -76,58 +78,107 @@ export default async function ToolPage({ params }: Props) {
   const { slug } = await params;
   const tool = await getToolBySlug(slug);
 
-  if (!tool) {
+  // Critical identity / draft protection guard
+  const isPublished = tool && (tool.status === "Published" || tool.status === "published" || !tool.status);
+  if (!tool || !isPublished) {
     notFound();
-  } // trigger HMR
+  }
 
+  // 1. Safe Category Resolution
+  let category = null;
+  if (tool.category) {
+    try {
+      category = await getCategoryById(tool.category);
+    } catch (err) {
+      logToolSectionError(tool.slug, 'category', err);
+      category = null;
+    }
+  }
 
-  // Get category info
-  const category = await getCategoryById(tool.category);
+  // 2. Safe Categories List
+  let categories: any[] = [];
+  try {
+    categories = await getAllCategories();
+  } catch (err) {
+    logToolSectionError(tool.slug, 'categories_list', err);
+    categories = [];
+  }
 
-  // Get alternatives (tools in the same category)
-  const categoryTools = await getToolsByCategoryId(tool.category);
-  const relatedTools = categoryTools
-    .filter((t) => t.id !== tool.id)
-    .slice(0, 4);
+  // 3. Safe Bounded Related Tools Resolution (Optimized Query)
+  let relatedTools: any[] = [];
+  try {
+    const candidatePool = await getRelatedCandidatesPool(tool);
+    relatedTools = getDeterministicRelatedTools(tool, candidatePool, 4);
+  } catch (err) {
+    logToolSectionError(tool.slug, 'related_tools', err);
+    relatedTools = [];
+  }
 
-  const comparisonTools = getComparisonCandidates(tool);
-  const allTools = await getAllTools();
+  // 4. Safe Comparisons Resolution
+  let comparisonTools: any[] = [];
+  try {
+    comparisonTools = getComparisonCandidates(tool);
+  } catch (err) {
+    logToolSectionError(tool.slug, 'comparisons', err);
+    comparisonTools = [];
+  }
 
-  const toolWorkflows = workflows.filter(
-    (w) => w.tools.includes(tool.name) || (tool.workflows && tool.workflows.includes(w.slug))
-  );
+  // 5. Safe Workflows Resolution
+  let toolWorkflows: any[] = [];
+  try {
+    toolWorkflows = workflows.filter(
+      (w) => w.tools.includes(tool.name) || (tool.workflows && tool.workflows.includes(w.slug))
+    );
+  } catch (err) {
+    logToolSectionError(tool.slug, 'workflows', err);
+    toolWorkflows = [];
+  }
 
-  const toolGoals = goals.filter(
-    (g) => tool.goals && tool.goals.includes(g.slug)
-  );
+  // 6. Safe Goals Resolution
+  let toolGoals: any[] = [];
+  try {
+    toolGoals = goals.filter(
+      (g) => tool.goals && tool.goals.includes(g.slug)
+    );
+  } catch (err) {
+    logToolSectionError(tool.slug, 'goals', err);
+    toolGoals = [];
+  }
 
-  const supabase = await createClient();
-  const { data: reviews } = await supabase
-    .from('reviews')
-    .select('*, profiles(username)')
-    .eq('tool_slug', tool.slug)
-    .eq('status', 'Approved');
+  // 7. Safe Server-Side Reviews Resolution
+  let jsonLdReviews: any[] = [];
+  try {
+    const reviews = await getToolReviews(tool.slug);
+    if (Array.isArray(reviews) && reviews.length > 0) {
+      jsonLdReviews = reviews.map((review: any) => ({
+        "@type": "Review",
+        author: { "@type": "Person", name: review.profiles?.username || "Anonymous" },
+        datePublished: review.created_at ? new Date(review.created_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+        reviewBody: review.content || "",
+        reviewRating: { "@type": "Rating", ratingValue: (review.rating || 5).toString() }
+      }));
+    }
+  } catch (err) {
+    logToolSectionError(tool.slug, 'reviews', err);
+    jsonLdReviews = [];
+  }
 
-  const jsonLdReviews = reviews?.map((review: any) => ({
-    "@type": "Review",
-    author: { "@type": "Person", name: review.profiles?.username || "Anonymous" },
-    datePublished: new Date(review.created_at).toISOString().split('T')[0],
-    reviewBody: review.content,
-    reviewRating: { "@type": "Rating", ratingValue: review.rating.toString() }
-  })) || [];
+  const rawPrice = typeof tool.price === 'string' ? tool.price : '';
+  const priceValue = rawPrice === "From $0" || rawPrice.toLowerCase().includes("free") ? "0.00" : rawPrice.replace(/[^0-9.]/g, "") || "0.00";
 
+  // 8. Safe Structured Data Generation
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "SoftwareApplication",
         name: tool.name,
-        description: tool.description,
-        applicationCategory: "BusinessApplication",
-        operatingSystem: tool.platform,
+        description: tool.description || tool.tagline || "",
+        applicationCategory: category?.name || "BusinessApplication",
+        operatingSystem: tool.platform || "Web-based",
         offers: {
           "@type": "Offer",
-          price: tool.price === "From $0" ? "0.00" : tool.price?.replace(/[^0-9.]/g, "") || "0.00",
+          price: priceValue,
           priceCurrency: "USD",
         },
         aggregateRating: (tool.reviewCount && tool.reviewCount > 0 && tool.rating) ? {
@@ -137,7 +188,7 @@ export default async function ToolPage({ params }: Props) {
         } : undefined,
         review: jsonLdReviews.length > 0 ? jsonLdReviews : undefined,
         url: tool.websiteUrl || `${siteConfig.baseUrl}/tool/${tool.slug}`,
-        image: `${siteConfig.baseUrl}${tool.logoUrl}`,
+        image: tool.logoUrl ? `${siteConfig.baseUrl}${tool.logoUrl}` : undefined,
       },
       {
         "@type": "WebPage",
@@ -152,7 +203,7 @@ export default async function ToolPage({ params }: Props) {
             siteConfig.socialLinks.x,
             siteConfig.socialLinks.facebook,
             siteConfig.socialLinks.youtube
-          ]
+          ].filter(Boolean)
         }
       },
       {
@@ -167,8 +218,8 @@ export default async function ToolPage({ params }: Props) {
           {
             "@type": "ListItem",
             position: 2,
-            name: category?.name || "Category",
-            item: category ? `${siteConfig.baseUrl}/category/${category.slug}` : undefined
+            name: category?.name || "Categories",
+            item: category ? `${siteConfig.baseUrl}/category/${category.slug}` : `${siteConfig.baseUrl}/categories`
           },
           {
             "@type": "ListItem",
@@ -188,8 +239,8 @@ export default async function ToolPage({ params }: Props) {
         <Breadcrumbs
           items={[
             {
-              label: category?.name || "Category",
-              href: category ? `/category/${category.slug}` : undefined,
+              label: category?.name || "Categories",
+              href: category ? `/category/${category.slug}` : "/categories",
             },
             { label: tool.name },
           ]}
@@ -217,18 +268,20 @@ export default async function ToolPage({ params }: Props) {
 
           <PricingPlans tool={tool} plans={tool.pricingPlans} pricing={tool.pricing} />
 
-          <ToolComparisonSection
-            tool={tool}
-            comparisonTools={comparisonTools}
-          />
+          {comparisonTools.length > 0 && (
+            <ToolComparisonSection
+              tool={tool}
+              comparisonTools={comparisonTools}
+            />
+          )}
         </main>
 
         <div className="min-w-0">
           <ToolSidebar
             tool={tool}
             relatedTools={relatedTools}
-            categories={await getAllCategories()}
-            currentCategory={category}
+            categories={categories}
+            currentCategory={category || undefined}
           />
         </div>
       </div>
@@ -240,10 +293,10 @@ export default async function ToolPage({ params }: Props) {
             <h3 className="text-fluid-h3 font-bold tracking-tight mb-6 text-on-surface">Workflows Using {tool.name}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {toolWorkflows.map(w => (
-                <WorkflowCard key={w.slug} title={w.title} tools={w.tools.map(t => {
-                  const fullTool = allTools.find(at => at.name.toLowerCase() === t.toLowerCase());
-                  return { name: t, fullTool, logoUrl: fullTool?.logoUrl };
-                })} icon={w.icon} slug={w.slug} />
+                <WorkflowCard key={w.slug} title={w.title} tools={w.tools.map((t: any) => ({
+                  name: typeof t === 'string' ? t : t?.name || 'AI Tool',
+                  logoUrl: undefined
+                }))} icon={w.icon} slug={w.slug} />
               ))}
             </div>
           </section>
@@ -251,7 +304,7 @@ export default async function ToolPage({ params }: Props) {
 
         {toolGoals.length > 0 && (
           <section>
-            <h3 className="text-fluid-h3 font-bold tracking-tight mb-6 text-on-surface">Related Collections</h3>
+            <h3 className="text-fluid-h3 font-bold tracking-tight mb-6 text-on-surface">Related Goals & Use Cases</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {toolGoals.map(g => (
                 <GoalCard key={g.slug} title={g.title} icon={g.icon} count={g.count} slug={g.slug} />

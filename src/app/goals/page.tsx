@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { PageContainer } from "@/components/layout/PageContainer";
 
 export const metadata: Metadata = {
-  title: "AI Goals & Collections | AIToolsHaven",
+  title: "AI Goals & Solutions | AIToolsHaven",
   description: "Browse AI tools by goal. Whether you want to start a faceless YouTube channel, build AI workflows, or make money online, we have the right tools for you.",
 };
 

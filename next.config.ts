@@ -69,6 +69,25 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/category/text-generation',
+        destination: '/category/ai-writing-tools',
+        permanent: true,
+      },
+      {
+        source: '/category/image-generation',
+        destination: '/category/ai-image-generators',
+        permanent: true,
+      },
+      {
+        source: '/category/video-creation',
+        destination: '/category/ai-video-generators',
+        permanent: true,
+      }
+    ];
+  },
 };
 
 export default nextConfig;

@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { RecommendationResultCard } from "@/components/home/RecommendationResultCard";
-import { getRecommendationsByPersona } from "@/lib/data/tools-service";
+import { fetchRecommendationsAction } from "@/app/actions/recommendations";
 import type { AITool } from "@/lib/types/tool";
 import { ROLES, GOALS } from "@/lib/data/goals";
 import { useRef } from "react";
+
 
 function CustomSelect({ 
   value, 
@@ -91,7 +92,7 @@ export function RecommendationEngine() {
 
     async function fetchRecommendations() {
       try {
-        const results = await getRecommendationsByPersona(role, goal);
+        const results = await fetchRecommendationsAction(role, goal);
         
         if (isMounted) {
           setTimeout(() => {

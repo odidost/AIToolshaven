@@ -5,7 +5,7 @@ import { useAssetManifest } from '@/lib/contexts/AssetManifestContext';
 import { AITool } from '@/lib/types/tool';
 import { getExpectedAssetFilename, getGeneratedSeoMetadata } from '@/lib/utils/assets';
 interface ToolImageProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt' | 'type'> {
-  tool: AITool;
+  tool: { name: string; slug: string; logoUrl?: string; screenshotUrl?: string; imageUrl?: string };
   type: 'logo' | 'screenshot';
   alt?: string;
 }

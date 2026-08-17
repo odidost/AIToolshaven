@@ -4,7 +4,11 @@ import path from 'path';
 import { getAllTools } from '@/lib/data/tools-service';
 import { AssetStatus, AdminToolWithStatus, isPlaceholderUrl, getExpectedAssetFilename, AssetManifest } from '@/lib/utils/assets';
 
-export async function GET() {
+export async function GET(request: Request) {
+  const url = new URL(request.url);
+  const assetFilter = url.searchParams.get('asset');
+  const statusFilter = url.searchParams.get('status');
+
   const tools = await getAllTools(true);
   
   const manifestPath = path.join(process.cwd(), 'public', 'assets', 'manifest.json');
@@ -33,6 +37,10 @@ export async function GET() {
       logoStatus = 'Real';
       const actualFilename = getExpectedAssetFilename(tool.slug, 'logo', uploadedLogoFormat);
       realLogoUrl = `/assets/logos/${actualFilename}`;
+    } else if (tool.logoUrl && tool.logoUrl.startsWith('http')) {
+      // It's a remote URL (likely from scraping), we treat it as real
+      logoStatus = 'Real';
+      realLogoUrl = tool.logoUrl;
     } else if (isPlaceholderUrl(tool.logoUrl)) {
       logoStatus = 'Placeholder';
     } else if (tool.logoUrl && tool.logoUrl.startsWith('/assets/')) {
@@ -46,6 +54,9 @@ export async function GET() {
       screenshotStatus = 'Real';
       const actualFilename = getExpectedAssetFilename(tool.slug, 'screenshot', uploadedScreenshotFormat);
       realScreenshotUrl = `/assets/screenshots/${actualFilename}`;
+    } else if (tool.screenshotUrl && tool.screenshotUrl.startsWith('http')) {
+      screenshotStatus = 'Real';
+      realScreenshotUrl = tool.screenshotUrl;
     } else if (isPlaceholderUrl(tool.screenshotUrl)) {
       screenshotStatus = 'Placeholder';
     } else if (tool.screenshotUrl && tool.screenshotUrl.startsWith('/assets/')) {
@@ -65,5 +76,11 @@ export async function GET() {
     };
   });
 
-  return NextResponse.json(toolsWithStatus);
+  let filteredTools = toolsWithStatus;
+  
+  if (assetFilter === 'logo' && statusFilter === 'manual_required') {
+    filteredTools = filteredTools.filter(t => t.assetStatus.logo !== 'Real');
+  }
+
+  return NextResponse.json(filteredTools);
 }

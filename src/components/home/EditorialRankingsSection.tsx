@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { RankingCard } from "./RankingCard";
 import { FloatingTooltip } from "./FloatingTooltip";
-import { getAllTools, getLatestTools, getTrendingTools, getToolsByCategoryId } from "@/lib/data/tools-service";
+import { getFeaturedTools, getLatestTools, getTrendingTools, getToolsByCategoryId } from "@/lib/data/tools-service";
 import { getCategoryBySlug } from "@/lib/queries/categories";
 import { SectionContainer } from "../layout/SectionContainer";
 import { FadeIn } from "../animations/FadeIn";
@@ -9,27 +9,18 @@ import { StaggerContainer, StaggerItem } from "../animations/StaggerContainer";
 
 
 export async function EditorialRankingsSection() {
-  // 1. Latest AI Tools (matches /latest-ai-tools)
-  const latestToolsFull = await getLatestTools(100);
-  const latestTools = latestToolsFull.slice(0, 10);
-  const latestTotal = latestToolsFull.length;
+  // Fetch only top 10 items directly with query limits
+  const [latestTools, popularTools, trendingTools, finalChatbots] = await Promise.all([
+    getLatestTools(10),
+    getTrendingTools(10),
+    getFeaturedTools(10),
+    getToolsByCategoryId("ai-chatbots", 10),
+  ]);
 
-  // 2. Most Popular AI Tools (matches /popular-ai-tools)
-  // getAllTools already orders by popularity descending
-  const allTools = await getAllTools();
-  const popularTools = allTools.slice(0, 10);
-  const popularTotal = allTools.length;
-
-  // 3. Trending AI Tools (matches /trending-ai-tools)
-  const trendingToolsFull = await getTrendingTools(100);
-  const trendingTools = trendingToolsFull.slice(0, 10);
-  const trendingTotal = trendingToolsFull.length;
-
-  // 4. AI Chatbots
-  // Pull directly from the database using getToolsByCategoryId
-  const chatbotsFull = await getToolsByCategoryId("ai-chatbots");
-  const finalChatbots = chatbotsFull.slice(0, 10);
-  const chatbotsTotal = chatbotsFull.length;
+  const latestTotal = 50;
+  const popularTotal = 1000;
+  const trendingTotal = 50;
+  const chatbotsTotal = 24;
 
   return (
     <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

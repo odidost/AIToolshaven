@@ -37,9 +37,9 @@ export default function ToolComparisonSection({
                 </div>
 
                 <div className="mt-10 grid gap-6 lg:grid-cols-3 relative z-10">
-                    {comparisonTools.map((comparisonTool, idx) => (
+                    {comparisonTools.filter(Boolean).map((comparisonTool, idx) => (
                         <div
-                            key={comparisonTool.id}
+                            key={comparisonTool.id || comparisonTool.slug || idx}
                             className="group relative rounded-[24px] border border-border/50 bg-surface-secondary/30 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-md hover:bg-white overflow-hidden flex flex-col"
                         >
                             {idx === 0 && (

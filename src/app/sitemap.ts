@@ -1,11 +1,12 @@
 import { MetadataRoute } from "next";
-import { getAllTools } from "@/lib/queries/tools";
+import { getSitemapTools } from "@/lib/queries/tools";
 import { getAllCategories } from "@/lib/queries/categories";
 import { comparisons } from "@/lib/comparisons";
 import { siteConfig } from "@/lib/config/site";
 import { goals } from "@/lib/goals";
 import { workflows } from "@/lib/workflows";
 import { articles } from "@/lib/articles";
+import { getAllCuratedAlternatives } from "@/lib/data/alternatives";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const isLocalhost = siteConfig.baseUrl?.includes("localhost");
@@ -14,11 +15,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Ensure no trailing slash for clean appending
   const cleanBase = BASE_URL.endsWith('/') ? BASE_URL.slice(0, -1) : BASE_URL;
 
-  const tools = await getAllTools(false);
+  const validTools = await getSitemapTools();
   const categories = await getAllCategories();
-
-  // Validate tools
-  const validTools = tools.filter(t => t.slug && (!t.status || t.status === "Published"));
   
   // Calculate max lastUpdated across all tools for static pages fallback
   const allDates = validTools
@@ -55,19 +53,59 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...(tool.lastUpdated && { lastModified: new Date(tool.lastUpdated).toISOString() }),
   }));
 
-  // 3. Categories
-  const categoryEntries: MetadataRoute.Sitemap = categories.map(cat => {
-    const catTools = validTools.filter(t => t.category === cat.id || t.category === cat.slug);
+  // 3. Categories (Pillars >= 5 tools)
+  const categoryEntries: MetadataRoute.Sitemap = [];
+  categories.forEach(cat => {
+    if (cat.status && cat.status !== 'Published') return;
+    if (cat.indexable === false) return;
+
+    const catTools = validTools.filter(t => 
+      t.category === cat.id || 
+      t.category === cat.slug ||
+      t.additionalCategories?.includes(cat.id) ||
+      t.additionalCategories?.includes(cat.slug)
+    );
+    
+    if (catTools.length < 5) return; // Strict 5-tool indexability protection
+
     const catDates = catTools.map(t => t.lastUpdated ? new Date(t.lastUpdated).getTime() : 0).filter(d => d > 0);
     const maxDate = catDates.length > 0 ? new Date(Math.max(...catDates)).toISOString() : undefined;
     
-    return {
+    categoryEntries.push({
       url: `${cleanBase}/category/${cat.slug}`,
       ...(maxDate && { lastModified: maxDate }),
-    };
+    });
   });
 
-  // 4. Goals
+  // 4. High-Value Comparisons
+  const compareEntries: MetadataRoute.Sitemap = [];
+  comparisons.forEach(c => {
+    const tool1 = validTools.find(t => t.name.toLowerCase() === c.tool1.name.toLowerCase() || t.slug === c.tool1.name.toLowerCase());
+    const tool2 = validTools.find(t => t.name.toLowerCase() === c.tool2.name.toLowerCase() || t.slug === c.tool2.name.toLowerCase());
+    
+    // Only index comparisons where both tools are published and valid
+    if (!tool1 && !tool2) return;
+
+    const d1 = tool1?.lastUpdated ? new Date(tool1.lastUpdated).getTime() : 0;
+    const d2 = tool2?.lastUpdated ? new Date(tool2.lastUpdated).getTime() : 0;
+    
+    const maxDateNum = Math.max(d1, d2);
+    const maxDate = maxDateNum > 0 ? new Date(maxDateNum).toISOString() : siteMaxDateStr;
+    
+    compareEntries.push({
+      url: `${cleanBase}/compare-tools/${c.slug}`,
+      ...(maxDate && { lastModified: maxDate }),
+    });
+  });
+
+  // 5. Curated Alternatives
+  const curatedAlternatives = getAllCuratedAlternatives();
+  const altEntries: MetadataRoute.Sitemap = curatedAlternatives.map(alt => ({
+    url: `${cleanBase}/alternatives/${alt.slug}`,
+    ...(siteMaxDateStr && { lastModified: siteMaxDateStr }),
+  }));
+
+  // 6. Goals
   const goalEntries: MetadataRoute.Sitemap = goals.map(goal => {
     const goalTools = validTools.filter(t => t.goals?.includes(goal.slug) || t.goals?.includes(goal.title));
     const goalDates = goalTools.map(t => t.lastUpdated ? new Date(t.lastUpdated).getTime() : 0).filter(d => d > 0);
@@ -79,7 +117,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  // 5. Workflows
+  // 7. Workflows
   const workflowEntries: MetadataRoute.Sitemap = workflows.map(workflow => {
     const wfTools = validTools.filter(t => t.workflows?.includes(workflow.slug));
     const wfDates = wfTools.map(t => t.lastUpdated ? new Date(t.lastUpdated).getTime() : 0).filter(d => d > 0);
@@ -91,24 +129,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  // 6. Comparisons
-  const compareEntries: MetadataRoute.Sitemap = comparisons.map(c => {
-    const tool1 = validTools.find(t => t.name === c.tool1.name);
-    const tool2 = validTools.find(t => t.name === c.tool2.name);
-    
-    const d1 = tool1?.lastUpdated ? new Date(tool1.lastUpdated).getTime() : 0;
-    const d2 = tool2?.lastUpdated ? new Date(tool2.lastUpdated).getTime() : 0;
-    
-    const maxDateNum = Math.max(d1, d2);
-    const maxDate = maxDateNum > 0 ? new Date(maxDateNum).toISOString() : undefined;
-    
-    return {
-      url: `${cleanBase}/compare-tools/${c.slug}`,
-      ...(maxDate && { lastModified: maxDate }),
-    };
-  });
-
-  // 7. Articles
+  // 8. Articles
   const articleEntries: MetadataRoute.Sitemap = articles.map(article => ({
     url: `${cleanBase}/blog/${article.slug}`,
     ...(article.date && { lastModified: new Date(article.date).toISOString() }),
@@ -118,10 +139,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const allEntries = [
     ...staticEntries,
     ...categoryEntries,
+    ...compareEntries,
+    ...altEntries,
     ...toolEntries,
     ...goalEntries,
     ...workflowEntries,
-    ...compareEntries,
     ...articleEntries,
   ];
 

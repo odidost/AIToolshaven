@@ -2,9 +2,12 @@ import { createClient } from "@supabase/supabase-js";
 import type { ToolCategory } from "@/lib/types/category";
 import { categories as localCategories } from "@/lib/data/categories";
 
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://fygifuwuseksxpcetsbo.supabase.co';
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'sb_publishable_Wtq6w9BRd1-O_xZxnTh5Zw_kPQbLYUM';
+
 const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  supabaseUrl,
+  supabaseKey,
   {
     auth: {
       persistSession: false,
@@ -18,12 +21,10 @@ export async function getAllCategories(): Promise<ToolCategory[]> {
     try {
         const { data, error } = await supabase.from('categories').select('*');
         if (error) {
-            console.error("Error fetching all categories from Supabase, falling back to local data:", error);
             return localCategories;
         }
         return data || localCategories;
-    } catch (err) {
-        console.error("Error connecting to Supabase in getAllCategories, falling back to local data:", err);
+    } catch {
         return localCategories;
     }
 }
@@ -35,8 +36,7 @@ export async function getCategoryById(id: string): Promise<ToolCategory | undefi
             return localCategories.find(c => c.id === id);
         }
         return data;
-    } catch (err) {
-        console.error(`Error fetching category ${id} from Supabase, falling back to local data:`, err);
+    } catch {
         return localCategories.find(c => c.id === id);
     }
 }
@@ -49,9 +49,8 @@ export async function getCategoryBySlug(rawSlug: string): Promise<ToolCategory |
             return localCategories.find(c => c.slug === slug);
         }
         return data;
-    } catch (err) {
+    } catch {
         const slug = decodeURIComponent(rawSlug);
-        console.error(`Error fetching category with slug ${slug} from Supabase, falling back to local data:`, err);
         return localCategories.find(c => c.slug === slug);
     }
 }

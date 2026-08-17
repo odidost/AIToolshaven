@@ -34,13 +34,13 @@ export function SpotlightBanner() {
         </div>
 
         <h1 className="mt-8 text-fluid-h1 font-black tracking-tight text-on-surface">
-          <span>Discover the Next Gen of </span>
+          <span>Discover & Compare the Best </span>
           <br />
           <HeroTypingText />
         </h1>
 
         <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-on-surface-variant">
-          Your centralized operating system for artificial intelligence. Explore carefully curated tools to write, design, automate, and build faster.
+          The human-curated AI tools directory. Discover, compare, and choose verified artificial intelligence tools to write, code, design, automate, and build faster.
         </p>
 
         <HeroSearchBar />
@@ -83,7 +83,7 @@ export function SpotlightBanner() {
               <div className="text-xs font-medium text-on-surface-variant overflow-hidden h-4 relative w-[220px]">
                 <div className="absolute top-0 left-0 animate-[float-up_10s_infinite]">
                   <div className="h-4 flex items-center">Just added: Claude 3.5 Sonnet</div>
-                  <div className="h-4 flex items-center">15 new tools updated today</div>
+                  <div className="h-4 flex items-center">Verified directory of 1,000 tools</div>
                   <div className="h-4 flex items-center">Trending: Cursor AI Editor</div>
                 </div>
               </div>
@@ -94,16 +94,17 @@ export function SpotlightBanner() {
             {/* Quick Stats */}
             <div className="flex items-center gap-6">
               <div className="flex flex-col gap-0.5 text-left">
-                <span className="text-lg font-black leading-none text-gray-900">5K+</span>
+                <span className="text-lg font-black leading-none text-gray-900">1,000</span>
                 <span className="text-[9px] font-bold tracking-widest text-on-surface-variant uppercase">AI Tools</span>
               </div>
               <div className="flex flex-col gap-0.5 text-left">
-                <span className="text-lg font-black leading-none text-gray-900">40+</span>
+                <span className="text-lg font-black leading-none text-gray-900">20</span>
                 <span className="text-[9px] font-bold tracking-widest text-on-surface-variant uppercase">Categories</span>
               </div>
             </div>
 
           </div>
+
 
       </div>
 

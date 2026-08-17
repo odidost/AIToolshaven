@@ -1,52 +1,113 @@
 [
   {
     "id": "c1",
-    "name": "Text Generation",
-    "slug": "text-generation",
+    "name": "AI Writing Tools",
+    "slug": "ai-writing-tools",
     "icon": "edit_document",
-    "count": 124
+    "count": 124,
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
   },
   {
     "id": "c2",
-    "name": "Image Generation",
-    "slug": "image-generation",
+    "name": "AI Image Generators",
+    "slug": "ai-image-generators",
     "icon": "image",
-    "count": 86
+    "count": 86,
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
   },
   {
     "id": "c3",
-    "name": "Video Creation",
-    "slug": "video-creation",
+    "name": "AI Video Generators",
+    "slug": "ai-video-generators",
     "icon": "movie",
-    "count": 42
+    "count": 42,
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
   },
   {
     "id": "c4",
     "name": "Audio & Voice",
     "slug": "audio-voice",
     "icon": "graphic_eq",
-    "count": 35
+    "count": 35,
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
   },
   {
     "id": "c5",
     "name": "Coding Assistants",
     "slug": "coding-assistants",
     "icon": "code",
-    "count": 58
+    "count": 58,
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
   },
   {
     "id": "c6",
     "name": "Marketing & Sales",
     "slug": "marketing-sales",
     "icon": "campaign",
-    "count": 91
+    "count": 91,
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
   },
   {
     "id": "c7",
     "name": "Productivity",
     "slug": "productivity",
     "icon": "task_alt",
-    "count": 112
+    "count": 112,
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
+  },
+  {
+    "id": "ai-seo-tools",
+    "name": "AI SEO Tools",
+    "slug": "ai-seo-tools",
+    "icon": "search",
+    "count": 0,
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
+  },
+  {
+    "id": "ai-sales-tools",
+    "name": "AI Sales Tools",
+    "slug": "ai-sales-tools",
+    "icon": "point_of_sale",
+    "count": 0,
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
+  },
+  {
+    "id": "ai-social-media",
+    "name": "AI Social Media Tools",
+    "slug": "ai-social-media-tools",
+    "icon": "share",
+    "count": 0,
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
+  },
+  {
+    "id": "ai-voice-generators",
+    "name": "AI Voice Generators",
+    "slug": "ai-voice-generators",
+    "icon": "mic",
+    "count": 0,
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
   },
   {
     "id": "category-1783781229083",
@@ -54,15 +115,22 @@
     "slug": "logo-generators",
     "icon": "category",
     "count": 0,
-    "description": "best logo generators"
+    "description": "best logo generators",
+    "type": "subcategory",
+    "parentId": "c2",
+    "indexable": true,
+    "status": "Published"
   },
   {
-    "id": "ai-chatbots",
+    "id": "b9c74436-f00a-41e0-aee9-6ab15d90d3ec",
     "name": "AI Chatbots",
     "slug": "ai-chatbots",
     "icon": "smart_toy",
     "count": 20,
-    "description": "The best conversational AI agents, LLM assistants, and virtual companions."
+    "description": "The best conversational AI agents, LLM assistants, and virtual companions.",
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
   },
   {
     "id": "ai-agents",
@@ -70,6 +138,112 @@
     "slug": "ai-agents",
     "icon": "smart_toy",
     "count": 0,
-    "description": "Autonomous AI agents that can execute complex, multi-step tasks on your behalf."
+    "description": "Autonomous AI agents that can execute complex, multi-step tasks on your behalf.",
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
+  },
+  {
+    "id": "cat-presentation",
+    "slug": "ai-presentation-makers",
+    "name": "AI Presentation Makers",
+    "description": "Tools that create slide decks using AI.",
+    "count": 20,
+    "icon": "slideshow",
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
+  },
+  {
+    "id": "cat-resume",
+    "slug": "ai-resume-builders",
+    "name": "AI Resume Builders",
+    "description": "AI-powered resume creation and optimization.",
+    "count": 20,
+    "icon": "description",
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
+  },
+  {
+    "id": "cat-meeting",
+    "slug": "ai-meeting-assistants",
+    "name": "AI Meeting Assistants",
+    "description": "AI tools to join, record, and summarize meetings.",
+    "count": 20,
+    "icon": "groups",
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
+  },
+  {
+    "id": "cat-transcription",
+    "slug": "ai-transcription-tools",
+    "name": "AI Transcription Tools",
+    "description": "Convert audio to text with high accuracy using AI.",
+    "count": 20,
+    "icon": "transcribe",
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
+  },
+  {
+    "id": "cat-research",
+    "slug": "ai-research-tools",
+    "name": "AI Research Tools",
+    "description": "Accelerate academic and professional research.",
+    "count": 20,
+    "icon": "science",
+    "type": "category",
+    "indexable": true,
+    "status": "Published"
+  },
+  {
+    "id": "ai-calendar-scheduling",
+    "name": "AI Calendar & Scheduling",
+    "slug": "ai-calendar-scheduling",
+    "icon": "calendar_today",
+    "count": 7,
+    "type": "subcategory",
+    "parentId": "c7",
+    "indexable": true,
+    "status": "Published",
+    "description": "AI tools that optimize calendar schedules, automate meeting booking, and protect focus time."
+  },
+  {
+    "id": "ai-note-taking-knowledge",
+    "name": "AI Note Taking & Knowledge",
+    "slug": "ai-note-taking-knowledge",
+    "icon": "note_alt",
+    "count": 6,
+    "type": "subcategory",
+    "parentId": "c7",
+    "indexable": true,
+    "status": "Published",
+    "description": "AI note taking apps, personal knowledge assistants, and second brain systems."
+  },
+  {
+    "id": "ai-email-productivity",
+    "name": "AI Email Productivity",
+    "slug": "ai-email-productivity",
+    "icon": "mail",
+    "count": 3,
+    "type": "subcategory",
+    "parentId": "c7",
+    "indexable": true,
+    "status": "Published",
+    "description": "Intelligent email assistants, automated inbox management, and rapid AI drafting tools."
+  },
+  {
+    "id": "ai-project-management",
+    "name": "AI Project Management",
+    "slug": "ai-project-management",
+    "icon": "assignment",
+    "count": 3,
+    "type": "subcategory",
+    "parentId": "c7",
+    "indexable": true,
+    "status": "Published",
+    "description": "AI project management platforms, workflow orchestration, and automated sprint planners."
   }
 ]

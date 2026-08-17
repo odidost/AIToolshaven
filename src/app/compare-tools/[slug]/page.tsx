@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { getToolBySlug, getToolsByCategoryId } from "@/lib/data/tools-service";
 import { getCategoryById } from "@/lib/queries/categories";
+import { siteConfig } from "@/lib/config/site";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { PageContainer } from "@/components/layout/PageContainer";
 
@@ -31,6 +32,8 @@ type Props = {
 
 export const revalidate = 604800; // 1 week
 
+import { comparisons } from "@/lib/comparisons";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   
@@ -57,18 +60,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     compareTool = otherTools[0] || null;
   }
 
+  const canonicalSlug = compareTool
+    ? [mainToolSlug, compareToolSlug].sort().join('-vs-')
+    : slug;
+
+  const curated = comparisons.find(c => c.slug === slug || c.slug === canonicalSlug || c.slug === `${compareToolSlug}-vs-${mainToolSlug}`);
+
   const title = compareTool
-    ? `${mainTool.name} vs ${compareTool.name}: Full Comparison | AIToolsHaven`
+    ? `${mainTool.name} vs ${compareTool.name}: Side-by-Side AI Comparison | AIToolsHaven`
     : `${mainTool.name} Comparison | AIToolsHaven`;
 
-  const description = compareTool
-    ? `Compare ${mainTool.name} and ${compareTool.name} side-by-side. See pricing, features, pros & cons, and decide which AI tool is right for you.`
+  const description = curated?.description
+    ? `Compare ${mainTool.name} and ${compareTool?.name}. ${curated.description} Detailed feature matrix, pricing, and pros & cons.`
+    : compareTool
+    ? `Compare ${mainTool.name} and ${compareTool.name} side-by-side. See verified pricing, core features, pros & cons, and workflow recommendations.`
     : `Compare ${mainTool.name} with other AI tools on AIToolsHaven.`;
 
   return {
     title,
     description,
-    openGraph: { title, description, type: "website" },
+    alternates: {
+      canonical: `${siteConfig.baseUrl}/compare-tools/${canonicalSlug}`,
+    },
+    openGraph: { title, description, type: "website", url: `${siteConfig.baseUrl}/compare-tools/${canonicalSlug}` },
     twitter: { card: "summary_large_image", title, description },
   };
 }

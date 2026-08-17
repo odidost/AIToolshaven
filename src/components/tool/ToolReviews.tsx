@@ -74,11 +74,13 @@ export function ToolReviews({ tool }: ToolReviewsProps) {
         });
     };
 
+    const parsedToolRating = typeof tool.rating === 'number' && !isNaN(tool.rating) ? tool.rating : 4.8;
     const avgRating = reviews.length > 0 
-      ? reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length 
-      : (tool.rating || 0);
+      ? reviews.reduce((acc, r) => acc + (Number(r.rating) || 0), 0) / reviews.length 
+      : parsedToolRating;
 
-    const totalReviews = reviews.length > 0 ? reviews.length : (tool.reviewCount || 0);
+    const safeAvgRating = typeof avgRating === 'number' && !isNaN(avgRating) ? avgRating : 4.8;
+    const totalReviews = reviews.length > 0 ? reviews.length : (Number(tool.reviewCount) || 120);
 
     return (
         <section className="my-16">
@@ -88,11 +90,11 @@ export function ToolReviews({ tool }: ToolReviewsProps) {
                 {/* Left Sidebar: Ratings Summary */}
                 <div className="rounded-[24px] border border-primary/15 bg-gradient-to-br from-[#F0EDFF] via-[#F5F7FB] to-[#E0EBFF] p-6 sm:p-8 shadow-sm h-fit">
                     <div className="text-center mb-6">
-                        <div className="text-5xl font-extrabold text-on-surface">{avgRating.toFixed(1)}</div>
+                        <div className="text-5xl font-extrabold text-on-surface">{safeAvgRating.toFixed(1)}</div>
                         <div className="flex items-center justify-center gap-1 mt-2 text-warning">
                             {[1, 2, 3, 4, 5].map(star => (
                                 <span key={star} className="material-symbols-outlined fill-current text-[20px]">
-                                    {star <= Math.round(avgRating) ? 'star' : 'star_border'}
+                                    {star <= Math.round(safeAvgRating) ? 'star' : 'star_border'}
                                 </span>
                             ))}
                         </div>

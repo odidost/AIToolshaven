@@ -32,7 +32,7 @@ export const goals = [
         icon: "code",
         count: 16,
         description:
-            "Launch apps, websites, and SaaS products by letting AI handle the heavy lifting of writing code.",
+            "Build full-stack software, web applications, and interactive prototypes with AI coding assistants, prompt-to-app generators, and autonomous developer workflows.",
     },
 
     {
@@ -51,5 +51,23 @@ export const goals = [
         count: 29,
         description:
             "Explore tools that actually help freelancers, creators, and agencies increase their income online.",
+    },
+
+    {
+        title: "AI for Marketing Agencies",
+        slug: "ai-for-marketing-agencies",
+        icon: "campaign",
+        count: 28,
+        description:
+            "Scale client copy, ad creative, multi-channel campaigns, and SEO deliverables using agency-grade AI toolstacks.",
+    },
+
+    {
+        title: "AI for Academic Research",
+        slug: "ai-for-academic-research",
+        icon: "school",
+        count: 22,
+        description:
+            "Accelerate literature reviews, paper syntheses, data extraction, and journal manuscript proofreading with verified academic AI tools.",
     },
 ];
