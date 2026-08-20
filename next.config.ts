@@ -85,6 +85,11 @@ const nextConfig: NextConfig = {
         source: '/category/video-creation',
         destination: '/category/ai-video-generators',
         permanent: true,
+      },
+      {
+        source: '/insight-engine',
+        destination: '/ai-tool-recommender',
+        permanent: true,
       }
     ];
   },

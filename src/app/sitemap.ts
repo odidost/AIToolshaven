@@ -8,6 +8,8 @@ import { workflows } from "@/lib/workflows";
 import { articles } from "@/lib/articles";
 import { getAllCuratedAlternatives } from "@/lib/data/alternatives";
 
+import { categoryGuides } from "@/content/categories";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const isLocalhost = siteConfig.baseUrl?.includes("localhost");
   const BASE_URL = isLocalhost ? "https://aitoolshaven.com" : (siteConfig.baseUrl || "https://aitoolshaven.com");
@@ -33,6 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/about",
     "/contact",
     "/categories",
+    "/ai-tool-recommender",
     "/compare-tools",
     "/goals",
     "/workflows",
@@ -53,11 +56,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...(tool.lastUpdated && { lastModified: new Date(tool.lastUpdated).toISOString() }),
   }));
 
-  // 3. Categories (Pillars >= 5 tools)
+  // 3. Categories (Pillars & Dedicated Guides)
   const categoryEntries: MetadataRoute.Sitemap = [];
   categories.forEach(cat => {
     if (cat.status && cat.status !== 'Published') return;
     if (cat.indexable === false) return;
+
+    const hasGuide = Boolean(categoryGuides[cat.slug] || categoryGuides[cat.id]);
 
     const catTools = validTools.filter(t => 
       t.category === cat.id || 
@@ -66,10 +71,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       t.additionalCategories?.includes(cat.slug)
     );
     
-    if (catTools.length < 5) return; // Strict 5-tool indexability protection
+    // Include if the category has an editorial pillar guide OR has tools
+    if (!hasGuide && catTools.length < 3) return;
 
     const catDates = catTools.map(t => t.lastUpdated ? new Date(t.lastUpdated).getTime() : 0).filter(d => d > 0);
-    const maxDate = catDates.length > 0 ? new Date(Math.max(...catDates)).toISOString() : undefined;
+    const maxDate = catDates.length > 0 ? new Date(Math.max(...catDates)).toISOString() : siteMaxDateStr;
     
     categoryEntries.push({
       url: `${cleanBase}/category/${cat.slug}`,

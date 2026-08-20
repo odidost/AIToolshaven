@@ -280,6 +280,7 @@ export function normalizeTool(raw: any, localFallback?: any): AITool {
     pricing,
     verified: Boolean(data.verified ?? local.verified),
     featured: Boolean(data.featured ?? local.featured),
+    isSponsored: Boolean(data.isSponsored ?? data.is_sponsored ?? local.isSponsored ?? local.is_sponsored),
     popularity,
     pros,
     cons,

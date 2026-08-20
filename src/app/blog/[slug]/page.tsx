@@ -5,8 +5,10 @@ import { articles } from "@/lib/articles";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { StructuredData } from "@/components/shared/StructuredData";
 import { siteConfig } from "@/lib/config/site";
-import { BlogNewsletterForm } from "@/components/blog/BlogNewsletterForm";
 import { SocialLinks } from "@/components/shared/SocialLinks";
+import { FeaturedArticleTools } from "@/components/blog/FeaturedArticleTools";
+import { ArticleHeroVisual } from "@/components/blog/ArticleHeroVisual";
+import { getToolsBySlugs } from "@/lib/data/tools-service";
 
 type Props = {
   params: Promise<{
@@ -28,15 +30,46 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Article Not Found | AIToolsHaven" };
   }
 
+  const previewImg = article.imageUrl || siteConfig.ogImage;
+
   return {
     title: `${article.title} | AIToolsHaven Blog`,
     description: article.summary,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    alternates: {
+      canonical: `${siteConfig.baseUrl}/blog/${article.slug}`,
+    },
     openGraph: {
       title: article.title,
       description: article.summary,
       type: "article",
+      url: `${siteConfig.baseUrl}/blog/${article.slug}`,
       publishedTime: new Date(article.date).toISOString(),
       authors: [article.author],
+      images: [
+        {
+          url: previewImg,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.summary,
+      images: [previewImg],
     },
   };
 }
@@ -49,37 +82,108 @@ export default async function ArticlePage({ params }: Props) {
     notFound();
   }
 
-  const relatedArticles = articles
-    .filter((a) => a.slug !== slug)
-    .slice(0, 3);
+  const sameCategory = articles.filter(
+    (a) => a.slug !== slug && a.category.toLowerCase() === article.category.toLowerCase()
+  );
+  const otherCategory = articles.filter(
+    (a) => a.slug !== slug && a.category.toLowerCase() !== article.category.toLowerCase()
+  );
+  const relatedArticles = [...sameCategory, ...otherCategory].slice(0, 4);
+
+  // Extract all mentioned tool slugs from article.content
+  const toolSlugMatches = Array.from(article.content.matchAll(/href="\/tool\/([a-zA-Z0-9_-]+)"/g));
+  const mentionedToolSlugs = Array.from(new Set(toolSlugMatches.map((m) => m[1]))).slice(0, 6);
+  
+  let mentionedTools: any[] = [];
+  if (mentionedToolSlugs.length > 0) {
+    try {
+      mentionedTools = await getToolsBySlugs(mentionedToolSlugs);
+    } catch (e) {
+      console.error("Error loading mentioned tools for article", e);
+      mentionedTools = [];
+    }
+  }
+
+  const articleUrl = `${siteConfig.baseUrl}/blog/${slug}`;
+  const articleImageUrl = article.imageUrl.startsWith("http")
+    ? article.imageUrl
+    : `${siteConfig.baseUrl}${article.imageUrl}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: article.title,
-    description: article.summary,
-    author: {
-      "@type": "Person",
-      name: article.author,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "AIToolsHaven",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://aitoolshaven.com/assets/logo.png"
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": `${articleUrl}#article`,
+        isPartOf: {
+          "@type": "WebPage",
+          "@id": articleUrl,
+        },
+        headline: article.title,
+        description: article.summary,
+        inLanguage: "en-US",
+        mainEntityOfPage: articleUrl,
+        datePublished: new Date(article.date).toISOString(),
+        dateModified: new Date(article.date).toISOString(),
+        author: {
+          "@type": "Person",
+          name: article.author,
+          url: `${siteConfig.baseUrl}/about`,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: siteConfig.name,
+          url: siteConfig.baseUrl,
+          logo: {
+            "@type": "ImageObject",
+            url: `${siteConfig.baseUrl}/assets/logo.png`,
+          },
+          sameAs: [
+            siteConfig.socialLinks.x,
+            siteConfig.socialLinks.facebook,
+            siteConfig.socialLinks.youtube,
+          ].filter(Boolean),
+        },
+        image: {
+          "@type": "ImageObject",
+          url: articleImageUrl,
+          caption: article.title,
+        },
+        articleSection: article.category,
+        keywords: [
+          article.category,
+          "AI Tools",
+          "B2B Sales",
+          "Artificial Intelligence",
+          "Workflow Automation",
+          "Tech Stack 2026",
+        ],
       },
-      sameAs: [
-        siteConfig.socialLinks.x,
-        siteConfig.socialLinks.facebook,
-        siteConfig.socialLinks.youtube
-      ]
-    },
-    datePublished: new Date(article.date).toISOString(),
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://aitoolshaven.com/blog/${slug}`
-    }
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${articleUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: siteConfig.baseUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Blog",
+            item: `${siteConfig.baseUrl}/blog`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: article.title,
+            item: articleUrl,
+          },
+        ],
+      },
+    ],
   };
 
   return (
@@ -111,12 +215,12 @@ export default async function ArticlePage({ params }: Props) {
               {article.title}
             </h1>
             
-            {/* Featured Image */}
-            <div className="relative w-full h-[200px] sm:h-[300px] md:h-[380px] rounded-2xl overflow-hidden mb-8 border border-outline bg-surface shadow-sm">
+            {/* Featured Visual Banner */}
+            <div className="relative w-full h-[220px] sm:h-[320px] md:h-[400px] rounded-3xl overflow-hidden mb-8 border border-outline bg-surface shadow-sm group">
               <img 
                 src={article.imageUrl} 
                 alt={article.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
             
@@ -141,9 +245,22 @@ export default async function ArticlePage({ params }: Props) {
 
           {/* Article Body */}
           <div 
-            className="prose prose-purple max-w-none text-on-surface-variant leading-relaxed space-y-6 mb-12"
+            className="prose prose-lg prose-slate max-w-none text-on-surface-variant/90 leading-[1.9] space-y-7 mb-12 
+              [&>p]:text-[17px] [&>p]:leading-[1.9] [&>p]:mb-6 [&>p]:font-normal
+              [&>h2]:text-2xl [&>h2]:sm:text-3xl [&>h2]:font-extrabold [&>h2]:text-on-surface [&>h2]:mt-14 [&>h2]:mb-6 [&>h2]:pt-6 [&>h2]:border-t [&>h2]:border-outline/50
+              [&>h3]:text-xl [&>h3]:sm:text-2xl [&>h3]:font-bold [&>h3]:text-on-surface [&>h3]:mt-10 [&>h3]:mb-4
+              [&>ul]:space-y-3 [&>ul]:my-6 [&>ul]:pl-6
+              [&>ol]:space-y-3 [&>ol]:my-6 [&>ol]:pl-6
+              [&>li]:text-[16.5px] [&>li]:leading-[1.8]
+              [&_strong]:text-on-surface [&_strong]:font-bold
+              [&_a]:text-primary [&_a]:font-semibold [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary/80"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
+
+          {/* Featured Tools Mentioned in this Guide */}
+          {mentionedTools.length > 0 && (
+            <FeaturedArticleTools tools={mentionedTools} />
+          )}
 
           {/* Social CTA */}
           <div className="mt-12 pt-8 border-t border-outline">
@@ -159,15 +276,6 @@ export default async function ArticlePage({ params }: Props) {
 
         {/* Sidebar */}
         <aside className="space-y-8 lg:sticky lg:top-24">
-          {/* Newsletter Box */}
-          <div className="bg-primary-container/20 border border-primary/20 rounded-3xl p-6 md:p-8">
-            <span className="material-symbols-outlined text-4xl text-primary mb-4 block">mail</span>
-            <h3 className="text-xl font-bold text-on-surface mb-2">Subscribe to Roundup</h3>
-            <p className="text-sm text-on-surface-variant mb-6">
-              Get the best new AI tools and automated workflows sent to your inbox weekly.
-            </p>
-            <BlogNewsletterForm />
-          </div>
 
           {/* Related Articles */}
           {relatedArticles.length > 0 && (

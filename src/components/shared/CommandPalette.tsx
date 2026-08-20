@@ -109,7 +109,12 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
         setSelectedIndex((prev) => (prev > 0 ? prev - 1 : 0));
       } else if (e.key === "Enter" && results[selectedIndex]) {
         e.preventDefault();
-        router.push(`/tool/${results[selectedIndex].slug}`);
+        const selected = results[selectedIndex];
+        if (selected.type === "category" || selected.url) {
+          router.push(selected.url || `/category/${selected.slug}`);
+        } else {
+          router.push(`/tool/${selected.slug}`);
+        }
         setIsOpen(false);
       }
     };
@@ -117,6 +122,15 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, results, selectedIndex, router]);
+
+  const quickPills = [
+    { label: "🤖 AI Agents", query: "agents" },
+    { label: "✉️ Email", query: "email" },
+    { label: "📊 Project Management", query: "project management" },
+    { label: "🎬 Video Creation", query: "video" },
+    { label: "🎨 Image Generation", query: "image" },
+    { label: "💻 Coding Assistants", query: "coding" },
+  ];
 
   if (!isOpen) {
     return (
@@ -126,7 +140,7 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
       >
         <div className="flex items-center gap-2">
           <span className="material-symbols-outlined text-xl">search</span>
-          <span>Search AI tools...</span>
+          <span>Search AI tools, categories &amp; guides...</span>
         </div>
         <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 bg-surface-container rounded-md text-xs font-mono font-medium border border-outline">
           <span className="text-sm">⌘</span>K
@@ -139,14 +153,14 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
     <>
       {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 transition-opacity"
+        className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 transition-opacity"
         onClick={() => setIsOpen(false)}
       />
       
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 pointer-events-none">
         <div 
-          className="w-full max-w-2xl bg-card rounded-2xl shadow-2xl shadow-primary/10 border border-border overflow-hidden pointer-events-auto flex flex-col max-h-[80vh] ring-1 ring-border/50"
+          className="w-full max-w-2xl bg-card rounded-2xl shadow-2xl shadow-primary/10 border border-border overflow-hidden pointer-events-auto flex flex-col max-h-[85vh] ring-1 ring-border/50"
           onClick={e => e.stopPropagation()}
         >
           {/* Search Input */}
@@ -156,7 +170,7 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
               ref={inputRef}
               type="text"
               className="flex-1 bg-transparent text-lg focus:outline-none placeholder:text-slate-400"
-              placeholder="Search tools, categories, or tags..."
+              placeholder="Search tools, categories, or guides..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -167,62 +181,97 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
             )}
             <button 
               onClick={() => setIsOpen(false)}
-              className="p-1 hover:bg-slate-100 rounded-md transition-colors"
+              className="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors"
             >
               <kbd className="px-2 py-1 bg-surface-container rounded-md text-xs font-mono border border-outline text-slate-500">ESC</kbd>
             </button>
           </div>
 
+          {/* Quick Suggestion Chips (when search is empty) */}
+          {search === "" && (
+            <div className="px-4 py-3 bg-surface-container-low border-b border-outline/40">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">
+                Popular Categories &amp; Workflows
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {quickPills.map((pill) => (
+                  <button
+                    key={pill.label}
+                    onClick={() => setSearch(pill.query)}
+                    className="px-2.5 py-1 rounded-lg bg-surface hover:bg-primary/10 hover:text-primary hover:border-primary/30 border border-outline/60 text-xs font-semibold text-on-surface-variant transition-all duration-200"
+                  >
+                    {pill.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Results */}
           <div className="overflow-y-auto p-2">
-            {search === "" && results.length === 0 ? (
-              <div className="p-8 text-center text-on-surface-variant flex flex-col items-center gap-3">
-                <span className="material-symbols-outlined text-4xl opacity-50">magic_button</span>
-                <p>Type to search for amazing AI tools.</p>
-              </div>
-            ) : results.length === 0 ? (
+            {search !== "" && results.length === 0 && !isLoading ? (
               <div className="p-8 text-center text-on-surface-variant">
-                No results found for &quot;{search}&quot;.
+                No results found for &quot;{search}&quot;. Try searching for a category like &quot;video&quot; or &quot;email&quot;.
               </div>
             ) : (
               <div className="space-y-1">
-                {results.map((tool, index) => (
-                  <div
-                    key={tool.id || tool.slug}
-                    className={`flex items-center gap-4 p-3 rounded-xl cursor-pointer transition-colors ${
-                      index === selectedIndex 
-                        ? "bg-primary-container border border-primary/20" 
-                        : "hover:bg-surface border border-transparent"
-                    }`}
-                    onClick={() => {
-                      router.push(`/tool/${tool.slug}`);
-                      setIsOpen(false);
-                    }}
-                    onMouseEnter={() => setSelectedIndex(index)}
-                  >
-                    <ToolImage tool={tool as any} type="logo" className="w-8 h-8 rounded border border-border object-contain bg-surface" />
-                    <div className="flex-1 overflow-hidden">
-                      <div className="flex items-center gap-2">
-                        <h4 className={`font-bold truncate ${index === selectedIndex ? "text-primary" : "text-on-surface"}`}>
-                          {tool.name}
-                        </h4>
-                        {tool.priceModel && (
-                          <span className="px-2 py-0.5 bg-surface rounded-md text-[10px] uppercase font-bold text-slate-500 border border-outline">
-                            {tool.priceModel}
-                          </span>
-                        )}
+                {results.map((item, index) => {
+                  const isCategory = item.type === "category";
+
+                  return (
+                    <div
+                      key={item.id || item.slug}
+                      className={`flex items-center gap-4 p-3 rounded-xl cursor-pointer transition-colors ${
+                        index === selectedIndex 
+                          ? "bg-primary-container border border-primary/20" 
+                          : "hover:bg-surface border border-transparent"
+                      }`}
+                      onClick={() => {
+                        if (isCategory || item.url) {
+                          router.push(item.url || `/category/${item.slug}`);
+                        } else {
+                          router.push(`/tool/${item.slug}`);
+                        }
+                        setIsOpen(false);
+                      }}
+                      onMouseEnter={() => setSelectedIndex(index)}
+                    >
+                      {isCategory ? (
+                        <div className="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 flex items-center justify-center shrink-0">
+                          <span className="material-symbols-outlined text-xl">{item.icon || "auto_awesome"}</span>
+                        </div>
+                      ) : (
+                        <ToolImage tool={item as any} type="logo" className="w-8 h-8 rounded border border-border object-contain bg-surface shrink-0" />
+                      )}
+
+                      <div className="flex-1 overflow-hidden">
+                        <div className="flex items-center gap-2">
+                          <h4 className={`font-bold truncate ${index === selectedIndex ? "text-primary" : "text-on-surface"}`}>
+                            {item.name}
+                          </h4>
+                          {isCategory ? (
+                            <span className="px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-md text-[10px] uppercase font-extrabold tracking-wider border border-indigo-500/20">
+                              Guide &amp; Directory
+                            </span>
+                          ) : item.priceModel ? (
+                            <span className="px-2 py-0.5 bg-surface rounded-md text-[10px] uppercase font-bold text-slate-500 border border-outline">
+                              {item.priceModel}
+                            </span>
+                          ) : null}
+                        </div>
+                        <p className="text-xs text-on-surface-variant truncate">
+                          {item.tagline}
+                        </p>
                       </div>
-                      <p className="text-xs text-on-surface-variant truncate">
-                        {tool.tagline}
-                      </p>
+
+                      {index === selectedIndex && (
+                        <span className="material-symbols-outlined text-primary text-sm">
+                          keyboard_return
+                        </span>
+                      )}
                     </div>
-                    {index === selectedIndex && (
-                      <span className="material-symbols-outlined text-primary">
-                        keyboard_return
-                      </span>
-                    )}
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>

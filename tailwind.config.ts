@@ -6,6 +6,7 @@ export default {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/content/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -70,7 +71,10 @@ export default {
         ring: 'var(--ring)',
       },
       fontFamily: {
-        sans: ['var(--font-plus-jakarta)', 'sans-serif'],
+        sans: ['var(--font-figtree)', 'Figtree', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-plus-jakarta)', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        figtree: ['var(--font-figtree)', 'Figtree', 'system-ui', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
       borderRadius: {
         xl: '0.75rem',

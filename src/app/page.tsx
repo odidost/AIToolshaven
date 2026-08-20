@@ -13,7 +13,6 @@ import { WorkflowCard } from "@/components/home/WorkflowCard";
 import { OpportunityCard } from "@/components/home/OpportunityCard";
 import { ComparisonCard } from "@/components/home/ComparisonCard";
 import { ArticleCard } from "@/components/home/ArticleCard";
-import { NewsletterCTA } from "@/components/home/NewsletterCTA";
 import { ToolCard } from "@/components/shared/ToolCard";
 import { SocialLinks } from "@/components/shared/SocialLinks";
 
@@ -223,7 +222,7 @@ export default async function Home() {
             </Link>
           </div>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 relative z-10" staggerChildren={0.15}>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" staggerChildren={0.15}>
             {workflows.map((workflow) => (
               <StaggerItem key={workflow.slug} direction="up">
                 <WorkflowCard
@@ -233,11 +232,16 @@ export default async function Home() {
                     return {
                       name: t,
                       logoUrl: toolLogos[t.toLowerCase()] || undefined,
+                      slug: fullTool?.slug || t.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
                       fullTool
                     };
                   })}
                   icon={workflow.icon}
                   slug={workflow.slug}
+                  description={workflow.description}
+                  audience={workflow.audience}
+                  meta={workflow.meta}
+                  color={workflow.color}
                 />
               </StaggerItem>
             ))}
@@ -339,12 +343,7 @@ export default async function Home() {
         <SubmitToolCTA />
       </div>
 
-      {/* 13. Newsletter CTA */}
-      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-        <NewsletterCTA />
-      </div>
-
-      {/* 14. Social CTA */}
+      {/* 13. Social CTA */}
       <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-16 text-center flex flex-col items-center">
         <h3 className="text-fluid-h3 font-black text-slate-900 tracking-tight mb-3">
           Follow AIToolsHaven

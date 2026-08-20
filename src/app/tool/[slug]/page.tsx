@@ -54,19 +54,41 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const desc = tool.description || tool.tagline || `Learn more about ${tool.name} on ${siteConfig.name}.`;
+  const previewImg = tool.screenshotUrl || tool.logoUrl || siteConfig.ogImage;
 
   return {
     title: `${tool.name} Reviews, Pricing & Features | ${siteConfig.name}`,
     description: desc,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
       title: `${tool.name} | ${siteConfig.name}`,
       description: desc,
       type: "website",
+      url: `${siteConfig.baseUrl}/tool/${tool.slug}`,
+      images: [
+        {
+          url: previewImg,
+          width: 1200,
+          height: 630,
+          alt: `${tool.name} AI Tool Overview`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${tool.name} | ${siteConfig.name}`,
       description: desc,
+      images: [previewImg],
     },
     alternates: {
       canonical: `${siteConfig.baseUrl}/tool/${tool.slug}`,
@@ -166,6 +188,19 @@ export default async function ToolPage({ params }: Props) {
   const rawPrice = typeof tool.price === 'string' ? tool.price : '';
   const priceValue = rawPrice === "From $0" || rawPrice.toLowerCase().includes("free") ? "0.00" : rawPrice.replace(/[^0-9.]/g, "") || "0.00";
 
+  const toolFaqSchema = tool.editorial?.faqs && tool.editorial.faqs.length > 0 ? {
+    "@type": "FAQPage",
+    "@id": `${siteConfig.baseUrl}/tool/${tool.slug}#faq`,
+    mainEntity: tool.editorial.faqs.map((f: any) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer,
+      },
+    })),
+  } : null;
+
   // 8. Safe Structured Data Generation
   const jsonLd = {
     "@context": "https://schema.org",
@@ -227,7 +262,8 @@ export default async function ToolPage({ params }: Props) {
             name: tool.name
           }
         ]
-      }
+      },
+      ...(toolFaqSchema ? [toolFaqSchema] : [])
     ]
   };
 
@@ -293,10 +329,21 @@ export default async function ToolPage({ params }: Props) {
             <h3 className="text-fluid-h3 font-bold tracking-tight mb-6 text-on-surface">Workflows Using {tool.name}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {toolWorkflows.map(w => (
-                <WorkflowCard key={w.slug} title={w.title} tools={w.tools.map((t: any) => ({
-                  name: typeof t === 'string' ? t : t?.name || 'AI Tool',
-                  logoUrl: undefined
-                }))} icon={w.icon} slug={w.slug} />
+                <WorkflowCard 
+                  key={w.slug} 
+                  title={w.title} 
+                  tools={w.tools.map((t: any) => ({
+                    name: typeof t === 'string' ? t : t?.name || 'AI Tool',
+                    logoUrl: undefined,
+                    slug: typeof t === 'string' ? t.toLowerCase().replace(/[^a-z0-9]+/g, '-') : (t?.slug || 'ai-tool')
+                  }))} 
+                  icon={w.icon} 
+                  slug={w.slug} 
+                  description={w.description}
+                  audience={w.audience}
+                  meta={w.meta}
+                  color={w.color}
+                />
               ))}
             </div>
           </section>

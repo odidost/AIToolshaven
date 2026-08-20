@@ -57,11 +57,16 @@ export default async function WorkflowsIndexPage() {
                   return {
                     name: t,
                     logoUrl: toolLogos[t.toLowerCase()] || undefined,
+                    slug: fullTool?.slug || t.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
                     fullTool
                   };
                 })}
                 icon={workflow.icon}
                 slug={workflow.slug}
+                description={workflow.description}
+                audience={workflow.audience}
+                meta={workflow.meta}
+                color={workflow.color}
               />
             ))}
           </div>

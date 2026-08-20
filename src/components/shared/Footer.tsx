@@ -6,10 +6,10 @@ import { SocialLinks } from './SocialLinks';
 const footerLinks = {
   "Explore": [
     { label: "All Tools", href: "/categories" },
-    { label: "Text Generation", href: "/category/text-generation" },
-    { label: "Image Generation", href: "/category/image-generation" },
-    { label: "Coding Assistants", href: "/category/coding-assistants" },
-    { label: "Marketing & Sales", href: "/category/marketing-sales" },
+    { label: "AI Tool Recommender", href: "/ai-tool-recommender" },
+    { label: "AI Workflows", href: "/workflows" },
+    { label: "Compare Tools", href: "/compare-tools" },
+    { label: "Trending Tools", href: "/trending-ai-tools" },
   ],
   "Company": [
     { label: "About Us", href: "/about" },

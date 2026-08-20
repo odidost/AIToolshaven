@@ -24,7 +24,7 @@ const supabase = createClient(
 const isValidTool = (t: AITool) => t && t.name && t.name.trim() !== '' && t.name !== 'Untitled AI Tool';
 
 export const TOOL_CARD_FIELDS = 'id, name, slug, tagline, category_id, price_model, price, rating, review_count, logo_url, screenshot_url, image_url, verified, featured, popularity, status, tags';
-export const TOOL_SEARCH_FIELDS = 'id, name, slug, description, category_id, logo_url, popularity, status, tags';
+export const TOOL_SEARCH_FIELDS = 'id, name, slug, tagline, description, category_id, logo_url, price_model, price, popularity, status, tags';
 export const TOOL_COMPARISON_FIELDS = 'id, name, slug, logo_url, status, category_id';
 
 // Fast In-Memory Indexes for zero-repetition lookups
@@ -355,37 +355,91 @@ export async function getToolsByRecommendationTag(tag: string): Promise<AITool[]
 
 export async function getRecommendationsByPersona(role: string, goal: string): Promise<AITool[]> {
     const allTools = await getAllTools();
-    const roleLower = role.toLowerCase();
-    const goalLower = goal.toLowerCase();
+    const roleLower = (role || '').trim().toLowerCase();
+    const goalLower = (goal || '').trim().toLowerCase();
+    const goalTokens = goalLower.split(/\s+/).filter(t => t.length > 2);
+    
+    // Load category affinities
+    const { ROLE_METADATA } = await import('@/lib/data/goals');
+    const meta = ROLE_METADATA[role] || { categoryAffinities: [] };
+    const affinities = (meta.categoryAffinities || []).map(c => c.toLowerCase());
 
-    return allTools.filter(t => {
-        const matchesRole = t.bestFor?.some(b => b.toLowerCase().includes(roleLower));
-        
-        const matchesGoal = 
-            t.useCases?.some(u => { const val = typeof u === 'string' ? u : u.title; return val.toLowerCase().includes(goalLower) || goalLower.includes(val.toLowerCase()); }) ||
-            t.goals?.some(g => g.toLowerCase().replace(/-/g, ' ').includes(goalLower) || goalLower.includes(g.toLowerCase().replace(/-/g, ' '))) ||
-            t.tags?.some(tag => tag.toLowerCase().includes(goalLower) || goalLower.includes(tag.toLowerCase()));
-        
-        return matchesRole && matchesGoal;
-    }).sort((a, b) => {
-        const aMatchesRole = a.bestFor?.some(b => b.toLowerCase().includes(roleLower));
-        const aMatchesGoal = a.useCases?.some(u => { const val = typeof u === 'string' ? u : u.title; return val.toLowerCase().includes(goalLower) || goalLower.includes(val.toLowerCase()); }) ||
-            a.goals?.some(g => g.toLowerCase().replace(/-/g, ' ').includes(goalLower) || goalLower.includes(g.toLowerCase().replace(/-/g, ' '))) ||
-            a.tags?.some(tag => tag.toLowerCase().includes(goalLower) || goalLower.includes(tag.toLowerCase()));
-            
-        const bMatchesRole = b.bestFor?.some(b => b.toLowerCase().includes(roleLower));
-        const bMatchesGoal = b.useCases?.some(u => { const val = typeof u === 'string' ? u : u.title; return val.toLowerCase().includes(goalLower) || goalLower.includes(val.toLowerCase()); }) ||
-            b.goals?.some(g => g.toLowerCase().replace(/-/g, ' ').includes(goalLower) || goalLower.includes(g.toLowerCase().replace(/-/g, ' '))) ||
-            b.tags?.some(tag => tag.toLowerCase().includes(goalLower) || goalLower.includes(tag.toLowerCase()));
+    // Score all published tools with multi-signal relevance
+    const scored = allTools
+        .filter(t => t && t.id && (t.status === "Published" || t.status === "published" || !t.status))
+        .map(t => {
+            let score = 0;
+            const catLower = (t.category || '').toLowerCase();
+            const tagsJoined = (t.tags || []).join(' ').toLowerCase();
+            const bestForJoined = (t.bestFor || []).join(' ').toLowerCase();
+            const taglineLower = (t.tagline || '').toLowerCase();
+            const descLower = (t.description || '').toLowerCase();
+            const useCasesJoined = (t.useCases || []).map(u => typeof u === 'string' ? u : `${u.title} ${u.description}`).join(' ').toLowerCase();
+            const goalsJoined = (t.goals || []).join(' ').toLowerCase();
 
-        const aMatchesBoth = (aMatchesRole && aMatchesGoal) ? 1 : 0;
-        const bMatchesBoth = (bMatchesRole && bMatchesGoal) ? 1 : 0;
+            // 1. Role Category Affinity (30-50 pts)
+            const affinityIndex = affinities.indexOf(catLower);
+            if (affinityIndex === 0) score += 50;
+            else if (affinityIndex === 1) score += 40;
+            else if (affinityIndex > 1) score += 30;
 
-        if (aMatchesBoth !== bMatchesBoth) {
-            return bMatchesBoth - aMatchesBoth;
-        }
+            // 2. Role direct mention in bestFor (30 pts)
+            if (bestForJoined.includes(roleLower)) score += 30;
 
-        return (b.popularity || 0) - (a.popularity || 0);
+            // 3. Goal keyword / token match (15-40 pts)
+            if (goalsJoined.includes(goalLower) || useCasesJoined.includes(goalLower)) score += 40;
+            else if (taglineLower.includes(goalLower) || tagsJoined.includes(goalLower)) score += 30;
+
+            let tokenMatches = 0;
+            for (const token of goalTokens) {
+                if (tagsJoined.includes(token) || useCasesJoined.includes(token) || taglineLower.includes(token) || descLower.includes(token)) {
+                    tokenMatches++;
+                    score += 15;
+                }
+            }
+            if (tokenMatches >= 2) score += 20;
+
+            // 4. Quality & Popularity Signals (5-15 pts)
+            if (t.verified) score += 10;
+            if (t.featured) score += 8;
+            if (t.rating && t.rating >= 4.5) score += 5;
+            if (t.popularity) score += Math.min(Math.round(t.popularity / 20), 10);
+
+            return { tool: t, score };
+        })
+        .sort((a, b) => b.score - a.score);
+
+    // Take top distinct candidates
+    let candidates = scored.slice(0, 8).map(s => s.tool);
+
+    // If needed, backfill with high quality tools from same category or trending
+    if (candidates.length < 3) {
+        const fallback = allTools.filter(t => !candidates.some(c => c.id === t.id) && (t.status === "Published" || t.status === "published"));
+        candidates = [...candidates, ...fallback.slice(0, 3 - candidates.length)];
+    }
+
+    const top3 = candidates.slice(0, 3);
+
+    // Enrich with dynamic match score, badges, and contextual AI reasoning
+    const badges = [
+        { badge: "#1 Editorial Top Pick", baseScore: 98, prefix: `Top-rated choice for ${role}s to ${goal.toLowerCase()}.` },
+        { badge: "⚡ Best Speed & Value", baseScore: 95, prefix: `High-efficiency workflow engine with rapid setup.` },
+        { badge: "🛠️ Specialized Power Pick", baseScore: 93, prefix: `Advanced production capabilities for high-volume pipelines.` }
+    ];
+
+    return top3.map((t, index) => {
+        const badgeConfig = badges[index] || badges[0];
+        const matchScore = Math.min(99, badgeConfig.baseScore - index * 2 + (t.verified ? 1 : 0));
+        const reasoning = t.tagline 
+            ? `${badgeConfig.prefix} ${t.tagline}`
+            : `${badgeConfig.prefix} Verified industry standard benchmark winner.`;
+
+        return {
+            ...t,
+            matchScore,
+            recommendationBadge: badgeConfig.badge,
+            aiReasoning: reasoning
+        };
     });
 }
 
@@ -441,7 +495,7 @@ export async function getToolsByCategoryId(categoryId: string, limit: number = 4
             ).slice(0, limit);
         }
     };
-    return safeCache(fetchByCategory, ['tools_by_category', categoryId, limit.toString()], { revalidate: 3600 })();
+    return safeCache(fetchByCategory, ['tools_by_category_v2', categoryId, limit.toString()], { revalidate: 60 })();
 }
 
 /**
@@ -468,25 +522,84 @@ export async function getRelatedCandidatesPool(tool: AITool): Promise<AITool[]> 
 }
 
 export async function searchTools(query: string): Promise<AITool[]> {
+    if (!query || !query.trim()) return [];
+    const cleanQuery = query.trim().toLowerCase();
+    const queryTokens = cleanQuery.split(/\s+/).filter(t => t.length > 0);
+
+    const scoreTool = (tool: AITool): number => {
+        let score = 0;
+        const nameLower = (tool.name || '').toLowerCase();
+        const taglineLower = (tool.tagline || '').toLowerCase();
+        const descLower = (tool.description || '').toLowerCase();
+        const catLower = (tool.category || '').toLowerCase();
+        const tagsJoined = (tool.tags || []).join(' ').toLowerCase();
+
+        // Exact name match
+        if (nameLower === cleanQuery) score += 150;
+        else if (nameLower.startsWith(cleanQuery)) score += 90;
+        else if (nameLower.includes(cleanQuery)) score += 50;
+
+        // Tagline exact/substring
+        if (taglineLower.includes(cleanQuery)) score += 35;
+
+        // Category match
+        if (catLower.includes(cleanQuery)) score += 30;
+
+        // Tags match
+        if (tagsJoined.includes(cleanQuery)) score += 30;
+
+        // Multi-token matches
+        for (const token of queryTokens) {
+            if (nameLower.includes(token)) score += 25;
+            if (taglineLower.includes(token)) score += 15;
+            if (tagsJoined.includes(token)) score += 15;
+            if (catLower.includes(token)) score += 10;
+            if (descLower.includes(token)) score += 5;
+        }
+
+        // Popularity and verified boosts
+        if (tool.popularity) score += Math.min(tool.popularity / 100, 10);
+        if (tool.featured) score += 5;
+        if (tool.verified) score += 3;
+
+        return score;
+    };
+
     try {
         const { data, error } = await supabase
             .from('tools')
             .select(TOOL_SEARCH_FIELDS)
-            .or(`name.ilike.%${query}%,description.ilike.%${query}%`)
+            .or(`name.ilike.%${cleanQuery}%,description.ilike.%${cleanQuery}%,tagline.ilike.%${cleanQuery}%`)
             .eq('status', 'Published')
             .order('popularity', { ascending: false })
-            .limit(20);
+            .limit(30);
             
-        if (error) throw error;
-        return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
+        if (!error && data && data.length > 0) {
+            const mapped = data.map(mapDatabaseRowToAITool).filter(isValidTool);
+            return mapped.sort((a, b) => scoreTool(b) - scoreTool(a)).slice(0, 20);
+        }
+        
+        // Fallback to local scoring
+        const local = getNormalizedLocalTools();
+        const scored = local
+            .filter(t => (t.status === "Published" || t.status === "published"))
+            .map(t => ({ tool: t, score: scoreTool(t) }))
+            .filter(item => item.score > 0)
+            .sort((a, b) => b.score - a.score)
+            .map(item => item.tool);
+            
+        return scored.slice(0, 20);
     } catch (err) {
         console.error(`Error searching tools for query "${query}" from Supabase, falling back to local data:`, err);
-        const queryLower = query.toLowerCase();
         const local = getNormalizedLocalTools();
-        return local.filter(t => 
-            (t.name.toLowerCase().includes(queryLower) || 
-            t.description.toLowerCase().includes(queryLower)) && (t.status === "Published" || t.status === "published")
-        ).slice(0, 20);
+        const scored = local
+            .filter(t => (t.status === "Published" || t.status === "published"))
+            .map(t => ({ tool: t, score: scoreTool(t) }))
+            .filter(item => item.score > 0)
+            .sort((a, b) => b.score - a.score)
+            .map(item => item.tool);
+            
+        return scored.slice(0, 20);
     }
 }
 

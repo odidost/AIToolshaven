@@ -1,5 +1,186 @@
 [
   {
+    "id": "tool-cline",
+    "name": "Cline",
+    "slug": "cline",
+    "tagline": "Autonomous coding agent extension for VS Code with terminal and browser execution",
+    "description": "Cline (formerly Claude Dev) is an autonomous coding agent directly inside VS Code capable of reading whole projects, executing terminal commands, requesting human approval, and testing web apps via browser automation.",
+    "websiteUrl": "https://github.com/cline/cline",
+    "category": "Coding Assistants",
+    "category_id": "c5",
+    "pricing": "Free & Open Source",
+    "rating": 4.9,
+    "reviewsCount": 1300,
+    "isFeatured": true,
+    "isPopular": true,
+    "isTrending": true,
+    "verified": true,
+    "tags": [
+      "VS Code Extension",
+      "Autonomous Agent",
+      "Terminal Execution",
+      "Browser Automation",
+      "Open Source"
+    ]
+  },
+  {
+    "id": "tool-v0-dev",
+    "name": "v0 by Vercel",
+    "slug": "v0-dev",
+    "tagline": "Generative UI system that builds React, Tailwind CSS, and Next.js interfaces from prompts",
+    "description": "v0 is Vercel's generative UI platform that produces accessible, production-ready React and Tailwind components with 1-click copy/paste and direct deployment to Vercel.",
+    "websiteUrl": "https://v0.dev",
+    "category": "Coding Assistants",
+    "category_id": "c5",
+    "pricing": "Freemium",
+    "rating": 4.9,
+    "reviewsCount": 1850,
+    "isFeatured": true,
+    "isPopular": true,
+    "isTrending": true,
+    "verified": true,
+    "tags": [
+      "Generative UI",
+      "React",
+      "Tailwind CSS",
+      "Next.js",
+      "Vercel"
+    ]
+  },
+  {
+    "id": "tool-claude-engineer",
+    "name": "Claude Engineer",
+    "slug": "claude-engineer",
+    "tagline": "CLI-based agentic coding assistant powered by Anthropic Claude 3.5 Sonnet",
+    "description": "Claude Engineer is an open-source command-line software development assistant that interfaces directly with local file systems, executes Bash commands, and automates multi-step refactoring workflows.",
+    "websiteUrl": "https://github.com/Doriandarko/claude-engineer",
+    "category": "Coding Assistants",
+    "category_id": "c5",
+    "pricing": "Free & Open Source",
+    "rating": 4.7,
+    "reviewsCount": 310,
+    "isFeatured": false,
+    "isPopular": true,
+    "isTrending": true,
+    "verified": true,
+    "tags": [
+      "Claude 3.5",
+      "CLI Agent",
+      "Autonomous Coding",
+      "Refactoring",
+      "Open Source"
+    ]
+  },
+  {
+    "id": "tool-windsurf",
+    "name": "Windsurf",
+    "slug": "windsurf",
+    "tagline": "The next-generation AI IDE from Codeium powered by Cascade autonomous flow",
+    "description": "Windsurf is Codeium's AI-native IDE that introduces Cascade—an agentic collaborative engine that understands entire developer workspaces, predicts intent across multiple files, and executes multi-step terminal actions.",
+    "websiteUrl": "https://codeium.com/windsurf",
+    "category": "Coding Assistants",
+    "category_id": "c5",
+    "pricing": "Freemium",
+    "rating": 4.8,
+    "reviewsCount": 890,
+    "isFeatured": true,
+    "isPopular": true,
+    "isTrending": true,
+    "verified": true,
+    "tags": [
+      "AI IDE",
+      "Cascade Agent",
+      "Codeium",
+      "Multi-file Editing",
+      "Developer Tools"
+    ]
+  },
+  {
+    "id": "t-luma-dream-machine",
+    "name": "Luma Dream Machine",
+    "slug": "luma-dream-machine",
+    "website": "https://lumalabs.ai/dream-machine",
+    "category": "AI Video Generators",
+    "category_id": "c3",
+    "additionalCategories": [
+      "c2"
+    ],
+    "tagline": "Hyper-realistic video generation with high-speed camera physics.",
+    "description": "Luma Dream Machine is a next-generation AI video foundation model trained directly on videos rather than still images, delivering physically accurate 3D kinematics, realistic lighting transitions, and cinematic motion.",
+    "price_model": "Freemium",
+    "price": "Free tier / .99/mo Pro",
+    "rating": 4.8,
+    "review_count": 860,
+    "verified": true,
+    "featured": true,
+    "popularity": 96,
+    "status": "Published",
+    "logo_url": "https://logo.clearbit.com/lumalabs.ai",
+    "screenshot_url": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1200&auto=format&fit=crop",
+    "image_url": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1200&auto=format&fit=crop",
+    "tags": [
+      "text-to-video",
+      "physics-ai",
+      "3d-camera",
+      "dream-machine"
+    ],
+    "editorial": {
+      "overview": "Dream Machine by Luma AI solves the unnatural morphing problems of older models by accurately respecting real-world physics, character mechanics, and perspective shifts.",
+      "verdict": "Best for action sequences, fluid dynamic movements, and photorealistic 3D camera sweeps.",
+      "faqs": [
+        {
+          "question": "Is Luma Dream Machine free to use?",
+          "answer": "Yes, Luma provides 30 free generations per month, with paid subscriptions unlocking higher concurrency and watermark-free downloads."
+        }
+      ]
+    }
+  },
+  {
+    "id": "t-runway-gen-3",
+    "name": "Runway Gen-3 Alpha",
+    "slug": "runway-gen-3",
+    "website": "https://runwayml.com",
+    "category": "AI Video Generators",
+    "category_id": "c3",
+    "additionalCategories": [
+      "c2"
+    ],
+    "tagline": "Industry-leading text-to-video, image-to-video, and cinematic motion control.",
+    "description": "Runway Gen-3 Alpha is a state-of-the-art AI video generation model capable of generating photorealistic humans, complex cinematic camera movements, and hyper-detailed visual effects with precise temporal consistency.",
+    "price_model": "Freemium",
+    "price": "From /month (Standard tier)",
+    "rating": 4.9,
+    "review_count": 1420,
+    "verified": true,
+    "featured": true,
+    "popularity": 99,
+    "status": "Published",
+    "logo_url": "https://logo.clearbit.com/runwayml.com",
+    "screenshot_url": "https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1200&auto=format&fit=crop",
+    "image_url": "https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1200&auto=format&fit=crop",
+    "tags": [
+      "text-to-video",
+      "gen-3",
+      "cinematic-ai",
+      "vfx",
+      "motion-brush"
+    ],
+    "editorial": {
+      "overview": "Runway Gen-3 Alpha represents a massive leap forward in temporal coherence and visual fidelity, making it a primary production tool for Hollywood studios and creative agencies alike.",
+      "verdict": "Runway Gen-3 is currently the gold standard for cinematic control, camera motion steering, and ultra-high resolution video output.",
+      "faqs": [
+        {
+          "question": "Can Runway Gen-3 generate video from text and images?",
+          "answer": "Yes, Runway Gen-3 Alpha supports Text-to-Video, Image-to-Video, Video-to-Video, and custom Motion Brush directives."
+        },
+        {
+          "question": "What is the maximum resolution for Runway Gen-3?",
+          "answer": "Gen-3 Alpha renders up to 4K resolution with 10-second base clips expandable via extended generation."
+        }
+      ]
+    }
+  },
+  {
     "id": "a66ac202-32a0-4c9a-9683-f8ba5a56e245",
     "name": "Texta.ai",
     "slug": "texta-ai",
@@ -921,7 +1102,7 @@
     "company": "Hour One",
     "tagline": "Virtual presenter platform that converts business scripts into professional video presentations with lifelike digital avatars.",
     "description": "Explore Hour One, an enterprise AI video studio that creates avatar-led training and communication videos on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -949,7 +1130,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-h.svg"
+    "logo_url": "/images/placeholders/logo-h.svg",
+    "category_id": "c3"
   },
   {
     "id": "9c62a4a9-4db2-4ab9-85cf-f917e13f8e5b",
@@ -1647,7 +1829,7 @@
     "company": "Replit Agent",
     "tagline": "Autonomous AI software engineer that plans, codes, debugs, and deploys full-stack applications from prompts.",
     "description": "Replit Agent is an autonomous development assistant that takes natural language project descriptions, sets up databases and environments, writes client and server code, installs dependencies, and deploys live web apps.",
-    "category": "c5",
+    "category": "Coding Assistants",
     "priceModel": "Paid",
     "rating": 4.8,
     "reviewCount": 120,
@@ -1760,7 +1942,7 @@
     "company": "FlexClip AI Video",
     "tagline": "Online video maker with AI text-to-video, auto subtitle generator, and AI background remover tools.",
     "description": "Online video maker with AI text-to-video, auto subtitle generator, and AI background remover tools.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -1787,7 +1969,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "7028760f-7eb4-409f-ad1e-e9e798555cc4",
@@ -1943,7 +2126,7 @@
     "company": "Wondershare Filmora AI",
     "tagline": "User-friendly video editing suite with AI smart cutout, audio ducking, and auto motion tracking.",
     "description": "User-friendly video editing suite with AI smart cutout, audio ducking, and auto motion tracking.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -1970,7 +2153,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "tool-temi-1786742992809",
@@ -2355,7 +2539,7 @@
     "company": "Clipchamp AI Video",
     "tagline": "Microsoft video editor featuring AI speech-to-text, auto-compose video creation, and voiceovers.",
     "description": "Microsoft video editor featuring AI speech-to-text, auto-compose video creation, and voiceovers.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -2382,7 +2566,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "8a94362a-68fc-4d87-94ba-78f904bbc23b",
@@ -3026,7 +3211,7 @@
     "company": "Biteable Video AI",
     "tagline": "Collaborative corporate video maker that turns text briefs and scripts into animated company videos.",
     "description": "Collaborative corporate video maker that turns text briefs and scripts into animated company videos.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -3053,7 +3238,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "724cd428-dd7f-4f29-89fc-458e2550baa8",
@@ -3706,7 +3892,7 @@
     "company": "Haiper AI",
     "tagline": "Generative video engine that creates short-form animated clips and video effects for social content creators.",
     "description": "Explore Haiper AI, an AI video generator for creating short videos and animations. Compare features, pricing, and alternatives on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -3839,7 +4025,8 @@
       }
     ],
     "editorialQualityScore": "Tier A",
-    "logo_url": "/images/placeholders/logo-h.svg"
+    "logo_url": "/images/placeholders/logo-h.svg",
+    "category_id": "c3"
   },
   {
     "id": "tool-assemblyai-1786742992809",
@@ -4958,7 +5145,7 @@
     "company": "Vizard AI",
     "tagline": "Online AI video editor that turns webinars into social-ready short clips with auto-captions.",
     "description": "Online AI video editor that turns webinars into social-ready short clips with auto-captions.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -4986,7 +5173,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-v.svg"
+    "logo_url": "/images/placeholders/logo-v.svg",
+    "category_id": "c3"
   },
   {
     "id": "aa4ce159-ea03-47ac-ad39-83f4cb080321",
@@ -5661,7 +5849,7 @@
     "company": "NeverEnding AI",
     "tagline": "Generative video tool designed for storytellers to build animated shorts with consistent characters.",
     "description": "Generative video tool designed for storytellers to build animated shorts with consistent characters.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -5689,7 +5877,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-n.svg"
+    "logo_url": "/images/placeholders/logo-n.svg",
+    "category_id": "c3"
   },
   {
     "id": "tool-airgram-1786742992809",
@@ -5735,7 +5924,7 @@
     "company": "Hedra Character Studio",
     "tagline": "Expressive digital human creator that animates talking characters with natural facial emotion and sync.",
     "description": "Expressive digital human creator that animates talking characters with natural facial emotion and sync.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -5763,7 +5952,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-h.svg"
+    "logo_url": "/images/placeholders/logo-h.svg",
+    "category_id": "c3"
   },
   {
     "id": "827ee4c4-219e-407f-8bb4-89866acfb805",
@@ -6081,7 +6271,10 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-z.svg"
+    "logo_url": "/images/placeholders/logo-z.svg",
+    "additionalCategories": [
+      "c6"
+    ]
   },
   {
     "id": "e6ee260d-0976-4733-8b76-a30e8253159f",
@@ -6090,7 +6283,7 @@
     "company": "Videoleap AI",
     "tagline": "Mobile and web AI video editor providing infinite loop creation, AI background swapping, and text-to-video effects.",
     "description": "Mobile and web AI video editor providing infinite loop creation, AI background swapping, and text-to-video effects.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -6118,7 +6311,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-v.svg"
+    "logo_url": "/images/placeholders/logo-v.svg",
+    "category_id": "c3"
   },
   {
     "id": "f36282c8-bbfa-480f-8ad1-5b5f031bc6c3",
@@ -6383,7 +6577,7 @@
     "company": "DomoAI",
     "tagline": "AI video style transfer platform that turns real video footage into anime and 3D illustration styles.",
     "description": "AI video style transfer platform that turns real video footage into anime and 3D illustration styles.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -6411,7 +6605,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-d.svg"
+    "logo_url": "/images/placeholders/logo-d.svg",
+    "category_id": "c3"
   },
   {
     "id": "b1d9594b-5680-4240-bf7d-39e08a3993d5",
@@ -6457,7 +6652,7 @@
     "company": "DeepBrain AI",
     "tagline": "Generative AI video platform that creates hyper-realistic AI avatar presentations from simple text scripts.",
     "description": "Generative AI video platform that creates hyper-realistic AI avatar presentations from simple text scripts.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -6485,7 +6680,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-d.svg"
+    "logo_url": "/images/placeholders/logo-d.svg",
+    "category_id": "c3"
   },
   {
     "id": "tool-skillroads-1786742992809",
@@ -6790,7 +6986,7 @@
     "company": "Colossyan Creator",
     "tagline": "AI video generation software for workplace learning and corporate training with multilingual AI avatars.",
     "description": "AI video generation software for workplace learning and corporate training with multilingual AI avatars.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -6818,7 +7014,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-c.svg"
+    "logo_url": "/images/placeholders/logo-c.svg",
+    "category_id": "c3"
   },
   {
     "id": "037af109-7f0d-4e7f-8880-46d964d0685d",
@@ -6858,7 +7055,10 @@
     "website_url": "https://regie.ai",
     "url": "https://regie.ai",
     "category_id": "ai-sales-tools",
-    "price_model": "Paid"
+    "price_model": "Paid",
+    "additionalCategories": [
+      "c6"
+    ]
   },
   {
     "id": "54c9723d-9823-452a-a94e-9ee8fe6ac0ef",
@@ -7057,7 +7257,7 @@
     "company": "Elai.io",
     "tagline": "Interactive AI video platform that builds e-learning modules and video presentations using digital presenters.",
     "description": "Interactive AI video platform that builds e-learning modules and video presentations using digital presenters.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -7085,7 +7285,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-e.svg"
+    "logo_url": "/images/placeholders/logo-e.svg",
+    "category_id": "c3"
   },
   {
     "id": "15699216-283c-4d3d-8c9c-3da6af1758b9",
@@ -7239,7 +7440,7 @@
     "company": "Gling AI",
     "tagline": "AI video editing tool for YouTubers that removes bad takes, silences, and filler words automatically.",
     "description": "AI video editing tool for YouTubers that removes bad takes, silences, and filler words automatically.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -7267,7 +7468,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-g.svg"
+    "logo_url": "/images/placeholders/logo-g.svg",
+    "category_id": "c3"
   },
   {
     "id": "1d7332f8-fb5c-419c-a752-77cb13de9fbc",
@@ -7349,7 +7551,7 @@
     "company": "Raw Shorts AI",
     "tagline": "Text-to-animated video maker that scans video scripts and generates storyboard animations automatically.",
     "description": "Text-to-animated video maker that scans video scripts and generates storyboard animations automatically.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -7377,7 +7579,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-r.svg"
+    "logo_url": "/images/placeholders/logo-r.svg",
+    "category_id": "c3"
   },
   {
     "id": "ee2679b4-57c7-47eb-b2b9-a838188100b7",
@@ -7423,7 +7626,7 @@
     "company": "Steve AI",
     "tagline": "Patented AI video maker that turns scripts and text prompts into animated or live-action social videos.",
     "description": "Patented AI video maker that turns scripts and text prompts into animated or live-action social videos.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -7451,7 +7654,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-s.svg"
+    "logo_url": "/images/placeholders/logo-s.svg",
+    "category_id": "c3"
   },
   {
     "id": "9e1fd60d-93a0-4c73-a553-98a71b0571ce",
@@ -7460,7 +7664,7 @@
     "company": "Artflow.ai",
     "tagline": "Creative generative animation platform allowing users to design unique characters and animate stories.",
     "description": "Creative generative animation platform allowing users to design unique characters and animate stories.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -7488,7 +7692,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-a.svg"
+    "logo_url": "/images/placeholders/logo-a.svg",
+    "category_id": "c3"
   },
   {
     "id": "tool-semantic-scholar-1786742992810",
@@ -7569,7 +7774,7 @@
     "company": "Viggle AI",
     "tagline": "Controllable video generator that enables character animation and physics-aware motion replacement from text or reference videos.",
     "description": "Explore Viggle AI, a character motion and physics-based video animation generator with deep control on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -7597,7 +7802,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-v.svg"
+    "logo_url": "/images/placeholders/logo-v.svg",
+    "category_id": "c3"
   },
   {
     "id": "ef4f6d4c-2345-4674-8f83-ab75c6bb905c",
@@ -7643,7 +7849,7 @@
     "company": "PixVerse AI",
     "tagline": "Generative AI video platform that turns creative text prompts and static images into dynamic video clips.",
     "description": "Generative AI video platform that turns creative text prompts and static images into dynamic video clips.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -7671,7 +7877,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-p.svg"
+    "logo_url": "/images/placeholders/logo-p.svg",
+    "category_id": "c3"
   },
   {
     "id": "d8f4e181-b4ce-48c6-90ae-a2d5f500d37d",
@@ -7717,7 +7924,7 @@
     "company": "AnimateDiff",
     "tagline": "Open-source motion module for Stable Diffusion that creates smooth, continuous video animations.",
     "description": "Open-source motion module for Stable Diffusion that creates smooth, continuous video animations.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -7745,7 +7952,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-a.svg"
+    "logo_url": "/images/placeholders/logo-a.svg",
+    "category_id": "c3"
   },
   {
     "id": "cd8dec38-abe4-4608-8381-7a879219c683",
@@ -7975,7 +8183,7 @@
     "company": "Lumen5 Video",
     "tagline": "AI video creation platform that transforms articles and blog posts into engaging social video summaries.",
     "description": "AI video creation platform that transforms articles and blog posts into engaging social video summaries.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -8003,7 +8211,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-l.svg"
+    "logo_url": "/images/placeholders/logo-l.svg",
+    "category_id": "c3"
   },
   {
     "id": "3e7dab18-517d-4782-87a6-e6ce026cf0bf",
@@ -8123,7 +8332,7 @@
     "company": "Vids.ai",
     "tagline": "Automated video generation platform that turns text prompts into social media video reels.",
     "description": "Automated video generation platform that turns text prompts into social media video reels.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -8151,7 +8360,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-v.svg"
+    "logo_url": "/images/placeholders/logo-v.svg",
+    "category_id": "c3"
   },
   {
     "id": "f5d54538-0f4b-4ce7-ae30-6645da2fbac6",
@@ -8425,7 +8635,7 @@
     "company": "Tavus",
     "tagline": "Programmatic AI video generation platform that clones your voice and face for hyper-personalized audience videos.",
     "description": "Programmatic AI video generation platform that clones your voice and face for hyper-personalized audience videos.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -8436,7 +8646,7 @@
     "support": 4.6,
     "logoUrl": "/images/placeholders/logo-t.svg",
     "screenshotUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/https://tavus.io-interface.webp",
-    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/https://tavus.io-interface.webp",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/tavus-interface.webp",
     "websiteUrl": "https://tavus.io",
     "tags": [],
     "features": [],
@@ -8453,7 +8663,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-t.svg"
+    "logo_url": "/images/placeholders/logo-t.svg",
+    "category_id": "c3"
   },
   {
     "id": "daf8757b-0aa5-4342-9736-7f001537ce2e",
@@ -8498,7 +8709,7 @@
     "company": "Kapwing AI Studio",
     "tagline": "Cloud-based collaborative video editor featuring smart cut, auto-subtitles, and AI script generation.",
     "description": "Cloud-based collaborative video editor featuring smart cut, auto-subtitles, and AI script generation.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -8526,7 +8737,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-k.svg"
+    "logo_url": "/images/placeholders/logo-k.svg",
+    "category_id": "c3"
   },
   {
     "id": "583bccb7-3c5e-4011-a4cb-af117fbe0f16",
@@ -8684,7 +8896,7 @@
     "company": "Gan.ai",
     "tagline": "Video personalization platform using AI to record once and dynamically customize names and details in videos.",
     "description": "Video personalization platform using AI to record once and dynamically customize names and details in videos.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -8712,7 +8924,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-g.svg"
+    "logo_url": "/images/placeholders/logo-g.svg",
+    "category_id": "c3"
   },
   {
     "id": "8bb23d4d-badf-473f-9fd5-5098e8952609",
@@ -9137,7 +9350,7 @@
     "company": "Vidu AI",
     "tagline": "High-definition AI video synthesis model that creates realistic camera pans and complex motion scenes.",
     "description": "High-definition AI video synthesis model that creates realistic camera pans and complex motion scenes.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -9165,7 +9378,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-v.svg"
+    "logo_url": "/images/placeholders/logo-v.svg",
+    "category_id": "c3"
   },
   {
     "id": "333f74c1-e760-43a4-9e98-749899c9491a",
@@ -9361,7 +9575,7 @@
     "company": "Visla AI Video",
     "tagline": "All-in-one AI video recording, editing, and auto-b-roll storytelling platform for teams.",
     "description": "All-in-one AI video recording, editing, and auto-b-roll storytelling platform for teams.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -9389,7 +9603,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-v.svg"
+    "logo_url": "/images/placeholders/logo-v.svg",
+    "category_id": "c3"
   },
   {
     "id": "e977fd25-b692-41e6-9adc-4083092fed07",
@@ -9438,7 +9653,7 @@
     "company": "Vrew AI Video",
     "tagline": "AI video editing tool with speech-to-text captions, AI voiceovers, and automatic bad take removal.",
     "description": "AI video editing tool with speech-to-text captions, AI voiceovers, and automatic bad take removal.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -9466,7 +9681,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-v.svg"
+    "logo_url": "/images/placeholders/logo-v.svg",
+    "category_id": "c3"
   },
   {
     "id": "6d7a7322-e120-4164-b2d5-70d967e6d166",
@@ -9773,7 +9989,7 @@
     "company": "Moonvalley AI",
     "tagline": "Text-to-video generative model that creates cinematic, high-definition animation and live-action video clips.",
     "description": "Text-to-video generative model that creates cinematic, high-definition animation and live-action video clips.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -9801,7 +10017,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-m.svg"
+    "logo_url": "/images/placeholders/logo-m.svg",
+    "category_id": "c3"
   },
   {
     "id": "564c7faa-7586-4b7f-b63d-aeecc823b701",
@@ -9956,7 +10173,7 @@
     "company": "Pebblely Video",
     "tagline": "AI product photography and video animation tool that turns still e-commerce product photos into video ads.",
     "description": "AI product photography and video animation tool that turns still e-commerce product photos into video ads.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -9984,7 +10201,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-p.svg"
+    "logo_url": "/images/placeholders/logo-p.svg",
+    "category_id": "c3"
   },
   {
     "id": "30ad44a7-8de8-4fb9-b5ae-7d42bb7cb3c8",
@@ -10256,7 +10474,7 @@
     "company": "Flixier Video AI",
     "tagline": "Fast online video editor featuring AI automated subtitles, voice generators, and noise reduction.",
     "description": "Fast online video editor featuring AI automated subtitles, voice generators, and noise reduction.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -10284,7 +10502,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-f.svg"
+    "logo_url": "/images/placeholders/logo-f.svg",
+    "category_id": "c3"
   },
   {
     "id": "d8d1493a-0d29-4476-ad54-340874cb2870",
@@ -10640,7 +10859,7 @@
     "company": "Oxolo Video AI",
     "tagline": "E-commerce video maker that generates product video ads from simple product URL links in seconds.",
     "description": "E-commerce video maker that generates product video ads from simple product URL links in seconds.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -10668,7 +10887,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-o.svg"
+    "logo_url": "/images/placeholders/logo-o.svg",
+    "category_id": "c3"
   },
   {
     "id": "bfff89c4-a34f-4078-9103-543e42fe9eda",
@@ -10786,7 +11006,7 @@
     "company": "Veed AI Studio",
     "tagline": "Online AI video editor featuring smart cut, auto-subtitles, and AI script generation.",
     "description": "Online AI video editor featuring smart cut, auto-subtitles, and AI script generation.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -10814,7 +11034,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-v.svg"
+    "logo_url": "/images/placeholders/logo-v.svg",
+    "category_id": "c3"
   },
   {
     "id": "6b7d8a74-bc72-4e6f-b6e5-eb87b6db9e7c",
@@ -11487,7 +11708,7 @@
     "company": "D-ID",
     "tagline": "Digital human creation platform that transforms still portraits and audio scripts into photorealistic talking avatars.",
     "description": "Discover D-ID, an AI platform that turns static photos into dynamic talking head videos and interactive agents on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -11514,7 +11735,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "tool-happy-scribe-1786742992809",
@@ -12006,7 +12228,7 @@
     "company": "Deepshot",
     "tagline": "AI video reshooting and dialog replacement tool that updates facial expressions and spoken dialog without live filming.",
     "description": "Explore Deepshot, an AI video synthesis platform for modifying actors' dialog and facial delivery on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -12033,7 +12255,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "49b82053-66cc-43e2-ada4-08ed2ef145c0",
@@ -12333,7 +12556,7 @@
     "company": "Morph Studio",
     "tagline": "AI filmmaking workflow platform that allows creators to generate, sequence, and edit cinematic multi-shot AI video scenes.",
     "description": "Explore Morph Studio, a text-to-video storyboard platform for generating structured cinematic scenes on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -12360,7 +12583,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "72cf9164-8ba2-404e-be0b-0d24af9f148e",
@@ -12759,7 +12983,10 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "additionalCategories": [
+      "c6"
+    ]
   },
   {
     "id": "e269bb86-274a-49e9-b94c-7181ad649971",
@@ -12768,7 +12995,7 @@
     "company": "Deforum Stable Diffusion",
     "tagline": "Open-source animation tool that uses Stable Diffusion algorithms to render smooth 2D and 3D camera transitions and visuals.",
     "description": "Discover Deforum, an AI tool for creating warping animations, visualizers, and camera moves with Stable Diffusion on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -12795,7 +13022,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "36845753-5298-420b-a399-59802c044849",
@@ -13707,7 +13935,7 @@
     "company": "Pictory",
     "tagline": "Video creation software that automatically extracts highlights from long webinars, zoom calls, and articles into short video clips.",
     "description": "Discover Pictory, an AI video generator that turns scripts, webinars, and blogs into branded video clips on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -13734,7 +13962,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "6a46ad0b-27d1-4c73-9f73-2ce3f2201522",
@@ -14130,7 +14359,7 @@
     "company": "Captions",
     "tagline": "AI video studio for creators that adds eye-tracking correction, automatic subtitles, and AI dubbing.",
     "description": "Explore Captions AI, a mobile and desktop video studio for creator storytelling. Compare features, pricing, and alternatives on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -14262,7 +14491,8 @@
         "answer": "Yes, you can fully customize font styles, drop shadows, highlight colors, animations, and automated emoji placements."
       }
     ],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c3"
   },
   {
     "id": "c98c5c70-d57a-4fea-947a-1052ff315db8",
@@ -14307,7 +14537,7 @@
     "company": "Rephrase.ai",
     "tagline": "Hyper-personalized AI video creation platform that generates custom video communications with digital human avatars.",
     "description": "Explore Rephrase.ai, an AI avatar video platform that drives personalized marketing and sales campaigns on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -14334,7 +14564,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "8a312791-e722-4b5c-a4f2-d66f9306c427",
@@ -14525,7 +14756,7 @@
     "company": "Veed.io",
     "tagline": "Online video editing suite with automatic subtitles, text-to-speech voiceovers, and AI video templates.",
     "description": "Discover Veed.io, an AI-powered online video editor with auto-captions and avatars. Learn about pricing, features, and alternatives on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -14669,7 +14900,8 @@
         "answer": "Yes, Business and Pro workspace tiers allow real-time shared editing, commenting, and brand asset sharing."
       }
     ],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c3"
   },
   {
     "id": "efdd5898-cd9e-4ecb-b426-f8c7023167ec",
@@ -14755,7 +14987,7 @@
     "company": "AutoPod",
     "tagline": "Automated multi-camera editing plugin for Premiere Pro that cuts podcast episodes based on active speaker microphones.",
     "description": "Explore AutoPod, an AI Premiere Pro plugin that automates multi-camera switching and social clip creation on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -14782,7 +15014,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "3250bf89-cc96-476d-9457-52fc0a9cd933",
@@ -15267,7 +15500,7 @@
     "company": "Munch AI",
     "tagline": "AI video repurposing tool that extracts engaging clips from long videos and writes social captions.",
     "description": "AI video repurposing tool that extracts engaging clips from long videos and writes social captions.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -15295,7 +15528,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-m.svg"
+    "logo_url": "/images/placeholders/logo-m.svg",
+    "category_id": "c3"
   },
   {
     "id": "de930d69-2b11-459e-b1ca-bed0d1668398",
@@ -15599,7 +15833,7 @@
     "company": "Topaz Video AI",
     "tagline": "Professional video enhancement software that uses deep neural networks for frame interpolation, upscaling, and de-interlacing.",
     "description": "Discover Topaz Video AI, desktop neural enhancement software for upscaling footage up to 8K and smooth 60fps on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -15626,7 +15860,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "5a227c8e-7909-4643-ab3c-c84f1062d9a3",
@@ -16031,13 +16266,13 @@
     "logo_url": "/images/placeholders/logo-m.svg"
   },
   {
-    "id": "a1b1b85f-8c10-4228-8f8f-b53ff2122ba7",
+    "id": "tool-bolt-new",
     "name": "Bolt.new",
     "slug": "bolt-new",
     "company": "Bolt.new",
-    "tagline": "In-browser development sandbox that allows developers to prompt, build, and deploy full-stack web applications with WebContainers.",
-    "description": "Explore Bolt.new, an AI-powered full-stack web development environment that runs completely in browser on AIToolsHaven.",
-    "category": "c5",
+    "tagline": "In-browser AI full-stack development sandbox powered by WebContainers",
+    "description": "Bolt.new by StackBlitz allows developers to prompt, build, run, and deploy full-stack Node.js and React web applications entirely inside the browser without installing anything locally.",
+    "category": "Coding Assistants",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -16050,9 +16285,15 @@
     "screenshotUrl": "",
     "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/bolt-new-logo.webp",
     "websiteUrl": "https://bolt.new",
-    "tags": [],
+    "tags": [
+      "WebContainers",
+      "Full Stack",
+      "In-browser IDE",
+      "StackBlitz",
+      "React"
+    ],
     "features": [],
-    "verified": false,
+    "verified": true,
     "popularity": 50,
     "pros": [],
     "cons": [],
@@ -16061,10 +16302,15 @@
     "editorial": {},
     "status": "Published",
     "lastUpdated": "2026-08-16T15:31:23.678Z",
-    "pricing": [],
+    "pricing": "Freemium",
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c5",
+    "reviewsCount": 1120,
+    "isFeatured": true,
+    "isPopular": true,
+    "isTrending": true
   },
   {
     "id": "13727276-a1ae-4828-bbd1-6e5e463e944f",
@@ -16213,13 +16459,13 @@
     "logo_url": "/images/placeholders/logo-b.svg"
   },
   {
-    "id": "580eb242-7bc7-44cc-aa77-c569e6cbcecf",
-    "name": "Lovable.dev",
+    "id": "tool-lovable-dev",
+    "name": "Lovable",
     "slug": "lovable-dev",
     "company": "Lovable.dev",
-    "tagline": "Full-stack AI software engineer that turns natural language product requirements into production-ready web applications.",
-    "description": "Discover Lovable.dev, an agentic AI web app builder that generates full-stack code and live deployments on AIToolsHaven.",
-    "category": "c5",
+    "tagline": "The AI app builder that turns natural language into production web applications",
+    "description": "Lovable is a modern AI software builder that generates complete web applications with backend database integration, user authentication, and responsive user interfaces from natural language prompts.",
+    "category": "Coding Assistants",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -16232,9 +16478,15 @@
     "screenshotUrl": "",
     "imageUrl": "/images/placeholders/logo-l.svg",
     "websiteUrl": "https://lovable.dev",
-    "tags": [],
+    "tags": [
+      "No-Code / Low-Code",
+      "AI App Builder",
+      "Supabase",
+      "React",
+      "Full Stack"
+    ],
     "features": [],
-    "verified": false,
+    "verified": true,
     "popularity": 50,
     "pros": [],
     "cons": [],
@@ -16243,12 +16495,17 @@
     "editorial": {},
     "status": "Published",
     "lastUpdated": "2026-08-16T15:31:23.678Z",
-    "pricing": [],
+    "pricing": "Freemium",
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
     "logo_url": "/images/placeholders/logo-l.svg",
-    "image_url": "/images/placeholders/logo-l.svg"
+    "image_url": "/images/placeholders/logo-l.svg",
+    "category_id": "c5",
+    "reviewsCount": 780,
+    "isFeatured": true,
+    "isPopular": true,
+    "isTrending": true
   },
   {
     "id": "fae52dbc-4e5f-4705-a3d6-15445f920794",
@@ -16624,7 +16881,7 @@
     "company": "Pollo AI",
     "tagline": "All-in-one AI video generator and animator that transforms text prompts and image inputs into high-definition cinematic clips.",
     "description": "Discover Pollo AI, a fast text-to-video and image-to-video generator with creative motion presets on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -16652,7 +16909,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-p.svg"
+    "logo_url": "/images/placeholders/logo-p.svg",
+    "category_id": "c3"
   },
   {
     "id": "bc300d7c-af89-4923-9d42-240fc66e2851",
@@ -17325,7 +17583,7 @@
     "company": "Opus Clip",
     "tagline": "Generative AI video repurposing tool that turns long YouTube videos and podcasts into viral short clips.",
     "description": "Opus Clip is an AI video repurposing platform that analyzes long-form videos, identifies viral hooks, extracts highlights, and adds animated captions for TikTok, Reels, and Shorts.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 5100,
@@ -17451,7 +17709,8 @@
       }
     ],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c3"
   },
   {
     "id": "1dd68207-e77d-4d5a-b62d-a8bd84a58692",
@@ -18155,7 +18414,7 @@
     "company": "Vidio AI Studio",
     "tagline": "AI video generation and editing tool creating automated marketing clips and short-form video ads.",
     "description": "AI video generation and editing tool creating automated marketing clips and short-form video ads.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -18182,7 +18441,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "14d1ec70-0d80-46df-95df-6955f88b0215",
@@ -18264,7 +18524,7 @@
     "company": "Rask AI Localization",
     "tagline": "All-in-one video localization platform that translates and dubs video content into 130+ languages.",
     "description": "All-in-one video localization platform that translates and dubs video content into 130+ languages.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -18291,7 +18551,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "df993528-a4ee-4294-90c6-7c9aa709e114",
@@ -18409,7 +18670,7 @@
     "company": "Screen Studio AI",
     "tagline": "Professional screen recording software with automated AI zoom animations, mouse smoothing, and video editing.",
     "description": "Professional screen recording software with automated AI zoom animations, mouse smoothing, and video editing.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -18437,7 +18698,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-s.svg"
+    "logo_url": "/images/placeholders/logo-s.svg",
+    "category_id": "c3"
   },
   {
     "id": "tabnine",
@@ -18581,7 +18843,7 @@
     "company": "Animaker AI Video",
     "tagline": "Online animation studio and video maker with AI character generation and automated lip-sync.",
     "description": "Online animation studio and video maker with AI character generation and automated lip-sync.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -18608,7 +18870,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "2375e288-a3d0-4476-a339-31204347fb60",
@@ -20906,7 +21169,7 @@
     "company": "LivePortrait AI",
     "tagline": "Efficient generative portrait animation model that transfers realistic facial expressions to still photos.",
     "description": "Efficient generative portrait animation model that transfers realistic facial expressions to still photos.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -20934,7 +21197,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-l.svg"
+    "logo_url": "/images/placeholders/logo-l.svg",
+    "category_id": "c3"
   },
   {
     "id": "tool-1786834503378-9mllbyz",
@@ -22120,7 +22384,7 @@
     "company": "Ssemble Video Editor",
     "tagline": "Online collaborative video editing suite featuring automated AI background removal and voice generator.",
     "description": "Online collaborative video editing suite featuring automated AI background removal and voice generator.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -22148,7 +22412,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-s.svg"
+    "logo_url": "/images/placeholders/logo-s.svg",
+    "category_id": "c3"
   },
   {
     "id": "tool-1786834675707-zpu23s0",
@@ -22486,7 +22751,7 @@
     "company": "GlossAi Video Studio",
     "tagline": "Generative video platform that automatically turns webinars and training recordings into snackable videos.",
     "description": "Generative video platform that automatically turns webinars and training recordings into snackable videos.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -22514,7 +22779,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-g.svg"
+    "logo_url": "/images/placeholders/logo-g.svg",
+    "category_id": "c3"
   },
   {
     "id": "b50d43be-fab6-45da-837f-1570a10a8237",
@@ -23354,7 +23620,7 @@
     "company": "HeyGen",
     "tagline": "AI video generation platform for studio-quality avatars, video translation, and personalized outreach.",
     "description": "HeyGen creates professional AI avatar videos from text scripts, featuring custom instant avatars, photorealistic lip-syncing, and automated multilingual video translation.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Paid",
     "rating": 4.7,
     "reviewCount": 3800,
@@ -23480,7 +23746,8 @@
       }
     ],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c3"
   },
   {
     "id": "tool-1786834871365-77pt4ki",
@@ -23902,7 +24169,7 @@
     "company": "AnimateDiff Studio",
     "tagline": "Open-source motion module framework that transforms text-to-image diffusion models into video generators.",
     "description": "Open-source motion module framework that transforms text-to-image diffusion models into video generators.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -23929,7 +24196,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "3ded6e5d-1c45-47e2-827d-652eed20702d",
@@ -24383,7 +24651,7 @@
     "company": "LTX Studio",
     "tagline": "AI-native holistic filmmaking platform that turns concepts and storyboards into fully edited cinematic video scenes.",
     "description": "AI-native holistic filmmaking platform that turns concepts and storyboards into fully edited cinematic video scenes.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -24411,7 +24679,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-l.svg"
+    "logo_url": "/images/placeholders/logo-l.svg",
+    "category_id": "c3"
   },
   {
     "id": "tool-1786835054585-l3l89f4",
@@ -24852,7 +25121,7 @@
     "company": "Klap AI",
     "tagline": "Video automation tool that turns YouTube videos into short TikTok, Reel, and YouTube Shorts clips.",
     "description": "Video automation tool that turns YouTube videos into short TikTok, Reel, and YouTube Shorts clips.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -24879,7 +25148,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "d91b74a9-0c00-4871-ae4b-fec987a02dbe",
@@ -25414,7 +25684,7 @@
     "company": "Guidde Video Documentation",
     "tagline": "Generative AI platform that creates interactive video documentation and how-to guides in seconds.",
     "description": "Generative AI platform that creates interactive video documentation and how-to guides in seconds.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -25441,7 +25711,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "c4953bc7-518c-48fd-b056-9fdab6bbab18",
@@ -27007,7 +27278,7 @@
     "company": "Vidyo.ai",
     "tagline": "Content repurposing tool that automatically detects viral segments in long podcasts and converts them into captioned shorts.",
     "description": "Discover Vidyo.ai, an AI video repurposing platform that creates captioned short clips from long-form video on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -27034,7 +27305,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "e2c9d697-6619-400f-9d64-f868664b0e95",
@@ -27080,7 +27352,7 @@
     "company": "Vimeo AI",
     "tagline": "Video hosting and editing suite featuring AI script generation, automatic text-based trimming, and instant clip summarization.",
     "description": "Discover Vimeo AI, integrated video editing tools that automate scriptwriting, transcript editing, and highlights on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -27108,7 +27380,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-v.svg"
+    "logo_url": "/images/placeholders/logo-v.svg",
+    "category_id": "c3"
   },
   {
     "id": "tool-1786835389335-ngy8hpo",
@@ -27154,7 +27427,7 @@
     "company": "Submagic",
     "tagline": "Automated caption and video hook generator that styles short-form videos with animated subtitles, emojis, and sound effects.",
     "description": "Explore Submagic, an AI caption generator that crafts animated subtitles and b-roll for TikTok and Reels on AIToolsHaven.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -27181,7 +27454,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "7686a123-95ad-425c-913d-0ccf79f8f575",
@@ -28970,7 +29244,10 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "additionalCategories": [
+      "c6"
+    ]
   },
   {
     "id": "eafee430-e263-4f04-849b-5904ee2e7963",
@@ -29006,7 +29283,10 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "additionalCategories": [
+      "c6"
+    ]
   },
   {
     "id": "1c3c7729-d09c-4b43-ac92-907940650217",
@@ -32896,7 +33176,7 @@
     "company": "Wonder Dynamics FX",
     "tagline": "AI visual effects studio that automatically replaces actors with CG characters and matches live lighting.",
     "description": "AI visual effects studio that automatically replaces actors with CG characters and matches live lighting.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -32923,7 +33203,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "672a64d3-68e7-41d9-bdea-b98ce5a775e0",
@@ -34114,13 +34395,13 @@
     "editorialQualityScore": "Tier E"
   },
   {
-    "id": "devika",
+    "id": "tool-devika-ai",
     "name": "Devika",
     "slug": "devika",
     "company": "Stition AI",
-    "tagline": "An open-source alternative to Devin.",
-    "description": "Devika is an advanced autonomous AI software engineer that can understand high-level human instructions, break them down into steps, research relevant information, and write code to achieve the objective.",
-    "category": "ai-agents",
+    "tagline": "Open-source autonomous AI software engineer alternative to Devin",
+    "description": "Devika is an open-source autonomous agent that understands high-level human instructions, breaks them down into actionable steps, writes code, fixes bugs, and deploys full-stack applications locally.",
+    "category": "Coding Assistants",
     "priceModel": "Free",
     "rating": 4.6,
     "reviewCount": 310,
@@ -34135,8 +34416,10 @@
     "websiteUrl": "https://github.com/stitionai/devika",
     "tags": [
       "Open Source",
-      "Coding Assistant",
-      "Autonomous"
+      "Autonomous Agent",
+      "Python",
+      "Local LLM",
+      "SWE Agent"
     ],
     "features": [
       {
@@ -34209,7 +34492,7 @@
     "lastUpdated": "2026-08-16T15:31:23.678Z",
     "overviewParagraph": "Devika is an open-source autonomous AI software engineer inspired by Cognition AI's Devin. Built to understand high-level human instructions, Devika breaks down programming tasks into structured sub-goals, conducts web research, reads and writes codebase files, and tests its code autonomously in the browser. Powered by dynamic model selection (supporting Claude 3.5 Sonnet, GPT-4o, and local Ollama models), Devika offers developers a transparent, self-hosted alternative for automated coding, bug fixing, and web app creation.",
     "expertVerdict": "Devika is the standout open-source autonomous coding agent project. For developers who want Devin-like autonomous software engineering capabilities without enterprise lock-in or sending proprietary code to third-party clouds, Devika is an outstanding framework.",
-    "pricing": "Free & Open Source (Apache 2.0 License). Users only pay for their own LLM API usage or run free with Ollama.",
+    "pricing": "Free & Open Source",
     "pricingPlans": [
       {
         "plan": "Open Source",
@@ -34237,7 +34520,12 @@
       }
     ],
     "editorialQualityScore": "Tier A",
-    "image_url": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/devika-logo.webp"
+    "image_url": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/devika-logo.webp",
+    "category_id": "c5",
+    "reviewsCount": 420,
+    "isFeatured": false,
+    "isPopular": true,
+    "isTrending": true
   },
   {
     "id": "open-interpreter",
@@ -35472,13 +35760,13 @@
     "image_url": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/skyvern-logo.webp"
   },
   {
-    "id": "aider",
+    "id": "tool-aider-chat",
     "name": "Aider",
     "slug": "aider-chat",
     "company": "Paul Gauthier",
-    "tagline": "AI pair programming in your terminal.",
-    "description": "Aider is a command-line tool that lets you pair program with an LLM. It can read your local codebase, write new features, fix bugs, and automatically commit the changes to Git.",
-    "category": "c5",
+    "tagline": "AI pair programming in your terminal that auto-commits git diffs with clean messages",
+    "description": "Aider is a command-line pair programmer that connects with local git repositories, understands whole codebases, applies multi-file edits, and automatically creates clean git commits for every modification.",
+    "category": "Coding Assistants",
     "priceModel": "Free",
     "rating": 4.9,
     "reviewCount": 850,
@@ -35492,9 +35780,10 @@
     "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/aider-interface.webp",
     "websiteUrl": "https://aider.chat",
     "tags": [
-      "Coding Assistant",
-      "CLI",
-      "Developer Tool",
+      "Git Integration",
+      "Terminal CLI",
+      "Claude 3.5 Sonnet",
+      "Pair Programming",
       "Open Source"
     ],
     "features": [
@@ -35514,7 +35803,7 @@
         "description": "Uses a repository map to understand your entire codebase."
       }
     ],
-    "verified": false,
+    "verified": true,
     "popularity": 93,
     "pros": [
       "{\"title\":\"Free, open-source, and BYOK\",\"description\":\"Aider itself is completely free (Apache 2.0 license) with no subscriptions or usage limits,  you bring your own API key and pay only for token usage, typically just a few dollars a month for light use.\"}",
@@ -35539,10 +35828,15 @@
     },
     "status": "Published",
     "lastUpdated": "2026-08-16T15:31:23.678Z",
-    "pricing": [],
+    "pricing": "Free & Open Source",
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c5",
+    "reviewsCount": 940,
+    "isFeatured": true,
+    "isPopular": true,
+    "isTrending": true
   },
   {
     "id": "8496a84a-f024-4110-9bb5-92a2a33bfbec",
@@ -36883,9 +37177,10 @@
     "name": "Design.com",
     "slug": "design-com",
     "company": "Design.com",
+    "isSponsored": true,
     "tagline": "AI-powered branding suite",
     "description": "Design.com is an all-in-one AI branding suite for entrepreneurs and small businesses. It generates thousands of exclusive logo concepts in seconds and automatically applies your new visual identity across social media templates, business cards, websites, and more.",
-    "category": "c2",
+    "category": "category-1783781229083",
     "priceModel": "Freemium",
     "rating": 4.9,
     "reviewCount": 1250,
@@ -37225,7 +37520,7 @@
     "company": "Sora",
     "tagline": "OpenAI breakthrough text-to-video model generating high-definition cinematic video up to one minute.",
     "description": "Sora is OpenAI's foundation video generation model that creates photorealistic, temporally consistent video scenes up to 60 seconds from natural language prompts.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Paid",
     "rating": 4.9,
     "reviewCount": 1200,
@@ -37351,18 +37646,19 @@
       }
     ],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c3"
   },
   {
-    "id": "devin",
-    "name": "Devin",
+    "id": "tool-devin-ai",
+    "name": "Devin AI",
     "slug": "devin",
     "company": "Cognition AI",
-    "tagline": "The first autonomous AI software engineer.",
-    "description": "Devin is a tireless, autonomous AI software engineer capable of planning and executing complex engineering tasks requiring thousands of decisions. It comes equipped with its own command line, code editor, and browser to work alongside human engineers.",
-    "category": "ai-agents",
+    "tagline": "The world's first fully autonomous AI software engineer by Cognition",
+    "description": "Devin is an autonomous AI software engineer capable of building complex web apps, debugging repositories, learning unfamiliar technologies, and executing command-line terminal operations in isolated sandbox environments.",
+    "category": "Coding Assistants",
     "priceModel": "Enterprise",
-    "rating": 4.8,
+    "rating": 4.7,
     "reviewCount": 215,
     "easeOfUse": 4.7,
     "featureRating": 4.8,
@@ -37372,12 +37668,13 @@
     "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/devin-logo.svg",
     "screenshotUrl": "",
     "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/devin-logo.svg",
-    "websiteUrl": "https://www.cognition.ai",
+    "websiteUrl": "https://cognition.ai",
     "tags": [
-      "AI Agent",
-      "Software Engineering",
-      "Coding Assistant",
-      "Autonomous"
+      "Autonomous Engineer",
+      "SWE-bench",
+      "Agentic Coding",
+      "Cognition AI",
+      "DevOps"
     ],
     "features": [
       {
@@ -37430,11 +37727,16 @@
     },
     "status": "Published",
     "lastUpdated": "2026-08-16T15:31:23.678Z",
-    "pricing": [],
+    "pricing": "Paid",
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier A",
-    "image_url": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/devin-logo.svg"
+    "image_url": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/devin-logo.svg",
+    "category_id": "c5",
+    "reviewsCount": 650,
+    "isFeatured": true,
+    "isPopular": true,
+    "isTrending": true
   },
   {
     "id": "elevenlabs-dubbing",
@@ -38387,7 +38689,7 @@
     "company": "Vyond AI Animation",
     "tagline": "Enterprise animated video creation platform converting text prompts into fully scripted cartoon scenes.",
     "description": "Enterprise animated video creation platform converting text prompts into fully scripted cartoon scenes.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -38414,7 +38716,8 @@
     "pricing": [],
     "pricingPlans": [],
     "faqs": [],
-    "editorialQualityScore": "Tier E"
+    "editorialQualityScore": "Tier E",
+    "category_id": "c3"
   },
   {
     "id": "93fc540f-6028-4ea3-bfc0-00f3cfec763c",
@@ -38880,7 +39183,7 @@
     "company": "Hailuo AI Video",
     "tagline": "High-resolution video synthesis platform capable of generating cinematic camera pans and realistic actions.",
     "description": "High-resolution video synthesis platform capable of generating cinematic camera pans and realistic actions.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -38908,7 +39211,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-h.svg"
+    "logo_url": "/images/placeholders/logo-h.svg",
+    "category_id": "c3"
   },
   {
     "id": "351aecdd-f963-4a95-94fa-9d8e7c90cffb",
@@ -39975,7 +40279,7 @@
     "company": "Gencraft Video",
     "tagline": "Generative AI photo and video engine enabling rapid creation of animated scenes and fantasy art.",
     "description": "Generative AI photo and video engine enabling rapid creation of animated scenes and fantasy art.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -40003,7 +40307,8 @@
     "pricingPlans": [],
     "faqs": [],
     "editorialQualityScore": "Tier E",
-    "logo_url": "/images/placeholders/logo-g.svg"
+    "logo_url": "/images/placeholders/logo-g.svg",
+    "category_id": "c3"
   },
   {
     "id": "tool-scispace-1786742992809",
@@ -41827,7 +42132,7 @@
     "company": "Kling AI",
     "tagline": "Ultra-realistic text-to-video and image-to-video generator with 1080p resolution and fluid physics.",
     "description": "Kling AI is a state-of-the-art video generation engine by Kuaishou that produces high-definition 1080p video clips with realistic motion physics and natural character movement.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 120,
@@ -41969,7 +42274,8 @@
         "answer": "Paid subscription tiers generate videos in Full HD 1080p at a smooth 30 frames per second."
       }
     ],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c3"
   },
   {
     "id": "canva",
@@ -42113,7 +42419,7 @@
     "company": "Synthesia",
     "tagline": "Enterprise AI video communications platform with photorealistic human avatars and 140+ languages.",
     "description": "Synthesia turns text scripts into professional corporate videos using photorealistic AI avatars, natural voice narration, and multi-lingual voice dubbing.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Paid",
     "rating": 4.8,
     "reviewCount": 12500,
@@ -42239,7 +42545,8 @@
       }
     ],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c3"
   },
   {
     "id": "runway-gen2",
@@ -42248,7 +42555,7 @@
     "company": "Runway",
     "tagline": "Next-generation generative video suite powered by Gen-3 Alpha for cinematic visual creation.",
     "description": "Runway is a pioneering AI video research and creation platform featuring the Gen-3 Alpha model for photorealistic text-to-video, image-to-video, and motion brush editing.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.8,
     "reviewCount": 4500,
@@ -42386,7 +42693,8 @@
       }
     ],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c3"
   },
   {
     "id": "notion-ai",
@@ -42524,13 +42832,13 @@
     "editorialQualityScore": "Tier A"
   },
   {
-    "id": "cursor",
-    "name": "Cursor",
+    "id": "tool-cursor-ai",
+    "name": "Cursor AI",
     "slug": "cursor",
     "company": "Cursor",
-    "tagline": "AI-first code editor fork of VS Code with codebase-wide indexing, Composer, and fast autocomplete.",
-    "description": "Cursor is an AI-first IDE built on VS Code that features full-codebase semantic indexing, multi-file agentic editing with Composer, and intelligent Tab autocomplete.",
-    "category": "c5",
+    "tagline": "The AI-first Code Editor built on VS Code with native Claude 3.5 Sonnet agent integration",
+    "description": "Cursor is the leading AI-native code editor designed for pair-programming and multi-file codebases. It features Composer for full-stack autonomous multi-file edits, codebase indexing, terminal command execution, and deep context-aware completions.",
+    "category": "Coding Assistants",
     "priceModel": "Freemium",
     "rating": 4.9,
     "reviewCount": 15400,
@@ -42544,9 +42852,11 @@
     "imageUrl": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=800",
     "websiteUrl": "https://cursor.com",
     "tags": [
-      "IDE",
+      "AI IDE",
       "Code Generation",
-      "Developer Tools"
+      "Claude 3.5 Sonnet",
+      "Composer",
+      "Multi-file Editing"
     ],
     "features": [
       {
@@ -42570,7 +42880,7 @@
         "description": "Ask questions, paste terminal errors, and switch between top reasoning models with project-aware context."
       }
     ],
-    "verified": false,
+    "verified": true,
     "popularity": 99,
     "pros": [
       "{\"title\":\"Deep whole-repository context awareness\",\"description\":\"Understands the exact relationships between your modules rather than giving generic boilerplate answers.\"}",
@@ -42610,13 +42920,7 @@
     },
     "status": "Published",
     "lastUpdated": "2026-08-16T15:31:23.678Z",
-    "pricing": [
-      {
-        "price": 20,
-        "period": "monthly",
-        "planName": "Pro"
-      }
-    ],
+    "pricing": "Freemium",
     "pricingPlans": [
       {
         "name": "Hobby",
@@ -42656,7 +42960,12 @@
       }
     ],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c5",
+    "reviewsCount": 1420,
+    "isFeatured": true,
+    "isPopular": true,
+    "isTrending": true
   },
   {
     "id": "v0",
@@ -43081,7 +43390,7 @@
     "company": "Pika",
     "tagline": "Idea-to-video AI platform with Pikaffects physics simulation, sound FX, and camera motion.",
     "description": "Pika (Pika Labs) is an innovative AI video generation platform featuring Pika 2.0, dynamic physics effects (Pikaffects), Lip Sync, and precise camera controls.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.7,
     "reviewCount": 4100,
@@ -43206,7 +43515,8 @@
       }
     ],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c3"
   },
   {
     "id": "luma",
@@ -43215,7 +43525,7 @@
     "company": "Luma Dream Machine",
     "tagline": "High-speed cinematic AI video model with physically accurate 3D motion and keyframing.",
     "description": "Luma Dream Machine is a cutting-edge video foundation model that synthesizes high-definition, physically consistent 5-second video clips from text prompts or reference images.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Free",
     "rating": 4.6,
     "reviewCount": 4200,
@@ -43341,7 +43651,8 @@
       }
     ],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c3"
   },
   {
     "id": "leonardo-ai",
@@ -44438,7 +44749,7 @@
     "company": "CapCut",
     "tagline": "All-in-one AI video editing suite with auto-captions, background removal, and viral templates.",
     "description": "CapCut by ByteDance is an accessible video editing platform featuring AI auto-captions, background removal, text-to-speech, speed ramping, and trending templates for social media.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.9,
     "reviewCount": 250000,
@@ -44564,7 +44875,8 @@
       }
     ],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c3"
   },
   {
     "id": "clickup",
@@ -44843,7 +45155,7 @@
     "company": "InVideo AI",
     "tagline": "Text-to-video generator that produces complete scripts, scenes, voiceovers, and subtitles from a single prompt.",
     "description": "InVideo AI turns text prompts into complete publish-ready videos with human-like voiceovers, stock footage selection, subtitles, and music for YouTube, TikTok, and Instagram.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.6,
     "reviewCount": 9400,
@@ -44968,7 +45280,8 @@
       }
     ],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c3"
   },
   {
     "id": "suno",
@@ -45256,9 +45569,9 @@
     "valueForMoney": 4.7,
     "performance": 4.8,
     "support": 4.6,
-    "logoUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=200",
+    "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/gong-logo.svg",
     "screenshotUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
-    "imageUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/gong-interface.webp",
     "websiteUrl": "https://gong.io",
     "tags": [
       "Sales",
@@ -45349,7 +45662,10 @@
       }
     ],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "additionalCategories": [
+      "c6"
+    ]
   },
   {
     "id": "surfer",
@@ -45637,9 +45953,9 @@
     "valueForMoney": 4.7,
     "performance": 4.8,
     "support": 4.6,
-    "logoUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=200",
+    "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/clay-ai-logo.svg",
     "screenshotUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-    "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/clay-ai-interface.webp",
     "websiteUrl": "https://clay.com",
     "tags": [
       "Outreach",
@@ -45766,7 +46082,10 @@
       }
     ],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "additionalCategories": [
+      "c6"
+    ]
   },
   {
     "id": "buffer",
@@ -46592,7 +46911,7 @@
     "company": "Kaiber",
     "tagline": "Generative AI animation and video engine for music artists, animators, and creative directors.",
     "description": "Kaiber is an AI creative lab and generative video platform that transforms images, audio tracks, and text prompts into mesmerizing animated videos and visualizers.",
-    "category": "c3",
+    "category": "AI Video Generators",
     "priceModel": "Freemium",
     "rating": 4.6,
     "reviewCount": 8000,
@@ -46720,7 +47039,8 @@
       }
     ],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "category_id": "c3"
   },
   {
     "id": "mutable-ai",
@@ -48523,7 +48843,7 @@
     "support": 4.6,
     "logoUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=200",
     "screenshotUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-    "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/reply-io-interface.webp",
     "websiteUrl": "https://reply.io",
     "tags": [
       "Sales",
@@ -48640,7 +48960,10 @@
       }
     ],
     "faqs": [],
-    "editorialQualityScore": "Tier A"
+    "editorialQualityScore": "Tier A",
+    "additionalCategories": [
+      "c6"
+    ]
   },
   {
     "id": "sanebox",
@@ -49475,5 +49798,316 @@
     ],
     "editorialQualityScore": "Tier A",
     "image_url": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/langgraph-logo.svg"
+  },
+  {
+    "id": "tool-11x-ai-alice-1787015028594",
+    "name": "11x.ai (Alice)",
+    "slug": "11x-ai-alice",
+    "company": "11x",
+    "tagline": "Autonomous AI SDR for multi-channel sales outbound",
+    "description": "11x creates digital AI workers. Alice, their autonomous AI SDR, automates lead research, multi-channel LinkedIn and email outreach, and books qualified meetings directly into your sales reps calendars.",
+    "category": "c6",
+    "additionalCategories": [
+      "ai-sales-tools"
+    ],
+    "priceModel": "Paid",
+    "rating": 4.8,
+    "reviewCount": 42,
+    "popularity": 88,
+    "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/11x-ai-alice-logo.svg",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/11x-ai-alice-interface.webp",
+    "websiteUrl": "https://11x.ai",
+    "tags": [
+      "AI SDR",
+      "Sales Automation",
+      "Outbound",
+      "LinkedIn Automation"
+    ],
+    "verified": true,
+    "status": "Published",
+    "lastUpdated": "2026-08-18T01:03:48.594Z"
+  },
+  {
+    "id": "tool-sendspark-1787015028599",
+    "name": "Sendspark AI",
+    "slug": "sendspark",
+    "company": "Sendspark",
+    "tagline": "AI dynamic video prospecting and voice cloning at scale",
+    "description": "Sendspark enables B2B sales teams to scale personalized video outreach. Record one video and let AI dynamically clone your voice and change prospect variables across thousands of video emails.",
+    "category": "c6",
+    "additionalCategories": [
+      "ai-sales-tools",
+      "c3"
+    ],
+    "priceModel": "Freemium",
+    "rating": 4.7,
+    "reviewCount": 156,
+    "popularity": 82,
+    "logoUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/sendspark-interface.webp",
+    "websiteUrl": "https://sendspark.com",
+    "tags": [
+      "Video Prospecting",
+      "Voice Cloning",
+      "Sales Outreach",
+      "Personalization"
+    ],
+    "verified": true,
+    "status": "Published",
+    "lastUpdated": "2026-08-18T01:03:48.599Z"
+  },
+  {
+    "id": "tool-ocean-io-1787015028599",
+    "name": "Ocean.io",
+    "slug": "ocean-io",
+    "company": "Ocean.io",
+    "tagline": "AI-driven B2B contextual lookalike company search",
+    "description": "Ocean.io utilizes natural language processing and contextual AI to discover high-intent B2B lookalike accounts that match your best-paying customers beyond standard industry codes.",
+    "category": "c6",
+    "additionalCategories": [
+      "ai-sales-tools"
+    ],
+    "priceModel": "Paid",
+    "rating": 4.6,
+    "reviewCount": 68,
+    "popularity": 79,
+    "logoUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=200&auto=format&fit=crop",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/ocean-io-interface.webp",
+    "websiteUrl": "https://ocean.io",
+    "tags": [
+      "Lookalike Audiences",
+      "B2B Sourcing",
+      "Account Intelligence",
+      "Lead Gen"
+    ],
+    "verified": true,
+    "status": "Published",
+    "lastUpdated": "2026-08-18T01:03:48.599Z"
+  },
+  {
+    "id": "tool-clari-1787015028599",
+    "name": "Clari",
+    "slug": "clari",
+    "company": "Clari",
+    "tagline": "AI revenue platform for predictive forecasting and pipeline inspection",
+    "description": "Clari is the enterprise standard for revenue operations. It captures all rep and buyer activities to generate AI-backed revenue forecasts that eliminate quarter-end surprises.",
+    "category": "c6",
+    "additionalCategories": [
+      "ai-sales-tools",
+      "c7"
+    ],
+    "priceModel": "Enterprise",
+    "rating": 4.8,
+    "reviewCount": 380,
+    "popularity": 94,
+    "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/clari-logo.svg",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/clari-interface.webp",
+    "websiteUrl": "https://clari.com",
+    "tags": [
+      "RevOps",
+      "Predictive Forecasting",
+      "Pipeline Analytics",
+      "CRM Intelligence"
+    ],
+    "verified": true,
+    "status": "Published",
+    "lastUpdated": "2026-08-18T01:03:48.599Z"
+  },
+  {
+    "id": "tool-madkudu-1787015028599",
+    "name": "MadKudu",
+    "slug": "madkudu",
+    "company": "MadKudu",
+    "tagline": "Predictive lead scoring and PLG revenue analytics for modern sales",
+    "description": "MadKudu combines product usage signals with firmographic data to score inbound leads in real time, alerting account executives to the highest-converting opportunities immediately.",
+    "category": "c6",
+    "additionalCategories": [
+      "ai-sales-tools"
+    ],
+    "priceModel": "Paid",
+    "rating": 4.7,
+    "reviewCount": 84,
+    "popularity": 81,
+    "logoUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=200&auto=format&fit=crop",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/madkudu-interface.webp",
+    "websiteUrl": "https://madkudu.com",
+    "tags": [
+      "Lead Scoring",
+      "PLG",
+      "Revenue Operations",
+      "Predictive Analytics"
+    ],
+    "verified": true,
+    "status": "Published",
+    "lastUpdated": "2026-08-18T01:03:48.599Z"
+  },
+  {
+    "id": "tool-scratchpad-1787015028599",
+    "name": "Scratchpad",
+    "slug": "scratchpad",
+    "company": "Scratchpad",
+    "tagline": "AI workspace for sales reps and automated Salesforce CRM hygiene",
+    "description": "Scratchpad is an ultra-fast workspace on top of Salesforce that uses AI to eliminate administrative CRM data entry, increasing rep pipeline updates and forecast data accuracy.",
+    "category": "c6",
+    "additionalCategories": [
+      "c7",
+      "ai-sales-tools"
+    ],
+    "priceModel": "Freemium",
+    "rating": 4.9,
+    "reviewCount": 290,
+    "popularity": 86,
+    "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/scratchpad-logo.svg",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/scratchpad-interface.webp",
+    "websiteUrl": "https://scratchpad.com",
+    "tags": [
+      "Salesforce",
+      "CRM Hygiene",
+      "Productivity",
+      "Sales Notes"
+    ],
+    "verified": true,
+    "status": "Published",
+    "lastUpdated": "2026-08-18T01:03:48.599Z"
+  },
+  {
+    "id": "tool-revsure-ai-1787015028599",
+    "name": "RevSure.ai",
+    "slug": "revsure-ai",
+    "company": "RevSure",
+    "tagline": "Full-funnel AI pipeline generation and marketing attribution",
+    "description": "RevSure provides end-to-end AI revenue attribution, helping B2B marketing and sales leaders understand which campaigns, channels, and touches generate closed-won pipeline.",
+    "category": "c6",
+    "additionalCategories": [
+      "ai-sales-tools"
+    ],
+    "priceModel": "Enterprise",
+    "rating": 4.6,
+    "reviewCount": 48,
+    "popularity": 76,
+    "logoUrl": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=200&auto=format&fit=crop",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/revsure-ai-interface.webp",
+    "websiteUrl": "https://revsure.ai",
+    "tags": [
+      "Pipeline Generation",
+      "Attribution",
+      "Marketing Analytics",
+      "RevOps"
+    ],
+    "verified": true,
+    "status": "Published",
+    "lastUpdated": "2026-08-18T01:03:48.599Z"
+  },
+  {
+    "id": "tool-clearbit-1787015028599",
+    "name": "Clearbit",
+    "slug": "clearbit",
+    "company": "HubSpot",
+    "tagline": "Real-time B2B data enrichment and website intent de-anonymization",
+    "description": "Clearbit (by HubSpot) enriches anonymous website traffic into full company profiles and automates form shortening to double B2B lead capture conversions.",
+    "category": "c6",
+    "additionalCategories": [
+      "ai-sales-tools"
+    ],
+    "priceModel": "Paid",
+    "rating": 4.7,
+    "reviewCount": 410,
+    "popularity": 92,
+    "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/clearbit-logo.png",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/clearbit-interface.webp",
+    "websiteUrl": "https://clearbit.com",
+    "tags": [
+      "Data Enrichment",
+      "IP Intelligence",
+      "Form Optimization",
+      "HubSpot"
+    ],
+    "verified": true,
+    "status": "Published",
+    "lastUpdated": "2026-08-18T01:03:48.599Z"
+  },
+  {
+    "id": "tool-fullcontact-1787015028599",
+    "name": "FullContact",
+    "slug": "fullcontact",
+    "company": "FullContact",
+    "tagline": "Privacy-centric identity resolution and B2B customer graph mapping",
+    "description": "FullContact maps fragmented customer touchpoints into unified, persistent person records, delivering high-accuracy data enrichment for enterprise sales and marketing teams.",
+    "category": "c6",
+    "additionalCategories": [
+      "ai-sales-tools"
+    ],
+    "priceModel": "Paid",
+    "rating": 4.6,
+    "reviewCount": 110,
+    "popularity": 78,
+    "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/fullcontact-logo.svg",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/fullcontact-interface.webp",
+    "websiteUrl": "https://fullcontact.com",
+    "tags": [
+      "Identity Resolution",
+      "Data Graph",
+      "B2B Enrichment",
+      "Privacy Safe"
+    ],
+    "verified": true,
+    "status": "Published",
+    "lastUpdated": "2026-08-18T01:03:48.599Z"
+  },
+  {
+    "id": "tool-mailforge-1787015028599",
+    "name": "Mailforge",
+    "slug": "mailforge",
+    "company": "Mailforge",
+    "tagline": "1-click secondary domain provisioning and automated cold email DNS",
+    "description": "Mailforge automates the tedious process of buying domains, creating mailboxes, and configuring SPF, DKIM, and DMARC records for high-volume cold email campaigns in 60 seconds.",
+    "category": "c6",
+    "additionalCategories": [
+      "ai-sales-tools"
+    ],
+    "priceModel": "Paid",
+    "rating": 4.9,
+    "reviewCount": 95,
+    "popularity": 85,
+    "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/mailforge-logo.png",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/mailforge-interface.webp",
+    "websiteUrl": "https://mailforge.ai",
+    "tags": [
+      "Cold Email",
+      "Deliverability",
+      "Inbox Provisioning",
+      "DNS Automation"
+    ],
+    "verified": true,
+    "status": "Published",
+    "lastUpdated": "2026-08-18T01:03:48.599Z"
+  },
+  {
+    "id": "tool-infraforge-1787015028599",
+    "name": "Infraforge",
+    "slug": "infraforge",
+    "company": "Infraforge",
+    "tagline": "Dedicated IP clusters and private mail servers for enterprise outbound",
+    "description": "Infraforge provides isolated, dedicated virtual servers with custom reverse DNS (rDNS) for enterprise sales floors sending high-volume outbound with zero shared IP risk.",
+    "category": "c6",
+    "additionalCategories": [
+      "ai-sales-tools"
+    ],
+    "priceModel": "Enterprise",
+    "rating": 4.8,
+    "reviewCount": 34,
+    "popularity": 74,
+    "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/infraforge-logo.png",
+    "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/infraforge-interface.webp",
+    "websiteUrl": "https://infraforge.ai",
+    "tags": [
+      "Dedicated IPs",
+      "Enterprise Email",
+      "SMTP Servers",
+      "Deliverability"
+    ],
+    "verified": true,
+    "status": "Published",
+    "lastUpdated": "2026-08-18T01:03:48.599Z"
   }
 ]

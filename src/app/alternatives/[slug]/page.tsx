@@ -23,6 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const decodedSlug = decodeURIComponent(slug);
   const curated = getCuratedAlternative(decodedSlug);
 
+  const previewImg = siteConfig.ogImage;
+
   if (curated) {
     return {
       title: curated.title,
@@ -30,6 +32,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       robots: {
         index: true,
         follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-video-preview": -1,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+        },
       },
       alternates: {
         canonical: `${siteConfig.baseUrl}/alternatives/${decodedSlug}`,
@@ -39,11 +48,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: curated.metaDescription,
         type: "article",
         url: `${siteConfig.baseUrl}/alternatives/${decodedSlug}`,
+        images: [
+          {
+            url: previewImg,
+            width: 1200,
+            height: 630,
+            alt: curated.title,
+          },
+        ],
       },
       twitter: {
         card: "summary_large_image",
         title: curated.title,
         description: curated.metaDescription,
+        images: [previewImg],
       },
     };
   }
@@ -56,16 +74,45 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const altTools = await getToolsByCategoryId(alt.id);
   const isNoIndex = alt.indexable === false || altTools.length < 3;
+  const altTitle = `Best ${alt.name} Alternatives in 2026 | AIToolsHaven`;
+  const altDesc = `Discover the top competitors and alternatives to ${alt.name}.`;
 
   return {
-    title: `Best ${alt.name} Alternatives in 2026 | AIToolsHaven`,
-    description: `Discover the top competitors and alternatives to ${alt.name}.`,
+    title: altTitle,
+    description: altDesc,
     robots: {
       index: !isNoIndex,
       follow: true,
+      googleBot: {
+        index: !isNoIndex,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
     alternates: {
       canonical: `${siteConfig.baseUrl}/alternatives/${decodedSlug}`,
+    },
+    openGraph: {
+      title: altTitle,
+      description: altDesc,
+      type: "website",
+      url: `${siteConfig.baseUrl}/alternatives/${decodedSlug}`,
+      images: [
+        {
+          url: previewImg,
+          width: 1200,
+          height: 630,
+          alt: altTitle,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: altTitle,
+      description: altDesc,
+      images: [previewImg],
     },
   };
 }

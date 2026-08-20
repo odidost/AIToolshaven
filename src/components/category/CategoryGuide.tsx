@@ -1,6 +1,16 @@
 import type { CategoryTheme } from "@/lib/data/categoryThemes";
+import { categoryGuides } from "@/content/categories";
 
 export function CategoryGuide({ theme }: { theme: CategoryTheme }) {
+  // Check if we have a long-form guide component for this slug
+  const LongFormGuide = categoryGuides[theme.slug];
+  
+  // If we do, render the long-form React component directly
+  if (LongFormGuide) {
+    return <LongFormGuide />;
+  }
+
+  // Fallback to the old array-based theme.guide if it exists
   if (!theme.guide || theme.guide.length === 0) return null;
 
   return (

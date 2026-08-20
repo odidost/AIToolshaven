@@ -80,6 +80,7 @@ export interface AITool {
 
     verified: boolean;
     featured?: boolean;
+    isSponsored?: boolean;
 
     popularity: number;
 
@@ -127,6 +128,10 @@ export interface AITool {
 
     lastUpdated?: string;
     status?: string;
+
+    matchScore?: number;
+    recommendationBadge?: string;
+    aiReasoning?: string;
 }
 
 export interface PromptExample {

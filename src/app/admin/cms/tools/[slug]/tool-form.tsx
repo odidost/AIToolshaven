@@ -1406,6 +1406,29 @@ export function ToolForm({ initialData, categories, allWorkflows = [], allGoals 
                     </FormItem>
                   )}
                 />
+
+                <FormField
+                  control={form.control as any}
+                  name="isSponsored"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                      <div className="space-y-0.5">
+                        <FormLabel className="text-base">
+                          Premium Sponsored
+                        </FormLabel>
+                        <FormDescription>
+                          Float this tool to the top of category pages.
+                        </FormDescription>
+                      </div>
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
               </CardContent>
             </Card>
           </div>

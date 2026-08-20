@@ -76,14 +76,45 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? `Compare ${mainTool.name} and ${compareTool.name} side-by-side. See verified pricing, core features, pros & cons, and workflow recommendations.`
     : `Compare ${mainTool.name} with other AI tools on AIToolsHaven.`;
 
+  const previewImg = siteConfig.ogImage;
+
   return {
     title,
     description,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     alternates: {
       canonical: `${siteConfig.baseUrl}/compare-tools/${canonicalSlug}`,
     },
-    openGraph: { title, description, type: "website", url: `${siteConfig.baseUrl}/compare-tools/${canonicalSlug}` },
-    twitter: { card: "summary_large_image", title, description },
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      url: `${siteConfig.baseUrl}/compare-tools/${canonicalSlug}`,
+      images: [
+        {
+          url: previewImg,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [previewImg],
+    },
   };
 }
 

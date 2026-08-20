@@ -1,87 +1,127 @@
+"use client";
+
 import Link from "next/link";
 
+interface OpportunityCardProps {
+  title: string;
+  description: string;
+  icon: string;
+  slug?: string;
+  difficulty?: string;
+  roi?: string;
+  color?: string;
+}
+
 export function OpportunityCard({
-    title,
-    description,
-    icon,
-    slug,
-    difficulty = "Beginner",
-    roi = "High",
-    color = "from-primary to-orange-500",
-}: {
-    title: string;
-    description: string;
-    icon: string;
-    slug?: string;
-    difficulty?: string;
-    roi?: string;
-    color?: string;
-}) {
-    const CardContent = (
-        <div className="group relative bg-white/70 backdrop-blur-2xl rounded-[2rem] p-6 hover:-translate-y-2 transition-all duration-500 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] overflow-hidden h-full flex flex-col justify-between border border-white/60 min-h-[280px]">
-            
-            {/* The Top Glowing Edge (Animated) */}
-            <div className={`absolute top-0 left-0 w-[200%] h-1.5 bg-gradient-to-r ${color} opacity-80 group-hover:opacity-100 transition-opacity animate-pulse-slow`} />
-            
-            {/* The Background Hover Glow */}
-            <div className={`absolute -bottom-24 -right-24 w-64 h-64 bg-gradient-to-br ${color} rounded-full blur-[100px] opacity-0 group-hover:opacity-20 transition-all duration-700 pointer-events-none group-hover:scale-150`} />
+  title,
+  description,
+  icon,
+  slug,
+  difficulty = "Beginner",
+  roi = "High",
+  color = "from-primary to-orange-500",
+}: OpportunityCardProps) {
+  // Derive color theme matching TrendingStacksHub & WorkflowCard aesthetics
+  const c = color.toLowerCase();
+  const theme = 
+    c.includes("emerald") || c.includes("teal") || c.includes("green") ? {
+      gradient: "from-emerald-600/10 via-teal-500/5 to-transparent",
+      borderColor: "border-emerald-500/20 hover:border-emerald-500/50",
+      badgeColor: "from-emerald-500/20 to-teal-500/20 text-emerald-600 border-emerald-500/30",
+      roiBg: "bg-emerald-500/10 text-emerald-700",
+    } :
+    c.includes("purple") || c.includes("indigo") ? {
+      gradient: "from-purple-600/10 via-indigo-500/5 to-transparent",
+      borderColor: "border-purple-500/20 hover:border-purple-500/50",
+      badgeColor: "from-purple-500/20 to-indigo-500/20 text-purple-600 border-purple-500/30",
+      roiBg: "bg-purple-500/10 text-purple-700",
+    } :
+    c.includes("cyan") || c.includes("blue") ? {
+      gradient: "from-cyan-600/10 via-blue-500/5 to-transparent",
+      borderColor: "border-cyan-500/20 hover:border-cyan-500/50",
+      badgeColor: "from-cyan-500/20 to-blue-500/20 text-cyan-600 border-cyan-500/30",
+      roiBg: "bg-cyan-500/10 text-cyan-700",
+    } :
+    c.includes("orange") || c.includes("amber") || c.includes("yellow") ? {
+      gradient: "from-amber-600/10 via-orange-500/5 to-transparent",
+      borderColor: "border-amber-500/20 hover:border-amber-500/50",
+      badgeColor: "from-amber-500/20 to-orange-500/20 text-amber-600 border-amber-500/30",
+      roiBg: "bg-amber-500/10 text-amber-700",
+    } :
+    c.includes("rose") || c.includes("red") ? {
+      gradient: "from-rose-600/10 via-[#FF5F6D]/5 to-transparent",
+      borderColor: "border-rose-500/20 hover:border-rose-500/50",
+      badgeColor: "from-rose-500/20 to-[#FFC371]/20 text-rose-600 border-rose-500/30",
+      roiBg: "bg-rose-500/10 text-rose-700",
+    } : {
+      // Default AIToolsHaven Sunset Ember Theme
+      gradient: "from-[#FF5F6D]/10 via-[#FF8C69]/5 to-transparent",
+      borderColor: "border-[#FF5F6D]/20 hover:border-[#FF5F6D]/50",
+      badgeColor: "from-[#FF5F6D]/20 to-[#FFC371]/20 text-[#FF5F6D] border-[#FF5F6D]/30",
+      roiBg: "bg-[#FF5F6D]/10 text-[#FF5F6D]",
+    };
 
-            <div className="relative z-10">
-                {/* Top Header: Icon & Trending Badge */}
-                <div className="flex items-start justify-between mb-5">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${color} p-[1.5px] shadow-sm group-hover:shadow-md transition-shadow duration-300`}>
-                        <div className="w-full h-full bg-white/90 backdrop-blur-sm rounded-[14px] flex items-center justify-center">
-                            <span className={`material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-br ${color} text-3xl group-hover:scale-110 transition-transform duration-500`}>
-                                {icon}
-                            </span>
-                        </div>
-                    </div>
-                    <div className="flex items-center gap-1.5 bg-gradient-to-r from-red-500 to-orange-500 text-white px-3.5 py-1.5 rounded-full shadow-[0_0_15px_rgba(239,68,68,0.4)] animate-pulse-slow border border-white/20">
-                        <span className="material-symbols-outlined text-[14px]">trending_up</span>
-                        <span className="text-[10px] font-black uppercase tracking-wider">Hot</span>
-                    </div>
-                </div>
+  const badgeText = roi.includes("$") ? roi : `${roi.toUpperCase()} ROI`;
 
-                {/* Main Content */}
-                <h3 className="font-black text-2xl text-slate-900 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-900 group-hover:to-slate-600 transition-all leading-tight">
-                    {title}
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-6 line-clamp-2">
-                    {description}
-                </p>
-            </div>
-
-            {/* Bottom "Bounty Stats" & CTA */}
-            <div className="relative z-10 mt-auto">
-                <div className="grid grid-cols-2 gap-3 transition-all duration-500 group-hover:-translate-y-2 group-hover:mb-14">
-                    <div className="bg-gradient-to-br from-white to-slate-50 border border-white shadow-[0_2px_10px_rgba(0,0,0,0.02)] rounded-xl p-3 group-hover:shadow-[0_4px_15px_rgba(0,0,0,0.04)] transition-shadow">
-                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Difficulty</p>
-                        <p className="text-sm font-bold text-slate-800">{difficulty}</p>
-                    </div>
-                    <div className="bg-gradient-to-br from-white to-emerald-50/30 border border-white shadow-[0_2px_10px_rgba(0,0,0,0.02)] rounded-xl p-3 group-hover:shadow-[0_4px_15px_rgba(0,0,0,0.04)] transition-shadow">
-                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Potential ROI</p>
-                        <p className="text-sm font-bold text-emerald-600">{roi}</p>
-                    </div>
-                </div>
-
-                {/* Animated CTA */}
-                <div className="absolute left-0 right-0 bottom-0 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 pointer-events-none group-hover:pointer-events-auto">
-                    <div className={`w-full py-3.5 px-4 rounded-xl bg-gradient-to-r ${color} text-white font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-shadow`}>
-                        <span className="text-sm tracking-wide">Unlock Blueprint</span>
-                        <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div 
+      className={`relative rounded-3xl bg-gradient-to-b ${theme.gradient} bg-white border ${theme.borderColor} p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group overflow-hidden h-full`}
+    >
+      {/* Top Section */}
+      <div>
+        {/* Row: Icon Box & ROI Pill Badge */}
+        <div className="flex items-center justify-between gap-2 mb-4">
+          <div className="w-12 h-12 rounded-2xl bg-white shadow-sm border border-black/5 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+            <span className="material-symbols-outlined text-2xl">{icon}</span>
+          </div>
+          <span className={`text-[10.5px] font-black px-3 py-1 rounded-full border bg-gradient-to-r ${theme.badgeColor} tracking-wider uppercase`}>
+            {badgeText}
+          </span>
         </div>
-    );
 
-    if (slug) {
-        return (
-            <Link href={`/goals/${slug}`} className="block h-full outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-[2rem]">
-                {CardContent}
-            </Link>
-        );
-    }
+        {/* Title & Subtitle */}
+        <h3 className="text-xl font-heading font-black text-gray-900 group-hover:text-primary transition-colors mb-1">
+          {title}
+        </h3>
+        <p className="text-xs font-semibold text-gray-500 mb-3 tracking-tight">
+          Monetization Opportunity • {difficulty} Track
+        </p>
+        <p className="text-sm font-sans text-gray-600 leading-relaxed mb-6 line-clamp-2">
+          {description}
+        </p>
 
-    return CardContent;
+        {/* Opportunity Telemetry Grid */}
+        <div className="grid grid-cols-2 gap-2.5 mb-6">
+          <div className="p-3 rounded-2xl bg-white/80 border border-black/5 space-y-0.5">
+            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">
+              Difficulty
+            </span>
+            <span className="text-xs font-black text-gray-900">
+              {difficulty}
+            </span>
+          </div>
+
+          <div className="p-3 rounded-2xl bg-white/80 border border-black/5 space-y-0.5">
+            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">
+              Earning Potential
+            </span>
+            <span className="text-xs font-black text-emerald-600">
+              {roi}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Action CTA */}
+      <div className="pt-4 border-t border-black/5">
+        <Link
+          href={slug ? `/goals/${slug}` : `/goals`}
+          className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-gray-900 hover:bg-primary text-white text-xs font-bold transition-all shadow-xs"
+        >
+          Unlock Opportunity Playbook
+          <span className="material-symbols-outlined text-[14px]">chevron_right</span>
+        </Link>
+      </div>
+    </div>
+  );
 }

@@ -34,7 +34,11 @@ export function ToolCard({ tool }: { tool: AITool }) {
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        className="relative h-full rounded-2xl bg-gradient-to-br from-rose-50/40 to-orange-50/40 border border-primary/5 hover:border-primary/30 transition-all duration-300 flex flex-col shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(255,95,109,0.1)] group/card hover:-translate-y-1 overflow-hidden"
+        className={`relative h-full rounded-2xl transition-all duration-300 flex flex-col hover:-translate-y-1 overflow-hidden group/card ${
+          tool.isSponsored 
+            ? 'bg-gradient-to-br from-[#FFD700]/10 to-[#FFA500]/5 border-2 border-[#FFD700]/50 shadow-[0_4px_20px_rgba(255,215,0,0.15)] hover:shadow-[0_8px_30px_rgba(255,215,0,0.3)] hover:border-[#FFD700]' 
+            : 'bg-gradient-to-br from-rose-50/40 to-orange-50/40 border border-primary/5 hover:border-primary/30 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(255,95,109,0.1)]'
+        }`}
       >
         {/* Spotlight Overlay */}
         <div 
@@ -49,7 +53,13 @@ export function ToolCard({ tool }: { tool: AITool }) {
         <div className="relative z-10 flex flex-col h-full p-5">
           <div className="flex flex-wrap justify-start items-start gap-2 mb-4">
             <div className="flex gap-2">
-              {tool.featured && (
+              {tool.isSponsored && (
+                <div className="bg-[#FFD700]/20 text-[#996515] border border-[#FFD700]/50 text-[11px] tracking-tight font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+                  <span className="material-symbols-outlined text-[12px]">diamond</span>
+                  Sponsored
+                </div>
+              )}
+              {tool.featured && !tool.isSponsored && (
                 <div className="bg-accent/10 text-accent border border-accent/20 text-[11px] tracking-tight font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1">
                   <span className="material-symbols-outlined text-[12px]">star</span>
                   Featured

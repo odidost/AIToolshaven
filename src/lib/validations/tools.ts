@@ -31,6 +31,7 @@ export const toolSchema = z.object({
   
   verified: z.boolean().default(false),
   featured: z.boolean().default(false),
+  isSponsored: z.boolean().default(false),
   popularity: z.coerce.number().default(0),
   
   platform: z.string().optional(),

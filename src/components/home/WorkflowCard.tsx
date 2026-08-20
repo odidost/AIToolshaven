@@ -4,150 +4,204 @@ import Link from "next/link";
 import { useState } from "react";
 import { ToolImage } from "@/components/shared/ToolImage";
 import type { AITool } from "@/lib/types/tool";
+import type { WorkflowStep } from "@/lib/workflows";
+
+interface WorkflowCardProps {
+  title: string;
+  tools: { name: string; logoUrl?: string; slug?: string; fullTool?: AITool }[];
+  icon?: string;
+  slug?: string;
+  description?: string;
+  audience?: string;
+  meta?: {
+    outcome?: string;
+    time?: string;
+    skill?: string;
+    cost?: string;
+    toolsCount?: number;
+    steps?: WorkflowStep[];
+  };
+  color?: string;
+}
+
 export function WorkflowCard({
-    title,
-    tools,
-    icon,
-    slug,
-}: {
-    title: string;
-    tools: { name: string; logoUrl?: string; fullTool?: AITool }[];
-    icon: string;
-    slug?: string;
-}) {
-    const CardContent = (
-        <div className="group rounded-[2rem] border border-white/10 shadow-xl hover:shadow-2xl hover:border-white/30 transition-all duration-700 relative overflow-hidden h-full flex flex-col justify-between min-h-[240px] bg-slate-950/40 backdrop-blur-3xl">
-            
-            {/* Alive & Colorful Animated Orbs */}
-            <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-purple-500/40 rounded-full mix-blend-screen filter blur-[80px] animate-pulse pointer-events-none group-hover:scale-110 transition-transform duration-1000" style={{ animationDuration: '4s' }} />
-            <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-cyan-400/40 rounded-full mix-blend-screen filter blur-[80px] animate-pulse pointer-events-none group-hover:scale-110 transition-transform duration-1000" style={{ animationDuration: '6s', animationDelay: '1s' }} />
-            <div className="absolute top-[20%] right-[-10%] w-[50%] h-[50%] bg-pink-500/30 rounded-full mix-blend-screen filter blur-[80px] animate-pulse pointer-events-none group-hover:-translate-x-10 group-hover:scale-125 transition-transform duration-1000" style={{ animationDuration: '5s' }} />
-            <div className="absolute bottom-[10%] left-[-10%] w-[50%] h-[50%] bg-amber-400/30 rounded-full mix-blend-screen filter blur-[80px] animate-pulse pointer-events-none group-hover:translate-x-10 group-hover:scale-125 transition-transform duration-1000" style={{ animationDuration: '7s', animationDelay: '2s' }} />
-            
-            {/* Glassy Inner Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none z-0 rounded-[2rem]" />
-            <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(255,255,255,0.1)] rounded-[2rem] pointer-events-none z-0" />
+  title,
+  tools,
+  icon = "account_tree",
+  slug,
+  description,
+  audience,
+  meta,
+  color = "red",
+}: WorkflowCardProps) {
+  // Derive color theme matching TrendingStacksHub aesthetics
+  const c = color.toLowerCase();
+  const theme = 
+    c.includes("blue") || c.includes("code") ? {
+      gradient: "from-blue-600/10 via-cyan-500/5 to-transparent",
+      borderColor: "border-blue-500/20 hover:border-blue-500/50",
+      badgeColor: "from-blue-500/20 to-cyan-500/20 text-blue-600 border-blue-500/30",
+      iconColor: "text-blue-500"
+    } :
+    c.includes("purple") || c.includes("pink") ? {
+      gradient: "from-purple-600/10 via-pink-500/5 to-transparent",
+      borderColor: "border-purple-500/20 hover:border-purple-500/50",
+      badgeColor: "from-purple-500/20 to-pink-500/20 text-purple-600 border-purple-500/30",
+      iconColor: "text-purple-500"
+    } :
+    c.includes("emerald") || c.includes("green") ? {
+      gradient: "from-emerald-600/10 via-teal-500/5 to-transparent",
+      borderColor: "border-emerald-500/20 hover:border-emerald-500/50",
+      badgeColor: "from-emerald-500/20 to-teal-500/20 text-emerald-600 border-emerald-500/30",
+      iconColor: "text-emerald-500"
+    } :
+    c.includes("amber") || c.includes("orange") || c.includes("yellow") ? {
+      gradient: "from-amber-600/10 via-orange-500/5 to-transparent",
+      borderColor: "border-amber-500/20 hover:border-amber-500/50",
+      badgeColor: "from-amber-500/20 to-orange-500/20 text-amber-600 border-amber-500/30",
+      iconColor: "text-amber-500"
+    } : {
+      // Default AIToolsHaven Sunset Ember Theme
+      gradient: "from-[#FF5F6D]/10 via-[#FF8C69]/5 to-transparent",
+      borderColor: "border-[#FF5F6D]/20 hover:border-[#FF5F6D]/50",
+      badgeColor: "from-[#FF5F6D]/20 to-[#FFC371]/20 text-[#FF5F6D] border-[#FF5F6D]/30",
+      iconColor: "text-primary"
+    };
 
-            {/* Header: Title and Category Icon */}
-            <div className="flex items-start justify-between gap-4 mb-4 mt-5 mx-6 relative z-10">
-                <h3 className="font-semibold text-lg tracking-wide text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.4)] transition-all duration-500 leading-tight">
-                    {title}
-                </h3>
-                <div className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 backdrop-blur-xl text-white/80 group-hover:bg-primary/20 group-hover:text-white transition-all duration-500 border border-white/10 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_rgba(255,95,109,0.3)] shadow-lg relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <span className="material-symbols-outlined text-[24px] relative z-10">
-                        {icon}
-                    </span>
-                </div>
-            </div>
+  const badgeText = audience || "VERIFIED BLUEPRINT";
+  const displayDesc = description || (meta?.outcome ? meta.outcome : `Step-by-step automated workflow combining ${tools.length} leading AI tools.`);
 
-            {/* The Visual Pipeline */}
-            <div className="relative z-10 mt-auto mx-6 mb-5 p-4 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden group-hover:border-white/20 transition-colors duration-500">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                <div className="flex items-center flex-wrap gap-y-4 relative z-10">
-                    {tools.map((tool, index) => {
-                        const isLast = index === tools.length - 1;
-                        return (
-                            <div key={index} className="flex items-center">
-                                {/* Tool Node */}
-                                <div className="group/node relative flex flex-col items-center">
-                                    <div className="w-12 h-12 rounded-2xl bg-white border border-white/20 shadow-lg flex items-center justify-center overflow-hidden transition-all duration-500 group-hover/node:scale-110 group-hover/node:-translate-y-1 group-hover/node:border-primary group-hover/node:shadow-glow-primary z-10 relative">
-                                        <ToolLogo name={tool.name} logoUrl={tool.logoUrl} fullTool={tool.fullTool} />
-                                    </div>
-                                    <span className="absolute -bottom-6 text-[10px] font-bold text-slate-300 opacity-0 group-hover/node:opacity-100 transition-opacity whitespace-nowrap bg-slate-900 px-2 py-0.5 rounded-full border border-white/10 shadow-sm z-20">
-                                        {tool.name}
-                                    </span>
-                                </div>
-                                
-                                {/* Connector Arrow */}
-                                {!isLast && (
-                                    <div className="flex items-center px-2">
-                                        <div className="w-8 h-[2px] bg-white/10 relative overflow-hidden rounded-full">
-                                            {/* Static primary color that appears on hover */}
-                                            <div 
-                                                className="absolute inset-0 bg-gradient-to-r from-primary/40 to-primary opacity-0 group-hover:opacity-100" 
-                                                style={{
-                                                    transitionDuration: '700ms',
-                                                    transitionDelay: `${index * 150}ms`,
-                                                    transitionProperty: 'opacity'
-                                                }}
-                                            />
-                                            {/* Animated pulse that travels along the line constantly on hover */}
-                                            <div className="absolute inset-y-0 left-0 w-1/2 bg-white/80 blur-[2px] -translate-x-full group-hover:animate-marquee opacity-0 group-hover:opacity-100" style={{ animationDelay: `${index * 200}ms` }} />
-                                        </div>
-                                        <span 
-                                            className="material-symbols-outlined text-[16px] text-white/20 -ml-1.5 z-10 bg-slate-950/50 rounded-full"
-                                            style={{
-                                                transitionDuration: '500ms',
-                                                transitionDelay: `${index * 150}ms`,
-                                                color: 'inherit'
-                                            }}
-                                        >
-                                            <span className="group-hover:text-primary transition-colors duration-500 drop-shadow-[0_0_8px_rgba(255,95,109,0.8)]" style={{ transitionDelay: `${index * 150}ms` }}>chevron_right</span>
-                                        </span>
-                                    </div>
-                                )}
-                            </div>
-                        );
-                    })}
-                </div>
-            </div>
-            
+  return (
+    <div 
+      className={`relative rounded-3xl bg-gradient-to-b ${theme.gradient} bg-white border ${theme.borderColor} p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group overflow-hidden h-full`}
+    >
+      {/* Top Section */}
+      <div>
+        {/* Row: Icon Box & Audience/Badge */}
+        <div className="flex items-center justify-between gap-2 mb-4">
+          <div className="w-12 h-12 rounded-2xl bg-white shadow-sm border border-black/5 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+            <span className="material-symbols-outlined text-2xl">{icon}</span>
+          </div>
+          <span className={`text-[10.5px] font-black px-3 py-1 rounded-full border bg-gradient-to-r ${theme.badgeColor} tracking-wider uppercase`}>
+            {badgeText}
+          </span>
         </div>
-    );
 
-    if (slug) {
-        return (
-            <Link href={`/workflows/${slug}`} className="block h-full">
-                {CardContent}
-            </Link>
-        );
-    }
+        {/* Title & Subtitle */}
+        <h3 className="text-xl font-heading font-black text-gray-900 group-hover:text-primary transition-colors mb-1">
+          {title}
+        </h3>
+        <p className="text-xs font-semibold text-gray-500 mb-3 tracking-tight">
+          {tools.map(t => t.name).join(" • ")}
+        </p>
+        <p className="text-sm font-sans text-gray-600 leading-relaxed mb-6 line-clamp-2">
+          {displayDesc}
+        </p>
 
-    return CardContent;
+        {/* Pipeline / Sequence of Tools */}
+        <div className="mb-6">
+          <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider block mb-2.5">
+            Chained Tool Stack:
+          </span>
+          <div className="flex flex-wrap items-center gap-1.5">
+            {tools.map((tool, idx) => {
+              const toolSlug = tool.slug || tool.fullTool?.slug || tool.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+              const isLast = idx === tools.length - 1;
+
+              return (
+                <div key={idx} className="flex items-center gap-1.5">
+                  <Link
+                    href={`/tool/${toolSlug}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold bg-white hover:bg-primary/10 hover:text-primary px-2.5 py-1.5 rounded-lg border border-black/5 shadow-2xs transition-all hover:scale-105"
+                    title={`View ${tool.name}`}
+                  >
+                    <div className="w-4 h-4 rounded overflow-hidden shrink-0 flex items-center justify-center">
+                      <ToolLogo name={tool.name} logoUrl={tool.logoUrl} fullTool={tool.fullTool} />
+                    </div>
+                    <span>{tool.name}</span>
+                  </Link>
+
+                  {!isLast && (
+                    <span className="text-gray-300 text-xs font-bold select-none">
+                      ➔
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Row: Metadata & Action Button */}
+      <div className="pt-4 border-t border-black/5 space-y-3">
+        {meta && (
+          <div className="flex items-center justify-between text-xs font-medium text-gray-700 bg-white/70 p-2.5 rounded-xl border border-black/5">
+            <span className="truncate pr-2 font-semibold">
+              ⏱️ {meta.time || "15-30m"} • 🎯 {meta.skill || "All Levels"}
+            </span>
+            <span className="text-emerald-600 font-bold shrink-0">
+              {meta.cost || "Free & Paid"}
+            </span>
+          </div>
+        )}
+
+        {slug ? (
+          <Link
+            href={`/workflows/${slug}`}
+            className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-gray-900 hover:bg-primary text-white text-xs font-bold transition-all shadow-xs"
+          >
+            Run Step-by-Step Blueprint
+            <span className="material-symbols-outlined text-[14px]">chevron_right</span>
+          </Link>
+        ) : (
+          <div className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-gray-100 text-gray-700 text-xs font-bold">
+            Verified Blueprint
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
 
 function ToolLogo({ name, logoUrl, fullTool }: { name: string; logoUrl?: string; fullTool?: AITool }) {
-    const [error, setError] = useState(false);
-    const safeName = typeof name === 'string' && name.trim().length > 0 ? name.trim() : 'AI Tool';
-    const letter = safeName.charAt(0).toUpperCase();
+  const [error, setError] = useState(false);
+  const safeName = typeof name === 'string' && name.trim().length > 0 ? name.trim() : 'AI';
+  const letter = safeName.charAt(0).toUpperCase();
 
-    if (error || (!logoUrl && !fullTool)) {
-        // Consistent gradient colors based on the letter
-        const colors = [
-            "from-purple-500 to-indigo-600",
-            "from-emerald-400 to-emerald-600",
-            "from-orange-400 to-amber-600",
-            "from-blue-400 to-cyan-500",
-            "from-rose-400 to-red-600",
-            "from-slate-700 to-slate-900",
-            "from-pink-500 to-rose-600",
-            "from-cyan-500 to-blue-600"
-        ];
-        const colorIndex = (letter.charCodeAt(0) || 65) % colors.length;
-        const gradient = colors[colorIndex] || colors[0];
-
-        return (
-            <div className={`w-full h-full bg-gradient-to-br ${gradient} flex items-center justify-center rounded-2xl`}>
-                <span className="text-xl font-black text-white drop-shadow-sm">{letter}</span>
-            </div>
-        );
-    }
-
-    if (fullTool) {
-        return (
-            <div className="w-full h-full object-cover overflow-hidden bg-white">
-                <ToolImage tool={fullTool} type="logo" className="w-full h-full object-cover p-1.5" />
-            </div>
-        );
-    }
+  if (error || (!logoUrl && !fullTool)) {
+    const colors = [
+      "from-[#FF5F6D] to-[#FF8C69]",
+      "from-purple-500 to-indigo-600",
+      "from-emerald-400 to-emerald-600",
+      "from-amber-400 to-orange-500",
+      "from-blue-400 to-cyan-500",
+    ];
+    const colorIndex = (letter.charCodeAt(0) || 65) % colors.length;
+    const gradient = colors[colorIndex] || colors[0];
 
     return (
-        <img 
-            src={logoUrl} 
-            alt={safeName} 
-            className="w-full h-full object-cover p-1.5" 
-            onError={() => setError(true)} 
-        />
+      <div className={`w-full h-full bg-gradient-to-br ${gradient} flex items-center justify-center rounded`}>
+        <span className="text-[10px] font-black text-white">{letter}</span>
+      </div>
     );
+  }
+
+  if (fullTool) {
+    return (
+      <div className="w-full h-full object-cover overflow-hidden">
+        <ToolImage tool={fullTool} type="logo" className="w-full h-full object-contain" />
+      </div>
+    );
+  }
+
+  return (
+    <img 
+      src={logoUrl} 
+      alt={safeName} 
+      className="w-full h-full object-contain" 
+      onError={() => setError(true)} 
+    />
+  );
 }

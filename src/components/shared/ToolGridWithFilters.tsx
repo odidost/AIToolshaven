@@ -30,6 +30,10 @@ export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) 
 
     // Sort
     result.sort((a, b) => {
+      // Premium Sponsored Check (Overrides all other sorting)
+      if (a.isSponsored && !b.isSponsored) return -1;
+      if (!a.isSponsored && b.isSponsored) return 1;
+
       switch (sortBy) {
         case "popular":
           return (b.popularity || 0) - (a.popularity || 0);

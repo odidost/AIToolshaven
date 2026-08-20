@@ -21,16 +21,15 @@ export function ArticleCard({
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
                 {/* Thumbnail Image Wrapper */}
-                <div className="relative w-full aspect-[4/3] rounded-[1.5rem] overflow-hidden bg-slate-100 mb-6 shadow-inner">
-                    <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                <div className="relative w-full aspect-[16/10] rounded-[1.5rem] overflow-hidden bg-slate-100 mb-6 shadow-sm border border-slate-200/80">
                     <img 
                         src={imageUrl} 
                         alt={title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     {/* Glowing Floating Badge */}
-                    <div className="absolute top-4 left-4 z-20">
-                        <span className="inline-block bg-white/90 backdrop-blur-md text-slate-900 text-[11px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.1)] border border-white">
+                    <div className="absolute top-3 left-3 z-20">
+                        <span className="inline-block bg-white/95 backdrop-blur-md text-slate-900 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-sm border border-slate-200/80">
                             {category}
                         </span>
                     </div>
