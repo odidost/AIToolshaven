@@ -1,7 +1,7 @@
 "use server";
 
 import { createClient, createAdminClient } from "@/lib/supabase/server";
-import { toolSchema, type ToolFormValues } from "@/lib/validations/tools";
+import { toolSchema, generateSlug, type ToolFormValues } from "@/lib/validations/tools";
 import { revalidatePath } from "next/cache";
 import fs from "fs";
 import path from "path";
@@ -9,10 +9,10 @@ import crypto from "crypto";
 import type { AITool } from "@/lib/types/tool";
 
 export async function saveTool(data: ToolFormValues) {
-  // Validate data on the server
+  // Validate data on the server with relaxed schema
   const parsedData = toolSchema.safeParse(data);
   if (!parsedData.success) {
-    return { success: false, error: parsedData.error.issues[0].message };
+    return { success: false, error: parsedData.error.issues[0]?.message || "Validation error" };
   }
 
   const supabase = await createClient();
@@ -26,42 +26,42 @@ export async function saveTool(data: ToolFormValues) {
   const adminSupabase = await createAdminClient();
 
   const toolData = parsedData.data;
+  const slug = toolData.slug || generateSlug(toolData.name);
   
   // Construct the database object mapping camelCase schema validations to Supabase snake_case columns
   const dbRecord = {
     name: toolData.name,
-    slug: toolData.slug,
+    slug: slug,
     company: toolData.company || null,
-    tagline: toolData.tagline,
-    description: toolData.description,
-    category_id: toolData.category_id,
-    price_model: toolData.price_model,
+    tagline: toolData.tagline || "",
+    description: toolData.description || "",
+    category_id: toolData.category_id || "cat-other",
+    price_model: toolData.price_model || "Freemium",
     price: toolData.price || null,
-    rating: toolData.rating,
-    review_count: toolData.review_count,
-    logo_url: toolData.logo_url,
-    image_url: toolData.image_url,
+    rating: toolData.rating ?? 0,
+    review_count: toolData.review_count ?? 0,
+    logo_url: toolData.logo_url || "",
+    image_url: toolData.image_url || toolData.logo_url || "",
     screenshot_url: toolData.screenshot_url || null,
     website_url: toolData.website_url || null,
     url: toolData.url || null,
     tags: toolData.tags || [],
-    features: toolData.features || [],
-    pros: (toolData.pros || []).map(p => typeof p === 'object' ? JSON.stringify(p) : p),
-    cons: (toolData.cons || []).map(c => typeof c === 'object' ? JSON.stringify(c) : c),
-    use_cases: (toolData.useCases || []).map(u => typeof u === 'object' ? JSON.stringify(u) : u),
+    features: (toolData.features || []).map(f => typeof f === 'string' ? { title: f, description: '', icon: '' } : { title: f?.title || '', description: f?.description || '', icon: f?.icon || '' }),
+    pros: (toolData.pros || []).map(p => typeof p === 'object' ? (p?.title || JSON.stringify(p)) : String(p)),
+    cons: (toolData.cons || []).map(c => typeof c === 'object' ? (c?.title || JSON.stringify(c)) : String(c)),
+    use_cases: (toolData.useCases || []).map(u => typeof u === 'object' ? (u?.title || JSON.stringify(u)) : String(u)),
     pricing_plans: toolData.pricingPlans || [],
     best_for: toolData.bestFor || [],
     editorial: toolData.editorial || {},
-    verified: toolData.verified,
-    featured: toolData.featured,
-    is_sponsored: toolData.isSponsored,
-    popularity: toolData.popularity,
+    verified: toolData.verified ?? false,
+    featured: toolData.featured ?? false,
+    popularity: toolData.popularity ?? 0,
     platform: toolData.platform || null,
-    api: toolData.api,
-    mobile_app: toolData.mobileApp,
-    open_source: toolData.openSource,
-    free_trial: toolData.freeTrial,
-    status: toolData.status,
+    api: toolData.api ?? false,
+    mobile_app: toolData.mobileApp ?? false,
+    open_source: toolData.openSource ?? false,
+    free_trial: toolData.freeTrial ?? false,
+    status: toolData.status || "Draft",
     last_edited_by: user.id,
     updated_at: new Date().toISOString(),
   };
@@ -123,7 +123,7 @@ export async function saveTool(data: ToolFormValues) {
       return { success: false, error: `Database error: ${result.error.message}` };
     }
   } catch (err: any) {
-    console.warn("Supabase connection offline. Falling back to local filesystem storage. Detail:", err.message);
+    console.warn("Supabase connection error:", err.message);
     return { success: false, error: `Server error: ${err.message}` };
   }
 
@@ -141,43 +141,40 @@ export async function saveTool(data: ToolFormValues) {
       // Find existing document by slug or ID
       const existingIdx = toolsJson.findIndex((doc: any) => 
         doc.id === toolId || 
-        doc.draftData?.slug === toolData.slug || 
-        doc.publishedData?.slug === toolData.slug
+        doc.slug === slug ||
+        doc.draftData?.slug === slug || 
+        doc.publishedData?.slug === slug
       );
 
       const mappedTool: AITool = {
         id: toolId,
         name: toolData.name,
-        slug: toolData.slug,
+        slug: slug,
         company: toolData.company || undefined,
-        tagline: toolData.tagline,
-        description: toolData.description,
-        category: toolData.category_id,
+        tagline: toolData.tagline || "",
+        description: toolData.description || "",
+        category: toolData.category_id || "cat-other",
         additionalCategories: toolData.additionalCategories || [],
-        priceModel: toolData.price_model as any,
+        priceModel: (toolData.price_model || "Freemium") as any,
         price: toolData.price || undefined,
-        rating: toolData.rating,
-        reviewCount: toolData.review_count,
-        logoUrl: toolData.logo_url,
-        imageUrl: toolData.image_url,
+        rating: toolData.rating ?? 0,
+        reviewCount: toolData.review_count ?? 0,
+        logoUrl: toolData.logo_url || "",
+        imageUrl: toolData.image_url || toolData.logo_url || "",
         screenshotUrl: toolData.screenshot_url || undefined,
         websiteUrl: toolData.website_url || undefined,
         url: toolData.url || undefined,
         tags: toolData.tags || [],
-        features: (toolData.features || []).map(f => ({
-          title: f.title,
-          description: f.description,
-          icon: f.icon || ""
-        })),
-        verified: toolData.verified,
-        featured: toolData.featured,
-        isSponsored: toolData.isSponsored,
-        popularity: toolData.popularity,
+        features: (toolData.features || []).map(f => typeof f === 'string' ? { title: f, description: '', icon: '' } : { title: f?.title || '', description: f?.description || '', icon: f?.icon || '' }),
+        verified: toolData.verified ?? false,
+        featured: toolData.featured ?? false,
+        isSponsored: toolData.isSponsored ?? false,
+        popularity: toolData.popularity ?? 0,
         platform: toolData.platform || undefined,
-        api: toolData.api,
-        mobileApp: toolData.mobileApp,
-        openSource: toolData.openSource,
-        freeTrial: toolData.freeTrial,
+        api: toolData.api ?? false,
+        mobileApp: toolData.mobileApp ?? false,
+        openSource: toolData.openSource ?? false,
+        freeTrial: toolData.freeTrial ?? false,
         pricingPlans: (toolData as any).pricingPlans || [],
         pricing: (toolData as any).pricing || [],
         pros: (toolData as any).pros || [],
@@ -200,6 +197,9 @@ export async function saveTool(data: ToolFormValues) {
         existingDoc.status = status;
         existingDoc.lastAutosavedAt = new Date().toISOString();
         existingDoc.draftData = mappedTool;
+        existingDoc.logoUrl = mappedTool.logoUrl;
+        existingDoc.screenshotUrl = mappedTool.screenshotUrl;
+        existingDoc.imageUrl = mappedTool.imageUrl;
         if (status === "published") {
           existingDoc.publishedAt = new Date().toISOString();
           existingDoc.publishedData = mappedTool;
@@ -219,17 +219,16 @@ export async function saveTool(data: ToolFormValues) {
       }
 
       fs.writeFileSync(toolsPath, JSON.stringify(toolsJson, null, 2), "utf8");
-      console.log(`Synced tool "${toolData.slug}" locally to tools.json.`);
+      console.log(`Synced tool "${slug}" locally to tools.json.`);
     }
   } catch (jsonErr) {
     console.error("Failed to sync to tools.json:", jsonErr);
   }
 
   revalidatePath("/admin/cms/tools");
-  revalidatePath(`/admin/cms/tools/${toolData.slug}`);
-  revalidatePath(`/tool/${toolData.slug}`);
-  // Clear the entire app cache since a tool update can affect categories, latest lists, etc.
+  revalidatePath(`/admin/cms/tools/${slug}`);
+  revalidatePath(`/tool/${slug}`);
   revalidatePath("/", "layout");
 
-  return { success: true, slug: toolData.slug, id: toolId };
+  return { success: true, slug: slug, id: toolId };
 }

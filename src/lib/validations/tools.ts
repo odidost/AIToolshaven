@@ -1,90 +1,54 @@
 import * as z from 'zod';
-import { AppRole } from '@/lib/auth/rbac';
 
-export const toolStatusSchema = z.enum(['Draft', 'In Review', 'Published', 'Unpublished', 'Archived']);
+export const toolStatusSchema = z.enum(['Draft', 'In Review', 'Published', 'Unpublished', 'Archived']).or(z.string());
 
 export const toolSchema = z.object({
   id: z.string().optional(),
-  name: z.string().min(2, "Name must be at least 2 characters").max(100),
-  slug: z.string()
-    .min(2, "Slug must be at least 2 characters")
-    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug must contain only lowercase letters, numbers, and hyphens"),
-  company: z.string().optional(),
-  tagline: z.string().min(10, "Tagline must be at least 10 characters").max(160),
-  description: z.string().min(50, "Description should be detailed (at least 50 characters)"),
-  category_id: z.string().min(1, "Category is required"),
-  additionalCategories: z.array(z.string()).default([]),
+  name: z.string().min(1, "Name must be at least 1 character").max(100),
+  slug: z.string().optional().or(z.literal('')),
+  company: z.string().optional().default(''),
+  tagline: z.string().optional().default(''),
+  description: z.string().optional().default(''),
+  category_id: z.string().optional().default('cat-other'),
+  additionalCategories: z.array(z.string()).optional().default([]),
   
-  price_model: z.enum(['Free', 'Freemium', 'Paid', 'Enterprise']),
-  price: z.string().optional(),
+  price_model: z.enum(['Free', 'Freemium', 'Paid', 'Enterprise']).optional().default('Freemium'),
+  price: z.string().optional().default(''),
   
-  rating: z.coerce.number().min(0).max(5).default(0),
-  review_count: z.coerce.number().min(0).default(0),
+  rating: z.coerce.number().min(0).max(5).optional().default(0),
+  review_count: z.coerce.number().min(0).optional().default(0),
   
-  logo_url: z.string().url("Must be a valid URL"),
-  image_url: z.string().url("Must be a valid URL"),
-  screenshot_url: z.string().url("Must be a valid URL").optional().or(z.literal('')),
-  website_url: z.string().url("Must be a valid URL").optional().or(z.literal('')),
-  url: z.string().url("Must be a valid URL").optional().or(z.literal('')),
+  logo_url: z.string().optional().default(''),
+  image_url: z.string().optional().default(''),
+  screenshot_url: z.string().optional().default(''),
+  website_url: z.string().optional().default(''),
+  url: z.string().optional().default(''),
   
-  tags: z.array(z.string()).default([]),
+  tags: z.array(z.string()).optional().default([]),
   
-  verified: z.boolean().default(false),
-  featured: z.boolean().default(false),
-  isSponsored: z.boolean().default(false),
-  popularity: z.coerce.number().default(0),
+  verified: z.boolean().optional().default(false),
+  featured: z.boolean().optional().default(false),
+  isSponsored: z.boolean().optional().default(false),
+  popularity: z.coerce.number().optional().default(0),
   
-  platform: z.string().optional(),
-  api: z.boolean().default(false),
-  mobileApp: z.boolean().default(false),
-  openSource: z.boolean().default(false),
-  freeTrial: z.boolean().default(false),
-  features: z.array(z.object({
-    title: z.string(),
-    description: z.string(),
-    icon: z.string().optional(),
-  })).optional().default([]),
-
-  pros: z.array(z.object({
-    title: z.string(),
-    description: z.string().optional(),
-  })).optional().default([]),
-
-  cons: z.array(z.object({
-    title: z.string(),
-    description: z.string().optional(),
-  })).optional().default([]),
-
-  useCases: z.array(z.object({
-    title: z.string(),
-    description: z.string().optional(),
-  })).optional().default([]),
-
-  pricingPlans: z.array(z.object({
-    name: z.string(),
-    price: z.string(),
-    description: z.string(),
-    features: z.array(z.string()).optional().default([]),
-    recommended: z.boolean().optional(),
-  })).optional().default([]),
+  platform: z.string().optional().default(''),
+  api: z.boolean().optional().default(false),
+  mobileApp: z.boolean().optional().default(false),
+  openSource: z.boolean().optional().default(false),
+  freeTrial: z.boolean().optional().default(false),
+  
+  features: z.array(z.any()).optional().default([]),
+  pros: z.array(z.any()).optional().default([]),
+  cons: z.array(z.any()).optional().default([]),
+  useCases: z.array(z.any()).optional().default([]),
+  pricingPlans: z.array(z.any()).optional().default([]),
 
   bestFor: z.array(z.string()).optional().default([]),
   goals: z.array(z.string()).optional().default([]),
   workflows: z.array(z.string()).optional().default([]),
 
-  editorial: z.object({
-    overview: z.string().optional(),
-    verdict: z.string().optional(),
-    pricing: z.string().optional(),
-    comparison: z.string().optional(),
-    useCaseFocus: z.string().optional(),
-    faqs: z.array(z.object({
-      question: z.string(),
-      answer: z.string(),
-    })).optional().default([]),
-  }).optional().default({ faqs: [] }),
-  
-  status: toolStatusSchema.default('Draft'),
+  editorial: z.any().optional().default({ faqs: [] }),
+  status: toolStatusSchema.optional().default('Draft'),
 });
 
 export type ToolFormValues = z.infer<typeof toolSchema>;
@@ -95,7 +59,7 @@ export function calculateSeoScore(tool: Partial<ToolFormValues>): number {
   if (tool.name && tool.name.length > 2) score += 20;
   if (tool.slug && tool.slug.length > 2) score += 20;
   if (tool.tagline && tool.tagline.length > 10 && tool.tagline.length <= 160) score += 30;
-  if (tool.description && tool.description.length > 200) score += 30; // Encourage longer descriptions
+  if (tool.description && tool.description.length > 200) score += 30;
   return score;
 }
 

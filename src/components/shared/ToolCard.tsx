@@ -72,11 +72,11 @@ export function ToolCard({ tool }: { tool: AITool }) {
           </div>
 
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-9 h-9 rounded-xl overflow-hidden bg-outline flex-shrink-0 shadow-sm">
+          <div className="w-10 h-10 rounded-xl overflow-hidden bg-white border border-border/60 flex-shrink-0 shadow-xs flex items-center justify-center p-1.5">
             <ToolImage
               tool={tool}
               type="logo"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
 

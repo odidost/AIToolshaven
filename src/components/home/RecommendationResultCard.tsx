@@ -88,7 +88,7 @@ export function RecommendationResultCard({ tool, role, goal }: RecommendationRes
               <ToolImage
                 tool={tool}
                 type="logo"
-                className="w-full h-full object-cover p-1"
+                className="w-full h-full object-contain p-1"
               />
             </div>
             <div>

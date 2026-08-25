@@ -49,11 +49,13 @@ export default function ToolComparisonSection({
                             )}
 
                             <div className="flex items-center justify-between mb-6 relative z-10">
-                                <ToolImage
-                                    tool={comparisonTool}
-                                    type="logo"
-                                    className="h-14 w-14 rounded-2xl border border-border/50 object-cover bg-white shadow-xs group-hover:scale-105 transition-transform"
-                                />
+                                <div className="h-14 w-14 rounded-2xl border border-border/50 bg-white shadow-xs group-hover:scale-105 transition-transform flex items-center justify-center p-2 overflow-hidden">
+                                    <ToolImage
+                                        tool={comparisonTool}
+                                        type="logo"
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
 
                                 <div className="flex items-center gap-1.5 rounded-full bg-warning/10 px-2.5 py-1 text-sm font-bold text-warning">
                                     <span className="material-symbols-outlined text-[16px] fill-current">star</span>

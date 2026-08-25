@@ -98,9 +98,10 @@ function mapDatabaseRowToAITool(row: any): AITool {
   return normalizeTool(row, localTool);
 }
 
-// In-process memoized promise for getAllTools to avoid repeatedly loading/parsing the 2.3MB payload
+// In-process memoized promise for getAllTools to avoid repeatedly loading/parsing the payload
 let _allToolsPromise: Promise<AITool[]> | null = null;
 let _allToolsWithDraftsPromise: Promise<AITool[]> | null = null;
+
 
 export async function getAllTools(includeDrafts: boolean = false): Promise<AITool[]> {
     if (!includeDrafts && _allToolsPromise) return _allToolsPromise;

@@ -1101,8 +1101,8 @@ export function ToolForm({ initialData, categories, allWorkflows = [], allGoals 
                             size="icon"
                             className="absolute right-2 top-2 text-red-500 hover:text-red-700 hover:bg-red-50"
                             onClick={() => {
-                              const current = form.getValues("editorial.faqs") || [];
-                              form.setValue("editorial.faqs", current.filter((_, i) => i !== index));
+                              const current = (form.getValues("editorial.faqs") as any[]) || [];
+                              form.setValue("editorial.faqs", current.filter((_: any, i: number) => i !== index));
                             }}
                           >
                             <Trash className="w-4 h-4" />

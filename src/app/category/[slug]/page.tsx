@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getCategoryBySlug, getCategoryById } from "@/lib/queries/categories";
+import { getCategoryBySlug, getCategoryById, getAllCategories } from "@/lib/queries/categories";
 import { siteConfig } from "@/lib/config/site";
 import { getToolsByCategoryId } from "@/lib/data/tools-service";
 import { getCategoryTheme } from "@/lib/data/categoryThemes";
@@ -28,6 +28,13 @@ type Props = {
 };
 
 export const revalidate = 3600; // 1 hour
+
+export async function generateStaticParams() {
+  const categories = await getAllCategories();
+  return categories.filter(c => c.slug).map((category) => ({
+    slug: category.slug,
+  }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;

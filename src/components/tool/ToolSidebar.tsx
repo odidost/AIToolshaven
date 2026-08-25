@@ -62,7 +62,7 @@ export function ToolSidebar({
                             <ToolImage
                                 tool={t}
                                 type="logo"
-                                className="h-10 w-10 shrink-0 rounded-xl border border-border/50 bg-white object-cover shadow-xs transition-transform group-hover:scale-105"
+                                className="h-10 w-10 shrink-0 rounded-xl border border-border/50 bg-white object-contain p-1 shadow-xs transition-transform group-hover:scale-105"
                             />
 
                             <div className="flex-1 min-w-0">

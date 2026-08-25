@@ -65,7 +65,53 @@ export async function middleware(request: NextRequest) {
   let redirectTarget = STATIC_CANONICAL_REDIRECTS[normalizedPath] || STATIC_CANONICAL_REDIRECTS[normalizedPath + '/'];
   let statusCode = 301;
 
+  // 2.1. Wildcard Fallbacks (Immediate resolution without DB)
   if (!redirectTarget) {
+    if (normalizedPath.startsWith('/ai-tool/')) {
+      redirectTarget = normalizedPath.replace('/ai-tool/', '/tool/');
+      statusCode = 301;
+    } else if (normalizedPath.startsWith('/ai-tool-category/')) {
+      redirectTarget = normalizedPath.replace('/ai-tool-category/', '/category/');
+      statusCode = 301;
+    } else if (normalizedPath === '/ai-tool' || normalizedPath === '/ai-tool-category') {
+      redirectTarget = '/categories';
+      statusCode = 301;
+    }
+  }
+
+  // 2.2. Standard Known Routes - Bypass DB queries completely to save CPU
+  const isStandardRoute = 
+    normalizedPath === '' ||
+    normalizedPath === '/' ||
+    normalizedPath.startsWith('/tool/') ||
+    normalizedPath.startsWith('/category/') ||
+    normalizedPath.startsWith('/blog/') ||
+    normalizedPath.startsWith('/admin') ||
+    normalizedPath.startsWith('/dashboard') ||
+    normalizedPath.startsWith('/collections/') ||
+    normalizedPath.startsWith('/alternatives/') ||
+    normalizedPath.startsWith('/workflows') ||
+    normalizedPath.startsWith('/goals') ||
+    normalizedPath.startsWith('/compare-tools') ||
+    normalizedPath.startsWith('/ai-tool-recommender') ||
+    normalizedPath.startsWith('/latest-ai-tools') ||
+    normalizedPath.startsWith('/popular-ai-tools') ||
+    normalizedPath.startsWith('/trending-ai-tools') ||
+    normalizedPath.startsWith('/about') ||
+    normalizedPath.startsWith('/contact') ||
+    normalizedPath.startsWith('/categories') ||
+    normalizedPath.startsWith('/pricing') ||
+    normalizedPath.startsWith('/privacy-policy') ||
+    normalizedPath.startsWith('/terms') ||
+    normalizedPath.startsWith('/editorial-policy') ||
+    normalizedPath.startsWith('/affiliate-disclosure') ||
+    normalizedPath.startsWith('/advertising') ||
+    normalizedPath.startsWith('/media-kit') ||
+    normalizedPath.startsWith('/submit') ||
+    normalizedPath.startsWith('/disclaimer');
+
+  // 2.3. Query Supabase Redirects ONLY for unknown/legacy candidate routes
+  if (!redirectTarget && !isStandardRoute) {
     const now = Date.now();
     let redirectData: RedirectData = null;
     let cacheHit = false;
@@ -77,58 +123,47 @@ export async function middleware(request: NextRequest) {
     }
 
     if (!cacheHit) {
-      const supabase = createServerClient(
-        SUPABASE_URL,
-        SUPABASE_ANON_KEY,
-        {
-          cookies: {
-            getAll() {
-              return request.cookies.getAll()
+      try {
+        const supabase = createServerClient(
+          SUPABASE_URL,
+          SUPABASE_ANON_KEY,
+          {
+            cookies: {
+              getAll() {
+                return request.cookies.getAll()
+              },
+              setAll() {},
             },
-            setAll() {
-              // Read-only client for middleware redirects
-            },
-          },
-        }
-      );
+          }
+        );
 
-      const pathWithSlash = normalizedPath + '/';
-      const { data } = await supabase
-        .from('redirects')
-        .select('new_path, status_code')
-        .in('old_path', [normalizedPath, pathWithSlash])
-        .eq('active', true)
-        .limit(1)
-        .maybeSingle();
-        
-      redirectData = data;
+        const pathWithSlash = normalizedPath + '/';
+        const { data } = await supabase
+          .from('redirects')
+          .select('new_path, status_code')
+          .in('old_path', [normalizedPath, pathWithSlash])
+          .eq('active', true)
+          .limit(1)
+          .maybeSingle();
+          
+        redirectData = data;
+      } catch (e) {
+        // Fallback gracefully without crashing
+        redirectData = null;
+      }
       
       // Prevent memory leaks in long-running edge isolates
       if (redirectCache.size >= MAX_CACHE_SIZE) {
         redirectCache.clear();
       }
       
-      // Cache for 60 seconds
-      redirectCache.set(normalizedPath, { data, expiry: now + 60000 });
+      // Cache for 5 minutes (300,000 ms)
+      redirectCache.set(normalizedPath, { data: redirectData, expiry: now + 300000 });
     }
 
     if (redirectData) {
       redirectTarget = redirectData.new_path;
       statusCode = redirectData.status_code || 301;
-    }
-  }
-
-  // 2.5. Wildcard Fallbacks (Executes only if no specific redirect was found in Static or DB)
-  if (!redirectTarget) {
-    if (normalizedPath.startsWith('/ai-tool/')) {
-      redirectTarget = normalizedPath.replace('/ai-tool/', '/tool/');
-      statusCode = 301;
-    } else if (normalizedPath.startsWith('/ai-tool-category/')) {
-      redirectTarget = normalizedPath.replace('/ai-tool-category/', '/category/');
-      statusCode = 301;
-    } else if (normalizedPath === '/ai-tool' || normalizedPath === '/ai-tool-category') {
-      redirectTarget = '/categories';
-      statusCode = 301;
     }
   }
 
@@ -145,8 +180,17 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(targetUrl, { status: 301 });
   }
 
-  // 4. Auth & Session Management
-  const response = await updateSession(request);
+  // 4. Auth & Session Management - ONLY execute Supabase Auth for /admin routes
+  let response: NextResponse;
+  if (pathname.startsWith('/admin')) {
+    response = await updateSession(request);
+  } else {
+    response = NextResponse.next({
+      request: {
+        headers: request.headers,
+      },
+    });
+  }
 
   // 5. Inject requested path into headers so `not-found.tsx` can read it to log 404s
   response.headers.set('x-invoke-path', pathname);
@@ -162,9 +206,9 @@ export const config = {
      * - api (API routes)
      * - _next/static (static files)
      * - _next/image (image optimization files)
-     * - favicon.ico, sitemap.xml, robots.txt (metadata files)
+     * - favicon.ico, sitemap.xml, robots.txt, assets, images
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|assets).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|assets|images).*)',
   ],
 }
 

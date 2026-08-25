@@ -25,9 +25,9 @@ export function ComparisonCard({ data, fullTool1, fullTool2 }: { data: Compariso
                         <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${data.tool1.color} p-[2px] shadow-md group-hover:shadow-lg transition-all`}>
                             <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-[14px] flex items-center justify-center border border-white/20 overflow-hidden">
                                 {fullTool1 ? (
-                                    <ToolImage tool={fullTool1} type="logo" className="w-full h-full object-cover bg-white" />
+                                    <ToolImage tool={fullTool1} type="logo" className="w-full h-full object-contain p-1.5 bg-white" />
                                 ) : data.tool1.logoUrl && !img1Error ? (
-                                    <img src={data.tool1.logoUrl} alt={data.tool1.name} className="w-full h-full object-cover bg-white" onError={() => setImg1Error(true)} />
+                                    <img src={data.tool1.logoUrl} alt={data.tool1.name} className="w-full h-full object-contain p-1.5 bg-white" onError={() => setImg1Error(true)} />
                                 ) : (
                                     <span className="text-2xl font-black text-white">{data.tool1.letter}</span>
                                 )}
@@ -49,9 +49,9 @@ export function ComparisonCard({ data, fullTool1, fullTool2 }: { data: Compariso
                         <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${data.tool2.color} p-[2px] shadow-md group-hover:shadow-lg transition-all`}>
                             <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-[14px] flex items-center justify-center border border-white/20 overflow-hidden">
                                 {fullTool2 ? (
-                                    <ToolImage tool={fullTool2} type="logo" className="w-full h-full object-cover bg-white" />
+                                    <ToolImage tool={fullTool2} type="logo" className="w-full h-full object-contain p-1.5 bg-white" />
                                 ) : data.tool2.logoUrl && !img2Error ? (
-                                    <img src={data.tool2.logoUrl} alt={data.tool2.name} className="w-full h-full object-cover bg-white" onError={() => setImg2Error(true)} />
+                                    <img src={data.tool2.logoUrl} alt={data.tool2.name} className="w-full h-full object-contain p-1.5 bg-white" onError={() => setImg2Error(true)} />
                                 ) : (
                                     <span className="text-2xl font-black text-white">{data.tool2.letter}</span>
                                 )}

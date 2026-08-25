@@ -38,8 +38,8 @@ export function GoalHero({
                             {tools.length > 0 && (
                                 <div className="flex -space-x-2 mr-1">
                                     {tools.slice(0, 3).map((tool, i) => (
-                                        <div key={tool.slug || i} className="w-6 h-6 rounded-full overflow-hidden border-2 border-white bg-surface shadow-sm relative z-10 flex-shrink-0">
-                                            <ToolImage tool={tool} type="logo" className="w-full h-full object-cover bg-white" />
+                                        <div key={tool.slug || i} className="w-6 h-6 rounded-full overflow-hidden border-2 border-white bg-white shadow-sm relative z-10 flex-shrink-0 flex items-center justify-center p-0.5">
+                                            <ToolImage tool={tool} type="logo" className="w-full h-full object-contain" />
                                         </div>
                                     ))}
                                 </div>
@@ -135,11 +135,11 @@ export function GoalHero({
                                             className="w-16 h-16 -ml-8 -mt-8 rounded-2xl bg-surface border border-outline/50 shadow-xl flex items-center justify-center p-1.5 animate-float hover:scale-110 transition-transform cursor-pointer"
                                             style={{ animationDelay: `${delay}s` }}
                                         >
-                                            <div className="w-full h-full rounded-xl overflow-hidden bg-outline flex-shrink-0">
+                                            <div className="w-full h-full rounded-xl overflow-hidden bg-white flex-shrink-0 flex items-center justify-center p-1">
                                                 <ToolImage 
                                                     tool={tool} 
                                                     type="logo" 
-                                                    className="w-full h-full object-cover bg-white"
+                                                    className="w-full h-full object-contain"
                                                 />
                                             </div>
                                         </div>

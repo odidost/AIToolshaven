@@ -77,11 +77,11 @@ export function EmbedPreview({ format, tool, className }: EmbedPreviewProps) {
             {/* The Compact AIToolsHaven Tool Card resembling the iframe output */}
             <div className="w-full max-w-[420px] h-[180px] bg-card rounded-2xl border border-border shadow-sm flex gap-5 items-center p-5 relative overflow-hidden bg-gradient-to-b from-surface to-surface-secondary/30 box-border border-l-4 border-l-primary select-none">
               {/* Tool Logo */}
-              <div className="w-[72px] h-[72px] rounded-xl overflow-hidden bg-outline flex-shrink-0 border border-border/80 flex items-center justify-center shadow-xs">
+              <div className="w-[72px] h-[72px] rounded-xl overflow-hidden bg-white flex-shrink-0 border border-border/80 flex items-center justify-center shadow-xs p-1.5">
                 <ToolImage
                   tool={tool}
                   type="logo"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
 

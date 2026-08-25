@@ -21,6 +21,7 @@ import { workflows } from "@/lib/workflows";
 import { goals } from "@/lib/goals";
 import {
   getToolBySlug,
+  getAllTools,
   getRelatedCandidatesPool,
   getToolReviews,
 } from "@/lib/data/tools-service";
@@ -41,6 +42,13 @@ type Props = {
 };
 
 export const revalidate = 86400; // 24 hours
+
+export async function generateStaticParams() {
+  const tools = await getAllTools(false);
+  return tools.filter(t => t.slug).map((tool) => ({
+    slug: tool.slug,
+  }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
