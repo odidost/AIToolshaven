@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og';
  
 export const runtime = 'edge';
+export const revalidate = 86400;
  
 export const alt = 'AIToolsHaven - Premium AI Tools Directory';
 export const size = {

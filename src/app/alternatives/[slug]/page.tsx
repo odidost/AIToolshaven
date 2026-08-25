@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Metadata } from "next";
-import { getCuratedAlternative } from "@/lib/data/alternatives";
+import { getCuratedAlternative, getAllCuratedAlternatives } from "@/lib/data/alternatives";
 import { getCategoryBySlug } from "@/lib/queries/categories";
 import { getToolsByCategoryId, getToolBySlug } from "@/lib/data/tools-service";
 import { getCategoryTheme } from "@/lib/data/categoryThemes";
@@ -17,6 +17,13 @@ type Props = {
 };
 
 export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const alternatives = getAllCuratedAlternatives();
+  return alternatives.map((item) => ({
+    slug: item.slug,
+  }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;

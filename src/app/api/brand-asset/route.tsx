@@ -31,6 +31,10 @@ export async function GET(request: NextRequest) {
     </defs>
   );
 
+  const cacheHeaders = {
+    'Cache-Control': 'public, max-age=31536000, immutable',
+  };
+
   if (type === 'icon') {
     return new ImageResponse(
       (
@@ -43,7 +47,7 @@ export async function GET(request: NextRequest) {
           </svg>
         </div>
       ),
-      { width: 350, height: 200 }
+      { width: 350, height: 200, headers: cacheHeaders }
     );
   }
 
@@ -63,7 +67,7 @@ export async function GET(request: NextRequest) {
           </div>
         </div>
       ),
-      { width: 800, height: 600 }
+      { width: 800, height: 600, headers: cacheHeaders }
     );
   }
 
@@ -83,6 +87,6 @@ export async function GET(request: NextRequest) {
         </div>
       </div>
     ),
-    { width: 1000, height: 200 }
+    { width: 1000, height: 200, headers: cacheHeaders }
   );
 }

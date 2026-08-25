@@ -34,10 +34,30 @@ const nextConfig: NextConfig = {
     ],
   },
   serverExternalPackages: ["bcryptjs"],
+  compress: true,
   
   // Production Headers
   async headers() {
     return [
+      {
+        // Cache static media and assets in browser/CDN
+        source: "/assets/:all*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/:all*(svg|jpg|png|webp|ico|woff|woff2|ttf)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
       {
         // Apply these headers to all routes
         source: "/(.*)",
