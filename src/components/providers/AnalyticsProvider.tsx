@@ -23,20 +23,6 @@ function RouteChangeTracker() {
 
     // Track page view in GA4
     trackPageView(url);
-
-    // Also send to custom telemetry endpoint
-    fetch("/api/analytics/track", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        eventName: "page_view",
-        url: pathname,
-        title: typeof document !== "undefined" ? document.title : pathname,
-        referrer: typeof document !== "undefined" ? document.referrer : "",
-      }),
-    }).catch(() => {
-      // Ignore silently — non-blocking telemetry
-    });
   }, [pathname, searchParams]);
 
   return null;

@@ -92,6 +92,37 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Wildcard legacy redirects (handled at Edge CDN layer)
+      {
+        source: '/ai-tool/:slug',
+        destination: '/tool/:slug',
+        permanent: true,
+      },
+      {
+        source: '/ai-tool-category/:slug',
+        destination: '/category/:slug',
+        permanent: true,
+      },
+      {
+        source: '/ai-tool',
+        destination: '/categories',
+        permanent: true,
+      },
+      {
+        source: '/ai-tool-category',
+        destination: '/categories',
+        permanent: true,
+      },
+      {
+        source: '/all-ai-tool-categories',
+        destination: '/categories',
+        permanent: true,
+      },
+      {
+        source: '/ai-writing-tools',
+        destination: '/category/ai-writing-tools',
+        permanent: true,
+      },
       {
         source: '/category/text-generation',
         destination: '/category/ai-writing-tools',
@@ -111,7 +142,28 @@ const nextConfig: NextConfig = {
         source: '/insight-engine',
         destination: '/ai-tool-recommender',
         permanent: true,
-      }
+      },
+      // Specific legacy paths
+      {
+        source: '/ai-tool/aider-ai-review',
+        destination: '/tool/aider-chat',
+        permanent: true,
+      },
+      {
+        source: '/ai-tool/pear-ai-review',
+        destination: '/tool/pearai-code',
+        permanent: true,
+      },
+      {
+        source: '/ai-tool/wix',
+        destination: '/tool/wix-logo-maker',
+        permanent: true,
+      },
+      {
+        source: '/tool/canva-logo-maker',
+        destination: '/tool/canva',
+        permanent: true,
+      },
     ];
   },
 };
