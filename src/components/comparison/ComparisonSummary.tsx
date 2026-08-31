@@ -21,12 +21,16 @@ const ToolSummaryCard = ({ tool, categoryName }: { tool: AITool; categoryName: s
                 </div>
             </div>
             <div className="flex flex-col items-end">
-                <div className="flex items-center gap-1 bg-surface-secondary px-2 py-1 rounded-md mb-1">
-                    <span className="material-symbols-outlined text-[14px] text-warning">star</span>
-                    <span className="text-sm font-bold text-on-surface">{tool.rating || 'N/A'}</span>
-                </div>
-                {tool.reviewCount !== undefined && (
-                    <span className="text-xs text-on-surface-variant">({tool.reviewCount.toLocaleString()})</span>
+                {(tool.reviewCount || 0) > 0 && tool.rating ? (
+                    <>
+                        <div className="flex items-center gap-1 bg-surface-secondary px-2 py-1 rounded-md mb-1">
+                            <span className="material-symbols-outlined text-[14px] text-warning">star</span>
+                            <span className="text-sm font-bold text-on-surface">{tool.rating}</span>
+                        </div>
+                        <span className="text-xs text-on-surface-variant">({tool.reviewCount?.toLocaleString()})</span>
+                    </>
+                ) : (
+                    <span className="text-xs text-on-surface-variant/70">No reviews yet</span>
                 )}
             </div>
         </div>

@@ -57,10 +57,12 @@ export default function ToolComparisonSection({
                                     />
                                 </div>
 
-                                <div className="flex items-center gap-1.5 rounded-full bg-warning/10 px-2.5 py-1 text-sm font-bold text-warning">
-                                    <span className="material-symbols-outlined text-[16px] fill-current">star</span>
-                                    {comparisonTool.rating}
-                                </div>
+                                {(comparisonTool.reviewCount || 0) > 0 && comparisonTool.rating ? (
+                                    <div className="flex items-center gap-1.5 rounded-full bg-warning/10 px-2.5 py-1 text-sm font-bold text-warning">
+                                        <span className="material-symbols-outlined text-[16px] fill-current">star</span>
+                                        {comparisonTool.rating}
+                                    </div>
+                                ) : null}
                             </div>
 
                             <h3 className="text-xl font-bold text-on-surface mb-3 relative z-10">

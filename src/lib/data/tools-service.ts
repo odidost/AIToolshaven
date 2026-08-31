@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import type { AITool } from "@/lib/types/tool";
 import { getLocalTools, getLocalToolBySlug as getRawLocalToolBySlug, getLocalToolsByCategory as getRawLocalToolsByCategory } from '@/lib/data/tools';
-import { categories as localCategories } from '@/lib/data/categories';
+import { categories as localCategories, resolveCategory } from '@/lib/data/categories';
 import { unstable_cache } from 'next/cache';
 import { normalizeTool } from '@/lib/data/tool-normalizer';
 
@@ -79,7 +79,7 @@ function safeCache<T extends (...args: any[]) => Promise<any>>(
   options?: { revalidate?: number | false; tags?: string[] }
 ): T {
   try {
-    const cachedFn = unstable_cache(fn, keyParts, options);
+    const cachedFn = unstable_cache(fn, ['v4_clean', ...keyParts], options);
     return (async (...args: any[]) => {
       try {
         return await cachedFn(...args);
@@ -447,17 +447,14 @@ export async function getRecommendationsByPersona(role: string, goal: string): P
 export async function getToolsByCategoryId(categoryId: string, limit: number = 48): Promise<AITool[]> {
     const fetchByCategory = async () => {
         try {
-            const cat = localCategories.find(c => c.id === categoryId || c.slug === categoryId);
-            const targetIds = new Set<string>([categoryId]);
-            if (cat) {
-                targetIds.add(cat.id);
-                targetIds.add(cat.slug);
-            }
+            const cat = resolveCategory(categoryId);
+            const targetIds = new Set<string>([categoryId, cat.id, cat.slug, cat.name, cat.name.toLowerCase()]);
+            const dbCategoryIds = [cat.id, cat.slug, categoryId];
 
             const { data, error } = await supabase
                 .from('tools')
                 .select(TOOL_CARD_FIELDS)
-                .in('category_id', Array.from(targetIds))
+                .in('category_id', dbCategoryIds)
                 .eq('status', 'Published')
                 .order('popularity', { ascending: false })
                 .limit(limit);
@@ -470,7 +467,7 @@ export async function getToolsByCategoryId(categoryId: string, limit: number = 4
                 const allLocal = getNormalizedLocalTools();
                 return allLocal.filter(t => 
                     (t.status === "Published" || t.status === "published") &&
-                    (targetIds.has(t.category) || t.additionalCategories?.some(ac => targetIds.has(ac)))
+                    (targetIds.has(t.category) || targetIds.has(t.category_id || '') || targetIds.has(t.categorySlug || '') || t.additionalCategories?.some(ac => targetIds.has(ac)))
                 ).slice(0, limit);
             }
             
@@ -481,18 +478,14 @@ export async function getToolsByCategoryId(categoryId: string, limit: number = 4
                 .slice(0, limit);
         } catch (err) {
             console.error(`Error fetching tools by category ${categoryId} from Supabase, falling back to local data:`, err);
-            const cat = localCategories.find(c => c.id === categoryId || c.slug === categoryId);
-            const targetIds = new Set<string>([categoryId]);
-            if (cat) {
-                targetIds.add(cat.id);
-                targetIds.add(cat.slug);
-            }
+            const cat = resolveCategory(categoryId);
+            const targetIds = new Set<string>([categoryId, cat.id, cat.slug, cat.name, cat.name.toLowerCase()]);
             const local = getLocalToolsByCategory(categoryId);
             if (local.length > 0) return local.filter(t => t.status === "Published" || t.status === "published").slice(0, limit);
             const allLocal = getNormalizedLocalTools();
             return allLocal.filter(t => 
                 (t.status === "Published" || t.status === "published") &&
-                (targetIds.has(t.category) || t.additionalCategories?.some(ac => targetIds.has(ac)))
+                (targetIds.has(t.category) || targetIds.has(t.category_id || '') || targetIds.has(t.categorySlug || '') || t.additionalCategories?.some(ac => targetIds.has(ac)))
             ).slice(0, limit);
         }
     };

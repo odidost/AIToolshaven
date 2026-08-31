@@ -17,6 +17,8 @@ const supabase = createClient(
   }
 );
 
+import { resolveCategory } from "@/lib/data/categories";
+
 export async function getAllCategories(): Promise<ToolCategory[]> {
     try {
         const { data, error } = await supabase.from('categories').select('*');
@@ -31,26 +33,27 @@ export async function getAllCategories(): Promise<ToolCategory[]> {
 
 export async function getCategoryById(id: string): Promise<ToolCategory | undefined> {
     try {
-        const { data, error } = await supabase.from('categories').select('*').eq('id', id).single();
+        const resolved = resolveCategory(id);
+        const { data, error } = await supabase.from('categories').select('*').or(`id.eq.${id},slug.eq.${id},id.eq.${resolved.id}`).limit(1).maybeSingle();
         if (error || !data) {
-            return localCategories.find(c => c.id === id);
+            return resolved;
         }
         return data;
     } catch {
-        return localCategories.find(c => c.id === id);
+        return resolveCategory(id);
     }
 }
 
 export async function getCategoryBySlug(rawSlug: string): Promise<ToolCategory | undefined> {
     try {
         const slug = decodeURIComponent(rawSlug);
-        const { data, error } = await supabase.from('categories').select('*').eq('slug', slug).single();
+        const resolved = resolveCategory(slug);
+        const { data, error } = await supabase.from('categories').select('*').or(`slug.eq.${slug},id.eq.${resolved.id}`).limit(1).maybeSingle();
         if (error || !data) {
-            return localCategories.find(c => c.slug === slug);
+            return resolved;
         }
         return data;
     } catch {
-        const slug = decodeURIComponent(rawSlug);
-        return localCategories.find(c => c.slug === slug);
+        return resolveCategory(rawSlug);
     }
 }

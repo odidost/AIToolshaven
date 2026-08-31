@@ -67,6 +67,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const catTools = validTools.filter(t => 
       t.category === cat.id || 
       t.category === cat.slug ||
+      t.category === cat.name ||
       t.additionalCategories?.includes(cat.id) ||
       t.additionalCategories?.includes(cat.slug)
     );

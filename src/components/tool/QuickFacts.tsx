@@ -16,7 +16,7 @@ export function QuickFacts({
         {
             icon: "star",
             label: "Rating",
-            value: `${tool.rating} / 5`,
+            value: (tool.reviewCount || 0) > 0 && tool.rating ? `${tool.rating} / 5` : "Not rated yet",
         },
         {
             icon: "reviews",

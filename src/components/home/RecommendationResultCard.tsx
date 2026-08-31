@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { AITool } from "@/lib/types/tool";
 import { useBookmarks } from "@/lib/contexts/BookmarksContext";
 import { ToolImage } from "@/components/shared/ToolImage";
+import { getCategoryName } from "@/lib/data/categories";
 
 interface RecommendationResultCardProps {
   tool: AITool;
@@ -101,11 +102,15 @@ export function RecommendationResultCard({ tool, role, goal }: RecommendationRes
                 )}
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-gray-500 font-medium mt-0.5">
-                <span className="text-amber-500 font-bold flex items-center">
-                  ★ {tool.rating || "4.8"}
-                </span>
-                <span className="text-gray-300">•</span>
-                <span>{tool.category.replace(/-/g, ' ')}</span>
+                {(tool.reviewCount || 0) > 0 && tool.rating ? (
+                  <>
+                    <span className="text-amber-500 font-bold flex items-center">
+                      ★ {tool.rating}
+                    </span>
+                    <span className="text-gray-300">•</span>
+                  </>
+                ) : null}
+                <span>{tool.categoryName || getCategoryName(tool.category)}</span>
               </div>
             </div>
           </Link>

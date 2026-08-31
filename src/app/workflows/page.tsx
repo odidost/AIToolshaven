@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { workflows } from "@/lib/workflows";
 import { WorkflowCard } from "@/components/home/WorkflowCard";
-import { getAllTools } from "@/lib/data/tools-service";
+import { getToolsByNames } from "@/lib/data/tools-service";
 import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 
 export const metadata: Metadata = {
@@ -10,7 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default async function WorkflowsIndexPage() {
-  const allTools = await getAllTools();
+  const requiredToolNames = new Set<string>();
+  workflows.forEach(w => w.tools.forEach(t => requiredToolNames.add(t)));
+  const allTools = await getToolsByNames(Array.from(requiredToolNames));
   
   const toolLogos = allTools.reduce((acc, tool) => {
     if (tool.name && tool.logoUrl) {

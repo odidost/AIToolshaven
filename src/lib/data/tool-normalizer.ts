@@ -1,4 +1,5 @@
 import type { AITool, ToolFeature, PricingPlan, ToolEditorial } from "@/lib/types/tool";
+import { resolveCategory } from "@/lib/data/categories";
 
 /**
  * Universal JSON/Primitive parser helper.
@@ -193,7 +194,12 @@ export function normalizeTool(raw: any, localFallback?: any): AITool {
   const company = data.company || local.company || undefined;
   const tagline = String(data.tagline || local.tagline || '').trim();
   const description = String(data.description || local.description || tagline).trim();
-  const category = String(data.category_id || data.category || local.category_id || local.category || '').trim();
+  const rawCat = String(data.category_id || data.category || local.category_id || local.category || '').trim();
+  const resolvedCat = resolveCategory(rawCat);
+  const category = resolvedCat.name;
+  const category_id = resolvedCat.id;
+  const categoryName = resolvedCat.name;
+  const categorySlug = resolvedCat.slug;
 
   // Price model
   const rawPriceModel = data.price_model || data.priceModel || data.pricingType || local.priceModel || local.price_model || 'Freemium';
@@ -259,6 +265,9 @@ export function normalizeTool(raw: any, localFallback?: any): AITool {
     tagline,
     description,
     category,
+    category_id,
+    categoryName,
+    categorySlug,
     additionalCategories,
     priceModel,
     price,

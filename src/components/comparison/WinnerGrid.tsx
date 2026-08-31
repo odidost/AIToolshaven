@@ -7,55 +7,174 @@ interface WinnerGridProps {
     compareTool: AITool;
 }
 
+type DifferentiatorStatus = 'main' | 'compare' | 'tie' | 'neutral';
+
 export function WinnerGrid({ mainTool, compareTool }: WinnerGridProps) {
-    // Generate categories dynamically based on the combined useCases/tags or use static premium ones
-    const categories = [
-        { id: 'coding', label: 'Coding & Dev', icon: 'code', mainScore: mainTool.performance || 0, compareScore: compareTool.performance || 0 },
-        { id: 'writing', label: 'Writing & Copy', icon: 'edit_document', mainScore: mainTool.featureRating || 0, compareScore: compareTool.featureRating || 0 },
-        { id: 'research', label: 'Research & Data', icon: 'travel_explore', mainScore: mainTool.rating || 0, compareScore: compareTool.rating || 0 },
-        { id: 'value', label: 'Value for Money', icon: 'payments', mainScore: mainTool.valueForMoney || 0, compareScore: compareTool.valueForMoney || 0 },
-        { id: 'ease', label: 'Ease of Use', icon: 'sentiment_satisfied', mainScore: mainTool.easeOfUse || 0, compareScore: compareTool.easeOfUse || 0 },
-        { id: 'support', label: 'Customer Support', icon: 'support_agent', mainScore: mainTool.support || 0, compareScore: compareTool.support || 0 },
+    // 1. Accessibility / Free Tier Evaluation
+    const mainHasFree = mainTool.priceModel === 'Free' || mainTool.priceModel === 'Freemium';
+    const compareHasFree = compareTool.priceModel === 'Free' || compareTool.priceModel === 'Freemium';
+    let budgetWinner: DifferentiatorStatus = 'tie';
+    let budgetNote = 'Both tools offer free access or freemium plans to get started.';
+    if (mainHasFree && !compareHasFree) {
+        budgetWinner = 'main';
+        budgetNote = `${mainTool.name} offers a free tier, while ${compareTool.name} requires a paid subscription.`;
+    } else if (!mainHasFree && compareHasFree) {
+        budgetWinner = 'compare';
+        budgetNote = `${compareTool.name} offers a free tier, while ${mainTool.name} requires a paid subscription.`;
+    } else if (!mainHasFree && !compareHasFree) {
+        budgetWinner = 'tie';
+        budgetNote = 'Both tools operate on paid models with subscription or credit tiers.';
+    }
+
+    // 2. Developer & API Extensibility
+    let apiWinner: DifferentiatorStatus = 'neutral';
+    let apiNote = 'Neither tool currently documents public developer API access.';
+    if (mainTool.api && compareTool.api) {
+        apiWinner = 'tie';
+        apiNote = 'Both products provide programmatic API endpoints for developer workflows.';
+    } else if (mainTool.api && !compareTool.api) {
+        apiWinner = 'main';
+        apiNote = `${mainTool.name} provides an API for seamless custom integrations.`;
+    } else if (!mainTool.api && compareTool.api) {
+        apiWinner = 'compare';
+        apiNote = `${compareTool.name} provides an API for seamless custom integrations.`;
+    }
+
+    // 3. Platform & Mobile Mobility
+    let platformWinner: DifferentiatorStatus = 'tie';
+    let platformNote = 'Both tools offer cloud web access.';
+    if (mainTool.mobileApp && !compareTool.mobileApp) {
+        platformWinner = 'main';
+        platformNote = `${mainTool.name} offers dedicated mobile apps for work on the go.`;
+    } else if (!mainTool.mobileApp && compareTool.mobileApp) {
+        platformWinner = 'compare';
+        platformNote = `${compareTool.name} offers dedicated mobile apps for work on the go.`;
+    } else if (mainTool.mobileApp && compareTool.mobileApp) {
+        platformWinner = 'tie';
+        platformNote = 'Both tools provide native mobile apps alongside web interfaces.';
+    }
+
+    // 4. Code Transparency & Open Source
+    let codeWinner: DifferentiatorStatus = 'tie';
+    let codeNote = 'Both tools are proprietary SaaS products with hosted cloud infrastructure.';
+    if (mainTool.openSource && !compareTool.openSource) {
+        codeWinner = 'main';
+        codeNote = `${mainTool.name} is open source, allowing self-hosting and custom modifications.`;
+    } else if (!mainTool.openSource && compareTool.openSource) {
+        codeWinner = 'compare';
+        codeNote = `${compareTool.name} is open source, allowing self-hosting and custom modifications.`;
+    } else if (mainTool.openSource && compareTool.openSource) {
+        codeWinner = 'tie';
+        codeNote = 'Both projects are open source with community-audited codebases.';
+    }
+
+    const cards = [
+        {
+            title: 'Budget & Accessibility',
+            icon: 'payments',
+            status: budgetWinner,
+            note: budgetNote,
+        },
+        {
+            title: 'Developer Extensibility',
+            icon: 'terminal',
+            status: apiWinner,
+            note: apiNote,
+        },
+        {
+            title: 'Mobile & Device Mobility',
+            icon: 'devices',
+            status: platformWinner,
+            note: platformNote,
+        },
+        {
+            title: 'Codebase & Transparency',
+            icon: 'code_blocks',
+            status: codeWinner,
+            note: codeNote,
+        },
     ];
 
     return (
         <section id="categories" className="scroll-mt-32 max-w-5xl mx-auto mb-20 px-4">
-            <div className="flex items-center gap-3 mb-8">
-                <span className="material-symbols-outlined text-fluid-h2 text-primary">military_tech</span>
-                <h2 className="text-[34px] font-bold tracking-tight text-on-surface">Winner by Category</h2>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+                <div>
+                    <div className="flex items-center gap-2 mb-2">
+                        <span className="material-symbols-outlined text-primary text-2xl">compare</span>
+                        <h2 className="text-[28px] sm:text-[34px] font-bold tracking-tight text-on-surface">
+                            Head-to-Head Differentiators
+                        </h2>
+                    </div>
+                    <p className="text-on-surface-variant text-sm sm:text-base">
+                        Factual comparison across pricing barriers, developer APIs, and ecosystem support.
+                    </p>
+                </div>
+
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-secondary text-xs font-semibold text-on-surface-variant border border-border shrink-0 self-start sm:self-auto">
+                    <span className="material-symbols-outlined text-[14px] text-primary">fact_check</span>
+                    Objective Spec Differentiators
+                </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {categories.map((cat) => {
-                    // Slight randomization or logic to pick winner if scores are identical
-                    const mainWins = cat.mainScore > cat.compareScore || (cat.mainScore === cat.compareScore && mainTool.name.length > compareTool.name.length);
-                    const winner = mainWins ? mainTool : compareTool;
-                    const loser = mainWins ? compareTool : mainTool;
-
-                    return (
-                        <div key={cat.id} className="bg-surface rounded-[24px] p-6 border border-border shadow-sm flex flex-col items-center text-center transition-all hover:shadow-md hover:-translate-y-1">
-                            <div className="w-12 h-12 bg-surface-secondary rounded-xl flex items-center justify-center text-on-surface mb-4">
-                                <span className="material-symbols-outlined">{cat.icon}</span>
-                            </div>
-                            
-                            <h3 className="text-lg font-bold text-on-surface mb-4">{cat.label}</h3>
-
-                            <div className="flex flex-col items-center gap-3 w-full">
-                                <div className="flex items-center gap-3 w-full justify-center p-2 rounded-xl bg-primary/5 border border-primary/10 relative overflow-hidden">
-                                    <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
-                                    <ToolImage tool={winner} type="logo" className="w-6 h-6 rounded-md object-contain" />
-                                    <span className="font-bold text-sm text-on-surface">{winner.name}</span>
-                                    <span className="material-symbols-outlined text-[16px] text-primary ml-auto">verified</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {cards.map((card, idx) => (
+                    <div 
+                        key={idx} 
+                        className="bg-surface rounded-[24px] p-6 border border-border shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
+                    >
+                        <div>
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 bg-surface-secondary rounded-xl flex items-center justify-center text-primary">
+                                        <span className="material-symbols-outlined text-xl">{card.icon}</span>
+                                    </div>
+                                    <h3 className="text-base font-bold text-on-surface">{card.title}</h3>
                                 </div>
 
-                                <div className="flex items-center gap-3 w-full justify-center p-2 rounded-xl opacity-60">
-                                    <ToolImage tool={loser} type="logo" className="w-6 h-6 rounded-md object-contain grayscale" />
-                                    <span className="font-medium text-sm text-on-surface-variant">{loser.name}</span>
-                                </div>
+                                {card.status === 'tie' && (
+                                    <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-surface-secondary text-on-surface-variant border border-border">
+                                        Balanced
+                                    </span>
+                                )}
                             </div>
+
+                            <p className="text-sm text-on-surface-variant leading-relaxed mb-6">
+                                {card.note}
+                            </p>
                         </div>
-                    );
-                })}
+
+                        {/* Status Footer */}
+                        <div className="pt-4 border-t border-border/60 flex items-center justify-between text-xs">
+                            {card.status === 'main' && (
+                                <div className="flex items-center gap-2 text-success font-semibold">
+                                    <ToolImage tool={mainTool} type="logo" className="w-5 h-5 rounded-md object-contain" />
+                                    <span>Advantage: {mainTool.name}</span>
+                                </div>
+                            )}
+
+                            {card.status === 'compare' && (
+                                <div className="flex items-center gap-2 text-success font-semibold">
+                                    <ToolImage tool={compareTool} type="logo" className="w-5 h-5 rounded-md object-contain" />
+                                    <span>Advantage: {compareTool.name}</span>
+                                </div>
+                            )}
+
+                            {card.status === 'tie' && (
+                                <div className="flex items-center gap-2 text-on-surface-variant font-medium">
+                                    <div className="flex -space-x-1.5">
+                                        <ToolImage tool={mainTool} type="logo" className="w-5 h-5 rounded-md object-contain border border-surface" />
+                                        <ToolImage tool={compareTool} type="logo" className="w-5 h-5 rounded-md object-contain border border-surface" />
+                                    </div>
+                                    <span>Equivalent capability</span>
+                                </div>
+                            )}
+
+                            {card.status === 'neutral' && (
+                                <span className="text-on-surface-variant/70 italic">Not available on either tool</span>
+                            )}
+                        </div>
+                    </div>
+                ))}
             </div>
         </section>
     );

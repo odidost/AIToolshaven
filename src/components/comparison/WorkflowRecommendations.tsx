@@ -9,24 +9,52 @@ interface WorkflowRecommendationsProps {
 }
 
 export function WorkflowRecommendations({ mainTool, compareTool }: WorkflowRecommendationsProps) {
-    // Generate some mock workflows based on tool category and useCases
+    // Generate category-contextual workflow steps
+    const catLower = (mainTool.category || '').toLowerCase();
+    
+    let mainAction = 'Execution & Generation';
+    let prepAction = 'Context & Ideation';
+    let finishAction = 'Final Quality Review';
+
+    if (catLower.includes('code') || catLower.includes('developer')) {
+        prepAction = 'Specification & Scaffolding';
+        mainAction = 'Code Generation & Refactoring';
+        finishAction = 'Unit Testing & CI/CD';
+    } else if (catLower.includes('image') || catLower.includes('design') || catLower.includes('art')) {
+        prepAction = 'Prompt & Style Reference';
+        mainAction = 'Asset Synthesis & Inpainting';
+        finishAction = 'Upscaling & Asset Export';
+    } else if (catLower.includes('video') || catLower.includes('animation')) {
+        prepAction = 'Script & Scene Breakdown';
+        mainAction = 'AI Video Rendering';
+        finishAction = 'Audio Sync & Composition';
+    } else if (catLower.includes('writing') || catLower.includes('copy') || catLower.includes('content')) {
+        prepAction = 'Outline & Research';
+        mainAction = 'Draft Generation';
+        finishAction = 'Fact Checking & Publishing';
+    } else if (catLower.includes('audio') || catLower.includes('voice')) {
+        prepAction = 'Text Script Preparation';
+        mainAction = 'Voice Synthesis & Modulation';
+        finishAction = 'Audio Mastering & Export';
+    }
+
     const workflows = [
         {
-            title: `The Ultimate ${mainTool.useCases?.[0] ? getEditorialTitle(mainTool.useCases[0]) : 'Productivity'} Stack`,
-            description: `Combine ${mainTool.name} with these tools for maximum efficiency.`,
+            title: `${mainTool.name} Production Pipeline`,
+            description: `How high-performing teams integrate ${mainTool.name} into their daily delivery stack.`,
             steps: [
-                { name: mainTool.name, action: 'Draft & Ideate', icon: 'edit' },
-                { name: 'Notion AI', action: 'Organize', icon: 'format_list_bulleted' },
-                { name: 'Canva', action: 'Design', icon: 'brush' },
+                { name: 'Input Preparation', action: prepAction, icon: 'input' },
+                { name: mainTool.name, action: mainAction, icon: 'smart_toy' },
+                { name: 'Deliverable Output', action: finishAction, icon: 'verified' },
             ]
         },
         {
-            title: `The Advanced ${compareTool.useCases?.[0] ? getEditorialTitle(compareTool.useCases[0]) : 'Research'} Workflow`,
-            description: `Leverage ${compareTool.name}'s strengths with this specialized stack.`,
+            title: `${compareTool.name} Production Pipeline`,
+            description: `How high-performing teams integrate ${compareTool.name} into their daily delivery stack.`,
             steps: [
-                { name: 'Perplexity', action: 'Research', icon: 'travel_explore' },
-                { name: compareTool.name, action: 'Analyze & Synthesize', icon: 'psychology' },
-                { name: 'Webflow', action: 'Publish', icon: 'language' },
+                { name: 'Input Preparation', action: prepAction, icon: 'input' },
+                { name: compareTool.name, action: mainAction, icon: 'smart_toy' },
+                { name: 'Deliverable Output', action: finishAction, icon: 'verified' },
             ]
         }
     ];

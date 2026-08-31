@@ -50,6 +50,9 @@ export interface AITool {
     description: string;
 
     category: string;
+    category_id?: string;
+    categoryName?: string;
+    categorySlug?: string;
     additionalCategories?: string[];
 
     priceModel: "Free" | "Freemium" | "Paid" | "Enterprise";

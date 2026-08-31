@@ -9,7 +9,7 @@ let _publishedTools: AITool[] | null = null;
 let _publishedSlugs: string[] | null = null;
 
 function loadLocalTools(): AITool[] {
-  if (_cachedTools) return _cachedTools;
+  if (process.env.NODE_ENV === 'production' && _cachedTools) return _cachedTools;
   try {
     const filePath = path.join(process.cwd(), 'data', 'tools.json');
     if (fs.existsSync(filePath)) {
@@ -63,11 +63,15 @@ function ensureIndexes(): void {
     }
     if (t.slug) _slugIndex.set(t.slug.toLowerCase(), t);
     if (t.id) _slugIndex.set(t.id.toLowerCase(), t);
-    if (t.category) {
-      const catKey = t.category.toLowerCase();
-      const existing = _categoryIndex.get(catKey) || [];
+    const catKeys = new Set<string>();
+    if (t.category) catKeys.add(t.category.toLowerCase());
+    if (t.category_id) catKeys.add(t.category_id.toLowerCase());
+    if (t.categorySlug) catKeys.add(t.categorySlug.toLowerCase());
+    if (t.categoryName) catKeys.add(t.categoryName.toLowerCase());
+    for (const key of catKeys) {
+      const existing = _categoryIndex.get(key) || [];
       existing.push(t);
-      _categoryIndex.set(catKey, existing);
+      _categoryIndex.set(key, existing);
     }
   }
 }

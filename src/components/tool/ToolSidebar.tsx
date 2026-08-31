@@ -72,10 +72,14 @@ export function ToolSidebar({
                                 <p className="truncate text-xs text-on-surface-variant mt-0.5">
                                     {t.tagline}
                                 </p>
-                                <div className="mt-1.5 flex items-center gap-1">
-                                    <span className="material-symbols-outlined text-[14px] text-warning fill-current">star</span>
-                                    <span className="text-xs font-bold text-on-surface">{t.rating}</span>
-                                </div>
+                                {(t.reviewCount || 0) > 0 && t.rating ? (
+                                    <div className="mt-1.5 flex items-center gap-1">
+                                        <span className="material-symbols-outlined text-[14px] text-warning fill-current">star</span>
+                                        <span className="text-xs font-bold text-on-surface">{t.rating}</span>
+                                    </div>
+                                ) : (
+                                    <p className="text-[11px] text-on-surface-variant/60 mt-1">No reviews yet</p>
+                                )}
                             </div>
 
                             <span className="material-symbols-outlined text-primary opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100">

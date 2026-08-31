@@ -32,8 +32,8 @@ export default async function Home() {
   // Extract only the tool names we actually need for the homepage widgets
   const requiredToolNames = new Set<string>();
   
-  workflows.forEach(w => w.tools.forEach(t => requiredToolNames.add(t)));
-  comparisons.forEach(c => {
+  workflows.slice(0, 6).forEach(w => w.tools.forEach(t => requiredToolNames.add(t)));
+  comparisons.slice(0, 9).forEach(c => {
     requiredToolNames.add(c.tool1.name);
     requiredToolNames.add(c.tool2.name);
   });
@@ -153,28 +153,21 @@ export default async function Home() {
           
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 relative z-10">
             <div>
-              <div className="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-full mb-6 shadow-sm border border-black/5">
+              <div className="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-full mb-4 shadow-sm border border-black/5">
                 <span className="material-symbols-outlined text-[18px]">compare_arrows</span>
                 <span className="text-[11px] font-black uppercase tracking-[0.2em]">Head-to-Head</span>
               </div>
               <h2 className="text-fluid-h2 font-black text-slate-900 tracking-tight leading-tight">
                 Compare Alternatives
               </h2>
+              <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-xl">
+                Objective side-by-side breakdowns of top AI tools across features, pricing, and workflows.
+              </p>
             </div>
-            <Link 
-              href="/compare-tools" 
-              className="group relative inline-flex items-center gap-2 px-6 py-2.5 bg-white rounded-full text-[14px] font-bold text-primary shadow-sm border border-black/5 hover:border-primary/20 hover:shadow-md transition-all overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="relative z-10">View All Matchups</span>
-              <span className="material-symbols-outlined text-[18px] relative z-10 group-hover:translate-x-1 transition-transform">
-                arrow_forward
-              </span>
-            </Link>
           </div>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" staggerChildren={0.15}>
-            {comparisons.map((comparison) => {
+            {comparisons.slice(0, 9).map((comparison) => {
               const fullTool1 = allTools.find(t => t.name.toLowerCase() === comparison.tool1.name.toLowerCase());
               const fullTool2 = allTools.find(t => t.name.toLowerCase() === comparison.tool2.name.toLowerCase());
               
@@ -189,6 +182,20 @@ export default async function Home() {
               );
             })}
           </StaggerContainer>
+
+          {/* Bottom View More / Explore All Comparisons */}
+          <div className="mt-12 text-center relative z-10 flex justify-center">
+            <Link 
+              href="/compare-tools" 
+              className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 bg-white rounded-full text-sm font-bold text-primary shadow-sm border border-black/10 hover:border-primary/30 hover:shadow-md transition-all overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="relative z-10">View All Matchups</span>
+              <span className="material-symbols-outlined text-[18px] relative z-10 group-hover:translate-x-1 transition-transform">
+                arrow_forward
+              </span>
+            </Link>
+          </div>
         </section>
       </div>
 
@@ -202,28 +209,21 @@ export default async function Home() {
           
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 relative z-10">
             <div>
-              <div className="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-full mb-6 shadow-sm border border-black/5">
+              <div className="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-full mb-4 shadow-sm border border-black/5">
                 <span className="material-symbols-outlined text-[18px]">account_tree</span>
                 <span className="text-[11px] font-black uppercase tracking-[0.2em]">Learn & Apply</span>
               </div>
               <h2 className="text-fluid-h2 font-black text-slate-900 tracking-tight leading-tight">
                 Popular AI Workflows
               </h2>
+              <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-xl">
+                Proven step-by-step tool stacks designed by creators, developers, and agencies.
+              </p>
             </div>
-            <Link 
-              href="/workflows" 
-              className="group relative inline-flex items-center gap-2 px-6 py-2.5 bg-white rounded-full text-[14px] font-bold text-primary shadow-sm border border-black/5 hover:border-primary/20 hover:shadow-md transition-all overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="relative z-10">View All Workflows</span>
-              <span className="material-symbols-outlined text-[18px] relative z-10 group-hover:translate-x-1 transition-transform">
-                arrow_forward
-              </span>
-            </Link>
           </div>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" staggerChildren={0.15}>
-            {workflows.map((workflow) => (
+            {workflows.slice(0, 6).map((workflow) => (
               <StaggerItem key={workflow.slug} direction="up">
                 <WorkflowCard
                   title={workflow.title}
@@ -246,6 +246,20 @@ export default async function Home() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          {/* Bottom View More / Explore All Workflows */}
+          <div className="mt-12 text-center relative z-10 flex justify-center">
+            <Link 
+              href="/workflows" 
+              className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 bg-white rounded-full text-sm font-bold text-primary shadow-sm border border-black/10 hover:border-primary/30 hover:shadow-md transition-all overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="relative z-10">View All Workflows</span>
+              <span className="material-symbols-outlined text-[18px] relative z-10 group-hover:translate-x-1 transition-transform">
+                arrow_forward
+              </span>
+            </Link>
+          </div>
         </section>
       </div>
 
@@ -256,24 +270,17 @@ export default async function Home() {
           
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 relative z-10">
             <div>
-              <div className="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-full mb-6 shadow-sm border border-black/5">
+              <div className="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-full mb-4 shadow-sm border border-black/5">
                 <span className="material-symbols-outlined text-[18px]">lightbulb</span>
                 <span className="text-[11px] font-black uppercase tracking-[0.2em]">Unlock Missions</span>
               </div>
               <h2 className="text-fluid-h2 font-black text-slate-900 tracking-tight leading-tight">
                 Trending Opportunities
               </h2>
+              <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-xl">
+                Actionable business missions and high-ROI monetization blueprints powered by AI.
+              </p>
             </div>
-            <Link 
-              href="/goals" 
-              className="group relative inline-flex items-center gap-2 px-6 py-2.5 bg-white rounded-full text-[14px] font-bold text-primary shadow-sm border border-black/5 hover:border-primary/20 hover:shadow-md transition-all overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="relative z-10">View All Missions</span>
-              <span className="material-symbols-outlined text-[18px] relative z-10 group-hover:translate-x-1 transition-transform">
-                arrow_forward
-              </span>
-            </Link>
           </div>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" staggerChildren={0.15}>
             {opportunities.map((item) => (
@@ -290,6 +297,20 @@ export default async function Home() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          {/* Bottom View More / Explore All Missions */}
+          <div className="mt-12 text-center relative z-10 flex justify-center">
+            <Link 
+              href="/goals" 
+              className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 bg-white rounded-full text-sm font-bold text-primary shadow-sm border border-black/10 hover:border-primary/30 hover:shadow-md transition-all overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="relative z-10">View All Missions</span>
+              <span className="material-symbols-outlined text-[18px] relative z-10 group-hover:translate-x-1 transition-transform">
+                arrow_forward
+              </span>
+            </Link>
+          </div>
         </section>
       </div>
 

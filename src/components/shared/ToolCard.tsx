@@ -97,18 +97,24 @@ export function ToolCard({ tool }: { tool: AITool }) {
           {tool.tagline}
         </p>
 
-        <div className="flex items-center gap-1 mb-4 text-accent">
-          <span className="material-symbols-outlined text-base">
-            star
-          </span>
-
-          <span className="text-sm font-semibold text-on-surface">
-            {tool.rating}
-          </span>
-
-          <span className="text-xs text-on-surface-variant ml-1">
-            ({tool.reviewCount})
-          </span>
+        <div className="flex items-center gap-1 mb-4 text-accent min-h-[20px]">
+          {(tool.reviewCount || 0) > 0 && tool.rating ? (
+            <>
+              <span className="material-symbols-outlined text-base">
+                star
+              </span>
+              <span className="text-sm font-semibold text-on-surface">
+                {tool.rating}
+              </span>
+              <span className="text-xs text-on-surface-variant ml-1">
+                ({tool.reviewCount})
+              </span>
+            </>
+          ) : (
+            <span className="text-xs text-on-surface-variant/70 font-medium">
+              No reviews yet
+            </span>
+          )}
         </div>
 
           <div className="flex items-center justify-between mt-auto gap-2">

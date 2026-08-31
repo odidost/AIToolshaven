@@ -63,17 +63,22 @@ export function ToolHero({ tool }: ToolHeroProps) {
                                 </div>
 
                                 <div className="flex items-center gap-1.5 mt-1 sm:mt-2 text-[12px] sm:text-base flex-wrap">
-
-                                    <span className="text-yellow-500 tracking-tighter">
-                                        ★★★★★
-                                    </span>
-
-                                    <strong className="leading-none">{tool.rating}</strong>
-
-                                    <span className="text-on-surface-variant text-[15px] font-medium leading-none">
-                                        ({(tool.reviewCount || 0).toLocaleString()} reviews)
-                                    </span>
-
+                                    {(tool.reviewCount || 0) > 0 && tool.rating ? (
+                                        <>
+                                            <span className="text-yellow-500 tracking-tighter">
+                                                ★★★★★
+                                            </span>
+                                            <strong className="leading-none">{tool.rating}</strong>
+                                            <span className="text-on-surface-variant text-[15px] font-medium leading-none">
+                                                ({tool.reviewCount?.toLocaleString()} {tool.reviewCount === 1 ? 'review' : 'reviews'})
+                                            </span>
+                                        </>
+                                    ) : (
+                                        <span className="text-on-surface-variant text-sm font-medium leading-none flex items-center gap-1 text-slate-500">
+                                            <span className="material-symbols-outlined text-[16px] text-slate-400">star_outline</span>
+                                            No reviews yet
+                                        </span>
+                                    )}
                                 </div>
 
                                 {tool.company && (

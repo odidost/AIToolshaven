@@ -18,8 +18,8 @@ export default async function EmbedPage({ params }: Props) {
 
   // Find human-readable category name
   const categoryName = (() => {
-    const found = categories.find((c) => c.id === tool.category || c.slug === tool.category);
-    return found ? found.name : tool.category;
+    const found = categories.find((c) => c.id === tool.category || c.slug === tool.category || c.name.toLowerCase() === tool.category?.toLowerCase() || c.id === tool.category_id);
+    return found ? found.name : (tool.categoryName || tool.category);
   })();
 
   const toolUrl = `https://aitoolshaven.com/tool/${tool.slug}`;
@@ -73,13 +73,17 @@ export default async function EmbedPage({ params }: Props) {
 
           {/* Middle: Rating & Visit Tool */}
           <div className="flex justify-between items-center mb-1">
-            <div className="flex items-center gap-1 text-[#F59E0B]">
-              <span className="material-symbols-outlined text-[16px] fill-current">star</span>
-              <span className="text-[13px] font-bold text-on-surface">{tool.rating}</span>
-              <span className="text-[11px] text-on-surface-variant font-medium">
-                ({tool.reviewCount})
-              </span>
-            </div>
+            {(tool.reviewCount || 0) > 0 && tool.rating ? (
+              <div className="flex items-center gap-1 text-[#F59E0B]">
+                <span className="material-symbols-outlined text-[16px] fill-current">star</span>
+                <span className="text-[13px] font-bold text-on-surface">{tool.rating}</span>
+                <span className="text-[11px] text-on-surface-variant font-medium">
+                  ({tool.reviewCount})
+                </span>
+              </div>
+            ) : (
+              <span className="text-[11px] text-on-surface-variant font-medium">No reviews yet</span>
+            )}
 
             <a
               href={toolUrl}

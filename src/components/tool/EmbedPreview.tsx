@@ -17,8 +17,8 @@ export function EmbedPreview({ format, tool, className }: EmbedPreviewProps) {
 
   // Find human-readable category name
   const categoryName = (() => {
-    const found = categories.find((c) => c.id === tool.category || c.slug === tool.category);
-    return found ? found.name : tool.category;
+    const found = categories.find((c) => c.id === tool.category || c.slug === tool.category || c.name.toLowerCase() === tool.category?.toLowerCase() || c.id === tool.category_id);
+    return found ? found.name : (tool.categoryName || tool.category);
   })();
 
   // Render the filled/empty star system
@@ -114,11 +114,15 @@ export function EmbedPreview({ format, tool, className }: EmbedPreviewProps) {
 
                 {/* Middle: Rating & Visit Tool */}
                 <div className="flex justify-between items-center mb-1">
-                  <div className="flex items-center gap-1 text-[#F59E0B]">
-                    <span className="material-symbols-outlined text-[16px] fill-current">star</span>
-                    <span className="text-gray-900 font-bold">{tool.rating?.toFixed(1) || "0.0"}</span>
-                    <span className="text-gray-500 font-medium">({(tool.reviewCount || 0).toLocaleString()})</span>
-                  </div>
+                  {(tool.reviewCount || 0) > 0 && tool.rating ? (
+                    <div className="flex items-center gap-1 text-[#F59E0B]">
+                      <span className="material-symbols-outlined text-[16px] fill-current">star</span>
+                      <span className="text-gray-900 font-bold">{tool.rating?.toFixed(1) || "0.0"}</span>
+                      <span className="text-gray-500 font-medium">({tool.reviewCount?.toLocaleString()})</span>
+                    </div>
+                  ) : (
+                    <span className="text-[12px] text-gray-400">No reviews yet</span>
+                  )}
 
                   <a
                     href={toolUrl}

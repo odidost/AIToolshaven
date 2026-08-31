@@ -10,123 +10,188 @@ interface QuickVerdictProps {
 }
 
 export function QuickVerdict({ mainTool, compareTool }: QuickVerdictProps) {
-    const mainScore = ((mainTool.rating || 0) + (mainTool.featureRating || 0) + (mainTool.performance || 0)) / 3;
-    const compareScore = ((compareTool.rating || 0) + (compareTool.featureRating || 0) + (compareTool.performance || 0)) / 3;
-
-    const winner = mainScore >= compareScore ? mainTool : compareTool;
-    const runnerUp = mainScore >= compareScore ? compareTool : mainTool;
-
-    const winnerScore = Math.max(mainScore, compareScore).toFixed(1);
+    const mainHasFree = mainTool.priceModel === 'Free' || mainTool.priceModel === 'Freemium';
+    const compareHasFree = compareTool.priceModel === 'Free' || compareTool.priceModel === 'Freemium';
 
     return (
         <section id="verdict-summary" className="scroll-mt-32 max-w-5xl mx-auto mb-20 px-4">
-            <div className="flex items-center gap-3 mb-8">
-                <span className="material-symbols-outlined text-fluid-h2 text-primary">emoji_events</span>
-                <h2 className="text-[34px] font-bold tracking-tight text-on-surface">Quick Verdict</h2>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+                <div>
+                    <div className="flex items-center gap-2 mb-2">
+                        <span className="material-symbols-outlined text-primary text-2xl">balance</span>
+                        <h2 className="text-[28px] sm:text-[34px] font-bold tracking-tight text-on-surface">
+                            Quick Decision Guide
+                        </h2>
+                    </div>
+                    <p className="text-on-surface-variant text-sm sm:text-base">
+                        Which tool fits your specific workflow, budget, and technical requirements?
+                    </p>
+                </div>
+
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-secondary text-xs font-semibold text-on-surface-variant border border-border shrink-0 self-start sm:self-auto">
+                    <span className="material-symbols-outlined text-[14px] text-primary">psychology</span>
+                    Workflow Alignment
+                </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                {/* Main Winner Card */}
-                <div className="lg:col-span-2 bg-gradient-to-br from-surface to-surface-secondary/50 rounded-[24px] p-8 border border-border shadow-sm relative overflow-hidden flex flex-col">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Main Tool Recommendation Card */}
+                <div className="bg-surface rounded-[24px] p-7 md:p-8 border border-border shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-primary" />
                     
-                    <div className="flex items-start justify-between mb-6 relative z-10">
-                        <div className="flex items-center gap-4">
-                            <ToolImage tool={winner} type="logo" className="w-16 h-16 rounded-xl border border-border object-contain bg-surface" />
+                    <div>
+                        <div className="flex items-center gap-4 mb-6">
+                            <ToolImage tool={mainTool} type="logo" className="w-14 h-14 rounded-2xl border border-border object-contain bg-surface p-1 shadow-xs" />
                             <div>
-                                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-warning/10 text-warning text-xs font-bold mb-1">
-                                    <span className="material-symbols-outlined text-[14px]">trophy</span>
-                                    OVERALL WINNER
-                                </div>
-                                <h3 className="text-2xl font-bold text-on-surface">{winner.name}</h3>
+                                <span className="text-xs font-bold uppercase tracking-wider text-primary">Best Choice If</span>
+                                <h3 className="text-2xl font-bold text-on-surface">{mainTool.name}</h3>
                             </div>
                         </div>
-                        <div className="text-right">
-                            <div className="text-fluid-h2 font-bold text-primary">{winnerScore}</div>
-                            <div className="text-xs text-on-surface-variant font-medium uppercase tracking-wider">AIToolsHaven Score</div>
-                        </div>
-                    </div>
 
-                    <div className="flex-grow space-y-6 relative z-10">
-                        <div>
-                            <h4 className="text-sm font-bold text-on-surface uppercase tracking-wider mb-2">Best For</h4>
-                            <p className="text-on-surface-variant leading-relaxed">
-                                {winner.bestFor?.join(', ') || 'General purpose use and professionals.'}
+                        {/* Best For Scenario */}
+                        <div className="mb-6 bg-surface-secondary/50 p-4 rounded-xl border border-border/60">
+                            <h4 className="text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-1.5 flex items-center gap-1.5">
+                                <span className="material-symbols-outlined text-[15px] text-primary">target</span>
+                                Ideal Use Case
+                            </h4>
+                            <p className="text-sm text-on-surface leading-relaxed font-medium">
+                                {mainTool.bestFor?.join(', ') || mainTool.tagline || 'General professional production.'}
                             </p>
                         </div>
 
-                        <div className="grid sm:grid-cols-2 gap-6">
-                            <div>
-                                <h4 className="text-sm font-bold text-success flex items-center gap-2 mb-2">
-                                    <span className="material-symbols-outlined text-[18px]">check_circle</span>
-                                    Why it wins
-                                </h4>
-                                <ul className="space-y-2 text-sm text-on-surface-variant">
-                                    {winner.pros?.slice(0, 3).map((pro, idx) => (
-                                        <li key={idx} className="flex items-start gap-2">
-                                            <span className="material-symbols-outlined text-[16px] text-success/70 mt-0.5">add</span>
+                        {/* Standout Advantages */}
+                        <div className="space-y-3 mb-8">
+                            <h4 className="text-xs font-bold uppercase tracking-wider text-success flex items-center gap-1.5">
+                                <span className="material-symbols-outlined text-[15px]">verified</span>
+                                Key Differentiators
+                            </h4>
+                            <ul className="space-y-2.5">
+                                {mainTool.pros && mainTool.pros.length > 0 ? (
+                                    mainTool.pros.slice(0, 3).map((pro, idx) => (
+                                        <li key={idx} className="flex items-start gap-2.5 text-sm text-on-surface-variant">
+                                            <span className="material-symbols-outlined text-[16px] text-success shrink-0 mt-0.5">check_circle</span>
                                             <span>{getEditorialTitle(pro)}</span>
                                         </li>
-                                    )) || <li>Consistently high performance across tasks.</li>}
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 className="text-sm font-bold text-destructive flex items-center gap-2 mb-2">
-                                    <span className="material-symbols-outlined text-[18px]">cancel</span>
-                                    Weaknesses
-                                </h4>
-                                <ul className="space-y-2 text-sm text-on-surface-variant">
-                                    {winner.cons?.slice(0, 3).map((con, idx) => (
-                                        <li key={idx} className="flex items-start gap-2">
-                                            <span className="material-symbols-outlined text-[16px] text-destructive/70 mt-0.5">remove</span>
-                                            <span>{getEditorialTitle(con)}</span>
-                                        </li>
-                                    )) || <li>May have a learning curve.</li>}
-                                </ul>
-                            </div>
+                                    ))
+                                ) : (
+                                    <li className="flex items-start gap-2 text-sm text-on-surface-variant">
+                                        <span className="material-symbols-outlined text-[16px] text-success shrink-0 mt-0.5">check_circle</span>
+                                        <span>Streamlined user experience and core capability set.</span>
+                                    </li>
+                                )}
+                                <li className="flex items-start gap-2.5 text-sm text-on-surface-variant">
+                                    <span className="material-symbols-outlined text-[16px] text-primary shrink-0 mt-0.5">sell</span>
+                                    <span>Pricing: <strong>{mainTool.priceModel}</strong> {mainTool.price ? `(${mainTool.price})` : ''}</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div className="mt-8 pt-6 border-t border-border relative z-10">
-                        <Link href={`/tool/${winner.slug}`} className="flex items-center justify-center w-full sm:w-auto px-8 py-3.5 bg-primary text-primary-foreground rounded-xl font-semibold hover:opacity-90 transition-opacity">
-                            Get started with {winner.name}
+                    <div className="pt-6 border-t border-border flex items-center justify-between">
+                        <Link 
+                            href={`/tool/${mainTool.slug}`}
+                            className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-semibold hover:opacity-90 transition-opacity"
+                        >
+                            Explore {mainTool.name}
+                            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                         </Link>
+                        {mainTool.websiteUrl && (
+                            <a 
+                                href={mainTool.websiteUrl} 
+                                target="_blank" 
+                                rel="noopener noreferrer nofollow"
+                                className="text-xs text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 font-medium"
+                            >
+                                Visit Site <span className="material-symbols-outlined text-[12px]">open_in_new</span>
+                            </a>
+                        )}
                     </div>
                 </div>
 
-                {/* Secondary Cards */}
-                <div className="flex flex-col gap-6">
-                    {/* Runner Up */}
-                    <div className="bg-surface rounded-[24px] p-6 border border-border shadow-sm flex-1">
-                        <div className="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-4 flex items-center gap-2">
-                            <span className="material-symbols-outlined text-[16px]">military_tech</span>
-                            Strong Alternative
+                {/* Compare Tool Recommendation Card */}
+                <div className="bg-surface rounded-[24px] p-7 md:p-8 border border-border shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-secondary" />
+
+                    <div>
+                        <div className="flex items-center gap-4 mb-6">
+                            <ToolImage tool={compareTool} type="logo" className="w-14 h-14 rounded-2xl border border-border object-contain bg-surface p-1 shadow-xs" />
+                            <div>
+                                <span className="text-xs font-bold uppercase tracking-wider text-secondary">Best Choice If</span>
+                                <h3 className="text-2xl font-bold text-on-surface">{compareTool.name}</h3>
+                            </div>
                         </div>
-                        <div className="flex items-center gap-3 mb-4">
-                            <ToolImage tool={runnerUp} type="logo" className="w-10 h-10 rounded-lg border border-border object-contain" />
-                            <h3 className="font-bold text-lg">{runnerUp.name}</h3>
+
+                        {/* Best For Scenario */}
+                        <div className="mb-6 bg-surface-secondary/50 p-4 rounded-xl border border-border/60">
+                            <h4 className="text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-1.5 flex items-center gap-1.5">
+                                <span className="material-symbols-outlined text-[15px] text-secondary">target</span>
+                                Ideal Use Case
+                            </h4>
+                            <p className="text-sm text-on-surface leading-relaxed font-medium">
+                                {compareTool.bestFor?.join(', ') || compareTool.tagline || 'Specialized and advanced workflows.'}
+                            </p>
                         </div>
-                        <p className="text-sm text-on-surface-variant mb-4">
-                            Better if you specifically need {runnerUp.bestFor?.[0]?.toLowerCase() || 'a different approach'}.
-                        </p>
-                        <Link href={`/tool/${runnerUp.slug}`} className="text-primary text-sm font-bold hover:underline">
-                            View {runnerUp.name} &rarr;
-                        </Link>
+
+                        {/* Standout Advantages */}
+                        <div className="space-y-3 mb-8">
+                            <h4 className="text-xs font-bold uppercase tracking-wider text-success flex items-center gap-1.5">
+                                <span className="material-symbols-outlined text-[15px]">verified</span>
+                                Key Differentiators
+                            </h4>
+                            <ul className="space-y-2.5">
+                                {compareTool.pros && compareTool.pros.length > 0 ? (
+                                    compareTool.pros.slice(0, 3).map((pro, idx) => (
+                                        <li key={idx} className="flex items-start gap-2.5 text-sm text-on-surface-variant">
+                                            <span className="material-symbols-outlined text-[16px] text-success shrink-0 mt-0.5">check_circle</span>
+                                            <span>{getEditorialTitle(pro)}</span>
+                                        </li>
+                                    ))
+                                ) : (
+                                    <li className="flex items-start gap-2 text-sm text-on-surface-variant">
+                                        <span className="material-symbols-outlined text-[16px] text-success shrink-0 mt-0.5">check_circle</span>
+                                        <span>Targeted tooling with specialized execution speed.</span>
+                                    </li>
+                                )}
+                                <li className="flex items-start gap-2.5 text-sm text-on-surface-variant">
+                                    <span className="material-symbols-outlined text-[16px] text-secondary shrink-0 mt-0.5">sell</span>
+                                    <span>Pricing: <strong>{compareTool.priceModel}</strong> {compareTool.price ? `(${compareTool.price})` : ''}</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
-                    {/* Best Value */}
-                    <div className="bg-surface rounded-[24px] p-6 border border-border shadow-sm flex-1">
-                        <div className="text-xs font-bold text-success uppercase tracking-wider mb-4 flex items-center gap-2">
-                            <span className="material-symbols-outlined text-[16px]">payments</span>
-                            Best Value
-                        </div>
-                        <div className="flex items-center gap-3 mb-2">
-                            <h3 className="font-bold text-lg">{mainTool.priceModel === 'Free' ? mainTool.name : (compareTool.priceModel === 'Free' ? compareTool.name : runnerUp.name)}</h3>
-                        </div>
-                        <p className="text-sm text-on-surface-variant">
-                            Offers the most features for the lowest barrier to entry.
-                        </p>
+                    <div className="pt-6 border-t border-border flex items-center justify-between">
+                        <Link 
+                            href={`/tool/${compareTool.slug}`}
+                            className="inline-flex items-center gap-2 px-6 py-2.5 bg-surface-secondary hover:bg-surface-secondary/80 text-on-surface border border-border rounded-xl text-sm font-semibold transition-colors"
+                        >
+                            Explore {compareTool.name}
+                            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </Link>
+                        {compareTool.websiteUrl && (
+                            <a 
+                                href={compareTool.websiteUrl} 
+                                target="_blank" 
+                                rel="noopener noreferrer nofollow"
+                                className="text-xs text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 font-medium"
+                            >
+                                Visit Site <span className="material-symbols-outlined text-[12px]">open_in_new</span>
+                            </a>
+                        )}
                     </div>
+                </div>
+            </div>
+
+            {/* Factual Takeaway Pill */}
+            <div className="mt-6 p-4 rounded-2xl bg-surface-secondary/40 border border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-on-surface-variant">
+                <div className="flex items-center gap-2 text-center sm:text-left">
+                    <span className="material-symbols-outlined text-primary text-base shrink-0">lightbulb</span>
+                    <span>
+                        <strong>Takeaway:</strong> If you are testing without upfront cost, {mainHasFree && !compareHasFree ? `${mainTool.name} offers a free tier while ${compareTool.name} is paid.` : (!mainHasFree && compareHasFree ? `${compareTool.name} offers a free tier while ${mainTool.name} is paid.` : 'both tools provide access paths for getting started.')}
+                    </span>
+                </div>
+                <div className="shrink-0 font-medium text-on-surface-variant/80">
+                    Category: {mainTool.categoryName || mainTool.category}
                 </div>
             </div>
         </section>

@@ -74,13 +74,13 @@ export function ToolReviews({ tool }: ToolReviewsProps) {
         });
     };
 
-    const parsedToolRating = typeof tool.rating === 'number' && !isNaN(tool.rating) ? tool.rating : 4.8;
-    const avgRating = reviews.length > 0 
+    const hasReviews = reviews.length > 0;
+    const avgRating = hasReviews 
       ? reviews.reduce((acc, r) => acc + (Number(r.rating) || 0), 0) / reviews.length 
-      : parsedToolRating;
+      : 0;
 
-    const safeAvgRating = typeof avgRating === 'number' && !isNaN(avgRating) ? avgRating : 4.8;
-    const totalReviews = reviews.length > 0 ? reviews.length : (Number(tool.reviewCount) || 120);
+    const safeAvgRating = typeof avgRating === 'number' && !isNaN(avgRating) ? avgRating : 0;
+    const totalReviews = reviews.length;
 
     return (
         <section className="my-16">
@@ -90,17 +90,35 @@ export function ToolReviews({ tool }: ToolReviewsProps) {
                 {/* Left Sidebar: Ratings Summary */}
                 <div className="rounded-[24px] border border-primary/15 bg-gradient-to-br from-[#F0EDFF] via-[#F5F7FB] to-[#E0EBFF] p-6 sm:p-8 shadow-sm h-fit">
                     <div className="text-center mb-6">
-                        <div className="text-5xl font-extrabold text-on-surface">{safeAvgRating.toFixed(1)}</div>
-                        <div className="flex items-center justify-center gap-1 mt-2 text-warning">
-                            {[1, 2, 3, 4, 5].map(star => (
-                                <span key={star} className="material-symbols-outlined fill-current text-[20px]">
-                                    {star <= Math.round(safeAvgRating) ? 'star' : 'star_border'}
-                                </span>
-                            ))}
-                        </div>
-                        <div className="text-sm text-on-surface-variant mt-2">
-                            Based on {totalReviews.toLocaleString()} reviews
-                        </div>
+                        {hasReviews ? (
+                            <>
+                                <div className="text-5xl font-extrabold text-on-surface">{safeAvgRating.toFixed(1)}</div>
+                                <div className="flex items-center justify-center gap-1 mt-2 text-warning">
+                                    {[1, 2, 3, 4, 5].map(star => (
+                                        <span key={star} className="material-symbols-outlined fill-current text-[20px]">
+                                            {star <= Math.round(safeAvgRating) ? 'star' : 'star_border'}
+                                        </span>
+                                    ))}
+                                </div>
+                                <div className="text-sm text-on-surface-variant mt-2">
+                                    Based on {totalReviews.toLocaleString()} {totalReviews === 1 ? 'review' : 'reviews'}
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className="text-5xl font-extrabold text-on-surface-variant/40">—</div>
+                                <div className="flex items-center justify-center gap-1 mt-2 text-on-surface-variant/30">
+                                    {[1, 2, 3, 4, 5].map(star => (
+                                        <span key={star} className="material-symbols-outlined text-[20px]">
+                                            star_border
+                                        </span>
+                                    ))}
+                                </div>
+                                <div className="text-sm text-on-surface-variant mt-2">
+                                    No reviews yet
+                                </div>
+                            </>
+                        )}
                     </div>
                     <div className="mt-8">
                         {currentUser ? (

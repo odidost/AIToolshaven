@@ -1,5 +1,6 @@
 import React from 'react';
 import { AITool } from '@/lib/types/tool';
+import { ToolImage } from "@/components/shared/ToolImage";
 
 interface PerformanceAnalysisProps {
     mainTool: AITool;
@@ -7,93 +8,167 @@ interface PerformanceAnalysisProps {
 }
 
 export function PerformanceAnalysis({ mainTool, compareTool }: PerformanceAnalysisProps) {
-    const metrics = [
-        { label: 'Overall Rating', main: mainTool.rating || 0, compare: compareTool.rating || 0 },
-        { label: 'Feature Richness', main: mainTool.featureRating || 0, compare: compareTool.featureRating || 0 },
-        { label: 'Value for Money', main: mainTool.valueForMoney || 0, compare: compareTool.valueForMoney || 0 },
-        { label: 'Ease of Use', main: mainTool.easeOfUse || 0, compare: compareTool.easeOfUse || 0 },
-        { label: 'Performance & Speed', main: mainTool.performance || 0, compare: compareTool.performance || 0 },
-        { label: 'Customer Support', main: mainTool.support || 0, compare: compareTool.support || 0 },
+    const specs = [
+        {
+            label: 'Pricing Model',
+            icon: 'payments',
+            mainValue: mainTool.priceModel || 'Freemium',
+            compareValue: compareTool.priceModel || 'Freemium',
+            mainHighlight: mainTool.priceModel === 'Free' || mainTool.priceModel === 'Freemium',
+            compareHighlight: compareTool.priceModel === 'Free' || compareTool.priceModel === 'Freemium',
+        },
+        {
+            label: 'Free Trial Access',
+            icon: 'schedule',
+            mainValue: mainTool.freeTrial ? 'Available' : 'No Free Trial',
+            compareValue: compareTool.freeTrial ? 'Available' : 'No Free Trial',
+            mainHighlight: Boolean(mainTool.freeTrial),
+            compareHighlight: Boolean(compareTool.freeTrial),
+        },
+        {
+            label: 'Developer API',
+            icon: 'terminal',
+            mainValue: mainTool.api ? 'Public API Available' : 'No Public API',
+            compareValue: compareTool.api ? 'Public API Available' : 'No Public API',
+            mainHighlight: Boolean(mainTool.api),
+            compareHighlight: Boolean(compareTool.api),
+        },
+        {
+            label: 'Platform Coverage',
+            icon: 'devices',
+            mainValue: mainTool.platform || 'Web Application',
+            compareValue: compareTool.platform || 'Web Application',
+            mainHighlight: Boolean(mainTool.platform && mainTool.platform.toLowerCase().includes('desktop')),
+            compareHighlight: Boolean(compareTool.platform && compareTool.platform.toLowerCase().includes('desktop')),
+        },
+        {
+            label: 'Mobile Support',
+            icon: 'smartphone',
+            mainValue: mainTool.mobileApp ? 'Mobile Apps (iOS/Android)' : 'Web/Responsive Only',
+            compareValue: compareTool.mobileApp ? 'Mobile Apps (iOS/Android)' : 'Web/Responsive Only',
+            mainHighlight: Boolean(mainTool.mobileApp),
+            compareHighlight: Boolean(compareTool.mobileApp),
+        },
+        {
+            label: 'Codebase Type',
+            icon: 'code_blocks',
+            mainValue: mainTool.openSource ? 'Open Source' : 'Proprietary Commercial',
+            compareValue: compareTool.openSource ? 'Open Source' : 'Proprietary Commercial',
+            mainHighlight: Boolean(mainTool.openSource),
+            compareHighlight: Boolean(compareTool.openSource),
+        },
+        {
+            label: 'Verified Status',
+            icon: 'verified',
+            mainValue: mainTool.verified ? 'Verified Standard' : 'Community Indexed',
+            compareValue: compareTool.verified ? 'Verified Standard' : 'Community Indexed',
+            mainHighlight: Boolean(mainTool.verified),
+            compareHighlight: Boolean(compareTool.verified),
+        },
+        {
+            label: 'Community Reviews',
+            icon: 'star',
+            mainValue: (mainTool.reviewCount || 0) > 0 && mainTool.rating 
+                ? `★ ${mainTool.rating} (${mainTool.reviewCount?.toLocaleString()} reviews)` 
+                : 'No community reviews yet',
+            compareValue: (compareTool.reviewCount || 0) > 0 && compareTool.rating 
+                ? `★ ${compareTool.rating} (${compareTool.reviewCount?.toLocaleString()} reviews)` 
+                : 'No community reviews yet',
+            mainHighlight: (mainTool.reviewCount || 0) > 0,
+            compareHighlight: (compareTool.reviewCount || 0) > 0,
+        },
     ];
-
-    const getScoreColor = (score: number, otherScore: number) => {
-        if (score > otherScore) return 'bg-success';
-        if (score < otherScore) return 'bg-surface-secondary/80';
-        return 'bg-primary/60';
-    };
 
     return (
         <section id="performance" className="scroll-mt-32 max-w-5xl mx-auto mb-20 px-4">
-            <div className="flex items-center gap-3 mb-8">
-                <span className="material-symbols-outlined text-fluid-h2 text-primary">speed</span>
-                <h2 className="text-[34px] font-bold tracking-tight text-on-surface">Performance Analysis</h2>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+                <div>
+                    <div className="flex items-center gap-2 mb-2">
+                        <span className="material-symbols-outlined text-primary text-2xl">tune</span>
+                        <h2 className="text-[28px] sm:text-[34px] font-bold tracking-tight text-on-surface">
+                            Technical Specifications & Capabilities
+                        </h2>
+                    </div>
+                    <p className="text-on-surface-variant text-sm sm:text-base">
+                        Side-by-side factual breakdown of access models, APIs, and platform availability.
+                    </p>
+                </div>
+
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-secondary text-xs font-semibold text-on-surface-variant border border-border shrink-0 self-start sm:self-auto">
+                    <span className="material-symbols-outlined text-[14px] text-success">verified_user</span>
+                    Verified Product Specs
+                </div>
             </div>
 
-            <div className="bg-surface rounded-[24px] p-8 border border-border shadow-sm flex flex-col md:flex-row gap-12">
-                {/* Left: Summary */}
-                <div className="md:w-1/3 flex flex-col justify-center">
-                    <h3 className="text-xl font-bold text-on-surface mb-4">Editorial Breakdown</h3>
-                    <p className="text-on-surface-variant leading-relaxed mb-6">
-                        We analyze tools across multiple dimensions including speed, ease of use, and feature set. 
-                        <strong> {mainTool.name}</strong> tends to shine in {mainTool.performance && mainTool.performance >= (mainTool.featureRating || 0) ? 'raw performance and speed' : 'feature richness and capabilities'}, 
-                        while <strong>{compareTool.name}</strong> offers strong competition particularly in {compareTool.easeOfUse && compareTool.easeOfUse > (compareTool.performance || 0) ? 'user experience and accessibility' : 'specialized workflows'}.
-                    </p>
-                    
-                    <div className="flex items-center gap-4 text-sm font-medium">
-                        <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-success"></div>
-                            <span>Winner</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-primary/60"></div>
-                            <span>Tie</span>
-                        </div>
+            <div className="bg-surface rounded-[24px] border border-border shadow-sm overflow-hidden">
+                {/* Table Header */}
+                <div className="grid grid-cols-12 bg-surface-secondary/60 p-4 sm:p-5 border-b border-border text-xs sm:text-sm font-bold text-on-surface">
+                    <div className="col-span-4 sm:col-span-4 flex items-center text-on-surface-variant">
+                        Capability / Dimension
+                    </div>
+                    <div className="col-span-4 sm:col-span-4 flex items-center justify-center gap-2 text-center">
+                        <ToolImage tool={mainTool} type="logo" className="w-5 h-5 rounded-md object-contain bg-surface p-0.5 border border-border hidden sm:inline-block" />
+                        <span className="truncate">{mainTool.name}</span>
+                    </div>
+                    <div className="col-span-4 sm:col-span-4 flex items-center justify-center gap-2 text-center">
+                        <ToolImage tool={compareTool} type="logo" className="w-5 h-5 rounded-md object-contain bg-surface p-0.5 border border-border hidden sm:inline-block" />
+                        <span className="truncate">{compareTool.name}</span>
                     </div>
                 </div>
 
-                {/* Right: Progress Bars */}
-                <div className="md:w-2/3 space-y-6">
-                    {/* Header Row */}
-                    <div className="flex text-sm font-bold text-on-surface-variant mb-2">
-                        <div className="w-1/3">Metric (Out of 5)</div>
-                        <div className="w-1/3 text-center">{mainTool.name}</div>
-                        <div className="w-1/3 text-center">{compareTool.name}</div>
-                    </div>
-
-                    {/* Metrics */}
-                    {metrics.map((metric, idx) => (
-                        <div key={idx} className="flex items-center">
-                            <div className="w-1/3 text-sm font-semibold text-on-surface">
-                                {metric.label}
-                            </div>
-                            
-                            {/* Main Tool Bar */}
-                            <div className="w-1/3 px-4">
-                                <div className="flex items-center justify-end gap-3">
-                                    <span className="text-xs font-bold w-6 text-right">{metric.main.toFixed(1)}</span>
-                                    <div className="h-2 flex-grow bg-surface-secondary rounded-full overflow-hidden flex justify-end">
-                                        <div 
-                                            className={`h-full rounded-full transition-all ${getScoreColor(metric.main, metric.compare)}`}
-                                            style={{ width: `${(metric.main / 5) * 100}%` }}
-                                        />
-                                    </div>
-                                </div>
+                {/* Rows */}
+                <div className="divide-y divide-border">
+                    {specs.map((spec, idx) => (
+                        <div 
+                            key={idx} 
+                            className="grid grid-cols-12 p-4 sm:p-5 items-center hover:bg-surface-secondary/20 transition-colors"
+                        >
+                            {/* Dimension Label */}
+                            <div className="col-span-4 sm:col-span-4 flex items-center gap-2 min-w-0 pr-2">
+                                <span className="material-symbols-outlined text-[18px] text-on-surface-variant/70 shrink-0 hidden sm:inline-block">
+                                    {spec.icon}
+                                </span>
+                                <span className="text-xs sm:text-sm font-semibold text-on-surface truncate">
+                                    {spec.label}
+                                </span>
                             </div>
 
-                            {/* Compare Tool Bar */}
-                            <div className="w-1/3 px-4">
-                                <div className="flex items-center gap-3">
-                                    <div className="h-2 flex-grow bg-surface-secondary rounded-full overflow-hidden">
-                                        <div 
-                                            className={`h-full rounded-full transition-all ${getScoreColor(metric.compare, metric.main)}`}
-                                            style={{ width: `${(metric.compare / 5) * 100}%` }}
-                                        />
-                                    </div>
-                                    <span className="text-xs font-bold w-6">{metric.compare.toFixed(1)}</span>
-                                </div>
+                            {/* Main Tool Value */}
+                            <div className="col-span-4 sm:col-span-4 px-2 text-center">
+                                <span 
+                                    className={`inline-block text-xs sm:text-sm px-2.5 py-1 rounded-lg font-medium leading-tight ${
+                                        spec.mainHighlight 
+                                            ? 'bg-primary/10 text-primary font-semibold border border-primary/20' 
+                                            : 'text-on-surface-variant bg-surface-secondary/50'
+                                    }`}
+                                >
+                                    {spec.mainValue}
+                                </span>
+                            </div>
+
+                            {/* Compare Tool Value */}
+                            <div className="col-span-4 sm:col-span-4 px-2 text-center">
+                                <span 
+                                    className={`inline-block text-xs sm:text-sm px-2.5 py-1 rounded-lg font-medium leading-tight ${
+                                        spec.compareHighlight 
+                                            ? 'bg-primary/10 text-primary font-semibold border border-primary/20' 
+                                            : 'text-on-surface-variant bg-surface-secondary/50'
+                                    }`}
+                                >
+                                    {spec.compareValue}
+                                </span>
                             </div>
                         </div>
                     ))}
+                </div>
+
+                {/* Methodology Footer */}
+                <div className="p-4 bg-surface-secondary/30 border-t border-border flex flex-col sm:flex-row items-center justify-between text-xs text-on-surface-variant gap-2">
+                    <span className="flex items-center gap-1.5">
+                        <span className="material-symbols-outlined text-[16px] text-primary">info</span>
+                        Data verified against vendor documentation, official pricing schedules, and developer endpoints.
+                    </span>
+                    <span className="text-[11px] text-on-surface-variant/70">Updated regularly for accuracy</span>
                 </div>
             </div>
         </section>

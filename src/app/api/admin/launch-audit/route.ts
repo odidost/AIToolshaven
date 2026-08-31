@@ -62,7 +62,7 @@ export async function GET() {
   // --- 2. Broken Links & Routes Audit ---
   let brokenCategories = 0;
   for (const tool of tools) {
-    if (tool.category && !categories.find(c => c.id === tool.category)) {
+    if (tool.category && !categories.find(c => c.id === tool.category || c.slug === tool.category || c.name.toLowerCase() === tool.category.toLowerCase())) {
       brokenCategories++;
       if (!toolsWithIssues.find(t => t.slug === tool.slug)) {
          toolsWithIssues.push({ slug: tool.slug, issues: [] });
