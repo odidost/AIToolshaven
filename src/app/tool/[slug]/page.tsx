@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { ToolHero } from "@/components/tool/ToolHero";
 import { ToolOverview } from "@/components/tool/ToolOverview";
@@ -61,11 +61,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const desc = tool.description || tool.tagline || `Learn more about ${tool.name} on ${siteConfig.name}.`;
+  const pageTitle = (tool as any).seoTitle
+    ? (tool as any).seoTitle.replace(` | ${siteConfig.name}`, '')
+    : `${tool.name} Review, Pricing & Features (2026)`;
+  const desc = (tool as any).metaDescription || tool.description || tool.tagline || `Learn more about ${tool.name} on ${siteConfig.name}.`;
   const previewImg = tool.screenshotUrl || tool.logoUrl || siteConfig.ogImage;
 
   return {
-    title: `${tool.name} Reviews, Pricing & Features | ${siteConfig.name}`,
+    title: pageTitle,
     description: desc,
     robots: {
       index: true,
@@ -106,7 +109,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ToolPage({ params }: Props) {
   const { slug } = await params;
-  const tool = await getToolBySlug(slug);
+  let tool = await getToolBySlug(slug);
+
+  // If not found by exact slug, check if a tool exists with alias, prefix, or name match
+  if (!tool) {
+    const all = await getAllTools(true);
+    const candidate = all.find(t => 
+      t.slug.toLowerCase() === slug.toLowerCase() ||
+      t.slug.toLowerCase().startsWith(`${slug.toLowerCase()}-`) ||
+      slug.toLowerCase().startsWith(`${t.slug.toLowerCase()}-`) ||
+      t.name.toLowerCase().replace(/[^a-z0-9]+/g, '-') === slug.toLowerCase()
+    );
+    if (candidate && candidate.slug && candidate.slug !== slug) {
+      redirect(`/tool/${candidate.slug}`);
+    }
+  }
 
   // Critical identity / draft protection guard
   const isPublished = tool && (tool.status === "Published" || tool.status === "published" || !tool.status);
@@ -255,7 +272,7 @@ export default async function ToolPage({ params }: Props) {
           {
             "@type": "ListItem",
             position: 1,
-            name: "Home",
+            name: "AI Tools Directory",
             item: siteConfig.baseUrl
           },
           {

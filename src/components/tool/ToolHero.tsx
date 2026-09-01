@@ -232,6 +232,19 @@ export function ToolHero({ tool }: ToolHeroProps) {
 
                     </div>
 
+                    {tool.category && (
+                        <div className="mt-5 pt-4 border-t border-border/40 flex items-center gap-2 text-xs text-on-surface-variant flex-wrap">
+                            <span className="font-medium text-gray-500">Category Pillar:</span>
+                            <Link
+                                href={`/category/${tool.categorySlug || tool.category_id || tool.category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                className="inline-flex items-center gap-1 font-bold text-primary hover:underline"
+                            >
+                                <span>Browse Best {tool.categoryName || tool.category} for 2026</span>
+                                <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+                            </Link>
+                        </div>
+                    )}
+
                 </div>
 
             </div>

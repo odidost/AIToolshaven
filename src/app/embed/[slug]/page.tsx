@@ -95,9 +95,20 @@ export default async function EmbedPage({ params }: Props) {
             </a>
           </div>
 
-          {/* Bottom: AI Tools Logo */}
+          {/* Bottom: AI Tools Logo linking to homepage */}
           <div className="flex justify-center border-t border-border/50 pt-2 w-full mt-auto">
-            <BrandLogo size={0.4} className="origin-center" />
+            <a 
+              href="https://aitoolshaven.com" 
+              target="_blank" 
+              rel="noopener"
+              title="AIToolsHaven — 1,000+ Verified AI Tools Directory"
+              className="flex items-center gap-1.5 opacity-90 hover:opacity-100 transition-opacity"
+            >
+              <BrandLogo size={0.38} className="origin-center" />
+              <span className="text-[10px] font-semibold text-slate-500 hover:text-primary transition-colors">
+                AI Tools Directory
+              </span>
+            </a>
           </div>
         </div>
       </div>

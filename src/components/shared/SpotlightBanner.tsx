@@ -24,23 +24,24 @@ export function SpotlightBanner() {
 
       <div className="w-full max-w-[900px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10 flex flex-col items-center text-center pt-12 sm:pt-16 md:pt-20 pb-0 lg:min-h-[500px]">
 
-        {/* Pulse Badge */}
-        <div className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-semibold text-primary shadow-sm transition-colors hover:bg-primary/20 backdrop-blur-md">
+        {/* Freshness & Verification Pulse Badge */}
+        <div className="inline-flex items-center justify-center gap-2.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-xs font-semibold text-emerald-700 shadow-sm transition-colors hover:bg-emerald-500/20 backdrop-blur-md">
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
           </span>
-          <span className="tracking-wide uppercase">AI OS 2.0 Is Live</span>
+          <span className="tracking-wide">Verified Daily &bull; Updated for 2026</span>
         </div>
 
         <h1 className="mt-8 text-fluid-h1 font-black tracking-tight text-on-surface">
-          <span>Discover & Compare the Best </span>
-          <br />
-          <HeroTypingText />
+          <span>Discover &amp; Compare 1,000+ Verified AI Tools</span>
+          <span className="block mt-2 text-primary drop-shadow-[0_0_20px_rgba(255,95,109,0.35)]">
+            <HeroTypingText />
+          </span>
         </h1>
 
         <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-on-surface-variant">
-          The human-curated AI tools directory. Discover, compare, and choose verified artificial intelligence tools to write, code, design, automate, and build faster.
+          The human-curated directory of free and premium artificial intelligence software. Compare pricing models, automate multi-tool workflows, and unlock proven monetization missions.
         </p>
 
         <HeroSearchBar />

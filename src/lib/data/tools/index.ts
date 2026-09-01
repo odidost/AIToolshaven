@@ -48,7 +48,7 @@ function loadLocalTools(): AITool[] {
 }
 
 function ensureIndexes(): void {
-  if (_slugIndex && _categoryIndex && _publishedTools && _publishedSlugs) return;
+  if (process.env.NODE_ENV === 'production' && _slugIndex && _categoryIndex && _publishedTools && _publishedSlugs) return;
   const all = loadLocalTools();
   _slugIndex = new Map();
   _categoryIndex = new Map();

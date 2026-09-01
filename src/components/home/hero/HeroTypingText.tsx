@@ -3,16 +3,16 @@
 import { useState, useEffect } from "react";
 
 const words = [
-  "AI Tools.",
-  "Video Generators.",
-  "Coding Assistants.",
-  "Image Creators.",
-  "AI Chatbots.",
+  "For Creators & Businesses.",
+  "For Freelancers & Solopreneurs.",
+  "Free & Freemium Software.",
+  "Video, Coding & Writing Stacks.",
+  "Automated AI Workflows.",
 ];
 
 export function HeroTypingText() {
   const [index, setIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(words[0].length);
   const [isDeleting, setIsDeleting] = useState(false);
   const [blink, setBlink] = useState(true);
 
@@ -24,8 +24,8 @@ export function HeroTypingText() {
 
   useEffect(() => {
     if (subIndex === words[index].length + 1 && !isDeleting) {
-      setTimeout(() => setIsDeleting(true), 2000);
-      return;
+      const pauseTimeout = setTimeout(() => setIsDeleting(true), 2500);
+      return () => clearTimeout(pauseTimeout);
     }
 
     if (subIndex === 0 && isDeleting) {
@@ -36,15 +36,15 @@ export function HeroTypingText() {
 
     const timeout = setTimeout(() => {
       setSubIndex((prev) => prev + (isDeleting ? -1 : 1));
-    }, Math.max(isDeleting ? 30 : 70, parseInt((Math.random() * 50).toString())));
+    }, Math.max(isDeleting ? 25 : 65, Math.floor(Math.random() * 40)));
 
     return () => clearTimeout(timeout);
   }, [subIndex, index, isDeleting]);
 
   return (
-    <span className="text-primary drop-shadow-[0_0_15px_rgba(255,95,109,0.5)] whitespace-nowrap">
+    <span className="whitespace-nowrap">
       {words[index].substring(0, subIndex)}
-      <span className={`inline-block w-[4px] h-[1em] bg-primary ml-1 translate-y-[0.1em] transition-opacity duration-100 ${blink ? "opacity-100" : "opacity-0"}`} />
+      <span className={`inline-block w-[4px] h-[0.9em] bg-primary ml-1 translate-y-[0.1em] transition-opacity duration-100 ${blink ? "opacity-100" : "opacity-0"}`} />
     </span>
   );
 }

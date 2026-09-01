@@ -94,6 +94,11 @@ const nextConfig: NextConfig = {
     return [
       // Wildcard legacy redirects (handled at Edge CDN layer)
       {
+        source: '/tool/morningscore',
+        destination: '/tool/morningscore-seo-platform',
+        permanent: true,
+      },
+      {
         source: '/ai-tool/:slug',
         destination: '/tool/:slug',
         permanent: true,

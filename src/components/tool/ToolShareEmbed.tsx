@@ -26,14 +26,17 @@ export function ToolShareEmbed({ tool, className }: ToolShareEmbedProps) {
   const starsString = "★".repeat(roundedRating) + "☆".repeat(Math.max(0, 5 - roundedRating));
 
   const snippets = {
-    html: `<a href="${toolUrl}">
-  ${tool.name} on AIToolsHaven
+    html: `<a href="${toolUrl}" target="_blank" rel="noopener">
+  <strong>${tool.name}</strong> on AIToolsHaven
+</a> — 
+<a href="${baseUrl}" target="_blank" rel="noopener">
+  1,000+ Verified AI Tools Directory
 </a>`,
-    markdown: `[${tool.name} on AIToolsHaven](${toolUrl})`,
+    markdown: `[**${tool.name}** on AIToolsHaven](${toolUrl}) — [1,000+ Verified AI Tools Directory](${baseUrl})`,
     iframe: `<iframe
   src="${embedUrl}"
   width="420"
-  height="180"
+  height="185"
   style="border:none;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08);"
   loading="lazy">
 </iframe>`,
@@ -52,7 +55,12 @@ export function ToolShareEmbed({ tool, className }: ToolShareEmbedProps) {
     </div>
   </div>
   <p style="margin: 0 0 16px 0; font-size: 14px; color: #4b5563; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${tool.description}</p>
-  <a href="https://aitoolshaven.com/tool/${tool.slug}" target="_blank" rel="noopener noreferrer" style="display: block; width: 100%; padding: 8px 0; text-align: center; background: #6366f1; color: white; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 500;">View on AIToolsHaven</a>
+  <a href="${toolUrl}" target="_blank" rel="noopener noreferrer" style="display: block; width: 100%; padding: 8px 0; text-align: center; background: #6366f1; color: white; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 600;">View on AIToolsHaven</a>
+  <div style="margin-top: 10px; text-align: center;">
+    <a href="${baseUrl}" target="_blank" rel="noopener" style="font-size: 11px; color: #9ca3af; text-decoration: none; font-weight: 500;">
+      Verified by <span style="color: #6366f1; font-weight: 600;">AIToolsHaven</span> AI Directory
+    </a>
+  </div>
 </div>`;
     })(),
   };

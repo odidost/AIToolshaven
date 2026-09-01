@@ -117,6 +117,46 @@ export function ToolSidebar({
                     ))}
                 </div>
             </section>
+
+            {/* AIToolsHaven Directory Ecosystem Reverse-Silo */}
+            <section className="rounded-[24px] border border-primary/20 bg-gradient-to-br from-primary/5 via-white to-secondary/5 p-6 shadow-xs">
+                <div className="flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-wider mb-2">
+                    <span className="material-symbols-outlined text-[18px]">hub</span>
+                    Directory Hubs
+                </div>
+                <h4 className="font-bold text-sm text-gray-900 mb-1.5">
+                    Discover More AI Solutions
+                </h4>
+                <p className="text-xs text-gray-600 leading-relaxed mb-4">
+                    Explore 1,000+ verified tools, automated multi-app pipelines, and monetization missions.
+                </p>
+                <div className="flex flex-col gap-2">
+                    <Link
+                        href="/"
+                        title="AI Tools Directory Homepage"
+                        className="flex items-center justify-between text-xs font-bold text-primary hover:text-primary/80 bg-white px-3.5 py-2.5 rounded-xl border border-black/5 shadow-2xs hover:shadow-xs transition-all"
+                    >
+                        <span>AI Tools Directory</span>
+                        <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </Link>
+                    <Link
+                        href="/workflows"
+                        title="Automated AI Workflows"
+                        className="flex items-center justify-between text-xs font-semibold text-gray-700 hover:text-primary bg-white px-3.5 py-2.5 rounded-xl border border-black/5 shadow-2xs hover:shadow-xs transition-all"
+                    >
+                        <span>Automated AI Workflows</span>
+                        <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </Link>
+                    <Link
+                        href="/goals"
+                        title="Business Monetization Missions"
+                        className="flex items-center justify-between text-xs font-semibold text-gray-700 hover:text-primary bg-white px-3.5 py-2.5 rounded-xl border border-black/5 shadow-2xs hover:shadow-xs transition-all"
+                    >
+                        <span>Monetization Missions</span>
+                        <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </Link>
+                </div>
+            </section>
         </aside>
     );
 }

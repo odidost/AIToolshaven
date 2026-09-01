@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import Link from "next/link";
+import { getAllTools } from "@/lib/data/tools-service";
 
 export const metadata = {
   title: "AI Tools CMS - Editorial OS",
@@ -13,23 +14,39 @@ export default async function ToolsPage() {
   const supabase = await createClient();
   
   // Fetch tools with category join and explicit fallback handling
-  const { data, error } = await supabase
-    .from("tools")
-    .select(`
-      id,
-      name,
-      slug,
-      status,
-      price_model,
-      updated_at,
-      categories (
-        name
-      )
-    `)
-    .order("updated_at", { ascending: false });
+  let data: any[] | null = null;
+  try {
+    const res = await supabase
+      .from("tools")
+      .select(`
+        id,
+        name,
+        slug,
+        status,
+        price_model,
+        updated_at,
+        categories (
+          name
+        )
+      `)
+      .order("updated_at", { ascending: false });
+    data = res.data;
+  } catch (err) {
+    console.error("Error fetching tools for CMS from Supabase:", err);
+  }
 
-  if (error) {
-    console.error("Error fetching tools for CMS:", error);
+  // If Supabase returned empty or failed, fallback to local data catalog
+  if (!data || data.length === 0) {
+    const local = await getAllTools(true);
+    data = local.map((tool) => ({
+      id: tool.id,
+      name: tool.name,
+      slug: tool.slug,
+      status: tool.status || "Published",
+      price_model: tool.priceModel || "Freemium",
+      updated_at: tool.lastUpdated || new Date().toISOString(),
+      categories: { name: tool.category || "AI SEO Tools" }
+    }));
   }
 
   // Format the data for the data table

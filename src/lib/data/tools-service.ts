@@ -33,7 +33,7 @@ let _slugIndex: Map<string, AITool> | null = null;
 let _categoryIndex: Map<string, AITool[]> | null = null;
 
 export function getNormalizedLocalTools(): AITool[] {
-  if (_localNormalizedTools) return _localNormalizedTools;
+  if (process.env.NODE_ENV === 'production' && _localNormalizedTools) return _localNormalizedTools;
   const raw = getLocalTools();
   _localNormalizedTools = raw.map(t => normalizeTool(t)).filter(isValidTool);
   _slugIndex = new Map();
@@ -60,7 +60,7 @@ export function getNormalizedLocalTools(): AITool[] {
 }
 
 export function getLocalToolBySlug(slug: string): AITool | undefined {
-  if (!_slugIndex) getNormalizedLocalTools();
+  if (!_slugIndex || process.env.NODE_ENV !== 'production') getNormalizedLocalTools();
   return _slugIndex?.get(slug.toLowerCase());
 }
 
@@ -78,6 +78,9 @@ function safeCache<T extends (...args: any[]) => Promise<any>>(
   keyParts: string[],
   options?: { revalidate?: number | false; tags?: string[] }
 ): T {
+  if (process.env.NODE_ENV !== 'production') {
+    return fn;
+  }
   try {
     const cachedFn = unstable_cache(fn, ['v4_clean', ...keyParts], options);
     return (async (...args: any[]) => {

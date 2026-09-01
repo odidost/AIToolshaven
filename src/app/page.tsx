@@ -21,10 +21,56 @@ import Link from "next/link";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 
+import { Metadata } from "next";
+import { siteConfig } from "@/lib/config/site";
+import { HomepageStructuredData } from "@/components/home/HomepageStructuredData";
+import { HomepageEditorialGuide } from "@/components/home/HomepageEditorialGuide";
+import { HomepageFAQ } from "@/components/home/HomepageFAQ";
 import { CommunityReviews } from "@/components/home/CommunityReviews";
 import { SubmitToolCTA } from "@/components/home/SubmitToolCTA";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { SectionContainer } from "@/components/layout/SectionContainer";
+
+export const metadata: Metadata = {
+  title: "1,000+ Verified AI Tools Directory (2026) — Free & Freemium Software by Use Case | AIToolsHaven",
+  description: "Discover, compare, and filter 1,000+ human-verified AI tools for creators, freelancers, and small businesses. Explore free software, automated workflows, and monetization missions.",
+  keywords: [
+    "verified ai tools directory",
+    "free ai tools directory",
+    "best ai tools 2026",
+    "ai tools for freelancers",
+    "ai tools for content creators",
+    "ai tools for small business",
+    "ai workflows for business",
+    "compare ai tools side by side",
+    "ai tool recommender",
+    "human curated ai tools list",
+  ],
+  alternates: {
+    canonical: siteConfig.baseUrl,
+  },
+  openGraph: {
+    title: "1,000+ Verified AI Tools Directory (2026) — AIToolsHaven",
+    description: "Discover, compare, and filter 1,000+ human-verified AI tools for creators, freelancers, and businesses. Explore free software, automated workflows, and monetization missions.",
+    url: siteConfig.baseUrl,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: "AIToolsHaven — 1,000+ Verified AI Tools Directory",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "1,000+ Verified AI Tools Directory (2026) — AIToolsHaven",
+    description: "Discover, compare, and filter 1,000+ human-verified AI tools for creators, freelancers, and businesses.",
+    images: [siteConfig.ogImage],
+  },
+};
 
 export default async function Home() {
   const featuredTools = await getFeaturedTools(8);
@@ -49,6 +95,7 @@ export default async function Home() {
 
   return (
     <main className="flex flex-col gap-4 md:gap-8 lg:gap-10 pb-32 relative overflow-hidden bg-background z-0 min-h-screen">
+      <HomepageStructuredData />
       {/* Sunset Ember Animated Background */}
       <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
         <div className="absolute -top-[10%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-primary/30 blur-[120px] mix-blend-multiply animate-float-slow" />
@@ -80,7 +127,7 @@ export default async function Home() {
                     <span className="text-xs font-bold uppercase tracking-widest text-amber-600">Editor's Choice</span>
                   </div>
                   <h2 className="text-fluid-h2 font-black tracking-tight text-gray-900">
-                    Featured Tools
+                    Top-Rated AI Tools for Productivity &amp; Growth
                   </h2>
                 </div>
                 <Link href="/categories" className="text-[14px] font-semibold text-primary hover:text-primary/80 transition-colors flex items-center gap-1 group">
@@ -158,7 +205,7 @@ export default async function Home() {
                 <span className="text-[11px] font-black uppercase tracking-[0.2em]">Head-to-Head</span>
               </div>
               <h2 className="text-fluid-h2 font-black text-slate-900 tracking-tight leading-tight">
-                Compare Alternatives
+                Head-to-Head: Compare AI Tools Side-by-Side
               </h2>
               <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-xl">
                 Objective side-by-side breakdowns of top AI tools across features, pricing, and workflows.
@@ -214,7 +261,7 @@ export default async function Home() {
                 <span className="text-[11px] font-black uppercase tracking-[0.2em]">Learn & Apply</span>
               </div>
               <h2 className="text-fluid-h2 font-black text-slate-900 tracking-tight leading-tight">
-                Popular AI Workflows
+                Curated AI Workflows: Automate Real-World Tasks
               </h2>
               <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-xl">
                 Proven step-by-step tool stacks designed by creators, developers, and agencies.
@@ -275,7 +322,7 @@ export default async function Home() {
                 <span className="text-[11px] font-black uppercase tracking-[0.2em]">Unlock Missions</span>
               </div>
               <h2 className="text-fluid-h2 font-black text-slate-900 tracking-tight leading-tight">
-                Trending Opportunities
+                Business Missions: How to Monetize AI Tools in 2026
               </h2>
               <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-xl">
                 Actionable business missions and high-ROI monetization blueprints powered by AI.
@@ -358,6 +405,12 @@ export default async function Home() {
           </div>
         </section>
       </div>
+
+      {/* 11b. Comprehensive SEO Editorial Content Pillar */}
+      <HomepageEditorialGuide />
+
+      {/* 11c. High-Intent Frequently Asked Questions Accordion & Schema */}
+      <HomepageFAQ />
 
       {/* 12. Submit Your Tool */}
       <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
