@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     return {
-        title: `${goal.title} AI Tools & Workflows | AIToolsHaven`,
+        title: `${goal.title} AI Tools & Workflows (2026 Roadmap)`,
         description: goal.description,
         alternates: {
             canonical: `https://aitoolshaven.com/goals/${goal.slug}`,
@@ -74,16 +74,62 @@ export default async function GoalPage({
         tool.goals?.includes(goal.slug) || tool.goals?.includes(goal.title)
     );
 
+    const schemaGraph: any[] = [
+        {
+            "@type": "CollectionPage",
+            "@id": `https://aitoolshaven.com/goals/${goal.slug}#webpage`,
+            name: `${goal.title} AI Tools & Workflows (2026)`,
+            description: goal.description,
+            url: `https://aitoolshaven.com/goals/${goal.slug}`,
+            about: {
+                "@type": "Thing",
+                name: goal.title
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": `https://aitoolshaven.com/goals/${goal.slug}#breadcrumb`,
+            itemListElement: [
+                {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "AI Tools Directory",
+                    item: "https://aitoolshaven.com",
+                },
+                {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Goals & Missions",
+                    item: "https://aitoolshaven.com/goals",
+                },
+                {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: goal.title,
+                    item: `https://aitoolshaven.com/goals/${goal.slug}`,
+                },
+            ],
+        },
+    ];
+
+    if (details.faqs && details.faqs.length > 0) {
+        schemaGraph.push({
+            "@type": "FAQPage",
+            "@id": `https://aitoolshaven.com/goals/${goal.slug}#faq`,
+            mainEntity: details.faqs.map((f: any) => ({
+                "@type": "Question",
+                name: f.question,
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: f.answer,
+                },
+            })),
+        });
+    }
+
     const jsonLd = {
         "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        name: `${goal.title} AI Tools`,
-        description: goal.description,
-        url: `https://aitoolshaven.com/goals/${goal.slug}`,
-        about: {
-            "@type": "Thing",
-            name: goal.title
-        }
+        "@graph": schemaGraph,
     };
 
     return (
@@ -91,7 +137,7 @@ export default async function GoalPage({
             <StructuredData data={jsonLd} />
             <Breadcrumbs
                 items={[
-                    { label: "Goals", href: "/goals" },
+                    { label: "Goals & Missions", href: "/goals" },
                     { label: goal.title },
                 ]}
             />

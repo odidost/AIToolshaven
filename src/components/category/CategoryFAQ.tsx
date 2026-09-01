@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { CategoryTheme } from "@/lib/data/categoryThemes";
 
 export function CategoryFAQ({ theme }: { theme: CategoryTheme }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // First item open by default
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   if (!theme.faq || theme.faq.length === 0) return null;
 

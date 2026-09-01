@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const countPrefix = categoryTools.length > 0 ? `${categoryTools.length} ` : "";
 
   const theme = getCategoryTheme(category.slug);
-  const title = `${countPrefix}${category.name} AI Tools | Verified Directory & Comparison | AIToolsHaven`;
+  const title = `${countPrefix}${category.name} AI Tools (2026) — Compare Best Software | AIToolsHaven`;
   const description = theme?.heroDescription || `Explore verified ${category.name} AI tools to enhance your workflow, streamline tasks, and compare pricing plans.`;
 
   return {
@@ -141,6 +141,7 @@ export default async function CategoryPage({
         url: `${siteConfig.baseUrl}/category/${category.slug}`,
         name: `Best ${category.name} AI Tools in 2026`,
         description: theme.heroDescription || category.description,
+        dateModified: new Date().toISOString().split('T')[0],
         breadcrumb: {
           "@id": `${siteConfig.baseUrl}/category/${category.slug}#breadcrumb`
         },
@@ -168,7 +169,7 @@ export default async function CategoryPage({
           {
             "@type": "ListItem",
             position: 1,
-            name: "Home",
+            name: "AI Tools Directory",
             item: siteConfig.baseUrl
           },
           {
