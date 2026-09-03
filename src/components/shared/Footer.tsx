@@ -5,14 +5,16 @@ import { SocialLinks } from './SocialLinks';
 
 const footerLinks = {
   "Explore": [
-    { label: "All Tools", href: "/categories" },
-    { label: "AI Tool Recommender", href: "/ai-tool-recommender" },
+    { label: "All Categories", href: "/categories" },
     { label: "AI Workflows", href: "/workflows" },
-    { label: "Compare Tools", href: "/compare-tools" },
+    { label: "Monetization Goals", href: "/goals" },
+    { label: "AI Tool Recommender", href: "/ai-tool-recommender" },
+    { label: "Compare Tools", href: "/compare" },
     { label: "Trending Tools", href: "/trending-ai-tools" },
   ],
   "Company": [
     { label: "About Us", href: "/about" },
+    { label: "Blog & Guides", href: "/blog" },
     { label: "Media Kit", href: "/media-kit" },
     { label: "Contact", href: "/contact" },
     { label: "Submit a Tool", href: "/submit" },
@@ -86,6 +88,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} AIToolsHaven AI Tools Discovery Hub. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-xs text-on-surface-variant">
+            <Link href="/blog" className="hover:text-primary transition-colors">Blog</Link>
             <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy</Link>
             <Link href="/terms" className="hover:text-primary transition-colors">Terms</Link>
             <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>

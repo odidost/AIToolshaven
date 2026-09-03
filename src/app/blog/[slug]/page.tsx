@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const previewImg = article.imageUrl || siteConfig.ogImage;
 
   return {
-    title: `${article.title} | AIToolsHaven Blog`,
+    title: `${article.title} (2026 Practical Guide)`,
     description: article.summary,
     robots: {
       index: true,
@@ -166,13 +166,13 @@ export default async function ArticlePage({ params }: Props) {
           {
             "@type": "ListItem",
             position: 1,
-            name: "Home",
+            name: "AI Tools Directory",
             item: siteConfig.baseUrl,
           },
           {
             "@type": "ListItem",
             position: 2,
-            name: "Blog",
+            name: "Blog & Guides",
             item: `${siteConfig.baseUrl}/blog`,
           },
           {
@@ -192,13 +192,15 @@ export default async function ArticlePage({ params }: Props) {
 
       {/* Breadcrumbs */}
       <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-on-surface-variant">
-        <Link href="/" className="hover:text-primary transition-colors">
-          Home
+        <Link href="/" className="hover:text-primary transition-colors font-medium">
+          AI Tools Directory
         </Link>
         <span>/</span>
-        <span className="text-on-surface-variant">Blog</span>
+        <Link href="/blog" className="hover:text-primary transition-colors font-medium">
+          Blog &amp; Guides
+        </Link>
         <span>/</span>
-        <span className="text-on-surface font-semibold truncate max-w-[200px] sm:max-w-none">
+        <span className="text-on-surface font-semibold line-clamp-1 max-w-md">
           {article.title}
         </span>
       </nav>
