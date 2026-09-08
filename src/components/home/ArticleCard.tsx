@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function ArticleCard({
     title,
@@ -22,9 +23,12 @@ export function ArticleCard({
 
                 {/* Thumbnail Image Wrapper */}
                 <div className="relative w-full aspect-[16/10] rounded-[1.5rem] overflow-hidden bg-slate-100 mb-6 shadow-sm border border-slate-200/80">
-                    <img 
+                    <Image 
                         src={imageUrl} 
                         alt={title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                        loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     {/* Glowing Floating Badge */}

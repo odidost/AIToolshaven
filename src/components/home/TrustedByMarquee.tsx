@@ -50,8 +50,11 @@ export function TrustedByMarquee() {
                 <img
                   src={logo.src}
                   alt={logo.name}
+                  width={128}
+                  height={40}
                   className="h-full w-full object-contain filter brightness-0 hover:brightness-100 transition-all duration-300"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             ))}

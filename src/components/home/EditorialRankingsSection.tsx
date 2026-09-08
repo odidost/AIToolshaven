@@ -33,8 +33,8 @@ export async function EditorialRankingsSection() {
         <FadeIn direction="up" className="mb-16 flex flex-col items-center md:items-start justify-center gap-2">
           <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-3xl border border-black/5 text-gray-900 shadow-xl px-4 py-1.5 rounded-full mb-4 group relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <span className="material-symbols-outlined text-[18px] text-emerald-500" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-600">Editor's Picks</span>
+            <span className="material-symbols-outlined text-[18px] text-emerald-600" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+            <span className="text-xs font-black uppercase tracking-widest text-emerald-800">Editor's Picks</span>
           </div>
           <h2 className="text-fluid-h2 font-black tracking-tight text-gray-900 mb-2">
             Explore the Best AI Tools by Category

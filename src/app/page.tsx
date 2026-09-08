@@ -105,10 +105,8 @@ export default async function Home() {
 
       {/* Group Hero and Featured Tools with drastically reduced spacing */}
       <div className="flex flex-col gap-4 md:gap-8 lg:gap-10">
-        {/* 1. Hero Section */}
-        <FadeIn delay={0.1} duration={0.8} direction="up">
-          <SpotlightBanner />
-        </FadeIn>
+        {/* 1. Hero Section - Rendered immediately for optimal LCP */}
+        <SpotlightBanner />
 
         {/* Glowing Pedestal Transition */}
         {featuredTools.length > 0 && (
@@ -124,13 +122,13 @@ export default async function Home() {
                   <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-3xl border border-black/5 text-gray-900 shadow-xl px-4 py-1.5 rounded-full mb-4 group relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-yellow-500/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <span className="material-symbols-outlined text-[18px] text-amber-500" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                    <span className="text-xs font-bold uppercase tracking-widest text-amber-600">Editor's Choice</span>
+                    <span className="text-xs font-black uppercase tracking-widest text-amber-800">Editor's Choice</span>
                   </div>
                   <h2 className="text-fluid-h2 font-black tracking-tight text-gray-900">
                     Top-Rated AI Tools for Productivity &amp; Growth
                   </h2>
                 </div>
-                <Link href="/categories" className="text-[14px] font-semibold text-primary hover:text-primary/80 transition-colors flex items-center gap-1 group">
+                <Link href="/categories" className="text-[14px] font-semibold text-rose-700 hover:text-rose-800 transition-colors flex items-center gap-1 group">
                   View All Categories <span className="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
                 </Link>
               </div>
@@ -200,7 +198,7 @@ export default async function Home() {
           
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 relative z-10">
             <div>
-              <div className="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-full mb-4 shadow-sm border border-black/5">
+              <div className="inline-flex items-center gap-2 bg-white text-rose-700 px-5 py-2 rounded-full mb-4 shadow-sm border border-black/5">
                 <span className="material-symbols-outlined text-[18px]">compare_arrows</span>
                 <span className="text-[11px] font-black uppercase tracking-[0.2em]">Head-to-Head</span>
               </div>
@@ -234,7 +232,7 @@ export default async function Home() {
           <div className="mt-12 text-center relative z-10 flex justify-center">
             <Link 
               href="/compare-tools" 
-              className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 bg-white rounded-full text-sm font-bold text-primary shadow-sm border border-black/10 hover:border-primary/30 hover:shadow-md transition-all overflow-hidden"
+              className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 bg-white rounded-full text-sm font-bold text-rose-700 shadow-sm border border-black/10 hover:border-primary/30 hover:shadow-md transition-all overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="relative z-10">View All Matchups</span>
@@ -256,7 +254,7 @@ export default async function Home() {
           
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 relative z-10">
             <div>
-              <div className="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-full mb-4 shadow-sm border border-black/5">
+              <div className="inline-flex items-center gap-2 bg-white text-rose-700 px-5 py-2 rounded-full mb-4 shadow-sm border border-black/5">
                 <span className="material-symbols-outlined text-[18px]">account_tree</span>
                 <span className="text-[11px] font-black uppercase tracking-[0.2em]">Learn & Apply</span>
               </div>
@@ -298,7 +296,7 @@ export default async function Home() {
           <div className="mt-12 text-center relative z-10 flex justify-center">
             <Link 
               href="/workflows" 
-              className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 bg-white rounded-full text-sm font-bold text-primary shadow-sm border border-black/10 hover:border-primary/30 hover:shadow-md transition-all overflow-hidden"
+              className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 bg-white rounded-full text-sm font-bold text-rose-700 shadow-sm border border-black/10 hover:border-primary/30 hover:shadow-md transition-all overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="relative z-10">View All Workflows</span>
@@ -317,7 +315,7 @@ export default async function Home() {
           
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 relative z-10">
             <div>
-              <div className="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-full mb-4 shadow-sm border border-black/5">
+              <div className="inline-flex items-center gap-2 bg-white text-rose-700 px-5 py-2 rounded-full mb-4 shadow-sm border border-black/5">
                 <span className="material-symbols-outlined text-[18px]">lightbulb</span>
                 <span className="text-[11px] font-black uppercase tracking-[0.2em]">Unlock Missions</span>
               </div>
@@ -349,7 +347,7 @@ export default async function Home() {
           <div className="mt-12 text-center relative z-10 flex justify-center">
             <Link 
               href="/goals" 
-              className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 bg-white rounded-full text-sm font-bold text-primary shadow-sm border border-black/10 hover:border-primary/30 hover:shadow-md transition-all overflow-hidden"
+              className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 bg-white rounded-full text-sm font-bold text-rose-700 shadow-sm border border-black/10 hover:border-primary/30 hover:shadow-md transition-all overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="relative z-10">View All Missions</span>
@@ -372,7 +370,7 @@ export default async function Home() {
       <div className="w-full relative z-10">
         <section className="py-16 sm:py-24 relative overflow-hidden">
           <div className="flex flex-col items-center text-center mb-16 px-4 relative z-20">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-5 py-2 rounded-full mb-6 shadow-sm border border-black/5">
+            <div className="inline-flex items-center gap-2 bg-rose-50 text-rose-700 px-5 py-2 rounded-full mb-6 shadow-sm border border-rose-200/60">
               <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>article</span>
               <span className="text-[11px] font-black uppercase tracking-[0.2em]">Resources</span>
             </div>

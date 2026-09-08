@@ -17,9 +17,9 @@ export function HomepageFAQ() {
 
       <div className="w-full max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-md border border-black/5 text-gray-900 shadow-sm px-4 py-1.5 rounded-full mb-4">
-            <span className="material-symbols-outlined text-[18px] text-primary">help</span>
-            <span className="text-xs font-bold uppercase tracking-widest text-primary">
+          <div className="inline-flex items-center gap-2 bg-rose-50 border border-rose-200/60 shadow-sm px-4 py-1.5 rounded-full mb-4">
+            <span className="material-symbols-outlined text-[18px] text-rose-700">help</span>
+            <span className="text-xs font-extrabold uppercase tracking-widest text-rose-700">
               Frequently Asked Questions
             </span>
           </div>

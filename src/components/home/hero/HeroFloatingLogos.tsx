@@ -21,7 +21,7 @@ export function HeroFloatingLogos() {
   if (!mounted) return null;
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
       {logos.map((logo, i) => (
         <div
           key={i}

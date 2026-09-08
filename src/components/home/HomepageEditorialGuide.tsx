@@ -7,9 +7,9 @@ export function HomepageEditorialGuide() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary shadow-xs px-4 py-1.5 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 bg-rose-50 border border-rose-200/60 text-rose-700 shadow-xs px-4 py-1.5 rounded-full mb-4">
             <span className="material-symbols-outlined text-[18px]">menu_book</span>
-            <span className="text-xs font-bold uppercase tracking-widest">
+            <span className="text-xs font-extrabold uppercase tracking-widest">
               Directory Ecosystem Guide &amp; Insights
             </span>
           </div>
@@ -367,7 +367,7 @@ export function HomepageEditorialGuide() {
             
             {/* Standard 1 */}
             <div className="p-6 rounded-2xl bg-white border border-black/5 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-black text-sm mb-4">
+              <div className="w-10 h-10 rounded-xl bg-rose-50 text-rose-700 flex items-center justify-center font-black text-sm mb-4">
                 01
               </div>
               <h4 className="font-bold text-gray-900 text-base mb-2">Output Fidelity &amp; Reasoning</h4>
@@ -378,7 +378,7 @@ export function HomepageEditorialGuide() {
 
             {/* Standard 2 */}
             <div className="p-6 rounded-2xl bg-white border border-black/5 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center font-black text-sm mb-4">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center font-black text-sm mb-4">
                 02
               </div>
               <h4 className="font-bold text-gray-900 text-base mb-2">True Freemium Transparency</h4>
@@ -411,7 +411,7 @@ export function HomepageEditorialGuide() {
 
             {/* Standard 5 */}
             <div className="p-6 rounded-2xl bg-white border border-black/5 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center font-black text-sm mb-4">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-800 flex items-center justify-center font-black text-sm mb-4">
                 05
               </div>
               <h4 className="font-bold text-gray-900 text-base mb-2">Production Latency &amp; Uptime</h4>
@@ -429,7 +429,7 @@ export function HomepageEditorialGuide() {
                   Are you building an AI product? Submit your tool for human review and get listed in our verified directory.
                 </p>
               </div>
-              <Link href="/submit/form?plan=free" className="text-xs font-bold text-primary hover:underline mt-4 inline-flex items-center gap-1">
+              <Link href="/submit/form?plan=free" className="text-xs font-bold text-rose-700 hover:underline mt-4 inline-flex items-center gap-1">
                 Submit AI Tool Free &rarr;
               </Link>
             </div>
@@ -506,7 +506,7 @@ export function HomepageEditorialGuide() {
           <div className="mt-8 text-center">
             <Link 
               href="/categories" 
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-primary hover:text-primary/80 transition-colors"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-rose-700 hover:text-rose-800 transition-colors"
             >
               Browse All 25+ Directory Categories <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
             </Link>

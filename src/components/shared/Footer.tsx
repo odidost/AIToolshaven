@@ -13,6 +13,7 @@ const footerLinks = {
     { label: "Trending Tools", href: "/trending-ai-tools" },
   ],
   "Company": [
+    { label: "AI Agency", href: "/agency" },
     { label: "About Us", href: "/about" },
     { label: "Blog & Guides", href: "/blog" },
     { label: "Media Kit", href: "/media-kit" },
