@@ -15,6 +15,7 @@ export function HeroTypingText() {
   const [subIndex, setSubIndex] = useState(words[0].length);
   const [isDeleting, setIsDeleting] = useState(false);
   const [blink, setBlink] = useState(true);
+  const [hasStarted, setHasStarted] = useState(false);
 
   // Blinking cursor effect
   useEffect(() => {
@@ -22,8 +23,19 @@ export function HeroTypingText() {
     return () => clearTimeout(timeout);
   }, [blink]);
 
+  // Initial delay to ensure stable initial render for LCP
   useEffect(() => {
-    if (subIndex === words[index].length + 1 && !isDeleting) {
+    const initialTimer = setTimeout(() => {
+      setHasStarted(true);
+      setIsDeleting(true);
+    }, 3500);
+    return () => clearTimeout(initialTimer);
+  }, []);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    if (subIndex === words[index].length && !isDeleting) {
       const pauseTimeout = setTimeout(() => setIsDeleting(true), 2500);
       return () => clearTimeout(pauseTimeout);
     }
@@ -39,7 +51,7 @@ export function HeroTypingText() {
     }, Math.max(isDeleting ? 25 : 65, Math.floor(Math.random() * 40)));
 
     return () => clearTimeout(timeout);
-  }, [subIndex, index, isDeleting]);
+  }, [subIndex, index, isDeleting, hasStarted]);
 
   return (
     <span className="whitespace-nowrap">
