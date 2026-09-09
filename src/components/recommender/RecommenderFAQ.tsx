@@ -1,0 +1,76 @@
+"use client";
+
+import { useState } from "react";
+import { recommenderFaqs } from "@/lib/data/recommender-faqs";
+
+export function RecommenderFAQ() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section className="relative overflow-hidden py-16 sm:py-24 border-t border-black/5 bg-slate-50/50">
+      {/* Background Accent Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10" />
+
+      <div className="w-full max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 bg-rose-50 border border-rose-200/60 shadow-xs px-4 py-1.5 rounded-full mb-4">
+            <span className="material-symbols-outlined text-[18px] text-rose-700">help</span>
+            <span className="text-xs font-extrabold uppercase tracking-widest text-rose-700">
+              Frequently Asked Questions
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-gray-900 leading-tight">
+            AI Stack Decision Guide: Common Questions Answered
+          </h2>
+          <p className="mt-3 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Everything you need to know about AI stack selection, benchmark vetting, avoiding subscription fatigue, and calculating practical business ROI.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          {recommenderFaqs.map((faq, idx) => {
+            const isOpen = openIndex === idx;
+            return (
+              <div
+                key={idx}
+                className={`rounded-2xl border transition-all duration-300 bg-white overflow-hidden ${
+                  isOpen
+                    ? "border-primary/30 shadow-md ring-1 ring-primary/10"
+                    : "border-black/5 shadow-xs hover:border-black/15 hover:shadow-sm"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggle(idx)}
+                  className="w-full text-left px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded-2xl"
+                  aria-expanded={isOpen}
+                >
+                  <span className="text-base sm:text-lg font-bold text-gray-900 leading-snug">
+                    {faq.question}
+                  </span>
+                  <span
+                    className={`material-symbols-outlined text-xl text-primary transition-transform duration-300 flex-shrink-0 ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                  >
+                    expand_more
+                  </span>
+                </button>
+
+                {isOpen && (
+                  <div className="px-6 pb-6 sm:px-8 sm:pb-7 text-sm sm:text-base text-gray-600 leading-relaxed border-t border-black/5 pt-4">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -4,36 +4,104 @@ import { RecommendationEngine } from "@/components/home/RecommendationEngine";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { StructuredData } from "@/components/shared/StructuredData";
 import { siteConfig } from "@/lib/config/site";
+import { RecommenderEditorialGuide } from "@/components/recommender/RecommenderEditorialGuide";
+import { RecommenderFAQ } from "@/components/recommender/RecommenderFAQ";
+import { recommenderFaqs } from "@/lib/data/recommender-faqs";
+
+const pageUrl = `${siteConfig.baseUrl}/ai-tool-recommender`;
 
 export const metadata: Metadata = {
-  title: "AI Tool Recommender — Find Your Perfect AI Tech Stack | AIToolsHaven",
-  description: "Generate instant, benchmark-backed 3-tool AI recommendations tailored to your exact role and workflow goals. Free interactive tool finder across 150+ verified AI models.",
+  title: "AI Tool Recommender (2026) — Find the Best AI Tools for Your Workflow | AIToolsHaven",
+  description: "Interactive AI tool recommender and stack builder. Answer 2 quick questions to discover benchmark-vetted, high-ROI AI software blueprints tailored to your role and workflow goals.",
+  keywords: [
+    "ai tool recommender",
+    "ai tool finder",
+    "ai software recommender",
+    "find best ai tools",
+    "which ai tool should i use",
+    "ai tech stack builder",
+    "best ai tools for developers 2026",
+    "best ai tools for content creators",
+    "best ai tools for solo founders",
+    "ai tools for sales teams",
+    "avoiding ai subscription fatigue",
+    "free ai tool finder",
+  ],
   alternates: {
-    canonical: "https://aitoolshaven.com/ai-tool-recommender",
+    canonical: pageUrl,
   },
   openGraph: {
-    title: "AI Tool Recommender — Match Your Workflow to Verified AI Tools",
-    description: "Interactive AI tool recommendation engine. Choose your role and goal to generate tailored software blueprints.",
-    url: "https://aitoolshaven.com/ai-tool-recommender",
+    title: "AI Tool Recommender (2026) — Match Your Workflow to Verified AI Stacks",
+    description: "Interactive AI tool recommendation engine. Choose your role and goal to generate tailored, benchmark-backed software blueprints with zero subscription waste.",
+    url: pageUrl,
     siteName: siteConfig.name,
     type: "website",
+    images: [
+      {
+        url: `${siteConfig.baseUrl}${siteConfig.ogImage}`,
+        width: 1200,
+        height: 630,
+        alt: "AI Tool Recommender — AIToolsHaven",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Tool Recommender (2026) — Find Your Perfect AI Tech Stack",
+    description: "Discover verified, high-ROI AI tools tailored to your exact role and workflow goals. Free interactive stack builder.",
+    images: [`${siteConfig.baseUrl}${siteConfig.ogImage}`],
   },
 };
 
 export default function AIToolRecommenderPage() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "AIToolsHaven AI Tool Recommender",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "All",
-    "url": "https://aitoolshaven.com/ai-tool-recommender",
-    "description": "Interactive AI recommendation engine matching professionals, creators, and developers to verified AI tool stacks.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": `${pageUrl}#webapp`,
+        "name": "AIToolsHaven AI Tool Recommender",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "url": pageUrl,
+        "description": "Interactive AI recommendation engine matching professionals, creators, and developers to verified AI tool stacks with zero subscription waste.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+        },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${pageUrl}#faq`,
+        "mainEntity": recommenderFaqs.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer,
+          },
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": siteConfig.baseUrl,
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI Tool Recommender",
+            "item": pageUrl,
+          },
+        ],
+      },
+    ],
   };
 
   return (
@@ -114,34 +182,46 @@ export default function AIToolRecommenderPage() {
             </p>
           </div>
         </section>
-
-        {/* Discovery Jump Links */}
-        <section className="mt-16 text-center">
-          <div className="inline-flex flex-wrap items-center justify-center gap-3 p-2 bg-white/80 backdrop-blur-xl border border-black/5 rounded-2xl shadow-xs">
-            <span className="text-xs font-bold text-gray-400 uppercase tracking-wider px-3">
-              Explore More:
-            </span>
-            <Link
-              href="/workflows"
-              className="px-4 py-2 rounded-xl bg-gray-50 hover:bg-primary/10 hover:text-primary text-xs font-bold transition-all border border-black/5"
-            >
-              Popular AI Workflows ➔
-            </Link>
-            <Link
-              href="/compare-tools"
-              className="px-4 py-2 rounded-xl bg-gray-50 hover:bg-primary/10 hover:text-primary text-xs font-bold transition-all border border-black/5"
-            >
-              Head-to-Head Comparisons ➔
-            </Link>
-            <Link
-              href="/categories"
-              className="px-4 py-2 rounded-xl bg-gray-50 hover:bg-primary/10 hover:text-primary text-xs font-bold transition-all border border-black/5"
-            >
-              All 21 Categories ➔
-            </Link>
-          </div>
-        </section>
       </PageContainer>
+
+      {/* Comprehensive SEO Editorial Pillar */}
+      <RecommenderEditorialGuide />
+
+      {/* High-Intent FAQ Accordion */}
+      <RecommenderFAQ />
+
+      {/* Discovery Jump Links */}
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 text-center">
+        <div className="inline-flex flex-wrap items-center justify-center gap-3 p-3 bg-white/80 backdrop-blur-xl border border-black/5 rounded-2xl shadow-xs">
+          <span className="text-xs font-bold text-gray-400 uppercase tracking-wider px-3">
+            Explore More AI Hubs:
+          </span>
+          <Link
+            href="/workflows"
+            className="px-4 py-2 rounded-xl bg-gray-50 hover:bg-primary/10 hover:text-primary text-xs font-bold transition-all border border-black/5"
+          >
+            Popular AI Workflows ➔
+          </Link>
+          <Link
+            href="/compare-tools"
+            className="px-4 py-2 rounded-xl bg-gray-50 hover:bg-primary/10 hover:text-primary text-xs font-bold transition-all border border-black/5"
+          >
+            Head-to-Head Comparisons ➔
+          </Link>
+          <Link
+            href="/popular-ai-tools"
+            className="px-4 py-2 rounded-xl bg-gray-50 hover:bg-primary/10 hover:text-primary text-xs font-bold transition-all border border-black/5"
+          >
+            Popular AI Tools ➔
+          </Link>
+          <Link
+            href="/categories"
+            className="px-4 py-2 rounded-xl bg-gray-50 hover:bg-primary/10 hover:text-primary text-xs font-bold transition-all border border-black/5"
+          >
+            All 25+ Categories ➔
+          </Link>
+        </div>
+      </div>
     </main>
   );
 }

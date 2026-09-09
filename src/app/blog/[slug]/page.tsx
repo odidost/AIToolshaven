@@ -30,7 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Article Not Found | AIToolsHaven" };
   }
 
-  const previewImg = article.imageUrl || siteConfig.ogImage;
+  const base = (siteConfig.baseUrl || "https://aitoolshaven.com").replace(/\/$/, "");
+  const ogImageUrl = article.imageUrl
+    ? (article.imageUrl.startsWith("http")
+        ? article.imageUrl
+        : `${base}${article.imageUrl.startsWith("/") ? "" : "/"}${article.imageUrl}`)
+    : `${base}${siteConfig.ogImage}`;
+
+  const pageUrl = `${base}/blog/${article.slug}`;
 
   return {
     title: `${article.title} (2026 Practical Guide)`,
@@ -47,21 +54,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     alternates: {
-      canonical: `${siteConfig.baseUrl}/blog/${article.slug}`,
+      canonical: pageUrl,
     },
     openGraph: {
       title: article.title,
       description: article.summary,
       type: "article",
-      url: `${siteConfig.baseUrl}/blog/${article.slug}`,
+      url: pageUrl,
+      siteName: siteConfig.name,
       publishedTime: new Date(article.date).toISOString(),
       authors: [article.author],
       images: [
         {
-          url: previewImg,
+          url: ogImageUrl,
+          secureUrl: ogImageUrl,
           width: 1200,
           height: 630,
           alt: article.title,
+          type: "image/jpeg",
         },
       ],
     },
@@ -69,7 +79,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: article.title,
       description: article.summary,
-      images: [previewImg],
+      images: [ogImageUrl],
     },
   };
 }
