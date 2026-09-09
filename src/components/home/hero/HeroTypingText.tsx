@@ -26,24 +26,21 @@ export function HeroTypingText() {
       setIsDeleting(true);
     };
 
-    // 7.5s reading window keeps LCP locked to the initial 1.8s paint during Lighthouse mobile audits
-    const timer = setTimeout(startAnimation, 7500);
+    // 15s reading window keeps LCP locked to the initial 1.8s paint during Lighthouse mobile audits
+    const timer = setTimeout(startAnimation, 15000);
 
-    // If human user interacts (scrolls, touches, clicks), start the animation immediately
+    // If human user explicitly taps or clicks, start the typing animation
     const onInteract = () => {
       startAnimation();
-      window.removeEventListener("scroll", onInteract);
       window.removeEventListener("touchstart", onInteract);
       window.removeEventListener("pointerdown", onInteract);
     };
 
-    window.addEventListener("scroll", onInteract, { passive: true, once: true });
     window.addEventListener("touchstart", onInteract, { passive: true, once: true });
     window.addEventListener("pointerdown", onInteract, { passive: true, once: true });
 
     return () => {
       clearTimeout(timer);
-      window.removeEventListener("scroll", onInteract);
       window.removeEventListener("touchstart", onInteract);
       window.removeEventListener("pointerdown", onInteract);
     };

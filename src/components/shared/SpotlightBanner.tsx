@@ -51,22 +51,24 @@ export function SpotlightBanner() {
             
             {/* Avatars & Rating */}
             <div className="flex items-center gap-3">
-              <div className="flex -space-x-2.5">
+              <div className="flex -space-x-2.5 shrink-0 w-[84px] sm:w-[104px] h-6 sm:h-8">
                 {[1, 2, 3, 4, 5].map((i) => (
-                  <div key={i} className="h-6 w-6 sm:h-8 sm:w-8 overflow-hidden rounded-full border-2 border-white bg-surface shadow-sm">
-                    <Image width={100} height={100} src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}&backgroundColor=transparent`} 
+                  <div key={i} className="h-6 w-6 sm:h-8 sm:w-8 overflow-hidden rounded-full border-2 border-white bg-surface shadow-sm shrink-0">
+                    <Image width={32} height={32} src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}&backgroundColor=transparent`} 
                       alt="User avatar" 
                       className="h-full w-full object-cover"
+                      loading="eager"
+                      decoding="async"
                     />
                   </div>
                 ))}
               </div>
-              <div className="flex flex-col gap-0.5 text-xs font-medium text-on-surface-variant">
-                <div className="flex gap-0.5 text-warning">
+              <div className="flex flex-col gap-0.5 text-xs font-medium text-on-surface-variant shrink-0">
+                <div className="flex gap-0.5 text-amber-400 h-3 items-center">
                   {[1, 2, 3, 4, 5].map((i) => (
-                    <span key={i} className="material-symbols-outlined text-[12px]" style={{ fontVariationSettings: "'FILL' 1" }}>
-                      star
-                    </span>
+                    <svg key={i} className="w-3 h-3 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                    </svg>
                   ))}
                 </div>
                 <span>from 10,000+ creators</span>
