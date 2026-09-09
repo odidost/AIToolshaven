@@ -3,27 +3,28 @@
 import { useEffect, useState } from "react";
 
 export function HeroAura() {
-  const [position, setPosition] = useState({ x: 500, y: 300 });
-  const [isClient, setIsClient] = useState(false);
+  const [position, setPosition] = useState<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
-    setIsClient(true);
-    setPosition({ x: window.innerWidth / 2, y: window.innerHeight / 3 });
-    
+    // Only activate mouse aura on devices with fine pointer (mouse/trackpad), not touch/mobile
+    if (!window.matchMedia("(pointer: fine)").matches) {
+      return;
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
-      // Smooth interpolation could be added here, but direct tracking is okay for soft blurs
       setPosition({ x: e.clientX, y: e.clientY });
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  if (!isClient) return null;
+  if (!position) return null;
 
   return (
     <div
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden transition-opacity duration-300"
+      aria-hidden="true"
     >
       <div
         className="absolute rounded-full opacity-30 mix-blend-screen blur-[120px] transition-transform duration-700 ease-out"
@@ -37,3 +38,4 @@ export function HeroAura() {
     </div>
   );
 }
+

@@ -37,14 +37,6 @@ export function HeroFloatingLogos() {
           </span>
         </div>
       ))}
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes float-random {
-          0% { transform: translate(0, 0) rotate(0deg); }
-          33% { transform: translate(30px, -50px) rotate(10deg); }
-          66% { transform: translate(-20px, 20px) rotate(-5deg); }
-          100% { transform: translate(40px, 40px) rotate(15deg); }
-        }
-      `}} />
     </div>
   );
 }

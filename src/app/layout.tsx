@@ -107,8 +107,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`h-full antialiased ${plusJakartaSans.variable} ${figtree.variable} font-sans`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           rel="preload"
           href="/fonts/material-symbols-subset.woff2"

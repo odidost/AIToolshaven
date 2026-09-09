@@ -94,7 +94,7 @@ export default async function Home() {
   }, {} as Record<string, string>);
 
   return (
-    <main className="flex flex-col gap-4 md:gap-8 lg:gap-10 pb-32 relative overflow-hidden bg-background z-0 min-h-screen">
+    <div className="flex flex-col gap-4 md:gap-8 lg:gap-10 pb-32 relative overflow-hidden bg-background z-0 min-h-screen">
       <HomepageStructuredData />
       {/* Sunset Ember Animated Background */}
       <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
@@ -425,6 +425,6 @@ export default async function Home() {
         </p>
         <SocialLinks variant="cta" />
       </div>
-    </main>
+    </div>
   );
 }
