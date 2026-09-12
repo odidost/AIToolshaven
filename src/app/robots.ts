@@ -18,15 +18,16 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: [
-          "GPTBot",
           "ChatGPT-User",
-          "CCBot",
-          "anthropic-ai",
           "Claude-Web",
-          "ClaudeBot",
+          "PerplexityBot"
+        ],
+        allow: "/",
+      },
+      {
+        userAgent: [
+          "CCBot",
           "Bytespider",
-          "Amazonbot",
-          "cohere-ai",
           "SemrushBot",
           "AhrefsBot",
           "MJ12bot",

@@ -362,7 +362,7 @@ export const categoryThemes: Record<string, CategoryTheme> = {
     faq: [
       {
         question: "How realistic are AI voices today?",
-        answer: "Modern AI voice generators like ElevenLabs and Play.ht produce natural human inflection, subtle pauses, and emotional nuances suitable for professional dubbing and audiobooks."
+        answer: "Modern AI voice generators like ElevenLabs and Murf AI produce natural human inflection, subtle pauses, and emotional nuances suitable for professional dubbing and audiobooks."
       },
       {
         question: "Can AI generate complete songs with lyrics?",
@@ -834,7 +834,7 @@ export const categoryThemes: Record<string, CategoryTheme> = {
       }
     ],
     internalLinks: [
-      { title: "Play.ht Review", href: "/tool/play-ht" },
+      { title: "Murf AI Review", href: "/tool/murf-ai" },
       { title: "ElevenLabs Review", href: "/tool/elevenlabs" },
     ]
   },

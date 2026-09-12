@@ -28,7 +28,7 @@ export default function SubmitFormPage() {
 
 function SubmitFormContent() {
   const searchParams = useSearchParams();
-  const plan = searchParams.get('plan') || 'launch';
+  const plan = searchParams.get('plan') || 'growth';
 
   const [formData, setFormData] = useState({
     toolName: '',
@@ -50,7 +50,6 @@ function SubmitFormContent() {
 
   const planLabels: Record<string, string> = {
     free: 'Free Plan ($0)',
-    launch: 'Launch Plan ($50)',
     growth: 'Growth Plan ($100)',
     premium: 'Premium Spotlight ($150)',
   };

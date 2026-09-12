@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { ShieldCheck, Check, Copy, CheckCircle2, Zap } from 'lucide-react';
 
 export function PublisherBadgeEmbed() {
   const [copied, setCopied] = useState(false);
@@ -12,10 +13,10 @@ export function PublisherBadgeEmbed() {
     : 'featured-on-aitoolshaven-dark.svg';
 
   const embedCode = format === 'html'
-    ? `<a href="https://aitoolshaven.com" target="_blank" rel="noopener" title="AIToolsHaven — 1,000+ Verified AI Tools Directory">
-  <img src="https://aitoolshaven.com/badges/${badgeFile}" alt="Featured on AIToolsHaven — 1,000+ Verified AI Tools Directory" width="250" height="54" />
+    ? `<a href="https://aitoolshaven.com" target="_blank" rel="noopener" title="Featured on AIToolsHaven">
+  <img src="https://aitoolshaven.com/badges/${badgeFile}" alt="Featured on AIToolsHaven" width="250" height="54" />
 </a>`
-    : `[![Featured on AIToolsHaven](https://aitoolshaven.com/badges/${badgeFile})](https://aitoolshaven.com "AIToolsHaven — 1,000+ Verified AI Tools Directory")`;
+    : `[![Featured on AIToolsHaven](https://aitoolshaven.com/badges/${badgeFile})](https://aitoolshaven.com "Featured on AIToolsHaven")`;
 
   const copyToClipboard = async () => {
     try {
@@ -31,7 +32,7 @@ export function PublisherBadgeEmbed() {
     <div className="bg-surface border border-outline rounded-3xl overflow-hidden shadow-sm my-6 transition-all">
       <div className="p-6 border-b border-outline bg-gradient-to-r from-primary/5 via-transparent to-transparent flex items-start gap-4">
         <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 shadow-xs">
-          <span className="material-symbols-outlined text-[24px]">verified</span>
+          <ShieldCheck className="w-6 h-6" />
         </div>
         <div className="flex-1 min-w-0">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 text-[11px] font-bold uppercase tracking-wider mb-1.5">
@@ -58,23 +59,23 @@ export function PublisherBadgeEmbed() {
                 type="button"
                 onClick={() => setTheme('light')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
-                  theme === 'light' 
-                    ? 'bg-white text-gray-900 shadow-xs' 
-                    : 'text-gray-500 hover:text-gray-900'
+                  theme === 'light'
+                    ? 'bg-surface text-primary shadow-xs'
+                    : 'text-on-surface-variant hover:text-on-surface'
                 }`}
               >
-                Light Badge
+                Light
               </button>
               <button
                 type="button"
                 onClick={() => setTheme('dark')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
-                  theme === 'dark' 
-                    ? 'bg-slate-900 text-white shadow-xs' 
-                    : 'text-gray-500 hover:text-gray-900'
+                  theme === 'dark'
+                    ? 'bg-slate-900 text-white shadow-xs'
+                    : 'text-on-surface-variant hover:text-on-surface'
                 }`}
               >
-                Dark Badge
+                Dark
               </button>
             </div>
           </div>
@@ -87,52 +88,54 @@ export function PublisherBadgeEmbed() {
                 type="button"
                 onClick={() => setFormat('html')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
-                  format === 'html' 
-                    ? 'bg-primary text-white shadow-xs' 
-                    : 'text-gray-500 hover:text-gray-900'
+                  format === 'html'
+                    ? 'bg-surface text-primary shadow-xs'
+                    : 'text-on-surface-variant hover:text-on-surface'
                 }`}
               >
-                HTML (Websites)
+                HTML
               </button>
               <button
                 type="button"
                 onClick={() => setFormat('markdown')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
-                  format === 'markdown' 
-                    ? 'bg-primary text-white shadow-xs' 
-                    : 'text-gray-500 hover:text-gray-900'
+                  format === 'markdown'
+                    ? 'bg-surface text-primary shadow-xs'
+                    : 'text-on-surface-variant hover:text-on-surface'
                 }`}
               >
-                Markdown (GitHub)
+                Markdown
               </button>
             </div>
           </div>
         </div>
 
-        {/* Live Badge Preview */}
-        <div>
-          <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-3">Live Badge Preview</p>
-          <div className={`border border-border/60 rounded-2xl p-8 flex items-center justify-center transition-colors ${
-            theme === 'dark' ? 'bg-[#0b0f19]' : 'bg-slate-50'
+        {/* Live Preview Box */}
+        <div className="space-y-2">
+          <label className="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">
+            Live Preview
+          </label>
+          <div className={`p-8 rounded-2xl flex items-center justify-center border transition-all ${
+            theme === 'light' 
+              ? 'bg-slate-50 border-slate-200' 
+              : 'bg-slate-950 border-slate-800'
           }`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
-              src={`/badges/${badgeFile}`} 
-              alt="Featured on AIToolsHaven — 1,000+ Verified AI Tools Directory" 
-              width={250} 
-              height={54}
-              className="drop-shadow-md transition-transform hover:scale-105"
+              src={`https://aitoolshaven.com/badges/${badgeFile}`}
+              alt="Featured on AIToolsHaven"
+              className="h-14 w-auto shadow-sm hover:scale-105 transition-transform"
             />
           </div>
         </div>
 
-        {/* Embed Code Snippet */}
-        <div>
-          <div className="flex justify-between items-center mb-2">
-            <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">
-              {format === 'html' ? 'HTML Embed Snippet' : 'Markdown Code (README.md)'}
-            </p>
-            <span className="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+        {/* Code Snippet Box */}
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <label className="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">
+              Embed Snippet
+            </label>
+            <span className="text-[11px] font-semibold text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30 px-2 py-0.5 rounded-md border border-emerald-200 dark:border-emerald-800">
               DoFollow Link Equity Included
             </span>
           </div>
@@ -148,12 +151,12 @@ export function PublisherBadgeEmbed() {
             >
               {copied ? (
                 <>
-                  <span className="material-symbols-outlined text-[16px] text-emerald-400">check</span>
+                  <Check className="w-4 h-4 text-emerald-400" />
                   <span className="text-emerald-400">Copied!</span>
                 </>
               ) : (
                 <>
-                  <span className="material-symbols-outlined text-[16px]">content_copy</span>
+                  <Copy className="w-4 h-4" />
                   <span>Copy Code</span>
                 </>
               )}
@@ -164,16 +167,16 @@ export function PublisherBadgeEmbed() {
         {/* Feature Checkmarks */}
         <div className="pt-2 flex flex-wrap gap-4 sm:gap-6 text-xs font-medium text-on-surface-variant">
           <div className="flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-[16px] text-emerald-500">verified</span>
-            Official DoFollow Backlink
+            <ShieldCheck className="w-4 h-4 text-emerald-500" />
+            <span>Official DoFollow Backlink</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-[16px] text-emerald-500">check_circle</span>
-            Required for Free Directory Verification
+            <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+            <span>Required for Free Directory Verification</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-[16px] text-emerald-500">speed</span>
-            Instant Review Priority
+            <Zap className="w-4 h-4 text-emerald-500" />
+            <span>Instant Review Priority</span>
           </div>
         </div>
       </div>

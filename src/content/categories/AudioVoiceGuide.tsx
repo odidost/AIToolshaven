@@ -33,7 +33,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 const faqData = [
   {
     question: "Can I legally monetize AI-generated voiceovers and songs?",
-    answer: "Yes, on paid subscription plans with leading platforms like ElevenLabs, Play.ht, and Murf AI, you retain full commercial rights to use synthetic voice tracks for commercial YouTube videos, paid advertisements, podcasts, broadcast TV, and published audiobooks."
+    answer: "Yes, on paid subscription plans with leading platforms like ElevenLabs, Resemble AI, and Murf AI, you retain full commercial rights to use synthetic voice tracks for commercial YouTube videos, paid advertisements, podcasts, broadcast TV, and published audiobooks."
   },
   {
     question: "How much audio sample data is required to clone a voice?",
@@ -50,7 +50,7 @@ const useCases = [
     id: "audiobooks",
     title: "Audiobook Publishers & Authors",
     icon: <BookHeadphones className="w-5 h-5" />,
-    content: "Independent authors and publishing houses eliminate $5,000+ recording booth and narrator fees. Using tools like ElevenLabs and Play.ht, publishers convert full-length 80,000-word manuscripts into multi-cast, emotionally dynamic audiobooks ready for Audible and Spotify in a single afternoon."
+    content: "Independent authors and publishing houses eliminate $5,000+ recording booth and narrator fees. Using tools like ElevenLabs and Murf AI, publishers convert full-length 80,000-word manuscripts into multi-cast, emotionally dynamic audiobooks ready for Audible and Spotify in a single afternoon."
   },
   {
     id: "podcasters",
@@ -91,12 +91,12 @@ const alternatives = [
     highlight: "Exceptional built-in video sync editor and enterprise presentation templates." 
   },
   { 
-    name: "Play.ht", 
-    slug: "play-ht",
+    name: "Resemble AI", 
+    slug: "resemble-ai",
     score: "9.4", 
-    price: "From $31/mo", 
-    bestFor: "Developer APIs", 
-    highlight: "Ultra-low latency conversational streaming APIs with massive accent diversity." 
+    price: "From $29/mo", 
+    bestFor: "Enterprise Security", 
+    highlight: "Real-time deepfake detection, speech watermarking, and low-latency synthetic voices." 
   }
 ];
 
@@ -464,7 +464,7 @@ export default function AudioVoiceGuide() {
               </div>
               <h4 className="text-2xl font-extrabold text-on-surface mb-4 tracking-tight">Low-Latency Streaming API</h4>
               <p className={figtreeBodyClass}>
-                If integrating into customer call centers or conversational AI agents, demand sub-300ms WebSocket streaming latency like <Link href="/tool/play-ht" className="font-bold underline hover:text-primary">Play.ht</Link>.
+                If integrating into customer call centers or conversational AI agents, demand sub-300ms WebSocket streaming latency like <Link href="/tool/resemble-ai" className="font-bold underline hover:text-primary">Resemble AI</Link>.
               </p>
             </div>
           </motion.div>

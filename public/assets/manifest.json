@@ -414,5 +414,9 @@
   "agentql": {
     "logo": "webp",
     "screenshot": "webp"
+  },
+  "murf-ai": {
+    "logo": "webp",
+    "screenshot": "webp"
   }
 }

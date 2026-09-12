@@ -11,7 +11,7 @@ const routesToTest = [
   { url: '/tool/haiper-ai', expectedStatus: 200, name: 'L2 Tool: Haiper AI (Wave 4 Enriched)' },
   { url: '/compare-tools/midjourney-vs-flux', expectedStatus: 200, name: 'L3 Comparison: Midjourney vs Flux.1' },
   { url: '/compare-tools/jasper-vs-writesonic', expectedStatus: 200, name: 'L3 Comparison: Jasper vs Writesonic' },
-  { url: '/compare-tools/elevenlabs-vs-playht', expectedStatus: 200, name: 'L3 Comparison: ElevenLabs vs Play.ht' },
+  { url: '/compare-tools/elevenlabs-vs-murf-ai', expectedStatus: 200, name: 'L3 Comparison: ElevenLabs vs Murf AI' },
   { url: '/alternatives/midjourney', expectedStatus: 200, name: 'L4 Alternatives: Midjourney' },
   { url: '/alternatives/elevenlabs', expectedStatus: 200, name: 'L4 Alternatives: ElevenLabs' },
   { url: '/goals/ai-for-marketing-agencies', expectedStatus: 200, name: 'L5 Goal: AI for Marketing Agencies' },

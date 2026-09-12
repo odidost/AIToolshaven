@@ -24,7 +24,7 @@ export function TrackedExternalLink({ href, toolName, toolSlug, className, child
     <a
       href={href}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noopener noreferrer nofollow sponsored"
       className={className}
       onClick={handleClick}
     >

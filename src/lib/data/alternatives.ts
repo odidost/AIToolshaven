@@ -252,18 +252,18 @@ export const curatedAlternatives: Record<string, CuratedAlternativePage> = {
     metaDescription: "Discover top ElevenLabs alternatives for AI voice generation, voice cloning, game dialogue, and TTS streaming APIs.",
     intro: "ElevenLabs is famous for its hyper-realistic voice synthesis and voice cloning, but users with high-volume API requirements, video game audio pipelines, or deepfake security needs often look for specialized alternatives.",
     whySeekAlternative: [
-      "Need ultra-low latency streaming APIs with 900+ multilingual voices (Play.ht).",
+      "Need customizable pitch, speed control, and video-synced narration (Murf AI).",
       "Require dynamic emotional acting and direct Unreal/Unity engine integration (Replica Studios).",
       "Seeking enterprise deepfake detection and neural watermarking security (Resemble AI).",
       "Want an end-to-end video script-to-voiceover production suite (Fliki)."
     ],
     alternatives: [
       {
-        slug: "play-ht",
-        name: "Play.ht",
-        badge: "Best for Sub-300ms Streaming APIs",
-        keyDifference: "Massive library of 900+ voices across 142 languages with low-latency streaming TTS for real-time conversational agents.",
-        bestFor: "Developers building voice assistants and high-volume audiobooks"
+        slug: "murf-ai",
+        name: "Murf AI",
+        badge: "Best for Video Voiceovers & Pitch Control",
+        keyDifference: "Intuitive online studio with time-synced video preview, pitch and speed control, and built-in royalty-free music.",
+        bestFor: "Content creators, e-learning designers, and marketing teams"
       },
       {
         slug: "replica-studios",
@@ -289,8 +289,8 @@ export const curatedAlternatives: Record<string, CuratedAlternativePage> = {
     ],
     faqs: [
       {
-        question: "Which ElevenLabs alternative has the lowest API latency?",
-        answer: "Play.ht's PlayDialog and 2.0 Turbo models deliver sub-300ms streaming latency optimized for interactive conversational bots."
+        question: "Which ElevenLabs alternative is best for video narration?",
+        answer: "Murf AI provides a full studio workspace featuring synchronized timeline video previews, speed/pitch modulation, and background audio integration."
       },
       {
         question: "Can I use voice clones in commercial video games?",

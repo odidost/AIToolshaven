@@ -22704,8 +22704,8 @@
     "valueForMoney": 4.7,
     "performance": 4.8,
     "support": 4.6,
-    "logoUrl": "/images/placeholders/logo-m.svg",
-    "screenshotUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/undefined-interface.webp",
+    "logoUrl": "/assets/logos/murf-ai-logo.webp",
+    "screenshotUrl": "/assets/screenshots/murf-ai-interface.webp",
     "imageUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/undefined-interface.webp",
     "websiteUrl": "https://murf.ai",
     "tags": [],
@@ -42392,8 +42392,8 @@
     "valueForMoney": 4.7,
     "performance": 4.8,
     "support": 4.6,
-    "logoUrl": "https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&q=80&w=200",
-    "screenshotUrl": "https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&q=80&w=800",
+    "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/jasper-ai-logo.webp",
+    "screenshotUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/jasper-ai-interface.webp",
     "imageUrl": "https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&q=80&w=800",
     "websiteUrl": "https://jasper.ai",
     "tags": [
@@ -42461,7 +42461,7 @@
       "comparison": "<p>Compared to ChatGPT, Jasper is much more structured. It doesn't just answer questions; it walks you through the process of writing an ad campaign or blog post step-by-step.</p>",
       "useCaseFocus": "Multi-channel marketing campaigns, brand voice governance, and SEO blog orchestration."
     },
-    "status": "Published",
+    "status": "published",
     "lastUpdated": "2026-08-16T15:31:23.678Z",
     "pricing": [
       {
@@ -42517,7 +42517,333 @@
     "editorialQualityScore": "Tier A",
     "category_id": "c1",
     "categoryName": "AI Writing Tools",
-    "categorySlug": "ai-writing-tools"
+    "categorySlug": "ai-writing-tools",
+    "lastAutosavedAt": "2026-09-11T22:57:42.552Z",
+    "draftData": {
+      "id": "jasper",
+      "name": "Jasper",
+      "slug": "jasper-ai",
+      "tagline": "Enterprise AI marketing copilot for on-brand copy, omnichannel campaigns, and content strategy.",
+      "description": "Jasper is an AI content marketing platform designed for enterprise marketing teams, featuring Brand Voice governance, campaign generation, and built-in SEO scoring.",
+      "category": "c1",
+      "additionalCategories": [],
+      "priceModel": "Paid",
+      "rating": 4.6,
+      "reviewCount": 0,
+      "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/jasper-ai-logo.webp",
+      "imageUrl": "https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&q=80&w=800",
+      "screenshotUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/jasper-ai-interface.webp",
+      "websiteUrl": "https://jasper.ai",
+      "url": "https://jasper.ai",
+      "tags": [
+        "Marketing",
+        "Copywriting",
+        "SEO"
+      ],
+      "features": [
+        {
+          "title": "Brand Voice & Knowledge Base",
+          "description": "Train the AI on your brand guidelines, product catalogs, and tone parameters to ensure uniform messaging.",
+          "icon": "record_voice_over"
+        },
+        {
+          "title": "Omnichannel Campaign Generation",
+          "description": "Transform one campaign brief into dozens of matching assets including social posts, emails, and landing pages.",
+          "icon": "campaign"
+        },
+        {
+          "title": "Integrated Surfer SEO Scoring",
+          "description": "Optimize articles in real time with keyword density analysis and search ranking metrics in the editor.",
+          "icon": "troubleshoot"
+        },
+        {
+          "title": "Company-Wide Browser Extension",
+          "description": "Access your company's custom AI prompts and brand voice inside Gmail, Google Docs, Notion, and CMS platforms.",
+          "icon": "extension"
+        }
+      ],
+      "verified": false,
+      "featured": false,
+      "isSponsored": false,
+      "popularity": 80,
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "pricingPlans": [
+        {
+          "name": "Creator",
+          "price": "$39/mo",
+          "features": [
+            "1 user seat",
+            "1 Brand Voice profile",
+            "50 knowledge base assets",
+            "Browser extension access"
+          ],
+          "description": "For solo entrepreneurs and independent content creators ($49/mo monthly).",
+          "recommended": false
+        },
+        {
+          "name": "Pro",
+          "price": "$59/user/mo",
+          "features": [
+            "Up to 5 seats",
+            "3 Brand Voice profiles",
+            "Full Campaigns generation",
+            "User collaboration and user roles"
+          ],
+          "description": "For growing marketing teams ($69/user/mo monthly).",
+          "recommended": true
+        },
+        {
+          "name": "Business",
+          "price": "Custom",
+          "features": [
+            "Unlimited Brand Voices & knowledge base",
+            "Custom AI workflows & API access",
+            "Enterprise SSO & security review",
+            "Dedicated account manager"
+          ],
+          "description": "For mid-market and enterprise marketing departments.",
+          "recommended": false
+        }
+      ],
+      "pricing": [],
+      "pros": [
+        {
+          "title": "Superior brand voice consistency",
+          "description": "Prevents generic, robotic AI outputs by strictly enforcing company style parameters."
+        },
+        {
+          "title": "Integrated campaign workflow accelerates asset creation",
+          "description": "Spits out entire promotional packages from a single unified input."
+        },
+        {
+          "title": "Enterprise-grade governance and permissions",
+          "description": "Provides granular team workspaces, document locking, and plagiarism verification."
+        }
+      ],
+      "cons": [
+        {
+          "title": "Significantly more expensive than generalist LLM chatbots",
+          "description": "Priced as a dedicated marketing suite rather than an entry-level $20 consumer assistant."
+        },
+        {
+          "title": "Requires comprehensive initial knowledge base setup",
+          "description": "Achieving true brand alignment requires uploading thorough company assets and style guides."
+        }
+      ],
+      "bestFor": [
+        "Content Marketing Teams",
+        "Brand Managers",
+        "Growth Marketers",
+        "Digital Agencies"
+      ],
+      "useCases": [
+        {
+          "title": "Enterprise Content Marketing Production",
+          "description": "Scale high-ranking SEO blog articles, customer case studies, and thought-leadership essays effortlessly."
+        },
+        {
+          "title": "Full Product Launch Campaigns",
+          "description": "Generate matching email sequences, press releases, landing page hero copy, and paid social ads in minutes."
+        },
+        {
+          "title": "Agency Client Copywriting Management",
+          "description": "Maintain distinct Brand Voice profiles for separate clients without cross-contaminating style guidelines."
+        }
+      ],
+      "goals": [],
+      "workflows": [],
+      "socials": {},
+      "stats": {},
+      "editorial": {
+        "faqs": [
+          {
+            "answer": "You can upload company URLs, product PDFs, and sample blog posts. Jasper scans your vocabulary, sentence length, and tone to create an official voice model applied to every generation.",
+            "question": "How does Jasper Brand Voice enforce company style guidelines?"
+          },
+          {
+            "answer": "Yes, Jasper features native Surfer SEO integration, showing real-time content scores, keyword recommendations, and competitor benchmarks directly within the document editor.",
+            "question": "Does Jasper integrate with SEO tools like Surfer?"
+          },
+          {
+            "answer": "Yes, the Campaigns feature allows you to input a single product release brief and output blog articles, email nurture sequences, press releases, and ad copy simultaneously.",
+            "question": "Can Jasper generate complete multi-channel campaigns from a single brief?"
+          }
+        ],
+        "pricing": "<p>Jasper provides a 7-day free trial across all tiers. The <strong>Creator Plan ($39/month billed annually)</strong> includes 1 Brand Voice and 1 user seat. The <strong>Pro Plan ($59/seat/month billed annually)</strong> supports up to 5 seats, 3 Brand Voices, and full multi-asset Campaign generation. Custom <strong>Business plans</strong> add enterprise SSO, unlimited Brand Voices, and dedicated account management.</p>",
+        "verdict": "<p>Jasper excels as a dedicated marketing platform rather than a generic chatbot. Its built-in brand voice controls, multi-asset campaign generation, and team collaboration workflows justify its premium pricing for marketing organizations.</p>\n<p><strong>Recommendation:</strong> Marketing teams managing multi-channel content schedules will see substantial productivity gains from the <strong>Pro Tier ($59/seat/month billed annually)</strong>.</p>",
+        "overview": "<p>Jasper (formerly Jarvis) is an enterprise-grade AI marketing copilot designed to help marketing teams produce on-brand, high-converting content at scale. Rather than relying on generic consumer prompts, Jasper integrates your organization's style guides, product positioning, and knowledge base into a unified content creation engine.</p>\n<p>The platform centers around its <em>Brand Voice</em> and <em>Campaigns</em> architectures. With Campaigns, marketers can upload a single creative brief and automatically generate 30+ interconnected assets—including blog posts, social media sequences, Google Ads headlines, and email newsletters—all adhering to identical tone and factual positioning.</p>\n<p>Jasper connects directly with Surfer SEO for real-time keyword optimization and offers a secure Chrome extension that brings your company's AI voice directly into Google Docs, WordPress, and LinkedIn.</p>",
+        "comparison": "<p>Compared to ChatGPT, Jasper is much more structured. It doesn't just answer questions; it walks you through the process of writing an ad campaign or blog post step-by-step.</p>",
+        "useCaseFocus": "Multi-channel marketing campaigns, brand voice governance, and SEO blog orchestration."
+      },
+      "promptExamples": [],
+      "lastUpdated": "2026-09-11"
+    },
+    "publishedAt": "2026-09-11T22:57:42.552Z",
+    "publishedData": {
+      "id": "jasper",
+      "name": "Jasper",
+      "slug": "jasper-ai",
+      "tagline": "Enterprise AI marketing copilot for on-brand copy, omnichannel campaigns, and content strategy.",
+      "description": "Jasper is an AI content marketing platform designed for enterprise marketing teams, featuring Brand Voice governance, campaign generation, and built-in SEO scoring.",
+      "category": "c1",
+      "additionalCategories": [],
+      "priceModel": "Paid",
+      "rating": 4.6,
+      "reviewCount": 0,
+      "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/jasper-ai-logo.webp",
+      "imageUrl": "https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&q=80&w=800",
+      "screenshotUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/jasper-ai-interface.webp",
+      "websiteUrl": "https://jasper.ai",
+      "url": "https://jasper.ai",
+      "tags": [
+        "Marketing",
+        "Copywriting",
+        "SEO"
+      ],
+      "features": [
+        {
+          "title": "Brand Voice & Knowledge Base",
+          "description": "Train the AI on your brand guidelines, product catalogs, and tone parameters to ensure uniform messaging.",
+          "icon": "record_voice_over"
+        },
+        {
+          "title": "Omnichannel Campaign Generation",
+          "description": "Transform one campaign brief into dozens of matching assets including social posts, emails, and landing pages.",
+          "icon": "campaign"
+        },
+        {
+          "title": "Integrated Surfer SEO Scoring",
+          "description": "Optimize articles in real time with keyword density analysis and search ranking metrics in the editor.",
+          "icon": "troubleshoot"
+        },
+        {
+          "title": "Company-Wide Browser Extension",
+          "description": "Access your company's custom AI prompts and brand voice inside Gmail, Google Docs, Notion, and CMS platforms.",
+          "icon": "extension"
+        }
+      ],
+      "verified": false,
+      "featured": false,
+      "isSponsored": false,
+      "popularity": 80,
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "pricingPlans": [
+        {
+          "name": "Creator",
+          "price": "$39/mo",
+          "features": [
+            "1 user seat",
+            "1 Brand Voice profile",
+            "50 knowledge base assets",
+            "Browser extension access"
+          ],
+          "description": "For solo entrepreneurs and independent content creators ($49/mo monthly).",
+          "recommended": false
+        },
+        {
+          "name": "Pro",
+          "price": "$59/user/mo",
+          "features": [
+            "Up to 5 seats",
+            "3 Brand Voice profiles",
+            "Full Campaigns generation",
+            "User collaboration and user roles"
+          ],
+          "description": "For growing marketing teams ($69/user/mo monthly).",
+          "recommended": true
+        },
+        {
+          "name": "Business",
+          "price": "Custom",
+          "features": [
+            "Unlimited Brand Voices & knowledge base",
+            "Custom AI workflows & API access",
+            "Enterprise SSO & security review",
+            "Dedicated account manager"
+          ],
+          "description": "For mid-market and enterprise marketing departments.",
+          "recommended": false
+        }
+      ],
+      "pricing": [],
+      "pros": [
+        {
+          "title": "Superior brand voice consistency",
+          "description": "Prevents generic, robotic AI outputs by strictly enforcing company style parameters."
+        },
+        {
+          "title": "Integrated campaign workflow accelerates asset creation",
+          "description": "Spits out entire promotional packages from a single unified input."
+        },
+        {
+          "title": "Enterprise-grade governance and permissions",
+          "description": "Provides granular team workspaces, document locking, and plagiarism verification."
+        }
+      ],
+      "cons": [
+        {
+          "title": "Significantly more expensive than generalist LLM chatbots",
+          "description": "Priced as a dedicated marketing suite rather than an entry-level $20 consumer assistant."
+        },
+        {
+          "title": "Requires comprehensive initial knowledge base setup",
+          "description": "Achieving true brand alignment requires uploading thorough company assets and style guides."
+        }
+      ],
+      "bestFor": [
+        "Content Marketing Teams",
+        "Brand Managers",
+        "Growth Marketers",
+        "Digital Agencies"
+      ],
+      "useCases": [
+        {
+          "title": "Enterprise Content Marketing Production",
+          "description": "Scale high-ranking SEO blog articles, customer case studies, and thought-leadership essays effortlessly."
+        },
+        {
+          "title": "Full Product Launch Campaigns",
+          "description": "Generate matching email sequences, press releases, landing page hero copy, and paid social ads in minutes."
+        },
+        {
+          "title": "Agency Client Copywriting Management",
+          "description": "Maintain distinct Brand Voice profiles for separate clients without cross-contaminating style guidelines."
+        }
+      ],
+      "goals": [],
+      "workflows": [],
+      "socials": {},
+      "stats": {},
+      "editorial": {
+        "faqs": [
+          {
+            "answer": "You can upload company URLs, product PDFs, and sample blog posts. Jasper scans your vocabulary, sentence length, and tone to create an official voice model applied to every generation.",
+            "question": "How does Jasper Brand Voice enforce company style guidelines?"
+          },
+          {
+            "answer": "Yes, Jasper features native Surfer SEO integration, showing real-time content scores, keyword recommendations, and competitor benchmarks directly within the document editor.",
+            "question": "Does Jasper integrate with SEO tools like Surfer?"
+          },
+          {
+            "answer": "Yes, the Campaigns feature allows you to input a single product release brief and output blog articles, email nurture sequences, press releases, and ad copy simultaneously.",
+            "question": "Can Jasper generate complete multi-channel campaigns from a single brief?"
+          }
+        ],
+        "pricing": "<p>Jasper provides a 7-day free trial across all tiers. The <strong>Creator Plan ($39/month billed annually)</strong> includes 1 Brand Voice and 1 user seat. The <strong>Pro Plan ($59/seat/month billed annually)</strong> supports up to 5 seats, 3 Brand Voices, and full multi-asset Campaign generation. Custom <strong>Business plans</strong> add enterprise SSO, unlimited Brand Voices, and dedicated account management.</p>",
+        "verdict": "<p>Jasper excels as a dedicated marketing platform rather than a generic chatbot. Its built-in brand voice controls, multi-asset campaign generation, and team collaboration workflows justify its premium pricing for marketing organizations.</p>\n<p><strong>Recommendation:</strong> Marketing teams managing multi-channel content schedules will see substantial productivity gains from the <strong>Pro Tier ($59/seat/month billed annually)</strong>.</p>",
+        "overview": "<p>Jasper (formerly Jarvis) is an enterprise-grade AI marketing copilot designed to help marketing teams produce on-brand, high-converting content at scale. Rather than relying on generic consumer prompts, Jasper integrates your organization's style guides, product positioning, and knowledge base into a unified content creation engine.</p>\n<p>The platform centers around its <em>Brand Voice</em> and <em>Campaigns</em> architectures. With Campaigns, marketers can upload a single creative brief and automatically generate 30+ interconnected assets—including blog posts, social media sequences, Google Ads headlines, and email newsletters—all adhering to identical tone and factual positioning.</p>\n<p>Jasper connects directly with Surfer SEO for real-time keyword optimization and offers a secure Chrome extension that brings your company's AI voice directly into Google Docs, WordPress, and LinkedIn.</p>",
+        "comparison": "<p>Compared to ChatGPT, Jasper is much more structured. It doesn't just answer questions; it walks you through the process of writing an ad campaign or blog post step-by-step.</p>",
+        "useCaseFocus": "Multi-channel marketing campaigns, brand voice governance, and SEO blog orchestration."
+      },
+      "promptExamples": [],
+      "lastUpdated": "2026-09-11"
+    }
   },
   {
     "id": "hatchful",
@@ -49644,143 +49970,6 @@
     "categorySlug": "ai-social-media-tools"
   },
   {
-    "id": "play-ht",
-    "name": "Play.ht",
-    "slug": "play-ht",
-    "company": "Play.ht",
-    "tagline": "Next-generation AI voice generator and text-to-speech platform with 900+ natural voices and real-time streaming API.",
-    "description": "Play.ht is an AI voice synthesis platform offering ultra-realistic text-to-speech, real-time voice cloning, and low-latency streaming APIs for developers, podcasters, and media creators.",
-    "category": "AI Voice Generators",
-    "priceModel": "Freemium",
-    "rating": 4.6,
-    "reviewCount": 0,
-    "easeOfUse": 4.7,
-    "featureRating": 4.8,
-    "valueForMoney": 4.7,
-    "performance": 4.8,
-    "support": 4.6,
-    "logoUrl": "https://images.unsplash.com/photo-1589903308904-1010c2294adc?auto=format&fit=crop&q=80&w=200",
-    "screenshotUrl": "",
-    "imageUrl": "https://images.unsplash.com/photo-1589903308904-1010c2294adc?auto=format&fit=crop&q=80&w=200",
-    "websiteUrl": "https://play.ht",
-    "tags": [
-      "TTS",
-      "Voice Cloning"
-    ],
-    "features": [
-      {
-        "icon": "graphic_eq",
-        "title": "PlayHT 2.0 Conversational Voice Model",
-        "description": "Synthesizes human-like speech with natural emotional delivery, conversational rhythm, and realistic breath pauses."
-      },
-      {
-        "icon": "translate",
-        "title": "900+ Voices Across 142 Languages",
-        "description": "Choose from an expansive global voice catalog spanning diverse ages, genders, character personas, and accents."
-      },
-      {
-        "icon": "record_voice_over",
-        "title": "Instant & High-Fidelity Voice Cloning",
-        "description": "Clone unique voices from short audio samples to generate personalized narration and character dialogue."
-      },
-      {
-        "icon": "api",
-        "title": "Sub-300ms Real-Time Streaming Audio API",
-        "description": "Integrate low-latency text-to-speech streaming directly into conversational AI apps and customer support agents."
-      }
-    ],
-    "verified": false,
-    "popularity": 82,
-    "pros": [
-      "{\"title\":\"Sub-300ms low latency streaming API\",\"description\":\"Fastest response times for building interactive live conversational applications.\"}",
-      "{\"title\":\"Extensive global voice catalog (900+ voices in 142 languages)\",\"description\":\"Provides unmatched international accent variety and character diversity.\"}",
-      "{\"title\":\"Full commercial licensing on all paid tiers\",\"description\":\"Enables seamless commercial monetization across Spotify, YouTube, and digital products.\"}"
-    ],
-    "cons": [
-      "{\"title\":\"Free tier does not grant commercial usage rights\",\"description\":\"Commercial audio projects require an active paid subscription.\"}",
-      "{\"title\":\"Pacing fine-tuning requires studio SSML tag adjustments\",\"description\":\"Achieving exact pauses between complex dialogue sections requires using punctuation and SSML tags in the studio.\"}"
-    ],
-    "bestFor": "Game Developers, Podcasters & Audiobook Creators, Voiceover Artists, App & Conversational AI Developers",
-    "useCases": [
-      "{\"title\":\"Interactive Conversational AI Voice Agents\",\"description\":\"Power realistic customer support phone bots and digital avatar assistants with sub-second speech generation.\"}",
-      "{\"title\":\"Audiobook Narration & Multi-Character Audio\",\"description\":\"Produce multi-chapter audiobooks with distinct character voices and consistent chapter audio mastering.\"}",
-      "{\"title\":\"Video Game Non-Player Character (NPC) Dialogue\",\"description\":\"Voice dozens of interactive game characters with custom accents, dynamic lines, and emotional variability.\"}"
-    ],
-    "editorial": {
-      "faqs": [
-        {
-          "answer": "PlayHT 2.0 is Play.ht's latest generative voice model, engineered specifically to replicate conversational human pacing, emotional inflection, and natural breath dynamics.",
-          "question": "What is PlayHT 2.0?"
-        },
-        {
-          "answer": "Play.ht provides real-time streaming audio with sub-300ms latency, making it fast enough for interactive conversational voice bots and live customer service agents.",
-          "question": "How fast is Play.ht's streaming voice API?"
-        },
-        {
-          "answer": "Yes, all paid Play.ht subscriptions grant full commercial rights to use generated audio in commercial video games, audiobooks, podcasts, YouTube videos, and advertisements.",
-          "question": "Do I own commercial rights to voiceovers generated on Play.ht?"
-        }
-      ],
-      "pricing": "<p>Play.ht offers a free tier with 12,500 one-time words for non-commercial evaluation. The <strong>Creator Plan ($31.20/month billed annually or $39/mo monthly)</strong> includes 250,000 words per month and 10 voice clones. The <strong>Unlimited Plan ($29/month promotional billed annually or $99/mo standard)</strong> provides unlimited generation words and unlimited voice clones. Enterprise plans offer custom voice model training and dedicated API bandwidth.</p>",
-      "verdict": "<p>Based on voice naturalness and developer API performance, Play.ht is one of the premier text-to-speech platforms available. Its sub-300ms streaming API and extensive 900+ voice library make it equally powerful for studio audio production and real-time conversational applications.</p>\n<p><strong>Recommendation:</strong> Content creators and developers will find the <strong>Creator Plan ($31.20/month billed annually)</strong> or <strong>Unlimited Plan ($29/month on promotional tiers)</strong> an exceptional value for commercial voice generation.</p>",
-      "overview": "<p>Play.ht is a cutting-edge generative AI voice and synthetic text-to-speech platform that empowers developers, audio creators, and global brands to generate natural, human-grade voiceovers. Powered by its proprietary <em>PlayHT 2.0</em> neural audio model, Play.ht produces expressive speech with natural emotional pacing, contextual breath pauses, and authentic conversational nuance.</p>\n<p>The platform offers a library of over 900 AI voices across 142 languages and accents. Users can generate voiceovers in the visual <em>PlayHT Studio</em> or integrate voice generation directly into mobile apps and conversational AI agents via Play.ht's ultra-low-latency (sub-300ms) <em>Streaming Audio API</em>. Play.ht also features instant and high-fidelity custom voice cloning from short audio samples.</p>\n<p>Play.ht is the voice technology engine of choice for audio creators, gaming studios, e-learning platforms, and developers building interactive conversational AI voice assistants.</p>",
-      "comparison": "<p>ElevenLabs still holds a slight edge in raw emotional nuance, but Play.ht is closing the gap quickly and offers a wider variety of specialized accents and dialects.</p>",
-      "useCaseFocus": "Ultra-realistic text-to-speech, instant voice cloning, podcast audio generation, and low-latency conversational voice APIs."
-    },
-    "status": "Published",
-    "lastUpdated": "2026-08-16T15:31:23.678Z",
-    "pricing": [
-      {
-        "price": 39,
-        "period": "monthly",
-        "planName": "Creator"
-      }
-    ],
-    "pricingPlans": [
-      {
-        "name": "Free",
-        "price": "$0",
-        "features": [
-          "12,500 one-time words",
-          "Access to standard voice library",
-          "Non-commercial license with attribution",
-          "Studio audio editor access"
-        ],
-        "description": "Testing tier with one-time word allocation.",
-        "recommended": false
-      },
-      {
-        "name": "Creator",
-        "price": "$31.20/mo",
-        "features": [
-          "250,000 words per month",
-          "10 instant voice clones",
-          "High-quality audio exports",
-          "Full commercial usage rights"
-        ],
-        "description": "For podcasters and content creators ($31.20/mo billed annually at $374.40/yr).",
-        "recommended": false
-      },
-      {
-        "name": "Unlimited",
-        "price": "$29/mo",
-        "features": [
-          "Unlimited generation words",
-          "Unlimited voice clones",
-          "All PlayHT 2.0 models included",
-          "Priority customer support & API access"
-        ],
-        "description": "Unlimited voice generation for active creators ($29/mo promotional annual or $99/mo standard).",
-        "recommended": true
-      }
-    ],
-    "faqs": [],
-    "editorialQualityScore": "Tier A",
-    "category_id": "ai-voice-generators",
-    "categoryName": "AI Voice Generators",
-    "categorySlug": "ai-voice-generators"
-  },
-  {
     "id": "sourcegraph-cody",
     "name": "Sourcegraph Cody",
     "slug": "sourcegraph-cody",
@@ -50076,8 +50265,8 @@
     "valueForMoney": 4.7,
     "performance": 4.8,
     "support": 4.6,
-    "logoUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=200",
-    "screenshotUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+    "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/fathom-video-logo.webp",
+    "screenshotUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/fathom-video-interface.webp",
     "imageUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
     "websiteUrl": "https://fathom.video",
     "tags": [
@@ -50143,7 +50332,7 @@
       "overview": "<p>Fathom is an AI meeting assistant that records, transcribes, and summarizes video conversations across Zoom, Google Meet, and Microsoft Teams. Built to eliminate manual note-taking during client calls, Fathom automatically generates concise, structured meeting summaries categorized into action items, decisions, and key takeaways immediately after a call concludes.</p>\n<p>One of Fathom's standout capabilities is its seamless integration with modern customer relationship management (CRM) platforms including HubSpot, Salesforce, and Close. With a single click or through automated rules, Fathom synchronizes call summaries and tagged action items directly to corresponding contact and deal records.</p>\n<p>Fathom offers a free tier with unlimited recording and transcription for individuals, while offering team and enterprise plans that unlock automated coaching, deal intelligence, and team-wide search capabilities.</p>",
       "useCaseFocus": "Automated meeting transcription, action item extraction, and CRM deal note synchronization."
     },
-    "status": "Published",
+    "status": "published",
     "lastUpdated": "2026-08-16T15:31:23.678Z",
     "pricing": [
       {
@@ -50197,7 +50386,335 @@
     "editorialQualityScore": "Tier A",
     "category_id": "cat-meeting",
     "categoryName": "AI Meeting Assistants",
-    "categorySlug": "ai-meeting-assistants"
+    "categorySlug": "ai-meeting-assistants",
+    "lastAutosavedAt": "2026-09-11T22:59:48.161Z",
+    "draftData": {
+      "id": "fathom",
+      "name": "Fathom",
+      "slug": "fathom-video",
+      "tagline": "Free AI meeting recorder that transcribes, summarizes, and syncs meeting highlights to your CRM.",
+      "description": "Fathom is an AI meeting notetaker for Zoom, Google Meet, and Microsoft Teams that records, transcribes, and summarizes meetings with instant CRM syncing.",
+      "category": "cat-meeting",
+      "additionalCategories": [],
+      "priceModel": "Free",
+      "rating": 4.8,
+      "reviewCount": 0,
+      "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/fathom-video-logo.webp",
+      "imageUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+      "screenshotUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/fathom-video-interface.webp",
+      "websiteUrl": "https://www.fathom.ai/",
+      "url": "https://www.fathom.ai/",
+      "tags": [
+        "Meetings",
+        "Productivity"
+      ],
+      "features": [
+        {
+          "title": "Instant AI Meeting Summaries",
+          "description": "Generates structured action items, decisions, and meeting overviews seconds after calls end.",
+          "icon": "summarize"
+        },
+        {
+          "title": "1-Click CRM Syncing",
+          "description": "Automatically creates notes and updates contact timelines in Salesforce, HubSpot, and Close.",
+          "icon": "sync_alt"
+        },
+        {
+          "title": "Multi-Platform Compatibility",
+          "description": "Works seamlessly across Zoom, Google Meet, and Microsoft Teams video conferences.",
+          "icon": "video_call"
+        },
+        {
+          "title": "Real-Time Highlight Bookmarking",
+          "description": "Click a button during a live call to tag crucial moments without breaking conversational flow.",
+          "icon": "bookmark"
+        }
+      ],
+      "verified": false,
+      "featured": false,
+      "isSponsored": false,
+      "popularity": 86,
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "pricingPlans": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "billing": "forever",
+          "features": [
+            "Unlimited recording & transcription",
+            "Unlimited AI summaries",
+            "Zoom, Meet & Teams support",
+            "Basic CRM sync"
+          ],
+          "isPopular": true,
+          "description": "Complete meeting assistant for individual professionals."
+        },
+        {
+          "name": "Standard",
+          "price": "$19",
+          "billing": "per user/month",
+          "features": [
+            "Everything in Free",
+            "Shared team meeting folders",
+            "Zapier & webhook integrations",
+            "Custom AI summary templates"
+          ],
+          "isPopular": false,
+          "description": "For collaborative teams and shared meeting repositories."
+        },
+        {
+          "name": "Pro",
+          "price": "$29",
+          "billing": "per user/month",
+          "features": [
+            "Everything in Standard",
+            "Sales coaching metrics",
+            "Deal risk alerts & keyword tracking",
+            "Automated Salesforce sync"
+          ],
+          "isPopular": false,
+          "description": "For high-performance sales teams and revenue leaders."
+        }
+      ],
+      "pricing": [],
+      "pros": [
+        {
+          "title": "Generous free individual plan",
+          "description": "Unlimited recording and transcription without arbitrary monthly minute caps."
+        },
+        {
+          "title": "Near-instant summary generation",
+          "description": "Summaries appear almost immediately upon concluding the video conference."
+        },
+        {
+          "title": "Deep CRM workflows",
+          "description": "Formats notes specifically for CRM deal fields and custom object sync."
+        }
+      ],
+      "cons": [
+        {
+          "title": "Requires meeting bot presence",
+          "description": "A virtual bot joins the call to record and transcribe audio."
+        },
+        {
+          "title": "Advanced coaching requires Team plan",
+          "description": "Rep talk-time metrics and keyword alert tracking require paid team subscriptions."
+        }
+      ],
+      "bestFor": [
+        "Account Executives",
+        "Founders & Executives",
+        "Customer Success Managers",
+        "Consultants"
+      ],
+      "useCases": [
+        {
+          "title": "Sales Discovery & Demo Calls",
+          "description": "Focus on active listening while Fathom logs prospect objections and budget details into your CRM."
+        },
+        {
+          "title": "Internal Team Standups & 1-on-1s",
+          "description": "Capture clear action items and accountability owners automatically without assigning a notetaker."
+        },
+        {
+          "title": "Customer Success Check-ins",
+          "description": "Share recorded video snippets and transcripts directly with engineering and product teams."
+        }
+      ],
+      "goals": [],
+      "workflows": [],
+      "socials": {},
+      "stats": {},
+      "editorial": {
+        "faqs": [
+          {
+            "answer": "Yes, Fathom provides 100% free, unlimited recording, transcription, and AI summary generation for individual users on Zoom, Google Meet, and Teams.",
+            "question": "Is Fathom really free for individuals?"
+          },
+          {
+            "answer": "Fathom offers native integrations with HubSpot, Salesforce, Close, Asana, Notion, and Slack, syncing summaries directly to deal records.",
+            "question": "Which CRMs does Fathom integrate with?"
+          },
+          {
+            "answer": "Fathom's AI summaries and structured action items are typically ready within 15 to 30 seconds after the video call ends.",
+            "question": "How long does it take for Fathom to generate a summary after a meeting?"
+          }
+        ],
+        "pricing": "Fathom offers a generous Free tier for individuals with unlimited recording and transcription. Premium Team plans start at $19/user/month for team sharing and CRM automation, with Team Pro at $29/user/month adding sales coaching and deal intelligence.",
+        "verdict": "<p>Based on our evaluation of meeting assistants, Fathom provides one of the best user experiences and value propositions on the market. Its lightning-fast summary generation—ready within seconds of ending a call—coupled with its generous free individual tier makes it an industry benchmark.</p>\n<p>For sales reps, founders, and account managers looking to eliminate admin busywork, Fathom delivers immediate productivity gains.</p>",
+        "overview": "<p>Fathom is an AI meeting assistant that records, transcribes, and summarizes video conversations across Zoom, Google Meet, and Microsoft Teams. Built to eliminate manual note-taking during client calls, Fathom automatically generates concise, structured meeting summaries categorized into action items, decisions, and key takeaways immediately after a call concludes.</p>\n<p>One of Fathom's standout capabilities is its seamless integration with modern customer relationship management (CRM) platforms including HubSpot, Salesforce, and Close. With a single click or through automated rules, Fathom synchronizes call summaries and tagged action items directly to corresponding contact and deal records.</p>\n<p>Fathom offers a free tier with unlimited recording and transcription for individuals, while offering team and enterprise plans that unlock automated coaching, deal intelligence, and team-wide search capabilities.</p>",
+        "useCaseFocus": "Automated meeting transcription, action item extraction, and CRM deal note synchronization."
+      },
+      "promptExamples": [],
+      "lastUpdated": "2026-09-11"
+    },
+    "publishedAt": "2026-09-11T22:59:48.161Z",
+    "publishedData": {
+      "id": "fathom",
+      "name": "Fathom",
+      "slug": "fathom-video",
+      "tagline": "Free AI meeting recorder that transcribes, summarizes, and syncs meeting highlights to your CRM.",
+      "description": "Fathom is an AI meeting notetaker for Zoom, Google Meet, and Microsoft Teams that records, transcribes, and summarizes meetings with instant CRM syncing.",
+      "category": "cat-meeting",
+      "additionalCategories": [],
+      "priceModel": "Free",
+      "rating": 4.8,
+      "reviewCount": 0,
+      "logoUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/fathom-video-logo.webp",
+      "imageUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+      "screenshotUrl": "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/screenshots/fathom-video-interface.webp",
+      "websiteUrl": "https://www.fathom.ai/",
+      "url": "https://www.fathom.ai/",
+      "tags": [
+        "Meetings",
+        "Productivity"
+      ],
+      "features": [
+        {
+          "title": "Instant AI Meeting Summaries",
+          "description": "Generates structured action items, decisions, and meeting overviews seconds after calls end.",
+          "icon": "summarize"
+        },
+        {
+          "title": "1-Click CRM Syncing",
+          "description": "Automatically creates notes and updates contact timelines in Salesforce, HubSpot, and Close.",
+          "icon": "sync_alt"
+        },
+        {
+          "title": "Multi-Platform Compatibility",
+          "description": "Works seamlessly across Zoom, Google Meet, and Microsoft Teams video conferences.",
+          "icon": "video_call"
+        },
+        {
+          "title": "Real-Time Highlight Bookmarking",
+          "description": "Click a button during a live call to tag crucial moments without breaking conversational flow.",
+          "icon": "bookmark"
+        }
+      ],
+      "verified": false,
+      "featured": false,
+      "isSponsored": false,
+      "popularity": 86,
+      "api": false,
+      "mobileApp": false,
+      "openSource": false,
+      "freeTrial": false,
+      "pricingPlans": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "billing": "forever",
+          "features": [
+            "Unlimited recording & transcription",
+            "Unlimited AI summaries",
+            "Zoom, Meet & Teams support",
+            "Basic CRM sync"
+          ],
+          "isPopular": true,
+          "description": "Complete meeting assistant for individual professionals."
+        },
+        {
+          "name": "Standard",
+          "price": "$19",
+          "billing": "per user/month",
+          "features": [
+            "Everything in Free",
+            "Shared team meeting folders",
+            "Zapier & webhook integrations",
+            "Custom AI summary templates"
+          ],
+          "isPopular": false,
+          "description": "For collaborative teams and shared meeting repositories."
+        },
+        {
+          "name": "Pro",
+          "price": "$29",
+          "billing": "per user/month",
+          "features": [
+            "Everything in Standard",
+            "Sales coaching metrics",
+            "Deal risk alerts & keyword tracking",
+            "Automated Salesforce sync"
+          ],
+          "isPopular": false,
+          "description": "For high-performance sales teams and revenue leaders."
+        }
+      ],
+      "pricing": [],
+      "pros": [
+        {
+          "title": "Generous free individual plan",
+          "description": "Unlimited recording and transcription without arbitrary monthly minute caps."
+        },
+        {
+          "title": "Near-instant summary generation",
+          "description": "Summaries appear almost immediately upon concluding the video conference."
+        },
+        {
+          "title": "Deep CRM workflows",
+          "description": "Formats notes specifically for CRM deal fields and custom object sync."
+        }
+      ],
+      "cons": [
+        {
+          "title": "Requires meeting bot presence",
+          "description": "A virtual bot joins the call to record and transcribe audio."
+        },
+        {
+          "title": "Advanced coaching requires Team plan",
+          "description": "Rep talk-time metrics and keyword alert tracking require paid team subscriptions."
+        }
+      ],
+      "bestFor": [
+        "Account Executives",
+        "Founders & Executives",
+        "Customer Success Managers",
+        "Consultants"
+      ],
+      "useCases": [
+        {
+          "title": "Sales Discovery & Demo Calls",
+          "description": "Focus on active listening while Fathom logs prospect objections and budget details into your CRM."
+        },
+        {
+          "title": "Internal Team Standups & 1-on-1s",
+          "description": "Capture clear action items and accountability owners automatically without assigning a notetaker."
+        },
+        {
+          "title": "Customer Success Check-ins",
+          "description": "Share recorded video snippets and transcripts directly with engineering and product teams."
+        }
+      ],
+      "goals": [],
+      "workflows": [],
+      "socials": {},
+      "stats": {},
+      "editorial": {
+        "faqs": [
+          {
+            "answer": "Yes, Fathom provides 100% free, unlimited recording, transcription, and AI summary generation for individual users on Zoom, Google Meet, and Teams.",
+            "question": "Is Fathom really free for individuals?"
+          },
+          {
+            "answer": "Fathom offers native integrations with HubSpot, Salesforce, Close, Asana, Notion, and Slack, syncing summaries directly to deal records.",
+            "question": "Which CRMs does Fathom integrate with?"
+          },
+          {
+            "answer": "Fathom's AI summaries and structured action items are typically ready within 15 to 30 seconds after the video call ends.",
+            "question": "How long does it take for Fathom to generate a summary after a meeting?"
+          }
+        ],
+        "pricing": "Fathom offers a generous Free tier for individuals with unlimited recording and transcription. Premium Team plans start at $19/user/month for team sharing and CRM automation, with Team Pro at $29/user/month adding sales coaching and deal intelligence.",
+        "verdict": "<p>Based on our evaluation of meeting assistants, Fathom provides one of the best user experiences and value propositions on the market. Its lightning-fast summary generation—ready within seconds of ending a call—coupled with its generous free individual tier makes it an industry benchmark.</p>\n<p>For sales reps, founders, and account managers looking to eliminate admin busywork, Fathom delivers immediate productivity gains.</p>",
+        "overview": "<p>Fathom is an AI meeting assistant that records, transcribes, and summarizes video conversations across Zoom, Google Meet, and Microsoft Teams. Built to eliminate manual note-taking during client calls, Fathom automatically generates concise, structured meeting summaries categorized into action items, decisions, and key takeaways immediately after a call concludes.</p>\n<p>One of Fathom's standout capabilities is its seamless integration with modern customer relationship management (CRM) platforms including HubSpot, Salesforce, and Close. With a single click or through automated rules, Fathom synchronizes call summaries and tagged action items directly to corresponding contact and deal records.</p>\n<p>Fathom offers a free tier with unlimited recording and transcription for individuals, while offering team and enterprise plans that unlock automated coaching, deal intelligence, and team-wide search capabilities.</p>",
+        "useCaseFocus": "Automated meeting transcription, action item extraction, and CRM deal note synchronization."
+      },
+      "promptExamples": [],
+      "lastUpdated": "2026-09-11"
+    }
   },
   {
     "id": "anyword",

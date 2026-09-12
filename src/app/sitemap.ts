@@ -91,7 +91,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const tool2 = validTools.find(t => t.name.toLowerCase() === c.tool2.name.toLowerCase() || t.slug === c.tool2.name.toLowerCase());
     
     // Only index comparisons where both tools are published and valid
-    if (!tool1 && !tool2) return;
+    if (!tool1 || !tool2) return;
 
     const d1 = tool1?.lastUpdated ? new Date(tool1.lastUpdated).getTime() : 0;
     const d2 = tool2?.lastUpdated ? new Date(tool2.lastUpdated).getTime() : 0;

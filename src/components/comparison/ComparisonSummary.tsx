@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { AITool } from '@/lib/types/tool';
 import { ToolImage } from "@/components/shared/ToolImage";
 import { getEditorialTitle } from "@/lib/utils";
+import { ExternalLink } from "lucide-react";
 
 interface ComparisonSummaryProps {
     mainTool: AITool;
@@ -68,11 +69,11 @@ const ToolSummaryCard = ({ tool, categoryName }: { tool: AITool; categoryName: s
             <Link 
                 href={tool.websiteUrl || `/tool/${tool.slug}`} 
                 target="_blank" 
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow sponsored"
                 className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-on-surface text-surface font-semibold hover:bg-on-surface/90 transition-colors"
             >
-                Visit Website
-                <span className="material-symbols-outlined text-[18px]">open_in_new</span>
+                <span>Visit Website</span>
+                <ExternalLink className="w-4 h-4" />
             </Link>
         </div>
     </div>

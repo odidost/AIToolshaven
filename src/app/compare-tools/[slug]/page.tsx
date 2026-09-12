@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
+import { ArrowLeftRight } from "lucide-react";
 
 import { getToolBySlug, getToolsByCategoryId } from "@/lib/data/tools-service";
 import { getCategoryById } from "@/lib/queries/categories";
@@ -22,6 +23,7 @@ import { WorkflowRecommendations } from "@/components/comparison/WorkflowRecomme
 import { ProsCons } from "@/components/comparison/ProsCons";
 import { AlternativesGrid } from "@/components/comparison/AlternativesGrid";
 import { ExpertVerdict } from "@/components/comparison/ExpertVerdict";
+import { ChallengeWinnerBanner } from "@/components/comparison/ChallengeWinnerBanner";
 import { ComparisonFAQ } from "@/components/comparison/ComparisonFAQ";
 import { RelatedComparisons } from "@/components/comparison/RelatedComparisons";
 import { ComparisonStructuredData } from "@/components/comparison/ComparisonStructuredData";
@@ -160,9 +162,7 @@ export default async function ComparePage({
         />
 
         <div className="text-center text-on-surface-variant py-20">
-          <span className="material-symbols-outlined text-6xl mb-4 block opacity-40">
-            compare_arrows
-          </span>
+          <ArrowLeftRight className="w-16 h-16 mx-auto mb-4 opacity-40 text-slate-400" />
 
           <h1 className="text-2xl font-bold text-on-surface mb-2">
             No Comparison Available
@@ -214,6 +214,11 @@ export default async function ComparePage({
         <ProsCons mainTool={mainTool} compareTool={compareTool} />
         <AlternativesGrid mainTool={mainTool} compareTool={compareTool} alternativeTools={alternativeTools} />
         <ExpertVerdict mainTool={mainTool} compareTool={compareTool} />
+        <ChallengeWinnerBanner 
+          mainTool={mainTool} 
+          compareTool={compareTool} 
+          categoryName={category?.name || "AI Software"} 
+        />
         <ComparisonFAQ mainTool={mainTool} compareTool={compareTool} />
         <RelatedComparisons mainTool={mainTool} compareTool={compareTool} />
       </PageContainer>
