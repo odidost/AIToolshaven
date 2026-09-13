@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export type CategoryTheme = {
   slug: string;
@@ -1068,9 +1068,74 @@ export const categoryThemes: Record<string, CategoryTheme> = {
   }
 };
 
+const CATEGORY_SLUG_MAP: Record<string, string> = {
+  "ai-writing-tools": "text-generation",
+  "ai-image-generators": "image-generation",
+  "ai-video-generators": "video-creation",
+  "marketing-sales": "marketing-sales",
+  "ai-sales-tools": "ai-sales-tools",
+  "coding-assistants": "coding-assistants",
+  "audio-voice": "audio-voice",
+  "productivity": "productivity",
+  "ai-chatbots": "ai-chatbots",
+  "ai-agents": "ai-agents",
+  "ai-seo-tools": "ai-seo-tools",
+  "ai-meeting-assistants": "ai-meeting-assistants",
+  "ai-social-media": "ai-social-media",
+  "ai-social-media-tools": "ai-social-media-tools",
+  "ai-voice-generators": "ai-voice-generators",
+  "ai-presentation-makers": "ai-presentation-makers",
+  "ai-presentation-tools": "ai-presentation-makers",
+  "ai-resume-builders": "ai-resume-builders",
+  "ai-transcription-tools": "ai-transcription-tools",
+  "ai-research-tools": "ai-research-tools",
+  "logo-generators": "logo-generators",
+};
+
+function getDefaultCategoryFaqs(categoryName: string): { question: string; answer: string }[] {
+  return [
+    {
+      question: `What are the best ${categoryName} in 2026?`,
+      answer: `The top-rated ${categoryName} are evaluated based on model capabilities, accuracy, speed, workflow integration, and pricing. Browse our verified leaderboard above to compare the highest-scoring platforms side-by-side.`
+    },
+    {
+      question: `Are there free ${categoryName} available?`,
+      answer: `Yes, many platforms in this directory offer free tiers, trial credits, or freemium plans. Use our "Free" filter above to view all zero-cost options suitable for testing and personal projects.`
+    },
+    {
+      question: `How do I choose the right ${categoryName} software?`,
+      answer: `Consider your team size, technical requirements, output quality, API access, and budget. Our side-by-side comparison tools and hands-on reviews highlight the unique strengths and limitations of each solution.`
+    },
+    {
+      question: `How often are the tools in this directory category updated?`,
+      answer: `We continuously audit pricing models, feature releases, and benchmark performances weekly to ensure our recommendations reflect the latest AI state-of-the-art for 2026.`
+    }
+  ];
+}
+
 export function getCategoryTheme(slug: string): CategoryTheme {
   const decoded = decodeURIComponent(slug).toLowerCase();
-  return categoryThemes[decoded] || {
+  const resolvedKey = categoryThemes[decoded] ? decoded : (CATEGORY_SLUG_MAP[decoded] || decoded);
+  
+  const baseTheme = categoryThemes[resolvedKey] || categoryThemes[decoded];
+  const humanCategoryName = decoded.replace(/-/g, " ").replace(/\bai\b/gi, "AI").replace(/\b\w/g, l => l.toUpperCase());
+
+  if (baseTheme) {
+    // Ensure at least 3-4 FAQs for rich results
+    const existingFaqs = Array.isArray(baseTheme.faq) ? baseTheme.faq : [];
+    const defaults = getDefaultCategoryFaqs(humanCategoryName);
+    const mergedFaqs = [
+      ...existingFaqs,
+      ...defaults.filter(d => !existingFaqs.some(e => e.question.toLowerCase().includes(d.question.toLowerCase().slice(0, 15))))
+    ].slice(0, 5);
+
+    return {
+      ...baseTheme,
+      faq: mergedFaqs,
+    };
+  }
+
+  return {
     slug: decoded,
     accentColors: {
       heroGradient: "from-primary/10 to-primary/5",
@@ -1080,11 +1145,11 @@ export function getCategoryTheme(slug: string): CategoryTheme {
       borderAccent: "border-primary/30",
       cssVar: "124, 58, 237",
     },
-    heroHeadline: `Discover the best ${decoded.replace(/-/g, " ")} tools.`,
-    heroDescription: `Explore top-rated AI solutions in the ${decoded.replace(/-/g, " ")} category to enhance your workflow.`,
+    heroHeadline: `Discover the best ${humanCategoryName} in 2026.`,
+    heroDescription: `Explore top-rated AI solutions in the ${humanCategoryName} category to enhance your workflow.`,
     statsLabels: { listed: "Tools Listed", popular: "Most Popular" },
     emptyState: { message: "No tools found.", subMessage: "Try adjusting your filters." },
-    faq: [],
+    faq: getDefaultCategoryFaqs(humanCategoryName),
     guide: [],
     internalLinks: []
   };

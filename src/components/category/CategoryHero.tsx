@@ -40,6 +40,7 @@ export function CategoryHero({
     ? (categoryTools.reduce((acc, tool) => acc + (tool.rating || 0), 0) / categoryTools.length).toFixed(1) 
     : "4.9";
   const verifiedCount = categoryTools.filter(t => t.verified).length || categoryTools.length;
+  const freeCount = categoryTools.filter(t => t.priceModel === "Free" || t.priceModel === "Freemium").length;
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -81,7 +82,7 @@ export function CategoryHero({
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#FF5F6D]/20 via-[#FF8C69]/15 to-[#FFC371]/20 border border-[#FF5F6D]/40 backdrop-blur-md shadow-md shadow-[#FF5F6D]/10">
               <Sparkles className="w-3.5 h-3.5 text-[#FFC371] shrink-0" />
               <span className="text-xs font-black tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-rose-100 to-[#FFC371]">
-                2026 Verified Directory
+                2026 Commercial Intent Benchmark
               </span>
             </div>
 
@@ -89,6 +90,13 @@ export function CategoryHero({
               <Flame className="w-3 h-3 text-[#FF5F6D]" />
               <span>{categoryTools.length} Curated Tools</span>
             </div>
+
+            {freeCount > 0 && (
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-[11px] font-mono font-semibold">
+                <Zap className="w-3 h-3 text-emerald-400" />
+                <span>{freeCount} Free &amp; Freemium</span>
+              </div>
+            )}
           </div>
 
           {/* Stylized Multilevel Headline (Reduced Size) */}
@@ -154,13 +162,21 @@ export function CategoryHero({
               <ArrowDown className="w-3.5 h-3.5 text-white/90" />
             </button>
 
+            <button
+              onClick={() => scrollToSection("buyer-resources")}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white font-bold text-xs border border-white/20 hover:border-[#FF5F6D]/50 backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-sm"
+            >
+              <ArrowDown className="w-3.5 h-3.5 text-[#FFC371]" />
+              <span>Comparisons &amp; Guides</span>
+            </button>
+
             {hasGuide && (
               <button
                 onClick={() => scrollToSection("category-guide")}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white font-bold text-xs border border-white/20 hover:border-[#FF5F6D]/50 backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white font-semibold text-xs border border-white/10 hover:border-white/25 backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-sm"
               >
-                <BookOpen className="w-3.5 h-3.5 text-[#FFC371]" />
-                <span>Read In-Depth Guide</span>
+                <BookOpen className="w-3.5 h-3.5 text-slate-400" />
+                <span>Deep-Dive Guide</span>
               </button>
             )}
           </div>
@@ -241,7 +257,7 @@ export function CategoryHero({
 
             <div className="pt-1.5 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-400 font-mono">
               <span>Security: <strong>SOC2 &amp; TLS</strong></span>
-              <span className="text-emerald-400 font-bold">100% Monitored</span>
+              <span className="text-emerald-400 font-bold">{freeCount > 0 ? `${freeCount} Free Options` : "100% Monitored"}</span>
             </div>
           </div>
         </div>

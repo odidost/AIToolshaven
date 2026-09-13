@@ -99,6 +99,21 @@ const nextConfig: NextConfig = {
     return [
       // Wildcard legacy redirects (handled at Edge CDN layer)
       {
+        source: '/blog/15-best-completely-free-ai-tools-2026',
+        destination: '/blog/best-completely-free-ai-tools-no-credit-card-2026',
+        permanent: true,
+      },
+      {
+        source: '/free-ai-tools',
+        destination: '/freemium-ai-tools',
+        permanent: true,
+      },
+      {
+        source: '/freemium-ai',
+        destination: '/freemium-ai-tools',
+        permanent: true,
+      },
+      {
         source: '/tool/morningscore',
         destination: '/tool/morningscore-seo-platform',
         permanent: true,

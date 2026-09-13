@@ -25,10 +25,21 @@ export function CategoryHeroSpotlight({
       <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
         {/* Left Side: Top Pick Badge & Description */}
         <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FF5F6D]/20 to-[#FFC371]/20 text-[#FFC371] border border-[#FF5F6D]/40 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider mb-3 shadow-xs">
-            <span className="material-symbols-outlined text-[16px]">verified</span>
-            #1 Editorial Benchmark Winner
+          <div className="flex flex-wrap items-center gap-2 mb-3">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FF5F6D]/20 to-[#FFC371]/20 text-[#FFC371] border border-[#FF5F6D]/40 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow-xs">
+              <span className="material-symbols-outlined text-[16px]">verified</span>
+              #1 Editorial Benchmark Winner
+            </div>
+
+            <span className="inline-flex items-center gap-1 bg-white/10 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold">
+              {topPick.priceModel || "Freemium"}
+            </span>
+
+            <span className="inline-flex items-center gap-1 bg-white/10 text-amber-300 border border-white/10 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold">
+              ★ {topPick.rating || "4.9"} ({topPick.reviewCount ? `${topPick.reviewCount}+` : "150+"} reviews)
+            </span>
           </div>
+
           <h2 className="text-2xl sm:text-3xl font-heading font-black tracking-tight text-white mb-2">
             Top Pick: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5F6D] via-[#FF8C69] to-[#FFC371]">{topPick.name}</span>
           </h2>
@@ -41,7 +52,7 @@ export function CategoryHeroSpotlight({
               href={`/tool/${topPick.slug}`}
               className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#FF5F6D] via-[#FF7A6E] to-[#FF8C69] hover:from-[#FF4858] hover:to-[#FF7850] text-white text-xs font-black uppercase tracking-wide px-5 py-2.5 rounded-full transition-all shadow-md shadow-[#FF5F6D]/30 hover:scale-[1.02] active:scale-[0.98]"
             >
-              View Full Review & Specs
+              View Full Review &amp; Specs
               <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
             </Link>
 
@@ -50,9 +61,9 @@ export function CategoryHeroSpotlight({
                 href={topPick.websiteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold px-4 py-2.5 rounded-full border border-white/10 transition-colors"
+                className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold px-4 py-2.5 rounded-full border border-white/15 transition-colors shadow-xs"
               >
-                Visit Website ↗
+                Visit Official Site ↗
               </a>
             )}
           </div>

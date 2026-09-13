@@ -32,26 +32,29 @@ import { PageContainer } from "@/components/layout/PageContainer";
 import { SectionContainer } from "@/components/layout/SectionContainer";
 
 export const metadata: Metadata = {
-  title: "1,000+ Verified AI Tools Directory (2026) — Free & Freemium Software by Use Case | AIToolsHaven",
-  description: "Discover, compare, and filter 1,000+ human-verified AI tools for creators, freelancers, and small businesses. Explore free software, automated workflows, and monetization missions.",
+  title: {
+    absolute: "Best AI Tools Directory (2026) — 900+ Verified AI Tools",
+  },
+  description: "Discover, compare, and chain 900+ verified AI tools for 2026. Explore freemium AI software, multi-app automation workflows, and unbiased feature comparisons.",
   keywords: [
-    "verified ai tools directory",
-    "free ai tools directory",
+    "ai tools directory",
     "best ai tools 2026",
-    "ai tools for freelancers",
-    "ai tools for content creators",
-    "ai tools for small business",
+    "freemium ai tools",
+    "free ai tools directory",
+    "ai tools discovery",
+    "verified ai software",
     "ai workflows for business",
     "compare ai tools side by side",
-    "ai tool recommender",
-    "human curated ai tools list",
+    "ai video generators 2026",
+    "ai coding assistants 2026",
+    "ai tools list",
   ],
   alternates: {
     canonical: siteConfig.baseUrl,
   },
   openGraph: {
-    title: "1,000+ Verified AI Tools Directory (2026) — AIToolsHaven",
-    description: "Discover, compare, and filter 1,000+ human-verified AI tools for creators, freelancers, and businesses. Explore free software, automated workflows, and monetization missions.",
+    title: "Best AI Tools Directory (2026) — 900+ Verified AI Tools",
+    description: "Discover, compare, and chain 900+ verified AI tools for 2026. Explore freemium AI software, multi-app automation workflows, and unbiased feature comparisons.",
     url: siteConfig.baseUrl,
     siteName: siteConfig.name,
     images: [
@@ -59,15 +62,15 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: "AIToolsHaven — 1,000+ Verified AI Tools Directory",
+        alt: "AIToolsHaven — Best AI Tools Directory (2026)",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "1,000+ Verified AI Tools Directory (2026) — AIToolsHaven",
-    description: "Discover, compare, and filter 1,000+ human-verified AI tools for creators, freelancers, and businesses.",
+    title: "Best AI Tools Directory (2026) — 900+ Verified AI Tools",
+    description: "Discover, compare, and chain 900+ verified AI tools for 2026. Explore freemium AI software and multi-app automation workflows.",
     images: [siteConfig.ogImage],
   },
 };
@@ -154,20 +157,23 @@ export default async function Home() {
             <span className="material-symbols-outlined text-[16px] text-primary">trending_up</span>
             Popular Searches:
           </span>
-          <Link href="/compare-tools/chatgpt-vs-claude" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
-            ChatGPT vs Claude
+          <Link href="/freemium-ai-tools" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+            Freemium AI Tools
           </Link>
-          <Link href="/tool/writesonic" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
-            Writesonic
+          <Link href="/category/ai-video-generators" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+            AI Video Generators
+          </Link>
+          <Link href="/category/coding-assistants" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+            AI Coding Assistants
           </Link>
           <Link href="/category/ai-writing-tools" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
             AI Writing Tools
           </Link>
-          <Link href="/category/coding-assistants" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
-            Coding Assistants
+          <Link href="/compare-tools/chatgpt-vs-claude" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+            ChatGPT vs Claude
           </Link>
-          <Link href="/alternatives/chatgpt" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
-            ChatGPT Alternatives
+          <Link href="/workflows" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+            AI Workflows
           </Link>
         </div>
       </div>

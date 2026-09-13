@@ -8,7 +8,14 @@ import { siteConfig } from "@/lib/config/site";
 import { SocialLinks } from "@/components/shared/SocialLinks";
 import { FeaturedArticleTools } from "@/components/blog/FeaturedArticleTools";
 import { ArticleHeroVisual } from "@/components/blog/ArticleHeroVisual";
+import { ArticleFAQ } from "@/components/blog/ArticleFAQ";
+import { ArticleArchetypeCallout } from "@/components/blog/ArticleArchetypeCallout";
+import { ArticleTableOfContents } from "@/components/blog/ArticleTableOfContents";
+import { ArticleTopicSilo } from "@/components/blog/ArticleTopicSilo";
 import { getToolsBySlugs } from "@/lib/data/tools-service";
+import { getBlogArticleFaqs } from "@/lib/blog-faqs";
+import { getOptimizedBlogTitle, getOptimizedBlogDescription } from "@/lib/seo-titles";
+import { processArticleHeadings, getArchetypeCalloutData, getTopicSiloData } from "@/lib/blog-archetypes";
 
 type Props = {
   params: Promise<{
@@ -38,10 +45,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : `${base}${siteConfig.ogImage}`;
 
   const pageUrl = `${base}/blog/${article.slug}`;
+  const title = getOptimizedBlogTitle(article.title, article.slug);
+  const description = getOptimizedBlogDescription(article.summary);
 
   return {
-    title: `${article.title} (2026 Practical Guide)`,
-    description: article.summary,
+    title: {
+      absolute: title,
+    },
+    description,
     robots: {
       index: true,
       follow: true,
@@ -57,8 +68,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: pageUrl,
     },
     openGraph: {
-      title: article.title,
-      description: article.summary,
+      title,
+      description,
       type: "article",
       url: pageUrl,
       siteName: siteConfig.name,
@@ -70,15 +81,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           secureUrl: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: article.title,
+          alt: title,
           type: "image/jpeg",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: article.title,
-      description: article.summary,
+      title,
+      description,
       images: [ogImageUrl],
     },
   };
@@ -119,6 +130,24 @@ export default async function ArticlePage({ params }: Props) {
     ? article.imageUrl
     : `${siteConfig.baseUrl}${article.imageUrl}`;
 
+  const { contentWithAnchors, tableOfContents } = processArticleHeadings(article.content);
+  const archetypeCallout = getArchetypeCalloutData(article);
+  const topicSilo = getTopicSiloData(article);
+
+  const faqs = getBlogArticleFaqs(article);
+  const faqSchema = faqs && faqs.length > 0 ? {
+    "@type": "FAQPage",
+    "@id": `${articleUrl}#faq`,
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer,
+      },
+    })),
+  } : null;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -135,6 +164,12 @@ export default async function ArticlePage({ params }: Props) {
         mainEntityOfPage: articleUrl,
         datePublished: new Date(article.date).toISOString(),
         dateModified: new Date(article.date).toISOString(),
+        isAccessibleForFree: true,
+        about: {
+          "@type": "Thing",
+          name: topicSilo.categoryName,
+          url: `${siteConfig.baseUrl}/category/${topicSilo.categorySlug}`,
+        },
         author: {
           "@type": "Person",
           name: article.author,
@@ -193,6 +228,7 @@ export default async function ArticlePage({ params }: Props) {
           },
         ],
       },
+      ...(faqSchema ? [faqSchema] : []),
     ],
   };
 
@@ -255,6 +291,12 @@ export default async function ArticlePage({ params }: Props) {
             </div>
           </header>
 
+          {/* Mobile Table of Contents */}
+          <ArticleTableOfContents items={tableOfContents} variant="inline" />
+
+          {/* Archetype-Specific Executive Callout */}
+          <ArticleArchetypeCallout data={archetypeCallout} />
+
           {/* Article Body */}
           <div 
             className="prose prose-lg prose-slate max-w-none text-on-surface-variant/90 leading-[1.9] space-y-7 mb-12 
@@ -266,8 +308,14 @@ export default async function ArticlePage({ params }: Props) {
               [&>li]:text-[16.5px] [&>li]:leading-[1.8]
               [&_strong]:text-on-surface [&_strong]:font-bold
               [&_a]:text-primary [&_a]:font-semibold [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary/80"
-            dangerouslySetInnerHTML={{ __html: article.content }}
+            dangerouslySetInnerHTML={{ __html: contentWithAnchors }}
           />
+
+          {/* Topic Cluster Silo Bridge */}
+          <ArticleTopicSilo data={topicSilo} variant="footer" />
+
+          {/* Frequently Asked Questions */}
+          <ArticleFAQ faqs={faqs} />
 
           {/* Featured Tools Mentioned in this Guide */}
           {mentionedTools.length > 0 && (
@@ -288,6 +336,14 @@ export default async function ArticlePage({ params }: Props) {
 
         {/* Sidebar */}
         <aside className="space-y-8 lg:sticky lg:top-24">
+
+          {/* Desktop Table of Contents */}
+          <div className="hidden lg:block">
+            <ArticleTableOfContents items={tableOfContents} variant="sidebar" />
+          </div>
+
+          {/* Topic Cluster & Directory Pillar Card */}
+          <ArticleTopicSilo data={topicSilo} variant="sidebar" />
 
           {/* Related Articles */}
           {relatedArticles.length > 0 && (

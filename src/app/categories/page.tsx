@@ -11,13 +11,15 @@ import { CategoriesFAQ } from "@/components/categories/CategoriesFAQ";
 import { defaultCategoriesFaqs } from "@/lib/data/categoriesFaqsData";
 
 export const metadata: Metadata = {
-  title: "All 25+ AI Tool Categories (2026) — Directory by Use Case",
+  title: {
+    absolute: "25+ Best AI Tool Categories (2026) [Full Directory]",
+  },
   description: "Browse 25+ verified AI tool categories for 2026. Compare the best artificial intelligence software for writing, video, coding, SEO, voice, and workflows.",
   alternates: {
     canonical: `${siteConfig.baseUrl}/categories`,
   },
   openGraph: {
-    title: "All 25+ AI Tool Categories (2026) — Directory by Use Case",
+    title: "25+ Best AI Tool Categories (2026) [Full Directory]",
     description: "Browse 25+ verified AI tool categories for 2026. Compare the best artificial intelligence software.",
     url: `${siteConfig.baseUrl}/categories`,
     siteName: siteConfig.name,
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "All 25+ AI Tool Categories (2026) — Directory by Use Case",
+    title: "25+ Best AI Tool Categories (2026) [Full Directory]",
     description: "Browse 25+ verified AI tool categories for 2026.",
     images: [siteConfig.ogImage],
   },

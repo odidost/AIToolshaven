@@ -53,6 +53,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: siteConfig.baseUrl,
+    types: {
+      "application/rss+xml": `${siteConfig.baseUrl}/feed.xml`,
+    },
   },
   twitter: {
     card: "summary_large_image",
@@ -113,6 +116,12 @@ export default function RootLayout({
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
+        />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="AIToolsHaven RSS Feed"
+          href="/feed.xml"
         />
       </head>
       <body suppressHydrationWarning className="min-h-full flex flex-col bg-background text-on-surface relative">

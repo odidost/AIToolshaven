@@ -11,13 +11,15 @@ import { BlogFAQ } from "@/components/blog/BlogFAQ";
 import { defaultBlogFaqs } from "@/lib/data/blogFaqsData";
 
 export const metadata: Metadata = {
-  title: "AI Software Strategy, Tutorials & Industry Insights (2026)",
+  title: {
+    absolute: "AI Guides, Tutorials & Tool Benchmarks (2026) [Tested]",
+  },
   description: "In-depth technical guides, tutorials, and benchmarks on vibe coding, autonomous AI agents, video generators, and multi-app workflows on AIToolsHaven.",
   alternates: {
     canonical: `${siteConfig.baseUrl}/blog`,
   },
   openGraph: {
-    title: "AI Software Strategy, Tutorials & Playbooks (2026) — AIToolsHaven",
+    title: "AI Guides, Tutorials & Tool Benchmarks (2026) [Tested]",
     description: "In-depth technical guides, tutorials, and benchmarks on vibe coding, autonomous AI agents, video generators, and multi-app workflows.",
     url: `${siteConfig.baseUrl}/blog`,
     siteName: siteConfig.name,
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Software Strategy, Tutorials & Playbooks (2026) — AIToolsHaven",
+    title: "AI Guides, Tutorials & Tool Benchmarks (2026) [Tested]",
     description: "In-depth technical guides, tutorials, and benchmarks on vibe coding, autonomous AI agents, and video generators.",
     images: [siteConfig.ogImage],
   },

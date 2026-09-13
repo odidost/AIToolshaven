@@ -3,23 +3,41 @@
 import { useState } from "react";
 import { defaultWorkflowsFaqs, type WorkflowFAQItem } from "@/lib/data/workflowsFaqsData";
 
-export function WorkflowsFAQ({ faqs = defaultWorkflowsFaqs }: { faqs?: WorkflowFAQItem[] }) {
+interface WorkflowsFAQProps {
+  faqs?: WorkflowFAQItem[];
+  title?: string;
+  description?: string;
+  badge?: string;
+  centered?: boolean;
+}
+
+export function WorkflowsFAQ({ 
+  faqs = defaultWorkflowsFaqs,
+  title = "Everything You Need to Know About AI Workflows",
+  description = "Clear, practical answers on multi-app chaining, no-code integrations, operational costs, and quality control.",
+  badge = "Frequently Asked Questions",
+  centered = true
+}: WorkflowsFAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0); // First item open by default
 
+  if (!faqs || faqs.length === 0) return null;
+
   return (
-    <section className="mt-16 mb-20 max-w-4xl mx-auto">
-      {/* Centered Heading and Pill Badge */}
-      <div className="text-center mb-12">
+    <section className={`mt-14 mb-16 ${centered ? "max-w-4xl mx-auto" : "w-full"}`}>
+      {/* Heading and Pill Badge */}
+      <div className={`mb-8 ${centered ? "text-center" : "text-left"}`}>
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4">
           <span className="material-symbols-outlined text-[16px]">quiz</span>
-          Frequently Asked Questions
+          {badge}
         </div>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-on-surface tracking-tight mb-4">
-          Everything You Need to Know About AI Workflows
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-on-surface tracking-tight mb-3">
+          {title}
         </h2>
-        <p className="text-base sm:text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
-          Clear, practical answers on multi-app chaining, no-code integrations, operational costs, and quality control.
-        </p>
+        {description && (
+          <p className={`text-base text-on-surface-variant leading-relaxed ${centered ? "max-w-2xl mx-auto" : "max-w-3xl"}`}>
+            {description}
+          </p>
+        )}
       </div>
 
       {/* Interactive FAQ Accordion */}
@@ -38,7 +56,7 @@ export function WorkflowsFAQ({ faqs = defaultWorkflowsFaqs }: { faqs?: WorkflowF
               <button
                 type="button"
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="w-full flex justify-between items-center p-6 text-left focus:outline-none"
+                className="w-full flex justify-between items-center p-5 sm:p-6 text-left focus:outline-none"
                 aria-expanded={isOpen}
               >
                 <span className="font-bold text-on-surface text-base sm:text-lg pr-4 leading-snug">
@@ -55,7 +73,7 @@ export function WorkflowsFAQ({ faqs = defaultWorkflowsFaqs }: { faqs?: WorkflowF
                   isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
                 }`}
               >
-                <p className="p-6 pt-0 font-sans text-sm sm:text-base text-on-surface-variant leading-relaxed">
+                <p className="p-5 sm:p-6 pt-0 font-sans text-sm sm:text-base text-on-surface-variant leading-relaxed">
                   {item.answer}
                 </p>
               </div>

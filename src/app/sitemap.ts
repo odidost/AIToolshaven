@@ -41,6 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 2. High-Intent Core Discovery Hubs
   const coreHubs = [
     "/categories",
+    "/freemium-ai-tools",
     "/latest-ai-tools",
     "/trending-ai-tools",
     "/popular-ai-tools",

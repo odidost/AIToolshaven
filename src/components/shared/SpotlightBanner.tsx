@@ -34,14 +34,14 @@ export function SpotlightBanner() {
         </div>
 
         <h1 className="mt-8 text-fluid-h1 font-black tracking-tight text-on-surface">
-          <span>Discover &amp; Compare 1,000+ Verified AI Tools</span>
+          <span>Best AI Tools Directory (2026)</span>
           <span className="block mt-2 text-primary drop-shadow-[0_0_20px_rgba(255,95,109,0.35)]">
             <HeroTypingText />
           </span>
         </h1>
 
         <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-on-surface-variant">
-          The human-curated directory of free and premium artificial intelligence software. Compare pricing models, automate multi-tool workflows, and unlock proven monetization missions.
+          Discover, compare, and chain 900+ verified AI tools across writing, coding, video, and marketing. Filter by free and freemium plans, or explore multi-app workflow blueprints.
         </p>
 
         <HeroSearchBar />

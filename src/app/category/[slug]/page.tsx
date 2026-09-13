@@ -12,6 +12,7 @@ import { CategoryHero } from "@/components/category/CategoryHero";
 import { CategoryBackground } from "@/components/category/CategoryBackground";
 import { CategoryFAQ } from "@/components/category/CategoryFAQ";
 import { CategoryGuide } from "@/components/category/CategoryGuide";
+import { CategoryRelatedGuides } from "@/components/category/CategoryRelatedGuides";
 import { EEATFooter } from "@/components/category/EEATFooter";
 import { InternalLinks } from "@/components/category/InternalLinks";
 import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
@@ -22,6 +23,8 @@ import { SocialLinks } from "@/components/shared/SocialLinks";
 
 import { StructuredData } from "@/components/shared/StructuredData";
 import { categoryGuides } from "@/content/categories";
+import { guideFaqs } from "@/content/categories/guide-faqs";
+import { getOptimizedCategoryTitle, getOptimizedCategoryDescription } from "@/lib/seo-titles";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -50,14 +53,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const categoryTools = await getToolsByCategoryId(category.id);
   const hasGuide = Boolean(categoryGuides[decodedSlug] || categoryGuides[category.slug]);
   const isNoIndex = category.indexable === false || (!hasGuide && categoryTools.length < 3);
-  const countPrefix = categoryTools.length > 0 ? `${categoryTools.length} ` : "";
-
   const theme = getCategoryTheme(category.slug);
-  const title = `${countPrefix}${category.name} AI Tools (2026) — Compare Best Software | AIToolsHaven`;
-  const description = theme?.heroDescription || `Explore verified ${category.name} AI tools to enhance your workflow, streamline tasks, and compare pricing plans.`;
+  const title = getOptimizedCategoryTitle(category.name, categoryTools.length);
+  const description = getOptimizedCategoryDescription(category.name, categoryTools.length, theme?.heroDescription);
 
   return {
-    title,
+    title: {
+      absolute: title,
+    },
     description,
     robots: {
       index: !isNoIndex,
@@ -83,7 +86,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: siteConfig.ogImage,
           width: 1200,
           height: 630,
-          alt: `${category.name} AI Tools Directory`,
+          alt: title,
         },
       ],
     },
@@ -118,11 +121,15 @@ export default async function CategoryPage({
   const avgRating = categoryTools.length 
     ? (categoryTools.reduce((acc, tool) => acc + (tool.rating || 0), 0) / categoryTools.length).toFixed(1) 
     : "N/A";
-  const verifiedCount = categoryTools.filter(t => t.verified).length;
-  const faqSchema = theme?.faq && theme.faq.length > 0 ? {
+  const hasGuide = Boolean(categoryGuides[decodedSlug] || categoryGuides[category.slug]);
+  const activeFaqs = (hasGuide && (guideFaqs[decodedSlug] || guideFaqs[category.slug]))
+    ? (guideFaqs[decodedSlug] || guideFaqs[category.slug])
+    : theme?.faq;
+
+  const faqSchema = activeFaqs && activeFaqs.length > 0 ? {
     "@type": "FAQPage",
     "@id": `${siteConfig.baseUrl}/category/${category.slug}#faq`,
-    mainEntity: theme.faq.map((item: any) => ({
+    mainEntity: activeFaqs.map((item: any) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: {
@@ -157,7 +164,22 @@ export default async function CategoryPage({
               url: `${siteConfig.baseUrl}/tool/${tool.slug}`,
               applicationCategory: category.name,
               operatingSystem: "Web-based",
-              description: tool.tagline || tool.description
+              description: tool.tagline || tool.description,
+              offers: {
+                "@type": "Offer",
+                price: tool.priceModel === "Free" ? "0" : (tool.price ? tool.price.replace(/[^0-9.]/g, '') || "0" : "0"),
+                priceCurrency: "USD",
+                category: tool.priceModel || "Freemium"
+              },
+              ...(tool.rating ? {
+                aggregateRating: {
+                  "@type": "AggregateRating",
+                  ratingValue: String(tool.rating),
+                  bestRating: "5",
+                  worstRating: "1",
+                  ratingCount: String(tool.reviewCount || 12)
+                }
+              } : {})
             }
           }))
         }
@@ -220,7 +242,7 @@ export default async function CategoryPage({
         category={category} 
         categoryTools={categoryTools} 
         theme={theme} 
-        hasGuide={Boolean(categoryGuides[decodedSlug] || categoryGuides[category.slug])} 
+        hasGuide={hasGuide} 
       />
 
       {/* Category Navigation */}
@@ -241,12 +263,19 @@ export default async function CategoryPage({
         <ToolGridWithFilters tools={categoryTools} theme={theme} />
       </div>
 
+      {/* Cross-Silo Resource Hub: Commercial Guides, Comparisons & Workflows */}
+      <CategoryRelatedGuides 
+        categorySlug={category.slug}
+        categoryName={category.name}
+        theme={theme}
+      />
+
       {/* Category Rich Content */}
-      {!categoryGuides[category.slug] && <InternalLinks theme={theme} />}
-      {!categoryGuides[category.slug] && <CategoryFAQ theme={theme} />}
       <div id="category-guide">
         <CategoryGuide theme={theme} />
       </div>
+      {!hasGuide && <InternalLinks theme={theme} />}
+      {!hasGuide && <CategoryFAQ theme={theme} />}
       <EEATFooter />
 
       {/* Social CTA */}

@@ -17,7 +17,7 @@ export function HeroSearchBar() {
       >
         <div className="flex items-center gap-4 text-on-surface-variant group-hover:text-on-surface transition-colors">
           <span className="material-symbols-outlined text-[28px] text-primary">search</span>
-          <span className="text-lg font-medium opacity-70">What do you want to build today?</span>
+          <span className="text-lg font-medium opacity-70">Search 900+ AI tools, freemium software, workflows...</span>
         </div>
         
         <div className="flex items-center gap-3">

@@ -6,7 +6,7 @@ export function HomepageEditorialGuide() {
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 bg-rose-50 border border-rose-200/60 text-rose-700 shadow-xs px-4 py-1.5 rounded-full mb-4">
             <span className="material-symbols-outlined text-[18px]">menu_book</span>
             <span className="text-xs font-extrabold uppercase tracking-widest">
@@ -14,18 +14,40 @@ export function HomepageEditorialGuide() {
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight">
-            The Master Guide to Modern AI Software: Navigating the 2026 Tool Ecosystem
+            The 2026 AI Software Guide: Navigating Tools, Pricing &amp; Workflows
           </h2>
           <p className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
             How to cut through the noise of thousands of monthly model releases, evaluate true freemium allowances, and build multi-app automation stacks that deliver measurable business ROI.
           </p>
+
+          {/* Quick Domain Jump Navigation Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
+            <a href="#guide-writing" className="px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-primary/40 text-xs font-semibold text-gray-700 hover:text-primary transition-all shadow-xs">
+              ✍️ Content &amp; SEO
+            </a>
+            <a href="#guide-visual" className="px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-primary/40 text-xs font-semibold text-gray-700 hover:text-primary transition-all shadow-xs">
+              🎬 Video &amp; Image
+            </a>
+            <a href="#guide-audio" className="px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-primary/40 text-xs font-semibold text-gray-700 hover:text-primary transition-all shadow-xs">
+              🎙️ Voice &amp; Meetings
+            </a>
+            <a href="#guide-coding" className="px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-primary/40 text-xs font-semibold text-gray-700 hover:text-primary transition-all shadow-xs">
+              💻 Coding &amp; Agents
+            </a>
+            <a href="#guide-freemium" className="px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-300/80 text-xs font-bold text-emerald-800 hover:bg-emerald-100 transition-all shadow-xs">
+              🎁 Free &amp; Freemium AI
+            </a>
+            <a href="#guide-operations" className="px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-primary/40 text-xs font-semibold text-gray-700 hover:text-primary transition-all shadow-xs">
+              ⚡ Workflows &amp; Ops
+            </a>
+          </div>
         </div>
 
         {/* Readable Narrative Prose Box */}
         <div className="bg-surface border border-outline rounded-3xl p-8 sm:p-12 md:p-14 shadow-sm space-y-16 mb-16">
           
           {/* Domain 1: Content Marketing & SEO */}
-          <article className="space-y-6">
+          <article id="guide-writing" className="space-y-6 scroll-mt-24">
             <div className="flex items-center gap-3 text-rose-500 font-bold text-xs uppercase tracking-wider">
               <span className="material-symbols-outlined text-[20px]">edit_note</span>
               <span>Content Marketing, Copywriting &amp; Search Dominance</span>
@@ -89,7 +111,7 @@ export function HomepageEditorialGuide() {
           <hr className="border-border/60" />
 
           {/* Domain 2: Visual Media & Video */}
-          <article className="space-y-6">
+          <article id="guide-visual" className="space-y-6 scroll-mt-24">
             <div className="flex items-center gap-3 text-blue-500 font-bold text-xs uppercase tracking-wider">
               <span className="material-symbols-outlined text-[20px]">movie_creation</span>
               <span>Visual Arts, Generative Video &amp; Creative Studio Direction</span>
@@ -153,7 +175,7 @@ export function HomepageEditorialGuide() {
           <hr className="border-border/60" />
 
           {/* Domain 3: Audio, Voice & Meetings */}
-          <article className="space-y-6">
+          <article id="guide-audio" className="space-y-6 scroll-mt-24">
             <div className="flex items-center gap-3 text-violet-500 font-bold text-xs uppercase tracking-wider">
               <span className="material-symbols-outlined text-[20px]">graphic_eq</span>
               <span>Voice Synthesis, Audio Production &amp; Conversational Intelligence</span>
@@ -217,7 +239,7 @@ export function HomepageEditorialGuide() {
           <hr className="border-border/60" />
 
           {/* Domain 4: Engineering, Agents & Vibe Coding */}
-          <article className="space-y-6">
+          <article id="guide-coding" className="space-y-6 scroll-mt-24">
             <div className="flex items-center gap-3 text-emerald-500 font-bold text-xs uppercase tracking-wider">
               <span className="material-symbols-outlined text-[20px]">terminal</span>
               <span>Software Engineering, Vibe Coding &amp; Autonomous Agents</span>
@@ -280,8 +302,61 @@ export function HomepageEditorialGuide() {
 
           <hr className="border-border/60" />
 
-          {/* Domain 5: Operations, Workflows & Monetization */}
-          <article className="space-y-6">
+          {/* Domain 5: Freemium & Free AI Software */}
+          <article id="guide-freemium" className="space-y-6 scroll-mt-24">
+            <div className="flex items-center gap-3 text-emerald-600 font-bold text-xs uppercase tracking-wider">
+              <span className="material-symbols-outlined text-[20px]">savings</span>
+              <span>Freemium Economics, Zero-Cost Tooling &amp; Hidden Paywalls</span>
+            </div>
+
+            <h3 className="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight">
+              Evaluating Freemium AI: How to Spot True Value Without Hidden Paywalls
+            </h3>
+
+            <p className="text-base sm:text-lg text-on-surface font-medium leading-relaxed">
+              With commercial AI subscription costs compounding across teams, leveraging authentic freemium tiers is the fastest path to high-leverage experimentation.
+            </p>
+
+            <div className="space-y-4 text-[15px] sm:text-[16px] text-on-surface-variant leading-[28px]">
+              <p>
+                Not all free plans are created equal. When evaluating{" "}
+                <Link 
+                  href="/freemium-ai-tools" 
+                  className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                >
+                  Freemium AI Tools
+                </Link>
+                , it is critical to distinguish between platforms offering perpetually recurring monthly credits versus those providing one-off signup allowances that lock your generated assets behind sudden paywalls. Read our comprehensive benchmark on{" "}
+                <Link
+                  href="/blog/best-completely-free-ai-tools-no-credit-card-2026"
+                  className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                >
+                  15 Best Completely Free AI Tools (No Credit Card)
+                </Link>{" "}
+                for full breakdown.
+              </p>
+
+              <p>
+                Our directory highlights platforms providing generous zero-cost allowances—from local open-weights models and community developer tiers to full-featured freemium platforms that never require a credit card upfront.
+              </p>
+
+              <p>
+                Whether you are testing generative prototypes or deploying lean automations for your small business, explore our verified{" "}
+                <Link 
+                  href="/freemium-ai-tools" 
+                  className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                >
+                  Freemium AI Directory Hub
+                </Link>{" "}
+                to scale your output without recurring financial overhead.
+              </p>
+            </div>
+          </article>
+
+          <hr className="border-border/60" />
+
+          {/* Domain 6: Operations, Workflows & Monetization */}
+          <article id="guide-operations" className="space-y-6 scroll-mt-24">
             <div className="flex items-center gap-3 text-amber-500 font-bold text-xs uppercase tracking-wider">
               <span className="material-symbols-outlined text-[20px]">analytics</span>
               <span>Enterprise Operations, Multi-App Workflows &amp; Monetization</span>
@@ -339,7 +414,7 @@ export function HomepageEditorialGuide() {
                 </Link>{" "}
                 or evaluate competing tools side-by-side in our{" "}
                 <Link 
-                  href="/compare" 
+                  href="/compare-tools" 
                   className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
                 >
                   Head-to-Head Comparison Matrix
@@ -489,7 +564,7 @@ export function HomepageEditorialGuide() {
             <Link href="/goals" className="p-3 rounded-xl bg-surface hover:bg-primary/5 hover:text-primary transition-all text-xs font-semibold text-gray-700 border border-black/5 text-center">
               Monetization Missions
             </Link>
-            <Link href="/compare" className="p-3 rounded-xl bg-surface hover:bg-primary/5 hover:text-primary transition-all text-xs font-semibold text-gray-700 border border-black/5 text-center">
+            <Link href="/compare-tools" className="p-3 rounded-xl bg-surface hover:bg-primary/5 hover:text-primary transition-all text-xs font-semibold text-gray-700 border border-black/5 text-center">
               Compare Tools
             </Link>
             <Link href="/ai-tool-recommender" className="p-3 rounded-xl bg-surface hover:bg-primary/5 hover:text-primary transition-all text-xs font-semibold text-gray-700 border border-black/5 text-center">

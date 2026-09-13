@@ -3,11 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 
 const words = [
-  "For Creators & Businesses.",
-  "For Freelancers & Solopreneurs.",
-  "Free & Freemium Software.",
-  "Video, Coding & Writing Stacks.",
-  "Automated AI Workflows.",
+  "Free & Freemium AI Software.",
+  "AI Coding & Developer Stacks.",
+  "AI Video & Image Generators.",
+  "AI Writing & Copywriting Tools.",
+  "Automated Multi-App Workflows.",
 ];
 
 export function HeroTypingText() {
