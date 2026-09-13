@@ -66,9 +66,9 @@ const ToolSummaryCard = ({ tool, categoryName }: { tool: AITool; categoryName: s
         </div>
 
         <div className="mt-auto">
-            <Link 
-                href={tool.websiteUrl || `/tool/${tool.slug}`} 
-                target="_blank" 
+            <Link
+                href={tool.websiteUrl || `/tool/${tool.slug}`}
+                target="_blank"
                 rel="noopener noreferrer nofollow sponsored"
                 className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-on-surface text-surface font-semibold hover:bg-on-surface/90 transition-colors"
             >

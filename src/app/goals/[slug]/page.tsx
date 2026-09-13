@@ -24,6 +24,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: `${goal.title} AI Tools & Workflows (2026 Roadmap)`,
         description: goal.description,
+        robots: {
+            index: true,
+            follow: true,
+            googleBot: {
+                index: true,
+                follow: true,
+                "max-video-preview": -1,
+                "max-image-preview": "large",
+                "max-snippet": -1,
+            },
+        },
         alternates: {
             canonical: `https://aitoolshaven.com/goals/${goal.slug}`,
         },

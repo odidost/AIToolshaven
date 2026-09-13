@@ -33,6 +33,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: `${workflow.title} Workflow (Step-by-Step Blueprint 2026)`,
         description: workflow.description,
+        robots: {
+            index: true,
+            follow: true,
+            googleBot: {
+                index: true,
+                follow: true,
+                "max-video-preview": -1,
+                "max-image-preview": "large",
+                "max-snippet": -1,
+            },
+        },
         alternates: {
             canonical: `${cleanBase}/workflows/${workflow.slug}`,
         },

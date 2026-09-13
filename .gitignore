@@ -61,3 +61,7 @@ Thumbs.db
 # Scratch and test files
 /scratch/
 /test_query_*.ts
+gsc_pages_dump.json
+*indexed_tools*.json
+inspection_samples.json
+gsc_indexing_audit_summary.json

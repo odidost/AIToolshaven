@@ -3,6 +3,14 @@ import { getToolBySlug } from "@/lib/data/tools-service";
 import { categories } from "@/lib/data/categories";
 import { ToolImage } from "@/components/shared/ToolImage";
 import { BrandLogo } from "@/components/shared/BrandLogo";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 type Props = {
   params: Promise<{ slug: string }>;

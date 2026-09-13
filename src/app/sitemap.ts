@@ -7,7 +7,6 @@ import { goals } from "@/lib/goals";
 import { workflows } from "@/lib/workflows";
 import { articles } from "@/lib/articles";
 import { getAllCuratedAlternatives } from "@/lib/data/alternatives";
-
 import { categoryGuides } from "@/content/categories";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -27,36 +26,40 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   
   const siteMaxDateStr = allDates.length > 0 
     ? new Date(Math.max(...allDates)).toISOString() 
-    : undefined;
+    : new Date().toISOString();
 
-  // 1. Static Core & Index Pages
-  const staticRoutes = [
-    "",
-    "/about",
-    "/contact",
-    "/categories",
-    "/ai-tool-recommender",
-    "/compare-tools",
-    "/goals",
-    "/workflows",
-    "/blog",
-    "/latest-ai-tools",
-    "/popular-ai-tools",
-    "/trending-ai-tools"
+  // 1. Homepage — Absolute Top Priority (1.0)
+  const homeEntry: MetadataRoute.Sitemap = [
+    {
+      url: `${cleanBase}/`,
+      lastModified: siteMaxDateStr,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },
   ];
 
-  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map(route => ({
+  // 2. High-Intent Core Discovery Hubs
+  const coreHubs = [
+    "/categories",
+    "/latest-ai-tools",
+    "/trending-ai-tools",
+    "/popular-ai-tools",
+    "/ai-tool-recommender",
+    "/compare-tools",
+    "/workflows",
+    "/goals",
+    "/blog",
+    "/submit",
+  ];
+
+  const coreHubEntries: MetadataRoute.Sitemap = coreHubs.map(route => ({
     url: `${cleanBase}${route}`,
-    ...(siteMaxDateStr && { lastModified: siteMaxDateStr }),
+    lastModified: siteMaxDateStr,
+    changeFrequency: "daily",
+    priority: 0.9,
   }));
 
-  // 2. Tools
-  const toolEntries: MetadataRoute.Sitemap = validTools.map(tool => ({
-    url: `${cleanBase}/tool/${tool.slug}`,
-    ...(tool.lastUpdated && { lastModified: new Date(tool.lastUpdated).toISOString() }),
-  }));
-
-  // 3. Categories (Pillars & Dedicated Guides)
+  // 3. Category Pillar & Dedicated Guides
   const categoryEntries: MetadataRoute.Sitemap = [];
   categories.forEach(cat => {
     if (cat.status && cat.status !== 'Published') return;
@@ -80,78 +83,110 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     
     categoryEntries.push({
       url: `${cleanBase}/category/${cat.slug}`,
-      ...(maxDate && { lastModified: maxDate }),
+      lastModified: maxDate,
+      changeFrequency: "weekly",
+      priority: 0.9,
     });
   });
 
-  // 4. High-Value Comparisons
+  // 4. In-Depth Blog Articles & Editorial Guides
+  const articleEntries: MetadataRoute.Sitemap = articles.map(article => ({
+    url: `${cleanBase}/blog/${article.slug}`,
+    lastModified: article.date ? new Date(article.date).toISOString() : siteMaxDateStr,
+    changeFrequency: "weekly",
+    priority: 0.9,
+  }));
+
+  // 5. Curated Side-by-Side Comparisons
   const compareEntries: MetadataRoute.Sitemap = [];
   comparisons.forEach(c => {
     const tool1 = validTools.find(t => t.name.toLowerCase() === c.tool1.name.toLowerCase() || t.slug === c.tool1.name.toLowerCase());
     const tool2 = validTools.find(t => t.name.toLowerCase() === c.tool2.name.toLowerCase() || t.slug === c.tool2.name.toLowerCase());
     
-    // Only index comparisons where both tools are published and valid
     if (!tool1 || !tool2) return;
 
     const d1 = tool1?.lastUpdated ? new Date(tool1.lastUpdated).getTime() : 0;
     const d2 = tool2?.lastUpdated ? new Date(tool2.lastUpdated).getTime() : 0;
-    
     const maxDateNum = Math.max(d1, d2);
     const maxDate = maxDateNum > 0 ? new Date(maxDateNum).toISOString() : siteMaxDateStr;
     
     compareEntries.push({
       url: `${cleanBase}/compare-tools/${c.slug}`,
-      ...(maxDate && { lastModified: maxDate }),
+      lastModified: maxDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
     });
   });
 
-  // 5. Curated Alternatives
+  // 6. Curated Alternatives Hubs
   const curatedAlternatives = getAllCuratedAlternatives();
   const altEntries: MetadataRoute.Sitemap = curatedAlternatives.map(alt => ({
     url: `${cleanBase}/alternatives/${alt.slug}`,
-    ...(siteMaxDateStr && { lastModified: siteMaxDateStr }),
+    lastModified: siteMaxDateStr,
+    changeFrequency: "weekly",
+    priority: 0.8,
   }));
 
-  // 6. Goals
-  const goalEntries: MetadataRoute.Sitemap = goals.map(goal => {
-    const goalTools = validTools.filter(t => t.goals?.includes(goal.slug) || t.goals?.includes(goal.title));
-    const goalDates = goalTools.map(t => t.lastUpdated ? new Date(t.lastUpdated).getTime() : 0).filter(d => d > 0);
-    const maxDate = goalDates.length > 0 ? new Date(Math.max(...goalDates)).toISOString() : undefined;
-    
-    return {
-      url: `${cleanBase}/goals/${goal.slug}`,
-      ...(maxDate && { lastModified: maxDate }),
-    };
-  });
-
-  // 7. Workflows
+  // 7. Workflow Step-by-Step Blueprints
   const workflowEntries: MetadataRoute.Sitemap = workflows.map(workflow => {
     const wfTools = validTools.filter(t => t.workflows?.includes(workflow.slug));
     const wfDates = wfTools.map(t => t.lastUpdated ? new Date(t.lastUpdated).getTime() : 0).filter(d => d > 0);
-    const maxDate = wfDates.length > 0 ? new Date(Math.max(...wfDates)).toISOString() : undefined;
+    const maxDate = wfDates.length > 0 ? new Date(Math.max(...wfDates)).toISOString() : siteMaxDateStr;
     
     return {
       url: `${cleanBase}/workflows/${workflow.slug}`,
-      ...(maxDate && { lastModified: maxDate }),
+      lastModified: maxDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
     };
   });
 
-  // 8. Articles
-  const articleEntries: MetadataRoute.Sitemap = articles.map(article => ({
-    url: `${cleanBase}/blog/${article.slug}`,
-    ...(article.date && { lastModified: new Date(article.date).toISOString() }),
+  // 8. Goal Solutions & Roadmaps
+  const goalEntries: MetadataRoute.Sitemap = goals.map(goal => {
+    const goalTools = validTools.filter(t => t.goals?.includes(goal.slug) || t.goals?.includes(goal.title));
+    const goalDates = goalTools.map(t => t.lastUpdated ? new Date(t.lastUpdated).getTime() : 0).filter(d => d > 0);
+    const maxDate = goalDates.length > 0 ? new Date(Math.max(...goalDates)).toISOString() : siteMaxDateStr;
+    
+    return {
+      url: `${cleanBase}/goals/${goal.slug}`,
+      lastModified: maxDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    };
+  });
+
+  // 9. E-E-A-T, Trust, Transparency & Informational Pages
+  const trustRoutes = [
+    { path: "/about", priority: 0.7, changeFrequency: "monthly" as const },
+    { path: "/contact", priority: 0.7, changeFrequency: "monthly" as const },
+    { path: "/editorial-policy", priority: 0.7, changeFrequency: "monthly" as const },
+    { path: "/affiliate-disclosure", priority: 0.7, changeFrequency: "monthly" as const },
+    { path: "/advertising", priority: 0.7, changeFrequency: "monthly" as const },
+    { path: "/media-kit", priority: 0.7, changeFrequency: "monthly" as const },
+    { path: "/agency", priority: 0.7, changeFrequency: "monthly" as const },
+    { path: "/privacy-policy", priority: 0.6, changeFrequency: "monthly" as const },
+    { path: "/terms", priority: 0.6, changeFrequency: "monthly" as const },
+    { path: "/disclaimer", priority: 0.6, changeFrequency: "monthly" as const },
+  ];
+
+  const trustEntries: MetadataRoute.Sitemap = trustRoutes.map(item => ({
+    url: `${cleanBase}${item.path}`,
+    lastModified: siteMaxDateStr,
+    changeFrequency: item.changeFrequency,
+    priority: item.priority,
   }));
 
-  // Combine all entries
+  // Combine all high-value entries (tools deliberately excluded to consolidate crawl budget)
   const allEntries = [
-    ...staticEntries,
+    ...homeEntry,
+    ...coreHubEntries,
     ...categoryEntries,
+    ...articleEntries,
     ...compareEntries,
     ...altEntries,
-    ...toolEntries,
-    ...goalEntries,
     ...workflowEntries,
-    ...articleEntries,
+    ...goalEntries,
+    ...trustEntries,
   ];
 
   // Deduplicate by URL
