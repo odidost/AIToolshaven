@@ -1,5 +1,7 @@
 "use client";
 
+import { Search } from "lucide-react";
+
 export function HeroSearchBar() {
   const triggerCommandPalette = () => {
     document.dispatchEvent(new KeyboardEvent("keydown", { key: "k", metaKey: true }));
@@ -13,15 +15,15 @@ export function HeroSearchBar() {
       {/* Search Bar Container */}
       <button 
         onClick={triggerCommandPalette}
-        className="relative w-full flex items-center justify-between bg-white/60 backdrop-blur-3xl border border-black/5 hover:border-black/10 rounded-[2rem] p-3 pl-6 pr-3 shadow-xl transition-all duration-300 group-hover:-translate-y-1 text-left"
+        className="relative w-full flex items-center justify-between bg-white/60 dark:bg-slate-900/60 backdrop-blur-3xl border border-black/5 dark:border-white/10 hover:border-black/10 dark:hover:border-white/20 rounded-[2rem] p-3 pl-6 pr-3 shadow-xl transition-all duration-300 group-hover:-translate-y-1 text-left"
       >
         <div className="flex items-center gap-4 text-on-surface-variant group-hover:text-on-surface transition-colors">
-          <span className="material-symbols-outlined text-[28px] text-primary">search</span>
-          <span className="text-lg font-medium opacity-70">Search 900+ AI tools, freemium software, workflows...</span>
+          <Search className="w-6 h-6 text-primary shrink-0" />
+          <span className="text-sm sm:text-base font-medium opacity-70">Search 900+ AI tools, freemium software, workflows...</span>
         </div>
         
         <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-black/5 rounded-xl border border-black/5 shadow-inner">
+          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-black/5 dark:bg-white/5 rounded-xl border border-black/5 dark:border-white/10 shadow-inner">
             <span className="text-xs font-mono font-bold text-on-surface-variant">⌘</span>
             <span className="text-xs font-mono font-bold text-on-surface-variant">K</span>
           </div>

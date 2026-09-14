@@ -30,6 +30,17 @@ export const metadata: Metadata = {
     absolute: "Best Freemium AI Tools (2026) [100% Free & No Credit Card]",
   },
   description: "Discover 800+ verified freemium AI tools and free AI software for 2026. Filter by free allowances, recurring monthly credits, and zero credit card traps.",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   alternates: {
     canonical: `${siteConfig.baseUrl}/freemium-ai-tools`,
   },

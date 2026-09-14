@@ -36,6 +36,17 @@ export const metadata: Metadata = {
     absolute: "Best AI Tools Directory (2026) — 900+ Verified AI Tools",
   },
   description: "Discover, compare, and chain 900+ verified AI tools for 2026. Explore freemium AI software, multi-app automation workflows, and unbiased feature comparisons.",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   keywords: [
     "ai tools directory",
     "best ai tools 2026",

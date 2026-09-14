@@ -83,6 +83,7 @@ import { MobileNavBar } from "@/components/shared/MobileNavBar";
 import { BookmarksProvider } from "@/lib/contexts/BookmarksContext";
 import { AssetManifestProvider } from "@/lib/contexts/AssetManifestContext";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { CookieConsent } from "@/components/shared/CookieConsent";
 import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 import fs from 'fs';
 import path from 'path';
@@ -135,6 +136,7 @@ export default function RootLayout({
             </main>
             <Footer />
             <MobileNavBar />
+            <CookieConsent />
           </BookmarksProvider>
         </AssetManifestProvider>
       </body>

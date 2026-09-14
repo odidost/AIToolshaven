@@ -190,18 +190,29 @@ export function CategoryGridWithSearch({ categories }: CategoryGridWithSearchPro
             search_off
           </span>
           <h3 className="text-lg font-bold text-on-surface mb-1">No matching categories found</h3>
-          <p className="text-sm text-on-surface-variant max-w-sm mx-auto mb-4">
-            We couldn&apos;t find any categories matching &ldquo;{searchQuery}&rdquo;. Try a different keyword or reset your filter.
+          <p className="text-sm text-on-surface-variant max-w-sm mx-auto mb-5">
+            Looking for a specific AI software like &ldquo;{searchQuery}&rdquo;? Search all 1,000+ verified tools directly.
           </p>
-          <button
-            onClick={() => {
-              setSearchQuery("");
-              setActiveFilter("all");
-            }}
-            className="px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-bold hover:bg-primary/20 transition-colors"
-          >
-            Reset All Filters
-          </button>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <button
+              onClick={() => {
+                setSearchQuery("");
+                setActiveFilter("all");
+              }}
+              className="px-4 py-2 rounded-full bg-surface border border-outline text-on-surface-variant text-xs font-bold hover:bg-surface-secondary transition-colors"
+            >
+              Reset Category Filters
+            </button>
+            <button
+              onClick={() => {
+                document.dispatchEvent(new KeyboardEvent("keydown", { key: "k", metaKey: true }));
+              }}
+              className="px-5 py-2 rounded-full bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-all shadow-xs flex items-center gap-1.5"
+            >
+              <span className="material-symbols-outlined text-sm">search</span>
+              Search All 1,000+ Tools for &ldquo;{searchQuery}&rdquo; (⌘K)
+            </button>
+          </div>
         </div>
       )}
     </div>

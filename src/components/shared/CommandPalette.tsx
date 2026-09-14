@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { ToolImage } from "@/components/shared/ToolImage";
 import { searchCommandPaletteAction, getInitialCommandPaletteSuggestionsAction, type CommandPaletteItem } from "@/lib/actions/search";
+import { Search, Loader2, CornerDownLeft, Sparkles } from "lucide-react";
 
 export type CommandPaletteTool = CommandPaletteItem;
 
@@ -138,8 +139,8 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
         onClick={() => setIsOpen(true)}
         className="w-full h-10 px-4 rounded-full border border-border bg-surface hover:bg-muted hover:border-border/80 shadow-xs hover:shadow-sm transition-all duration-200 flex items-center justify-between text-[13px] font-medium text-muted-foreground"
       >
-        <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-xl">search</span>
+        <div className="flex items-center gap-2.5">
+          <Search className="w-4 h-4 text-muted-foreground" />
           <span>Search AI tools, categories &amp; guides...</span>
         </div>
         <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 bg-surface-container rounded-md text-xs font-mono font-medium border border-outline">
@@ -165,7 +166,7 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
         >
           {/* Search Input */}
           <div className="flex items-center px-4 py-4 border-b border-outline gap-3 bg-surface">
-            <span className="material-symbols-outlined text-primary text-2xl">search</span>
+            <Search className="w-5 h-5 text-primary shrink-0" />
             <input
               ref={inputRef}
               type="text"
@@ -175,9 +176,7 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
               onChange={(e) => setSearch(e.target.value)}
             />
             {isLoading && (
-              <span className="material-symbols-outlined text-sm text-primary animate-spin">
-                progress_activity
-              </span>
+              <Loader2 className="w-4 h-4 text-primary animate-spin shrink-0" />
             )}
             <button 
               onClick={() => setIsOpen(false)}
@@ -238,7 +237,7 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
                     >
                       {isCategory ? (
                         <div className="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 flex items-center justify-center shrink-0">
-                          <span className="material-symbols-outlined text-xl">{item.icon || "auto_awesome"}</span>
+                          <Sparkles className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                         </div>
                       ) : (
                         <ToolImage tool={item as any} type="logo" className="w-8 h-8 rounded border border-border object-contain bg-surface shrink-0" />
@@ -265,9 +264,10 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
                       </div>
 
                       {index === selectedIndex && (
-                        <span className="material-symbols-outlined text-primary text-sm">
-                          keyboard_return
-                        </span>
+                        <div className="flex items-center gap-1 text-[11px] font-mono text-primary bg-primary/10 px-2 py-1 rounded-md shrink-0 border border-primary/20">
+                          <span className="text-[10px] hidden sm:inline font-bold uppercase tracking-wider">Select</span>
+                          <CornerDownLeft className="w-3.5 h-3.5" />
+                        </div>
                       )}
                     </div>
                   );

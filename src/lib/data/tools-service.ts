@@ -117,16 +117,34 @@ export async function getAllTools(includeDrafts: boolean = false): Promise<AIToo
                 query = query.eq('status', 'Published');
             }
             const { data, error } = await query.order('popularity', { ascending: false });
+            const local = getNormalizedLocalTools().filter(t => includeDrafts || (t.status === "Published" || t.status === "published" || !t.status));
+
             if (error) {
                 console.error("Error fetching all tools from Supabase, falling back to local data:", error);
-                const local = getNormalizedLocalTools();
-                return local.filter(t => includeDrafts || (t.status === "Published" || t.status === "published"));
+                return local;
             }
-            return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
+
+            const dbTools = (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
+            const seenSlugs = new Set<string>();
+            const merged: AITool[] = [];
+
+            for (const t of dbTools) {
+                if (t.slug) seenSlugs.add(t.slug.toLowerCase());
+                merged.push(t);
+            }
+
+            for (const t of local) {
+                if (t.slug && !seenSlugs.has(t.slug.toLowerCase())) {
+                    seenSlugs.add(t.slug.toLowerCase());
+                    merged.push(t);
+                }
+            }
+
+            return merged;
         } catch (err) {
             console.error("Error connecting to Supabase in getAllTools, falling back to local data:", err);
             const local = getNormalizedLocalTools();
-            return local.filter(t => includeDrafts || (t.status === "Published" || t.status === "published"));
+            return local.filter(t => includeDrafts || (t.status === "Published" || t.status === "published" || !t.status));
         }
     };
 
@@ -518,86 +536,154 @@ export async function getRelatedCandidatesPool(tool: AITool): Promise<AITool[]> 
   }
 }
 
+function normalizeSearchText(str: string): string {
+  return (str || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+function tokenizeSearchText(str: string): string[] {
+  return (str || '').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+}
+
 export async function searchTools(query: string): Promise<AITool[]> {
     if (!query || !query.trim()) return [];
-    const cleanQuery = query.trim().toLowerCase();
-    const queryTokens = cleanQuery.split(/\s+/).filter(t => t.length > 0);
+    const qRaw = query.trim().toLowerCase();
+    const qNorm = normalizeSearchText(query);
+    const qTokens = tokenizeSearchText(query);
+    if (!qNorm) return [];
+
+    const nonGenericTokens = qTokens.filter(t => t !== 'ai' && t !== 'tool' && t !== 'tools' && t !== 'app' && t !== 'software');
+    const cleanRoot = nonGenericTokens.join('');
+
+    // Load all tools (merged between Supabase and local JSON, 100% complete)
+    const allTools = await getAllTools(false);
 
     const scoreTool = (tool: AITool): number => {
         let score = 0;
-        const nameLower = (tool.name || '').toLowerCase();
-        const taglineLower = (tool.tagline || '').toLowerCase();
-        const descLower = (tool.description || '').toLowerCase();
-        const catLower = (tool.category || '').toLowerCase();
-        const tagsJoined = (tool.tags || []).join(' ').toLowerCase();
+        const name = tool.name || '';
+        const nameLower = name.toLowerCase();
+        const nameNorm = normalizeSearchText(name);
+        const nameTokens = tokenizeSearchText(name);
 
-        // Exact name match
-        if (nameLower === cleanQuery) score += 150;
-        else if (nameLower.startsWith(cleanQuery)) score += 90;
-        else if (nameLower.includes(cleanQuery)) score += 50;
+        const slug = tool.slug || '';
+        const slugLower = slug.toLowerCase();
+        const slugNorm = normalizeSearchText(slug);
 
-        // Tagline exact/substring
-        if (taglineLower.includes(cleanQuery)) score += 35;
+        const tagline = tool.tagline || '';
+        const tagLower = tagline.toLowerCase();
+        const tagNorm = normalizeSearchText(tagline);
 
-        // Category match
-        if (catLower.includes(cleanQuery)) score += 30;
+        const desc = tool.description || '';
+        const descLower = desc.toLowerCase();
+        const descNorm = normalizeSearchText(desc);
 
-        // Tags match
-        if (tagsJoined.includes(cleanQuery)) score += 30;
+        const cat = tool.category || '';
+        const catLower = cat.toLowerCase();
+        const catNorm = normalizeSearchText(cat);
 
-        // Multi-token matches
-        for (const token of queryTokens) {
-            if (nameLower.includes(token)) score += 25;
-            if (taglineLower.includes(token)) score += 15;
-            if (tagsJoined.includes(token)) score += 15;
-            if (catLower.includes(token)) score += 10;
-            if (descLower.includes(token)) score += 5;
+        const tags = Array.isArray(tool.tags) ? tool.tags : [];
+        const tagsJoined = tags.join(' ').toLowerCase();
+        const tagsNorm = normalizeSearchText(tagsJoined);
+
+        // 1. Literal & Normalized Exact Name/Slug Match (Highest tier)
+        if (nameLower === qRaw || slugLower === qRaw) {
+            score += 1000;
+        } else if (nameNorm === qNorm || slugNorm === qNorm) {
+            score += 900;
+        } else if (cleanRoot && (nameNorm === cleanRoot || slugNorm === cleanRoot)) {
+            score += 850; // Tool name matches root of "name ai" or "name app"
+        } else if (nameLower.startsWith(qRaw + ' ') || nameLower.startsWith(qRaw + ':') || nameLower.startsWith(qRaw + '-')) {
+            score += 450;
+        } else if (nameNorm.startsWith(qNorm) || slugNorm.startsWith(qNorm)) {
+            score += 400;
+        } else if (cleanRoot && (nameNorm.startsWith(cleanRoot) || slugNorm.startsWith(cleanRoot))) {
+            score += 350;
+        } else if (nameLower.startsWith(qRaw)) {
+            score += 300;
+        } else if (nameNorm.includes(qNorm) || slugNorm.includes(qNorm)) {
+            score += 250;
         }
 
-        // Popularity and verified boosts
-        if (tool.popularity) score += Math.min(tool.popularity / 100, 10);
-        if (tool.featured) score += 5;
-        if (tool.verified) score += 3;
+        // 2. Token Matches in Name / Slug
+        let matchedNameTokens = 0;
+        for (const t of qTokens) {
+            if (nameTokens.includes(t)) {
+                matchedNameTokens++;
+                score += 60;
+            } else if (nameTokens.some(nt => nt.startsWith(t))) {
+                matchedNameTokens++;
+                score += 40;
+            } else if (nameNorm.includes(t)) {
+                matchedNameTokens++;
+                score += 30;
+            }
+        }
+        if (qTokens.length > 1 && matchedNameTokens >= qTokens.length) {
+            score += 150;
+        }
+
+        // 3. Exact & Token Matches in Tags
+        const exactTagMatch = tags.some(t => {
+            const tNorm = normalizeSearchText(t);
+            return tNorm === qNorm || (cleanRoot.length > 2 && tNorm === cleanRoot);
+        });
+        if (exactTagMatch) {
+            score += 500;
+        } else if (tagsNorm.includes(qNorm)) {
+            score += 90;
+        } else {
+            for (const t of qTokens) {
+                if (t.length > 2 && tagsNorm.includes(t)) score += 20;
+            }
+        }
+
+        // 4. Matches in Tagline
+        if (tagLower.includes(qRaw)) {
+            score += 80;
+        } else if (tagNorm.includes(qNorm)) {
+            score += 60;
+        } else {
+            for (const t of qTokens) {
+                if (t.length > 2 && tagNorm.includes(t)) score += 15;
+            }
+        }
+
+        // 5. Matches in Category
+        if (catLower === qRaw || catNorm === qNorm) {
+            score += 120;
+        } else if (catLower.includes(qRaw) || catNorm.includes(qNorm)) {
+            score += 70;
+        } else {
+            for (const t of qTokens) {
+                if (t.length > 2 && catNorm.includes(t)) score += 15;
+            }
+        }
+
+        // 6. Matches in Description
+        if (descLower.includes(qRaw)) {
+            score += 25;
+        } else {
+            for (const t of qTokens) {
+                if (t.length > 2 && descNorm.includes(t)) score += 8;
+            }
+        }
+
+        // Tie-breaker quality signals
+        if (score > 0) {
+            if (tool.popularity) score += Math.min(tool.popularity / 20, 10);
+            if (tool.featured) score += 5;
+            if (tool.verified) score += 3;
+        }
 
         return score;
     };
 
-    try {
-        const { data, error } = await supabase
-            .from('tools')
-            .select(TOOL_SEARCH_FIELDS)
-            .or(`name.ilike.%${cleanQuery}%,description.ilike.%${cleanQuery}%,tagline.ilike.%${cleanQuery}%`)
-            .eq('status', 'Published')
-            .order('popularity', { ascending: false })
-            .limit(30);
-            
-        if (!error && data && data.length > 0) {
-            const mapped = data.map(mapDatabaseRowToAITool).filter(isValidTool);
-            return mapped.sort((a, b) => scoreTool(b) - scoreTool(a)).slice(0, 20);
-        }
-        
-        // Fallback to local scoring
-        const local = getNormalizedLocalTools();
-        const scored = local
-            .filter(t => (t.status === "Published" || t.status === "published"))
-            .map(t => ({ tool: t, score: scoreTool(t) }))
-            .filter(item => item.score > 0)
-            .sort((a, b) => b.score - a.score)
-            .map(item => item.tool);
-            
-        return scored.slice(0, 20);
-    } catch (err) {
-        console.error(`Error searching tools for query "${query}" from Supabase, falling back to local data:`, err);
-        const local = getNormalizedLocalTools();
-        const scored = local
-            .filter(t => (t.status === "Published" || t.status === "published"))
-            .map(t => ({ tool: t, score: scoreTool(t) }))
-            .filter(item => item.score > 0)
-            .sort((a, b) => b.score - a.score)
-            .map(item => item.tool);
-            
-        return scored.slice(0, 20);
-    }
+    const scored = allTools
+        .map(tool => ({ tool, score: scoreTool(tool) }))
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .map(item => item.tool);
+
+    return scored.slice(0, 24);
 }
 
 export async function getToolReviews(toolSlug: string): Promise<any[]> {

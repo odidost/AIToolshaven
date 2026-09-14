@@ -68,7 +68,7 @@ export function ChallengeWinnerBanner({
             </Link>
 
             <Link
-              href="/advertising"
+              href="/advertise"
               className="w-full flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-300 hover:text-white font-medium text-xs transition-colors border border-slate-700 text-center"
             >
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />

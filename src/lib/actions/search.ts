@@ -91,8 +91,8 @@ export async function searchCommandPaletteAction(query: string): Promise<Command
   const toolResults = await searchTools(cleanQuery);
   const mappedTools = toolResults.map(mapToPaletteItem);
 
-  // Return categories at the top followed by top ranked tools
-  return [...matchedCategories, ...mappedTools].slice(0, 8);
+  // Return categories at the top followed by top ranked tools (up to 14 results)
+  return [...matchedCategories, ...mappedTools].slice(0, 14);
 }
 
 export async function getInitialCommandPaletteSuggestionsAction(): Promise<CommandPaletteItem[]> {

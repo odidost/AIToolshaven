@@ -88,7 +88,7 @@ export function VendorComparisonCTA() {
                 </Link>
 
                 <Link
-                  href="/advertising"
+                  href="/advertise"
                   className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-700/70 hover:bg-slate-700 text-slate-200 font-semibold text-xs transition-colors border border-slate-600/60"
                 >
                   <span>Explore Sponsored Audits &amp; Ad Partnerships</span>

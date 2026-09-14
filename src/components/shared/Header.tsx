@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { CommandPalette } from './CommandPalette';
+import { MobileSearchTrigger } from './MobileSearchTrigger';
 import { BrandLogo } from './BrandLogo';
 import { PageContainer } from '../layout/PageContainer';
 
@@ -12,13 +13,16 @@ export async function Header() {
   return (
     <header className="w-full bg-background/80 backdrop-blur-md border-b border-border sticky top-0 z-40 transition-all">
       <PageContainer className="h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2" aria-label="AIToolsHaven Home">
-          <BrandLogo size={0.9} />
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-2" aria-label="AIToolsHaven Home">
+            <BrandLogo size={0.9} />
+          </Link>
+        </div>
         <div className="flex-1 max-w-md mx-8 relative hidden md:block">
           <CommandPalette />
         </div>
-        <nav className="flex items-center gap-4">
+        <nav className="flex items-center gap-3 sm:gap-4">
+          <MobileSearchTrigger />
           <Link
             href="/agency"
             className="text-xs sm:text-sm font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl hover:bg-slate-100/60"

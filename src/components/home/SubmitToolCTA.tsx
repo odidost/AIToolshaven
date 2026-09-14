@@ -62,7 +62,7 @@ export function SubmitToolCTA() {
             </span>
           </Link>
           <Link
-            href="/advertising"
+            href="/advertise"
             className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/5 px-10 py-5 font-bold text-white backdrop-blur-md transition-all duration-300 hover:bg-white/15 hover:-translate-y-1 hover:border-white/50 text-lg shadow-lg"
           >
             View Sponsorships

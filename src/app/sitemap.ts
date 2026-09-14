@@ -162,11 +162,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/contact", priority: 0.7, changeFrequency: "monthly" as const },
     { path: "/editorial-policy", priority: 0.7, changeFrequency: "monthly" as const },
     { path: "/affiliate-disclosure", priority: 0.7, changeFrequency: "monthly" as const },
-    { path: "/advertising", priority: 0.7, changeFrequency: "monthly" as const },
+    { path: "/advertise", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/media-kit", priority: 0.7, changeFrequency: "monthly" as const },
     { path: "/agency", priority: 0.7, changeFrequency: "monthly" as const },
     { path: "/privacy-policy", priority: 0.6, changeFrequency: "monthly" as const },
     { path: "/terms", priority: 0.6, changeFrequency: "monthly" as const },
+    { path: "/refund-policy", priority: 0.6, changeFrequency: "monthly" as const },
+    { path: "/cookie-policy", priority: 0.6, changeFrequency: "monthly" as const },
     { path: "/disclaimer", priority: 0.6, changeFrequency: "monthly" as const },
   ];
 

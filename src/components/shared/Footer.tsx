@@ -13,6 +13,7 @@ const footerLinks = {
     { label: "Trending Tools", href: "/trending-ai-tools" },
   ],
   "Company": [
+    { label: "Advertise", href: "/advertise" },
     { label: "AI Agency", href: "/agency" },
     { label: "About Us", href: "/about" },
     { label: "Blog & Guides", href: "/blog" },
@@ -26,6 +27,8 @@ const footerLinks = {
     { label: "Disclaimer", href: "/disclaimer" },
     { label: "Privacy Policy", href: "/privacy-policy" },
     { label: "Terms of Service", href: "/terms" },
+    { label: "Refund Policy", href: "/refund-policy" },
+    { label: "Cookie Policy", href: "/cookie-policy" },
   ],
 };
 
@@ -88,10 +91,12 @@ export function Footer() {
           <p className="text-xs text-on-surface-variant/80">
             &copy; {new Date().getFullYear()} AIToolsHaven AI Tools Discovery Hub. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-xs text-on-surface-variant">
+          <div className="flex items-center gap-6 text-xs text-on-surface-variant flex-wrap">
             <Link href="/blog" className="hover:text-primary transition-colors">Blog</Link>
             <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy</Link>
             <Link href="/terms" className="hover:text-primary transition-colors">Terms</Link>
+            <Link href="/refund-policy" className="hover:text-primary transition-colors">Refund Policy</Link>
+            <Link href="/cookie-policy" className="hover:text-primary transition-colors">Cookies</Link>
             <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
           </div>
         </div>
