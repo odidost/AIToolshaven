@@ -50,6 +50,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/workflows",
     "/goals",
     "/blog",
+    "/ai-cost-calculator",
     "/submit",
   ];
 

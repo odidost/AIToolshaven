@@ -1,0 +1,135 @@
+[
+  {
+    "id": "gpt-6-astra",
+    "openRouterId": "openai/gpt-6-astra",
+    "inputPerMillion": 10,
+    "outputPerMillion": 50,
+    "contextLength": 1050000
+  },
+  {
+    "id": "openai-o3",
+    "openRouterId": "openai/o3",
+    "inputPerMillion": 2,
+    "outputPerMillion": 8,
+    "contextLength": 200000
+  },
+  {
+    "id": "openai-o4-mini",
+    "openRouterId": "openai/o4-mini",
+    "inputPerMillion": 1.1,
+    "outputPerMillion": 4.4,
+    "contextLength": 200000
+  },
+  {
+    "id": "gpt-5-4-mini",
+    "openRouterId": "openai/gpt-5.4-mini",
+    "inputPerMillion": 0.75,
+    "outputPerMillion": 4.5,
+    "contextLength": 400000
+  },
+  {
+    "id": "gpt-4o",
+    "openRouterId": "openai/gpt-4o",
+    "inputPerMillion": 2.5,
+    "outputPerMillion": 10,
+    "contextLength": 128000
+  },
+  {
+    "id": "gpt-4o-mini",
+    "openRouterId": "openai/gpt-4o-mini",
+    "inputPerMillion": 0.15,
+    "outputPerMillion": 0.6,
+    "contextLength": 128000
+  },
+  {
+    "id": "claude-sonnet-5",
+    "openRouterId": "anthropic/claude-sonnet-5",
+    "inputPerMillion": 2,
+    "outputPerMillion": 10,
+    "contextLength": 1000000
+  },
+  {
+    "id": "claude-opus-5",
+    "openRouterId": "anthropic/claude-opus-5",
+    "inputPerMillion": 5,
+    "outputPerMillion": 25,
+    "contextLength": 1000000
+  },
+  {
+    "id": "claude-fable-5-1",
+    "openRouterId": "anthropic/claude-fable-5.1",
+    "inputPerMillion": 10,
+    "outputPerMillion": 50,
+    "contextLength": 1000000
+  },
+  {
+    "id": "claude-3-5-sonnet",
+    "openRouterId": "anthropic/claude-sonnet-4.5",
+    "inputPerMillion": 3,
+    "outputPerMillion": 15,
+    "contextLength": 1000000
+  },
+  {
+    "id": "claude-haiku-4-5",
+    "openRouterId": "anthropic/claude-haiku-4.5",
+    "inputPerMillion": 1,
+    "outputPerMillion": 5,
+    "contextLength": 200000
+  },
+  {
+    "id": "gemini-3-8-flash",
+    "openRouterId": "google/gemini-3.8-flash",
+    "inputPerMillion": 0.75,
+    "outputPerMillion": 3.75,
+    "contextLength": 1048576
+  },
+  {
+    "id": "gemini-3-5-flash",
+    "openRouterId": "google/gemini-3.5-flash",
+    "inputPerMillion": 1.5,
+    "outputPerMillion": 9,
+    "contextLength": 1048576
+  },
+  {
+    "id": "gemini-3-5-flash-lite",
+    "openRouterId": "google/gemini-3.5-flash-lite",
+    "inputPerMillion": 0.3,
+    "outputPerMillion": 2.5,
+    "contextLength": 1048576
+  },
+  {
+    "id": "gemini-3-1-pro-preview",
+    "openRouterId": "google/gemini-3.1-pro-preview",
+    "inputPerMillion": 2,
+    "outputPerMillion": 12,
+    "contextLength": 1048576
+  },
+  {
+    "id": "deepseek-v3",
+    "openRouterId": "deepseek/deepseek-chat",
+    "inputPerMillion": 0.2574,
+    "outputPerMillion": 1.0287,
+    "contextLength": 163840
+  },
+  {
+    "id": "deepseek-r1",
+    "openRouterId": "deepseek/deepseek-r1",
+    "inputPerMillion": 0.7,
+    "outputPerMillion": 2.5,
+    "contextLength": 64000
+  },
+  {
+    "id": "llama-3-3-70b",
+    "openRouterId": "meta-llama/llama-3.3-70b-instruct",
+    "inputPerMillion": 0.1,
+    "outputPerMillion": 0.32,
+    "contextLength": 131072
+  },
+  {
+    "id": "llama-3-1-8b",
+    "openRouterId": "meta-llama/llama-3.1-8b-instruct",
+    "inputPerMillion": 0.05,
+    "outputPerMillion": 0.08,
+    "contextLength": 131072
+  }
+]

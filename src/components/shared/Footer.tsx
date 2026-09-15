@@ -9,7 +9,8 @@ const footerLinks = {
     { label: "AI Workflows", href: "/workflows" },
     { label: "Monetization Goals", href: "/goals" },
     { label: "AI Tool Recommender", href: "/ai-tool-recommender" },
-    { label: "Compare Tools", href: "/compare" },
+    { label: "Compare Tools", href: "/compare-tools" },
+    { label: "AI Cost Calculator", href: "/ai-cost-calculator" },
     { label: "Trending Tools", href: "/trending-ai-tools" },
   ],
   "Company": [

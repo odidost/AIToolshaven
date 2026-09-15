@@ -20,7 +20,7 @@ if (fs.existsSync(envPath)) {
   });
 }
 
-import { middleware } from '../src/middleware';
+import { proxy as middleware } from '../src/proxy';
 import { NextRequest } from 'next/server';
 
 interface TestCase {

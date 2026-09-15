@@ -104,6 +104,21 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/token-calculator',
+        destination: '/ai-cost-calculator',
+        permanent: true,
+      },
+      {
+        source: '/llm-pricing-calculator',
+        destination: '/ai-cost-calculator',
+        permanent: true,
+      },
+      {
+        source: '/ai-token-calculator',
+        destination: '/ai-cost-calculator',
+        permanent: true,
+      },
+      {
         source: '/free-ai-tools',
         destination: '/freemium-ai-tools',
         permanent: true,

@@ -25,7 +25,7 @@ export async function Header() {
           <MobileSearchTrigger />
           <Link
             href="/agency"
-            className="text-xs sm:text-sm font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl hover:bg-slate-100/60"
+            className="hidden sm:flex text-xs sm:text-sm font-semibold text-slate-700 hover:text-primary transition-colors items-center gap-1.5 px-2.5 py-1.5 rounded-xl hover:bg-slate-100/60"
           >
             <span>AI Agency</span>
             <span className="font-mono text-[10px] font-bold px-1.5 py-0.2 rounded bg-primary/10 text-primary uppercase">
