@@ -5,18 +5,15 @@ import { getToolsByCategoryId } from "@/lib/data/tools-service";
 import { getCategoryTheme } from "@/lib/data/categoryThemes";
 
 import { CategoryCapsuleBar } from "@/components/shared/CategoryCapsuleBar";
-import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { ToolGridWithFilters } from "@/components/shared/ToolGridWithFilters";
 import { CategoryHeroSpotlight } from "@/components/category/CategoryHeroSpotlight";
 import { CategoryHero } from "@/components/category/CategoryHero";
-import { CategoryBackground } from "@/components/category/CategoryBackground";
 import { CategoryFAQ } from "@/components/category/CategoryFAQ";
 import { CategoryGuide } from "@/components/category/CategoryGuide";
 import { CategoryRelatedGuides } from "@/components/category/CategoryRelatedGuides";
 import { EEATFooter } from "@/components/category/EEATFooter";
 import { InternalLinks } from "@/components/category/InternalLinks";
 import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
-import { AuthorAttribution } from "@/components/shared/AuthorAttribution";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Metadata } from "next";
 import { SocialLinks } from "@/components/shared/SocialLinks";
@@ -116,11 +113,7 @@ export default async function CategoryPage({
   const categoryTools = await getToolsByCategoryId(category.id);
   const theme = getCategoryTheme(decodedSlug);
 
-  // Calculate some dynamic stats for the premium header
-  const totalReviews = categoryTools.reduce((acc, tool) => acc + (tool.reviewCount || 0), 0);
-  const avgRating = categoryTools.length 
-    ? (categoryTools.reduce((acc, tool) => acc + (tool.rating || 0), 0) / categoryTools.length).toFixed(1) 
-    : "N/A";
+
   const hasGuide = Boolean(categoryGuides[decodedSlug] || categoryGuides[category.slug]);
   const activeFaqs = (hasGuide && (guideFaqs[decodedSlug] || guideFaqs[category.slug]))
     ? (guideFaqs[decodedSlug] || guideFaqs[category.slug])
@@ -129,7 +122,7 @@ export default async function CategoryPage({
   const faqSchema = activeFaqs && activeFaqs.length > 0 ? {
     "@type": "FAQPage",
     "@id": `${siteConfig.baseUrl}/category/${category.slug}#faq`,
-    mainEntity: activeFaqs.map((item: any) => ({
+    mainEntity: activeFaqs.map((item: { question: string; answer: string }) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: {
@@ -216,40 +209,32 @@ export default async function CategoryPage({
   const parentBreadcrumb = parentCategory ? [{ label: parentCategory.name, href: `/category/${parentCategory.slug}` }] : [];
 
   return (
-    <PageContainer
-      as="main"
-      className="py-12 md:py-16 relative"
+    <main
+      className="relative min-h-screen bg-surface"
       style={{ '--category-accent': theme.accentColors.cssVar } as React.CSSProperties}
     >
       <StructuredData data={jsonLd} />
-      {/* Dynamic Category Page Background */}
-      {['coding-assistants', 'productivity'].includes(slug) && <BackgroundPattern type="workflow" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
-      {['image-generation', 'video-creation', 'audio-voice'].includes(slug) && <BackgroundPattern type="sparkles" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
-      {['text-generation', 'marketing-sales'].includes(slug) && <BackgroundPattern type="dots" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
-      {/* Breadcrumb */}
-      <nav className="mb-8">
-        <Breadcrumbs
-          items={[
-            { label: "Categories", href: "/categories" },
-            ...parentBreadcrumb,
-            { label: category.name },
-          ]}
-        />
-      </nav>
 
-      {/* Modernized Glowing Category Hero */}
+      {/* Full-Width Commercial Category Hero Banner */}
       <CategoryHero 
         category={category} 
         categoryTools={categoryTools} 
         theme={theme} 
         hasGuide={hasGuide} 
+        parentBreadcrumb={parentBreadcrumb}
       />
 
-      {/* Category Navigation */}
-      <section className="mb-12">
-        <h3 className="text-[13px] font-bold text-on-surface-variant uppercase tracking-[0.2em] mb-4">Explore other categories</h3>
-        <CategoryCapsuleBar activeSlug={category.slug} />
-      </section>
+      <PageContainer className="py-10 md:py-14 relative">
+        {/* Dynamic Category Page Background */}
+        {['coding-assistants', 'productivity'].includes(slug) && <BackgroundPattern type="workflow" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
+        {['image-generation', 'video-creation', 'audio-voice'].includes(slug) && <BackgroundPattern type="sparkles" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
+        {['text-generation', 'marketing-sales'].includes(slug) && <BackgroundPattern type="dots" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
+
+        {/* Category Navigation */}
+        <section className="mb-12">
+          <h3 className="text-[13px] font-bold text-on-surface-variant uppercase tracking-[0.2em] mb-4">Explore other categories</h3>
+          <CategoryCapsuleBar activeSlug={category.slug} />
+        </section>
 
       {/* Category Top Editorial Spotlight */}
       <CategoryHeroSpotlight 
@@ -290,5 +275,6 @@ export default async function CategoryPage({
       </section>
 
     </PageContainer>
+    </main>
   );
 }

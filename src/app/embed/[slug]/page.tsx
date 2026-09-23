@@ -16,6 +16,8 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+export const revalidate = 86400;
+
 export default async function EmbedPage({ params }: Props) {
   const { slug } = await params;
   const tool = await getToolBySlug(slug);

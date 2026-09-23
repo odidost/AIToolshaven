@@ -50,6 +50,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 86400;
+
 export default function AiCostCalculatorPage() {
   const currentMonthYear = new Intl.DateTimeFormat("en-US", {
     month: "long",

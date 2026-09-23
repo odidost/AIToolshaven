@@ -3,6 +3,9 @@ import Link from 'next/link';
 import { siteConfig } from '@/lib/config/site';
 import { StructuredData } from '@/components/shared/StructuredData';
 import { SocialLinks } from '@/components/shared/SocialLinks';
+import { PageContainer } from '@/components/layout/PageContainer';
+import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
+import { AdvertiseCampaignBuilder } from '@/components/advertise/AdvertiseCampaignBuilder';
 import {
   TrendingUp,
   FileText,
@@ -26,6 +29,7 @@ import {
   Globe2,
   ChevronDown,
   Ban,
+  Zap,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -42,6 +46,7 @@ export const metadata: Metadata = {
     'dofollow tech backlink',
     'ai blog guest post',
     'buy ai software ads',
+    'ai media kit 2026',
   ],
   alternates: {
     canonical: `${siteConfig.baseUrl}/advertise`,
@@ -71,30 +76,32 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 86400;
+
 const audienceMetrics = [
   {
     label: 'Monthly Active Buyers',
     value: '50,000+',
-    subtext: 'High-intent tech professionals & founders',
+    subtext: 'High-intent tech professionals, engineers & founders',
     icon: Users,
     color: 'text-primary',
-    bg: 'bg-primary/10',
+    bg: 'bg-primary/10 border-primary/20',
   },
   {
     label: 'Commercial Purchase Intent',
     value: '78%',
-    subtext: 'Actively searching to buy or replace software',
+    subtext: 'Actively searching to adopt or upgrade software',
     icon: Compass,
     color: 'text-emerald-500',
-    bg: 'bg-emerald-500/10',
+    bg: 'bg-emerald-500/10 border-emerald-500/20',
   },
   {
     label: 'Tier-1 Geographic Traffic',
     value: '80%+',
     subtext: 'United States (48%), EU (18%), UK (14%), CA/AU (12%)',
-    icon: MapPin,
+    icon: Globe2,
     color: 'text-blue-500',
-    bg: 'bg-blue-500/10',
+    bg: 'bg-blue-500/10 border-blue-500/20',
   },
   {
     label: 'Average Dwell Duration',
@@ -102,7 +109,7 @@ const audienceMetrics = [
     subtext: '4.2 pages viewed per visit across guides & comparisons',
     icon: Flame,
     color: 'text-amber-500',
-    bg: 'bg-amber-500/10',
+    bg: 'bg-amber-500/10 border-amber-500/20',
   },
 ];
 
@@ -110,7 +117,7 @@ const seoPackages = [
   {
     id: 'link-insertion',
     name: 'Contextual Link Insertion',
-    badge: 'Introductory Offer',
+    badge: 'Fastest Indexing',
     price: '$49',
     period: 'one-time payment',
     highlight: false,
@@ -353,381 +360,410 @@ export default function AdvertisePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground font-sans overflow-x-clip max-w-full">
       <StructuredData data={jsonLd} />
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-4 border-b border-black/5 dark:border-slate-800 mesh-bg">
-        <div className="absolute inset-0 bg-white/50 dark:bg-slate-950/70 backdrop-blur-[2px] z-0"></div>
-
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-primary/20 text-slate-800 dark:text-slate-200 px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold mb-8 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
-            <span>2026 Media Kit &amp; Rates &bull; 50k+ Monthly Buyers &bull; Direct Stripe Checkout</span>
+      <PageContainer>
+        <div className="pt-20 pb-16 md:pt-28 md:pb-24 space-y-16 max-w-full overflow-x-clip">
+          {/* Breadcrumbs Navigation */}
+          <div className="max-w-4xl mx-auto">
+            <Breadcrumbs items={[{ label: "Advertise & Media Kit" }]} />
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1] text-slate-900 dark:text-white">
-            Advertise on{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-rose-500 to-orange-500">
-              AIToolsHaven
-            </span>
-          </h1>
+          {/* Hero Header with Ambient Radial Glow */}
+          <header className="relative max-w-3xl mx-auto text-center space-y-5 overflow-x-clip">
+            {/* Ambient Background Radial Glow */}
+            <div 
+              className="absolute -top-16 left-1/2 -translate-x-1/2 w-[min(600px,90vw)] h-[300px] bg-gradient-to-br from-primary/15 via-accent/10 to-transparent blur-3xl -z-10 pointer-events-none rounded-full" 
+              aria-hidden="true" 
+            />
 
-          <p className="text-lg sm:text-xl md:text-2xl text-foreground/75 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
-            Put your software and brand directly in front of <strong>50,000+ tech founders, engineers, and AI buyers</strong> actively researching software to purchase. Transparent rates, permanent dofollow SEO value, and zero hidden fees.
-          </p>
+            {/* Live Ticker Pill Badge */}
+            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-surface-elevated/80 border border-primary/20 backdrop-blur-md text-xs font-semibold text-foreground shadow-2xs">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span className="font-mono text-primary font-bold">2026 LIVE MEDIA KIT</span>
+              <span className="text-on-surface-variant">&bull;</span>
+              <span className="text-on-surface-variant">50k+ Verified Monthly Buyers</span>
+              <span className="text-on-surface-variant">&bull;</span>
+              <span className="text-on-surface-variant">Direct Stripe Checkout</span>
+            </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="#pricing"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-rose-600 text-white px-8 py-4 rounded-full font-bold text-base transition-all duration-200 shadow-lg shadow-primary/25 hover:scale-105"
-            >
-              <span>View Pricing &amp; Packages</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
-              href="mailto:aitoolshaven@gmail.com?subject=Advertising%20Inquiry%20-%20AIToolsHaven"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-foreground px-8 py-4 rounded-full font-bold text-base hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm"
-            >
-              <span>Contact Advertising Desk</span>
-              <Send className="w-4 h-4 text-primary" />
-            </a>
-          </div>
-        </div>
-      </section>
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] text-foreground">
+              Advertise on{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-rose-500 to-orange-500">
+                AIToolsHaven
+              </span>
+            </h1>
 
-      {/* Verified Traffic & Audience Metrics Bar */}
-      <section className="py-16 px-4 bg-slate-50/70 dark:bg-slate-900/50 border-b border-black/5 dark:border-slate-800">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-xs uppercase font-extrabold tracking-widest text-primary mb-1">
-              Verified Traffic &amp; Demographic Data
+            <p className="text-sm sm:text-base md:text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+              Put your software and brand directly in front of <strong>50,000+ tech founders, engineers, and AI buyers</strong> actively researching tools to purchase. Transparent rates, permanent dofollow SEO equity, and zero hidden renewal fees.
             </p>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
-              Why Brands &amp; Founders Choose AIToolsHaven
-            </h2>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {audienceMetrics.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={idx}
-                  className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:border-primary/40 transition-colors"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-bold text-foreground/70 uppercase tracking-wider">
-                      {item.label}
-                    </span>
-                    <div className={`w-9 h-9 rounded-xl ${item.bg} flex items-center justify-center ${item.color}`}>
-                      <Icon className="w-5 h-5" />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-1">
-                      {item.value}
-                    </div>
-                    <p className="text-xs text-foreground/60 leading-relaxed">{item.subtext}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Professional Role Breakdown Pills */}
-          <div className="mt-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <Briefcase className="w-5 h-5 text-primary shrink-0" />
-                <span className="font-bold text-sm text-slate-900 dark:text-white">
-                  Audience Breakdown by Role:
-                </span>
-              </div>
-              <div className="flex flex-wrap items-center gap-3 text-xs">
-                <span className="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 font-semibold text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
-                  Tech Leads &amp; Engineers: <strong>44%</strong>
-                </span>
-                <span className="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 font-semibold text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
-                  Marketing &amp; Growth: <strong>28%</strong>
-                </span>
-                <span className="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 font-semibold text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
-                  Founders &amp; C-Suite: <strong>18%</strong>
-                </span>
-                <span className="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 font-semibold text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
-                  Enterprise Ops: <strong>10%</strong>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SEO & CONTENT ADVERTISING: GUEST POSTS & LINK INSERTIONS */}
-      <section id="pricing" className="py-24 px-4 relative">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-              <Link2 className="w-3.5 h-3.5" />
-              SEO &amp; Content Placements
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              Guest Posts &amp; Link Insertions
-            </h2>
-            <p className="text-foreground/70 text-base sm:text-lg mt-3">
-              Permanent, high-authority contextual links that transfer powerful search engine equity and put your brand in front of buying decision-makers.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-            {seoPackages.map((pkg) => {
-              const isPopular = pkg.highlight;
-
-              return (
-                <div
-                  key={pkg.id}
-                  className={`flex flex-col h-full rounded-3xl p-8 transition-all duration-300 ${
-                    isPopular
-                      ? 'bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-950 border-2 border-primary shadow-2xl shadow-primary/15 relative lg:-translate-y-2'
-                      : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md'
-                  }`}
-                >
-                  {isPopular && (
-                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-orange-500 text-white px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider shadow-md">
-                      {pkg.badge}
-                    </div>
-                  )}
-
-                  {!isPopular && (
-                    <div className="inline-block self-start bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold px-3 py-1 rounded-full mb-4">
-                      {pkg.badge}
-                    </div>
-                  )}
-
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-1 mb-2">
-                    {pkg.name}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-foreground/70 min-h-[48px] leading-relaxed mb-6">
-                    {pkg.description}
-                  </p>
-
-                  {/* Price */}
-                  <div className="flex items-baseline gap-2 pb-6 border-b border-black/10 dark:border-slate-800 mb-6">
-                    <span className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white">
-                      {pkg.price}
-                    </span>
-                    <span className="text-xs font-bold uppercase tracking-wider text-foreground/50">
-                      {pkg.period}
-                    </span>
-                  </div>
-
-                  {/* Ideal for */}
-                  <div className="mb-6 p-3.5 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-100 dark:border-slate-800">
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">
-                      Best For:
-                    </p>
-                    <p className="text-xs text-foreground/70 leading-relaxed">{pkg.idealFor}</p>
-                  </div>
-
-                  {/* Features */}
-                  <ul className="space-y-3 mb-8 flex-grow">
-                    {pkg.features.map((feat, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground/80">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA */}
-                  <a
-                    href={pkg.ctaHref}
-                    className={`w-full py-4 rounded-xl font-bold text-sm text-center transition-all duration-200 mt-auto flex items-center justify-center gap-2 ${
-                      isPopular
-                        ? 'bg-primary hover:bg-rose-600 text-white shadow-lg shadow-primary/25 hover:scale-[1.02]'
-                        : 'bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100'
-                    }`}
-                  >
-                    <span>{pkg.ctaText}</span>
-                    <Send className="w-4 h-4" />
-                  </a>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Special Founder Bundle Callout */}
-          <div className="mt-12 bg-gradient-to-r from-primary/10 via-rose-500/10 to-orange-500/10 border border-primary/20 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
-            <div className="space-y-1 text-center md:text-left">
-              <div className="inline-flex items-center gap-2 bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
-                <Sparkles className="w-3.5 h-3.5" />
-                Special Founder Bundle Deal
-              </div>
-              <h3 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white">
-                Directory Growth Listing + Contextual Link Insertion
-              </h3>
-              <p className="text-xs md:text-sm text-foreground/70 max-w-2xl leading-relaxed">
-                Get your tool listed with permanent category placement, priority review, verified badge, AND 1 permanent contextual dofollow backlink inside a top ranking article or guide.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 text-center md:text-right">
-              <div>
-                <div className="text-3xl font-black text-slate-900 dark:text-white">$119</div>
-                <div className="text-[11px] text-foreground/50 font-bold uppercase line-through">$149 regular value</div>
-              </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
               <a
-                href="mailto:aitoolshaven@gmail.com?subject=Founder%20Bundle%20Inquiry%20($119)%20-%20AIToolsHaven"
-                className="bg-primary hover:bg-rose-600 text-white font-bold text-xs md:text-sm px-6 py-3.5 rounded-xl transition-all shadow-md shadow-primary/25 hover:scale-105 whitespace-nowrap"
+                href="#campaign-builder"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-rose-600 text-white px-7 py-3.5 rounded-2xl font-bold text-xs sm:text-sm transition-all duration-200 shadow-lg shadow-primary/25 hover:scale-[1.02] cursor-pointer"
               >
-                Claim Bundle ($119)
+                <span>Interactive Campaign Builder</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                href="mailto:aitoolshaven@gmail.com?subject=Advertising%20Inquiry%20-%20AIToolsHaven"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-surface border border-border text-foreground hover:border-primary/40 px-7 py-3.5 rounded-2xl font-bold text-xs sm:text-sm transition-all shadow-2xs"
+              >
+                <span>Email Advertising Desk</span>
+                <Send className="w-4 h-4 text-primary" />
               </a>
             </div>
-          </div>
-        </div>
-      </section>
+          </header>
 
-      {/* DISPLAY & CATEGORY SPONSORSHIPS */}
-      <section className="py-20 px-4 bg-slate-50/60 dark:bg-slate-900/40 border-y border-black/5 dark:border-slate-800">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-1.5 bg-blue-500/10 text-blue-600 dark:text-blue-400 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-              <Layers className="w-3.5 h-3.5" />
-              Sponsorships &amp; Direct Placements
+          {/* ============================================================= */}
+          {/* VERIFIED AUDIENCE & TRAFFIC METRICS HUD                       */}
+          {/* ============================================================= */}
+          <div className="space-y-6">
+            <div className="text-center max-w-2xl mx-auto space-y-1">
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-primary">
+                VERIFIED TRAFFIC &amp; DEMOGRAPHICS
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-black text-foreground tracking-tight">
+                Why Software Brands Choose AIToolsHaven
+              </h2>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
-              Category Takeovers &amp; High-Impact Banners
-            </h2>
-            <p className="text-foreground/70 text-sm sm:text-base mt-2">
-              Own prime real estate across the directory where software buyers evaluate options side-by-side.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {sponsorshipPlacements.map((placement, index) => {
-              const Icon = placement.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:border-primary/40 transition-all duration-300"
-                >
-                  <div>
-                    <div className="flex items-center justify-between gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                        <Icon className="w-6 h-6" />
-                      </div>
-                      <div className="text-right">
-                        <div className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
-                          {placement.price}
-                        </div>
-                        <div className="text-[11px] font-bold uppercase text-foreground/50 tracking-wider">
-                          {placement.period}
-                        </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {audienceMetrics.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="p-5 rounded-3xl bg-surface border border-border shadow-2xs flex flex-col justify-between hover:border-primary/40 transition-all"
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-xs font-mono font-bold text-on-surface-variant uppercase tracking-wider">
+                        {item.label}
+                      </span>
+                      <div className={`w-9 h-9 rounded-2xl border flex items-center justify-center ${item.bg} ${item.color}`}>
+                        <Icon className="w-4 h-4" />
                       </div>
                     </div>
-
-                    <div className="inline-block bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-[11px] font-bold px-2.5 py-1 rounded-full mb-3">
-                      {placement.badge}
-                    </div>
-
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                      {placement.title}
-                    </h3>
-
-                    <p className="text-sm text-foreground/70 leading-relaxed mb-4">
-                      {placement.description}
-                    </p>
-
-                    <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-100 dark:border-slate-800 text-xs text-foreground/60 mb-6">
-                      <strong className="text-foreground/90">Specifications:</strong> {placement.specs}
+                    <div>
+                      <div className="text-3xl font-black text-foreground tracking-tight mb-1">
+                        {item.value}
+                      </div>
+                      <p className="text-xs text-on-surface-variant leading-relaxed">{item.subtext}</p>
                     </div>
                   </div>
-
-                  <a
-                    href={`mailto:aitoolshaven@gmail.com?subject=${encodeURIComponent(placement.ctaSubject)}`}
-                    className="w-full py-3 px-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary font-bold text-xs sm:text-sm text-foreground hover:text-primary transition-colors flex items-center justify-center gap-2"
-                  >
-                    <span>Inquire About Availability</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* COMPARISON: AIToolshaven vs Other Channels */}
-      <section className="py-20 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-              <BarChart3 className="w-3.5 h-3.5" />
-              ROI &amp; Efficiency Breakdown
+                );
+              })}
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
-              Why Advertising on AIToolsHaven Delivers Higher ROI
-            </h2>
-            <p className="text-foreground/70 text-sm sm:text-base mt-2">
-              Unlike generic social media or expensive pay-per-click ad networks, our audience lands on AIToolsHaven with intentional commercial readiness.
-            </p>
-          </div>
 
-          <div className="overflow-x-auto bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
-            <table className="w-full text-left border-collapse text-xs sm:text-sm">
-              <thead>
-                <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 text-slate-800 dark:text-slate-200">
-                  <th className="py-4 px-6 font-bold">Channel Dimension</th>
-                  <th className="py-4 px-6 font-bold text-primary">AIToolsHaven</th>
-                  <th className="py-4 px-6 font-bold text-slate-500">Google / Meta Ads</th>
-                  <th className="py-4 px-6 font-bold text-slate-500">Product Hunt Launch</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-600 dark:text-slate-400">
-                {comparisonChannels.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
-                    <td className="py-4 px-6 font-bold text-slate-900 dark:text-white whitespace-nowrap">
-                      {row.dimension}
-                    </td>
-                    <td className="py-4 px-6 font-semibold text-emerald-600 dark:text-emerald-400">
-                      {row.aitoolshaven}
-                    </td>
-                    <td className="py-4 px-6">{row.googleAds}</td>
-                    <td className="py-4 px-6">{row.productHunt}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* EDITORIAL STANDARDS & PROHIBITED CONTENT */}
-      <section className="py-20 px-4 bg-slate-50/60 dark:bg-slate-900/40 border-y border-black/5 dark:border-slate-800">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
-                <ShieldCheck className="w-5 h-5" />
+            {/* Professional Role Breakdown Bar */}
+            <div className="p-5 rounded-3xl bg-surface border border-border shadow-2xs">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="flex items-center space-x-2.5">
+                  <div className="p-2 rounded-xl bg-primary/10 text-primary border border-primary/20">
+                    <Briefcase className="w-4 h-4" />
+                  </div>
+                  <span className="font-bold text-xs sm:text-sm text-foreground">
+                    Audience Breakdown by Role:
+                  </span>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 text-xs">
+                  <span className="px-3 py-1.5 rounded-xl bg-surface-elevated font-semibold text-foreground border border-border">
+                    Tech Leads &amp; Devs: <strong className="text-primary">44%</strong>
+                  </span>
+                  <span className="px-3 py-1.5 rounded-xl bg-surface-elevated font-semibold text-foreground border border-border">
+                    Marketing &amp; Growth: <strong className="text-accent">28%</strong>
+                  </span>
+                  <span className="px-3 py-1.5 rounded-xl bg-surface-elevated font-semibold text-foreground border border-border">
+                    Founders &amp; C-Suite: <strong className="text-emerald-500">18%</strong>
+                  </span>
+                  <span className="px-3 py-1.5 rounded-xl bg-surface-elevated font-semibold text-foreground border border-border">
+                    Enterprise Ops: <strong>10%</strong>
+                  </span>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
-                  Editorial &amp; Quality Guidelines
+            </div>
+          </div>
+
+          {/* ============================================================= */}
+          {/* INTERACTIVE CAMPAIGN BUILDER & ROI ESTIMATOR (LATEST UPGRADE)  */}
+          {/* ============================================================= */}
+          <div id="campaign-builder" className="scroll-mt-24">
+            <AdvertiseCampaignBuilder />
+          </div>
+
+          {/* ============================================================= */}
+          {/* DETAILED SEO PACKAGES: GUEST POSTS & LINK INSERTIONS          */}
+          {/* ============================================================= */}
+          <div className="space-y-8">
+            <div className="text-center max-w-3xl mx-auto space-y-2">
+              <div className="inline-flex items-center space-x-1.5 bg-primary/10 text-primary border border-primary/20 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                <Link2 className="w-3.5 h-3.5" />
+                <span>SEO &amp; Content Authority Packages</span>
+              </div>
+              <h2 className="text-2xl sm:text-4xl font-black text-foreground tracking-tight">
+                Guest Posts &amp; Link Insertions
+              </h2>
+              <p className="text-on-surface-variant text-xs sm:text-sm leading-relaxed">
+                Permanent, high-authority contextual links that transfer powerful search engine equity and put your software directly in front of commercial decision-makers.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+              {seoPackages.map((pkg) => {
+                const isPopular = pkg.highlight;
+
+                return (
+                  <div
+                    key={pkg.id}
+                    className={`flex flex-col h-full rounded-3xl p-6 sm:p-8 transition-all duration-300 relative overflow-hidden ${
+                      isPopular
+                        ? 'bg-gradient-to-b from-surface via-surface to-surface-elevated border-2 border-primary/70 shadow-xl shadow-primary/10 ring-2 ring-primary/20'
+                        : 'bg-surface border border-border hover:border-primary/40 shadow-xs'
+                    }`}
+                  >
+                    {isPopular && (
+                      <div className="absolute -top-12 -right-12 w-32 h-32 bg-primary/15 blur-2xl rounded-full pointer-events-none" />
+                    )}
+
+                    <div className="flex items-center justify-between mb-3">
+                      <span className={`text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full border ${
+                        isPopular
+                          ? 'bg-primary text-white border-primary shadow-xs'
+                          : 'bg-surface-secondary border-border text-on-surface-variant'
+                      }`}>
+                        {pkg.badge}
+                      </span>
+                      <span className="text-xs text-on-surface-variant font-mono">100% Dofollow</span>
+                    </div>
+
+                    <h3 className="text-xl font-black text-foreground mb-2">
+                      {pkg.name}
+                    </h3>
+
+                    <p className="text-xs text-on-surface-variant leading-relaxed mb-6 min-h-[48px]">
+                      {pkg.description}
+                    </p>
+
+                    {/* Price Header */}
+                    <div className="flex items-baseline space-x-2 pb-5 border-b border-border/60 mb-5">
+                      <span className="text-3xl sm:text-4xl font-black text-foreground">
+                        {pkg.price}
+                      </span>
+                      <span className="text-xs font-mono font-bold uppercase tracking-wider text-on-surface-variant">
+                        {pkg.period}
+                      </span>
+                    </div>
+
+                    {/* Best For Tag */}
+                    <div className="mb-6 p-3 bg-surface-elevated rounded-2xl border border-border/80 text-xs">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-primary block mb-0.5">
+                        BEST FOR:
+                      </span>
+                      <p className="text-foreground/80 leading-relaxed text-[11px]">{pkg.idealFor}</p>
+                    </div>
+
+                    {/* Features List */}
+                    <ul className="space-y-2.5 mb-8 flex-grow">
+                      {pkg.features.map((feat, i) => (
+                        <li key={i} className="flex items-start space-x-2 text-xs text-foreground/85">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* CTA Button */}
+                    <a
+                      href={pkg.ctaHref}
+                      className={`w-full py-3.5 rounded-2xl font-bold text-xs sm:text-sm text-center transition-all duration-200 mt-auto flex items-center justify-center space-x-2 cursor-pointer ${
+                        isPopular
+                          ? 'bg-primary hover:bg-rose-600 text-white shadow-md shadow-primary/25 hover:scale-[1.02]'
+                          : 'bg-surface-elevated hover:bg-surface-secondary text-foreground border border-border hover:border-primary/40'
+                      }`}
+                    >
+                      <span>{pkg.ctaText}</span>
+                      <Send className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Special Founder Bundle Callout */}
+            <div className="relative overflow-hidden bg-gradient-to-r from-primary/10 via-accent/10 to-orange-500/10 border border-primary/20 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+              <div className="space-y-1.5 text-center md:text-left">
+                <div className="inline-flex items-center space-x-1.5 bg-primary/20 text-primary border border-primary/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-1">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>SPECIAL FOUNDER BUNDLE DEAL</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-black text-foreground">
+                  Directory Growth Listing + Contextual Link Insertion
                 </h3>
-                <p className="text-xs text-foreground/60">
-                  To protect our readers, all content is manually reviewed prior to publishing.
+                <p className="text-xs sm:text-sm text-on-surface-variant max-w-2xl leading-relaxed">
+                  Get your software listed with permanent category placement, priority review, verified badge, AND 1 permanent contextual dofollow backlink inside a top ranking article or guide.
                 </p>
               </div>
+              <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 text-center md:text-right">
+                <div>
+                  <div className="text-3xl font-black text-foreground">$119</div>
+                  <div className="text-[11px] text-on-surface-variant font-bold uppercase line-through">$149 regular value</div>
+                </div>
+                <a
+                  href="mailto:aitoolshaven@gmail.com?subject=Founder%20Bundle%20Inquiry%20($119)%20-%20AIToolsHaven"
+                  className="bg-primary hover:bg-rose-600 text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-2xl transition-all shadow-md shadow-primary/25 hover:scale-105 whitespace-nowrap cursor-pointer"
+                >
+                  Claim Bundle ($119)
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* ============================================================= */}
+          {/* DISPLAY & CATEGORY SPONSORSHIPS                               */}
+          {/* ============================================================= */}
+          <div className="space-y-8">
+            <div className="text-center max-w-3xl mx-auto space-y-2">
+              <div className="inline-flex items-center space-x-1.5 bg-blue-500/10 text-blue-500 border border-blue-500/20 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                <Layers className="w-3.5 h-3.5" />
+                <span>High-Impact Sponsorships</span>
+              </div>
+              <h2 className="text-2xl sm:text-4xl font-black text-foreground tracking-tight">
+                Category Takeovers &amp; Prime Banners
+              </h2>
+              <p className="text-on-surface-variant text-xs sm:text-sm leading-relaxed">
+                Own prime real estate across the directory where software buyers evaluate options side-by-side.
+              </p>
             </div>
 
-            <div className="space-y-6 text-sm text-foreground/80 leading-relaxed">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {sponsorshipPlacements.map((placement, index) => {
+                const Icon = placement.icon;
+                return (
+                  <div
+                    key={index}
+                    className="bg-surface border border-border rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-xs hover:border-primary/40 transition-all"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-4 mb-4">
+                        <div className="w-11 h-11 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <div className="text-right">
+                          <div className="text-2xl sm:text-3xl font-black text-foreground">
+                            {placement.price}
+                          </div>
+                          <div className="text-[10px] font-mono font-bold uppercase text-on-surface-variant tracking-wider">
+                            {placement.period}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="inline-block bg-surface-secondary border border-border text-on-surface-variant text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full mb-3">
+                        {placement.badge}
+                      </div>
+
+                      <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">
+                        {placement.title}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed mb-4">
+                        {placement.description}
+                      </p>
+
+                      <div className="p-3 bg-surface-elevated rounded-2xl border border-border text-xs text-on-surface-variant mb-6">
+                        <strong className="text-foreground font-semibold">Specifications:</strong> {placement.specs}
+                      </div>
+                    </div>
+
+                    <a
+                      href={`mailto:aitoolshaven@gmail.com?subject=${encodeURIComponent(placement.ctaSubject)}`}
+                      className="w-full py-3 px-4 rounded-2xl border border-border hover:border-primary font-bold text-xs sm:text-sm text-foreground hover:text-primary transition-colors flex items-center justify-center space-x-2 bg-surface-elevated hover:bg-surface-secondary cursor-pointer"
+                    >
+                      <span>Inquire About Availability</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </a>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* ============================================================= */}
+          {/* ROI COMPARISON TABLE: AITOOLSHAVEN VS OTHER CHANNELS          */}
+          {/* ============================================================= */}
+          <div className="space-y-8">
+            <div className="text-center max-w-3xl mx-auto space-y-2">
+              <div className="inline-flex items-center space-x-1.5 bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                <BarChart3 className="w-3.5 h-3.5" />
+                <span>ROI &amp; Efficiency Breakdown</span>
+              </div>
+              <h2 className="text-2xl sm:text-4xl font-black text-foreground tracking-tight">
+                Why Advertising on AIToolsHaven Delivers Higher ROI
+              </h2>
+              <p className="text-on-surface-variant text-xs sm:text-sm leading-relaxed">
+                Unlike generic social media or expensive pay-per-click ad networks, our audience lands on AIToolsHaven with intentional commercial readiness.
+              </p>
+            </div>
+
+            <div className="overflow-x-auto rounded-3xl border border-border bg-surface shadow-xs">
+              <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                <thead>
+                  <tr className="border-b border-border bg-surface-elevated text-foreground">
+                    <th className="py-4 px-6 font-bold">Channel Dimension</th>
+                    <th className="py-4 px-6 font-black text-primary bg-primary/5">AIToolsHaven</th>
+                    <th className="py-4 px-6 font-semibold text-on-surface-variant">Google / Meta Ads</th>
+                    <th className="py-4 px-6 font-semibold text-on-surface-variant">Product Hunt Launch</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border text-on-surface-variant">
+                  {comparisonChannels.map((row, idx) => (
+                    <tr key={idx} className="hover:bg-surface-secondary/40 transition-colors">
+                      <td className="py-4 px-6 font-bold text-foreground whitespace-nowrap">
+                        {row.dimension}
+                      </td>
+                      <td className="py-4 px-6 font-semibold text-emerald-600 dark:text-emerald-400 bg-primary/5">
+                        {row.aitoolshaven}
+                      </td>
+                      <td className="py-4 px-6">{row.googleAds}</td>
+                      <td className="py-4 px-6">{row.productHunt}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* ============================================================= */}
+          {/* EDITORIAL STANDARDS & QUALITY GUIDELINES                      */}
+          {/* ============================================================= */}
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-surface rounded-3xl p-6 sm:p-10 border border-border shadow-xs space-y-6">
+              <div className="flex items-center space-x-3 border-b border-border/60 pb-5">
+                <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground">
+                    Editorial &amp; Quality Guidelines
+                  </h3>
+                  <p className="text-xs text-on-surface-variant">
+                    To protect our readers, all sponsor content is manually reviewed prior to publishing.
+                  </p>
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-3">
-                  <h4 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <div className="space-y-3 p-4 rounded-2xl bg-surface-elevated border border-border">
+                  <h4 className="font-bold text-xs sm:text-sm text-foreground flex items-center space-x-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                    Accepted Content
+                    <span>Accepted Content</span>
                   </h4>
-                  <ul className="space-y-2 text-xs text-foreground/70">
+                  <ul className="space-y-1.5 text-xs text-on-surface-variant">
                     <li>&bull; AI Software, Machine Learning models &amp; SaaS products</li>
                     <li>&bull; Developer tools, coding assistants, and API platforms</li>
                     <li>&bull; Marketing tech, copy generators, and design workflow tools</li>
@@ -736,12 +772,12 @@ export default function AdvertisePage() {
                   </ul>
                 </div>
 
-                <div className="space-y-3">
-                  <h4 className="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-red-500">
+                <div className="space-y-3 p-4 rounded-2xl bg-surface-elevated border border-border">
+                  <h4 className="font-bold text-xs sm:text-sm text-red-500 flex items-center space-x-2">
                     <Ban className="w-4 h-4 text-red-500 shrink-0" />
-                    Strictly Prohibited
+                    <span>Strictly Prohibited</span>
                   </h4>
-                  <ul className="space-y-2 text-xs text-foreground/70">
+                  <ul className="space-y-1.5 text-xs text-on-surface-variant">
                     <li>&bull; Casino, gambling, or betting websites</li>
                     <li>&bull; Adult, illegal, or scam wrapper applications</li>
                     <li>&bull; Predatory loans, pay-day schemes, or high-risk crypto pump tokens</li>
@@ -751,90 +787,100 @@ export default function AdvertisePage() {
                 </div>
               </div>
 
-              <div className="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-100 dark:border-slate-800 text-xs text-foreground/70">
-                <strong>Payment &amp; Invoicing:</strong> All advertising invoices are billed in USD and fulfilled via Stripe. In the unlikely event that your submitted article or link does not pass our safety standards, you receive a 100% immediate refund under our{' '}
+              <div className="p-4 bg-surface-elevated rounded-2xl border border-border text-xs text-on-surface-variant">
+                <strong className="text-foreground">Payment &amp; Invoicing:</strong> All advertising invoices are billed in USD and fulfilled securely via Stripe. In the unlikely event that your submitted article or link does not pass our quality or safety standards, you receive a 100% immediate refund under our{' '}
                 <Link href="/refund-policy" className="text-primary hover:underline font-semibold">
                   Refund Policy
                 </Link>.
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* FAQ SECTION */}
-      <section className="py-24 px-4">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-foreground/60 text-sm mt-2">
-              Everything you need to know about our advertising rates, dofollow links, and workflow.
+          {/* ============================================================= */}
+          {/* INTERACTIVE FAQ ACCORDION                                     */}
+          {/* ============================================================= */}
+          <div className="max-w-3xl mx-auto space-y-8">
+            <div className="text-center space-y-1">
+              <h2 className="text-2xl sm:text-3xl font-black text-foreground tracking-tight">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-on-surface-variant text-xs sm:text-sm">
+                Everything you need to know about our advertising rates, dofollow links, and workflow.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              {faqs.map((faq, index) => (
+                <details
+                  key={index}
+                  className="group bg-surface rounded-2xl border border-border overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-2xs"
+                >
+                  <summary className="flex items-center justify-between cursor-pointer p-5 hover:bg-surface-secondary/50 transition-colors gap-4">
+                    <span className="font-bold text-xs sm:text-sm text-foreground">
+                      {faq.q}
+                    </span>
+                    <ChevronDown className="w-4 h-4 text-on-surface-variant transition-transform duration-300 group-open:rotate-180 shrink-0" />
+                  </summary>
+                  <div className="px-5 pb-5 pt-0 text-xs sm:text-sm text-on-surface-variant leading-relaxed border-t border-border/40 mt-1 pt-3">
+                    {faq.a}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+
+          {/* ============================================================= */}
+          {/* FINAL HIGH-IMPACT BOOKING DESK CTA                            */}
+          {/* ============================================================= */}
+          <div className="relative overflow-hidden p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-surface via-surface-elevated to-surface border border-primary/30 ring-1 ring-primary/20 text-center shadow-xl space-y-6">
+            <div 
+              className="absolute -top-20 left-1/2 -translate-x-1/2 w-80 h-80 bg-primary/10 blur-3xl rounded-full pointer-events-none" 
+              aria-hidden="true" 
+            />
+
+            <div className="max-w-2xl mx-auto space-y-3 relative z-10">
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-primary">
+                START YOUR CAMPAIGN TODAY
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-black text-foreground tracking-tight">
+                Ready to Put Your AI Brand in Front of 50k+ Buyers?
+              </h2>
+              <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                Send us your preferred article topic, target URL, or campaign requirements. Our advertising desk responds within 12–24 business hours with custom recommendations.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 relative z-10">
+              <a
+                href="mailto:aitoolshaven@gmail.com?subject=Advertising%20%26%20Sponsorship%20Inquiry%20-%20AIToolsHaven"
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-primary hover:bg-rose-600 text-white px-8 py-3.5 rounded-2xl font-bold text-xs sm:text-sm shadow-md shadow-primary/25 hover:scale-[1.02] transition-all cursor-pointer"
+              >
+                <span>Email Advertising Desk</span>
+                <Send className="w-3.5 h-3.5" />
+              </a>
+              <Link
+                href="/submit"
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-surface-elevated hover:bg-surface-secondary border border-border text-foreground px-8 py-3.5 rounded-2xl font-bold text-xs sm:text-sm transition-all shadow-2xs"
+              >
+                <span>Submit a Tool Listing</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            <p className="text-[11px] font-mono text-on-surface-variant pt-2 relative z-10">
+              Official response channel: <strong className="text-foreground">aitoolshaven@gmail.com</strong> &bull; Secure Stripe checkout &bull; 24h Review SLA
             </p>
           </div>
 
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <details
-                key={index}
-                className="group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden [&_summary::-webkit-details-marker]:hidden"
-              >
-                <summary className="flex items-center justify-between cursor-pointer p-6 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors gap-4">
-                  <span className="font-semibold text-sm sm:text-base text-slate-900 dark:text-white">
-                    {faq.q}
-                  </span>
-                  <ChevronDown className="w-5 h-5 text-slate-400 transition-transform duration-300 group-open:rotate-180 shrink-0" />
-                </summary>
-                <div className="px-6 pb-6 pt-0 text-xs sm:text-sm text-foreground/70 leading-relaxed">
-                  {faq.a}
-                </div>
-              </details>
-            ))}
+          {/* Social Follow CTA */}
+          <div className="text-center flex flex-col items-center pt-4 border-t border-border">
+            <p className="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-4">
+              Connect with AIToolsHaven
+            </p>
+            <SocialLinks variant="cta" />
           </div>
         </div>
-      </section>
-
-      {/* FINAL CALL TO ACTION / BOOKING DESK */}
-      <section className="py-24 px-4 bg-gradient-to-b from-transparent to-primary/5 border-t border-black/5 dark:border-slate-800 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">
-            Ready to Put Your AI Brand in Front of 50k+ Buyers?
-          </h2>
-          <p className="text-base sm:text-lg text-foreground/70 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Send us your preferred article topic, target URL, or campaign requirements. Our advertising desk responds within 12–24 business hours with custom recommendations.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="mailto:aitoolshaven@gmail.com?subject=Advertising%20%26%20Sponsorship%20Inquiry%20-%20AIToolsHaven"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-primary hover:bg-rose-600 text-white px-9 py-4 rounded-full font-bold text-base shadow-xl shadow-primary/25 hover:scale-105 transition-all"
-            >
-              <span>Email Advertising Desk</span>
-              <Send className="w-4 h-4" />
-            </a>
-            <Link
-              href="/submit"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-foreground px-8 py-4 rounded-full font-bold text-base hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm"
-            >
-              <span>Submit a Tool Listing</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <p className="text-xs text-foreground/50 mt-6">
-            Official response channel: <strong>aitoolshaven@gmail.com</strong> &bull; Secure Stripe checkout &bull; 24h SLA
-          </p>
-        </div>
-      </section>
-
-      {/* Social Follow CTA */}
-      <section className="text-center flex flex-col items-center py-12 border-t border-black/5 dark:border-slate-800">
-        <p className="text-xs font-semibold text-foreground/60 uppercase tracking-wider mb-4">
-          Connect with AIToolsHaven
-        </p>
-        <SocialLinks variant="cta" />
-      </section>
+      </PageContainer>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import type { AITool } from "@/lib/types/tool";
-import { getLocalTools, getLocalToolBySlug as getRawLocalToolBySlug, getLocalToolsByCategory as getRawLocalToolsByCategory } from '@/lib/data/tools';
-import { categories as localCategories, resolveCategory } from '@/lib/data/categories';
+import { getLocalTools } from '@/lib/data/tools';
+import { resolveCategory } from '@/lib/data/categories';
 import { unstable_cache } from 'next/cache';
 import { normalizeTool } from '@/lib/data/tool-normalizer';
 
@@ -41,19 +41,26 @@ export function getNormalizedLocalTools(): AITool[] {
   for (const t of _localNormalizedTools) {
     if (t.slug) _slugIndex.set(t.slug.toLowerCase(), t);
     if (t.id) _slugIndex.set(t.id.toLowerCase(), t);
-    if (t.category) {
-      const catKey = t.category.toLowerCase();
-      const existing = _categoryIndex.get(catKey) || [];
-      existing.push(t);
-      _categoryIndex.set(catKey, existing);
-    }
+    const catKeys = new Set<string>();
+    if (t.category) catKeys.add(t.category.toLowerCase());
+    if (t.category_id) catKeys.add(t.category_id.toLowerCase());
+    if (t.categorySlug) catKeys.add(t.categorySlug.toLowerCase());
+    if (t.subCategory) catKeys.add(t.subCategory.toLowerCase());
+    if (t.subCategorySlug) catKeys.add(t.subCategorySlug.toLowerCase());
     if (t.additionalCategories && Array.isArray(t.additionalCategories)) {
-      for (const ac of t.additionalCategories) {
-        const acKey = ac.toLowerCase();
-        const existing = _categoryIndex.get(acKey) || [];
-        existing.push(t);
-        _categoryIndex.set(acKey, existing);
-      }
+      for (const ac of t.additionalCategories) catKeys.add(ac.toLowerCase());
+    }
+    const resolved = resolveCategory(t.category_id || t.category);
+    if (resolved) {
+      if (resolved.id) catKeys.add(resolved.id.toLowerCase());
+      if (resolved.slug) catKeys.add(resolved.slug.toLowerCase());
+      if (resolved.name) catKeys.add(resolved.name.toLowerCase());
+    }
+
+    for (const key of catKeys) {
+      const existing = _categoryIndex.get(key) || [];
+      existing.push(t);
+      _categoryIndex.set(key, existing);
     }
   }
   return _localNormalizedTools;
@@ -73,7 +80,7 @@ export function getLocalToolsByCategory(categoryId: string): AITool[] {
  * Resilient cache helper that wraps unstable_cache with direct invocation fallback
  * to prevent 'incrementalCache missing' and 2MB payload exceptions.
  */
-function safeCache<T extends (...args: any[]) => Promise<any>>(
+export function safeCache<T extends (...args: unknown[]) => Promise<unknown>>(
   fn: T,
   keyParts: string[],
   options?: { revalidate?: number | false; tags?: string[] }
@@ -83,7 +90,7 @@ function safeCache<T extends (...args: any[]) => Promise<any>>(
   }
   try {
     const cachedFn = unstable_cache(fn, ['v4_clean', ...keyParts], options);
-    return (async (...args: any[]) => {
+    return (async (...args: unknown[]) => {
       try {
         return await cachedFn(...args);
       } catch {
@@ -95,9 +102,11 @@ function safeCache<T extends (...args: any[]) => Promise<any>>(
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mapDatabaseRowToAITool(row: any): AITool {
   if (!row) return {} as AITool;
-  const localTool = getLocalToolBySlug(row.slug);
+  const slug = typeof row.slug === 'string' ? row.slug : '';
+  const localTool = slug ? getLocalToolBySlug(slug) : undefined;
   return normalizeTool(row, localTool);
 }
 
@@ -303,7 +312,7 @@ export async function getToolsBySlugs(slugs: string[], fields: string = TOOL_CAR
             if (!slugs.length) return [];
             const { data, error } = await supabase.from('tools').select(fields).in('slug', slugs).eq('status', 'Published');
             if (error) throw error;
-            return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
+            return ((data || []) as unknown as Record<string, unknown>[]).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error("Error fetching tools by slugs from Supabase, falling back to local data:", err);
             const local = getNormalizedLocalTools();
@@ -320,7 +329,7 @@ export async function getToolsByNames(names: string[], fields: string = TOOL_CAR
             if (!names.length) return [];
             const { data, error } = await supabase.from('tools').select(fields).in('name', names).eq('status', 'Published');
             if (error) throw error;
-            return (data || []).map(mapDatabaseRowToAITool).filter(isValidTool);
+            return ((data || []) as unknown as Record<string, unknown>[]).map(mapDatabaseRowToAITool).filter(isValidTool);
         } catch (err) {
             console.error("Error fetching tools by names from Supabase, falling back to local data:", err);
             const local = getNormalizedLocalTools();
@@ -346,7 +355,7 @@ export async function getToolsByWorkflow(workflowSlug: string): Promise<AITool[]
             return local.filter(t => t.workflows?.includes(workflowSlug) && (t.status === "Published" || t.status === "published"));
         }
         return data
-            .map((row: any) => mapDatabaseRowToAITool(row.tools))
+            .map((row) => mapDatabaseRowToAITool((row as Record<string, unknown>).tools as Record<string, unknown>))
             .filter(isValidTool)
             .filter((t: AITool) => !t.status || (t.status === "Published" || t.status === "published"));
     } catch (err) {
@@ -356,7 +365,7 @@ export async function getToolsByWorkflow(workflowSlug: string): Promise<AITool[]
     }
 }
 
-export async function getToolsByCollection(collectionSlug: string): Promise<AITool[]> {
+export async function getToolsByCollection(): Promise<AITool[]> {
     return [];
 }
 
@@ -465,52 +474,101 @@ export async function getRecommendationsByPersona(role: string, goal: string): P
     });
 }
 
-export async function getToolsByCategoryId(categoryId: string, limit: number = 48): Promise<AITool[]> {
+export async function getToolsByCategoryId(categoryId: string, limit: number = 150): Promise<AITool[]> {
     const fetchByCategory = async () => {
         try {
             const cat = resolveCategory(categoryId);
-            const targetIds = new Set<string>([categoryId, cat.id, cat.slug, cat.name, cat.name.toLowerCase()]);
-            const dbCategoryIds = [cat.id, cat.slug, categoryId];
+            const targetIds = new Set<string>([
+                categoryId.toLowerCase(), 
+                cat.id.toLowerCase(), 
+                cat.slug.toLowerCase(), 
+                cat.name.toLowerCase()
+            ]);
+            const dbCategoryIds = Array.from(new Set([cat.id, cat.slug, categoryId]));
+            if (cat.parentId) {
+                dbCategoryIds.push(cat.parentId);
+            }
 
-            const { data, error } = await supabase
+            const { data } = await supabase
                 .from('tools')
                 .select(TOOL_CARD_FIELDS)
                 .in('category_id', dbCategoryIds)
                 .eq('status', 'Published')
                 .order('popularity', { ascending: false })
                 .limit(limit);
-                
-            if (error) throw error;
-            
-            if (!data || data.length === 0) {
-                const local = getLocalToolsByCategory(categoryId);
-                if (local.length > 0) return local.filter(t => t.status === "Published" || t.status === "published").slice(0, limit);
-                const allLocal = getNormalizedLocalTools();
-                return allLocal.filter(t => 
-                    (t.status === "Published" || t.status === "published") &&
-                    (targetIds.has(t.category) || targetIds.has(t.category_id || '') || targetIds.has(t.categorySlug || '') || t.additionalCategories?.some(ac => targetIds.has(ac)))
-                ).slice(0, limit);
-            }
-            
-            return (data || [])
+
+            const dbTools = (data || [])
                 .map(mapDatabaseRowToAITool)
                 .filter(isValidTool)
-                .filter((t: AITool) => t.status === "Published" || t.status === "published")
-                .slice(0, limit);
-        } catch (err) {
-            console.error(`Error fetching tools by category ${categoryId} from Supabase, falling back to local data:`, err);
-            const cat = resolveCategory(categoryId);
-            const targetIds = new Set<string>([categoryId, cat.id, cat.slug, cat.name, cat.name.toLowerCase()]);
-            const local = getLocalToolsByCategory(categoryId);
-            if (local.length > 0) return local.filter(t => t.status === "Published" || t.status === "published").slice(0, limit);
+                .filter((t: AITool) => t.status === "Published" || t.status === "published");
+
+            const localTools = getLocalToolsByCategory(categoryId);
             const allLocal = getNormalizedLocalTools();
-            return allLocal.filter(t => 
-                (t.status === "Published" || t.status === "published") &&
-                (targetIds.has(t.category) || targetIds.has(t.category_id || '') || targetIds.has(t.categorySlug || '') || t.additionalCategories?.some(ac => targetIds.has(ac)))
-            ).slice(0, limit);
+            const localFiltered = allLocal.filter(t => 
+                (t.status === "Published" || t.status === "published" || !t.status) &&
+                (targetIds.has(t.category?.toLowerCase() || '') || 
+                 targetIds.has(t.category_id?.toLowerCase() || '') || 
+                 targetIds.has(t.categorySlug?.toLowerCase() || '') || 
+                 t.additionalCategories?.some(ac => targetIds.has(ac.toLowerCase())))
+            );
+
+            // Subcategory keyword matching if category has a parent
+            const subcatFiltered = cat.parentId ? allLocal.filter(t => {
+                const subName = cat.name.toLowerCase();
+                const tags = Array.isArray(t.tags) ? t.tags.map(tag => tag.toLowerCase()) : [];
+                return tags.some(tag => subName.includes(tag)) ||
+                       (t.name && subName.includes(t.name.toLowerCase()));
+            }) : [];
+
+            const seenSlugs = new Set<string>();
+            const combined: AITool[] = [];
+
+            for (const t of [...dbTools, ...localTools, ...localFiltered, ...subcatFiltered]) {
+                if (t && t.slug && !seenSlugs.has(t.slug.toLowerCase())) {
+                    seenSlugs.add(t.slug.toLowerCase());
+                    combined.push(t);
+                }
+            }
+
+            // High-Precision Popularity & Quality Ranking
+            combined.sort((a, b) => {
+                const popDiff = (b.popularity || 0) - (a.popularity || 0);
+                if (popDiff !== 0) return popDiff;
+                if (a.verified !== b.verified) return (b.verified ? 1 : 0) - (a.verified ? 1 : 0);
+                const ratingDiff = (b.rating || 0) - (a.rating || 0);
+                if (ratingDiff !== 0) return ratingDiff;
+                return (b.reviewCount || 0) - (a.reviewCount || 0);
+            });
+
+            return combined.slice(0, limit);
+        } catch (err) {
+            console.error(`Error fetching tools by category ${categoryId}, falling back to local:`, err);
+            const cat = resolveCategory(categoryId);
+            const targetIds = new Set<string>([categoryId.toLowerCase(), cat.id.toLowerCase(), cat.slug.toLowerCase(), cat.name.toLowerCase()]);
+            const local = getLocalToolsByCategory(categoryId);
+            const allLocal = getNormalizedLocalTools();
+            const combined = [...local, ...allLocal.filter(t => 
+                targetIds.has(t.category?.toLowerCase() || '') || 
+                targetIds.has(t.category_id?.toLowerCase() || '') || 
+                targetIds.has(t.categorySlug?.toLowerCase() || '') || 
+                t.additionalCategories?.some(ac => targetIds.has(ac.toLowerCase()))
+            )];
+            const seen = new Set<string>();
+            const dedupe = combined.filter(t => {
+                if (!t || !t.slug || seen.has(t.slug.toLowerCase())) return false;
+                seen.add(t.slug.toLowerCase());
+                return true;
+            });
+            dedupe.sort((a, b) => {
+                const popDiff = (b.popularity || 0) - (a.popularity || 0);
+                if (popDiff !== 0) return popDiff;
+                if (a.verified !== b.verified) return (b.verified ? 1 : 0) - (a.verified ? 1 : 0);
+                return (b.rating || 0) - (a.rating || 0);
+            });
+            return dedupe.slice(0, limit);
         }
     };
-    return safeCache(fetchByCategory, ['tools_by_category_v2', categoryId, limit.toString()], { revalidate: 60 })();
+    return safeCache(fetchByCategory, ['tools_by_category_v4', categoryId, limit.toString()], { revalidate: 3600 })();
 }
 
 /**
@@ -686,8 +744,8 @@ export async function searchTools(query: string): Promise<AITool[]> {
     return scored.slice(0, 24);
 }
 
-export async function getToolReviews(toolSlug: string): Promise<any[]> {
-  const fetchReviews = async () => {
+export async function getToolReviews(toolSlug: string): Promise<Record<string, unknown>[]> {
+  const fetchReviews = async (): Promise<Record<string, unknown>[]> => {
     try {
       const { data, error } = await supabase
         .from('reviews')

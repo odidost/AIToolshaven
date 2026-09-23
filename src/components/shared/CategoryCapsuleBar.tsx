@@ -24,8 +24,8 @@ export function CategoryCapsuleBar({ activeSlug }: { activeSlug?: string }) {
               : `bg-surface border border-border text-foreground hover:bg-muted hover:border-border/80 shadow-xs hover:shadow-sm hover:-translate-y-[0.5px]`
               }`}
           >
-            <span className={`material-symbols-outlined text-[16px] transition-all duration-200 ${activeSlug === category.slug ? 'text-background' : 'text-muted-foreground group-hover:text-foreground'}`}>
-              {category.icon}
+            <span aria-hidden="true" className={`material-symbols-outlined text-[16px] transition-all duration-200 ${activeSlug === category.slug ? 'text-background' : 'text-muted-foreground group-hover:text-foreground'}`}>
+              {category.icon || "category"}
             </span>
             {category.name}
           </Link>

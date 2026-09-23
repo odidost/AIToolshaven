@@ -124,6 +124,8 @@ function getWorkflowFaqs(workflow: any): { question: string; answer: string }[] 
     return merged.slice(0, 5);
 }
 
+export const revalidate = 86400;
+
 export default async function WorkflowPage({ params }: Props) {
     const { slug } = await params;
     const workflow = workflows.find((item) => item.slug === slug);

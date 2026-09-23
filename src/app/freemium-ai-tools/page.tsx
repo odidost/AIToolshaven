@@ -13,7 +13,6 @@ import {
   Zap, 
   ShieldCheck, 
   CheckCircle2, 
-  Lock, 
   Star, 
   BookOpen, 
   ArrowRight, 
@@ -249,7 +248,6 @@ export default async function FreemiumAIToolsPage() {
       <nav className="mb-8">
         <Breadcrumbs
           items={[
-            { label: "AI Tools Directory", href: "/" },
             { label: "Freemium AI Tools" },
           ]}
         />

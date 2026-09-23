@@ -42,6 +42,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 86400;
+
 const disclosurePillars = [
   {
     icon: DollarSign,

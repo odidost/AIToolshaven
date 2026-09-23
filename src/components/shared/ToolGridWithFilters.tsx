@@ -59,11 +59,20 @@ export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) 
       if (!a.isSponsored && b.isSponsored) return 1;
 
       switch (sortBy) {
-        case "popular":
+        case "popular": {
+          const popDiff = (b.popularity || 0) - (a.popularity || 0);
+          if (popDiff !== 0) return popDiff;
+          if (b.verified !== a.verified) return b.verified ? 1 : -1;
+          const ratingDiff = (b.rating || 0) - (a.rating || 0);
+          if (ratingDiff !== 0) return ratingDiff;
+          return (b.reviewCount || 0) - (a.reviewCount || 0);
+        }
+        case "rating": {
+          const ratingDiff = (b.rating || 0) - (a.rating || 0);
+          if (ratingDiff !== 0) return ratingDiff;
           return (b.popularity || 0) - (a.popularity || 0);
-        case "rating":
-          return (b.rating || 0) - (a.rating || 0);
-        case "newest":
+        }
+        case "newest": {
           // using launchYear, fallback to popularity if missing
           const yearA = a.stats?.launchYear || 0;
           const yearB = b.stats?.launchYear || 0;
@@ -71,6 +80,7 @@ export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) 
             return yearB - yearA;
           }
           return (b.popularity || 0) - (a.popularity || 0);
+        }
         default:
           return 0;
       }
@@ -182,8 +192,12 @@ export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) 
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
         {paginatedTools.length > 0 ? (
-          paginatedTools.map((tool) => (
-            <ToolCard key={tool.id} tool={tool} />
+          paginatedTools.map((tool, index) => (
+            <ToolCard 
+              key={tool.id} 
+              tool={tool} 
+              rank={sortBy === "popular" ? (currentPage - 1) * PAGE_SIZE + index + 1 : undefined}
+            />
           ))
         ) : (
           <div className="col-span-full py-16 px-4 text-center bg-muted/30 rounded-3xl border border-dashed border-border">

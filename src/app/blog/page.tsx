@@ -41,6 +41,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 86400;
+
 export default function BlogIndexPage() {
   const cleanBase = (siteConfig.baseUrl || "https://aitoolshaven.com").replace(/\/$/, "");
   const currentDate = new Date().toISOString().split('T')[0];

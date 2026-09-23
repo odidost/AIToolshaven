@@ -94,7 +94,7 @@ function getAssetManifest() {
     if (fs.existsSync(p)) {
       return JSON.parse(fs.readFileSync(p, 'utf-8'));
     }
-  } catch (e) {
+  } catch {
     // Ignore error
   }
   return {};
@@ -113,7 +113,7 @@ export default function RootLayout({
       <head>
         <link
           rel="preload"
-          href="/fonts/material-symbols-subset.woff2"
+          href="/fonts/material-symbols-outlined.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

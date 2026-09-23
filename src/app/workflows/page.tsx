@@ -41,6 +41,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 86400;
+
 export default async function WorkflowsIndexPage() {
   const requiredToolNames = new Set<string>();
   workflows.forEach(w => w.tools.forEach(t => requiredToolNames.add(t)));

@@ -36,6 +36,9 @@ export function ToolImage({ tool, type, className, alt, width, height, priority,
   const defaultWidth = type === 'logo' ? 48 : 600;
   const defaultHeight = type === 'logo' ? 48 : 338;
   const isSvg = src.endsWith('.svg') || src.includes('.svg?');
+  const isLocalPreOptimized =
+    src.startsWith('/assets/') &&
+    (src.endsWith('.webp') || src.endsWith('.avif'));
 
   const isLocalOrAllowedDomain =
     src.startsWith('/') ||
@@ -56,7 +59,7 @@ export function ToolImage({ tool, type, className, alt, width, height, priority,
         priority={priority}
         loading={priority ? 'eager' : 'lazy'}
         decoding="async"
-        unoptimized={isSvg}
+        unoptimized={isSvg || isLocalPreOptimized}
         className={className}
         onError={() => setHasError(true)}
       />

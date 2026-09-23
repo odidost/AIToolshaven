@@ -2,30 +2,18 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import { siteConfig } from "@/lib/config/site";
-import { headers } from "next/headers";
-import { logNotFoundPath } from "@/lib/actions/redirects";
 import { SocialLinks } from "@/components/shared/SocialLinks";
+import { NotFoundLogger } from "@/components/shared/NotFoundLogger";
 
 export const metadata: Metadata = {
   title: `Page Not Found | ${siteConfig.name}`,
   description: "The page you're looking for doesn't exist.",
 };
 
-export default async function NotFound() {
-  // Try to grab the path from the middleware injected header
-  const headersList = await headers();
-  const invokePath = headersList.get("x-invoke-path");
-  
-  if (invokePath && invokePath !== "/" && !invokePath.startsWith("/_next") && !invokePath.startsWith("/api")) {
-    try {
-      await logNotFoundPath(invokePath);
-    } catch (e) {
-      console.error("Failed to log 404 path", e);
-    }
-  }
-
+export default function NotFound() {
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
+      <NotFoundLogger />
       {/* Glowing number */}
       <div className="relative mb-8">
         <p className="text-[120px] md:text-[180px] font-black text-slate-100 leading-none select-none">

@@ -7,6 +7,11 @@ type BreadcrumbItem = {
 };
 
 export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
+  // Guard against callers accidentally passing a duplicate root item
+  const sanitizedItems = items.filter(
+    (item) => item.href !== '/' && item.label !== 'Home' && item.label !== 'AI Tools Directory'
+  );
+
   return (
     <nav className="flex flex-wrap items-center text-[13px] font-medium text-on-surface-variant mb-6 tracking-tight bg-primary/5 p-1.5 rounded-2xl border border-border/50">
       <Link 
@@ -18,7 +23,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
         <span>AI Tools Directory</span>
       </Link>
       
-      {items.map((item, index) => (
+      {sanitizedItems.map((item, index) => (
         <React.Fragment key={index}>
           <span className="material-symbols-outlined text-[14px] mx-0.5 opacity-40">chevron_right</span>
           {item.href ? (

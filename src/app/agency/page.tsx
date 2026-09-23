@@ -42,6 +42,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 86400;
+
 export default function AgencyPage() {
   const jsonLd = {
     "@context": "https://schema.org",

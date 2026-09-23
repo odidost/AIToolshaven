@@ -42,12 +42,12 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
       <div className="relative z-10 flex flex-col h-full">
         <div className="flex items-start justify-between mb-6">
           <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${gradientClass} flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
-            <span className="material-symbols-outlined text-[28px] text-white" style={{ fontVariationSettings: "'FILL' 1" }}>
+            <span aria-hidden="true" className="material-symbols-outlined text-[28px] text-white" style={{ fontVariationSettings: "'FILL' 1" }}>
               {category.icon || "category"}
             </span>
           </div>
           <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 group-hover:bg-white group-hover:shadow-sm transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-            <span className="material-symbols-outlined text-[16px] text-slate-400 group-hover:text-primary transition-colors">
+            <span aria-hidden="true" className="material-symbols-outlined text-[16px] text-slate-400 group-hover:text-primary transition-colors">
               arrow_outward
             </span>
           </div>

@@ -43,6 +43,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 86400;
+
 const contactChannels = [
   {
     icon: Rocket,

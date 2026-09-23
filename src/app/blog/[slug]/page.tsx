@@ -95,6 +95,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+export const revalidate = 86400;
+
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
   const article = articles.find((item) => item.slug === slug);

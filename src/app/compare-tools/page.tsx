@@ -58,6 +58,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 3600;
+
 export default async function CompareArchivePage() {
   // Extract required tool names for all comparisons
   const requiredToolNames = new Set<string>();
