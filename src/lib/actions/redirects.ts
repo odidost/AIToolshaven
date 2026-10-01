@@ -118,7 +118,13 @@ export async function getNotFoundLogs(): Promise<NotFoundLogRecord[]> {
 
 import { createClient as createSupabaseAdmin } from "@supabase/supabase-js";
 
+const BOT_PROBE_REGEX = /(\.(php|env|git|asp|aspx|jsp|xml|cgi|sh|sql|bak|yaml|yml|config|ini|log|zip|tar|gz|map|ico|png|jpg|jpeg|webp|svg|css|js|woff|woff2|ttf)$|wp-|cgi-bin|xmlrpc|phpmyadmin|autodiscover|actuator|\.well-known)/i;
+
 export async function logNotFoundPath(path: string) {
+  if (!path || path.length > 200 || BOT_PROBE_REGEX.test(path)) {
+    return;
+  }
+
   try {
     const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://fygifuwuseksxpcetsbo.supabase.co';

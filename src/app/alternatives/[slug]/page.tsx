@@ -16,7 +16,7 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export const revalidate = 3600;
+export const revalidate = 86400; // 24 hours
 
 export async function generateStaticParams() {
   const alternatives = getAllCuratedAlternatives();

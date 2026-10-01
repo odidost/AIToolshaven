@@ -28,7 +28,7 @@ export function ToolCard({ tool, rank }: { tool: AITool; rank?: number }) {
   };
 
   return (
-    <Link href={`/tool/${tool.slug}`} className="block group h-full">
+    <Link href={`/tool/${tool.slug}`} prefetch={false} className="block group h-full">
       <div 
         ref={cardRef}
         onMouseMove={handleMouseMove}

@@ -35,10 +35,10 @@ export function ToolImage({ tool, type, className, alt, width, height, priority,
 
   const defaultWidth = type === 'logo' ? 48 : 600;
   const defaultHeight = type === 'logo' ? 48 : 338;
-  const isSvg = src.endsWith('.svg') || src.includes('.svg?');
-  const isLocalPreOptimized =
-    src.startsWith('/assets/') &&
-    (src.endsWith('.webp') || src.endsWith('.avif'));
+  const isSvg = src.endsWith('.svg') || src.includes('.svg?') || src.includes('api.dicebear.com');
+  const isPreOptimized =
+    (src.startsWith('/assets/') && (src.endsWith('.webp') || src.endsWith('.avif'))) ||
+    (src.includes('supabase.co') && (src.includes('.webp') || src.includes('.avif') || src.includes('.svg')));
 
   const isLocalOrAllowedDomain =
     src.startsWith('/') ||
@@ -59,7 +59,7 @@ export function ToolImage({ tool, type, className, alt, width, height, priority,
         priority={priority}
         loading={priority ? 'eager' : 'lazy'}
         decoding="async"
-        unoptimized={isSvg || isLocalPreOptimized}
+        unoptimized={isSvg || isPreOptimized}
         className={className}
         onError={() => setHasError(true)}
       />

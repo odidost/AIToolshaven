@@ -31,9 +31,12 @@ export async function uploadAssetBuffer(
       .from('assets')
       .getPublicUrl(path);
 
+    // Append version timestamp so replaced assets bypass immutable browser/CDN caching
+    const versionedUrl = `${publicUrlData.publicUrl}?v=${Date.now()}`;
+
     return {
       success: true,
-      url: publicUrlData.publicUrl,
+      url: versionedUrl,
       filename,
     };
   } catch (error) {

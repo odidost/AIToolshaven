@@ -6,7 +6,7 @@ import { ToolGridWithFilters } from "@/components/shared/ToolGridWithFilters";
 import { getCategoryTheme } from "@/lib/data/categoryThemes";
 import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 
-export const revalidate = 3600; // 1 hour
+export const revalidate = 21600; // 6 hours
 
 export const metadata: Metadata = {
   title: "Trending AI Tools | AIToolsHaven",

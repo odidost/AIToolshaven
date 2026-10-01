@@ -77,11 +77,34 @@ export function formatCategoryBase(rawName: string): string {
   return clean;
 }
 
+// Specific title and description overrides for high-priority category hubs
+const CATEGORY_TITLE_OVERRIDES: Record<string, string> = {
+  "coding-assistants": "Best AI Coding Assistants (2026): IDEs & Agents",
+  "productivity": "Best AI Productivity Tools (2026): Workspace & Tasks",
+  "ai-video-generators": "Best AI Video Generators (2026): Text-to-Video & VFX",
+  "ai-presentation-makers": "Best AI Presentation Makers (2026): Pitch Decks & Slides",
+  "marketing-sales": "Best AI Marketing & Sales Tools (2026): Leads & Growth",
+  "ai-image-generators": "Best AI Image Generators (2026): Photorealism & Art",
+};
+
+const CATEGORY_DESCRIPTION_OVERRIDES: Record<string, string> = {
+  "coding-assistants": "Compare 2026's top AI coding assistants, IDEs, and autonomous agents including Cursor, GitHub Copilot, Windsurf, and Cline with verified pricing & free tiers.",
+  "productivity": "Discover the best AI productivity tools for 2026. Hand-tested meeting note takers, second brains, and task automation tools with verified pricing.",
+  "ai-video-generators": "Compare the best AI video generators for 2026. Explore text-to-video, avatar synthesis, and social shorts repurposing tools with verified free allowances.",
+  "ai-presentation-makers": "Explore the best AI presentation makers for 2026. Compare Gamma, Slidespilot AI, and Beautiful.ai for pitch decks, slide layouts, and PowerPoint exports.",
+  "marketing-sales": "Accelerate pipeline growth with the best AI marketing and sales tools for 2026. Compare lead databases, email deliverability, and copywriting platforms.",
+  "ai-image-generators": "Compare top AI image generators for 2026. Hand-tested benchmarks for photorealism, typography fidelity, and prompt logic across Midjourney, Flux & DALL-E.",
+};
+
 /**
  * Generates a high-CTR, 50-60 character title for Category Hub pages.
  * Example: "34 Best AI Writing Tools (2026) [Ranked & Tested]"
  */
-export function getOptimizedCategoryTitle(categoryName: string, toolCount?: number): string {
+export function getOptimizedCategoryTitle(categoryName: string, toolCount?: number, slug?: string): string {
+  if (slug && CATEGORY_TITLE_OVERRIDES[slug]) {
+    return CATEGORY_TITLE_OVERRIDES[slug];
+  }
+
   const base = formatCategoryBase(categoryName);
   
   if (toolCount && toolCount >= 3) {
@@ -106,7 +129,11 @@ export function getOptimizedCategoryTitle(categoryName: string, toolCount?: numb
 /**
  * Generates an actionable, click-enticing meta description for Category Hubs.
  */
-export function getOptimizedCategoryDescription(categoryName: string, toolCount?: number, heroDesc?: string): string {
+export function getOptimizedCategoryDescription(categoryName: string, toolCount?: number, heroDesc?: string, slug?: string): string {
+  if (slug && CATEGORY_DESCRIPTION_OVERRIDES[slug]) {
+    return CATEGORY_DESCRIPTION_OVERRIDES[slug];
+  }
+
   const base = formatCategoryBase(categoryName);
   const countStr = toolCount && toolCount > 0 ? `${toolCount} ` : "";
   

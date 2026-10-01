@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { comparisons } from "@/lib/comparisons";
 import { PageContainer } from "@/components/layout/PageContainer";
-import { getToolsByNames, getFeaturedTools, getAllTools } from "@/lib/data/tools-service";
+import { getToolsByNames, getFeaturedTools, getComparisonDropdownTools } from "@/lib/data/tools-service";
 import { siteConfig } from "@/lib/config/site";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { StructuredData } from "@/components/shared/StructuredData";
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 3600;
+export const revalidate = 86400; // 24 hours
 
 export default async function CompareArchivePage() {
   // Extract required tool names for all comparisons
@@ -71,27 +71,11 @@ export default async function CompareArchivePage() {
   requiredToolNames.add("Black Forest Labs FLUX");
   requiredToolNames.add("Cursor AI");
 
-  // Fetch comparison tools and all directory tools in parallel
-  const [comparisonTools, allDirectoryTools] = await Promise.all([
+  // Fetch comparison tools and lightweight dropdown tools in parallel
+  const [comparisonTools, availableDropdownTools] = await Promise.all([
     getToolsByNames(Array.from(requiredToolNames)),
-    getAllTools(false),
+    getComparisonDropdownTools(),
   ]);
-
-  // Combine unique tools for the custom comparison dropdown (all tools available)
-  const toolsMap = new Map<string, { name: string; slug: string; logoUrl?: string }>();
-  allDirectoryTools.forEach((t) => {
-    if (t.name && t.slug && !toolsMap.has(t.slug)) {
-      toolsMap.set(t.slug, {
-        name: t.name,
-        slug: t.slug,
-        logoUrl: t.logoUrl,
-      });
-    }
-  });
-
-  const availableDropdownTools = Array.from(toolsMap.values()).sort((a, b) =>
-    a.name.localeCompare(b.name)
-  );
 
   const cleanBase = (siteConfig.baseUrl || "https://aitoolshaven.com").replace(/\/$/, "");
   const currentDate = new Date().toISOString().split("T")[0];

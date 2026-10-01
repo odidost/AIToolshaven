@@ -27,7 +27,7 @@ export function CategoryRelatedGuides({
             Decision Intelligence &amp; Comparisons
           </div>
           <h2 className="text-2xl md:text-3xl font-black text-on-surface tracking-tight">
-            {categoryName} Buyer&apos;s Guides, Benchmarks &amp; Workflows
+            {categoryName}{" "}Buyer&apos;s Guides, Benchmarks &amp; Workflows
           </h2>
           <p className="text-sm md:text-base text-on-surface-variant mt-1.5 max-w-2xl font-['Figtree',sans-serif]">
             Verified head-to-head comparisons, enterprise feature matrices, and step-by-step production playbooks to select the right stack.

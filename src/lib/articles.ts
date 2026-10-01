@@ -2128,11 +2128,17 @@ export const articles: Article[] = [
       <div class="bg-primary-container/10 border border-primary/20 rounded-2xl p-6 mb-10 shadow-xs">
         <p class="text-sm font-bold text-primary mb-2 flex items-center gap-2">
           <span class="material-symbols-outlined text-[20px]">verified_user</span> 
-          Instant Directory Search
+          Looking for All 800+ Free &amp; Freemium AI Tools?
         </p>
-        <p class="text-sm text-on-surface-variant leading-relaxed">
-          Looking for a specific category? Filter our database of over 1,000+ vetted tools by pricing on the <a href="/" class="text-primary hover:underline font-bold">AIToolsHaven Homepage</a> or browse the <a href="/categories" class="text-primary hover:underline font-bold">Complete Categories Hub</a>.
+        <p class="text-sm text-on-surface-variant leading-relaxed mb-3">
+          While this editorial review benchmarks our <strong>top 15 tested tools</strong>, you can explore, search, and live-filter all 800+ zero-cost and freemium AI platforms on the <a href="/freemium-ai-tools" class="text-primary hover:underline font-bold">Freemium AI Tools Directory Hub →</a>.
         </p>
+        <div class="flex flex-wrap gap-2 text-xs font-medium pt-1">
+          <a href="/category/coding-assistants" class="px-2.5 py-1 rounded-lg bg-surface border border-outline/70 text-on-surface hover:text-primary hover:border-primary transition-colors">Coding Assistants (Cursor, Copilot)</a>
+          <a href="/category/ai-video-generators" class="px-2.5 py-1 rounded-lg bg-surface border border-outline/70 text-on-surface hover:text-primary hover:border-primary transition-colors">AI Video (CapCut, Opus Clip)</a>
+          <a href="/category/productivity" class="px-2.5 py-1 rounded-lg bg-surface border border-outline/70 text-on-surface hover:text-primary hover:border-primary transition-colors">Productivity (Notion AI, Pi)</a>
+          <a href="/category/ai-presentation-makers" class="px-2.5 py-1 rounded-lg bg-surface border border-outline/70 text-on-surface hover:text-primary hover:border-primary transition-colors">AI Presentations (Gamma)</a>
+        </div>
       </div>
 
       <h2 class="text-2xl sm:text-3xl font-bold text-on-surface mt-12 mb-6 border-b border-outline pb-3">

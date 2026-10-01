@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { 
   Sparkles, 
   Crown, 
@@ -72,9 +73,30 @@ const glossaryTerms = [
 ];
 
 const alternatives = [
-  { name: "Midjourney v6", score: "9.7", price: "From $10/mo", bestFor: "Photorealism", highlight: "The gold standard for cinematic textures & lighting." },
-  { name: "Flux.1 (Black Forest)", score: "9.5", price: "Open Source / $0.03", bestFor: "Typography & Anatomy", highlight: "State-of-the-art prompt fidelity and realistic hands." },
-  { name: "DALL-E 3 (OpenAI)", score: "9.2", price: "$20/mo (ChatGPT Plus)", bestFor: "Prompt Logic", highlight: "Flawless comprehension of intricate scene layouts." }
+  { 
+    name: "Midjourney", 
+    slug: "midjourney",
+    score: "9.8", 
+    price: "From $10/mo", 
+    bestFor: "Photorealism & Cinematic Textures", 
+    highlight: "The gold standard for atmospheric lighting, artistic aesthetics, and camera realism." 
+  },
+  { 
+    name: "DALL-E 3", 
+    slug: "dall-e-3",
+    score: "9.5", 
+    price: "Freemium / $20/mo", 
+    bestFor: "Prompt Logic & Text-in-Image", 
+    highlight: "OpenAI's image engine with unmatched semantic prompt obedience and precise text integration." 
+  },
+  { 
+    name: "Flux.1", 
+    slug: "flux",
+    score: "9.6", 
+    price: "Open Weights / Freemium", 
+    bestFor: "Typography & Open Ecosystem", 
+    highlight: "Black Forest Labs foundation model offering state-of-the-art hand anatomy, typography rendering, and speed." 
+  }
 ];
 
 // ---- ANIMATIONS & STYLES ---- //
@@ -98,21 +120,21 @@ export default function AiImageGeneratorsGuide() {
   const [roiMode, setRoiMode] = useState<"traditional" | "ai">("ai");
 
   return (
-    <article className="w-full max-w-6xl mx-auto py-24 font-sans overflow-hidden">
+    <article className="w-full max-w-6xl mx-auto py-6 md:py-10 font-sans overflow-hidden">
       
       {/* 1. Hero Header */}
       <motion.section 
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="my-32 md:my-48 relative rounded-[3rem] bg-slate-900 overflow-hidden border border-rose-500/20 shadow-2xl shadow-rose-500/10"
+        className="mb-8 md:mb-12 relative rounded-[2.5rem] bg-slate-900 overflow-hidden border border-rose-500/20 shadow-2xl shadow-rose-500/10"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-rose-500/40 via-amber-500/10 to-transparent z-0" />
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-orange-500/40 blur-[120px] rounded-full z-0 pointer-events-none" />
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-rose-500/40 blur-[120px] rounded-full z-0 pointer-events-none" />
         <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.04] mix-blend-overlay z-0" />
         
-        <div className="relative z-10 px-8 py-20 md:py-32 flex flex-col items-center text-center max-w-4xl mx-auto">
+        <div className="relative z-10 px-6 py-10 md:py-14 flex flex-col items-center text-center max-w-4xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -125,7 +147,7 @@ export default function AiImageGeneratorsGuide() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter leading-[1.05]"
+            className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter leading-[1.08]"
           >
             The Ultimate Guide to <br className="hidden md:block"/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400 drop-shadow-sm">
@@ -144,13 +166,13 @@ export default function AiImageGeneratorsGuide() {
       </motion.section>
 
       {/* 2. Definitive Overview - Two Alternating Blocks */}
-      <motion.section variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="my-32 md:my-48 max-w-5xl mx-auto">
-        <motion.div variants={fadeUpVariant} className="text-center mb-16">
+      <motion.section variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="mb-8 md:mb-12 max-w-5xl mx-auto">
+        <motion.div variants={fadeUpVariant} className="text-center mb-8">
           <h3 className="text-sm font-extrabold text-rose-500 uppercase tracking-[0.25em] mb-4">The Paradigm Shift</h3>
           <h4 className="text-3xl md:text-5xl font-black text-on-surface tracking-tighter">From Novelty Pixels to Commercial Assets</h4>
         </motion.div>
 
-        <div className="space-y-24">
+        <div className="space-y-10 md:space-y-12">
           {/* Block 1 */}
           <motion.div variants={fadeUpVariant} className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 space-y-6">
@@ -199,7 +221,7 @@ export default function AiImageGeneratorsGuide() {
                  </div>
                </div>
             </div>
-            <div className="space-y-6">
+            <div className="space-y-4">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-500/20 border border-orange-500/20 flex items-center justify-center text-orange-500 mb-8 shadow-sm">
                 <Layers className="w-7 h-7" />
               </div>
@@ -218,9 +240,9 @@ export default function AiImageGeneratorsGuide() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        className="my-32 md:my-48 max-w-5xl mx-auto"
+        className="mb-8 md:mb-12 max-w-5xl mx-auto"
       >
-        <div className="bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-900 border border-slate-200 dark:border-slate-800 rounded-[3rem] p-10 md:p-16 shadow-2xl relative overflow-hidden">
+        <div className="bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
           
           <div className="relative z-10 flex flex-col items-center text-center mb-12">
@@ -282,13 +304,13 @@ export default function AiImageGeneratorsGuide() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="my-32 md:my-48 max-w-5xl mx-auto"
+        className="mb-8 md:mb-12 max-w-5xl mx-auto"
       >
-        <div className="relative rounded-[3rem] bg-slate-900 overflow-hidden shadow-2xl p-[2px] group">
+        <div className="relative rounded-[2.5rem] bg-slate-900 overflow-hidden shadow-2xl p-[2px] group">
           <div className="absolute inset-0 bg-gradient-to-r from-rose-500 via-orange-500 to-amber-500 opacity-50 blur-md group-hover:opacity-100 transition-opacity duration-700 z-0" />
           
-          <div className="relative bg-slate-900/95 backdrop-blur-2xl rounded-[2.85rem] p-10 md:p-16 z-10 border border-white/10">
-            <div className="flex flex-col md:flex-row gap-16">
+          <div className="relative bg-slate-900/95 backdrop-blur-2xl rounded-[2.4rem] p-8 md:p-12 z-10 border border-white/10">
+            <div className="flex flex-col md:flex-row gap-10 md:gap-14">
               <div className="md:w-1/2 space-y-8">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 text-amber-400 text-sm font-bold uppercase tracking-widest border border-amber-500/20 shadow-inner">
                   <Crown className="w-4 h-4" /> Editor&apos;s Choice 2026
@@ -337,39 +359,75 @@ export default function AiImageGeneratorsGuide() {
       {/* 3.5: Top 3 Alternatives Matrix */}
       <motion.section 
         variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}
-        className="my-32 md:my-48 max-w-5xl mx-auto"
+        className="mb-8 md:mb-12 max-w-5xl mx-auto"
       >
         <div className="text-center mb-12">
           <h3 className="text-sm font-extrabold text-slate-500 uppercase tracking-[0.25em] mb-4">Market Landscape</h3>
           <h4 className="text-3xl font-black text-on-surface tracking-tighter">Top Alternatives</h4>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
           {alternatives.map((alt, idx) => (
-            <motion.div key={idx} variants={fadeUpVariant} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-[2rem] hover:shadow-xl hover:border-primary/30 transition-all duration-300 group">
-              <div className="flex justify-between items-start mb-6">
-                <h5 className="text-2xl font-black text-on-surface">{alt.name}</h5>
-                <div className="bg-success/10 text-success font-bold px-3 py-1 rounded-full text-sm">{alt.score}/10</div>
+            <motion.div key={idx} variants={fadeUpVariant} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-[2rem] hover:shadow-xl hover:border-primary/30 transition-all duration-300 group flex flex-col justify-between">
+              <div>
+                <div className="flex justify-between items-start mb-6">
+                  <Link href={`/tool/${alt.slug}`} className="text-2xl font-black text-on-surface group-hover:text-primary transition-colors">
+                    {alt.name}
+                  </Link>
+                  <div className="bg-success/10 text-success font-bold px-3 py-1 rounded-full text-sm">{alt.score}/10</div>
+                </div>
+                <div className="space-y-4 mb-8">
+                  <div className="flex justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+                    <span className="text-slate-500">Starting Price</span>
+                    <span className="font-bold text-on-surface">{alt.price}</span>
+                  </div>
+                  <div className="flex justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+                    <span className="text-slate-500">Best For</span>
+                    <span className="font-bold text-on-surface">{alt.bestFor}</span>
+                  </div>
+                  <div className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pt-2">
+                    <span className="font-bold text-on-surface">Highlight: </span>{alt.highlight}
+                  </div>
+                </div>
               </div>
-              <div className="space-y-4 mb-8">
-                <div className="flex justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
-                  <span className="text-slate-500">Starting Price</span>
-                  <span className="font-bold text-on-surface">{alt.price}</span>
-                </div>
-                <div className="flex justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
-                  <span className="text-slate-500">Best For</span>
-                  <span className="font-bold text-on-surface">{alt.bestFor}</span>
-                </div>
-                <div className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pt-2">
-                  <span className="font-bold text-on-surface">Highlight: </span>{alt.highlight}
-                </div>
-              </div>
-              <button className="w-full flex items-center justify-center gap-2 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-xl hover:bg-primary hover:text-white transition-colors">
-                View Details <ExternalLink className="w-4 h-4" />
-              </button>
+              <Link 
+                href={`/tool/${alt.slug}`}
+                className="w-full flex items-center justify-center gap-2 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-xl hover:bg-primary hover:text-white transition-colors"
+              >
+                View {alt.name} Profile <ArrowRight className="w-4 h-4" />
+              </Link>
             </motion.div>
           ))}
         </div>
+
+        {/* Head-to-Head Comparison & Workflow Quick Bridges */}
+        <motion.div variants={fadeUpVariant} className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
+          <Link
+            href="/compare-tools/dall-e-3-vs-midjourney"
+            className="group block p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary/40 transition-all shadow-xs"
+          >
+            <div className="text-[11px] font-bold uppercase tracking-wider text-rose-500 mb-1">Top Ranking Comparison</div>
+            <div className="text-sm font-extrabold text-on-surface group-hover:text-primary transition-colors flex items-center gap-1.5">
+              DALL-E 3 vs Midjourney Showdown →
+            </div>
+            <p className="text-xs text-on-surface-variant mt-1">
+              Photorealistic aesthetics and lighting vs semantic prompt obedience.
+            </p>
+          </Link>
+
+          <Link
+            href="/workflows/ai-influencer"
+            className="group block p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary/40 transition-all shadow-xs"
+          >
+            <div className="text-[11px] font-bold uppercase tracking-wider text-emerald-500 mb-1">Which Tools Work Best Together?</div>
+            <div className="text-sm font-extrabold text-on-surface group-hover:text-primary transition-colors flex items-center gap-1.5">
+              AI Influencer Production Stack →
+            </div>
+            <p className="text-xs text-on-surface-variant mt-1">
+              Generate consistent character faces with Midjourney, ChatGPT, Runway &amp; Canva.
+            </p>
+          </Link>
+        </motion.div>
       </motion.section>
 
       {/* 4. Buyer's Guide - Bento Box Layout */}
@@ -378,9 +436,9 @@ export default function AiImageGeneratorsGuide() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="my-32 md:my-48 max-w-6xl mx-auto"
+        className="mb-8 md:mb-12 max-w-6xl mx-auto"
       >
-        <motion.div variants={fadeUpVariant} className="text-center mb-16">
+        <motion.div variants={fadeUpVariant} className="text-center mb-8">
           <h3 className="text-sm font-extrabold text-orange-500 uppercase tracking-[0.25em] mb-4">Evaluation Criteria</h3>
           <h4 className="text-3xl md:text-5xl font-black text-on-surface tracking-tighter">What to Demand from Pro Generators</h4>
         </motion.div>
@@ -453,12 +511,12 @@ export default function AiImageGeneratorsGuide() {
       {/* 4.5: Step-by-Step "How-To" Walkthrough */}
       <motion.section 
         variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}
-        className="my-32 md:my-48 max-w-5xl mx-auto bg-slate-900 rounded-[3rem] p-10 md:p-16 relative overflow-hidden text-white"
+        className="mb-8 md:mb-12 max-w-5xl mx-auto bg-slate-900 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden text-white"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 z-0" />
         <div className="relative z-10">
           <h3 className="text-sm font-extrabold text-amber-400 uppercase tracking-[0.25em] mb-4">Implementation Guide</h3>
-          <h4 className="text-3xl md:text-5xl font-black text-white tracking-tighter mb-16">How to Generate Commercial Visuals in 4 Steps</h4>
+          <h4 className="text-3xl md:text-5xl font-black text-white tracking-tighter mb-10">How to Generate Commercial Visuals in 4 Steps</h4>
           
           <div className="space-y-12">
             {[
@@ -489,7 +547,7 @@ export default function AiImageGeneratorsGuide() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        className="my-32 md:my-48 max-w-5xl mx-auto bg-gradient-to-b from-slate-50 to-white dark:from-slate-900/50 dark:to-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-[3rem] p-8 md:p-16 shadow-xl"
+        className="mb-8 md:mb-12 max-w-5xl mx-auto bg-gradient-to-b from-slate-50 to-white dark:from-slate-900/50 dark:to-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-[2.5rem] p-6 md:p-10 shadow-xl"
       >
         <h3 className="text-4xl md:text-5xl font-black text-on-surface mb-16 text-center tracking-tighter">Who Benefits Most?</h3>
         
@@ -518,7 +576,7 @@ export default function AiImageGeneratorsGuide() {
           </div>
 
           {/* Tab Content */}
-          <div className="md:w-2/3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-[2.5rem] p-10 md:p-14 relative overflow-hidden flex items-center shadow-inner">
+          <div className="md:w-2/3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-[2.5rem] p-6 md:p-10 relative overflow-hidden flex items-center shadow-inner">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -545,9 +603,9 @@ export default function AiImageGeneratorsGuide() {
       {/* 5.5: Topical Glossary */}
       <motion.section 
         variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}
-        className="my-32 md:my-48 max-w-5xl mx-auto"
+        className="mb-8 md:mb-12 max-w-5xl mx-auto"
       >
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <h3 className="text-sm font-extrabold text-primary uppercase tracking-[0.25em] mb-4">Technical Foundation</h3>
           <h4 className="text-3xl md:text-5xl font-black text-on-surface tracking-tighter">Core Terminology</h4>
         </div>
@@ -571,12 +629,12 @@ export default function AiImageGeneratorsGuide() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="my-32 md:my-48 max-w-3xl mx-auto"
+        className="mb-8 md:mb-12 max-w-3xl mx-auto"
       >
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <h3 className="text-4xl md:text-5xl font-black text-on-surface mb-4 tracking-tighter">Frequently Asked Questions</h3>
         </div>
-        <div className="space-y-6">
+        <div className="space-y-4">
           {faqData.map((faq, idx) => {
             const isOpen = openFaq === idx;
             return (

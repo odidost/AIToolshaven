@@ -15,7 +15,7 @@ export function ArticleCard({
     summary?: string;
 }) {
     return (
-        <Link href={`/blog/${slug}`} className="group h-full block">
+        <Link href={`/blog/${slug}`} prefetch={false} className="group h-full block">
             <div className="bg-white rounded-[2rem] border border-black/5 p-4 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-2 h-full flex flex-col relative overflow-hidden">
                 
                 {/* Background Hover Glow */}

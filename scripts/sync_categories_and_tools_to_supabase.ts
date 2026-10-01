@@ -1,7 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js';
-import { loadEnvConfig } from '@next/env';
+import nextEnv from '@next/env';
+const { loadEnvConfig } = nextEnv;
 import type { AITool } from '../src/lib/types/tool';
 
 const projectDir = process.cwd();
@@ -42,51 +43,76 @@ async function main() {
   categoriesRaw.forEach((c: any) => {
     categoryMap.set(c.slug, c);
     categoryMap.set(c.id, c);
+    categoryMap.set(c.name, c);
+    categoryMap.set(c.slug.toLowerCase(), c);
+    categoryMap.set(c.id.toLowerCase(), c);
+    categoryMap.set(c.name.toLowerCase(), c);
   });
 
   let syncedTools = 0;
-  for (const doc of toolsJson) {
-    const tool: AITool = doc.draftData || doc.publishedData || doc;
-    const toolId = tool.id || crypto.randomUUID();
-    const primaryCatObj = categoryMap.get(tool.category);
-    const primaryCatId = primaryCatObj?.id || tool.category;
+  // Concurrent chunked sync (concurrency 20)
+  const chunkSize = 20;
+  for (let i = 0; i < toolsJson.length; i += chunkSize) {
+    const chunk = toolsJson.slice(i, i + chunkSize);
+    await Promise.all(chunk.map(async (doc: any) => {
+      const tool: AITool = doc.draftData || doc.publishedData || doc;
+      const toolId = tool.id || crypto.randomUUID();
+      const primaryCatObj = (tool.category_id && categoryMap.get(tool.category_id.toLowerCase())) ||
+        (tool.category && categoryMap.get(tool.category.toLowerCase())) ||
+        (tool.categorySlug && categoryMap.get(tool.categorySlug.toLowerCase())) ||
+        categoryMap.get('c1');
+      const primaryCatId = primaryCatObj?.id || 'c1';
 
-    const dbPayload: any = {
-      id: toolId,
-      name: tool.name,
-      slug: tool.slug,
-      website_url: tool.websiteUrl || null,
-      category_id: primaryCatId,
-      logo_url: tool.logoUrl || '',
-      screenshot_url: tool.screenshotUrl || null,
-      image_url: tool.imageUrl || tool.screenshotUrl || tool.logoUrl || '',
-      tagline: tool.tagline || '',
-      description: tool.description || '',
-      price_model: tool.priceModel || 'Freemium',
-      status: tool.status || 'Draft',
-      updated_at: new Date().toISOString()
-    };
+      let priceModel = tool.priceModel || 'Freemium';
+      if (!['Free', 'Freemium', 'Paid', 'Enterprise'].includes(priceModel)) {
+        if (priceModel.toLowerCase().includes('enterprise')) priceModel = 'Enterprise';
+        else if (priceModel.toLowerCase().includes('free') || priceModel.toLowerCase().includes('open') || priceModel.toLowerCase().includes('foss')) priceModel = 'Free';
+        else if (priceModel.toLowerCase().includes('paid')) priceModel = 'Paid';
+        else priceModel = 'Freemium';
+      }
 
-    const { error: upsertErr } = await supabase.from('tools').upsert(dbPayload);
-    if (!upsertErr) {
-      syncedTools++;
-      // Sync tool_categories
-      await supabase.from('tool_categories').delete().eq('tool_id', toolId);
-      const allCatIds = new Set<string>([primaryCatId]);
-      (tool.additionalCategories || []).forEach(ac => {
-        const cObj = categoryMap.get(ac);
-        if (cObj?.id) allCatIds.add(cObj.id);
-        else allCatIds.add(ac);
-      });
+      let status = tool.status || 'Draft';
+      if (!['Draft', 'Published', 'Archived'].includes(status)) {
+        status = 'Published';
+      }
 
-      const rels = Array.from(allCatIds).map(cid => ({
-        tool_id: toolId,
-        category_id: cid
-      }));
-      await supabase.from('tool_categories').insert(rels);
-    } else {
-      console.warn(`Tool upsert notice for ${tool.name}:`, upsertErr.message);
-    }
+      const dbPayload: any = {
+        id: toolId,
+        name: tool.name,
+        slug: tool.slug,
+        website_url: tool.websiteUrl || null,
+        category_id: primaryCatId,
+        logo_url: tool.logoUrl || '',
+        screenshot_url: tool.screenshotUrl || null,
+        image_url: tool.imageUrl || tool.screenshotUrl || tool.logoUrl || '',
+        tagline: tool.tagline || '',
+        description: tool.description || '',
+        price_model: priceModel,
+        status: status,
+        updated_at: new Date().toISOString()
+      };
+
+      const { error: upsertErr } = await supabase.from('tools').upsert(dbPayload);
+      if (!upsertErr) {
+        syncedTools++;
+        // Sync tool_categories
+        await supabase.from('tool_categories').delete().eq('tool_id', toolId);
+        const allCatIds = new Set<string>([primaryCatId]);
+        (tool.additionalCategories || []).forEach(ac => {
+          const cObj = categoryMap.get(ac);
+          if (cObj?.id) allCatIds.add(cObj.id);
+          else allCatIds.add(ac);
+        });
+
+        const rels = Array.from(allCatIds).map(cid => ({
+          tool_id: toolId,
+          category_id: cid
+        }));
+        await supabase.from('tool_categories').insert(rels);
+      } else {
+        console.warn(`Tool upsert notice for ${tool.name}:`, upsertErr.message);
+      }
+    }));
   }
 
   console.log(`\n✓ Successfully synced ${syncedTools}/${toolsJson.length} tools to Supabase with zero errors.`);

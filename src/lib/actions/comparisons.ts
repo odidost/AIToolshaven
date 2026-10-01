@@ -48,6 +48,8 @@ export async function saveComparison(slug: string, data: ComparisonFormValues) {
 
   revalidatePath('/admin/cms/comparisons');
   revalidatePath(`/admin/cms/comparisons/${dbData.slug}`);
+  revalidatePath(`/compare-tools/${dbData.slug}`);
+  revalidatePath('/compare-tools');
 
   return { success: true, slug: dbData.slug };
 }

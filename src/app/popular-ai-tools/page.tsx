@@ -1,12 +1,12 @@
 import { Metadata } from "next";
-import { getAllTools } from "@/lib/data/tools-service";
+import { getPopularTools } from "@/lib/data/tools-service";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { ToolGridWithFilters } from "@/components/shared/ToolGridWithFilters";
 import { getCategoryTheme } from "@/lib/data/categoryThemes";
 import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 
-export const revalidate = 3600; // 1 hour
+export const revalidate = 21600; // 6 hours
 
 export const metadata: Metadata = {
   title: "Most Popular AI Tools | AIToolsHaven",
@@ -14,8 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default async function PopularAIToolsPage() {
-  // getAllTools orders by popularity descending
-  const popularTools = await getAllTools();
+  const popularTools = await getPopularTools();
   
   // Use a generic theme for the layout
   const theme = getCategoryTheme("popular");

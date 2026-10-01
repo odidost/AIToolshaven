@@ -14,6 +14,7 @@ const aliases: Record<string, string> = {
   'writing': 'ai-writing-tools',
   'image-generation': 'ai-image-generators',
   'image': 'ai-image-generators',
+  'ai-image-generation-tools': 'ai-image-generators',
   'video-creation': 'ai-video-generators',
   'video': 'ai-video-generators',
   'audio': 'audio-voice',
@@ -22,6 +23,7 @@ const aliases: Record<string, string> = {
   'code': 'coding-assistants',
   'marketing': 'marketing-sales',
   'sales': 'marketing-sales',
+  'ai-marketing-tools': 'marketing-sales',
   'ai-presentation-tools': 'ai-presentation-makers',
   'ai-education-tools': 'ai-research-tools',
   'ai-workflow-automation': 'productivity',
@@ -30,10 +32,8 @@ const aliases: Record<string, string> = {
   'chatbot': 'ai-chatbots',
 };
 
-export function resolveCategory(rawCategory?: string): ToolCategory {
-  if (!rawCategory) {
-    return rawCategories.find(c => c.slug === 'productivity') || rawCategories[0];
-  }
+export function findCategory(rawCategory?: string): ToolCategory | undefined {
+  if (!rawCategory) return undefined;
   const clean = String(rawCategory).trim();
   const lower = clean.toLowerCase();
 
@@ -61,8 +61,11 @@ export function resolveCategory(rawCategory?: string): ToolCategory {
     if (aliased) return aliased;
   }
 
-  // Fallback to default
-  return rawCategories.find(c => c.slug === 'productivity') || rawCategories[0];
+  return undefined;
+}
+
+export function resolveCategory(rawCategory?: string): ToolCategory {
+  return findCategory(rawCategory) || rawCategories.find(c => c.slug === 'productivity') || rawCategories[0];
 }
 
 export function getCategoryName(rawCategory?: string): string {

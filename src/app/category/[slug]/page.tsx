@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { getCategoryBySlug, getCategoryById, getAllCategories } from "@/lib/queries/categories";
 import { siteConfig } from "@/lib/config/site";
 import { getToolsByCategoryId } from "@/lib/data/tools-service";
@@ -27,7 +28,7 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export const revalidate = 3600; // 1 hour
+export const revalidate = 86400; // 24 hours
 
 export async function generateStaticParams() {
   const categories = await getAllCategories();
@@ -42,17 +43,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const category = await getCategoryBySlug(decodedSlug);
 
   if (!category) {
-    return {
-      title: "Category Not Found | AIToolsHaven",
-    };
+    notFound();
   }
 
   const categoryTools = await getToolsByCategoryId(category.id);
   const hasGuide = Boolean(categoryGuides[decodedSlug] || categoryGuides[category.slug]);
   const isNoIndex = category.indexable === false || (!hasGuide && categoryTools.length < 3);
   const theme = getCategoryTheme(category.slug);
-  const title = getOptimizedCategoryTitle(category.name, categoryTools.length);
-  const description = getOptimizedCategoryDescription(category.name, categoryTools.length, theme?.heroDescription);
+  const title = getOptimizedCategoryTitle(category.name, categoryTools.length, category.slug);
+  const description = getOptimizedCategoryDescription(category.name, categoryTools.length, theme?.heroDescription, category.slug);
 
   return {
     title: {
@@ -205,8 +204,11 @@ export default async function CategoryPage({
     ]
   };
 
+  const allCategories = await getAllCategories();
   const parentCategory = category.parentId ? await getCategoryById(category.parentId) : undefined;
   const parentBreadcrumb = parentCategory ? [{ label: parentCategory.name, href: `/category/${parentCategory.slug}` }] : [];
+  const subcategories = allCategories.filter(c => (c.parentId === category.id || c.parentId === category.slug) && c.status !== 'Draft');
+  const siblingSubcategories = category.parentId ? allCategories.filter(c => (c.parentId === category.parentId) && c.slug !== category.slug && c.status !== 'Draft') : [];
 
   return (
     <main
@@ -228,25 +230,103 @@ export default async function CategoryPage({
         {/* Dynamic Category Page Background */}
         {['coding-assistants', 'productivity'].includes(slug) && <BackgroundPattern type="workflow" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
         {['image-generation', 'video-creation', 'audio-voice'].includes(slug) && <BackgroundPattern type="sparkles" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
-        {['text-generation', 'marketing-sales'].includes(slug) && <BackgroundPattern type="dots" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
+        {['text-generation', 'marketing-sales', 'ai-writing-tools'].includes(slug) && <BackgroundPattern type="dots" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
 
-        {/* Category Navigation */}
-        <section className="mb-12">
-          <h3 className="text-[13px] font-bold text-on-surface-variant uppercase tracking-[0.2em] mb-4">Explore other categories</h3>
-          <CategoryCapsuleBar activeSlug={category.slug} />
-        </section>
+        {/* Specialized Subcategory Explorer */}
+        {subcategories.length > 0 && (
+          <section className="mb-12 p-6 rounded-2xl bg-surface-container-low/80 border border-border/80 backdrop-blur-xs shadow-xs">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-[20px] text-[rgb(var(--category-accent))]">auto_awesome</span>
+                <h3 className="text-sm font-bold text-on-surface uppercase tracking-[0.16em]">
+                  Specialized {category.name} Workflows
+                </h3>
+              </div>
+              <span className="text-xs text-on-surface-variant font-medium hidden sm:inline-block">
+                {subcategories.length} Specialized Hubs
+              </span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {subcategories.map(sub => (
+                <Link
+                  key={sub.id}
+                  href={`/category/${sub.slug}`}
+                  className="group flex items-center justify-between p-3.5 rounded-xl bg-surface border border-border/70 hover:border-[rgb(var(--category-accent))] transition-all duration-200 hover:-translate-y-0.5 shadow-2xs hover:shadow-xs"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-[rgb(var(--category-accent))]/10 text-[rgb(var(--category-accent))] shrink-0">
+                      <span className="material-symbols-outlined text-[19px]">{sub.icon || "category"}</span>
+                    </span>
+                    <div className="min-w-0">
+                      <div className="text-[13px] font-semibold text-on-surface group-hover:text-[rgb(var(--category-accent))] transition-colors truncate">
+                        {sub.name}
+                      </div>
+                      <div className="text-[11px] text-on-surface-variant truncate">
+                        {sub.count || 0} verified tools
+                      </div>
+                    </div>
+                  </div>
+                  <span className="material-symbols-outlined text-[16px] text-muted-foreground group-hover:text-[rgb(var(--category-accent))] group-hover:translate-x-0.5 transition-all">
+                    arrow_forward
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
       {/* Category Top Editorial Spotlight */}
       <CategoryHeroSpotlight 
         categorySlug={category.slug}
         categoryName={category.name}
         topTools={categoryTools}
+        theme={theme}
       />
 
       {/* Tools Grid */}
       <div id="tools-grid">
         <ToolGridWithFilters tools={categoryTools} theme={theme} />
       </div>
+
+      {/* Sibling Subcategories Explorer (Hub: Related Parent Workflows) */}
+      {siblingSubcategories.length > 0 && (
+        <section className="mt-10 mb-6 p-5 rounded-2xl bg-surface-container-low/50 border border-border/70 backdrop-blur-xs">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="material-symbols-outlined text-[18px] text-[rgb(var(--category-accent))]">hub</span>
+            <h3 className="text-xs font-bold text-on-surface uppercase tracking-[0.16em]">
+              Related {parentCategory?.name || 'Workflows'}
+            </h3>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {siblingSubcategories.map(sub => (
+              <Link
+                key={sub.id}
+                href={`/category/${sub.slug}`}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium bg-surface border border-border/70 text-on-surface hover:border-[rgb(var(--category-accent))] hover:text-[rgb(var(--category-accent))] transition-all shadow-2xs"
+              >
+                <span className="material-symbols-outlined text-[14px] text-muted-foreground">{sub.icon || "category"}</span>
+                <span>{sub.name}</span>
+                <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-muted/60 text-muted-foreground">
+                  {sub.count || 0}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Category Navigation */}
+      <section className={siblingSubcategories.length > 0 ? "mb-10" : "my-10"}>
+        <h3 className="text-[13px] font-bold text-on-surface-variant uppercase tracking-[0.2em] mb-4">Explore other categories</h3>
+        <CategoryCapsuleBar activeSlug={category.slug} />
+      </section>
+
+      {/* Category Rich Content */}
+      <div id="category-guide">
+        <CategoryGuide theme={theme} />
+      </div>
+      {!hasGuide && <InternalLinks theme={theme} />}
+      {!hasGuide && <CategoryFAQ theme={theme} />}
 
       {/* Cross-Silo Resource Hub: Commercial Guides, Comparisons & Workflows */}
       <CategoryRelatedGuides 
@@ -255,12 +335,7 @@ export default async function CategoryPage({
         theme={theme}
       />
 
-      {/* Category Rich Content */}
-      <div id="category-guide">
-        <CategoryGuide theme={theme} />
-      </div>
-      {!hasGuide && <InternalLinks theme={theme} />}
-      {!hasGuide && <CategoryFAQ theme={theme} />}
+      {/* Expert Editorial Process */}
       <EEATFooter />
 
       {/* Social CTA */}

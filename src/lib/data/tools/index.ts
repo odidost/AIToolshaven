@@ -20,8 +20,14 @@ function loadLocalTools(): AITool[] {
           const isPublished = doc.status === "published" || doc.status === "Published" || (doc.publishedData && doc.status !== "draft" && doc.status !== "Draft");
           if (isPublished) {
             const data = doc.publishedData || doc;
+            const addCats = Array.from(new Set([
+              ...(Array.isArray(doc.additionalCategories) ? doc.additionalCategories : []),
+              ...(Array.isArray(data.additionalCategories) ? data.additionalCategories : [])
+            ]));
             return {
+              ...doc,
               ...data,
+              additionalCategories: addCats,
               id: doc.id || data.id,
               status: "Published"
             } as AITool;
@@ -30,8 +36,14 @@ function loadLocalTools(): AITool[] {
           // If it's a draft tool, include it with status Draft
           const data = doc.draftData || doc;
           if (data.name && data.slug) {
+            const addCats = Array.from(new Set([
+              ...(Array.isArray(doc.additionalCategories) ? doc.additionalCategories : []),
+              ...(Array.isArray(data.additionalCategories) ? data.additionalCategories : [])
+            ]));
             return {
+              ...doc,
               ...data,
+              additionalCategories: addCats,
               id: doc.id || data.id,
               status: "Draft"
             } as AITool;
@@ -45,6 +57,14 @@ function loadLocalTools(): AITool[] {
     console.error("Failed to load local tools.json:", e);
   }
   return [];
+}
+
+export function clearLocalToolsCache(): void {
+  _cachedTools = null;
+  _slugIndex = null;
+  _categoryIndex = null;
+  _publishedTools = null;
+  _publishedSlugs = null;
 }
 
 function ensureIndexes(): void {
