@@ -1,6 +1,7 @@
 "use server";
 
 import { Resend } from "resend";
+import { findCategory } from "@/lib/data/categories";
 
 export async function sendSubmissionEmail(formData: {
   toolName: string;
@@ -22,10 +23,25 @@ export async function sendSubmissionEmail(formData: {
 
   const resend = new Resend(resendApiKey);
 
+  const categoryObj = findCategory(formData.category);
+  const categoryDisplay = categoryObj ? `${categoryObj.name} (${categoryObj.id})` : formData.category;
+  const isPaidPlan = formData.plan.includes("Growth") || formData.plan.includes("Premium");
+
   const emailHtml = `
     <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px;">
       <h2 style="color: #7C3AED; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">New AI Tool Submission</h2>
       <p style="color: #334155;">A new AI tool has been submitted on AIToolsHaven:</p>
+
+      ${isPaidPlan ? `
+      <div style="margin: 15px 0; padding: 12px 16px; background-color: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; color: #92400e; font-size: 14px;">
+        <strong>💳 Paid Tier Requested:</strong> ${formData.plan}<br/>
+        Issue a Stripe invoice to <a href="mailto:${formData.contactEmail}" style="color: #92400e; font-weight: bold;">${formData.contactEmail}</a> to activate their priority queue placement.
+      </div>` : `
+      <div style="margin: 15px 0; padding: 12px 16px; background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; color: #166534; font-size: 14px;">
+        <strong>🌱 Free Plan Submission:</strong> Requires reciprocal backlink verification.<br/>
+        ${formData.backlinkUrl ? `Verified badge URL: <a href="${formData.backlinkUrl}" target="_blank" style="color: #166534; font-weight: bold;">${formData.backlinkUrl}</a>` : 'No backlink URL provided.'}
+      </div>`}
+
       <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
         <tbody>
           <tr>
@@ -46,7 +62,7 @@ export async function sendSubmissionEmail(formData: {
           </tr>
           <tr>
             <td style="padding: 8px 0; font-weight: bold; color: #475569;">Category:</td>
-            <td style="padding: 8px 0; color: #0f172a;">${formData.category}</td>
+            <td style="padding: 8px 0; color: #0f172a; font-weight: 600;">${categoryDisplay}</td>
           </tr>
           <tr>
             <td style="padding: 8px 0; font-weight: bold; color: #475569;">Pricing Model:</td>
