@@ -8,9 +8,11 @@ const auditLogPath = path.join(process.cwd(), 'data', 'publication_audit_log.jso
 const readinessAuditPath = path.join(process.cwd(), 'data', 'publication_readiness_audit.json');
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://fygifuwuseksxpcetsbo.supabase.co';
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'sb_publishable_Wtq6w9BRd1-O_xZxnTh5Zw_kPQbLYUM';
 
-const supabase = createClient(supabaseUrl, supabaseKey);
+function getSupabaseClient() {
+  return createClient(supabaseUrl, supabaseKey);
+}
 
 export interface BatchPublicationOptions {
   size?: number;
@@ -280,6 +282,7 @@ export async function runBatchPublication(options?: BatchPublicationOptions) {
       };
     });
 
+    const supabase = getSupabaseClient();
     for (let i = 0; i < supabaseUpdates.length; i += 50) {
       const chunk = supabaseUpdates.slice(i, i + 50);
       await supabase.from('tools').upsert(chunk, { onConflict: 'id' });

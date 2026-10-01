@@ -7,6 +7,8 @@ const toolsPath = path.join(process.cwd(), 'data', 'tools.json');
 const categoriesPath = path.join(process.cwd(), 'data', 'categories.json');
 const readinessAuditPath = path.join(process.cwd(), 'data', 'publication_readiness_audit.json');
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const rawTools = JSON.parse(fs.readFileSync(toolsPath, 'utf8'));
