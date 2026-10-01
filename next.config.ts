@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
     formats: ['image/avif', 'image/webp'],
+    qualities: [75],
+    deviceSizes: [640, 750, 1080, 1200],
+    imageSizes: [32, 48, 64, 96, 128, 256],
     remotePatterns: [
       {
         protocol: "https",
@@ -128,19 +131,40 @@ const nextConfig: NextConfig = {
         destination: '/freemium-ai-tools',
         permanent: true,
       },
+      // Specific legacy paths must precede wildcard patterns
+      {
+        source: '/ai-tool/aider-ai-review',
+        destination: '/tool/aider-chat',
+        permanent: true,
+      },
+      {
+        source: '/ai-tool/pear-ai-review',
+        destination: '/tool/pearai-code',
+        permanent: true,
+      },
+      {
+        source: '/ai-tool/wix',
+        destination: '/tool/wix-logo-maker',
+        permanent: true,
+      },
+      {
+        source: '/tool/canva-logo-maker',
+        destination: '/tool/canva',
+        permanent: true,
+      },
       {
         source: '/tool/morningscore',
         destination: '/tool/morningscore-seo-platform',
         permanent: true,
       },
       {
-        source: '/ai-tool/:slug',
-        destination: '/tool/:slug',
+        source: '/tool/luma',
+        destination: '/tool/luma-dream-machine',
         permanent: true,
       },
       {
-        source: '/ai-tool-category/:slug',
-        destination: '/category/:slug',
+        source: '/compare-tools/capcut-vs-opus-clip',
+        destination: '/compare-tools/opus-clip-vs-capcut',
         permanent: true,
       },
       {
@@ -156,6 +180,17 @@ const nextConfig: NextConfig = {
       {
         source: '/all-ai-tool-categories',
         destination: '/categories',
+        permanent: true,
+      },
+      // Generic wildcard legacy redirects
+      {
+        source: '/ai-tool/:slug',
+        destination: '/tool/:slug',
+        permanent: true,
+      },
+      {
+        source: '/ai-tool-category/:slug',
+        destination: '/category/:slug',
         permanent: true,
       },
       {
@@ -183,25 +218,24 @@ const nextConfig: NextConfig = {
         destination: '/ai-tool-recommender',
         permanent: true,
       },
-      // Specific legacy paths
       {
-        source: '/ai-tool/aider-ai-review',
-        destination: '/tool/aider-chat',
+        source: '/ai-marketing-tools',
+        destination: '/category/marketing-sales',
         permanent: true,
       },
       {
-        source: '/ai-tool/pear-ai-review',
-        destination: '/tool/pearai-code',
+        source: '/ai-marketing-tools/:path*',
+        destination: '/category/marketing-sales',
         permanent: true,
       },
       {
-        source: '/ai-tool/wix',
-        destination: '/tool/wix-logo-maker',
+        source: '/category/ai-image-generation-tools',
+        destination: '/category/ai-image-generators',
         permanent: true,
       },
       {
-        source: '/tool/canva-logo-maker',
-        destination: '/tool/canva',
+        source: '/category/ai-image-generation-tools/:path*',
+        destination: '/category/ai-image-generators',
         permanent: true,
       },
     ];

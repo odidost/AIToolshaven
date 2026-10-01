@@ -37,6 +37,9 @@ export async function saveCategory(slug: string, data: CategoryFormValues) {
 
   revalidatePath('/admin/cms/categories');
   revalidatePath(`/admin/cms/categories/${dbData.slug}`);
+  revalidatePath(`/category/${dbData.slug}`);
+  revalidatePath('/categories');
+  revalidatePath('/');
 
   return { success: true, slug: dbData.slug };
 }

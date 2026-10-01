@@ -112,6 +112,7 @@ export function WorkflowCard({
                 <div key={idx} className="flex items-center gap-1.5">
                   <Link
                     href={`/tool/${toolSlug}`}
+                    prefetch={false}
                     onClick={(e) => e.stopPropagation()}
                     className="inline-flex items-center gap-1.5 text-xs font-semibold bg-white hover:bg-primary/10 hover:text-primary px-2.5 py-1.5 rounded-lg border border-black/5 shadow-2xs transition-all hover:scale-105"
                     title={`View ${tool.name}`}

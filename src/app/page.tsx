@@ -26,16 +26,15 @@ import { siteConfig } from "@/lib/config/site";
 import { HomepageStructuredData } from "@/components/home/HomepageStructuredData";
 import { HomepageEditorialGuide } from "@/components/home/HomepageEditorialGuide";
 import { HomepageFAQ } from "@/components/home/HomepageFAQ";
-import { CommunityReviews } from "@/components/home/CommunityReviews";
 import { SubmitToolCTA } from "@/components/home/SubmitToolCTA";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { SectionContainer } from "@/components/layout/SectionContainer";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Best AI Tools Directory (2026) — 900+ Verified AI Tools",
+    absolute: "AIToolsHaven — Find, Compare & Chain the Best AI Tools (2026)",
   },
-  description: "Discover, compare, and chain 900+ verified AI tools for 2026. Explore freemium AI software, multi-app automation workflows, and unbiased feature comparisons.",
+  description: "Discover, compare, and chain 900+ verified AI tools. Explore freemium AI software, head-to-head comparisons, and proven multi-tool workflows for developers and creators.",
   robots: {
     index: true,
     follow: true,
@@ -52,20 +51,19 @@ export const metadata: Metadata = {
     "best ai tools 2026",
     "freemium ai tools",
     "free ai tools directory",
-    "ai tools discovery",
-    "verified ai software",
-    "ai workflows for business",
-    "compare ai tools side by side",
-    "ai video generators 2026",
+    "which ai tools work best together",
     "ai coding assistants 2026",
-    "ai tools list",
+    "ai video generators 2026",
+    "compare ai tools side by side",
+    "ai workflows",
+    "verified ai software",
   ],
   alternates: {
     canonical: siteConfig.baseUrl,
   },
   openGraph: {
-    title: "Best AI Tools Directory (2026) — 900+ Verified AI Tools",
-    description: "Discover, compare, and chain 900+ verified AI tools for 2026. Explore freemium AI software, multi-app automation workflows, and unbiased feature comparisons.",
+    title: "AIToolsHaven — Find, Compare & Chain the Best AI Tools (2026)",
+    description: "Discover, compare, and chain 900+ verified AI tools. Explore freemium AI software, head-to-head comparisons, and proven multi-tool workflows for developers and creators.",
     url: siteConfig.baseUrl,
     siteName: siteConfig.name,
     images: [
@@ -73,20 +71,20 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: "AIToolsHaven — Best AI Tools Directory (2026)",
+        alt: "AIToolsHaven — Find, Compare & Chain the Best AI Tools (2026)",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best AI Tools Directory (2026) — 900+ Verified AI Tools",
-    description: "Discover, compare, and chain 900+ verified AI tools for 2026. Explore freemium AI software and multi-app automation workflows.",
+    title: "AIToolsHaven — Find, Compare & Chain the Best AI Tools (2026)",
+    description: "Discover, compare, and chain 900+ verified AI tools. Explore freemium AI software and multi-app automation workflows.",
     images: [siteConfig.ogImage],
   },
 };
 
-export const revalidate = 3600;
+export const revalidate = 21600; // 6 hours
 
 export default async function Home() {
   const featuredTools = await getFeaturedTools(8);
@@ -377,13 +375,6 @@ export default async function Home() {
           </div>
         </section>
       </div>
-
-      {/* 10. Community Reviews */}
-      <FadeIn direction="up" className="w-full relative z-10">
-        <section className="py-16 sm:py-24 relative overflow-hidden">
-          <CommunityReviews />
-        </section>
-      </FadeIn>
 
       {/* 11. Latest AI News */}
       <div className="w-full relative z-10">

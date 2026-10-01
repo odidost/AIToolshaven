@@ -62,7 +62,7 @@ import { GoalPrompts } from "@/components/goals/GoalPrompts";
 import { GoalFAQ } from "@/components/goals/GoalFAQ";
 import { GoalEditorial } from "@/components/goals/GoalEditorial";
 
-export const revalidate = 3600;
+export const revalidate = 86400; // 24 hours
 
 export default async function GoalPage({
     params,

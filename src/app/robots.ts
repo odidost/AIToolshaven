@@ -12,8 +12,6 @@ export default function robots(): MetadataRoute.Robots {
           "/api/",
           "/admin/",
           "/video/",
-          "/*?*nocache=",
-          "/*?*cache=",
         ],
       },
       {

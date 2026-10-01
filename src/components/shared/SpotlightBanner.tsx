@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from "next/link";
 import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
-import { HeroTypingText } from "@/components/home/hero/HeroTypingText";
 import { HeroSearchBar } from "@/components/home/hero/HeroSearchBar";
 import { HeroFloatingLogos } from "@/components/home/hero/HeroFloatingLogos";
 import { HeroAura } from "@/components/home/hero/HeroAura";
@@ -33,18 +32,43 @@ export function SpotlightBanner() {
           <span className="tracking-wide">Verified Daily &bull; Updated for 2026</span>
         </div>
 
-        <h1 className="mt-8 text-fluid-h1 font-black tracking-tight text-on-surface">
-          <span>Best AI Tools Directory (2026)</span>
-          <span className="block mt-2 text-primary drop-shadow-[0_0_20px_rgba(255,95,109,0.35)]">
-            <HeroTypingText />
+        <h1 className="mt-8 text-fluid-h1 font-black tracking-tight text-on-surface max-w-3xl">
+          Find, Compare &amp; Chain the Best{" "}
+          <span className="text-primary drop-shadow-[0_0_20px_rgba(255,95,109,0.35)]">
+            AI Tools
           </span>
         </h1>
 
-        <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-on-surface-variant">
-          Discover, compare, and chain 900+ verified AI tools across writing, coding, video, and marketing. Filter by free and freemium plans, or explore multi-app workflow blueprints.
+        <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-on-surface-variant font-['Figtree',sans-serif]">
+          Which AI tools work best together? Explore 900+ hand-vetted platforms, objective head-to-head comparisons, and proven multi-tool workflows with verified pricing.
         </p>
 
         <HeroSearchBar />
+
+        {/* Priority Pillar Pathways */}
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-2 max-w-2xl">
+          <Link href="/category/coding-assistants" className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-primary hover:text-primary transition-all shadow-2xs">
+            Coding Assistants
+          </Link>
+          <Link href="/category/ai-video-generators" className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-primary hover:text-primary transition-all shadow-2xs">
+            AI Video Generators
+          </Link>
+          <Link href="/category/productivity" className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-primary hover:text-primary transition-all shadow-2xs">
+            Productivity &amp; RAG
+          </Link>
+          <Link href="/category/ai-presentation-makers" className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-primary hover:text-primary transition-all shadow-2xs">
+            AI Presentations
+          </Link>
+          <Link href="/category/marketing-sales" className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-primary hover:text-primary transition-all shadow-2xs">
+            Marketing &amp; Sales
+          </Link>
+          <Link href="/freemium-ai-tools" className="px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 transition-all shadow-2xs">
+            800+ Freemium Tools
+          </Link>
+          <Link href="/compare-tools" className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-primary hover:text-primary transition-all shadow-2xs">
+            Versus Comparisons
+          </Link>
+        </div>
 
           {/* Trust Signals & Stats */}
         <div className="mt-12 flex flex-wrap justify-center items-center gap-6 lg:gap-8 w-full border-t border-black/5 pt-8">
@@ -59,6 +83,7 @@ export function SpotlightBanner() {
                       className="h-full w-full object-cover"
                       loading="eager"
                       decoding="async"
+                      unoptimized
                     />
                   </div>
                 ))}

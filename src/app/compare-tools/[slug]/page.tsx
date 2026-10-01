@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeftRight } from "lucide-react";
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const mainTool = await getToolBySlug(mainToolSlug);
 
   if (!mainTool) {
-    return { title: "Comparison Not Found | AIToolsHaven" };
+    notFound();
   }
 
   let compareTool = null;
@@ -62,11 +62,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     compareTool = otherTools[0] || null;
   }
 
-  const canonicalSlug = compareTool
-    ? [mainToolSlug, compareToolSlug].sort().join('-vs-')
-    : slug;
+  // 1. Check whether an explicit comparison record exists for that exact slug
+  const exactCurated = comparisons.find((c) => c.slug === slug);
+  // 2. Check if reverse matches an established curated slug
+  const reverseCurated = compareToolSlug ? comparisons.find((c) => c.slug === `${compareToolSlug}-vs-${mainToolSlug}`) : null;
+  const curated = exactCurated || reverseCurated;
 
-  const curated = comparisons.find(c => c.slug === slug || c.slug === canonicalSlug || c.slug === `${compareToolSlug}-vs-${mainToolSlug}`);
+  // 3. Preserve explicit curated slug as canonical if it exists; only use sorting for new arbitrary comparisons
+  const canonicalSlug = curated
+    ? curated.slug
+    : compareTool
+    ? [mainToolSlug, compareToolSlug].sort().join("-vs-")
+    : slug;
 
   const title = compareTool
     ? `${mainTool.name} vs ${compareTool.name}: Side-by-Side AI Comparison | AIToolsHaven`
@@ -131,6 +138,12 @@ export default async function ComparePage({
   let compareToolSlug = "";
   if (slug.includes("-vs-")) {
     [mainToolSlug, compareToolSlug] = slug.split("-vs-");
+  }
+
+  // If this is the reverse of an established curated comparison, redirect to the canonical curated slug
+  const reverseCurated = compareToolSlug ? comparisons.find((c) => c.slug === `${compareToolSlug}-vs-${mainToolSlug}`) : null;
+  if (reverseCurated && reverseCurated.slug !== slug) {
+    redirect(`/compare-tools/${reverseCurated.slug}`);
   }
 
   const mainTool = await getToolBySlug(mainToolSlug);

@@ -1,7 +1,7 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 
 async function recalculateToolRating(supabase: any, toolSlug: string) {
   const { data: reviews } = await supabase
@@ -44,8 +44,12 @@ export async function updateReviewStatus(reviewId: string, status: string) {
   }
 
   if (review?.tool_slug) {
+    const slug = review.tool_slug.toLowerCase();
     await recalculateToolRating(supabase, review.tool_slug);
-    revalidatePath(`/tool/${review.tool_slug}`);
+    revalidatePath(`/tool/${slug}`);
+    revalidateTag(`reviews:${slug}`, 'max');
+    revalidateTag(`tool:${slug}`, 'max');
+    revalidateTag('reviews', 'max');
   }
 
   revalidatePath('/admin/cms/reviews')
@@ -70,8 +74,12 @@ export async function deleteReview(reviewId: string) {
   }
 
   if (review?.tool_slug) {
+    const slug = review.tool_slug.toLowerCase();
     await recalculateToolRating(supabase, review.tool_slug);
-    revalidatePath(`/tool/${review.tool_slug}`);
+    revalidatePath(`/tool/${slug}`);
+    revalidateTag(`reviews:${slug}`, 'max');
+    revalidateTag(`tool:${slug}`, 'max');
+    revalidateTag('reviews', 'max');
   }
 
   revalidatePath('/admin/cms/reviews')

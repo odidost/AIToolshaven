@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { getAllTools } from "@/lib/data/tools-service";
+import { getFreemiumTools } from "@/lib/data/tools-service";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { ToolGridWithFilters } from "@/components/shared/ToolGridWithFilters";
@@ -22,7 +22,7 @@ import {
   Award
 } from "lucide-react";
 
-export const revalidate = 3600; // 1 hour
+export const revalidate = 21600; // 6 hours
 
 export const metadata: Metadata = {
   title: {
@@ -135,12 +135,7 @@ const FREE_EDITORIAL_GUIDES = [
 ];
 
 export default async function FreemiumAIToolsPage() {
-  const allTools = await getAllTools();
-  
-  // Filter exclusively for Free and Freemium tools
-  const freemiumTools = allTools.filter(
-    (tool) => tool.priceModel === "Free" || tool.priceModel === "Freemium"
-  );
+  const freemiumTools = await getFreemiumTools();
   const completelyFreeCount = freemiumTools.filter((t) => t.priceModel === "Free").length;
   const freemiumCount = freemiumTools.filter((t) => t.priceModel === "Freemium").length;
 
@@ -329,13 +324,13 @@ export default async function FreemiumAIToolsPage() {
                 <span>Explore {freemiumTools.length} Free Tools</span>
               </a>
 
-              <a
-                href="#free-guides"
+              <Link
+                href="/blog/best-completely-free-ai-tools-no-credit-card-2026"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white font-bold text-xs border border-white/20 hover:border-emerald-400/50 backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-sm"
               >
                 <BookOpen className="w-3.5 h-3.5 text-emerald-400" />
-                <span>In-Depth Free Buying Guides</span>
-              </a>
+                <span>15 Tested Tools Benchmark Review →</span>
+              </Link>
             </div>
 
             <div className="pt-1 flex flex-wrap items-center gap-3 text-[11px] font-medium text-slate-400 border-t border-white/10">
@@ -464,6 +459,29 @@ export default async function FreemiumAIToolsPage() {
             <span className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400">Unlimited / $0 Cost →</span>
           </div>
         </div>
+      </section>
+
+      {/* Editorial Benchmark Bridge */}
+      <section className="mb-12 p-6 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-teal-500/5 to-transparent border border-emerald-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+        <div className="space-y-1.5">
+          <div className="text-xs font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+            <Award className="w-4 h-4 text-emerald-500" />
+            Editorial Benchmark Report
+          </div>
+          <p className="text-base font-bold text-on-surface">
+            Looking for hand-tested benchmarks rather than the full directory?
+          </p>
+          <p className="text-xs text-on-surface-variant max-w-2xl font-['Figtree',sans-serif] leading-relaxed">
+            Read our rigorous editorial review of the <strong>top 15 completely free AI tools for 2026</strong>. Audited for zero credit card traps, generous monthly allowances, and commercial license terms.
+          </p>
+        </div>
+        <Link
+          href="/blog/best-completely-free-ai-tools-no-credit-card-2026"
+          className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-all shadow-md shadow-emerald-600/20 hover:scale-[1.02] active:scale-[0.98]"
+        >
+          <span>Read the 15-Tool Benchmark</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
       </section>
 
       {/* Filterable Tool Grid */}

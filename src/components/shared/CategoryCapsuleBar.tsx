@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { categories } from '@/lib/data/categories';
 
 export function CategoryCapsuleBar({ activeSlug }: { activeSlug?: string }) {
+  const mainCategories = categories.filter(c => c.type !== 'subcategory' && !c.parentId);
+
   return (
     <div className="flex gap-4 overflow-x-auto py-2 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
       <Link
@@ -14,7 +16,7 @@ export function CategoryCapsuleBar({ activeSlug }: { activeSlug?: string }) {
         <span className={`material-symbols-outlined text-[16px] transition-all duration-200 ${!activeSlug ? 'text-background' : 'text-muted-foreground'}`}>home</span>
         All Tools
       </Link>
-      {categories.map((category) => {
+      {mainCategories.map((category) => {
         return (
           <Link
             key={category.id}

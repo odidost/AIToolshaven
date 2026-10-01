@@ -60,8 +60,9 @@ const CATEGORY_MAP: Record<string, string> = {
 
 // Hand-curated primary comparison slugs per category
 const CATEGORY_COMPARISON_SLUGS: Record<string, string[]> = {
-  "ai-video-generators": ["heygen-vs-synthesia", "fliki-vs-opus-clip"],
+  "ai-video-generators": ["opus-clip-vs-capcut", "heygen-vs-synthesia", "fliki-vs-opus-clip"],
   "coding-assistants": ["cursor-vs-github-copilot", "codeium-vs-cursor"],
+  "ai-presentation-makers": ["gamma-vs-slidespilot-ai"],
   "ai-writing-tools": ["chatgpt-vs-claude", "jasper-vs-writesonic"],
   "ai-image-generators": ["dall-e-3-vs-midjourney", "midjourney-vs-flux"],
   "audio-voice": ["elevenlabs-vs-murf-ai"],
@@ -121,13 +122,14 @@ const CATEGORY_ARTICLE_SLUGS: Record<string, string[]> = {
 
 // Hand-curated primary workflow slugs per category
 const CATEGORY_WORKFLOW_SLUGS: Record<string, string[]> = {
-  "ai-video-generators": ["faceless-youtube"],
+  "ai-video-generators": ["faceless-youtube", "ai-influencer"],
   "audio-voice": ["faceless-youtube"],
-  "coding-assistants": ["automated-code-refactoring"],
-  "ai-writing-tools": ["seo-content-engine"],
-  "ai-seo-tools": ["seo-content-engine"],
-  "marketing-sales": ["seo-content-engine", "faceless-youtube"],
-  "productivity": ["faceless-youtube"],
+  "coding-assistants": ["vibe-coding"],
+  "ai-writing-tools": ["content-creator"],
+  "ai-seo-tools": ["content-creator"],
+  "marketing-sales": ["automated-lead-enrichment", "agency"],
+  "productivity": ["solopreneur", "vibe-coding"],
+  "ai-image-generators": ["ai-influencer", "content-creator"],
 };
 
 /**

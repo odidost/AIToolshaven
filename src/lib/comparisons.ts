@@ -91,6 +91,20 @@ export const comparisons: ComparisonData[] = [
         tool1: { name: "Midjourney", letter: "M", color: "from-purple-500 to-indigo-600", logoUrl: "/assets/logos/midjourney-logo.webp" },
         tool2: { name: "Flux.1", letter: "F", color: "from-cyan-500 to-blue-600", logoUrl: "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/black-forest-labs-flux-logo.webp" },
     },
+    {
+        title: "Opus Clip vs CapCut",
+        slug: "opus-clip-vs-capcut",
+        description: "Automated AI long-form video repurposing and virality scoring vs full-timeline video editing and social caption templates.",
+        tool1: { name: "Opus Clip", letter: "O", color: "from-amber-500 to-rose-600", logoUrl: "/assets/logos/opus-clip-logo.webp" },
+        tool2: { name: "CapCut", letter: "C", color: "from-blue-500 to-indigo-600", logoUrl: "/assets/logos/capcut-logo.webp" },
+    },
+    {
+        title: "Gamma vs Slidespilot AI",
+        slug: "gamma-vs-slidespilot-ai",
+        description: "Interactive webpage-like fluid presentation canvases vs document and PDF-to-PowerPoint conversion for corporate slide decks.",
+        tool1: { name: "Gamma", letter: "G", color: "from-purple-500 to-indigo-600", logoUrl: "/assets/logos/gamma-logo.webp" },
+        tool2: { name: "Slidespilot AI", letter: "S", color: "from-blue-600 to-cyan-600", logoUrl: "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/slidespilot-ai-logo.webp" },
+    },
 ];
 
 export function getComparisonBySlug(slug: string): ComparisonData | undefined {

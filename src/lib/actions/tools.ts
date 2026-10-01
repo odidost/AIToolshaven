@@ -2,11 +2,14 @@
 
 import { createClient, createAdminClient } from "@/lib/supabase/server";
 import { toolSchema, generateSlug, type ToolFormValues } from "@/lib/validations/tools";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import type { AITool } from "@/lib/types/tool";
+import { clearToolsMemo } from "@/lib/data/tools-service";
+import { resolveCategory } from "@/lib/data/categories";
+import { comparisons } from "@/lib/comparisons";
 
 export async function saveTool(data: ToolFormValues) {
   // Validate data on the server with relaxed schema
@@ -69,6 +72,19 @@ export async function saveTool(data: ToolFormValues) {
   let result;
   let toolId = toolData.id;
   let supabaseSuccess = false;
+  let oldRecord: any = null;
+
+  try {
+    if (toolId) {
+      const { data } = await adminSupabase.from("tools").select("*").eq("id", toolId).maybeSingle();
+      if (data) oldRecord = data;
+    } else if (slug) {
+      const { data } = await adminSupabase.from("tools").select("*").eq("slug", slug).maybeSingle();
+      if (data) oldRecord = data;
+    }
+  } catch {
+    // Non-blocking pre-fetch
+  }
 
   try {
     if (toolId) {
@@ -225,10 +241,190 @@ export async function saveTool(data: ToolFormValues) {
     console.error("Failed to sync to tools.json:", jsonErr);
   }
 
+  // Clear local indexes
+  clearToolsMemo();
+
+  const oldSlug = (oldRecord?.slug || '').toLowerCase();
+  const newSlug = slug.toLowerCase();
+
+  // Invalidate CMS admin routes
   revalidatePath("/admin/cms/tools");
-  revalidatePath(`/admin/cms/tools/${slug}`);
-  revalidatePath(`/tool/${slug}`);
-  revalidatePath("/", "layout");
+  revalidatePath(`/admin/cms/tools/${newSlug}`);
+  if (oldSlug && oldSlug !== newSlug) {
+    revalidatePath(`/admin/cms/tools/${oldSlug}`);
+  }
+
+  // Invalidate public tool profile and alternatives for both old and new slugs
+  revalidatePath(`/tool/${newSlug}`);
+  revalidatePath(`/alternatives/${newSlug}`);
+  revalidateTag(`tool:${newSlug}`, 'max');
+
+  if (oldSlug && oldSlug !== newSlug) {
+    revalidatePath(`/tool/${oldSlug}`);
+    revalidatePath(`/alternatives/${oldSlug}`);
+    revalidateTag(`tool:${oldSlug}`, 'max');
+  }
+
+  // Invalidate primary and additional categories using resolved real slugs
+  const resolveCatSlug = (idOrSlug?: string | null): string | null => {
+    if (!idOrSlug) return null;
+    const res = resolveCategory(idOrSlug);
+    return res?.slug || null;
+  };
+
+  const affectedCategories = new Set<string>();
+  const oldCatSlug = resolveCatSlug(oldRecord?.category_id || oldRecord?.category);
+  if (oldCatSlug) affectedCategories.add(oldCatSlug);
+
+  const newCatSlug = resolveCatSlug(toolData.category_id);
+  if (newCatSlug) affectedCategories.add(newCatSlug);
+
+  const oldAdditionals = oldRecord?.additional_categories || oldRecord?.additionalCategories || [];
+  if (Array.isArray(oldAdditionals)) {
+    for (const ac of oldAdditionals) {
+      const s = resolveCatSlug(ac);
+      if (s) affectedCategories.add(s);
+    }
+  }
+
+  const newAdditionals = toolData.additionalCategories || [];
+  if (Array.isArray(newAdditionals)) {
+    for (const ac of newAdditionals) {
+      const s = resolveCatSlug(ac);
+      if (s) affectedCategories.add(s);
+    }
+  }
+
+  for (const catSlug of affectedCategories) {
+    revalidatePath(`/category/${catSlug}`);
+    revalidateTag(`category:${catSlug}`, 'max');
+  }
+
+  // Invalidate comparisons involving old or new slug
+  for (const comp of comparisons) {
+    if (comp.slug.includes(newSlug) || (oldSlug && comp.slug.includes(oldSlug))) {
+      revalidatePath(`/compare-tools/${comp.slug}`);
+    }
+  }
+  revalidatePath("/compare-tools");
+  revalidateTag("tools-comparisons", 'max');
+
+  // Invalidate listings & collections
+  const oldStatus = (oldRecord?.status || 'published').toLowerCase();
+  const newStatus = (toolData.status || 'Draft').toLowerCase();
+  const wasPublished = oldStatus === 'published';
+  const isPublished = newStatus === 'published';
+
+  if (wasPublished || isPublished) {
+    revalidatePath("/");
+    revalidatePath("/categories");
+    revalidatePath("/latest-ai-tools");
+    revalidateTag("tools-latest", 'max');
+  }
+
+  const oldPrice = String(oldRecord?.price_model || oldRecord?.priceModel || '').toLowerCase();
+  const newPrice = String(toolData.price_model || '').toLowerCase();
+  if (oldPrice.includes('free') || newPrice.includes('free')) {
+    revalidatePath("/freemium-ai-tools");
+    revalidateTag("tools-freemium", 'max');
+  }
+
+  const oldFeatured = Boolean(oldRecord?.featured);
+  const newFeatured = Boolean(toolData.featured);
+  if (oldFeatured || newFeatured) {
+    revalidatePath("/trending-ai-tools");
+    revalidatePath("/popular-ai-tools");
+    revalidateTag("tools-popular", 'max');
+    revalidateTag("tools-trending", 'max');
+    revalidateTag("tools-featured", 'max');
+  }
+
+  // Invalidate slugs tag only if tool slug, status, or identity changed
+  if (!oldRecord || oldSlug !== newSlug || wasPublished !== isPublished) {
+    revalidateTag("tools-slugs", 'max');
+  }
 
   return { success: true, slug: slug, id: toolId };
+}
+
+export async function deleteTool(toolIdOrSlug: string) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { success: false, error: "Unauthorized" };
+
+  const adminSupabase = await createAdminClient();
+
+  // Find existing tool before deletion
+  let existingTool: any = null;
+  const { data: byId } = await adminSupabase.from("tools").select("*").eq("id", toolIdOrSlug).maybeSingle();
+  if (byId) {
+    existingTool = byId;
+  } else {
+    const { data: bySlug } = await adminSupabase.from("tools").select("*").eq("slug", toolIdOrSlug).maybeSingle();
+    if (bySlug) existingTool = bySlug;
+  }
+
+  const toolSlug = (existingTool?.slug || toolIdOrSlug).toLowerCase();
+  const toolId = existingTool?.id || toolIdOrSlug;
+
+  // Delete from Supabase
+  await adminSupabase.from("tool_categories").delete().eq("tool_id", toolId);
+  const { error } = await adminSupabase.from("tools").delete().eq("id", toolId);
+  if (error) {
+    return { success: false, error: error.message };
+  }
+
+  // Sync delete from local tools.json
+  try {
+    const toolsPath = path.join(process.cwd(), "data", "tools.json");
+    if (fs.existsSync(toolsPath)) {
+      const toolsJson = JSON.parse(fs.readFileSync(toolsPath, "utf8"));
+      const filtered = toolsJson.filter((d: any) => d.id !== toolId && d.slug !== toolSlug);
+      fs.writeFileSync(toolsPath, JSON.stringify(filtered, null, 2), "utf8");
+    }
+  } catch (err) {
+    console.warn("Failed to remove from local tools.json:", err);
+  }
+
+  clearToolsMemo();
+
+  // Invalidate affected paths & tags
+  revalidatePath("/admin/cms/tools");
+  revalidatePath(`/admin/cms/tools/${toolSlug}`);
+  revalidatePath(`/tool/${toolSlug}`);
+  revalidatePath(`/alternatives/${toolSlug}`);
+  revalidateTag(`tool:${toolSlug}`, 'max');
+
+  const catIdentifier = existingTool?.category_id || existingTool?.category;
+  if (catIdentifier) {
+    const catSlug = resolveCategory(catIdentifier)?.slug;
+    if (catSlug) {
+      revalidatePath(`/category/${catSlug}`);
+      revalidateTag(`category:${catSlug}`, 'max');
+    }
+  }
+
+  for (const comp of comparisons) {
+    if (comp.slug.includes(toolSlug)) {
+      revalidatePath(`/compare-tools/${comp.slug}`);
+    }
+  }
+
+  revalidatePath("/");
+  revalidatePath("/categories");
+  revalidatePath("/compare-tools");
+  revalidatePath("/latest-ai-tools");
+  revalidatePath("/popular-ai-tools");
+  revalidatePath("/trending-ai-tools");
+  revalidatePath("/freemium-ai-tools");
+
+  revalidateTag("tools-slugs", 'max');
+  revalidateTag("tools-comparisons", 'max');
+  revalidateTag("tools-latest", 'max');
+  revalidateTag("tools-freemium", 'max');
+  revalidateTag("tools-popular", 'max');
+  revalidateTag("tools-trending", 'max');
+  revalidateTag("tools-featured", 'max');
+
+  return { success: true };
 }

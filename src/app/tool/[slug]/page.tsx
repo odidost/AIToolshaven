@@ -21,7 +21,8 @@ import { workflows } from "@/lib/workflows";
 import { goals } from "@/lib/goals";
 import {
   getToolBySlug,
-  getAllTools,
+  getAllToolSlugs,
+  getToolRedirect,
   getRelatedCandidatesPool,
   getToolReviews,
 } from "@/lib/data/tools-service";
@@ -37,6 +38,8 @@ import { Metadata } from "next";
 import { SocialLinks } from "@/components/shared/SocialLinks";
 import { logToolSectionError } from "@/lib/observability/logger";
 
+import { shouldIndexTool } from "@/lib/utils/tool-indexability";
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -44,23 +47,26 @@ type Props = {
 export const revalidate = 86400; // 24 hours
 
 export async function generateStaticParams() {
-  const tools = await getAllTools(false);
-  return tools.filter(t => t.slug).map((tool) => ({
-    slug: tool.slug,
-  }));
+  return await getAllToolSlugs();
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const tool = await getToolBySlug(slug);
 
-  const isPublished = tool && (tool.status === "Published" || tool.status === "published" || !tool.status);
-  if (!tool || !isPublished) {
-    return {
-      title: `Tool Not Found | ${siteConfig.name}`,
-    };
+  if (!tool) {
+    const legacyRedirect = await getToolRedirect(slug);
+    if (legacyRedirect) {
+      redirect(legacyRedirect);
+    }
   }
 
+  const isPublished = tool && (tool.status === "Published" || tool.status === "published" || !tool.status);
+  if (!tool || !isPublished) {
+    notFound();
+  }
+
+  const isIndexable = shouldIndexTool(tool);
   const pageTitle = (tool as any).seoTitle
     ? (tool as any).seoTitle.replace(` | ${siteConfig.name}`, '')
     : `${tool.name} Review, Pricing & Features (2026)`;
@@ -71,11 +77,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: pageTitle,
     description: desc,
     robots: {
-      index: false,
+      index: isIndexable,
       follow: true,
       googleBot: {
-        index: false,
+        index: isIndexable,
         follow: true,
+        ...(isIndexable
+          ? {
+              "max-video-preview": -1,
+              "max-image-preview": "large",
+              "max-snippet": -1,
+            }
+          : {}),
       },
     },
     openGraph: {
@@ -108,17 +121,11 @@ export default async function ToolPage({ params }: Props) {
   const { slug } = await params;
   let tool = await getToolBySlug(slug);
 
-  // If not found by exact slug, check if a tool exists with alias, prefix, or name match
+  // Bounded legacy alias/redirect lookup - avoids catastrophic full-catalogue scans on 404s
   if (!tool) {
-    const all = await getAllTools(true);
-    const candidate = all.find(t => 
-      t.slug.toLowerCase() === slug.toLowerCase() ||
-      t.slug.toLowerCase().startsWith(`${slug.toLowerCase()}-`) ||
-      slug.toLowerCase().startsWith(`${t.slug.toLowerCase()}-`) ||
-      t.name.toLowerCase().replace(/[^a-z0-9]+/g, '-') === slug.toLowerCase()
-    );
-    if (candidate && candidate.slug && candidate.slug !== slug) {
-      redirect(`/tool/${candidate.slug}`);
+    const legacyRedirect = await getToolRedirect(slug);
+    if (legacyRedirect) {
+      redirect(legacyRedirect);
     }
   }
 

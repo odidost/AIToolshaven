@@ -237,7 +237,12 @@ export function normalizeTool(raw: any, localFallback?: any): AITool {
   const bestFor = normalizeStringArray(data.best_for || data.bestFor || local.bestFor || local.best_for);
   const goals = normalizeStringArray(data.goals || local.goals);
   const workflows = normalizeStringArray(data.workflows || local.workflows);
-  const additionalCategories = normalizeStringArray(data.additionalCategories || data.secondaryCategories || local.additionalCategories);
+  const additionalCategories = Array.from(new Set([
+    ...normalizeStringArray(data.additionalCategories),
+    ...normalizeStringArray(local.additionalCategories),
+    ...normalizeStringArray(data.secondaryCategories),
+    ...normalizeStringArray(local.secondaryCategories)
+  ]));
   const compareWith = normalizeStringArray(data.compareWith || local.compareWith);
   const relatedTools = normalizeStringArray(data.relatedTools || local.relatedTools);
   const similarTools = normalizeStringArray(data.similarTools || local.similarTools);

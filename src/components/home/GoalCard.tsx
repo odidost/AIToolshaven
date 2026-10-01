@@ -37,7 +37,7 @@ export function GoalCard({
     const gradientClass = iconGradients[index % iconGradients.length];
 
     return (
-        <Link href={`/goals/${slug}`} className="group relative flex flex-col items-center p-6 bg-white rounded-[2rem] border border-black/5 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden h-full w-full">
+        <Link href={`/goals/${slug}`} prefetch={false} className="group relative flex flex-col items-center p-6 bg-white rounded-[2rem] border border-black/5 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden h-full w-full">
             <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${gradientClass} bg-opacity-10 flex items-center justify-center mb-4 relative z-10 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shrink-0`}>
                 <div className="absolute inset-0 bg-white/20 rounded-2xl backdrop-blur-sm" />
                 <span className="material-symbols-outlined text-[32px] text-white relative z-10 drop-shadow-sm" style={{ fontVariationSettings: "'FILL' 1" }}>

@@ -95,13 +95,65 @@ export function CategoryHero({
             {/* Headline: Authoritative Category Title */}
             <div className="space-y-2">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.12]">
-                The Best{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-rose-500 to-amber-500 drop-shadow-xs">
-                  {category.name}
-                </span>{" "}
-                <span className="text-slate-900 dark:text-white">
-                  {(/^ai\b/i.test(category.name) || /tools$/i.test(category.name)) ? "for 2026" : "AI Tools for 2026"}
-                </span>
+                {category.slug === "coding-assistants" ? (
+                  <>
+                    Best{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-rose-500 to-amber-500 drop-shadow-xs">
+                      AI Coding Assistants
+                    </span>
+                    : IDEs, Autonomous Agents &amp; Code Completion
+                  </>
+                ) : category.slug === "productivity" ? (
+                  <>
+                    Best{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-rose-500 to-amber-500 drop-shadow-xs">
+                      AI Productivity Tools
+                    </span>{" "}
+                    for 2026: Workspaces, Meeting Notes &amp; RAG
+                  </>
+                ) : category.slug === "ai-video-generators" ? (
+                  <>
+                    Best{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-rose-500 to-amber-500 drop-shadow-xs">
+                      AI Video Generators
+                    </span>{" "}
+                    for 2026: Text-to-Video, VFX &amp; Shorts Repurposing
+                  </>
+                ) : category.slug === "ai-presentation-makers" ? (
+                  <>
+                    Best{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-rose-500 to-amber-500 drop-shadow-xs">
+                      AI Presentation Makers
+                    </span>{" "}
+                    for 2026: Pitch Decks &amp; Slide Decks
+                  </>
+                ) : category.slug === "marketing-sales" ? (
+                  <>
+                    Best{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-rose-500 to-amber-500 drop-shadow-xs">
+                      AI Marketing &amp; Sales Tools
+                    </span>{" "}
+                    for 2026: Lead Prospecting &amp; Growth
+                  </>
+                ) : category.slug === "ai-image-generators" ? (
+                  <>
+                    Best{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-rose-500 to-amber-500 drop-shadow-xs">
+                      AI Image Generators
+                    </span>{" "}
+                    for 2026: Photorealism, Vector Art &amp; Design
+                  </>
+                ) : (
+                  <>
+                    The Best{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-rose-500 to-amber-500 drop-shadow-xs">
+                      {category.name}
+                    </span>{" "}
+                    <span className="text-slate-900 dark:text-white">
+                      {/^ai\b/i.test(category.name) || /(?:tools|generators|assistants|chatbots|agents|makers|builders)$/i.test(category.name) ? "for 2026" : "AI Tools for 2026"}
+                    </span>
+                  </>
+                )}
               </h1>
             </div>
 
@@ -175,7 +227,7 @@ export function CategoryHero({
                 alt={heroMedia.alt}
                 fill
                 priority
-                quality={80}
+                unoptimized
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 420px"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />

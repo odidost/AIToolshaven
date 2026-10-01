@@ -8,6 +8,7 @@ import { workflows } from "@/lib/workflows";
 import { articles } from "@/lib/articles";
 import { getAllCuratedAlternatives } from "@/lib/data/alternatives";
 import { categoryGuides } from "@/content/categories";
+import { shouldIndexTool } from "@/lib/utils/tool-indexability";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const isLocalhost = siteConfig.baseUrl?.includes("localhost");
@@ -180,7 +181,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: item.priority,
   }));
 
-  // Combine all high-value entries (tools deliberately excluded to consolidate crawl budget)
+  // 10. Approved Indexable Priority Tools
+  // Only high-signal and thoroughly vetted Tier A tools are included to protect crawl budget
+  const indexableTools = validTools.filter(t => t.slug !== 'luma' && shouldIndexTool(t));
+  const toolEntries: MetadataRoute.Sitemap = indexableTools.map(tool => ({
+    url: `${cleanBase}/tool/${tool.slug}`,
+    lastModified: tool.lastUpdated ? new Date(tool.lastUpdated).toISOString() : siteMaxDateStr,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
+  // Combine all high-value entries
   const allEntries = [
     ...homeEntry,
     ...coreHubEntries,
@@ -191,6 +202,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...workflowEntries,
     ...goalEntries,
     ...trustEntries,
+    ...toolEntries,
   ];
 
   // Deduplicate by URL
