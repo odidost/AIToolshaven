@@ -7,7 +7,7 @@ import { HeaderAuth } from './HeaderAuth';
 
 export function Header() {
   return (
-    <header className="w-full bg-background/80 backdrop-blur-md border-b border-border sticky top-0 z-40 transition-all">
+    <header className="w-full bg-white border-b border-[#E5E7EB] sticky top-0 z-40 transition-colors">
       <PageContainer className="h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2" aria-label="AIToolsHaven Home">
@@ -21,15 +21,15 @@ export function Header() {
           <MobileSearchTrigger />
           <Link
             href="/agency"
-            className="hidden sm:flex text-xs sm:text-sm font-semibold text-slate-700 hover:text-primary transition-colors items-center gap-1.5 px-2.5 py-1.5 rounded-xl hover:bg-slate-100/60"
+            className="hidden sm:flex text-xs sm:text-sm font-medium text-[#4B5563] hover:text-[#0A0A0A] transition-colors items-center gap-1.5 px-3 py-1.5 rounded-md hover:bg-[#F9FAFB] border border-transparent hover:border-[#E5E7EB]"
           >
             <span>AI Agency</span>
-            <span className="font-mono text-[10px] font-bold px-1.5 py-0.2 rounded bg-primary/10 text-primary uppercase">
+            <span className="font-mono text-[10px] font-semibold px-1.5 py-0.5 rounded bg-[#FFF1F2] text-[#E11D48] uppercase border border-[#FECDD3]/50">
               Studio
             </span>
           </Link>
           <HeaderAuth />
-          <Link href="/submit" className="hidden md:block bg-gradient-to-r from-primary to-secondary text-primary-foreground px-5 py-2.5 rounded-2xl font-medium text-sm shadow-glow hover:shadow-glow-primary hover:-translate-y-0.5 transition-all duration-300">
+          <Link href="/submit" className="hidden md:inline-flex items-center justify-center bg-[#E11D48] hover:bg-[#BE123C] text-white px-4 py-2 rounded-md font-medium text-sm transition-colors shadow-none">
             Submit a Tool
           </Link>
         </nav>

@@ -2,8 +2,6 @@ import { opportunities } from "@/lib/opportunities";
 import { workflows } from "@/lib/workflows";
 import { comparisons } from "@/lib/comparisons";
 import { articles } from "@/lib/articles";
-import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
-
 import { SpotlightBanner } from "@/components/shared/SpotlightBanner";
 import { TrustedByMarquee } from "@/components/home/TrustedByMarquee";
 import { RecommendationEngine } from "@/components/home/RecommendationEngine";
@@ -13,13 +11,10 @@ import { WorkflowCard } from "@/components/home/WorkflowCard";
 import { OpportunityCard } from "@/components/home/OpportunityCard";
 import { ComparisonCard } from "@/components/home/ComparisonCard";
 import { ArticleCard } from "@/components/home/ArticleCard";
-import { ToolCard } from "@/components/shared/ToolCard";
 import { SocialLinks } from "@/components/shared/SocialLinks";
 
-import { getFeaturedTools, getLatestTools, getTrendingTools, getAllTools, getToolsByNames } from "@/lib/data/tools-service";
+import { getToolsByNames } from "@/lib/data/tools-service";
 import Link from "next/link";
-import { FadeIn } from "@/components/animations/FadeIn";
-import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 
 import { Metadata } from "next";
 import { siteConfig } from "@/lib/config/site";
@@ -27,8 +22,6 @@ import { HomepageStructuredData } from "@/components/home/HomepageStructuredData
 import { HomepageEditorialGuide } from "@/components/home/HomepageEditorialGuide";
 import { HomepageFAQ } from "@/components/home/HomepageFAQ";
 import { SubmitToolCTA } from "@/components/home/SubmitToolCTA";
-import { PageContainer } from "@/components/layout/PageContainer";
-import { SectionContainer } from "@/components/layout/SectionContainer";
 
 export const metadata: Metadata = {
   title: {
@@ -87,8 +80,6 @@ export const metadata: Metadata = {
 export const revalidate = 21600; // 6 hours
 
 export default async function Home() {
-  const featuredTools = await getFeaturedTools(8);
-  
   // Extract only the tool names we actually need for the homepage widgets
   const requiredToolNames = new Set<string>();
   
@@ -108,330 +99,280 @@ export default async function Home() {
   }, {} as Record<string, string>);
 
   return (
-    <div className="flex flex-col gap-4 md:gap-8 lg:gap-10 pb-32 relative overflow-hidden bg-background z-0 min-h-screen">
+    <div className="flex flex-col gap-6 md:gap-10 pb-24 relative bg-white min-h-screen">
       <HomepageStructuredData />
-      {/* Sunset Ember Animated Background */}
-      <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute -top-[10%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-primary/30 blur-[120px] mix-blend-multiply animate-float-slow" />
-        <div className="absolute top-[20%] -right-[10%] w-[50vw] h-[50vw] rounded-full bg-secondary/30 blur-[120px] mix-blend-multiply animate-float-medium" />
-        <div className="absolute -bottom-[10%] left-[20%] w-[60vw] h-[60vw] rounded-full bg-accent/30 blur-[120px] mix-blend-multiply animate-float-fast" />
-      </div>
 
-      {/* Group Hero and Featured Tools with drastically reduced spacing */}
-      <div className="flex flex-col gap-4 md:gap-8 lg:gap-10">
-        {/* 1. Hero Section - Rendered immediately for optimal LCP */}
-        <SpotlightBanner />
+      {/* 1. Hero Section - Rendered immediately for optimal LCP */}
+      <SpotlightBanner />
 
-        {/* Glowing Pedestal Transition */}
-        {featuredTools.length > 0 && (
-          <div className="w-full max-w-5xl mx-auto h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent shadow-[0_0_30px_rgba(255,95,109,0.8)] relative z-20 opacity-80" />
-        )}
-
-        {/* 1b. Featured Tools */}
-        {featuredTools.length > 0 && (
-          <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <section className="relative overflow-visible pt-8 pb-16">
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 relative z-10">
-                <div>
-                  <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-3xl border border-black/5 text-gray-900 shadow-xl px-4 py-1.5 rounded-full mb-4 group relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-yellow-500/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <span className="material-symbols-outlined text-[18px] text-amber-500" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                    <span className="text-xs font-black uppercase tracking-widest text-amber-800">Editor's Choice</span>
-                  </div>
-                  <h2 className="text-fluid-h2 font-black tracking-tight text-gray-900">
-                    Top-Rated AI Tools for Productivity &amp; Growth
-                  </h2>
-                </div>
-                <Link href="/categories" className="text-[14px] font-semibold text-rose-700 hover:text-rose-800 transition-colors flex items-center gap-1 group">
-                  View All Categories <span className="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
-                </Link>
-              </div>
-              <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 relative z-10" staggerChildren={0.1}>
-                {featuredTools.map((tool) => (
-                  <StaggerItem key={tool.id} direction="up">
-                    <ToolCard tool={tool} />
-                  </StaggerItem>
-                ))}
-              </StaggerContainer>
-            </section>
-          </div>
-        )}
-      </div>
-
-      {/* 3b. Editorial Rankings */}
+      {/* 2. Editorial Rankings */}
       <EditorialRankingsSection />
 
-      {/* 2b. High-Intent Quick Discovery Links */}
-      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 py-3.5 px-5 bg-white/70 backdrop-blur-xl border border-black/5 rounded-2xl shadow-xs text-xs sm:text-sm text-on-surface-variant">
-          <span className="font-semibold text-on-surface flex items-center gap-1.5 mr-1">
-            <span className="material-symbols-outlined text-[16px] text-primary">trending_up</span>
-            Popular Searches:
+      {/* 3. High-Intent Quick Discovery Links */}
+      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-wrap items-center justify-center gap-2 py-3 px-4 bg-[#FAFAFA] border border-[#E5E7EB] rounded-lg text-xs sm:text-sm text-[#4B5563]">
+          <span className="font-medium text-[#0A0A0A] flex items-center gap-1.5 mr-1">
+            <span className="material-symbols-outlined text-[16px] text-[#E11D48]">trending_up</span>
+            Popular:
           </span>
-          <Link href="/freemium-ai-tools" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+          <Link href="/freemium-ai-tools" className="px-2.5 py-1 rounded-md bg-white hover:bg-[#FFF1F2] hover:text-[#E11D48] hover:border-[#FECDD3] transition-colors font-medium border border-[#E5E7EB]">
             Freemium AI Tools
           </Link>
-          <Link href="/category/ai-video-generators" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+          <Link href="/category/ai-video-generators" className="px-2.5 py-1 rounded-md bg-white hover:bg-[#FFF1F2] hover:text-[#E11D48] hover:border-[#FECDD3] transition-colors font-medium border border-[#E5E7EB]">
             AI Video Generators
           </Link>
-          <Link href="/category/coding-assistants" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+          <Link href="/category/coding-assistants" className="px-2.5 py-1 rounded-md bg-white hover:bg-[#FFF1F2] hover:text-[#E11D48] hover:border-[#FECDD3] transition-colors font-medium border border-[#E5E7EB]">
             AI Coding Assistants
           </Link>
-          <Link href="/category/ai-writing-tools" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+          <Link href="/category/ai-writing-tools" className="px-2.5 py-1 rounded-md bg-white hover:bg-[#FFF1F2] hover:text-[#E11D48] hover:border-[#FECDD3] transition-colors font-medium border border-[#E5E7EB]">
             AI Writing Tools
           </Link>
-          <Link href="/compare-tools/chatgpt-vs-claude" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+          <Link href="/compare-tools/chatgpt-vs-claude" className="px-2.5 py-1 rounded-md bg-white hover:bg-[#FFF1F2] hover:text-[#E11D48] hover:border-[#FECDD3] transition-colors font-medium border border-[#E5E7EB]">
             ChatGPT vs Claude
           </Link>
-          <Link href="/workflows" className="px-3 py-1.5 rounded-xl bg-surface hover:bg-primary/10 hover:text-primary transition-all font-medium border border-black/5 hover:border-primary/20">
+          <Link href="/workflows" className="px-2.5 py-1 rounded-md bg-white hover:bg-[#FFF1F2] hover:text-[#E11D48] hover:border-[#FECDD3] transition-colors font-medium border border-[#E5E7EB]">
             AI Workflows
           </Link>
         </div>
       </div>
 
-      {/* 2. Trust Layer */}
-      <FadeIn delay={0.2} direction="up" className="w-full relative z-10">
-        <section className="bg-card border-y border-border/50 py-10 sm:py-16 relative overflow-hidden">
-          <TrustedByMarquee />
-        </section>
-      </FadeIn>
+      {/* 4. Trust Layer */}
+      <section className="w-full bg-[#FAFAFA] border-y border-[#E5E7EB] py-8 sm:py-12">
+        <TrustedByMarquee />
+      </section>
 
+      {/* 5. AI Recommendation Engine */}
+      <RecommendationEngine />
 
-      {/* 3. AI Recommendation Engine */}
-      <FadeIn direction="up">
-        <RecommendationEngine />
-      </FadeIn>
-
-      {/* 4. Featured Categories */}
+      {/* 6. Featured Categories */}
       <HomepageCategories />
 
-      {/* 6. Compare Popular AI Tools (The Versus Arena) */}
-      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Receiving Data Stream Line from Curated Paths */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-primary/50 to-transparent pointer-events-none hidden xl:block z-0" />
-
-        <section className="bg-gradient-to-b from-white to-primary/5 rounded-[2.5rem] md:rounded-[3rem] shadow-[0_8px_32px_rgba(0,0,0,0.02)] border border-black/5 p-6 sm:p-10 md:p-16 relative overflow-hidden">
-          <BackgroundPattern type="grid" opacity={0.03} />
-          
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 relative z-10">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-white text-rose-700 px-5 py-2 rounded-full mb-4 shadow-sm border border-black/5">
-                <span className="material-symbols-outlined text-[18px]">compare_arrows</span>
-                <span className="text-[11px] font-black uppercase tracking-[0.2em]">Head-to-Head</span>
-              </div>
-              <h2 className="text-fluid-h2 font-black text-slate-900 tracking-tight leading-tight">
-                Head-to-Head: Compare AI Tools Side-by-Side
-              </h2>
-              <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-xl">
-                Objective side-by-side breakdowns of top AI tools across features, pricing, and workflows.
-              </p>
+      {/* 7. Compare Popular AI Tools (The Versus Arena) */}
+      <section className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 border-t border-[#E5E7EB]">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4">
+          <div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] text-xs font-medium text-[#4B5563] mb-3">
+              <span className="material-symbols-outlined text-[16px] text-[#E11D48]">compare_arrows</span>
+              <span>Side-by-Side Breakdowns</span>
             </div>
-          </div>
-
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" staggerChildren={0.15}>
-            {comparisons.slice(0, 9).map((comparison) => {
-              const fullTool1 = allTools.find(t => t.name.toLowerCase() === comparison.tool1.name.toLowerCase());
-              const fullTool2 = allTools.find(t => t.name.toLowerCase() === comparison.tool2.name.toLowerCase());
-              
-              return (
-                <StaggerItem key={comparison.slug} direction="up">
-                  <ComparisonCard
-                    data={comparison}
-                    fullTool1={fullTool1}
-                    fullTool2={fullTool2}
-                  />
-                </StaggerItem>
-              );
-            })}
-          </StaggerContainer>
-
-          {/* Bottom View More / Explore All Comparisons */}
-          <div className="mt-12 text-center relative z-10 flex justify-center">
-            <Link 
-              href="/compare-tools" 
-              className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 bg-white rounded-full text-sm font-bold text-rose-700 shadow-sm border border-black/10 hover:border-primary/30 hover:shadow-md transition-all overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="relative z-10">View All Matchups</span>
-              <span className="material-symbols-outlined text-[18px] relative z-10 group-hover:translate-x-1 transition-transform">
-                arrow_forward
-              </span>
-            </Link>
-          </div>
-        </section>
-      </div>
-
-      {/* 7. AI Workflows */}
-      <div className="w-full mx-auto relative z-10">
-        {/* Receiving Data Stream Line from Versus Arena */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-primary/50 to-transparent pointer-events-none hidden xl:block z-0" />
-
-        <section className="bg-gradient-to-b from-white to-primary/5 shadow-[0_8px_32px_rgba(0,0,0,0.02)] border-y border-black/5 py-10 sm:py-16 px-4 sm:px-8 lg:px-12 relative overflow-hidden">
-          <BackgroundPattern type="workflow" opacity={0.03} className="text-primary" />
-          
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 relative z-10">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-white text-rose-700 px-5 py-2 rounded-full mb-4 shadow-sm border border-black/5">
-                <span className="material-symbols-outlined text-[18px]">account_tree</span>
-                <span className="text-[11px] font-black uppercase tracking-[0.2em]">Learn & Apply</span>
-              </div>
-              <h2 className="text-fluid-h2 font-black text-slate-900 tracking-tight leading-tight">
-                Curated AI Workflows: Automate Real-World Tasks
-              </h2>
-              <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-xl">
-                Proven step-by-step tool stacks designed by creators, developers, and agencies.
-              </p>
-            </div>
-          </div>
-
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" staggerChildren={0.15}>
-            {workflows.slice(0, 6).map((workflow) => (
-              <StaggerItem key={workflow.slug} direction="up">
-                <WorkflowCard
-                  title={workflow.title}
-                  tools={workflow.tools.map(t => {
-                    const fullTool = allTools.find(at => at.name.toLowerCase() === t.toLowerCase());
-                    return {
-                      name: t,
-                      logoUrl: toolLogos[t.toLowerCase()] || undefined,
-                      slug: fullTool?.slug || t.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
-                      fullTool
-                    };
-                  })}
-                  icon={workflow.icon}
-                  slug={workflow.slug}
-                  description={workflow.description}
-                  audience={workflow.audience}
-                  meta={workflow.meta}
-                  color={workflow.color}
-                />
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-
-          {/* Bottom View More / Explore All Workflows */}
-          <div className="mt-12 text-center relative z-10 flex justify-center">
-            <Link 
-              href="/workflows" 
-              className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 bg-white rounded-full text-sm font-bold text-rose-700 shadow-sm border border-black/10 hover:border-primary/30 hover:shadow-md transition-all overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="relative z-10">View All Workflows</span>
-              <span className="material-symbols-outlined text-[18px] relative z-10 group-hover:translate-x-1 transition-transform">
-                arrow_forward
-              </span>
-            </Link>
-          </div>
-        </section>
-      </div>
-
-      {/* 9. Trending Opportunities */}
-      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <section className="bg-gradient-to-b from-white to-primary/5 rounded-[2.5rem] md:rounded-[3rem] shadow-[0_8px_32px_rgba(0,0,0,0.02)] border border-black/5 p-6 sm:p-10 md:p-16 relative overflow-hidden">
-          <BackgroundPattern type="aurora" opacity={0.03} className="text-primary" />
-          
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 relative z-10">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-white text-rose-700 px-5 py-2 rounded-full mb-4 shadow-sm border border-black/5">
-                <span className="material-symbols-outlined text-[18px]">lightbulb</span>
-                <span className="text-[11px] font-black uppercase tracking-[0.2em]">Unlock Missions</span>
-              </div>
-              <h2 className="text-fluid-h2 font-black text-slate-900 tracking-tight leading-tight">
-                Business Missions: How to Monetize AI Tools in 2026
-              </h2>
-              <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-xl">
-                Actionable business missions and high-ROI monetization blueprints powered by AI.
-              </p>
-            </div>
-          </div>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" staggerChildren={0.15}>
-            {opportunities.map((item) => (
-              <StaggerItem key={item.title} direction="up">
-                <OpportunityCard
-                  title={item.title}
-                  description={item.description}
-                  icon={item.icon}
-                  slug={item.slug}
-                  difficulty={item.difficulty}
-                  roi={item.roi}
-                  color={item.color}
-                />
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-
-          {/* Bottom View More / Explore All Missions */}
-          <div className="mt-12 text-center relative z-10 flex justify-center">
-            <Link 
-              href="/goals" 
-              className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 bg-white rounded-full text-sm font-bold text-rose-700 shadow-sm border border-black/10 hover:border-primary/30 hover:shadow-md transition-all overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="relative z-10">View All Missions</span>
-              <span className="material-symbols-outlined text-[18px] relative z-10 group-hover:translate-x-1 transition-transform">
-                arrow_forward
-              </span>
-            </Link>
-          </div>
-        </section>
-      </div>
-
-      {/* 11. Latest AI News */}
-      <div className="w-full relative z-10">
-        <section className="py-16 sm:py-24 relative overflow-hidden">
-          <div className="flex flex-col items-center text-center mb-16 px-4 relative z-20">
-            <div className="inline-flex items-center gap-2 bg-rose-50 text-rose-700 px-5 py-2 rounded-full mb-6 shadow-sm border border-rose-200/60">
-              <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>article</span>
-              <span className="text-[11px] font-black uppercase tracking-[0.2em]">Resources</span>
-            </div>
-            <h2 className="text-fluid-h2 font-black text-slate-900 tracking-tighter leading-tight">
-              Guides & Insights
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A] leading-tight">
+              Compare AI Tools Side-by-Side
             </h2>
-            <p className="mt-6 max-w-2xl text-xl text-slate-600 leading-relaxed">
-              In-depth analysis, comparisons, and workflows to help you master AI.
+            <p className="mt-1 text-sm sm:text-base text-[#4B5563] max-w-xl">
+              Objective side-by-side breakdowns across features, pricing tiers, and real-world workflows.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 relative z-10 max-w-[1400px] mx-auto">
-            {articles.slice(0, 4).map((article) => (
-              <ArticleCard
-                key={article.slug}
-                title={article.title}
-                category={article.category}
-                slug={article.slug}
-                imageUrl={article.imageUrl}
-                summary={article.summary}
+          <Link 
+            href="/compare-tools" 
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#E11D48] hover:text-[#BE123C] transition-colors self-start sm:self-auto shrink-0"
+          >
+            All comparisons
+            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {comparisons.slice(0, 9).map((comparison) => {
+            const fullTool1 = allTools.find(t => t.name.toLowerCase() === comparison.tool1.name.toLowerCase());
+            const fullTool2 = allTools.find(t => t.name.toLowerCase() === comparison.tool2.name.toLowerCase());
+            
+            return (
+              <ComparisonCard
+                key={comparison.slug}
+                data={comparison}
+                fullTool1={fullTool1}
+                fullTool2={fullTool2}
               />
-            ))}
-          </div>
+            );
+          })}
+        </div>
 
-          <div className="mt-16 flex justify-center relative z-10">
-            <Link href="/blog" className="group inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-full font-bold shadow-md hover:shadow-xl border border-black/5 hover:-translate-y-1 transition-all duration-300">
-              View all articles
-              <span className="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
-            </Link>
-          </div>
-        </section>
-      </div>
+        <div className="mt-8 text-center flex justify-center">
+          <Link 
+            href="/compare-tools" 
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-lg text-sm font-semibold text-[#0A0A0A] border border-[#E5E7EB] hover:bg-[#E11D48] hover:text-white hover:border-[#E11D48] shadow-xs hover:shadow-sm transition-all group"
+          >
+            <span>View All Matchups</span>
+            <span className="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+          </Link>
+        </div>
+      </section>
 
-      {/* 11b. Comprehensive SEO Editorial Content Pillar */}
+      {/* 8. AI Workflows */}
+      <section className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 border-t border-[#E5E7EB]">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4">
+          <div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] text-xs font-medium text-[#4B5563] mb-3">
+              <span className="material-symbols-outlined text-[16px] text-[#E11D48]">account_tree</span>
+              <span>Proven Stacks</span>
+            </div>
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A] leading-tight">
+              Curated AI Workflows: Automate Real Tasks
+            </h2>
+            <p className="mt-1 text-sm sm:text-base text-[#4B5563] max-w-xl">
+              Step-by-step tool stacks designed by creators, developers, and operators.
+            </p>
+          </div>
+          <Link 
+            href="/workflows" 
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#E11D48] hover:text-[#BE123C] transition-colors self-start sm:self-auto shrink-0"
+          >
+            All workflows
+            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {workflows.slice(0, 6).map((workflow) => (
+            <WorkflowCard
+              key={workflow.slug}
+              title={workflow.title}
+              tools={workflow.tools.map(t => {
+                const fullTool = allTools.find(at => at.name.toLowerCase() === t.toLowerCase());
+                return {
+                  name: t,
+                  logoUrl: toolLogos[t.toLowerCase()] || undefined,
+                  slug: fullTool?.slug || t.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+                  fullTool
+                };
+              })}
+              icon={workflow.icon}
+              slug={workflow.slug}
+              description={workflow.description}
+              audience={workflow.audience}
+              meta={workflow.meta}
+              color={workflow.color}
+            />
+          ))}
+        </div>
+
+        <div className="mt-8 text-center flex justify-center">
+          <Link 
+            href="/workflows" 
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-lg text-sm font-semibold text-[#0A0A0A] border border-[#E5E7EB] hover:bg-[#E11D48] hover:text-white hover:border-[#E11D48] shadow-xs hover:shadow-sm transition-all group"
+          >
+            <span>View All Workflows</span>
+            <span className="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+          </Link>
+        </div>
+      </section>
+
+      {/* 9. Trending Opportunities */}
+      <section className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 border-t border-[#E5E7EB]">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4">
+          <div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] text-xs font-medium text-[#4B5563] mb-3">
+              <span className="material-symbols-outlined text-[16px] text-[#E11D48]">lightbulb</span>
+              <span>Monetization Playbooks</span>
+            </div>
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A] leading-tight">
+              Business Missions: How to Monetize AI Tools in 2026
+            </h2>
+            <p className="mt-1 text-sm sm:text-base text-[#4B5563] max-w-xl">
+              Actionable business models and high-leverage monetization blueprints powered by AI.
+            </p>
+          </div>
+          <Link 
+            href="/goals" 
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#E11D48] hover:text-[#BE123C] transition-colors self-start sm:self-auto shrink-0"
+          >
+            All missions
+            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {opportunities.map((item) => (
+            <OpportunityCard
+              key={item.title}
+              title={item.title}
+              description={item.description}
+              icon={item.icon}
+              slug={item.slug}
+              difficulty={item.difficulty}
+              roi={item.roi}
+              color={item.color}
+            />
+          ))}
+        </div>
+
+        <div className="mt-8 text-center flex justify-center">
+          <Link 
+            href="/goals" 
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-lg text-sm font-semibold text-[#0A0A0A] border border-[#E5E7EB] hover:bg-[#E11D48] hover:text-white hover:border-[#E11D48] shadow-xs hover:shadow-sm transition-all group"
+          >
+            <span>View All Missions</span>
+            <span className="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+          </Link>
+        </div>
+      </section>
+
+      {/* 10. Latest AI News & Guides */}
+      <section className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 border-t border-[#E5E7EB]">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4">
+          <div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] text-xs font-medium text-[#4B5563] mb-3">
+              <span className="material-symbols-outlined text-[16px] text-[#E11D48]">article</span>
+              <span>Articles &amp; Tutorials</span>
+            </div>
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A] leading-tight">
+              Guides &amp; Insights
+            </h2>
+            <p className="mt-1 text-sm sm:text-base text-[#4B5563] max-w-xl">
+              In-depth analysis, comparisons, and workflows to help you master AI tooling.
+            </p>
+          </div>
+          <Link 
+            href="/blog" 
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#E11D48] hover:text-[#BE123C] transition-colors self-start sm:self-auto shrink-0"
+          >
+            All articles
+            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </Link>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {articles.slice(0, 4).map((article) => (
+            <ArticleCard
+              key={article.slug}
+              title={article.title}
+              category={article.category}
+              slug={article.slug}
+              imageUrl={article.imageUrl}
+              summary={article.summary}
+            />
+          ))}
+        </div>
+
+        <div className="mt-8 text-center flex justify-center">
+          <Link 
+            href="/blog" 
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-lg text-sm font-semibold text-[#0A0A0A] border border-[#E5E7EB] hover:bg-[#E11D48] hover:text-white hover:border-[#E11D48] shadow-xs hover:shadow-sm transition-all group"
+          >
+            <span>View All Articles</span>
+            <span className="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+          </Link>
+        </div>
+      </section>
+
+      {/* 11. Comprehensive SEO Editorial Content Pillar */}
       <HomepageEditorialGuide />
 
-      {/* 11c. High-Intent Frequently Asked Questions Accordion & Schema */}
+      {/* 12. High-Intent Frequently Asked Questions Accordion & Schema */}
       <HomepageFAQ />
 
-      {/* 12. Submit Your Tool */}
-      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 13. Submit Your Tool */}
+      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <SubmitToolCTA />
       </div>
 
-      {/* 13. Social CTA */}
-      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-16 text-center flex flex-col items-center">
-        <h3 className="text-fluid-h3 font-black text-slate-900 tracking-tight mb-3">
+      {/* 14. Social CTA */}
+      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center flex flex-col items-center">
+        <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#0A0A0A] tracking-tight mb-2">
           Follow AIToolsHaven
         </h3>
-        <p className="text-slate-600 max-w-md mx-auto mb-6">
-          Discover new AI tools, useful resources and the latest AI updates.
+        <p className="text-sm text-[#4B5563] max-w-md mx-auto mb-5">
+          Discover new AI tools, useful comparisons, and the latest AI workflow updates.
         </p>
         <SocialLinks variant="cta" />
       </div>

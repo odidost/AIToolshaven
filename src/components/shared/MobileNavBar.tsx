@@ -51,12 +51,9 @@ export function MobileNavBar() {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[100] md:hidden pb-4 px-4 flex justify-center pointer-events-none">
-      {/* Soft gradient fade behind the pill to ensure readability against complex backgrounds */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none -z-10" />
-      
-      {/* Glassmorphic Floating Capsule */}
-      <div className="pointer-events-auto bg-white/80 backdrop-blur-2xl border border-white shadow-[0_8px_32px_rgba(0,0,0,0.08)] rounded-[2rem] px-2 py-2 flex items-center justify-between w-full max-w-[24rem] mb-[env(safe-area-inset-bottom)] ring-1 ring-black/5 transition-all">
+    <div className="fixed bottom-0 left-0 right-0 z-[100] md:hidden pb-3 px-4 flex justify-center pointer-events-none">
+      {/* Clean restrained floating nav with 8px radius */}
+      <div className="pointer-events-auto bg-white/95 backdrop-blur-md border border-[#E5E7EB] shadow-sm rounded-lg px-2 py-1 flex items-center justify-between w-full max-w-[22rem] mb-[env(safe-area-inset-bottom)]">
         {navItems.map((item) => {
           const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
           
@@ -65,12 +62,11 @@ export function MobileNavBar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="group relative flex items-center justify-center transition-transform duration-300 active:scale-90 px-1"
+                className="flex items-center justify-center p-1"
                 aria-label={item.name}
               >
-                <div className="relative flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-full bg-gradient-to-tr from-rose-400 via-primary to-orange-400 shadow-[0_8px_20px_rgba(255,95,109,0.4)] overflow-hidden">
-                  <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <span className="material-symbols-outlined text-[28px] text-white transition-transform duration-500 group-hover:rotate-180 drop-shadow-sm">
+                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#E11D48] text-white shadow-none">
+                  <span className="material-symbols-outlined text-[20px]">
                     {item.icon}
                   </span>
                 </div>
@@ -82,33 +78,17 @@ export function MobileNavBar() {
             <Link
               key={item.name}
               href={item.href}
-              className="relative flex flex-col items-center justify-center w-14 h-[3.25rem] rounded-[1.25rem] group transition-all duration-300 active:scale-90"
+              className={`flex flex-col items-center justify-center w-12 h-11 rounded-md transition-colors ${
+                isActive ? 'text-[#E11D48] bg-[#FFF1F2]' : 'text-[#4B5563] hover:text-[#0A0A0A]'
+              }`}
             >
-              {/* Active Indicator Glow */}
-              <div 
-                className={`absolute inset-0 bg-primary/10 rounded-[1.25rem] -z-10 transition-all duration-500 ${
-                  isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
-                }`} 
-              />
-              
               <span 
-                className={`material-symbols-outlined text-[24px] transition-all duration-500 ease-out ${
-                  isActive 
-                    ? 'text-primary -translate-y-2' 
-                    : 'text-slate-400 group-hover:text-slate-600 group-hover:-translate-y-1'
-                }`}
+                className="material-symbols-outlined text-[20px]"
                 style={{ fontVariationSettings: isActive ? "'FILL' 1" : "'FILL' 0" }}
               >
                 {item.icon}
               </span>
-              
-              <span 
-                className={`absolute bottom-2 text-[10px] font-bold tracking-wide uppercase transition-all duration-500 ease-out ${
-                  isActive 
-                    ? 'text-primary opacity-100 translate-y-0' 
-                    : 'text-slate-400 opacity-0 translate-y-4'
-                }`}
-              >
+              <span className="text-[10px] font-medium tracking-tight">
                 {item.name}
               </span>
             </Link>

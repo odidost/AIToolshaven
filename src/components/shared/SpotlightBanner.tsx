@@ -1,141 +1,98 @@
-import Image from 'next/image';
 import Link from "next/link";
-import { BackgroundPattern } from "@/components/shared/BackgroundPattern";
 import { HeroSearchBar } from "@/components/home/hero/HeroSearchBar";
-import { HeroFloatingLogos } from "@/components/home/hero/HeroFloatingLogos";
-import { HeroAura } from "@/components/home/hero/HeroAura";
 
 export function SpotlightBanner() {
   return (
-    <section className="relative w-full overflow-hidden pb-0">
-      
-      {/* Interactive Mouse Aura */}
-      <HeroAura />
-
-      {/* Floating Background Logos */}
-      <HeroFloatingLogos />
-
-      {/* Aurora Mesh Background */}
-      <BackgroundPattern type="aurora" opacity={1} />
-
-      {/* Subtle Grid Texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
-
-      <div className="w-full max-w-[900px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10 flex flex-col items-center text-center pt-12 sm:pt-16 md:pt-20 pb-0 lg:min-h-[500px]">
-
-        {/* Freshness & Verification Pulse Badge */}
-        <div className="inline-flex items-center justify-center gap-2.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-xs font-semibold text-emerald-700 shadow-sm transition-colors hover:bg-emerald-500/20 backdrop-blur-md">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-          </span>
-          <span className="tracking-wide">Verified Daily &bull; Updated for 2026</span>
+    <section className="relative w-full bg-white pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 border-b border-[#E5E7EB]">
+      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+        
+        {/* Subtle, restrained status pill */}
+        <div className="inline-flex items-center gap-2 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-1 text-xs font-medium text-[#4B5563] mb-6">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#10B981]" />
+          <span>Independent &bull; Verified Pricing &bull; Updated Daily</span>
         </div>
 
-        <h1 className="mt-8 text-fluid-h1 font-black tracking-tight text-on-surface max-w-3xl">
-          Find, Compare &amp; Chain the Best{" "}
-          <span className="text-primary drop-shadow-[0_0_20px_rgba(255,95,109,0.35)]">
-            AI Tools
-          </span>
+        {/* Confident, large headline with tight readable line spacing & ONE understated pale tint highlight */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#0A0A0A] leading-[1.08] max-w-3xl font-heading">
+          Find, compare, and chain the best{" "}
+          <span className="bg-[#FFF1F2] text-[#E11D48] px-2 py-0.5 rounded-md border border-[#FECDD3]/70 font-bold inline-block my-1">
+            AI tools
+          </span>{" "}
+          for real work.
         </h1>
 
-        <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-on-surface-variant font-['Figtree',sans-serif]">
-          Which AI tools work best together? Explore 900+ hand-vetted platforms, objective head-to-head comparisons, and proven multi-tool workflows with verified pricing.
+        {/* Specific, human subheadline */}
+        <p className="mt-5 max-w-2xl text-base sm:text-lg text-[#4B5563] leading-relaxed font-sans">
+          Objective side-by-side benchmarks, true freemium allowances, and multi-tool workflow recipes for developers, creators, and teams.
         </p>
 
+        {/* Prominent, easy-to-use search box */}
         <HeroSearchBar />
 
-        {/* Priority Pillar Pathways */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2 max-w-2xl">
-          <Link href="/category/coding-assistants" className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-primary hover:text-primary transition-all shadow-2xs">
+        {/* Direct paths into tool categories or comparisons */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-2 max-w-2xl">
+          <span className="text-xs font-semibold text-[#4B5563] uppercase tracking-wider mr-1">
+            Direct routes:
+          </span>
+          <Link 
+            href="/category/coding-assistants" 
+            className="px-3 py-1.5 rounded-md text-xs font-medium bg-white border border-[#E5E7EB] text-[#4B5563] hover:border-[#E11D48] hover:text-[#E11D48] hover:bg-[#FFF1F2] transition-colors"
+          >
             Coding Assistants
           </Link>
-          <Link href="/category/ai-video-generators" className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-primary hover:text-primary transition-all shadow-2xs">
+          <Link 
+            href="/category/ai-video-generators" 
+            className="px-3 py-1.5 rounded-md text-xs font-medium bg-white border border-[#E5E7EB] text-[#4B5563] hover:border-[#E11D48] hover:text-[#E11D48] hover:bg-[#FFF1F2] transition-colors"
+          >
             AI Video Generators
           </Link>
-          <Link href="/category/productivity" className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-primary hover:text-primary transition-all shadow-2xs">
-            Productivity &amp; RAG
+          <Link 
+            href="/compare-tools" 
+            className="px-3 py-1.5 rounded-md text-xs font-medium bg-white border border-[#E5E7EB] text-[#4B5563] hover:border-[#E11D48] hover:text-[#E11D48] hover:bg-[#FFF1F2] transition-colors"
+          >
+            Head-to-Head Comparisons
           </Link>
-          <Link href="/category/ai-presentation-makers" className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-primary hover:text-primary transition-all shadow-2xs">
-            AI Presentations
-          </Link>
-          <Link href="/category/marketing-sales" className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-primary hover:text-primary transition-all shadow-2xs">
-            Marketing &amp; Sales
-          </Link>
-          <Link href="/freemium-ai-tools" className="px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 transition-all shadow-2xs">
+          <Link 
+            href="/freemium-ai-tools" 
+            className="px-3 py-1.5 rounded-md text-xs font-medium bg-white border border-[#E5E7EB] text-[#4B5563] hover:border-[#E11D48] hover:text-[#E11D48] hover:bg-[#FFF1F2] transition-colors"
+          >
             800+ Freemium Tools
           </Link>
-          <Link href="/compare-tools" className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-primary hover:text-primary transition-all shadow-2xs">
-            Versus Comparisons
+          <Link 
+            href="/category/productivity" 
+            className="px-3 py-1.5 rounded-md text-xs font-medium bg-white border border-[#E5E7EB] text-[#4B5563] hover:border-[#E11D48] hover:text-[#E11D48] hover:bg-[#FFF1F2] transition-colors"
+          >
+            Productivity &amp; RAG
+          </Link>
+          <Link 
+            href="/workflows" 
+            className="px-3 py-1.5 rounded-md text-xs font-medium bg-white border border-[#E5E7EB] text-[#4B5563] hover:border-[#E11D48] hover:text-[#E11D48] hover:bg-[#FFF1F2] transition-colors"
+          >
+            Chained Workflows
           </Link>
         </div>
 
-          {/* Trust Signals & Stats */}
-        <div className="mt-12 flex flex-wrap justify-center items-center gap-6 lg:gap-8 w-full border-t border-black/5 pt-8">
-            
-            {/* Avatars & Rating */}
-            <div className="flex items-center gap-3">
-              <div className="flex -space-x-2.5 shrink-0 w-[84px] sm:w-[104px] h-6 sm:h-8">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <div key={i} className="h-6 w-6 sm:h-8 sm:w-8 overflow-hidden rounded-full border-2 border-white bg-surface shadow-sm shrink-0">
-                    <Image width={32} height={32} src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}&backgroundColor=transparent`} 
-                      alt="User avatar" 
-                      className="h-full w-full object-cover"
-                      loading="eager"
-                      decoding="async"
-                      unoptimized
-                    />
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-col gap-0.5 text-xs font-medium text-on-surface-variant shrink-0">
-                <div className="flex gap-0.5 text-amber-400 h-3 items-center">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <svg key={i} className="w-3 h-3 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                    </svg>
-                  ))}
-                </div>
-                <span>from 10,000+ creators</span>
-              </div>
-            </div>
-
-            <div className="hidden h-6 w-px bg-black/10 sm:block"></div>
-
-            {/* Live Social Ticker */}
-            <div className="flex items-center gap-2 bg-black/5 border border-black/10 rounded-full px-4 py-2">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-              </span>
-              <div className="text-xs font-medium text-on-surface-variant overflow-hidden h-4 relative w-[220px]">
-                <div className="absolute top-0 left-0 animate-[float-up_10s_infinite]">
-                  <div className="h-4 flex items-center">Just added: Claude 3.5 Sonnet</div>
-                  <div className="h-4 flex items-center">Verified directory of 1,000 tools</div>
-                  <div className="h-4 flex items-center">Trending: Cursor AI Editor</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="hidden h-6 w-px bg-black/10 sm:block"></div>
-
-            {/* Quick Stats */}
-            <div className="flex items-center gap-6">
-              <div className="flex flex-col gap-0.5 text-left">
-                <span className="text-lg font-black leading-none text-gray-900">1,000</span>
-                <span className="text-[9px] font-bold tracking-widest text-on-surface-variant uppercase">AI Tools</span>
-              </div>
-              <div className="flex flex-col gap-0.5 text-left">
-                <span className="text-lg font-black leading-none text-gray-900">20</span>
-                <span className="text-[9px] font-bold tracking-widest text-on-surface-variant uppercase">Categories</span>
-              </div>
-            </div>
-
+        {/* Real data signals - clean, flat metric row */}
+        <div className="mt-12 pt-8 border-t border-[#E5E7EB] w-full max-w-3xl grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+          <div className="flex flex-col items-center">
+            <span className="text-xl sm:text-2xl font-bold text-[#0A0A0A] font-heading leading-tight">900+</span>
+            <span className="text-xs text-[#4B5563] font-medium mt-0.5">Verified AI Tools</span>
           </div>
-
+          <div className="flex flex-col items-center">
+            <span className="text-xl sm:text-2xl font-bold text-[#0A0A0A] font-heading leading-tight">110+</span>
+            <span className="text-xs text-[#4B5563] font-medium mt-0.5">Versus Breakdowns</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-xl sm:text-2xl font-bold text-[#0A0A0A] font-heading leading-tight">24</span>
+            <span className="text-xs text-[#4B5563] font-medium mt-0.5">Specialized Categories</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-xl sm:text-2xl font-bold text-[#0A0A0A] font-heading leading-tight">100%</span>
+            <span className="text-xs text-[#4B5563] font-medium mt-0.5">Hands-On Tested</span>
+          </div>
+        </div>
 
       </div>
-
     </section>
   );
 }

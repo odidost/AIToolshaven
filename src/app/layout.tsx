@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Figtree } from "next/font/google";
+import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 
-const plusJakartaSans = Plus_Jakarta_Sans({ 
+const bricolageGrotesque = Bricolage_Grotesque({ 
   subsets: ["latin"],
-  variable: "--font-plus-jakarta",
+  variable: "--font-bricolage",
   display: "swap",
 });
 
-const figtree = Figtree({
+const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
-  variable: "--font-figtree",
+  variable: "--font-instrument",
   display: "swap",
 });
 
@@ -81,6 +81,7 @@ import { Header } from "@/components/shared/Header";
 import { Footer } from "@/components/shared/Footer";
 import { MobileNavBar } from "@/components/shared/MobileNavBar";
 import { BookmarksProvider } from "@/lib/contexts/BookmarksContext";
+import { UpvotesProvider } from "@/lib/contexts/UpvotesContext";
 import { AssetManifestProvider } from "@/lib/contexts/AssetManifestContext";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { CookieConsent } from "@/components/shared/CookieConsent";
@@ -109,7 +110,7 @@ export default function RootLayout({
   const manifest = getAssetManifest();
 
   return (
-    <html lang="en" className={`h-full antialiased ${plusJakartaSans.variable} ${figtree.variable} font-sans`}>
+    <html lang="en" className={`h-full antialiased ${bricolageGrotesque.variable} ${instrumentSans.variable} font-sans`}>
       <head>
         <link
           rel="preload"
@@ -125,19 +126,20 @@ export default function RootLayout({
           href="/feed.xml"
         />
       </head>
-      <body suppressHydrationWarning className="min-h-full flex flex-col bg-background text-on-surface relative">
-        <BackgroundPattern type="ambient" className="fixed inset-0 -z-10" opacity={1} />
+      <body suppressHydrationWarning className="min-h-full flex flex-col bg-white text-[#0A0A0A] relative selection:bg-[#FFF1F2] selection:text-[#E11D48]">
         <AssetManifestProvider manifest={manifest}>
-          <BookmarksProvider>
-            <GoogleAnalytics />
-            <Header />
-            <main className="flex-grow pb-24 md:pb-0">
-              {children}
-            </main>
-            <Footer />
-            <MobileNavBar />
-            <CookieConsent />
-          </BookmarksProvider>
+          <UpvotesProvider>
+            <BookmarksProvider>
+              <GoogleAnalytics />
+              <Header />
+              <main className="flex-grow pb-24 md:pb-0">
+                {children}
+              </main>
+              <Footer />
+              <MobileNavBar />
+              <CookieConsent />
+            </BookmarksProvider>
+          </UpvotesProvider>
         </AssetManifestProvider>
       </body>
     </html>

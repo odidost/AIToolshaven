@@ -73,35 +73,35 @@ export function WorkflowCard({
 
   return (
     <div 
-      className={`relative rounded-3xl bg-gradient-to-b ${theme.gradient} bg-white border ${theme.borderColor} p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group overflow-hidden h-full`}
+      className="rounded-lg bg-white border border-[#E5E7EB] p-5 sm:p-6 hover:border-gray-300 transition-colors flex flex-col justify-between group shadow-none h-full"
     >
       {/* Top Section */}
       <div>
         {/* Row: Icon Box & Audience/Badge */}
         <div className="flex items-center justify-between gap-2 mb-4">
-          <div className="w-12 h-12 rounded-2xl bg-white shadow-sm border border-black/5 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-            <span className="material-symbols-outlined text-2xl">{icon}</span>
+          <div className="w-9 h-9 rounded-md bg-[#F9FAFB] border border-[#E5E7EB] flex items-center justify-center text-[#0A0A0A] group-hover:text-[#E11D48] group-hover:border-[#E11D48]/40 transition-colors">
+            <span className="material-symbols-outlined text-[20px]">{icon}</span>
           </div>
-          <span className={`text-[10.5px] font-black px-3 py-1 rounded-full border bg-gradient-to-r ${theme.badgeColor} tracking-wider uppercase`}>
+          <span className="text-[11px] font-mono text-[#4B5563] bg-[#F9FAFB] border border-[#E5E7EB] px-2 py-0.5 rounded-md uppercase">
             {badgeText}
           </span>
         </div>
 
         {/* Title & Subtitle */}
-        <h3 className="text-xl font-heading font-black text-gray-900 group-hover:text-primary transition-colors mb-1">
+        <h3 className="text-base sm:text-lg font-heading font-bold text-[#0A0A0A] group-hover:text-[#E11D48] transition-colors mb-1">
           {title}
         </h3>
-        <p className="text-xs font-semibold text-gray-500 mb-3 tracking-tight">
+        <p className="text-xs text-[#4B5563] mb-3">
           {tools.map(t => t.name).join(" • ")}
         </p>
-        <p className="text-sm font-sans text-gray-600 leading-relaxed mb-6 line-clamp-2">
+        <p className="text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-5 line-clamp-2">
           {displayDesc}
         </p>
 
         {/* Pipeline / Sequence of Tools */}
-        <div className="mb-6">
-          <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider block mb-2.5">
-            Chained Tool Stack:
+        <div className="mb-5">
+          <span className="text-[11px] font-semibold text-[#4B5563] uppercase tracking-wider block mb-2">
+            Tool stack:
           </span>
           <div className="flex flex-wrap items-center gap-1.5">
             {tools.map((tool, idx) => {
@@ -114,18 +114,18 @@ export function WorkflowCard({
                     href={`/tool/${toolSlug}`}
                     prefetch={false}
                     onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold bg-white hover:bg-primary/10 hover:text-primary px-2.5 py-1.5 rounded-lg border border-black/5 shadow-2xs transition-all hover:scale-105"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium bg-[#F9FAFB] hover:bg-white hover:border-[#E11D48] hover:text-[#E11D48] text-[#0A0A0A] px-2 py-1 rounded-md border border-[#E5E7EB] transition-colors"
                     title={`View ${tool.name}`}
                   >
-                    <div className="w-4 h-4 rounded overflow-hidden shrink-0 flex items-center justify-center">
+                    <div className="w-3.5 h-3.5 rounded overflow-hidden shrink-0 flex items-center justify-center">
                       <ToolLogo name={tool.name} logoUrl={tool.logoUrl} fullTool={tool.fullTool} />
                     </div>
                     <span>{tool.name}</span>
                   </Link>
 
                   {!isLast && (
-                    <span className="text-gray-300 text-xs font-bold select-none">
-                      ➔
+                    <span className="text-gray-300 text-xs select-none">
+                      &rarr;
                     </span>
                   )}
                 </div>
@@ -136,13 +136,13 @@ export function WorkflowCard({
       </div>
 
       {/* Bottom Row: Metadata & Action Button */}
-      <div className="pt-4 border-t border-black/5 space-y-3">
+      <div className="pt-4 border-t border-[#E5E7EB] space-y-3">
         {meta && (
-          <div className="flex items-center justify-between text-xs font-medium text-gray-700 bg-white/70 p-2.5 rounded-xl border border-black/5">
-            <span className="truncate pr-2 font-semibold">
-              ⏱️ {meta.time || "15-30m"} • 🎯 {meta.skill || "All Levels"}
+          <div className="flex items-center justify-between text-xs text-[#4B5563] bg-[#F9FAFB] p-2 rounded-md border border-[#E5E7EB]">
+            <span className="truncate pr-2 font-medium">
+              {meta.time || "15-30m"} &bull; {meta.skill || "All Levels"}
             </span>
-            <span className="text-emerald-600 font-bold shrink-0">
+            <span className="font-semibold text-[#0A0A0A] shrink-0">
               {meta.cost || "Free & Paid"}
             </span>
           </div>
@@ -151,14 +151,14 @@ export function WorkflowCard({
         {slug ? (
           <Link
             href={`/workflows/${slug}`}
-            className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-gray-900 hover:bg-primary text-white text-xs font-bold transition-all shadow-xs"
+            className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-md bg-[#0A0A0A] hover:bg-[#E11D48] text-white text-xs font-medium transition-colors shadow-none"
           >
-            Run Step-by-Step Blueprint
-            <span className="material-symbols-outlined text-[14px]">chevron_right</span>
+            <span>Run Workflow Recipe</span>
+            <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
           </Link>
         ) : (
-          <div className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-gray-100 text-gray-700 text-xs font-bold">
-            Verified Blueprint
+          <div className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-md bg-gray-100 text-gray-700 text-xs font-medium">
+            Verified Recipe
           </div>
         )}
       </div>

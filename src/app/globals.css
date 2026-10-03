@@ -4,33 +4,34 @@
 
 @layer base {
   :root {
-    /* Background Layering (Soft Pearl Light Mode) */
-    --background: #FAFAFA;
-    --foreground: #0F172A;
+    /* Clean Neutral System (Reference: Visual Restraint & Clarity) */
+    --background: #FFFFFF;
+    --foreground: #0A0A0A;
 
     --surface-section: #FFFFFF;
     --card: #FFFFFF;
-    --card-foreground: #0F172A;
+    --card-foreground: #0A0A0A;
 
-    --surface-elevated: #F8FAFC;
+    --surface-elevated: #F9FAFB;
 
     --popover: #FFFFFF;
-    --popover-foreground: #0F172A;
+    --popover-foreground: #0A0A0A;
 
-    /* Brand Evolution (Sunset Ember) */
-    --primary: #FF5F6D;
+    /* Canonical Brand Accent - Accessible Deep Coral Rose */
+    --primary: #E11D48;
     --primary-foreground: #FFFFFF;
+    --primary-tint: #FFF1F2;
 
-    --secondary: #FFC371;
-    --secondary-foreground: #0F172A;
+    --secondary: #4B5563;
+    --secondary-foreground: #FFFFFF;
 
     /* Restrained Accent */
-    --accent: #FF8C69;
+    --accent: #E11D48;
     --accent-foreground: #FFFFFF;
 
-    /* Muted & UI Elements - enhanced contrast for WCAG AA/AAA */
-    --muted: #F1F5F9;
-    --muted-foreground: #475569;
+    /* Muted & Secondary Text - High contrast WCAG AA/AAA */
+    --muted: #F9FAFB;
+    --muted-foreground: #4B5563;
 
     /* Semantic Status */
     --success: #10B981;
@@ -42,12 +43,12 @@
     --destructive: #EF4444;
     --destructive-foreground: #FFFFFF;
 
-    /* Soft Glass Borders */
-    --border: #E2E8F0;
-    --input: #E2E8F0;
-    --ring: #FF5F6D;
+    /* Subtle light-gray borders */
+    --border: #E5E7EB;
+    --input: #E5E7EB;
+    --ring: #E11D48;
 
-    --radius: 1rem;
+    --radius: 0.5rem;
   }
 }
 
@@ -58,18 +59,18 @@
 
   body {
     @apply bg-background text-foreground antialiased overflow-x-hidden;
-    font-family: var(--font-figtree), Figtree, system-ui, -apple-system, sans-serif;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: var(--font-instrument), "Instrument Sans", system-ui, -apple-system, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   ::selection {
-    background-color: rgba(255, 95, 109, 0.2);
-    color: #0F172A;
+    background-color: #FFF1F2;
+    color: #E11D48;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight font-semibold text-foreground;
-    font-family: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    @apply tracking-tight font-bold text-foreground;
+    font-family: var(--font-bricolage), "Bricolage Grotesque", system-ui, -apple-system, sans-serif;
   }
 }
 
@@ -271,4 +272,161 @@
   margin: 2px;
   border-radius: calc(1rem - 2px);
   height: calc(100% - 4px);
+}
+
+/* ==========================================================================
+   CATEGORY & SUBCATEGORY DEEP-DIVE SEO CONTENT: NEUTRALIZATION OF #1C2739 & DARK SLOP
+   ========================================================================== */
+#category-guide,
+.category-deep-dive-content {
+  color: #0A0A0A;
+}
+
+/* 1. All primary dark background containers/sections become warm soft #FFF9F7 cards with subtle warm border */
+#category-guide .bg-slate-900,
+#category-guide .bg-slate-950,
+#category-guide [class*="bg-slate-9"],
+#category-guide [class*="dark:bg-slate-9"],
+#category-guide [class*="bg-[#1c2739]"],
+#category-guide [class*="bg-[#1C2739]"],
+#category-guide [class*="bg-[#0f172a]"],
+#category-guide [class*="bg-[#1e293b]"],
+#category-guide [class*="bg-slate-900/"],
+#category-guide [class*="from-slate-900"],
+.category-deep-dive-content .bg-slate-900,
+.category-deep-dive-content .bg-slate-950,
+.category-deep-dive-content [class*="bg-slate-9"],
+.category-deep-dive-content [class*="dark:bg-slate-9"],
+.category-deep-dive-content [class*="bg-[#1c2739]"],
+.category-deep-dive-content [class*="bg-[#1C2739]"],
+.category-deep-dive-content [class*="bg-[#0f172a]"],
+.category-deep-dive-content [class*="bg-[#1e293b]"],
+.category-deep-dive-content [class*="bg-slate-900/"],
+.category-deep-dive-content [class*="from-slate-900"] {
+  background-color: #FFF9F7 !important;
+  background-image: none !important;
+  border-color: #F3E8E2 !important;
+  color: #0A0A0A !important;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03) !important;
+}
+
+/* 2. Secondary/inner dark containers become crisp white #FFFFFF with clean border */
+#category-guide .bg-slate-800,
+#category-guide .bg-slate-700,
+#category-guide [class*="bg-slate-8"],
+#category-guide [class*="dark:bg-slate-8"],
+#category-guide [class*="dark:bg-slate-7"],
+#category-guide [class*="bg-slate-800/"],
+.category-deep-dive-content .bg-slate-800,
+.category-deep-dive-content .bg-slate-700,
+.category-deep-dive-content [class*="bg-slate-8"],
+.category-deep-dive-content [class*="dark:bg-slate-8"],
+.category-deep-dive-content [class*="dark:bg-slate-7"],
+.category-deep-dive-content [class*="bg-slate-800/"] {
+  background-color: #FFFFFF !important;
+  background-image: none !important;
+  border-color: #E5E7EB !important;
+  color: #0A0A0A !important;
+  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.03) !important;
+}
+
+/* 3. Text in previously dark containers must be crisp dark text */
+#category-guide .text-white,
+#category-guide [class*="dark:text-white"],
+#category-guide [class*="text-slate-100"],
+#category-guide [class*="dark:text-slate-100"],
+#category-guide [class*="text-slate-200"],
+#category-guide [class*="dark:text-slate-200"],
+.category-deep-dive-content .text-white,
+.category-deep-dive-content [class*="dark:text-white"],
+.category-deep-dive-content [class*="text-slate-100"],
+.category-deep-dive-content [class*="dark:text-slate-100"],
+.category-deep-dive-content [class*="text-slate-200"],
+.category-deep-dive-content [class*="dark:text-slate-200"] {
+  color: #0A0A0A !important;
+}
+
+#category-guide .text-slate-400,
+#category-guide .text-slate-300,
+#category-guide [class*="dark:text-slate-400"],
+#category-guide [class*="dark:text-slate-300"],
+#category-guide .font-figtree-body-dark,
+.category-deep-dive-content .text-slate-400,
+.category-deep-dive-content .text-slate-300,
+.category-deep-dive-content [class*="dark:text-slate-400"],
+.category-deep-dive-content [class*="dark:text-slate-300"],
+.category-deep-dive-content .font-figtree-body-dark {
+  color: #4B5563 !important;
+}
+
+/* 4. Borders */
+#category-guide .border-slate-800,
+#category-guide .border-slate-700,
+#category-guide [class*="dark:border-slate-8"],
+#category-guide [class*="dark:border-slate-7"],
+#category-guide [class*="border-white/"],
+.category-deep-dive-content .border-slate-800,
+.category-deep-dive-content .border-slate-700,
+.category-deep-dive-content [class*="dark:border-slate-8"],
+.category-deep-dive-content [class*="dark:border-slate-7"],
+.category-deep-dive-content [class*="border-white/"] {
+  border-color: #E5E7EB !important;
+}
+
+/* 5. Hide decorative blur glows (AI slop ambient light) */
+#category-guide [class*="blur-3xl"],
+#category-guide [class*="blur-2xl"],
+#category-guide [class*="blur-[100px]"],
+#category-guide [class*="blur-[160px]"],
+#category-guide [class*="bg-radial-gradient"],
+#category-guide [class*="radial-gradient"],
+.category-deep-dive-content [class*="blur-3xl"],
+.category-deep-dive-content [class*="blur-2xl"],
+.category-deep-dive-content [class*="blur-[100px]"],
+.category-deep-dive-content [class*="blur-[160px]"],
+.category-deep-dive-content [class*="bg-radial-gradient"],
+.category-deep-dive-content [class*="radial-gradient"] {
+  display: none !important;
+}
+
+/* 6. Dark CTA buttons inside guides become high-contrast solid buttons */
+#category-guide a[class*="bg-white"][class*="text-slate-900"],
+#category-guide button[class*="bg-white"][class*="text-slate-900"],
+.category-deep-dive-content a[class*="bg-white"][class*="text-slate-900"],
+.category-deep-dive-content button[class*="bg-white"][class*="text-slate-900"] {
+  background-color: #0A0A0A !important;
+  color: #FFFFFF !important;
+  border-color: #0A0A0A !important;
+}
+
+#category-guide a[class*="bg-white"][class*="text-slate-900"]:hover,
+#category-guide button[class*="bg-white"][class*="text-slate-900"]:hover,
+.category-deep-dive-content a[class*="bg-white"][class*="text-slate-900"]:hover,
+.category-deep-dive-content button[class*="bg-white"][class*="text-slate-900"]:hover {
+  background-color: #262626 !important;
+  color: #FFFFFF !important;
+}
+
+/* 7. Preserved dark hero containers (when explicitly requested) */
+#category-guide .preserve-dark,
+.category-deep-dive-content .preserve-dark {
+  background-color: #0F172A !important;
+  border-color: rgba(244, 63, 94, 0.2) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 25px 50px -12px rgba(244, 63, 94, 0.1) !important;
+}
+
+#category-guide .preserve-dark .text-white,
+.category-deep-dive-content .preserve-dark .text-white {
+  color: #FFFFFF !important;
+}
+
+#category-guide .preserve-dark [class*="text-slate-"],
+.category-deep-dive-content .preserve-dark [class*="text-slate-"] {
+  color: #CBD5E1 !important;
+}
+
+#category-guide .preserve-dark [class*="blur-"],
+.category-deep-dive-content .preserve-dark [class*="blur-"] {
+  display: block !important;
 }

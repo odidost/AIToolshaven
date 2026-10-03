@@ -5,19 +5,20 @@ export function InternalLinks({ theme }: { theme: CategoryTheme }) {
   if (!theme.internalLinks || theme.internalLinks.length === 0) return null;
 
   return (
-    <section className="mt-12 mb-12">
-      <h3 className="text-sm font-bold text-on-surface-variant uppercase tracking-wider mb-4">
-        Related Resources
-      </h3>
-      <div className="flex flex-wrap gap-3">
+    <section className="mt-10 mb-10">
+      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] text-xs font-medium text-[#4B5563] mb-3">
+        <span className="material-symbols-outlined text-[16px] text-[#E11D48]">link</span>
+        <span>Related Resources</span>
+      </div>
+      <div className="flex flex-wrap gap-2.5">
         {theme.internalLinks.map((link, index) => (
           <Link
             key={index}
             href={link.href}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-surface border border-border rounded-xl text-[13px] font-medium text-on-surface hover:border-[rgba(var(--category-accent),0.5)] hover:text-[rgb(var(--category-accent))] hover:bg-[rgba(var(--category-accent),0.02)] transition-all duration-200 shadow-xs hover:shadow-sm"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-white border border-[#E5E7EB] rounded-md text-xs font-medium text-[#0A0A0A] hover:border-[#E11D48] hover:text-[#E11D48] hover:bg-[#FFF1F2] transition-colors shadow-xs"
           >
-            {link.title}
-            <span className="material-symbols-outlined text-[14px] opacity-70">arrow_forward</span>
+            <span>{link.title}</span>
+            <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
           </Link>
         ))}
       </div>

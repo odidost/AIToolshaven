@@ -8,26 +8,27 @@ export function HeroSearchBar() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto mt-10 relative group">
-      {/* Background Glow */}
-      <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-[2rem] blur-xl opacity-50 group-hover:opacity-100 transition duration-500"></div>
-      
-      {/* Search Bar Container */}
+    <div className="w-full max-w-2xl mx-auto mt-8">
+      {/* Prominent, clean search box with 8px corners and thin border */}
       <button 
+        type="button"
         onClick={triggerCommandPalette}
-        className="relative w-full flex items-center justify-between bg-white/60 dark:bg-slate-900/60 backdrop-blur-3xl border border-black/5 dark:border-white/10 hover:border-black/10 dark:hover:border-white/20 rounded-[2rem] p-3 pl-6 pr-3 shadow-xl transition-all duration-300 group-hover:-translate-y-1 text-left"
+        className="w-full flex items-center justify-between bg-white border border-[#E5E7EB] hover:border-gray-400 focus:border-[#E11D48] rounded-lg p-2 pl-4 pr-2 shadow-xs transition-colors text-left group"
+        aria-label="Search AI tools and workflows"
       >
-        <div className="flex items-center gap-4 text-on-surface-variant group-hover:text-on-surface transition-colors">
-          <Search className="w-6 h-6 text-primary shrink-0" />
-          <span className="text-sm sm:text-base font-medium opacity-70">Search 900+ AI tools, freemium software, workflows...</span>
+        <div className="flex items-center gap-3 text-[#4B5563] min-w-0 flex-1 mr-3">
+          <Search className="w-5 h-5 text-[#4B5563] shrink-0 group-hover:text-[#0A0A0A] transition-colors" />
+          <span className="text-sm sm:text-base font-normal text-[#4B5563] truncate">
+            Search 900+ AI tools, workflows, comparisons...
+          </span>
         </div>
         
-        <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-black/5 dark:bg-white/5 rounded-xl border border-black/5 dark:border-white/10 shadow-inner">
-            <span className="text-xs font-mono font-bold text-on-surface-variant">⌘</span>
-            <span className="text-xs font-mono font-bold text-on-surface-variant">K</span>
+        <div className="flex items-center gap-2 shrink-0">
+          <div className="hidden sm:inline-flex items-center gap-1 px-2 py-1 bg-[#F9FAFB] rounded-md border border-[#E5E7EB] text-xs font-mono text-[#4B5563]">
+            <span>⌘</span>
+            <span>K</span>
           </div>
-          <div className="bg-primary text-white rounded-xl px-6 py-3 font-bold shadow-glow text-sm tracking-wide transition-transform group-hover:scale-105">
+          <div className="bg-[#E11D48] hover:bg-[#BE123C] text-white rounded-md px-4 py-2 font-medium text-sm transition-colors shadow-none">
             Search
           </div>
         </div>

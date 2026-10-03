@@ -59,11 +59,17 @@ export function HeaderAuth() {
 
   return (
     <div className="hidden md:flex items-center gap-2">
-      <Link href="/login">
-        <Button variant="ghost" className="text-on-surface-variant">Log In</Button>
+      <Link 
+        href="/login" 
+        className="px-3 py-1.5 text-xs sm:text-sm font-medium text-[#4B5563] hover:text-[#E11D48] transition-colors"
+      >
+        Log In
       </Link>
-      <Link href="/signup">
-        <Button variant="default" className="rounded-2xl">Sign Up</Button>
+      <Link 
+        href="/signup" 
+        className="px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-md border border-[#E5E7EB] bg-white text-[#0A0A0A] hover:bg-[#FFF1F2] hover:border-[#FECDD3] hover:text-[#E11D48] transition-colors"
+      >
+        Sign Up
       </Link>
     </div>
   );

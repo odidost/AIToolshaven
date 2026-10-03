@@ -6,10 +6,11 @@ interface RankingRowProps {
   tool: AITool;
   rank: number;
   isStar?: boolean;
+  isFreshDrops?: boolean;
   accentColor?: string;
 }
 
-export function RankingRow({ tool, rank, isStar, accentColor = "primary" }: RankingRowProps) {
+export function RankingRow({ tool, rank, isStar, isFreshDrops, accentColor = "primary" }: RankingRowProps) {
   // Map accent colors to very subtle hover backgrounds
   const hoverBackgrounds: Record<string, string> = {
     primary: "group-hover:bg-primary/5",
@@ -36,39 +37,45 @@ export function RankingRow({ tool, rank, isStar, accentColor = "primary" }: Rank
   return (
     <Link
       href={`/tool/${tool.slug}`}
-      className="group relative flex items-center justify-between gap-2 py-2 transition-all duration-300 hover:translate-x-1"
+      className="group relative flex items-center justify-between gap-2 py-1.5 px-1 rounded-md transition-colors hover:bg-[#F9FAFB]"
       data-tooltip-title={tool.name}
       data-tooltip-desc={tool.description}
     >
-      {/* Background highlight pill that expands slightly outside to keep text aligned */}
-      <div className={`absolute -inset-x-2 inset-y-0 rounded-lg transition-colors -z-10 hidden md:block ${activeHoverBg}`} />
-
-      <div className="flex items-center gap-3 min-w-0 flex-1 pl-1">
-        <div className="flex w-5 shrink-0 items-center justify-end text-[13px] font-bold">
-          {isStar ? (
-            <span className="material-symbols-outlined text-[14px] text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-          ) : (
-            <span className={`bg-clip-text text-transparent bg-gradient-to-br from-gray-900 to-gray-500 drop-shadow-sm`}>
-              {rank}.
+      <div className="flex items-center gap-2 min-w-0 flex-1">
+        <div className="flex w-5 shrink-0 items-center justify-center text-xs font-mono font-medium text-[#4B5563]">
+          {isFreshDrops && rank <= 3 ? (
+            <span className="text-[9px] font-bold uppercase tracking-wider text-[#E11D48] bg-[#FFF1F2] px-1 py-0.2 rounded border border-[#FECDD3]">
+              NEW
             </span>
+          ) : isStar ? (
+            <span className="material-symbols-outlined text-[13px] text-amber-500" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+          ) : (
+            <span>{rank}.</span>
           )}
         </div>
         
-        <div className="relative h-[20px] w-[20px] shrink-0 overflow-hidden rounded-full border border-border/40 bg-white shadow-sm transition-shadow duration-300 group-hover:shadow-md group-hover:border-border/60">
+        <div className="relative h-5 w-5 shrink-0 overflow-hidden rounded border border-[#E5E7EB] bg-white">
           <ToolImage
             tool={tool}
             type="logo"
-            className="h-full w-full object-contain p-[2px]"
+            className="h-full w-full object-contain p-0.5"
           />
         </div>
 
-        <h4 className="truncate text-[13px] font-medium text-gray-900/90 group-hover:text-gray-900 transition-colors">
+        <h4 className="truncate text-xs font-medium text-[#0A0A0A] group-hover:text-[#E11D48] transition-colors">
           {tool.name}
         </h4>
       </div>
 
-      <div className={`flex shrink-0 items-center justify-center rounded-[3px] border border-black/10 bg-black/5 text-gray-500 w-[14px] h-[14px] opacity-60 transition-all duration-300 group-hover:opacity-100 ${activeLinkIconHover}`}>
-        <span className="material-symbols-outlined text-[9px]">open_in_new</span>
+      <div className="flex shrink-0 items-center gap-1.5">
+        {tool.priceModel && (
+          <span className="text-[9px] font-medium px-1.5 py-0.2 rounded border border-[#E5E7EB] bg-[#F9FAFB] text-[#4B5563] group-hover:border-[#E11D48]/30 group-hover:text-[#E11D48] transition-colors">
+            {tool.priceModel}
+          </span>
+        )}
+        <span className="material-symbols-outlined text-[13px] text-[#9CA3AF] group-hover:text-[#E11D48] group-hover:translate-x-0.5 transition-all">
+          arrow_forward
+        </span>
       </div>
     </Link>
   );

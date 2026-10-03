@@ -2,10 +2,6 @@ import Link from "next/link";
 import { RankingCard } from "./RankingCard";
 import { FloatingTooltip } from "./FloatingTooltip";
 import { getFeaturedTools, getLatestTools, getTrendingTools, getToolsByCategoryId } from "@/lib/data/tools-service";
-import { getCategoryBySlug } from "@/lib/queries/categories";
-import { SectionContainer } from "../layout/SectionContainer";
-import { FadeIn } from "../animations/FadeIn";
-import { StaggerContainer, StaggerItem } from "../animations/StaggerContainer";
 
 
 export async function EditorialRankingsSection() {
@@ -23,41 +19,41 @@ export async function EditorialRankingsSection() {
   const chatbotsTotal = 24;
 
   return (
-    <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      
-      {/* The Glowing Data Line connecting from Featured Tools above */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-primary/50 to-transparent -mt-16 pointer-events-none hidden xl:block" />
-
-      <section className="relative overflow-visible pt-16 pb-24">
+    <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <section className="relative">
         <div className="mx-auto w-full">
-        <FadeIn direction="up" className="mb-16 flex flex-col items-center md:items-start justify-center gap-2">
-          <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-3xl border border-black/5 text-gray-900 shadow-xl px-4 py-1.5 rounded-full mb-4 group relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <span className="material-symbols-outlined text-[18px] text-emerald-600" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-            <span className="text-xs font-black uppercase tracking-widest text-emerald-800">Editor's Picks</span>
+          <div className="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] text-xs font-medium text-[#4B5563] mb-3">
+                <span className="material-symbols-outlined text-[16px] text-[#E11D48]">leaderboard</span>
+                <span>Live Directory &amp; Benchmarks</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A] font-heading">
+                AI Tool Rankings &amp; Daily Fresh Drops
+              </h2>
+            </div>
+            <Link 
+              href="/categories" 
+              className="text-xs sm:text-sm font-medium text-[#E11D48] hover:text-[#BE123C] transition-colors flex items-center gap-1"
+            >
+              View all 24 categories &rarr;
+            </Link>
           </div>
-          <h2 className="text-fluid-h2 font-black tracking-tight text-gray-900 mb-2">
-            Explore the Best AI Tools by Category
-          </h2>
-        </FadeIn>
 
-        <StaggerContainer className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4 items-start pb-12" staggerChildren={0.15}>
-          {/* Card 1: Latest AI Tools */}
-          <StaggerItem direction="up" className="relative group/wrapper xl:mt-0 transition-transform hover:-translate-y-2 duration-500">
-            <div className="absolute -inset-4 rounded-full bg-rose-500/10 blur-[80px] opacity-0 transition-opacity duration-700 group-hover/wrapper:opacity-100 pointer-events-none" />
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 items-stretch">
+            {/* Card 1: Fresh Drops */}
             <RankingCard
-              title="Latest AI Tools"
-              icon="new_releases"
+              title="Fresh Drops"
+              icon="bolt"
               tools={latestTools}
               totalCount={latestTotal}
               categoryLink="/latest-ai-tools"
               accentColor="rose"
+              badgeText="Today"
+              isFreshDrops={true}
             />
-          </StaggerItem>
 
-          {/* Card 2: Most Popular */}
-          <StaggerItem direction="up" className="relative group/wrapper xl:mt-12 transition-transform hover:-translate-y-2 duration-500">
-            <div className="absolute -inset-4 rounded-full bg-primary/10 blur-[80px] opacity-0 transition-opacity duration-700 group-hover/wrapper:opacity-100 pointer-events-none" />
+            {/* Card 2: Most Popular */}
             <RankingCard
               title="Most Popular"
               icon="trending_up"
@@ -66,11 +62,8 @@ export async function EditorialRankingsSection() {
               categoryLink="/popular-ai-tools"
               accentColor="primary"
             />
-          </StaggerItem>
 
-          {/* Card 3: Trending AI Tools */}
-          <StaggerItem direction="up" className="relative group/wrapper xl:mt-0 transition-transform hover:-translate-y-2 duration-500">
-            <div className="absolute -inset-4 rounded-full bg-emerald-500/10 blur-[80px] opacity-0 transition-opacity duration-700 group-hover/wrapper:opacity-100 pointer-events-none" />
+            {/* Card 3: Trending AI Tools */}
             <RankingCard
               title="Trending AI Tools"
               icon="local_fire_department"
@@ -79,11 +72,8 @@ export async function EditorialRankingsSection() {
               categoryLink="/trending-ai-tools"
               accentColor="emerald"
             />
-          </StaggerItem>
 
-          {/* Card 4: Top AI Chatbots */}
-          <StaggerItem direction="up" className="relative group/wrapper xl:mt-12 transition-transform hover:-translate-y-2 duration-500">
-            <div className="absolute -inset-4 rounded-full bg-blue-500/10 blur-[80px] opacity-0 transition-opacity duration-700 group-hover/wrapper:opacity-100 pointer-events-none" />
+            {/* Card 4: Top AI Chatbots */}
             <RankingCard
               title="Top AI Chatbots"
               icon="forum"
@@ -92,39 +82,9 @@ export async function EditorialRankingsSection() {
               categoryLink="/category/ai-chatbots"
               accentColor="blue"
             />
-          </StaggerItem>
-        </StaggerContainer>
-
-        {/* Large Bottom CTA matching the image exactly */}
-        <div className="mt-12 flex justify-center">
-          <div className="relative inline-flex group">
-            {/* The multi-colored gradient glow underneath */}
-            <div className="absolute -inset-1 top-2 -z-10 rounded-[14px] bg-primary/40 blur-md transition-all duration-300 group-hover:opacity-100 group-hover:blur-lg group-hover:bg-primary/60" />
-            
-            {/* Button container with 4px track and moving ball animation */}
-            <div className="relative flex items-center justify-center rounded-[14px] p-[2px] overflow-hidden shadow-sm transition-transform hover:-translate-y-0.5">
-              
-              {/* Stylish static border color (acting as the track) */}
-              <div className="absolute inset-0 bg-border" />
-
-              {/* The moving "ball" of color (conic gradient with a bright tip and trailing tail) */}
-              <div className="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_85%,var(--primary)_95%,#FFFFFF_100%)]" />
-              
-              {/* Inner Button Content */}
-              <Link
-                href="/categories"
-                className="relative z-10 flex items-center justify-center gap-2 rounded-[12px] bg-white px-16 py-3.5 text-[14px] font-bold uppercase tracking-widest text-gray-900 transition-colors hover:text-primary"
-              >
-                SEE THE FULL LIST OF AI <span className="text-[16px] font-normal leading-none">&rarr;</span>
-              </Link>
-            </div>
           </div>
         </div>
-      </div>
         <FloatingTooltip />
-
-        {/* Data Stream to Trusted By Section */}
-        <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-primary/50 via-primary to-transparent pointer-events-none hidden xl:block z-0" />
       </section>
     </div>
   );
