@@ -28,7 +28,10 @@ export default function SubmitFormPage() {
 
 function SubmitFormContent() {
   const searchParams = useSearchParams();
-  const plan = searchParams.get('plan') || 'growth';
+  const rawPlan = (searchParams.get('plan') || '').toLowerCase().trim();
+  // Valid plans are 'free', 'growth', 'premium'.
+  // Any unrecognized or legacy plans (e.g. 'standard') normalize to 'free' to enforce backlink verification.
+  const plan = rawPlan === 'growth' || rawPlan === 'premium' ? rawPlan : 'free';
 
   const [formData, setFormData] = useState({
     toolName: '',
@@ -40,6 +43,7 @@ function SubmitFormContent() {
     price: '',
     tagline: '',
     backlinkUrl: '',
+    honeypot: '',
   });
 
   const [dragActive, setDragActive] = useState(false);
@@ -76,6 +80,12 @@ function SubmitFormContent() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (validate()) {
+      // Honeypot spam trap check
+      if (formData.honeypot) {
+        setSubmitted(true);
+        return;
+      }
+
       setIsSubmitting(true);
       try {
         if (plan === 'free') {
@@ -89,9 +99,13 @@ function SubmitFormContent() {
           toast.success("Backlink verified successfully!");
         }
 
+        const selectedCat = categories.find(c => c.id === formData.category);
+        const categoryName = selectedCat ? `${selectedCat.name} (${selectedCat.id})` : formData.category;
+
         const result = await sendSubmissionEmail({
           ...formData,
-          plan: planLabels[plan] || plan,
+          category: categoryName,
+          plan: planLabels[plan] || planLabels.free,
         });
         if (result.success) {
           setSubmitted(true);
@@ -146,9 +160,15 @@ function SubmitFormContent() {
           <p className="text-on-surface-variant mb-2">
             Thank you for submitting <strong>{formData.toolName}</strong>.
           </p>
-          <p className="text-on-surface-variant mb-8">
-            Our team will review your tool and get back to you within 24-48 hours.
-          </p>
+          {plan === 'free' ? (
+            <p className="text-on-surface-variant mb-8">
+              Our editorial team will verify your reciprocal backlink badge and review your listing within 3–5 business days.
+            </p>
+          ) : (
+            <p className="text-on-surface-variant mb-8">
+              Thank you for choosing the <strong>{planLabels[plan]}</strong>! Our editorial team will review your tool and email a Stripe invoice to <strong>{formData.contactEmail}</strong> to activate your priority review within 24 hours.
+            </p>
+          )}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/" className="bg-primary text-primary-foreground px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-opacity">
               Back to Home
@@ -178,12 +198,36 @@ function SubmitFormContent() {
           </p>
           <div className="inline-flex items-center gap-2 mt-4 bg-primary-container text-on-primary-container px-4 py-2 rounded-full text-sm font-semibold">
             <span className="material-symbols-outlined text-sm">verified</span>
-            Plan: {planLabels[plan] || planLabels.launch}
+            Plan: {planLabels[plan] || planLabels.free}
           </div>
         </div>
 
+        {plan !== 'free' && (
+          <div className="mb-6 p-4 rounded-xl border border-primary/20 bg-primary/5 text-sm text-on-surface-variant flex items-start gap-3">
+            <span className="material-symbols-outlined text-primary text-xl shrink-0 mt-0.5">info</span>
+            <div>
+              <p className="font-semibold text-on-surface mb-0.5">Priority Review Tier ({planLabels[plan]})</p>
+              <p className="text-xs text-on-surface-variant leading-relaxed">
+                Upon submitting, our team will review your listing and email an official Stripe invoice to your contact address. Once confirmed, your placement will go live within 24–48 hours.
+              </p>
+            </div>
+          </div>
+        )}
+
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Honeypot anti-spam trap */}
+          <div className="hidden opacity-0 pointer-events-none absolute -left-[9999px]" aria-hidden="true">
+            <label htmlFor="website-company-notes">Leave this field blank</label>
+            <input
+              id="website-company-notes"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={formData.honeypot}
+              onChange={(e) => setFormData(prev => ({ ...prev, honeypot: e.target.value }))}
+            />
+          </div>
           {/* Tool Name */}
           <div>
             <label htmlFor="tool-name" className="block text-sm font-semibold text-on-surface mb-2">

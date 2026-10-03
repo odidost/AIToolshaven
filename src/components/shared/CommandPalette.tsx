@@ -137,14 +137,14 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
     return (
       <button 
         onClick={() => setIsOpen(true)}
-        className="w-full h-10 px-4 rounded-full border border-border bg-surface hover:bg-muted hover:border-border/80 shadow-xs hover:shadow-sm transition-all duration-200 flex items-center justify-between text-[13px] font-medium text-muted-foreground"
+        className="w-full h-9 px-3.5 rounded-md border border-[#E5E7EB] bg-white hover:bg-[#F9FAFB] hover:border-gray-300 transition-colors flex items-center justify-between text-xs font-medium text-[#4B5563]"
       >
-        <div className="flex items-center gap-2.5">
-          <Search className="w-4 h-4 text-muted-foreground" />
+        <div className="flex items-center gap-2">
+          <Search className="w-3.5 h-3.5 text-[#4B5563]" />
           <span>Search AI tools, categories &amp; guides...</span>
         </div>
-        <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 bg-surface-container rounded-md text-xs font-mono font-medium border border-outline">
-          <span className="text-sm">⌘</span>K
+        <kbd className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 bg-gray-100 text-gray-600 rounded text-[11px] font-mono border border-gray-200">
+          <span className="text-xs">⌘</span>K
         </kbd>
       </button>
     );
@@ -154,14 +154,14 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
     <>
       {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 transition-opacity"
+        className="fixed inset-0 bg-black/40 z-50 transition-opacity"
         onClick={() => setIsOpen(false)}
       />
       
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 pointer-events-none">
         <div 
-          className="w-full max-w-2xl bg-card rounded-2xl shadow-2xl shadow-primary/10 border border-border overflow-hidden pointer-events-auto flex flex-col max-h-[85vh] ring-1 ring-border/50"
+          className="w-full max-w-2xl bg-white rounded-lg shadow-xl border border-[#E5E7EB] overflow-hidden pointer-events-auto flex flex-col max-h-[85vh]"
           onClick={e => e.stopPropagation()}
         >
           {/* Search Input */}

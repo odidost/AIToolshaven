@@ -20,56 +20,43 @@ export function ComparisonCard({ data, fullTool1, fullTool2 }: { data: Compariso
     };
 
     return (
-        <Link href={`/compare-tools/${data.slug}`} className="block group w-full">
-            <div className="relative flex flex-col justify-between bg-white rounded-3xl border border-black/5 p-6 hover:border-primary/20 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(255,95,109,0.08)] transition-all duration-500 overflow-hidden h-[240px]">
+        <Link href={`/compare-tools/${data.slug}`} className="block group w-full h-full">
+            <div className="flex flex-col justify-between bg-white rounded-lg border border-[#E5E7EB] p-5 hover:border-[#E11D48]/50 hover:shadow-xs transition-all shadow-none h-full min-h-[200px]">
                 
-                {/* Background Opposing Gradients (Blue Corner vs Red Corner vibes) */}
-                <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-br from-slate-50 to-transparent pointer-events-none opacity-50 transition-opacity duration-500 group-hover:opacity-100" />
-                <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-orange-50/50 to-transparent pointer-events-none opacity-50 transition-opacity duration-500 group-hover:opacity-100" />
-                
-                {/* The Top 'Arena' with Logos and VS orb */}
-                <div className="relative flex items-center justify-between z-10 w-full mt-2">
+                {/* The Top Comparison Header with Logos */}
+                <div className="flex items-center justify-between gap-3">
                     
                     {/* Tool 1 */}
-                    <div className="flex flex-col items-center gap-3 transition-transform duration-500 group-hover:translate-x-4">
-                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${data.tool1.color} p-[2px] shadow-md group-hover:shadow-lg transition-all`}>
-                            <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-[14px] flex items-center justify-center border border-white/20 overflow-hidden bg-white">
-                                <ToolImage tool={tool1Data} type="logo" className="w-full h-full object-contain p-1.5 bg-white" />
-                            </div>
+                    <div className="flex items-center gap-2.5 min-w-0">
+                        <div className="w-10 h-10 rounded-md border border-[#E5E7EB] bg-white p-1 flex items-center justify-center shrink-0 group-hover:border-[#E11D48]/30 transition-colors">
+                            <ToolImage tool={tool1Data} type="logo" className="w-full h-full object-contain" />
                         </div>
-                        <span className="font-bold text-slate-900 text-sm text-center max-w-[80px] truncate">{data.tool1.name}</span>
+                        <span className="font-semibold text-[#0A0A0A] text-sm truncate group-hover:text-[#E11D48] transition-colors">{data.tool1.name}</span>
                     </div>
 
-                    {/* The VS Node */}
-                    <div className="relative z-20 mx-2 transition-transform duration-500 group-hover:scale-110">
-                        <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full scale-150 group-hover:bg-primary/40 transition-colors" />
-                        <div className="w-10 h-10 rounded-full bg-white border border-black/5 shadow-md flex items-center justify-center relative z-10 text-[11px] font-black italic tracking-wider text-slate-400 group-hover:text-primary group-hover:border-primary/20 transition-all">
-                            VS
-                        </div>
-                    </div>
+                    {/* VS Badge */}
+                    <span className="text-[11px] font-mono font-semibold text-[#4B5563] bg-[#F9FAFB] border border-[#E5E7EB] px-2 py-0.5 rounded shrink-0 group-hover:border-[#FECDD3] group-hover:bg-[#FFF1F2] group-hover:text-[#E11D48] transition-colors">
+                        VS
+                    </span>
 
                     {/* Tool 2 */}
-                    <div className="flex flex-col items-center gap-3 transition-transform duration-500 group-hover:-translate-x-4">
-                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${data.tool2.color} p-[2px] shadow-md group-hover:shadow-lg transition-all`}>
-                            <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-[14px] flex items-center justify-center border border-white/20 overflow-hidden bg-white">
-                                <ToolImage tool={tool2Data} type="logo" className="w-full h-full object-contain p-1.5 bg-white" />
-                            </div>
+                    <div className="flex items-center gap-2.5 min-w-0 justify-end">
+                        <span className="font-semibold text-[#0A0A0A] text-sm truncate text-right group-hover:text-[#E11D48] transition-colors">{data.tool2.name}</span>
+                        <div className="w-10 h-10 rounded-md border border-[#E5E7EB] bg-white p-1 flex items-center justify-center shrink-0 group-hover:border-[#E11D48]/30 transition-colors">
+                            <ToolImage tool={tool2Data} type="logo" className="w-full h-full object-contain" />
                         </div>
-                        <span className="font-bold text-slate-900 text-sm text-center max-w-[80px] truncate">{data.tool2.name}</span>
                     </div>
 
                 </div>
 
                 {/* Lower Description and Action */}
-                <div className="relative z-10 mt-6 pt-5 border-t border-black/5 flex flex-col gap-3">
-                    <p className="text-xs font-semibold text-slate-500 line-clamp-2 leading-relaxed">
+                <div className="mt-5 pt-3.5 border-t border-[#E5E7EB] flex flex-col gap-2">
+                    <p className="text-xs text-[#4B5563] line-clamp-2 leading-relaxed">
                         {data.description}
                     </p>
-                    <div className="flex items-center gap-1 text-slate-400 group-hover:text-primary transition-colors font-bold text-xs uppercase tracking-widest mt-auto">
-                        <span className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                            See full comparison
-                        </span>
-                        <ArrowRight className="w-4 h-4 -translate-x-2 group-hover:translate-x-0 transition-transform duration-300 shrink-0" />
+                    <div className="flex items-center gap-1 text-xs font-semibold text-[#E11D48] group-hover:text-[#BE123C] transition-colors mt-1">
+                        <span>Compare features &amp; pricing</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform shrink-0" />
                     </div>
                 </div>
 

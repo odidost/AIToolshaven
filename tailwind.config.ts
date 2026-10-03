@@ -71,17 +71,22 @@ export default {
         ring: 'var(--ring)',
       },
       fontFamily: {
-        sans: ['var(--font-figtree)', 'Figtree', 'system-ui', 'sans-serif'],
-        heading: ['var(--font-plus-jakarta)', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
-        figtree: ['var(--font-figtree)', 'Figtree', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-instrument)', 'Instrument Sans', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-bricolage)', 'Bricolage Grotesque', 'system-ui', 'sans-serif'],
+        bricolage: ['var(--font-bricolage)', 'Bricolage Grotesque', 'system-ui', 'sans-serif'],
+        instrument: ['var(--font-instrument)', 'Instrument Sans', 'system-ui', 'sans-serif'],
+        figtree: ['var(--font-instrument)', 'Instrument Sans', 'system-ui', 'sans-serif'],
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
       borderRadius: {
-        xl: '0.75rem',
-        '2xl': '1rem', // Buttons
-        '3xl': '1.25rem', // Cards (shrunk from 1.5rem for tighter feel)
-        'input': '1rem', // Inputs
-        full: '9999px', // Badges
+        sm: '0.25rem', // 4px
+        md: '0.375rem', // 6px
+        lg: '0.5rem', // 8px
+        xl: '0.5rem', // 8px
+        '2xl': '0.5rem', // 8px
+        '3xl': '0.5rem', // 8px (flat restrained corners)
+        'input': '0.5rem', // 8px
+        full: '9999px',
       },
       boxShadow: {
         'xs': '0 1px 2px 0 rgba(15, 23, 42, 0.04)',

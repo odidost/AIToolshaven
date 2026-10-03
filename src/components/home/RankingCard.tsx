@@ -9,6 +9,8 @@ interface RankingCardProps {
   totalCount: number;
   categoryLink: string;
   accentColor?: "primary" | "secondary" | "tertiary" | "emerald" | "blue" | "rose";
+  badgeText?: string;
+  isFreshDrops?: boolean;
 }
 
 export function RankingCard({
@@ -18,6 +20,8 @@ export function RankingCard({
   totalCount,
   categoryLink,
   accentColor = "primary",
+  badgeText,
+  isFreshDrops,
 }: RankingCardProps) {
   
   // Custom thin line gradients based on accent color
@@ -41,38 +45,50 @@ export function RankingCard({
   };
   const activeScrollbar = scrollbarThumbColors[accentColor] || scrollbarThumbColors.primary;
 
-  const isLatest = title.toLowerCase().includes("latest");
+  const isLatest = title.toLowerCase().includes("latest") || title.toLowerCase().includes("fresh");
   const extractedCategoryName = title.replace(/Most Popular|Latest|Trending|Top|AI/g, "").trim() || "category";
 
   return (
-    <div className="group/card relative flex h-[420px] flex-col overflow-hidden rounded-[20px] border border-black/5 bg-gradient-to-br from-rose-50/40 to-orange-50/40 shadow-[0_4px_24px_rgba(0,0,0,0.04)] transition-all duration-500 hover:border-black/10 hover:shadow-[0_12px_32px_rgba(255,95,109,0.1)] hover:-translate-y-1">
+    <div className="relative flex h-[420px] flex-col overflow-hidden rounded-lg border border-[#E5E7EB] bg-white shadow-none transition-colors hover:border-gray-300">
       
-      {/* Subtle background glow effect */}
-      <div className="absolute top-0 right-0 -mr-8 -mt-8 h-32 w-32 rounded-full bg-[#7C3AED]/5 blur-2xl pointer-events-none transition-all duration-500 group-hover/card:bg-[#7C3AED]/10" />
-
       {/* Header */}
-      <div className="relative shrink-0 flex flex-col pt-5 pb-4 px-5 z-10">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 text-primary shadow-sm ring-1 ring-primary/20 group-hover/card:scale-105 transition-transform duration-500">
-            <span className="material-symbols-outlined text-[20px]">
+      <div className="relative shrink-0 flex items-center justify-between pt-4 pb-3 px-4 border-b border-[#E5E7EB]">
+        <div className="flex items-center gap-2.5">
+          <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md border text-[#0A0A0A] ${
+            isFreshDrops ? "bg-[#FFF1F2] border-[#FECDD3] text-[#E11D48]" : "bg-[#F9FAFB] border-[#E5E7EB]"
+          }`}>
+            <span className="material-symbols-outlined text-[18px]">
               {icon}
             </span>
           </div>
-          <h3 className="font-extrabold text-[16px] tracking-tight text-gray-900 group-hover/card:text-primary transition-colors duration-300">
+          <h3 className="font-bold text-sm tracking-tight text-[#0A0A0A] font-heading">
             {title}
           </h3>
         </div>
-        <div className="h-[1px] w-full bg-gradient-to-r from-primary/20 via-primary/5 to-transparent" />
+
+        {badgeText && (
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            {badgeText}
+          </span>
+        )}
       </div>
 
       {/* Tools List - Scrollable */}
-      <div className={`flex flex-1 flex-col px-4 pb-2 z-10 overflow-y-auto [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-track]:bg-black/5 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full transition-colors duration-300 ${activeScrollbar}`}>
-        <div className="flex flex-col divide-y divide-border/30">
+      <div className="flex flex-1 flex-col px-3 py-1 overflow-y-auto [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-thumb]:rounded">
+        <div className="flex flex-col divide-y divide-[#F3F4F6]">
           {tools.map((tool, index) => (
-            <RankingRow key={tool.id} tool={tool} rank={index + 1} isStar={isLatest} accentColor={accentColor} />
+            <RankingRow 
+              key={tool.id} 
+              tool={tool} 
+              rank={index + 1} 
+              isStar={isLatest && !isFreshDrops} 
+              isFreshDrops={isFreshDrops} 
+              accentColor={accentColor} 
+            />
           ))}
           {tools.length === 0 && (
-            <div className="flex h-full items-center justify-center p-6 text-sm text-on-surface-variant">
+            <div className="flex h-full items-center justify-center p-6 text-xs text-[#4B5563]">
               No tools found.
             </div>
           )}
@@ -80,12 +96,12 @@ export function RankingCard({
       </div>
 
       {/* Footer */}
-      <div className="relative shrink-0 mt-auto p-4 z-10 bg-transparent">
+      <div className="relative shrink-0 mt-auto p-3 bg-white border-t border-[#E5E7EB]">
         <Link
           href={categoryLink}
-          className="flex w-full items-center justify-center gap-1.5 rounded-lg bg-black/5 border border-black/5 px-4 py-2.5 text-[12px] font-medium text-gray-900 transition-colors hover:bg-black/10 hover:border-black/10 hover:text-primary group/btn"
+          className="flex w-full items-center justify-center gap-1.5 rounded-md bg-[#F9FAFB] border border-[#E5E7EB] px-3 py-2 text-xs font-semibold text-[#4B5563] transition-all hover:bg-[#E11D48] hover:border-[#E11D48] hover:text-white group/btn"
         >
-          See all {extractedCategoryName} ({totalCount}) <span className="transition-transform group-hover/btn:translate-x-1">&rarr;</span>
+          See all {extractedCategoryName} ({totalCount}) <span className="transition-transform group-hover/btn:translate-x-0.5">&rarr;</span>
         </Link>
       </div>
     </div>

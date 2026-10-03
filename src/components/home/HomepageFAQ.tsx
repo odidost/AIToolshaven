@@ -11,50 +11,43 @@ export function HomepageFAQ() {
   };
 
   return (
-    <section className="relative overflow-hidden py-16 sm:py-24">
-      {/* Glow highlight */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[350px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -z-10" />
-
-      <div className="w-full max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 bg-rose-50 border border-rose-200/60 shadow-sm px-4 py-1.5 rounded-full mb-4">
-            <span className="material-symbols-outlined text-[18px] text-rose-700">help</span>
-            <span className="text-xs font-extrabold uppercase tracking-widest text-rose-700">
-              Frequently Asked Questions
-            </span>
+    <section className="relative py-12 sm:py-20 border-t border-[#E5E7EB] bg-white">
+      <div className="w-full max-w-[860px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-10 sm:mb-12">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] text-xs font-medium text-[#4B5563] mb-3">
+            <span className="material-symbols-outlined text-[16px] text-[#E11D48]">help</span>
+            <span>Directory FAQ</span>
           </div>
-          <h2 className="text-fluid-h2 font-black tracking-tight text-gray-900">
-            Got Questions? Everything You Need to Know
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A] font-heading">
+            Frequently Asked Questions
           </h2>
-          <p className="mt-3 text-base sm:text-lg text-on-surface-variant max-w-2xl mx-auto">
-            Clear, honest answers about our directory curation, testing methodology, free tiers, and workflows.
+          <p className="mt-2 text-sm sm:text-base text-[#4B5563] max-w-xl mx-auto">
+            Honest answers about directory curation, test methodology, freemium tiers, and workflow recipes.
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           {homepageFaqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div
                 key={idx}
-                className={`rounded-2xl border transition-all duration-300 bg-white/80 backdrop-blur-sm overflow-hidden ${
-                  isOpen
-                    ? "border-primary/30 shadow-md ring-1 ring-primary/10"
-                    : "border-black/5 shadow-xs hover:border-black/15 hover:shadow-sm"
+                className={`rounded-lg border transition-colors bg-white ${
+                  isOpen ? "border-[#E11D48]/40" : "border-[#E5E7EB] hover:border-gray-300"
                 }`}
               >
                 <button
                   type="button"
                   onClick={() => toggle(idx)}
-                  className="w-full text-left px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded-2xl"
+                  className="w-full text-left px-5 py-4 flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E11D48] rounded-lg transition-colors hover:bg-[#F9FAFB]"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-base sm:text-lg font-bold text-gray-900 leading-snug">
+                  <span className="text-sm sm:text-base font-semibold text-[#0A0A0A] leading-snug">
                     {faq.question}
                   </span>
                   <span
-                    className={`material-symbols-outlined text-xl text-primary transition-transform duration-300 flex-shrink-0 ${
-                      isOpen ? "rotate-180" : ""
+                    className={`material-symbols-outlined text-lg text-[#4B5563] transition-transform duration-200 flex-shrink-0 ${
+                      isOpen ? "rotate-180 text-[#E11D48]" : ""
                     }`}
                   >
                     expand_more
@@ -62,7 +55,7 @@ export function HomepageFAQ() {
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-6 sm:px-8 sm:pb-7 text-sm sm:text-base text-gray-600 leading-relaxed border-t border-black/5 pt-4">
+                  <div className="px-5 pb-4 text-xs sm:text-sm text-[#4B5563] leading-relaxed border-t border-[#E5E7EB] pt-3">
                     {faq.answer}
                   </div>
                 )}

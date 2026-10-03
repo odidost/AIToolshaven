@@ -211,10 +211,7 @@ export default async function CategoryPage({
   const siblingSubcategories = category.parentId ? allCategories.filter(c => (c.parentId === category.parentId) && c.slug !== category.slug && c.status !== 'Draft') : [];
 
   return (
-    <main
-      className="relative min-h-screen bg-surface"
-      style={{ '--category-accent': theme.accentColors.cssVar } as React.CSSProperties}
-    >
+    <main className="relative min-h-screen bg-white">
       <StructuredData data={jsonLd} />
 
       {/* Full-Width Commercial Category Hero Banner */}
@@ -226,47 +223,40 @@ export default async function CategoryPage({
         parentBreadcrumb={parentBreadcrumb}
       />
 
-      <PageContainer className="py-10 md:py-14 relative">
-        {/* Dynamic Category Page Background */}
-        {['coding-assistants', 'productivity'].includes(slug) && <BackgroundPattern type="workflow" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
-        {['image-generation', 'video-creation', 'audio-voice'].includes(slug) && <BackgroundPattern type="sparkles" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
-        {['text-generation', 'marketing-sales', 'ai-writing-tools'].includes(slug) && <BackgroundPattern type="dots" opacity={0.02} className="fixed inset-0 text-[rgb(var(--category-accent))]" />}
-
+      <PageContainer className="py-8 md:py-12 relative">
         {/* Specialized Subcategory Explorer */}
         {subcategories.length > 0 && (
-          <section className="mb-12 p-6 rounded-2xl bg-surface-container-low/80 border border-border/80 backdrop-blur-xs shadow-xs">
+          <section className="mb-10 p-5 rounded-lg bg-[#F9FAFB] border border-[#E5E7EB]">
             <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-[20px] text-[rgb(var(--category-accent))]">auto_awesome</span>
-                <h3 className="text-sm font-bold text-on-surface uppercase tracking-[0.16em]">
-                  Specialized {category.name} Workflows
-                </h3>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md border border-[#E5E7EB] bg-white text-xs font-medium text-[#4B5563]">
+                <span className="material-symbols-outlined text-[16px] text-[#E11D48]">hub</span>
+                <span>Specialized {category.name} Workflows</span>
               </div>
-              <span className="text-xs text-on-surface-variant font-medium hidden sm:inline-block">
+              <span className="text-xs text-[#6B7280] font-mono font-medium hidden sm:inline-block">
                 {subcategories.length} Specialized Hubs
               </span>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
               {subcategories.map(sub => (
                 <Link
                   key={sub.id}
                   href={`/category/${sub.slug}`}
-                  className="group flex items-center justify-between p-3.5 rounded-xl bg-surface border border-border/70 hover:border-[rgb(var(--category-accent))] transition-all duration-200 hover:-translate-y-0.5 shadow-2xs hover:shadow-xs"
+                  className="group flex items-center justify-between p-3 rounded-md bg-white border border-[#E5E7EB] hover:border-[#E11D48] transition-all hover:shadow-xs"
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-[rgb(var(--category-accent))]/10 text-[rgb(var(--category-accent))] shrink-0">
-                      <span className="material-symbols-outlined text-[19px]">{sub.icon || "category"}</span>
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <span className="flex items-center justify-center w-8 h-8 rounded-md bg-[#FFF1F2] border border-[#FECDD3] text-[#E11D48] shrink-0">
+                      <span className="material-symbols-outlined text-[18px]">{sub.icon || "category"}</span>
                     </span>
                     <div className="min-w-0">
-                      <div className="text-[13px] font-semibold text-on-surface group-hover:text-[rgb(var(--category-accent))] transition-colors truncate">
+                      <div className="text-xs font-semibold text-[#0A0A0A] group-hover:text-[#E11D48] transition-colors truncate">
                         {sub.name}
                       </div>
-                      <div className="text-[11px] text-on-surface-variant truncate">
+                      <div className="text-[10px] font-mono text-[#6B7280] truncate">
                         {sub.count || 0} verified tools
                       </div>
                     </div>
                   </div>
-                  <span className="material-symbols-outlined text-[16px] text-muted-foreground group-hover:text-[rgb(var(--category-accent))] group-hover:translate-x-0.5 transition-all">
+                  <span className="material-symbols-outlined text-[15px] text-[#9CA3AF] group-hover:text-[#E11D48] group-hover:translate-x-0.5 transition-all">
                     arrow_forward
                   </span>
                 </Link>
@@ -290,23 +280,21 @@ export default async function CategoryPage({
 
       {/* Sibling Subcategories Explorer (Hub: Related Parent Workflows) */}
       {siblingSubcategories.length > 0 && (
-        <section className="mt-10 mb-6 p-5 rounded-2xl bg-surface-container-low/50 border border-border/70 backdrop-blur-xs">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="material-symbols-outlined text-[18px] text-[rgb(var(--category-accent))]">hub</span>
-            <h3 className="text-xs font-bold text-on-surface uppercase tracking-[0.16em]">
-              Related {parentCategory?.name || 'Workflows'}
-            </h3>
+        <section className="mt-8 mb-6 p-4 rounded-lg bg-[#F9FAFB] border border-[#E5E7EB]">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md border border-[#E5E7EB] bg-white text-xs font-medium text-[#4B5563] mb-3">
+            <span className="material-symbols-outlined text-[15px] text-[#E11D48]">account_tree</span>
+            <span>Related {parentCategory?.name || 'Workflows'}</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {siblingSubcategories.map(sub => (
               <Link
                 key={sub.id}
                 href={`/category/${sub.slug}`}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium bg-surface border border-border/70 text-on-surface hover:border-[rgb(var(--category-accent))] hover:text-[rgb(var(--category-accent))] transition-all shadow-2xs"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-white border border-[#E5E7EB] text-[#0A0A0A] hover:border-[#E11D48] hover:text-[#E11D48] hover:bg-[#FFF1F2] transition-colors shadow-xs"
               >
-                <span className="material-symbols-outlined text-[14px] text-muted-foreground">{sub.icon || "category"}</span>
+                <span className="material-symbols-outlined text-[14px] text-[#6B7280]">{sub.icon || "category"}</span>
                 <span>{sub.name}</span>
-                <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-muted/60 text-muted-foreground">
+                <span className="px-1.5 py-0.2 rounded-md text-[10px] font-mono bg-[#F9FAFB] border border-[#E5E7EB] text-[#6B7280]">
                   {sub.count || 0}
                 </span>
               </Link>
@@ -317,12 +305,16 @@ export default async function CategoryPage({
 
       {/* Category Navigation */}
       <section className={siblingSubcategories.length > 0 ? "mb-10" : "my-10"}>
-        <h3 className="text-[13px] font-bold text-on-surface-variant uppercase tracking-[0.2em] mb-4">Explore other categories</h3>
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] text-xs font-medium text-[#4B5563] mb-3">
+          <span className="material-symbols-outlined text-[16px] text-[#E11D48]">explore</span>
+          <span>Directory Navigation</span>
+        </div>
+        <h3 className="font-heading font-black text-xl text-[#0A0A0A] mb-3">Explore Other AI Tool Categories</h3>
         <CategoryCapsuleBar activeSlug={category.slug} />
       </section>
 
       {/* Category Rich Content */}
-      <div id="category-guide">
+      <div id="category-guide" className="category-deep-dive-content">
         <CategoryGuide theme={theme} />
       </div>
       {!hasGuide && <InternalLinks theme={theme} />}
@@ -339,11 +331,15 @@ export default async function CategoryPage({
       <EEATFooter />
 
       {/* Social CTA */}
-      <section className="text-center flex flex-col items-center mt-12 pt-12 border-t border-border/50">
-        <h3 className="text-fluid-h3 font-bold tracking-tight mb-3 text-on-surface">
+      <section className="text-center flex flex-col items-center mt-10 pt-10 border-t border-[#E5E7EB]">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] text-xs font-medium text-[#4B5563] mb-3">
+          <span className="material-symbols-outlined text-[16px] text-[#E11D48]">rocket_launch</span>
+          <span>Community &amp; Updates</span>
+        </div>
+        <h3 className="font-heading font-black text-2xl md:text-3xl tracking-tight mb-2 text-[#0A0A0A]">
           Keep Discovering AI
         </h3>
-        <p className="text-on-surface-variant max-w-lg mx-auto mb-6">
+        <p className="font-sans text-sm text-[#4B5563] max-w-lg mx-auto mb-6">
           Follow AIToolsHaven for new AI tools, workflows and useful AI resources.
         </p>
         <SocialLinks variant="cta" />

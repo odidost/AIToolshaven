@@ -65,47 +65,47 @@ export function OpportunityCard({
 
   return (
     <div 
-      className={`relative rounded-3xl bg-gradient-to-b ${theme.gradient} bg-white border ${theme.borderColor} p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group overflow-hidden h-full`}
+      className="rounded-lg bg-white border border-[#E5E7EB] p-5 sm:p-6 hover:border-gray-300 transition-colors flex flex-col justify-between group shadow-none h-full"
     >
       {/* Top Section */}
       <div>
         {/* Row: Icon Box & ROI Pill Badge */}
         <div className="flex items-center justify-between gap-2 mb-4">
-          <div className="w-12 h-12 rounded-2xl bg-white shadow-sm border border-black/5 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-            <span className="material-symbols-outlined text-2xl">{icon}</span>
+          <div className="w-9 h-9 rounded-md bg-[#F9FAFB] border border-[#E5E7EB] flex items-center justify-center text-[#0A0A0A] group-hover:text-[#E11D48] group-hover:border-[#E11D48]/40 transition-colors">
+            <span className="material-symbols-outlined text-[20px]">{icon}</span>
           </div>
-          <span className={`text-[10.5px] font-black px-3 py-1 rounded-full border bg-gradient-to-r ${theme.badgeColor} tracking-wider uppercase`}>
+          <span className="text-[11px] font-mono text-[#4B5563] bg-[#F9FAFB] border border-[#E5E7EB] px-2 py-0.5 rounded-md uppercase">
             {badgeText}
           </span>
         </div>
 
         {/* Title & Subtitle */}
-        <h3 className="text-xl font-heading font-black text-gray-900 group-hover:text-primary transition-colors mb-1">
+        <h3 className="text-base sm:text-lg font-heading font-bold text-[#0A0A0A] group-hover:text-[#E11D48] transition-colors mb-1">
           {title}
         </h3>
-        <p className="text-xs font-semibold text-gray-500 mb-3 tracking-tight">
-          Monetization Opportunity • {difficulty} Track
+        <p className="text-xs text-[#4B5563] mb-3">
+          Monetization blueprint &bull; {difficulty}
         </p>
-        <p className="text-sm font-sans text-gray-600 leading-relaxed mb-6 line-clamp-2">
+        <p className="text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-5 line-clamp-2">
           {description}
         </p>
 
         {/* Opportunity Telemetry Grid */}
-        <div className="grid grid-cols-2 gap-2.5 mb-6">
-          <div className="p-3 rounded-2xl bg-white/80 border border-black/5 space-y-0.5">
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">
+        <div className="grid grid-cols-2 gap-2 mb-5">
+          <div className="p-2.5 rounded-md bg-[#F9FAFB] border border-[#E5E7EB]">
+            <span className="text-[10px] font-semibold text-[#4B5563] uppercase tracking-wider block">
               Difficulty
             </span>
-            <span className="text-xs font-black text-gray-900">
+            <span className="text-xs font-bold text-[#0A0A0A]">
               {difficulty}
             </span>
           </div>
 
-          <div className="p-3 rounded-2xl bg-white/80 border border-black/5 space-y-0.5">
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">
-              Earning Potential
+          <div className="p-2.5 rounded-md bg-[#F9FAFB] border border-[#E5E7EB]">
+            <span className="text-[10px] font-semibold text-[#4B5563] uppercase tracking-wider block">
+              Potential
             </span>
-            <span className="text-xs font-black text-emerald-600">
+            <span className="text-xs font-bold text-[#0A0A0A]">
               {roi}
             </span>
           </div>
@@ -113,13 +113,13 @@ export function OpportunityCard({
       </div>
 
       {/* Bottom Action CTA */}
-      <div className="pt-4 border-t border-black/5">
+      <div className="pt-4 border-t border-[#E5E7EB]">
         <Link
           href={slug ? `/goals/${slug}` : `/goals`}
-          className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-gray-900 hover:bg-primary text-white text-xs font-bold transition-all shadow-xs"
+          className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-md bg-[#0A0A0A] hover:bg-[#E11D48] text-white text-xs font-medium transition-colors shadow-none"
         >
-          Unlock Opportunity Playbook
-          <span className="material-symbols-outlined text-[14px]">chevron_right</span>
+          <span>View Business Mission</span>
+          <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
         </Link>
       </div>
     </div>

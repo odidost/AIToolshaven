@@ -31,30 +31,26 @@ export function GoalCard({
     icon,
     count,
     slug,
-    index = 0,
 }: GoalProps) {
-    const bgClass = badgeColors[index % badgeColors.length];
-    const gradientClass = iconGradients[index % iconGradients.length];
-
     return (
-        <Link href={`/goals/${slug}`} prefetch={false} className="group relative flex flex-col items-center p-6 bg-white rounded-[2rem] border border-black/5 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden h-full w-full">
-            <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${gradientClass} bg-opacity-10 flex items-center justify-center mb-4 relative z-10 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shrink-0`}>
-                <div className="absolute inset-0 bg-white/20 rounded-2xl backdrop-blur-sm" />
-                <span className="material-symbols-outlined text-[32px] text-white relative z-10 drop-shadow-sm" style={{ fontVariationSettings: "'FILL' 1" }}>
+        <Link 
+            href={`/goals/${slug}`} 
+            prefetch={false} 
+            className="group relative flex flex-col items-center p-4 bg-white rounded-lg border border-[#E5E7EB] hover:border-[#E11D48] hover:shadow-xs transition-all shadow-none h-full w-full text-center"
+        >
+            <div className="w-10 h-10 rounded-md bg-[#F9FAFB] border border-[#E5E7EB] flex items-center justify-center mb-3 text-[#0A0A0A] group-hover:text-[#E11D48] group-hover:bg-[#FFF1F2] group-hover:border-[#FECDD3] transition-colors shrink-0">
+                <span className="material-symbols-outlined text-[20px]">
                     {icon}
                 </span>
             </div>
 
-            <h3 className="font-bold text-slate-900 text-center mb-2 group-hover:text-primary transition-colors relative z-10 line-clamp-2 min-h-[40px] flex items-center">
+            <h3 className="font-semibold text-xs sm:text-sm text-[#0A0A0A] group-hover:text-[#E11D48] transition-colors line-clamp-2 mb-3 min-h-[36px] flex items-center justify-center">
                 {title}
             </h3>
 
-            <span className={`mt-auto text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${bgClass} relative z-10`}>
-                {typeof count === 'number' && !isNaN(count) ? count : 12} Tools
+            <span className="mt-auto text-[11px] font-mono text-[#4B5563] bg-[#F9FAFB] border border-[#E5E7EB] px-2 py-0.5 rounded-md group-hover:border-[#FECDD3] group-hover:bg-[#FFF1F2] group-hover:text-[#E11D48] transition-colors">
+                {typeof count === 'number' && !isNaN(count) ? count : 12} tools
             </span>
-
-            {/* Hover ambient glow */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
         </Link>
     );
 }

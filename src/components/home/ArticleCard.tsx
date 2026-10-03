@@ -16,45 +16,41 @@ export function ArticleCard({
 }) {
     return (
         <Link href={`/blog/${slug}`} prefetch={false} className="group h-full block">
-            <div className="bg-white rounded-[2rem] border border-black/5 p-4 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-2 h-full flex flex-col relative overflow-hidden">
+            <div className="bg-white rounded-lg border border-[#E5E7EB] p-4 hover:border-[#E11D48]/50 hover:shadow-xs transition-all shadow-none h-full flex flex-col">
                 
-                {/* Background Hover Glow */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
                 {/* Thumbnail Image Wrapper */}
-                <div className="relative w-full aspect-[16/10] rounded-[1.5rem] overflow-hidden bg-slate-100 mb-6 shadow-sm border border-slate-200/80">
+                <div className="relative w-full aspect-[16/10] rounded-md overflow-hidden bg-gray-50 mb-4 border border-[#E5E7EB]">
                     <Image 
                         src={imageUrl} 
                         alt={title}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                         loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover"
                     />
-                    {/* Glowing Floating Badge */}
-                    <div className="absolute top-3 left-3 z-20">
-                        <span className="inline-block bg-white/95 backdrop-blur-md text-slate-900 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-sm border border-slate-200/80">
+                    <div className="absolute top-2.5 left-2.5 z-20">
+                        <span className="inline-block bg-white text-[#4B5563] group-hover:text-[#E11D48] group-hover:bg-[#FFF1F2] group-hover:border-[#FECDD3] text-[11px] font-mono font-medium px-2 py-0.5 rounded border border-[#E5E7EB] transition-colors">
                             {category}
                         </span>
                     </div>
                 </div>
 
                 {/* Content Container */}
-                <div className="flex flex-col flex-grow px-2 pb-2 z-10">
-                    <h3 className="font-black text-xl text-slate-900 mb-3 group-hover:text-primary transition-colors leading-tight line-clamp-2">
+                <div className="flex flex-col flex-grow">
+                    <h3 className="font-bold text-sm sm:text-base text-[#0A0A0A] mb-2 group-hover:text-[#E11D48] transition-colors leading-snug line-clamp-2 font-heading">
                         {title}
                     </h3>
 
                     {summary && (
-                        <p className="text-sm text-slate-500 line-clamp-3 mb-6 leading-relaxed font-medium">
+                        <p className="text-xs text-[#4B5563] line-clamp-2 mb-4 leading-relaxed">
                             {summary}
                         </p>
                     )}
 
-                    {/* Animated CTA */}
-                    <div className="flex items-center gap-2 text-slate-900 text-sm font-bold mt-auto group-hover:text-primary transition-colors">
-                        Read Article
-                        <span className="material-symbols-outlined text-sm transition-transform duration-300 group-hover:translate-x-2">
+                    {/* Action link */}
+                    <div className="flex items-center gap-1 text-xs font-semibold text-[#E11D48] group-hover:text-[#BE123C] transition-colors mt-auto">
+                        <span>Read guide</span>
+                        <span className="material-symbols-outlined text-[13px] group-hover:translate-x-0.5 transition-transform">
                             arrow_forward
                         </span>
                     </div>

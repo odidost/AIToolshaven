@@ -2,49 +2,47 @@ import Link from "next/link";
 
 export function HomepageEditorialGuide() {
   return (
-    <section className="relative overflow-hidden py-16 sm:py-28 border-t border-black/5 bg-white/40 backdrop-blur-md">
-      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="relative py-16 sm:py-24 border-t border-[#E5E7EB] bg-white">
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 bg-rose-50 border border-rose-200/60 text-rose-700 shadow-xs px-4 py-1.5 rounded-full mb-4">
-            <span className="material-symbols-outlined text-[18px]">menu_book</span>
-            <span className="text-xs font-extrabold uppercase tracking-widest">
-              Directory Ecosystem Guide &amp; Insights
-            </span>
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] text-xs font-medium text-[#4B5563] mb-4">
+            <span className="material-symbols-outlined text-[16px] text-[#E11D48]">menu_book</span>
+            <span>Directory Editorial Guide</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0A0A0A] font-heading leading-tight">
             The 2026 AI Software Guide: Navigating Tools, Pricing &amp; Workflows
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
-            How to cut through the noise of thousands of monthly model releases, evaluate true freemium allowances, and build multi-app automation stacks that deliver measurable business ROI.
+          <p className="mt-4 text-sm sm:text-base text-[#4B5563] leading-relaxed max-w-2xl mx-auto">
+            How to evaluate true freemium allowances, avoid vendor lock-in, and build multi-app automation stacks that deliver measurable business results.
           </p>
 
           {/* Quick Domain Jump Navigation Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
-            <a href="#guide-writing" className="px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-primary/40 text-xs font-semibold text-gray-700 hover:text-primary transition-all shadow-xs">
-              ✍️ Content &amp; SEO
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-6">
+            <a href="#guide-writing" className="px-3 py-1.5 rounded-md bg-white border border-[#E5E7EB] hover:border-[#E11D48] text-xs font-medium text-[#4B5563] hover:text-[#E11D48] transition-colors">
+              Content &amp; SEO
             </a>
-            <a href="#guide-visual" className="px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-primary/40 text-xs font-semibold text-gray-700 hover:text-primary transition-all shadow-xs">
-              🎬 Video &amp; Image
+            <a href="#guide-visual" className="px-3 py-1.5 rounded-md bg-white border border-[#E5E7EB] hover:border-[#E11D48] text-xs font-medium text-[#4B5563] hover:text-[#E11D48] transition-colors">
+              Video &amp; Image
             </a>
-            <a href="#guide-audio" className="px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-primary/40 text-xs font-semibold text-gray-700 hover:text-primary transition-all shadow-xs">
-              🎙️ Voice &amp; Meetings
+            <a href="#guide-audio" className="px-3 py-1.5 rounded-md bg-white border border-[#E5E7EB] hover:border-[#E11D48] text-xs font-medium text-[#4B5563] hover:text-[#E11D48] transition-colors">
+              Voice &amp; Meetings
             </a>
-            <a href="#guide-coding" className="px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-primary/40 text-xs font-semibold text-gray-700 hover:text-primary transition-all shadow-xs">
-              💻 Coding &amp; Agents
+            <a href="#guide-coding" className="px-3 py-1.5 rounded-md bg-white border border-[#E5E7EB] hover:border-[#E11D48] text-xs font-medium text-[#4B5563] hover:text-[#E11D48] transition-colors">
+              Coding &amp; Agents
             </a>
-            <a href="#guide-freemium" className="px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-300/80 text-xs font-bold text-emerald-800 hover:bg-emerald-100 transition-all shadow-xs">
-              🎁 Free &amp; Freemium AI
+            <a href="#guide-freemium" className="px-3 py-1.5 rounded-md bg-[#F9FAFB] border border-[#E5E7EB] hover:border-[#E11D48] text-xs font-medium text-[#0A0A0A] hover:text-[#E11D48] transition-colors">
+              Free &amp; Freemium AI
             </a>
-            <a href="#guide-operations" className="px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-primary/40 text-xs font-semibold text-gray-700 hover:text-primary transition-all shadow-xs">
-              ⚡ Workflows &amp; Ops
+            <a href="#guide-operations" className="px-3 py-1.5 rounded-md bg-white border border-[#E5E7EB] hover:border-[#E11D48] text-xs font-medium text-[#4B5563] hover:text-[#E11D48] transition-colors">
+              Workflows &amp; Ops
             </a>
           </div>
         </div>
 
         {/* Readable Narrative Prose Box */}
-        <div className="bg-surface border border-outline rounded-3xl p-8 sm:p-12 md:p-14 shadow-sm space-y-16 mb-16">
+        <div className="bg-white border border-[#E5E7EB] rounded-lg p-6 sm:p-10 md:p-12 shadow-none space-y-16 mb-16">
           
           {/* Domain 1: Content Marketing & SEO */}
           <article id="guide-writing" className="space-y-6 scroll-mt-24">
