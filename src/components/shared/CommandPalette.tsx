@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { ToolImage } from "@/components/shared/ToolImage";
 import { searchCommandPaletteAction, getInitialCommandPaletteSuggestionsAction, type CommandPaletteItem } from "@/lib/actions/search";
-import { Search, Loader2, CornerDownLeft, Sparkles } from "lucide-react";
+import { Search, Loader2, CornerDownLeft, Sparkles, ArrowLeftRight, Target } from "lucide-react";
 
 export type CommandPaletteTool = CommandPaletteItem;
 
@@ -24,13 +24,13 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
   // Load initial suggestions when palette opens
   useEffect(() => {
     if (isOpen) {
-      setSearch("");
-      setSelectedIndex(0);
       setTimeout(() => inputRef.current?.focus(), 50);
 
       if (!initialToolsProp || initialToolsProp.length === 0) {
         let isMounted = true;
-        setIsLoading(true);
+        queueMicrotask(() => {
+          if (isMounted) setIsLoading(true);
+        });
         getInitialCommandPaletteSuggestionsAction().then((items) => {
           if (isMounted) {
             setResults(items);
@@ -48,12 +48,13 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
 
   // Debounced search
   useEffect(() => {
-    setSelectedIndex(0);
     if (!isOpen) return;
 
     if (!search.trim()) {
       if (initialToolsProp && initialToolsProp.length > 0) {
-        setResults(initialToolsProp.slice(0, 8));
+        queueMicrotask(() => {
+          setResults(initialToolsProp.slice(0, 8));
+        });
       } else {
         getInitialCommandPaletteSuggestionsAction().then(setResults).catch(() => {});
       }
@@ -80,11 +81,23 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
     };
   }, [search, isOpen, initialToolsProp]);
 
+  const openPalette = () => {
+    setSearch("");
+    setSelectedIndex(0);
+    setIsOpen(true);
+  };
+
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setIsOpen((open) => !open);
+        setIsOpen((open) => {
+          if (!open) {
+            setSearch("");
+            setSelectedIndex(0);
+          }
+          return !open;
+        });
       }
       
       if (e.key === "Escape") {
@@ -136,12 +149,12 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
   if (!isOpen) {
     return (
       <button 
-        onClick={() => setIsOpen(true)}
+        onClick={openPalette}
         className="w-full h-9 px-3.5 rounded-md border border-[#E5E7EB] bg-white hover:bg-[#F9FAFB] hover:border-gray-300 transition-colors flex items-center justify-between text-xs font-medium text-[#4B5563]"
       >
         <div className="flex items-center gap-2">
           <Search className="w-3.5 h-3.5 text-[#4B5563]" />
-          <span>Search AI tools, categories &amp; guides...</span>
+          <span>Search a tool, comparison or goal...</span>
         </div>
         <kbd className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 bg-gray-100 text-gray-600 rounded text-[11px] font-mono border border-gray-200">
           <span className="text-xs">⌘</span>K
@@ -171,9 +184,12 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
               ref={inputRef}
               type="text"
               className="flex-1 bg-transparent text-lg focus:outline-none placeholder:text-slate-400"
-              placeholder="Search tools, categories, or guides..."
+              placeholder="Search a tool, comparison or goal..."
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setSelectedIndex(0);
+              }}
             />
             {isLoading && (
               <Loader2 className="w-4 h-4 text-primary animate-spin shrink-0" />
@@ -196,7 +212,10 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
                 {quickPills.map((pill) => (
                   <button
                     key={pill.label}
-                    onClick={() => setSearch(pill.query)}
+                    onClick={() => {
+                      setSearch(pill.query);
+                      setSelectedIndex(0);
+                    }}
                     className="px-2.5 py-1 rounded-lg bg-surface hover:bg-primary/10 hover:text-primary hover:border-primary/30 border border-outline/60 text-xs font-semibold text-on-surface-variant transition-all duration-200"
                   >
                     {pill.label}
@@ -216,6 +235,8 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
               <div className="space-y-1">
                 {results.map((item, index) => {
                   const isCategory = item.type === "category";
+                  const isComparison = item.type === "comparison";
+                  const isGoal = item.type === "goal";
 
                   return (
                     <div
@@ -226,8 +247,10 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
                           : "hover:bg-surface border border-transparent"
                       }`}
                       onClick={() => {
-                        if (isCategory || item.url) {
-                          router.push(item.url || `/category/${item.slug}`);
+                        if (item.url) {
+                          router.push(item.url);
+                        } else if (isCategory) {
+                          router.push(`/category/${item.slug}`);
                         } else {
                           router.push(`/tool/${item.slug}`);
                         }
@@ -239,8 +262,16 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
                         <div className="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 flex items-center justify-center shrink-0">
                           <Sparkles className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                         </div>
+                      ) : isComparison ? (
+                        <div className="w-9 h-9 rounded-xl bg-rose-500/10 text-rose-600 border border-rose-500/20 flex items-center justify-center shrink-0">
+                          <ArrowLeftRight className="w-4 h-4 text-rose-600" />
+                        </div>
+                      ) : isGoal ? (
+                        <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                          <Target className="w-4 h-4 text-emerald-600" />
+                        </div>
                       ) : (
-                        <ToolImage tool={item as any} type="logo" className="w-8 h-8 rounded border border-border object-contain bg-surface shrink-0" />
+                        <ToolImage tool={item} type="logo" className="w-8 h-8 rounded border border-border object-contain bg-surface shrink-0" />
                       )}
 
                       <div className="flex-1 overflow-hidden">
@@ -251,6 +282,14 @@ export function CommandPalette({ tools: initialToolsProp }: CommandPaletteProps)
                           {isCategory ? (
                             <span className="px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-md text-[10px] uppercase font-extrabold tracking-wider border border-indigo-500/20">
                               Guide &amp; Directory
+                            </span>
+                          ) : isComparison ? (
+                            <span className="px-2 py-0.5 bg-rose-500/10 text-rose-600 rounded-md text-[10px] uppercase font-extrabold tracking-wider border border-rose-500/20">
+                              Comparison
+                            </span>
+                          ) : isGoal ? (
+                            <span className="px-2 py-0.5 bg-emerald-500/10 text-emerald-600 rounded-md text-[10px] uppercase font-extrabold tracking-wider border border-emerald-500/20">
+                              Goal
                             </span>
                           ) : item.priceModel ? (
                             <span className="px-2 py-0.5 bg-surface rounded-md text-[10px] uppercase font-bold text-slate-500 border border-outline">

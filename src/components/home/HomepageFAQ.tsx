@@ -16,13 +16,13 @@ export function HomepageFAQ() {
         <div className="text-center mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] text-xs font-medium text-[#4B5563] mb-3">
             <span className="material-symbols-outlined text-[16px] text-[#E11D48]">help</span>
-            <span>Directory FAQ</span>
+            <span>Compare AI Tools FAQ</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A] font-heading">
             Frequently Asked Questions
           </h2>
           <p className="mt-2 text-sm sm:text-base text-[#4B5563] max-w-xl mx-auto">
-            Honest answers about directory curation, test methodology, freemium tiers, and workflow recipes.
+            Clear answers about comparing AI software, discovering alternatives, verifying pricing, and choosing tools by goal.
           </p>
         </div>
 

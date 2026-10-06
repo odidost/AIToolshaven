@@ -14,7 +14,7 @@ export function SubmitToolCTA() {
         </h2>
 
         <p className="text-sm sm:text-base text-[#4B5563] leading-relaxed mb-8">
-          Join 900+ hand-vetted tools. Reach engineers, creators, and teams looking for their next workflow platform.
+          Join 1,200+ listed tools. Reach builders, creators, and teams looking for their next workflow platform.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
@@ -36,16 +36,16 @@ export function SubmitToolCTA() {
         {/* Minimal metrics row */}
         <div className="grid grid-cols-3 gap-3 border-t border-[#E5E7EB] pt-8 max-w-lg mx-auto">
           <div className="text-center">
-            <p className="text-lg sm:text-xl font-bold font-heading text-[#0A0A0A]">2.5M+</p>
-            <p className="text-xs text-[#4B5563] font-medium mt-0.5">Directory Views</p>
+            <p className="text-lg sm:text-xl font-bold font-heading text-[#0A0A0A]">1,200+</p>
+            <p className="text-xs text-[#4B5563] font-medium mt-0.5">Listed AI Tools</p>
           </div>
           <div className="text-center">
-            <p className="text-lg sm:text-xl font-bold font-heading text-[#0A0A0A]">900+</p>
-            <p className="text-xs text-[#4B5563] font-medium mt-0.5">Listed Platforms</p>
+            <p className="text-lg sm:text-xl font-bold font-heading text-[#0A0A0A]">100+</p>
+            <p className="text-xs text-[#4B5563] font-medium mt-0.5">Tool Categories</p>
           </div>
           <div className="text-center">
-            <p className="text-lg sm:text-xl font-bold font-heading text-[#0A0A0A]">24</p>
-            <p className="text-xs text-[#4B5563] font-medium mt-0.5">Target Niches</p>
+            <p className="text-lg sm:text-xl font-bold font-heading text-[#0A0A0A]">48-72h</p>
+            <p className="text-xs text-[#4B5563] font-medium mt-0.5">Editorial Review</p>
           </div>
         </div>
       </div>

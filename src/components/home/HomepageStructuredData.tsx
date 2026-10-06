@@ -7,44 +7,28 @@ export interface FAQItem {
 
 export const homepageFaqs: FAQItem[] = [
   {
-    question: "What is AIToolsHaven and how are tools verified?",
-    answer: "AIToolsHaven is a human-curated directory of 1,000+ artificial intelligence tools, platforms, and models. Unlike automated scrapers, our editorial team manually inspects each software for active development, pricing accuracy, API availability, and real user utility before listing."
+    question: "How do I compare AI tools effectively on AIToolsHaven?",
+    answer: "You can compare AI tools side-by-side using our Head-to-Head Comparison hub (/compare-tools). We evaluate competing tools across primary capabilities, prompt responsiveness, output fidelity, pricing models, and workflow integrations without biased scoring or sponsored influence."
   },
   {
-    question: "Can I find completely free AI tools on AIToolsHaven?",
-    answer: "Yes. You can filter our catalog specifically for 100% Free AI software, open-source repositories, and freemium platforms that provide generous recurring monthly free tiers without requiring a credit card."
+    question: "What should I look for when comparing AI tools for my project?",
+    answer: "When you compare AI tools, focus on recurring free tier limits versus paid subscriptions, context window capacity, developer API availability, output accuracy, and whether the tool integrates natively into your existing team workflow."
   },
   {
-    question: "What is the difference between a standalone AI Tool, a Workflow, and a Mission?",
-    answer: "An AI Tool is an individual software application (e.g., Claude, Midjourney). An AI Workflow is a multi-step pipeline chaining 2 to 4 tools together to automate complex deliverables (e.g., Podcast to Short-Form Video). A Mission is an actionable business blueprint showing how to monetize AI stacks to generate recurring revenue."
+    question: "How does AIToolsHaven choose which AI tools to compare side-by-side?",
+    answer: "We prioritize matchups based on real user search demand, migration trends, and direct software competitors in high-traffic categories—such as Cursor vs GitHub Copilot for coding, ChatGPT vs Claude for foundation models, and HeyGen vs Synthesia for video creation."
   },
   {
-    question: "How do I choose the best AI tool for my specific role or business?",
-    answer: "You can use our interactive AI Tool Recommender on the homepage, browse tools curated specifically for content creators, freelancers, developers, or small businesses, or compare competing platforms side-by-side using our Head-to-Head Comparison matrix."
+    question: "How do I find verified alternatives to popular AI tools?",
+    answer: "Our curated Alternatives directory groups verified competitors by specific advantages—such as local open-source privacy (Stable Diffusion instead of Midjourney), larger document context windows (Claude instead of ChatGPT), or generous free individual tiers (Codeium instead of Copilot)."
   },
   {
-    question: "How frequently is the directory updated with new AI tools?",
-    answer: "Our directory is updated daily. We continuously verify pricing changes, retire deprecated wrappers, add major model updates (such as Claude 3.7, GPT-4.5, and Flux 1.1), and review submissions from indie developers."
+    question: "Can I choose AI tools by specific project goals rather than categories?",
+    answer: "Yes. Our Goal-Driven discovery section (/goals) organizes tools and automated workflows by practical commercial and creative objectives—including vibe coding, faceless YouTube channel production, marketing agency delivery, and academic research."
   },
   {
-    question: "How do I submit my AI tool or product to AIToolsHaven?",
-    answer: "Indie founders and AI product teams can submit their software through our official Submit Tool portal. Our editorial team reviews every submission within 48 to 72 hours to verify working features, validate pricing models, and assign relevant categories and workflows."
-  },
-  {
-    question: "Are the reviews and ratings on AIToolsHaven authentic?",
-    answer: "Yes. We maintain strict editorial transparency. We do not generate synthetic ratings or fake placeholder reviews. Every score is based on direct hands-on testing, verified feature specifications, and real user evaluations submitted through our platform."
-  },
-  {
-    question: "Can the AI tools listed here integrate with my existing tech stack via API?",
-    answer: "Many of the tools in our catalog offer full developer APIs, webhooks, and native integrations with popular automation platforms like Zapier, Make, and GitHub. You can check the Technical Specifications on each tool profile to verify API support before signing up."
-  },
-  {
-    question: "What are the best AI tools for beginners with no coding experience?",
-    answer: "For non-technical creators and small business owners, we recommend starting with visual, prompt-guided tools like ChatGPT or Claude for research and drafting, Canva Magic Studio for visual design, Writesonic for marketing copy, and Opus Clip for 1-click video repurposing."
-  },
-  {
-    question: "How does AIToolsHaven evaluate user privacy and data security?",
-    answer: "We examine each platform's data retention and training policies. We actively verify whether user prompts are used to train public foundation models, whether enterprise SOC2/GDPR compliance is maintained, and whether platforms offer private workspaces or self-hosted deployment options."
+    question: "Are the AI tool pricing tiers and feature comparisons verified?",
+    answer: "Yes. Our editorial team regularly audits pricing pages, API terms, and platform limits. Any sponsored placement or affiliate partnership is strictly labeled and never influences our organic tool comparisons or rankings."
   }
 ];
 
@@ -61,7 +45,7 @@ export function HomepageStructuredData() {
     "@id": `${cleanBase}/#website`,
     "url": cleanBase,
     "name": "AIToolsHaven",
-    "description": "The human-curated directory of 1,000+ verified AI tools, workflows, and business monetization blueprints.",
+    "description": "Compare 1,200+ AI tools for your next project. Explore head-to-head comparisons, find alternatives, and choose tools by goal.",
     "dateModified": currentDate,
     "potentialAction": {
       "@type": "SearchAction",
