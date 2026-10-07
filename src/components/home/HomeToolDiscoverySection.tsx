@@ -1,18 +1,148 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+type CategoryPill = {
+  name: string;
+  slug?: string;
+  href?: string;
+  icon: string;
+  colorClass: string;
+};
+
 export function HomeToolDiscoverySection() {
-  const categories = [
-    { name: "Coding Assistants", slug: "coding-assistants", icon: "code" },
-    { name: "Video Generators", slug: "ai-video-generators", icon: "videocam" },
-    { name: "Writing Tools", slug: "ai-writing-tools", icon: "edit_note" },
-    { name: "Image Generators", slug: "ai-image-generators", icon: "image" },
-    { name: "AI Chatbots & LLMs", slug: "ai-chatbots", icon: "forum" },
-    { name: "Voice & Speech", slug: "ai-voice-generators", icon: "mic" },
-    { name: "AI SEO Tools", slug: "ai-seo-tools", icon: "search" },
-    { name: "Meeting Assistants", slug: "ai-meeting-assistants", icon: "record_voice_over" },
-    { name: "Productivity", slug: "productivity", icon: "bolt" },
-    { name: "Freemium Tools", href: "/freemium-ai-tools", icon: "savings" },
+  const categories: CategoryPill[] = [
+    {
+      name: "Coding Assistants",
+      slug: "coding-assistants",
+      icon: "code",
+      colorClass: "bg-[#18181B] text-white border-zinc-700 hover:bg-zinc-800",
+    },
+    {
+      name: "Video Generators",
+      slug: "ai-video-generators",
+      icon: "videocam",
+      colorClass: "bg-[#9F1239] text-white border-[#881337] hover:bg-[#881337]",
+    },
+    {
+      name: "Writing Tools",
+      slug: "ai-writing-tools",
+      icon: "edit_note",
+      colorClass: "bg-[#701A75] text-white border-[#581C87] hover:bg-[#581C87]",
+    },
+    {
+      name: "Image Generators",
+      slug: "ai-image-generators",
+      icon: "image",
+      colorClass: "bg-[#E11D48] text-white border-[#BE123C] hover:bg-[#BE123C]",
+    },
+    {
+      name: "AI Chatbots & LLMs",
+      slug: "ai-chatbots",
+      icon: "forum",
+      colorClass: "bg-[#BE123C] text-white border-[#9F1239] hover:bg-[#9F1239]",
+    },
+    {
+      name: "Voice & Speech",
+      slug: "ai-voice-generators",
+      icon: "mic",
+      colorClass: "bg-[#831843] text-white border-[#701A75] hover:bg-[#701A75]",
+    },
+    {
+      name: "AI SEO Tools",
+      slug: "ai-seo-tools",
+      icon: "search",
+      colorClass: "bg-[#881337] text-white border-[#701A75] hover:bg-[#701A75]",
+    },
+    {
+      name: "AI Agents",
+      slug: "ai-agents",
+      icon: "smart_toy",
+      colorClass: "bg-[#581C87] text-white border-[#4C1D95] hover:bg-[#4C1D95]",
+    },
+    {
+      name: "Vibe Coding & App Builders",
+      slug: "ai-app-builders-vibe-coding",
+      icon: "terminal",
+      colorClass: "bg-[#0F172A] text-white border-slate-700 hover:bg-slate-800",
+    },
+    {
+      name: "Marketing & Sales",
+      slug: "marketing-sales",
+      icon: "campaign",
+      colorClass: "bg-[#991B1B] text-white border-[#7F1D1D] hover:bg-[#7F1D1D]",
+    },
+    {
+      name: "Productivity",
+      slug: "productivity",
+      icon: "bolt",
+      colorClass: "bg-[#4C0519] text-white border-[#881337] hover:bg-[#881337]",
+    },
+    {
+      name: "Meeting Assistants",
+      slug: "ai-meeting-assistants",
+      icon: "record_voice_over",
+      colorClass: "bg-[#27272A] text-white border-zinc-600 hover:bg-zinc-700",
+    },
+    {
+      name: "AI Presentation Makers",
+      slug: "ai-presentation-makers",
+      icon: "slideshow",
+      colorClass: "bg-[#BE123C] text-white border-[#9F1239] hover:bg-[#9F1239]",
+    },
+    {
+      name: "AI Research Tools",
+      slug: "ai-research-tools",
+      icon: "science",
+      colorClass: "bg-[#312E81] text-white border-[#1E1B4B] hover:bg-[#1E1B4B]",
+    },
+    {
+      name: "Logo & Brand Identity",
+      slug: "logo-generators",
+      icon: "brush",
+      colorClass: "bg-[#A21CAF] text-white border-[#86198F] hover:bg-[#86198F]",
+    },
+    {
+      name: "Shorts & Video Repurposers",
+      slug: "ai-shorts-repurposing",
+      icon: "content_cut",
+      colorClass: "bg-[#E11D48] text-white border-[#BE123C] hover:bg-[#BE123C]",
+    },
+    {
+      name: "AI Talking Avatars",
+      slug: "ai-talking-avatars",
+      icon: "account_box",
+      colorClass: "bg-[#9F1239] text-white border-[#881337] hover:bg-[#881337]",
+    },
+    {
+      name: "PDF & Document Chat",
+      slug: "ai-document-readers-summarizers",
+      icon: "menu_book",
+      colorClass: "bg-[#7C2D12] text-white border-[#9A3412] hover:bg-[#9A3412]",
+    },
+    {
+      name: "AI Social Media Tools",
+      slug: "ai-social-media-tools",
+      icon: "share",
+      colorClass: "bg-[#881337] text-white border-[#701A75] hover:bg-[#701A75]",
+    },
+    {
+      name: "AI Headshots & Portraits",
+      slug: "ai-headshot-generators",
+      icon: "badge",
+      colorClass: "bg-[#4A044E] text-white border-[#701A75] hover:bg-[#701A75]",
+    },
+    {
+      name: "AI Humanizers & Bypass",
+      slug: "ai-humanizers-bypass",
+      icon: "verified_user",
+      colorClass: "bg-[#064E3B] text-white border-[#065F46] hover:bg-[#065F46]",
+    },
+    {
+      name: "Freemium AI Tools",
+      href: "/freemium-ai-tools",
+      icon: "savings",
+      colorClass: "bg-[#E11D48] text-white border-[#BE123C] hover:bg-[#BE123C]",
+    },
   ];
 
   return (
@@ -52,9 +182,9 @@ export function HomeToolDiscoverySection() {
               <Link
                 key={cat.name}
                 href={href}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white border border-[#E5E7EB] hover:border-[#E11D48] hover:text-[#E11D48] hover:bg-[#FFF1F2] transition-colors text-xs font-medium text-[#4B5563]"
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border text-xs font-medium shadow-2xs transition-all ${cat.colorClass}`}
               >
-                <span className="material-symbols-outlined text-[15px]">{cat.icon}</span>
+                <span className="material-symbols-outlined text-[15px] opacity-90">{cat.icon}</span>
                 <span>{cat.name}</span>
               </Link>
             );

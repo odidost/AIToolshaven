@@ -14,7 +14,11 @@ export function SpotlightBanner() {
 
         {/* H1 */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#0A0A0A] leading-[1.08] max-w-3xl font-heading">
-          compare AI tools for your next project.
+          Compare{" "}
+          <span className="bg-[#FFF1F2] text-[#E11D48] px-2 py-0.5 rounded-md border border-[#FECDD3]/70 font-bold inline-block my-1">
+            AI tools
+          </span>{" "}
+          for your next project.
         </h1>
 
         {/* Supporting text */}
