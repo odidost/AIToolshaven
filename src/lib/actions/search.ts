@@ -1,6 +1,6 @@
 "use server";
 
-import { searchTools, getFeaturedTools, getTrendingTools } from "@/lib/data/tools-service";
+import { searchTools, getFeaturedTools } from "@/lib/data/tools-service";
 import { categories as localCategories } from "@/lib/data/categories";
 import type { AITool } from "@/lib/types/tool";
 
@@ -10,7 +10,7 @@ export type CommandPaletteItem = {
   slug: string;
   tagline: string;
   category: string;
-  type?: "tool" | "category";
+  type?: "tool" | "category" | "comparison" | "goal";
   url?: string;
   icon?: string;
   logoUrl?: string;
@@ -18,6 +18,9 @@ export type CommandPaletteItem = {
   featured?: boolean;
   popularity?: number;
 };
+
+import { comparisons } from "@/lib/comparisons";
+import { goals } from "@/lib/goals";
 
 function mapToPaletteItem(t: AITool): CommandPaletteItem {
   return {
@@ -49,7 +52,59 @@ export async function searchCommandPaletteAction(query: string): Promise<Command
   const cleanQuery = query.trim().toLowerCase();
   const queryTokens = cleanQuery.split(/\s+/).filter(t => t.length > 0);
 
-  // 1. Search Category Guides
+  // 1. Search Comparisons
+  const matchedComparisons: CommandPaletteItem[] = comparisons
+    .filter((c) => {
+      const titleLower = (c.title || "").toLowerCase();
+      const slugLower = (c.slug || "").toLowerCase();
+      const t1 = (c.tool1?.name || "").toLowerCase();
+      const t2 = (c.tool2?.name || "").toLowerCase();
+      return (
+        titleLower.includes(cleanQuery) ||
+        slugLower.includes(cleanQuery) ||
+        t1.includes(cleanQuery) ||
+        t2.includes(cleanQuery) ||
+        (queryTokens.length > 1 && queryTokens.every(token => titleLower.includes(token) || t1.includes(token) || t2.includes(token)))
+      );
+    })
+    .slice(0, 2)
+    .map((c) => ({
+      id: `comp-${c.slug}`,
+      name: `${c.title} (Comparison)`,
+      slug: c.slug,
+      tagline: c.description || `Side-by-side comparison between ${c.tool1?.name} and ${c.tool2?.name}.`,
+      category: "Side-by-Side Comparison",
+      type: "comparison" as const,
+      url: `/compare-tools/${c.slug}`,
+      icon: "compare_arrows",
+    }));
+
+  // 2. Search Goals
+  const matchedGoals: CommandPaletteItem[] = goals
+    .filter((g) => {
+      const titleLower = (g.title || "").toLowerCase();
+      const slugLower = (g.slug || "").toLowerCase();
+      const descLower = (g.description || "").toLowerCase();
+      return (
+        titleLower.includes(cleanQuery) ||
+        slugLower.includes(cleanQuery) ||
+        descLower.includes(cleanQuery) ||
+        queryTokens.some(token => token.length > 2 && (titleLower.includes(token) || slugLower.includes(token)))
+      );
+    })
+    .slice(0, 2)
+    .map((g) => ({
+      id: `goal-${g.slug}`,
+      name: `${g.title} (Goal)`,
+      slug: g.slug,
+      tagline: g.description,
+      category: "AI Tools by Goal",
+      type: "goal" as const,
+      url: `/goals/${g.slug}`,
+      icon: g.icon || "explore",
+    }));
+
+  // 3. Search Category Guides
   const matchedCategories: CommandPaletteItem[] = localCategories
     .filter(c => (c.status === "Published" || !c.status) && c.indexable !== false)
     .map(cat => {
@@ -87,12 +142,12 @@ export async function searchCommandPaletteAction(query: string): Promise<Command
       icon: cat.icon || "category",
     }));
 
-  // 2. Search Tools with token-based relevance scoring
+  // 4. Search Tools with token-based relevance scoring
   const toolResults = await searchTools(cleanQuery);
   const mappedTools = toolResults.map(mapToPaletteItem);
 
-  // Return categories at the top followed by top ranked tools (up to 14 results)
-  return [...matchedCategories, ...mappedTools].slice(0, 14);
+  // Return comparisons, goals, categories, and top tools
+  return [...matchedComparisons, ...matchedGoals, ...matchedCategories, ...mappedTools].slice(0, 14);
 }
 
 export async function getInitialCommandPaletteSuggestionsAction(): Promise<CommandPaletteItem[]> {

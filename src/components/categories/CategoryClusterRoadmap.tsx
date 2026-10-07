@@ -2,56 +2,70 @@ import Link from "next/link";
 
 export function CategoryClusterRoadmap() {
   return (
-    <section className="my-16 md:my-28 max-w-4xl mx-auto">
+    <section className="my-16 md:my-20 max-w-4xl mx-auto pt-12 border-t border-[#E5E7EB]">
       {/* Centered Editorial Header */}
-      <div className="text-center mb-16">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4">
-          <span className="material-symbols-outlined text-[16px]">menu_book</span>
-          Directory Ecosystem Guide
+      <div className="text-center mb-12">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] text-xs font-medium text-[#4B5563] mb-3">
+          <span className="material-symbols-outlined text-[16px] text-[#E11D48]">compare_arrows</span>
+          <span>Comparative Workflow Roadmap</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-on-surface tracking-tight mb-4">
-          Navigating the AI Tool Ecosystem: A Practitioner&apos;s Roadmap
+        <h2 className="text-2xl sm:text-3xl font-bold font-heading text-[#0A0A0A] tracking-tight">
+          How to Compare &amp; Stack AI Tools Across Core Workflows
         </h2>
-        <p className="text-base sm:text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
-          How to combine specialized category leaders into cohesive, end-to-end workflows that deliver measurable business output.
+        <p className="mt-2 text-sm sm:text-base text-[#4B5563] max-w-2xl mx-auto leading-relaxed">
+          A structured guide to comparing alternatives within each functional domain and assembling complementary, high-ROI AI tool stacks.
         </p>
       </div>
 
-      {/* Readable Narrative Prose with Generous Line Breaks & Spacing */}
-      <div className="bg-surface border border-outline rounded-3xl p-8 sm:p-12 md:p-14 shadow-sm space-y-16">
+      {/* Readable Narrative Prose with Refined Card Spacing */}
+      <div className="bg-white border border-[#E5E7EB] rounded-xl p-6 sm:p-10 md:p-12 shadow-xs space-y-10">
         
         {/* Domain 1: Content & Search */}
-        <article className="space-y-6">
-          <div className="flex items-center gap-3 text-rose-500 font-bold text-xs uppercase tracking-wider">
-            <span className="material-symbols-outlined text-[20px]">edit_note</span>
+        <article className="space-y-4">
+          <div className="flex items-center gap-2 text-[#E11D48] font-bold text-xs uppercase tracking-wider">
+            <span className="material-symbols-outlined text-[18px]">edit_note</span>
             <span>Content Marketing &amp; Search Dominance</span>
           </div>
 
-          <h3 className="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight">
-            Scaling Organic Traffic from First Draft to Search Rankings
+          <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#0A0A0A] tracking-tight">
+            How to Compare AI Tools for Content Marketing &amp; SEO
           </h3>
 
-          <p className="text-base sm:text-lg text-on-surface font-medium leading-relaxed">
-            Building an authoritative digital footprint begins with eliminating drafting friction and scaling content velocity.
+          <p className="text-sm sm:text-base text-[#0A0A0A] font-medium leading-relaxed">
+            Building an authoritative digital footprint begins with comparing long-form writing copilots, SEO audit engines, and distribution suites.
           </p>
 
-          <div className="space-y-4 text-[15px] sm:text-[16px] text-on-surface-variant leading-[28px]">
+          <div className="space-y-3 text-xs sm:text-sm text-[#4B5563] leading-relaxed">
             <p>
-              When drafting long-form content, modern{" "}
+              When comparing{" "}
               <Link 
                 href="/category/ai-writing-tools" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 AI Writing Tools
+              </Link>
+              , evaluate tone consistency, context window depth, and hallucination rates. Compare foundational models such as{" "}
+              <Link
+                href="/compare-tools/chatgpt-vs-claude"
+                className="font-medium text-[#0A0A0A] hover:text-[#E11D48] underline decoration-[#E5E7EB] underline-offset-2 transition-colors"
+              >
+                ChatGPT vs Claude
               </Link>{" "}
-              allow your team to outline in-depth industry guides, synthesize research, and maintain consistent brand voice across dozens of articles simultaneously.
+              against dedicated marketing platforms like{" "}
+              <Link
+                href="/compare-tools/jasper-vs-copy-ai"
+                className="font-medium text-[#0A0A0A] hover:text-[#E11D48] underline decoration-[#E5E7EB] underline-offset-2 transition-colors"
+              >
+                Jasper vs Copy.ai
+              </Link>{" "}
+              to decide whether raw reasoning or pre-built marketing templates best serve your editorial pipeline.
             </p>
 
             <p>
-              To secure first-page Google rankings, pair your drafts with specialized{" "}
+              To secure first-page Google rankings, compare your drafting software alongside dedicated{" "}
               <Link 
                 href="/category/ai-seo-tools" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 AI SEO Tools
               </Link>{" "}
@@ -62,7 +76,7 @@ export function CategoryClusterRoadmap() {
               Once your content is live, accelerate omni-channel distribution using automated{" "}
               <Link 
                 href="/category/ai-social-media-tools" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 AI Social Media Tools
               </Link>{" "}
@@ -73,7 +87,7 @@ export function CategoryClusterRoadmap() {
               Finally, convert that traffic into active subscribers and pipeline revenue with targeted outreach powered by{" "}
               <Link 
                 href="/category/ai-email-productivity" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 AI Email Productivity
               </Link>{" "}
@@ -82,51 +96,65 @@ export function CategoryClusterRoadmap() {
           </div>
         </article>
 
-        <hr className="border-border/60" />
+        <hr className="border-[#E5E7EB]" />
 
         {/* Domain 2: Visual Media & Design */}
-        <article className="space-y-6">
-          <div className="flex items-center gap-3 text-blue-500 font-bold text-xs uppercase tracking-wider">
-            <span className="material-symbols-outlined text-[20px]">movie_creation</span>
+        <article className="space-y-4">
+          <div className="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase tracking-wider">
+            <span className="material-symbols-outlined text-[18px]">movie_creation</span>
             <span>Visual Arts, Generative Video &amp; Creative Direction</span>
           </div>
 
-          <h3 className="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight">
-            Commercial Media Creation Without Traditional Production Costs
+          <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#0A0A0A] tracking-tight">
+            Comparing AI Tools for Visual Media, Image &amp; Video Production
           </h3>
 
-          <p className="text-base sm:text-lg text-on-surface font-medium leading-relaxed">
+          <p className="text-sm sm:text-base text-[#0A0A0A] font-medium leading-relaxed">
             Visual storytelling has transformed from a multi-week studio bottleneck into an instant, iterative creative process.
           </p>
 
-          <div className="space-y-4 text-[15px] sm:text-[16px] text-on-surface-variant leading-[28px]">
+          <div className="space-y-3 text-xs sm:text-sm text-[#4B5563] leading-relaxed">
             <p>
               Creative directors and founders can conceptualize photorealistic commercial mockups, UI concepts, and editorial illustrations using state-of-the-art{" "}
               <Link 
                 href="/category/ai-image-generators" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 AI Image Generators
               </Link>
-              .
+              . When you compare leading image generators such as{" "}
+              <Link
+                href="/compare-tools/midjourney-vs-dall-e-3"
+                className="font-medium text-[#0A0A0A] hover:text-[#E11D48] underline decoration-[#E5E7EB] underline-offset-2 transition-colors"
+              >
+                Midjourney vs DALL-E 3
+              </Link>
+              , evaluate prompt adherence, fine-detail typography rendering, and commercial licensing terms.
             </p>
 
             <p>
-              To take campaigns a step further, today&apos;s leading{" "}
+              To take video campaigns further, today&apos;s leading{" "}
               <Link 
                 href="/category/ai-video-generators" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 AI Video Generators
               </Link>{" "}
-              turn raw scripts into cinematic video ads, complete with photorealistic digital avatars, camera motion direction, and automatic B-roll generation.
+              turn raw scripts into cinematic video ads. Compare talking-avatar video suites such as{" "}
+              <Link
+                href="/compare-tools/heygen-vs-synthesia"
+                className="font-medium text-[#0A0A0A] hover:text-[#E11D48] underline decoration-[#E5E7EB] underline-offset-2 transition-colors"
+              >
+                HeyGen vs Synthesia
+              </Link>{" "}
+              on photorealistic lip-sync precision, camera motion control, rendering latency, and custom avatar training costs.
             </p>
 
             <p>
               For early-stage ventures establishing visual authority, our directory features specialized{" "}
               <Link 
                 href="/category/logo-generators" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 Logo Generators
               </Link>{" "}
@@ -137,7 +165,7 @@ export function CategoryClusterRoadmap() {
               When presenting to investors or leadership teams, leverage{" "}
               <Link 
                 href="/category/ai-presentation-makers" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 AI Presentation Makers
               </Link>{" "}
@@ -146,29 +174,29 @@ export function CategoryClusterRoadmap() {
           </div>
         </article>
 
-        <hr className="border-border/60" />
+        <hr className="border-[#E5E7EB]" />
 
         {/* Domain 3: Audio, Speech & Meetings */}
-        <article className="space-y-6">
-          <div className="flex items-center gap-3 text-violet-500 font-bold text-xs uppercase tracking-wider">
-            <span className="material-symbols-outlined text-[20px]">graphic_eq</span>
+        <article className="space-y-4">
+          <div className="flex items-center gap-2 text-purple-600 font-bold text-xs uppercase tracking-wider">
+            <span className="material-symbols-outlined text-[18px]">graphic_eq</span>
             <span>Voice Synthesis, Audio Production &amp; Speech Intelligence</span>
           </div>
 
-          <h3 className="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight">
-            Neural Sound Engineering and Conversational Intelligence
+          <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#0A0A0A] tracking-tight">
+            Comparing AI Voice Synthesis, Dubbing &amp; Speech Intelligence
           </h3>
 
-          <p className="text-base sm:text-lg text-on-surface font-medium leading-relaxed">
+          <p className="text-sm sm:text-base text-[#0A0A0A] font-medium leading-relaxed">
             Audio fidelity and vocal nuance have reached a point where synthetic speech is indistinguishable from studio voice actors.
           </p>
 
-          <div className="space-y-4 text-[15px] sm:text-[16px] text-on-surface-variant leading-[28px]">
+          <div className="space-y-3 text-xs sm:text-sm text-[#4B5563] leading-relaxed">
             <p>
               By browsing our{" "}
               <Link 
                 href="/category/audio-voice" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 Audio &amp; Voice
               </Link>{" "}
@@ -179,18 +207,25 @@ export function CategoryClusterRoadmap() {
               Content creators expanding into global markets rely on multilingual{" "}
               <Link 
                 href="/category/ai-voice-generators" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 AI Voice Generators
               </Link>{" "}
-              to instantly clone voices and dub media into dozens of regional languages with natural pacing.
+              to clone voices and dub media into dozens of regional languages. Compare voice engines like{" "}
+              <Link
+                href="/compare-tools/elevenlabs-vs-resemble-ai"
+                className="font-medium text-[#0A0A0A] hover:text-[#E11D48] underline decoration-[#E5E7EB] underline-offset-2 transition-colors"
+              >
+                ElevenLabs vs Resemble AI
+              </Link>{" "}
+              on latency, speech emotion controls, and per-minute generation credit consumption.
             </p>
 
             <p>
               Simultaneously, operations teams streamline internal collaboration using high-accuracy{" "}
               <Link 
                 href="/category/ai-transcription-tools" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 AI Transcription Tools
               </Link>{" "}
@@ -201,7 +236,7 @@ export function CategoryClusterRoadmap() {
               Coupled with autonomous{" "}
               <Link 
                 href="/category/ai-meeting-assistants" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 AI Meeting Assistants
               </Link>
@@ -210,40 +245,58 @@ export function CategoryClusterRoadmap() {
           </div>
         </article>
 
-        <hr className="border-border/60" />
+        <hr className="border-[#E5E7EB]" />
 
         {/* Domain 4: Engineering & Agents */}
-        <article className="space-y-6">
-          <div className="flex items-center gap-3 text-emerald-500 font-bold text-xs uppercase tracking-wider">
-            <span className="material-symbols-outlined text-[20px]">terminal</span>
+        <article className="space-y-4">
+          <div className="flex items-center gap-2 text-emerald-600 font-bold text-xs uppercase tracking-wider">
+            <span className="material-symbols-outlined text-[18px]">terminal</span>
             <span>Software Engineering, Autonomous Logic &amp; Agent Frameworks</span>
           </div>
 
-          <h3 className="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight">
-            Multiplying Developer Velocity and Building Self-Governing Workflows
+          <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#0A0A0A] tracking-tight">
+            Comparing AI Coding Copilots, Vibe Coding &amp; Autonomous Agents
           </h3>
 
-          <p className="text-base sm:text-lg text-on-surface font-medium leading-relaxed">
+          <p className="text-sm sm:text-base text-[#0A0A0A] font-medium leading-relaxed">
             Modern software engineering is moving rapidly from manual typing to AI-assisted architecture and review.
           </p>
 
-          <div className="space-y-4 text-[15px] sm:text-[16px] text-on-surface-variant leading-[28px]">
+          <div className="space-y-3 text-xs sm:text-sm text-[#4B5563] leading-relaxed">
             <p>
-              Integrating intelligent{" "}
+              When evaluating{" "}
               <Link 
                 href="/category/coding-assistants" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 Coding Assistants
+              </Link>
+              , compare how each tool indexes your active repository and handles codebase-wide context. For example, comparing{" "}
+              <Link
+                href="/compare-tools/cursor-vs-github-copilot"
+                className="font-medium text-[#0A0A0A] hover:text-[#E11D48] underline decoration-[#E5E7EB] underline-offset-2 transition-colors"
+              >
+                Cursor vs GitHub Copilot
               </Link>{" "}
-              directly into your code editor eliminates boilerplate code, auto-generates unit test suites, and flags potential security regressions in real time.
+              highlights key trade-offs between dedicated editor forks with multi-file reasoning and standard IDE extensions.
+            </p>
+
+            <p>
+              For rapid prompt-to-app prototyping, compare vibe coding environments such as{" "}
+              <Link
+                href="/compare-tools/bolt-new-vs-lovable"
+                className="font-medium text-[#0A0A0A] hover:text-[#E11D48] underline decoration-[#E5E7EB] underline-offset-2 transition-colors"
+              >
+                Bolt.new vs Lovable
+              </Link>{" "}
+              to determine which platform provides cleaner Git export, database integration, and deployment pipelines.
             </p>
 
             <p>
               Beyond assistive autocompletion, technical teams are adopting autonomous{" "}
               <Link 
                 href="/category/ai-agents" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 AI Agents
               </Link>{" "}
@@ -254,7 +307,7 @@ export function CategoryClusterRoadmap() {
               To maintain seamless customer support without expanding human support headcount, businesses deploy conversational{" "}
               <Link 
                 href="/category/ai-chatbots" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 AI Chatbots
               </Link>{" "}
@@ -263,51 +316,65 @@ export function CategoryClusterRoadmap() {
           </div>
         </article>
 
-        <hr className="border-border/60" />
+        <hr className="border-[#E5E7EB]" />
 
         {/* Domain 5: Operations & Management */}
-        <article className="space-y-6">
-          <div className="flex items-center gap-3 text-amber-500 font-bold text-xs uppercase tracking-wider">
-            <span className="material-symbols-outlined text-[20px]">analytics</span>
+        <article className="space-y-4">
+          <div className="flex items-center gap-2 text-amber-600 font-bold text-xs uppercase tracking-wider">
+            <span className="material-symbols-outlined text-[18px]">analytics</span>
             <span>Business Operations, Enterprise Sales &amp; Strategic Research</span>
           </div>
 
-          <h3 className="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight">
-            Eliminating Operational Drag and Accelerating Pipeline Velocity
+          <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#0A0A0A] tracking-tight">
+            Comparing AI Tools for Sales Operations, CRM Automation &amp; Research
           </h3>
 
-          <p className="text-base sm:text-lg text-on-surface font-medium leading-relaxed">
-            The true competitive moat of modern enterprises lies in operational speed and rapid decision-making.
+          <p className="text-sm sm:text-base text-[#0A0A0A] font-medium leading-relaxed">
+            The true competitive moat of modern enterprises lies in comparing sales enablement engines, automated research platforms, and workspace copilots.
           </p>
 
-          <div className="space-y-4 text-[15px] sm:text-[16px] text-on-surface-variant leading-[28px]">
+          <div className="space-y-3 text-xs sm:text-sm text-[#4B5563] leading-relaxed">
             <p>
-              Deploying general{" "}
+              When comparing general{" "}
               <Link 
                 href="/category/productivity" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 Productivity
               </Link>{" "}
-              tools automates repetitive administrative chores, standardizes cross-team communication, and reclaims valuable cognitive bandwidth.
+              and workspace intelligence platforms—such as{" "}
+              <Link
+                href="/compare-tools/notion-ai-vs-mem"
+                className="font-medium text-[#0A0A0A] hover:text-[#E11D48] underline decoration-[#E5E7EB] underline-offset-2 transition-colors"
+              >
+                Notion AI vs Mem
+              </Link>
+              —look closely at relational database querying, auto-tagging accuracy, and bidirectional workspace sync to reclaim valuable cognitive bandwidth.
             </p>
 
             <p>
-              For go-to-market teams, advanced{" "}
+              For go-to-market teams, comparing outbound sales and enrichment platforms such as{" "}
+              <Link
+                href="/compare-tools/clay-vs-apollo"
+                className="font-medium text-[#0A0A0A] hover:text-[#E11D48] underline decoration-[#E5E7EB] underline-offset-2 transition-colors"
+              >
+                Clay vs Apollo
+              </Link>{" "}
+              across{" "}
               <Link 
                 href="/category/marketing-sales" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 Marketing &amp; Sales
               </Link>{" "}
-              engines automatically score inbound leads, surface high-intent buying signals, and draft contextual follow-up messages based on recent buyer activity.
+              categories reveals stark differences in waterfall data enrichment, AI email personalization, and CRM integration reliability.
             </p>
 
             <p>
               When making critical strategic pivots, analysts leverage academic-grade{" "}
               <Link 
                 href="/category/ai-research-tools" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 AI Research Tools
               </Link>{" "}
@@ -318,7 +385,7 @@ export function CategoryClusterRoadmap() {
               Finally, job seekers and career professionals use specialized{" "}
               <Link 
                 href="/category/ai-resume-builders" 
-                className="font-bold text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-4 transition-colors"
+                className="font-semibold text-[#E11D48] hover:text-[#BE123C] underline decoration-[#FECDD3] underline-offset-4 transition-colors"
               >
                 AI Resume Builders
               </Link>{" "}

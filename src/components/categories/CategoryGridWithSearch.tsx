@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import type { ToolCategory } from "@/lib/types/category";
 import { CategoryCard } from "@/components/category/CategoryCard";
 
@@ -8,211 +9,348 @@ interface CategoryGridWithSearchProps {
   categories: ToolCategory[];
 }
 
-type FilterPill = "all" | "writing-seo" | "visual-video" | "audio-voice" | "code-agents" | "productivity-ops";
+export type DomainClusterId =
+  | "all"
+  | "code-agents"
+  | "visual-media"
+  | "writing-content"
+  | "audio-voice"
+  | "productivity-ops"
+  | "marketing-sales"
+  | "research-careers";
 
-const filterClusters: Record<FilterPill, string[]> = {
-  all: [],
-  "writing-seo": [
-    "ai-writing-tools",
-    "ai-seo-tools",
-    "ai-social-media-tools",
-    "ai-email-productivity",
-    "ai-note-taking-knowledge"
-  ],
-  "visual-video": [
-    "ai-image-generators",
-    "ai-video-generators",
-    "logo-generators",
-    "ai-presentation-makers"
-  ],
-  "audio-voice": [
-    "audio-voice",
-    "ai-voice-generators",
-    "ai-transcription-tools",
-    "ai-meeting-assistants"
-  ],
-  "code-agents": [
-    "coding-assistants",
-    "ai-agents",
-    "ai-chatbots"
-  ],
-  "productivity-ops": [
-    "productivity",
-    "marketing-sales",
-    "ai-sales-tools",
-    "ai-research-tools",
-    "ai-resume-builders",
-    "ai-calendar-scheduling",
-    "ai-project-management"
-  ]
+export interface DomainMeta {
+  id: DomainClusterId;
+  label: string;
+  icon: string;
+  description: string;
+}
+
+export const DOMAIN_METAS: DomainMeta[] = [
+  {
+    id: "all",
+    label: "All Categories",
+    icon: "grid_view",
+    description: "Browse the complete directory taxonomy of verified AI software across every use-case.",
+  },
+  {
+    id: "code-agents",
+    label: "Code & Agents",
+    icon: "terminal",
+    description: "AI coding assistants, vibe coding environments, autonomous agents, and LLM chat interfaces.",
+  },
+  {
+    id: "visual-media",
+    label: "Creative & Visual Media",
+    icon: "movie",
+    description: "Generative image engines, video creators, talking avatars, upscalers, and brand design.",
+  },
+  {
+    id: "writing-content",
+    label: "Writing, Content & SEO",
+    icon: "edit_note",
+    description: "Long-form writing assistants, SEO research suites, script writers, and AI humanizers.",
+  },
+  {
+    id: "audio-voice",
+    label: "Audio, Voice & Speech",
+    icon: "mic",
+    description: "Voice synthesizers, automated transcription, speech translation, and audio editors.",
+  },
+  {
+    id: "productivity-ops",
+    label: "Productivity & Operations",
+    icon: "bolt",
+    description: "Meeting assistants, second brains, automated scheduling, smart email, and presentation decks.",
+  },
+  {
+    id: "marketing-sales",
+    label: "Marketing & Sales",
+    icon: "campaign",
+    description: "B2B sales automation, multi-channel marketing, social media managers, and ad creatives.",
+  },
+  {
+    id: "research-careers",
+    label: "Research & Careers",
+    icon: "science",
+    description: "Academic research engines, paper summarizers, resume builders, and job search assistants.",
+  },
+];
+
+const DOMAIN_PARENT_MAP: Record<string, DomainClusterId> = {
+  // Code & Agents
+  c5: "code-agents",
+  "ai-agents": "code-agents",
+  "b9c74436-f00a-41e0-aee9-6ab15d90d3ec": "code-agents",
+
+  // Visual Media
+  c2: "visual-media",
+  c3: "visual-media",
+
+  // Writing & SEO
+  c1: "writing-content",
+  "ai-seo-tools": "writing-content",
+
+  // Audio & Voice
+  c4: "audio-voice",
+  "ai-voice-generators": "audio-voice",
+  "cat-transcription": "audio-voice",
+
+  // Productivity & Ops
+  c7: "productivity-ops",
+  "cat-meeting": "productivity-ops",
+  "cat-presentation": "productivity-ops",
+
+  // Marketing & Sales
+  c6: "marketing-sales",
+  "ai-sales-tools": "marketing-sales",
+  "ai-social-media": "marketing-sales",
+
+  // Research & Careers
+  "cat-research": "research-careers",
+  "cat-resume": "research-careers",
 };
+
+function getCategoryDomain(cat: ToolCategory): DomainClusterId {
+  const key = cat.parentId || cat.id;
+  return DOMAIN_PARENT_MAP[key] || "productivity-ops";
+}
+
+const POPULAR_PILLS = [
+  { name: "Coding Assistants", slug: "coding-assistants", icon: "code", colorClass: "bg-[#18181B] text-white border-zinc-700 hover:bg-zinc-800" },
+  { name: "Video Generators", slug: "ai-video-generators", icon: "videocam", colorClass: "bg-[#9F1239] text-white border-[#881337] hover:bg-[#881337]" },
+  { name: "Writing Tools", slug: "ai-writing-tools", icon: "edit_note", colorClass: "bg-[#701A75] text-white border-[#581C87] hover:bg-[#581C87]" },
+  { name: "Image Generators", slug: "ai-image-generators", icon: "image", colorClass: "bg-[#E11D48] text-white border-[#BE123C] hover:bg-[#BE123C]" },
+  { name: "AI Chatbots & LLMs", slug: "ai-chatbots", icon: "forum", colorClass: "bg-[#BE123C] text-white border-[#9F1239] hover:bg-[#9F1239]" },
+  { name: "Voice & Speech", slug: "ai-voice-generators", icon: "mic", colorClass: "bg-[#831843] text-white border-[#701A75] hover:bg-[#701A75]" },
+  { name: "AI SEO Tools", slug: "ai-seo-tools", icon: "search", colorClass: "bg-[#881337] text-white border-[#701A75] hover:bg-[#701A75]" },
+  { name: "AI Agents", slug: "ai-agents", icon: "smart_toy", colorClass: "bg-[#581C87] text-white border-[#4C1D95] hover:bg-[#4C1D95]" },
+  { name: "Vibe Coding", slug: "ai-app-builders-vibe-coding", icon: "terminal", colorClass: "bg-[#0F172A] text-white border-slate-700 hover:bg-slate-800" },
+  { name: "Productivity", slug: "productivity", icon: "bolt", colorClass: "bg-[#4C0519] text-white border-[#881337] hover:bg-[#881337]" },
+  { name: "Marketing & Sales", slug: "marketing-sales", icon: "campaign", colorClass: "bg-[#991B1B] text-white border-[#7F1D1D] hover:bg-[#7F1D1D]" },
+  { name: "Research Tools", slug: "ai-research-tools", icon: "science", colorClass: "bg-[#312E81] text-white border-[#1E1B4B] hover:bg-[#1E1B4B]" },
+  { name: "Freemium Tools", href: "/freemium-ai-tools", icon: "savings", colorClass: "bg-[#E11D48] text-white border-[#BE123C] hover:bg-[#BE123C]" },
+];
 
 export function CategoryGridWithSearch({ categories }: CategoryGridWithSearchProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeFilter, setActiveFilter] = useState<FilterPill>("all");
+  const [activeDomain, setActiveDomain] = useState<DomainClusterId>("all");
 
+  // Filter categories by search query and active domain
   const filteredCategories = useMemo(() => {
-    return categories.filter((category) => {
-      // 1. Cluster Filter
-      if (activeFilter !== "all") {
-        const allowedSlugs = filterClusters[activeFilter] || [];
-        if (!allowedSlugs.includes(category.slug)) {
-          return false;
-        }
+    return categories.filter((cat) => {
+      // 1. Domain Filter
+      if (activeDomain !== "all") {
+        const catDomain = getCategoryDomain(cat);
+        if (catDomain !== activeDomain) return false;
       }
 
-      // 2. Search Query Filter
+      // 2. Search Filter
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase().trim();
-        const nameMatch = category.name.toLowerCase().includes(q);
-        const descMatch = category.description?.toLowerCase().includes(q);
-        const slugMatch = category.slug.toLowerCase().includes(q);
+        const nameMatch = cat.name.toLowerCase().includes(q);
+        const descMatch = cat.description?.toLowerCase().includes(q);
+        const slugMatch = cat.slug.toLowerCase().includes(q);
         return nameMatch || descMatch || slugMatch;
       }
 
       return true;
     });
-  }, [categories, activeFilter, searchQuery]);
+  }, [categories, activeDomain, searchQuery]);
+
+  // Categories grouped by domain for the grouped view
+  const groupedCategories = useMemo(() => {
+    const map = new Map<DomainClusterId, ToolCategory[]>();
+
+    DOMAIN_METAS.filter((d) => d.id !== "all").forEach((d) => {
+      map.set(d.id, []);
+    });
+
+    filteredCategories.forEach((cat) => {
+      const dom = getCategoryDomain(cat);
+      const list = map.get(dom);
+      if (list) {
+        list.push(cat);
+      }
+    });
+
+    return map;
+  }, [filteredCategories]);
+
+  // Count per domain for badges
+  const domainCounts = useMemo(() => {
+    const counts: Record<string, number> = { all: categories.length };
+    categories.forEach((cat) => {
+      const dom = getCategoryDomain(cat);
+      counts[dom] = (counts[dom] || 0) + 1;
+    });
+    return counts;
+  }, [categories]);
 
   return (
     <div className="space-y-8 mb-16">
-      {/* Search & Filter Controls Bar */}
-      <div className="bg-surface border border-outline rounded-3xl p-4 sm:p-6 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
-        {/* Instant Search Box */}
-        <div className="relative flex-1 max-w-md">
-          <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">
-            search
+      {/* 1. Quick-Jump Popular Category Hubs Bar */}
+      <div className="bg-[#F9FAFB] rounded-xl border border-[#E5E7EB] p-4 sm:p-5">
+        <div className="flex items-center justify-between gap-2 mb-3">
+          <span className="text-xs font-semibold text-[#4B5563] uppercase tracking-wider block">
+            Popular Comparison Hubs:
           </span>
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search 25+ categories (e.g. video, writing, code)..."
-            className="w-full h-11 pl-11 pr-10 rounded-2xl bg-surface-secondary/60 border border-border text-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-          />
-          {searchQuery && (
-            <button
-              onClick={() => setSearchQuery("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface p-1"
-              aria-label="Clear search"
-            >
-              <span className="material-symbols-outlined text-[18px]">close</span>
-            </button>
-          )}
+          <span className="text-[11px] text-[#6B7280] hidden sm:inline">
+            Compare top-rated software across high-demand workflows
+          </span>
         </div>
-
-        {/* Live Matching Count */}
-        <div className="text-xs font-bold text-on-surface-variant uppercase tracking-wider flex items-center gap-1.5 self-start md:self-auto">
-          <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          Showing <span className="text-on-surface font-extrabold">{filteredCategories.length}</span> of {categories.length} Categories
+        <div className="flex flex-wrap gap-2">
+          {POPULAR_PILLS.map((pill) => {
+            const href = pill.href || `/category/${pill.slug}`;
+            return (
+              <Link
+                key={pill.name}
+                href={href}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border text-xs font-medium shadow-2xs transition-all ${pill.colorClass}`}
+              >
+                <span className="material-symbols-outlined text-[15px] opacity-90">{pill.icon}</span>
+                <span>{pill.name}</span>
+              </Link>
+            );
+          })}
         </div>
       </div>
 
-      {/* Filter Chips Bar */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-        <button
-          onClick={() => setActiveFilter("all")}
-          className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
-            activeFilter === "all"
-              ? "bg-primary text-white shadow-xs scale-105"
-              : "bg-surface border border-border text-on-surface-variant hover:text-on-surface hover:border-outline"
-          }`}
-        >
-          All Categories ({categories.length})
-        </button>
+      {/* 2. Interactive Search & View Controls */}
+      <div className="space-y-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          {/* Search Box */}
+          <div className="relative flex-1 max-w-lg">
+            <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[#9CA3AF] text-[20px]">
+              search
+            </span>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search & compare 100+ categories (e.g. video, code, chatbots, SEO)..."
+              className="w-full h-10 pl-10 pr-9 rounded-lg bg-white border border-[#E5E7EB] text-sm text-[#0A0A0A] placeholder:text-[#9CA3AF] focus:outline-none focus:border-[#E11D48] focus:ring-1 focus:ring-[#E11D48] transition-all"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery("")}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#9CA3AF] hover:text-[#0A0A0A] p-1"
+                aria-label="Clear search"
+              >
+                <span className="material-symbols-outlined text-[18px]">close</span>
+              </button>
+            )}
+          </div>
 
-        <button
-          onClick={() => setActiveFilter("writing-seo")}
-          className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
-            activeFilter === "writing-seo"
-              ? "bg-primary text-white shadow-xs scale-105"
-              : "bg-surface border border-border text-on-surface-variant hover:text-on-surface hover:border-outline"
-          }`}
-        >
-          Writing &amp; SEO
-        </button>
+          {/* Result Count */}
+          <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0">
+            <div className="text-xs font-semibold text-[#4B5563]">
+              Showing <span className="text-[#0A0A0A] font-bold">{filteredCategories.length}</span> of{" "}
+              {categories.length} categories to compare
+            </div>
+          </div>
+        </div>
 
-        <button
-          onClick={() => setActiveFilter("visual-video")}
-          className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
-            activeFilter === "visual-video"
-              ? "bg-primary text-white shadow-xs scale-105"
-              : "bg-surface border border-border text-on-surface-variant hover:text-on-surface hover:border-outline"
-          }`}
-        >
-          Visual &amp; Video
-        </button>
-
-        <button
-          onClick={() => setActiveFilter("audio-voice")}
-          className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
-            activeFilter === "audio-voice"
-              ? "bg-primary text-white shadow-xs scale-105"
-              : "bg-surface border border-border text-on-surface-variant hover:text-on-surface hover:border-outline"
-          }`}
-        >
-          Audio &amp; Voice
-        </button>
-
-        <button
-          onClick={() => setActiveFilter("code-agents")}
-          className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
-            activeFilter === "code-agents"
-              ? "bg-primary text-white shadow-xs scale-105"
-              : "bg-surface border border-border text-on-surface-variant hover:text-on-surface hover:border-outline"
-          }`}
-        >
-          Code &amp; Agents
-        </button>
-
-        <button
-          onClick={() => setActiveFilter("productivity-ops")}
-          className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
-            activeFilter === "productivity-ops"
-              ? "bg-primary text-white shadow-xs scale-105"
-              : "bg-surface border border-border text-on-surface-variant hover:text-on-surface hover:border-outline"
-          }`}
-        >
-          Operations &amp; Sales
-        </button>
+        {/* Domain Filter Pills */}
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          {DOMAIN_METAS.map((domain) => {
+            const isActive = activeDomain === domain.id;
+            const count = domainCounts[domain.id] ?? 0;
+            return (
+              <button
+                key={domain.id}
+                type="button"
+                onClick={() => setActiveDomain(domain.id)}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium whitespace-nowrap transition-colors border ${
+                  isActive
+                    ? "bg-[#0A0A0A] text-white border-[#0A0A0A] shadow-xs"
+                    : "bg-white border-[#E5E7EB] text-[#4B5563] hover:border-gray-400 hover:text-[#0A0A0A]"
+                }`}
+              >
+                <span className={`material-symbols-outlined text-[15px] ${isActive ? "text-[#E11D48]" : "text-[#6B7280]"}`}>
+                  {domain.icon}
+                </span>
+                <span>{domain.label}</span>
+                <span
+                  className={`text-[10px] font-mono px-1.5 py-0.2 rounded ${
+                    isActive ? "bg-white/20 text-white" : "bg-[#F3F4F6] text-[#4B5563]"
+                  }`}
+                >
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Categories Cards Grid */}
-      {filteredCategories.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredCategories.map((category, index) => (
-            <CategoryCard key={category.id} category={category} index={index} />
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-16 bg-surface border border-dashed border-outline rounded-3xl">
-          <span className="material-symbols-outlined text-4xl text-on-surface-variant mb-2">
-            search_off
-          </span>
-          <h3 className="text-lg font-bold text-on-surface mb-1">No matching categories found</h3>
-          <p className="text-sm text-on-surface-variant max-w-sm mx-auto mb-5">
-            Looking for a specific AI software like &ldquo;{searchQuery}&rdquo;? Search all 1,000+ verified tools directly.
+      {/* 3. Categories Content Area */}
+      {filteredCategories.length === 0 ? (
+        <div className="text-center py-16 bg-[#FAFAFA] border border-dashed border-[#E5E7EB] rounded-xl p-8">
+          <span className="material-symbols-outlined text-4xl text-[#9CA3AF] mb-2 block">search_off</span>
+          <h3 className="text-lg font-bold text-[#0A0A0A] mb-1 font-heading">No matching categories found</h3>
+          <p className="text-sm text-[#4B5563] max-w-sm mx-auto mb-5">
+            We couldn&apos;t find any categories matching &ldquo;{searchQuery}&rdquo;. Try clearing your search or filters.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3">
             <button
+              type="button"
               onClick={() => {
                 setSearchQuery("");
-                setActiveFilter("all");
+                setActiveDomain("all");
               }}
-              className="px-4 py-2 rounded-full bg-surface border border-outline text-on-surface-variant text-xs font-bold hover:bg-surface-secondary transition-colors"
+              className="px-4 py-2 rounded-lg bg-white border border-[#E5E7EB] text-[#0A0A0A] text-xs font-semibold hover:border-gray-400 transition-colors shadow-xs"
             >
-              Reset Category Filters
+              Reset Filters
             </button>
-            <button
-              onClick={() => {
-                document.dispatchEvent(new KeyboardEvent("keydown", { key: "k", metaKey: true }));
-              }}
-              className="px-5 py-2 rounded-full bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-all shadow-xs flex items-center gap-1.5"
+            <Link
+              href="/compare-tools"
+              className="px-4 py-2 rounded-lg bg-[#E11D48] text-white text-xs font-semibold hover:bg-[#BE123C] transition-colors shadow-xs"
             >
-              <span className="material-symbols-outlined text-sm">search</span>
-              Search All 1,000+ Tools for &ldquo;{searchQuery}&rdquo; (⌘K)
-            </button>
+              Explore Side-by-Side Comparisons
+            </Link>
           </div>
+        </div>
+      ) : (
+        /* Grouped Domain View */
+        <div className="space-y-12">
+          {DOMAIN_METAS.filter((d) => d.id !== "all").map((domain) => {
+            const domainCats = groupedCategories.get(domain.id) || [];
+            if (domainCats.length === 0) return null;
+
+            return (
+              <section
+                key={domain.id}
+                className="pt-8 border-t border-[#E5E7EB] first:border-0 first:pt-0"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-5 gap-2">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-7 h-7 rounded-md bg-[#FFF1F2] border border-[#FECDD3] flex items-center justify-center text-[#E11D48]">
+                        <span className="material-symbols-outlined text-[16px]">{domain.icon}</span>
+                      </div>
+                      <h2 className="text-xl sm:text-2xl font-bold font-heading text-[#0A0A0A] tracking-tight">
+                        {domain.label}
+                      </h2>
+                      <span className="text-xs font-mono font-medium px-2 py-0.5 rounded bg-[#F9FAFB] border border-[#E5E7EB] text-[#4B5563]">
+                        {domainCats.length} Categories
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-[#4B5563] max-w-xl">
+                      {domain.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2.5 sm:gap-3">
+                  {domainCats.map((category) => (
+                    <CategoryCard key={category.id || category.slug} category={category} />
+                  ))}
+                </div>
+              </section>
+            );
+          })}
         </div>
       )}
     </div>
