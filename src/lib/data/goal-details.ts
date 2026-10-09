@@ -470,5 +470,261 @@ Unlike general-purpose generative chatbots that frequently hallucinate reference
 ### Accelerating the Research Lifecycle
 From initial hypothesis exploration and systematic extraction matrices to pre-submission grammar proofreading with Paperpal, researchers can eliminate weeks of manual scanning while maintaining absolute academic rigor.
         `
+    },
+
+    "hosting-nextjs-apps": {
+        slug: "hosting-nextjs-apps",
+        difficulty: "Intermediate",
+        estimatedTime: "15-45 minutes",
+        bestAudience: "Full-stack developers, Next.js engineers, AI startup founders",
+        expectedOutcome: "High-performance production Next.js deployment with fast SSR, edge streaming, and predictable hosting costs",
+        skillsRequired: ["Next.js App Router", "Docker (for self-hosting)", "Git", "DNS management"],
+        estimatedCost: "$0 - $20/month",
+        metrics: {
+            quality: "Premium",
+            automation: "High"
+        },
+        workflowSteps: [
+            {
+                title: "1. Select Hosting Architecture",
+                purpose: "Align deployment strategy with traffic patterns and background workloads.",
+                tool: "Architecture Selector",
+                time: "10 mins",
+                result: "Clear choice between Managed Serverless (Vercel, Netlify), Container PaaS (Railway, Render), or Self-Hosted VPS (Coolify + Hetzner).",
+                tips: "Choose Railway or VPS if your app has 24/7 background worker queues; choose Vercel for zero-ops preview links and fast API routes."
+            },
+            {
+                title: "2. Configure Next.js Standalone Build",
+                purpose: "Package the application for portable, high-efficiency container deployment.",
+                tool: "Next.js Config",
+                time: "5 mins",
+                result: "output: 'standalone' enabled in next.config.js, shrinking container size by 80%.",
+                tips: "Add sharp to your dependencies to retain full next/image optimization in containerized environments."
+            },
+            {
+                title: "3. Connect Repository & Build Pipeline",
+                purpose: "Automate continuous integration, preview deployments, and production rollouts.",
+                tool: "Git Webhooks",
+                time: "10 mins",
+                result: "Automated deploys on git push with instant staging URLs.",
+                tips: "Store sensitive OpenAI/Anthropic API keys exclusively in platform environment variables—never in source control."
+            },
+            {
+                title: "4. Verify Streaming & Edge Latency",
+                purpose: "Ensure real-time LLM token streaming without server buffering.",
+                tool: "Vercel AI SDK",
+                time: "10 mins",
+                result: "Sub-millisecond token responses streaming smoothly to client browser UI.",
+                tips: "Ensure reverse proxies (Traefik or Caddy) have response buffering disabled for streaming endpoints."
+            }
+        ],
+        alternatives: [
+            { name: "Managed Serverless Stack", description: "Zero operational overhead with Vercel or Netlify; instant global CDN.", stack: ["Vercel", "Vercel AI SDK", "Supabase"] },
+            { name: "Containerized PaaS Stack", description: "Long-running process support and zero timeout restrictions.", stack: ["Railway", "Docker", "PostgreSQL"] },
+            { name: "Self-Hosted Private Cloud Stack", description: "Maximum cost savings and data privacy on budget VPS.", stack: ["Coolify", "Hetzner Cloud", "Traefik"] }
+        ],
+        bestPractices: [
+            { title: "Use output: 'standalone' for Container Builds", description: "Drastically reduces Docker image size from 1GB+ down to ~150MB by bundling only production dependencies." },
+            { title: "Decouple Heavy AI Background Loops", description: "Do not run multi-minute AI processing in Next.js Server Components. Offload heavy loops to background workers on Railway or BullMQ." }
+        ],
+        mistakes: [
+            { title: "Hitting Serverless Timeout Limits on Vercel", description: "Running long-form agent loops on Vercel Hobby (60s timeout) or Pro (300s timeout) causing 504 Gateway errors.", howToAvoid: "Use Railway/Render or a background queue service like Inngest or Trigger.dev." },
+            { title: "Overlooking Bandwidth Egress Costs", description: "Hosting large image/video AI assets directly through Next.js server routes on Vercel ($0.15/GB overage).", howToAvoid: "Store generated media in Cloudflare R2 (zero egress fees) or AWS S3." }
+        ],
+        expectedResults: { output: "Live Next.js Production URL", time: "Under 30 minutes", quality: "Premium", impact: "Zero-downtime deploys with streaming LLM completions." },
+        prompts: [
+            { tool: "Next.js", purpose: "Standalone Dockerfile Configuration", prompt: "Generate an optimized multi-stage Dockerfile for Next.js 15/16 App Router using node:20-alpine with output: 'standalone'.", tips: "Ensure sharp is installed for image optimization on Linux." }
+        ],
+        faqs: [
+            { question: "Where should I host Next.js if I don't want to use Vercel?", answer: "Railway is the easiest managed container alternative, while Coolify on a Hetzner VPS (~€3.79/mo) offers the best self-hosted value with automatic Traefik SSL and Git deployments." },
+            { question: "Does Next.js App Router work outside Vercel?", answer: "Yes. App Router, React Server Components (RSC), Server Actions, and streaming responses are fully supported in Node.js and Docker standalone environments." },
+            { question: "What is the cost difference between Vercel and VPS for Next.js?", answer: "Vercel charges $20/seat/mo plus usage and $0.15/GB egress. A Hetzner Cloud VPS costs ~€3.79/month for 4GB RAM with 20 TB included traffic and zero seat fees." }
+        ],
+        expertTips: [
+            "Enable Sharp for self-hosted Next.js image optimization to ensure high-performance responsive web imagery.",
+            "Use streaming HTTP responses (ReadableStream / Vercel AI SDK) so users see token-by-token completions with zero perceived latency."
+        ],
+        editorialContent: `
+Deploying a modern Next.js application in 2026 presents three distinct architectural paths: managed serverless (Vercel, Netlify), containerized PaaS (Railway, Render), and self-hosted private cloud (Coolify, Dokploy on VPS).
+
+### 1. Workload Suitability & Selection Criteria
+- **Choose Managed Serverless (Vercel)** if your application is a fast interactive frontend where API requests complete within 10–30 seconds, your team relies on preview branch URLs, and developer velocity outweighs hosting line items.
+- **Choose Container PaaS (Railway, Render)** if your AI application involves 24/7 background worker queues, Celery tasks, persistent WebSockets, or multi-minute agent loops that exceed serverless execution timeouts.
+- **Choose Self-Hosted VPS (Coolify + Hetzner)** if your application processes high bandwidth, you want complete data sovereignty, and you prefer to eliminate per-seat monthly charges ($20/seat on Vercel/Railway).
+
+### 2. Operational Responsibilities
+On Vercel, infrastructure management is zero. On Railway and Render, container builds and scaling are automated. On self-hosted VPS, you are responsible for provisioning the VPS, configuring automated database backups, and running periodic OS security updates.
+        `
+    },
+
+    "vps-hosting-n8n": {
+        slug: "vps-hosting-n8n",
+        difficulty: "Intermediate",
+        estimatedTime: "20-30 minutes",
+        bestAudience: "Automation engineers, AI workflow builders, operations teams",
+        expectedOutcome: "Self-hosted n8n instance running 24/7 on dedicated VPS with unlimited workflow executions and persistent database",
+        skillsRequired: ["Docker Compose", "Basic SSH", "Domain DNS configuration"],
+        estimatedCost: "$4 - $10/month (VPS cost only; n8n software is free)",
+        metrics: {
+            quality: "Premium",
+            automation: "Fully Automated"
+        },
+        workflowSteps: [
+            {
+                title: "1. Server Provisioning",
+                purpose: "Launch an unmanaged Ubuntu Linux VPS with adequate compute for concurrent automation runs.",
+                tool: "Hetzner / DigitalOcean",
+                time: "5 mins",
+                result: "Fresh Ubuntu 24.04 server with 2 vCPUs and 4 GB RAM.",
+                tips: "Hetzner CX22 (€3.79/mo) or DigitalOcean $6/mo Droplet provide ample power for tens of thousands of daily workflows."
+            },
+            {
+                title: "2. Install Docker & Compose",
+                purpose: "Set up the container runtime engine on the host server.",
+                tool: "Docker Engine",
+                time: "5 mins",
+                result: "Docker and docker-compose plugin installed and enabled as a systemd service.",
+                tips: "Use the official Docker convenience script: curl -fsSL https://get.docker.com | sh."
+            },
+            {
+                title: "3. Configure PostgreSQL & n8n Compose",
+                purpose: "Set up production-grade state persistence and execution history pruning.",
+                tool: "Docker Compose",
+                time: "10 mins",
+                result: "Production docker-compose.yml running n8nio/n8n alongside PostgreSQL 16.",
+                tips: "Always configure EXECUTIONS_DATA_PRUNE=true and EXECUTIONS_DATA_MAX_AGE=168 to prevent runaway disk usage."
+            },
+            {
+                title: "4. Reverse Proxy & SSL Termination",
+                purpose: "Expose secure HTTPS webhooks to external services like Stripe, Slack, and OpenAI.",
+                tool: "Caddy / Traefik",
+                time: "5 mins",
+                result: "Automated Let's Encrypt certificate issuance on your custom domain.",
+                tips: "Set WEBHOOK_URL=https://n8n.yourdomain.com in environment variables so webhook URLs are correctly formatted."
+            }
+        ],
+        alternatives: [
+            { name: "Coolify 1-Click Stack", description: "Easiest self-hosted setup with automated GUI management.", stack: ["Coolify", "Hetzner Cloud", "Traefik", "PostgreSQL"] },
+            { name: "Docker Compose on VPS Stack", description: "Direct root control without intermediate control planes.", stack: ["Docker Compose", "Ubuntu 24.04", "Caddy", "DigitalOcean"] },
+            { name: "Managed Railway Stack", description: "PaaS convenience without server maintenance.", stack: ["Railway", "n8n Docker", "Railway PostgreSQL"] }
+        ],
+        bestPractices: [
+            { title: "Use External PostgreSQL Over SQLite", description: "For production workloads with frequent triggers, always configure PostgreSQL rather than default SQLite to prevent database locks." },
+            { title: "Prune Execution History Periodically", description: "Configure EXECUTIONS_DATA_PRUNE=true and EXECUTIONS_DATA_MAX_AGE=168 (7 days) to keep disk space under control." }
+        ],
+        mistakes: [
+            { title: "Underprovisioning RAM", description: "Running n8n on a 1 GB RAM VPS causes out-of-memory container crashes during concurrent webhook triggers.", howToAvoid: "Provision at least 2 GB (preferably 4 GB) of RAM." },
+            { title: "Exposing Unencrypted HTTP Webhooks", description: "Running webhooks over plain HTTP exposes API credentials and payload data in transit.", howToAvoid: "Always terminate SSL via reverse proxy (Caddy, Traefik, or Cloudflare)." }
+        ],
+        expectedResults: { output: "Secure 24/7 n8n Webhook Endpoint", time: "Under 30 minutes", quality: "Premium", impact: "Eliminates monthly n8n Cloud subscription tiers ($20-$120+/mo)." },
+        prompts: [
+            { tool: "Docker", purpose: "Production n8n Compose Template", prompt: "Generate a production docker-compose.yml file for n8n with PostgreSQL 16, persistent volumes, environment pruning, and automated Caddy reverse proxy.", tips: "Set N8N_ENCRYPTION_KEY explicitly to avoid losing credential encryption on rebuild." }
+        ],
+        faqs: [
+            { question: "How much does it cost to self-host n8n on a VPS?", answer: "Between $4 and $10/month. The n8n Community Edition is free and open-source. You only pay for the VPS server (e.g. Hetzner at ~€3.79/mo or DigitalOcean at $6/mo)." },
+            { question: "How many workflows can a $4/mo VPS handle?", answer: "A 2 vCPU / 4 GB RAM VPS on Hetzner can easily process tens of thousands of workflow executions daily when backed by PostgreSQL with execution pruning enabled." },
+            { question: "What are my operational responsibilities when self-hosting n8n?", answer: "You are responsible for periodic VPS security updates (apt upgrade), database backups (Postgres pg_dump), and monitoring disk space." }
+        ],
+        expertTips: [
+            "Set N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true to secure credential storage on the host server.",
+            "Automate nightly PostgreSQL backups to S3 or Cloudflare R2 using a simple cron script."
+        ],
+        editorialContent: `
+Self-hosting n8n on an affordable VPS is one of the highest-ROI infrastructure decisions an automation team can make. While n8n Cloud charges $20 to $120+ per month with strict execution caps, self-hosting n8n on a $4 to $10/month VPS gives you unlimited workflow runs, custom community nodes, and local data residency.
+
+### Sizing and System Requirements
+- **Minimum:** 1 vCPU, 2 GB RAM (good for light testing).
+- **Recommended Production:** 2 vCPU, 4 GB RAM with NVMe SSD (e.g. Hetzner CX22 for ~€3.79/mo).
+- **Database:** Always pair n8n with PostgreSQL in production. The default SQLite database is suitable only for local prototyping and will suffer from concurrency locks under heavy webhook volume.
+
+### Operational Responsibilities
+When self-hosting, you own the uptime and security of your instance. Essential maintenance includes enabling execution data pruning, scheduling automated PostgreSQL dumps to remote S3 storage, and firewalling unused ports.
+        `
+    },
+
+    "vps-hosting-coolify": {
+        slug: "vps-hosting-coolify",
+        difficulty: "Beginner",
+        estimatedTime: "10-15 minutes",
+        bestAudience: "Developers, agencies, indie hackers wanting a private Heroku/Vercel PaaS",
+        expectedOutcome: "Fully automated Coolify dashboard on Linux VPS capable of deploying unlimited Docker apps and databases",
+        skillsRequired: ["Basic SSH", "Terminal command copy/paste", "Domain DNS records"],
+        estimatedCost: "$4 - $10/month (VPS cost only; Coolify software is 100% free)",
+        metrics: {
+            quality: "Premium",
+            automation: "Fully Automated"
+        },
+        workflowSteps: [
+            {
+                title: "1. Provision Fresh VPS",
+                purpose: "Deploy a clean, unmanaged Linux server with dedicated resources.",
+                tool: "Hetzner / DigitalOcean",
+                time: "5 mins",
+                result: "Fresh Ubuntu 22.04 or 24.04 server ready for setup.",
+                tips: "Start with a clean OS installation with no existing web servers (Nginx/Apache) installed to prevent port 80/443 conflicts."
+            },
+            {
+                title: "2. Run 1-Line Installation Script",
+                purpose: "Automatically configure Docker, Traefik, and the Coolify control plane.",
+                tool: "Coolify Script",
+                time: "5 mins",
+                result: "Coolify dashboard running on port 8000.",
+                tips: "Run: curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash as root."
+            },
+            {
+                title: "3. Set Up Admin Account & Custom Domain",
+                purpose: "Secure dashboard access and configure automated SSL certificates.",
+                tool: "Coolify Dashboard",
+                time: "3 mins",
+                result: "Secured web control panel accessible at coolify.yourdomain.com over HTTPS.",
+                tips: "Point an A record to your VPS IP and enter your domain in Coolify Settings."
+            },
+            {
+                title: "4. Deploy Applications & Databases",
+                purpose: "Launch Next.js frontends, Python APIs, and 1-click apps.",
+                tool: "Coolify App Store",
+                time: "5 mins",
+                result: "Live applications with automated GitHub build webhooks and Let's Encrypt SSL.",
+                tips: "Use Coolify's 1-click catalog to deploy n8n, Supabase, Redis, and PostgreSQL in seconds."
+            }
+        ],
+        alternatives: [
+            { name: "Hetzner Cloud + Coolify", description: "Best price-to-performance combination for European and US workloads.", stack: ["Coolify", "Hetzner CX22 (€3.79/mo)", "Traefik"] },
+            { name: "DigitalOcean Droplet + Coolify", description: "Established global data center presence with 1-click marketplace options.", stack: ["Coolify", "DigitalOcean ($6/mo)", "Traefik"] },
+            { name: "Dokploy Alternative", description: "Ultra-lightweight Docker control plane alternative to Coolify.", stack: ["Dokploy", "Hetzner Cloud", "Traefik"] }
+        ],
+        bestPractices: [
+            { title: "Deploy on a Clean, Dedicated Server", description: "Never install Coolify on an existing server running custom Nginx/Apache configurations to avoid port 80/443 binding conflicts with Traefik." },
+            { title: "Enable Automatic Server Cleanup", description: "In Coolify server settings, enable Docker pruning to automatically remove unused build cache layers and stopped containers." }
+        ],
+        mistakes: [
+            { title: "Confusing Software Cost with Server Cost", description: "Assuming Coolify provides hosted server hardware for free.", howToAvoid: "Coolify is deployment software ($0); you must purchase a VPS independently." },
+            { title: "Forgetting to Set Up Backups", description: "Relying on local VPS disk without remote database snapshots.", howToAvoid: "Use Coolify's built-in S3 backup feature to snapshot databases to Cloudflare R2 or AWS S3." }
+        ],
+        expectedResults: { output: "Private Cloud Dashboard URL", time: "Under 15 minutes", quality: "Premium", impact: "Zero monthly per-seat fees; unlimited app deploys." },
+        prompts: [
+            { tool: "Bash", purpose: "Coolify Server Pre-flight Check", prompt: "Run `ufw allow 22,80,443,8000/tcp` before installing Coolify to ensure SSH and dashboard ports remain accessible.", tips: "Keep port 8000 firewalled to your IP once custom domain SSL is active on port 443." }
+        ],
+        faqs: [
+            { question: "Is Coolify really completely free?", answer: "Yes. The self-hosted Coolify software is 100% free and open-source under Apache 2.0. You only pay for your VPS host server." },
+            { question: "Which VPS provider is best for Coolify?", answer: "Hetzner Cloud is the community favorite due to its low cost (€3.79/mo for 2 vCPU and 4 GB RAM with 20 TB traffic). DigitalOcean and Hostinger are also widely used." },
+            { question: "How does Coolify compare to Portainer or Dokploy?", answer: "Portainer is primarily a container management tool, whereas Coolify is a complete developer PaaS with Git push deployments, automatic Traefik SSL, and a curated 1-click app catalog. Dokploy is a lightweight alternative with a smaller footprint." }
+        ],
+        expertTips: [
+            "Configure a wildcard DNS record (*.apps.yourdomain.com) pointing to your VPS IP to automatically generate preview URLs for every new service.",
+            "Pair Coolify with a Hetzner Cloud server in Falkenstein or Ashburn for optimal network throughput."
+        ],
+        editorialContent: `
+Coolify transforms any unmanaged Linux virtual private server into a private, self-hosted alternative to Vercel, Netlify, and Heroku. It eliminates per-seat platform taxes and bandwidth overage charges by providing an intuitive web interface for managing Docker containers, reverse proxy routing, and automatic SSL.
+
+### Distinguishing Software Fees from Server Costs
+It is critical to distinguish deployment software from the underlying infrastructure. Coolify itself costs $0. However, it requires a host Linux server to run on. When paired with a reliable budget VPS host such as Hetzner Cloud (~€3.79/mo) or DigitalOcean ($6/mo), your total monthly operational expense is capped strictly at the server hosting price.
+
+### Operational Responsibilities
+While Coolify automates Traefik domain routing, Let's Encrypt SSL certificates, and Git build webhooks, the operator remains responsible for:
+1. **Server Security:** Configuring basic firewall rules (UFW) and keeping Linux packages up to date.
+2. **Disk Maintenance:** Enabling Coolify's automatic Docker image pruning to prevent stale build layers from filling disk capacity.
+3. **Remote Backups:** Configuring Coolify's built-in S3 backup module to push database dumps to remote storage like Cloudflare R2.
+        `
     }
 };

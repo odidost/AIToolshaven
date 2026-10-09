@@ -70,4 +70,31 @@ export const goals = [
         description:
             "Accelerate literature reviews, paper syntheses, data extraction, and journal manuscript proofreading with verified academic AI tools.",
     },
+
+    {
+        title: "Hosting for Next.js Apps",
+        slug: "hosting-nextjs-apps",
+        icon: "web",
+        count: 6,
+        description:
+            "Compare deployment architectures for Next.js: managed serverless on Vercel, containerized on Railway, or self-hosted via Coolify on VPS.",
+    },
+
+    {
+        title: "VPS Hosting for n8n",
+        slug: "vps-hosting-n8n",
+        icon: "account_tree",
+        count: 5,
+        description:
+            "Self-host n8n workflow automation on budget VPS infrastructure (Hetzner, DigitalOcean) with Docker, persistent databases, and zero task execution caps.",
+    },
+
+    {
+        title: "VPS Hosting for Coolify",
+        slug: "vps-hosting-coolify",
+        icon: "dns",
+        count: 5,
+        description:
+            "Turn an unmanaged Linux VPS into a private self-hosted PaaS with Coolify, automated SSL, Traefik reverse proxy, and zero per-seat software fees.",
+    },
 ];

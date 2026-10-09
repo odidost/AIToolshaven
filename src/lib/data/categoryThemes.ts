@@ -1065,6 +1065,57 @@ export const categoryThemes: Record<string, CategoryTheme> = {
       { title: "AI Image Generators", href: "/category/image-generation" },
       { title: "Marketing & Sales Hub", href: "/category/marketing-sales" },
     ]
+  },
+  "ai-hosting": {
+    slug: "ai-hosting",
+    accentColors: {
+      heroGradient: "from-blue-500/10 to-indigo-500/5",
+      iconBg: "bg-blue-500/20",
+      iconText: "text-blue-600",
+      textAccent: "text-blue-600",
+      borderAccent: "border-blue-500/30",
+      cssVar: "37, 99, 235",
+    },
+    heroHeadline: "Compare Hosting Platforms for AI Apps",
+    heroDescription: "Find the right cloud platform, VPS, or self-hosted setup for your AI app, agent, or automation. Compare pricing, features, and deployment options.",
+    statsLabels: {
+      listed: "Platforms Verified",
+      popular: "Deployment Options",
+    },
+    emptyState: {
+      message: "No hosting platforms found matching your criteria.",
+      subMessage: "Try resetting your filters or selecting a different hosting type.",
+    },
+    faq: [
+      {
+        question: "What is the difference between hosting an AI app vs. hosting a model?",
+        answer: "Hosting an AI application involves running your web frontend, backend APIs, and agent workflow scripts (e.g. Next.js, Python FastAPI, n8n) that call external LLM APIs like OpenAI or Anthropic. This requires standard CPU and RAM (available on Vercel, Railway, or VPS). Hosting an AI model itself requires dedicated GPU VRAM (such as RunPod, Lambda Labs, or AWS EC2 G5) to run model weights like Llama 3 or Whisper directly."
+      },
+      {
+        question: "What are the best Vercel alternatives for AI apps?",
+        answer: "Railway and Render are top managed PaaS alternatives that support continuous 24/7 background worker processes and Docker containers without serverless timeouts. For self-hosting with zero software licensing costs, Coolify and Dokploy paired with an affordable VPS (like Hetzner or DigitalOcean) provide full control and eliminate bandwidth overage bills."
+      },
+      {
+        question: "Why should I use Coolify instead of managed platforms?",
+        answer: "Coolify is 100% free open-source software that automates Docker Compose deployments, Traefik reverse proxying, and SSL certificates on your own VPS. When paired with a $4 to $10/month server, you avoid per-seat fees ($20/user/mo on Vercel/Railway) and costly bandwidth egress charges while retaining Heroku-like ease of use."
+      },
+      {
+        question: "Can I host n8n on a budget VPS?",
+        answer: "Yes. n8n runs exceptionally well in a Docker container on a budget VPS with at least 2 vCPUs and 4 GB of RAM (such as Hetzner Cloud for ~€3.79/month or DigitalOcean for $6–$12/month). It provides unlimited workflow executions without tier-based invocation limits."
+      }
+    ],
+    guide: [
+      {
+        title: "Choosing the Right Hosting Tier",
+        content: "Determine if your application requires serverless edge execution (Vercel, Cloudflare), persistent container background workers (Railway, Render), or complete self-hosted control (Coolify, Hetzner VPS)."
+      }
+    ],
+    internalLinks: [
+      { title: "Vercel Alternatives Guide", href: "/alternatives/vercel" },
+      { title: "Hosting for Next.js Apps", href: "/goals/hosting-nextjs-apps" },
+      { title: "VPS Hosting for n8n", href: "/goals/vps-hosting-n8n" },
+      { title: "VPS Hosting for Coolify", href: "/goals/vps-hosting-coolify" },
+    ]
   }
 };
 

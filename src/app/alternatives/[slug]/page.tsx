@@ -321,6 +321,110 @@ export default async function AlternativesPage({ params }: Props) {
           </div>
         </section>
 
+        {/* Workload-Specific Alignment Sections */}
+        {curated.workloadSections && curated.workloadSections.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold text-on-surface mb-3">
+              Which Alternative Suits Your Workload?
+            </h2>
+            <p className="text-on-surface-variant text-sm md:text-base mb-8">
+              Different architectures solve different constraints. Compare how top alternatives handle specific technical requirements:
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {curated.workloadSections.map((ws, idx) => (
+                <div key={idx} className="p-6 rounded-2xl border border-border/80 bg-surface-elevated flex flex-col justify-between">
+                  <div>
+                    <div className="inline-block px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3">
+                      {ws.keywordIntent}
+                    </div>
+                    <h3 className="text-lg font-bold text-on-surface mb-2">{ws.title}</h3>
+                    <p className="text-sm text-on-surface-variant leading-relaxed mb-4">{ws.description}</p>
+                  </div>
+                  <div className="pt-4 border-t border-border/50 flex flex-wrap gap-2 items-center">
+                    <span className="text-xs font-semibold text-on-surface">Top Picks:</span>
+                    {ws.recommendedSlugs.map((rSlug) => (
+                      <Link
+                        key={rSlug}
+                        href={`/tool/${rSlug}`}
+                        className="text-xs font-medium px-2 py-1 rounded-md bg-surface border border-border hover:border-primary text-primary transition-colors"
+                      >
+                        {rSlug.charAt(0).toUpperCase() + rSlug.slice(1)} →
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Pricing Structure Comparison & Limitations */}
+        {curated.pricingAnalysis && (
+          <section className="mb-16 p-8 rounded-3xl border border-border/80 bg-surface-elevated">
+            <h2 className="text-2xl font-bold text-on-surface mb-3">
+              {curated.pricingAnalysis.headline}
+            </h2>
+            <p className="text-sm text-on-surface-variant mb-6">
+              Direct comparison of pricing structures, included allowances, and hidden operational charges.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {curated.pricingAnalysis.points.map((pt, idx) => (
+                <div key={idx} className="p-5 rounded-xl bg-surface border border-border/60">
+                  <h3 className="text-sm font-bold text-on-surface mb-1.5 flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-[16px] text-primary">payments</span>
+                    {pt.title}
+                  </h3>
+                  <p className="text-xs md:text-sm text-on-surface-variant leading-relaxed">
+                    {pt.explanation}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Migration & Maintenance Considerations */}
+        {curated.migrationConsiderations && curated.migrationConsiderations.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold text-on-surface mb-3">
+              Migration & Maintenance Considerations
+            </h2>
+            <p className="text-sm text-on-surface-variant mb-6">
+              Key operational steps and architectural shifts when transitioning off {curated.toolName}:
+            </p>
+            <div className="space-y-3">
+              {curated.migrationConsiderations.map((mc, idx) => (
+                <div key={idx} className="p-5 rounded-xl border border-border/80 bg-surface-elevated">
+                  <h3 className="text-sm font-bold text-on-surface mb-1">{mc.step}</h3>
+                  <p className="text-xs md:text-sm text-on-surface-variant leading-relaxed">{mc.details}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* When Staying with the Existing Platform Makes Sense */}
+        {curated.whenToStay && curated.whenToStay.length > 0 && (
+          <section className="mb-16 p-6 md:p-8 rounded-2xl bg-amber-500/5 border border-amber-500/20">
+            <h2 className="text-xl font-bold text-on-surface mb-3 flex items-center gap-2">
+              <span className="material-symbols-outlined text-amber-500">verified</span>
+              When Staying with {curated.toolName} Makes the Most Sense
+            </h2>
+            <p className="text-xs md:text-sm text-on-surface-variant mb-4">
+              Switching platforms has real developer time costs. You should likely keep your workloads on {curated.toolName} if:
+            </p>
+            <ul className="space-y-2">
+              {curated.whenToStay.map((reason, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-xs md:text-sm text-on-surface-variant">
+                  <span className="material-symbols-outlined text-emerald-600 text-[18px] shrink-0 mt-0.5">check_circle</span>
+                  <span>{reason}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         {/* FAQs */}
         {curated.faqs && curated.faqs.length > 0 && (
           <section className="mb-16">

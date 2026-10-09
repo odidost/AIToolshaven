@@ -137,6 +137,32 @@ export interface AITool {
     matchScore?: number;
     recommendationBadge?: string;
     aiReasoning?: string;
+
+    hostingType?: 'managed-paas' | 'vps-iaas' | 'self-hosted-deploy';
+    hostingDetails?: ToolHostingDetails;
+}
+
+export interface ToolHostingDetails {
+    productGroup: 'Managed app deployment platforms' | 'VPS and cloud infrastructure providers' | 'Self-hosted deployment software';
+    productTypeLabel: string;
+    pricingModelType: 'Free' | 'Free trial' | 'Usage-based' | 'Flat rate' | 'Software free + server cost' | 'Contact sales';
+    startingPrice: string;
+    billingBasis: string;
+    freeTierStatus: string;
+    commercialUseAllowed: boolean;
+    managementResponsibility: 'Fully managed' | 'Managed PaaS' | 'Self-managed infrastructure' | 'Unmanaged IaaS';
+    supportedWorkloads: string[];
+    deploymentMethods: string[];
+    supportedRuntimes: string[];
+    longRunningProcesses: string;
+    persistentStorage: string;
+    regions?: string;
+    includedUsage?: string;
+    overages?: string;
+    keyLimitations: string[];
+    officialPricingUrl: string;
+    officialDocsUrl: string;
+    lastCheckedDate: string;
 }
 
 export interface PromptExample {

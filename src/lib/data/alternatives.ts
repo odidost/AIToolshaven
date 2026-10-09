@@ -17,6 +17,21 @@ export type CuratedAlternativePage = {
   alternatives: CuratedAlternativeItem[];
   faqs: { question: string; answer: string }[];
   relatedCategorySlug: string;
+  workloadSections?: {
+    keywordIntent: string;
+    title: string;
+    description: string;
+    recommendedSlugs: string[];
+  }[];
+  pricingAnalysis?: {
+    headline: string;
+    points: { title: string; explanation: string }[];
+  };
+  migrationConsiderations?: {
+    step: string;
+    details: string;
+  }[];
+  whenToStay?: string[];
 };
 
 export const curatedAlternatives: Record<string, CuratedAlternativePage> = {
@@ -596,6 +611,156 @@ export const curatedAlternatives: Record<string, CuratedAlternativePage> = {
       }
     ],
     relatedCategorySlug: "ai-writing-tools"
+  },
+
+  "vercel": {
+    slug: "vercel",
+    toolName: "Vercel",
+    title: "Top Vercel Alternatives for AI Apps & Next.js (2026 Comparison) | AIToolsHaven",
+    h1: "Top Vercel Alternatives for AI Apps & Next.js",
+    metaDescription: "Compare top Vercel alternatives for AI apps, Next.js, and background workers. Discover Railway, Render, Coolify, and Cloudflare with pricing and self-hosting options.",
+    intro: "While Vercel is the creator and premier managed host for Next.js, many AI application builders outgrow its serverless execution timeouts, strict non-commercial hobby terms, and high bandwidth egress costs. Whether you need 24/7 background worker processes, self-hosted Docker control, or lower operational bills, several battle-tested alternatives provide better architectures for specific AI workloads.",
+    whySeekAlternative: [
+      "Serverless execution timeouts (10s–60s on Hobby, 300s max on Pro) terminate long-running AI agent loops, autonomous scraping tasks, and heavy background worker queues.",
+      "Data transfer overage fees ($0.15/GB above the 1 TB plan allowance) can quickly balloon cloud expenses for high-traffic or media-heavy applications.",
+      "Per-seat team pricing ($20/seat/month on Pro) adds recurring costs for engineering teams and collaborators.",
+      "Hobby tier terms explicitly forbid commercial production monetization, forcing early-stage founders to upgrade prematurely.",
+      "Desire for complete infrastructure sovereignty and zero software licensing fees through self-hosted open-source PaaS (Coolify / Dokploy on VPS)."
+    ],
+    alternatives: [
+      {
+        slug: "railway",
+        name: "Railway",
+        badge: "Best for AI Agents & Background Workers",
+        keyDifference: "Native 24/7 continuous process execution, background queues, and attached persistent volumes without serverless timeouts.",
+        bestFor: "Full-stack apps, AI agents, Python FastAPI, and background worker queues"
+      },
+      {
+        slug: "coolify",
+        name: "Coolify",
+        badge: "Best Self-Hosted Vercel Alternative",
+        keyDifference: "100% free open-source software turning any VPS into a private PaaS; eliminates per-seat fees and bandwidth overages.",
+        bestFor: "Self-hosters, indie hackers, and teams wanting PaaS simplicity on their own VPS"
+      },
+      {
+        slug: "render",
+        name: "Render",
+        badge: "Best Predictable Instance PaaS",
+        keyDifference: "Dedicated background worker instances from $7/mo with flat monthly instance billing and managed PostgreSQL.",
+        bestFor: "Web services with dedicated queue processors and predictable budgets"
+      },
+      {
+        slug: "cloudflare",
+        name: "Cloudflare",
+        badge: "Best Edge Compute & Zero Egress",
+        keyDifference: "Sub-millisecond cold starts on 300+ edge locations, built-in Vectorize vector database, and zero egress fees on R2 object storage.",
+        bestFor: "High-traffic edge APIs, static frontends on Pages, and vector search"
+      },
+      {
+        slug: "netlify",
+        name: "Netlify",
+        badge: "Best for Collaborative Deploy Previews",
+        keyDifference: "First-class Next.js App Router support via OpenNext with visual preview annotations and a 100 GB free monthly tier.",
+        bestFor: "Marketing frontends, agency client reviews, and Jamstack websites"
+      },
+      {
+        slug: "dokploy",
+        name: "Dokploy",
+        badge: "Lightweight Docker Control Plane",
+        keyDifference: "Minimalist open-source container deployment software with Traefik routing, designed for low-memory VPS servers.",
+        bestFor: "Indie hackers running Docker Compose micro-SaaS on budget Linux nodes"
+      }
+    ],
+    workloadSections: [
+      {
+        keywordIntent: "Vercel alternatives for Next.js",
+        title: "Best Vercel Alternatives for Next.js Applications",
+        description: "Deploying Next.js outside of Vercel is fully supported in Next.js 14, 15, and 16 using standalone Docker output or the OpenNext runtime. Railway provides automated Docker builds without serverless timeout limits, Coolify deploys Next.js onto any Linux VPS with automated Let's Encrypt SSL, and Netlify provides complete App Router support via OpenNext.",
+        recommendedSlugs: ["railway", "coolify", "netlify"]
+      },
+      {
+        keywordIntent: "Free Vercel alternatives",
+        title: "Best Free Vercel Alternatives",
+        description: "If you need a free tier for non-commercial or hobby testing, Cloudflare Pages offers unlimited static bandwidth and 100,000 free edge requests per day. Netlify Starter provides 100 GB of bandwidth and 300 build minutes per month with commercial use allowed, and Render includes 750 free web service instance hours (with cold starts after 15 minutes of inactivity).",
+        recommendedSlugs: ["cloudflare", "netlify", "render"]
+      },
+      {
+        keywordIntent: "Self-hosted Vercel alternatives",
+        title: "Best Self-Hosted Vercel Alternatives",
+        description: "For complete control over data privacy and zero software subscription fees, self-hosting is the modern developer trend. Coolify and Dokploy turn any $4–$10/month VPS (like Hetzner Cloud or DigitalOcean) into a self-hosted cloud platform with Git-push deployments, automatic reverse proxy routing, and one-click databases.",
+        recommendedSlugs: ["coolify", "dokploy"]
+      },
+      {
+        keywordIntent: "AI agents & long-running workers",
+        title: "Best Alternatives for AI Agents, Queues & Background Workers",
+        description: "AI applications that execute iterative agent loops, document indexing, or continuous WebSocket listeners cannot run within Vercel's strict serverless function timeouts. Railway and Render offer dedicated 24/7 background worker processes that run continuously without timeout interruptions.",
+        recommendedSlugs: ["railway", "render"]
+      }
+    ],
+    pricingAnalysis: {
+      headline: "Pricing Structure Comparison: Vercel vs Alternatives",
+      points: [
+        {
+          title: "Vercel's Pricing Model",
+          explanation: "Vercel charges $20/seat/month on the Pro plan, plus usage-based charges for edge requests, fast origin transfer, and high bandwidth overages ($0.15/GB beyond 1 TB). The free Hobby tier is strictly non-commercial."
+        },
+        {
+          title: "Railway's Resource-Based Metering",
+          explanation: "Railway charges a $5/month base subscription on Hobby, then bills compute strictly per second based on vCPU and RAM consumed. There are no mandatory per-seat charges for small teams, and services can run 24/7."
+        },
+        {
+          title: "Render's Fixed Instance Tiers",
+          explanation: "Render provides predictable flat-rate monthly instance pricing (Starter at $7/month for 0.5 vCPU and 512MB RAM), eliminating per-second metering spikes for background workers."
+        },
+        {
+          title: "Self-Hosted Cost Structure (Coolify + VPS)",
+          explanation: "Coolify and Dokploy are 100% free open-source software ($0). You pay only for the underlying VPS infrastructure (e.g. Hetzner Cloud at ~€3.79/month for 2 vCPUs, 4 GB RAM, and 20 TB included traffic). This can save hundreds of dollars per month on high-bandwidth or high-memory applications."
+        }
+      ]
+    },
+    migrationConsiderations: [
+      {
+        step: "1. Dockerize Your Next.js Application",
+        details: "Configure output: 'standalone' in next.config.js and use the official multi-stage Next.js Dockerfile. This bundles only necessary production node_modules into a minimal container image."
+      },
+      {
+        step: "2. Handle Reverse Proxying and SSL",
+        details: "When migrating to self-hosted platforms like Coolify or Dokploy, Traefik handles SSL certificates automatically via Let's Encrypt. On raw VPS, Caddy or Nginx reverse proxies traffic to port 3000."
+      },
+      {
+        step: "3. Externalize Databases and Object Storage",
+        details: "If you rely on Vercel Postgres, Blob, or KV, migrate to provider-agnostic equivalents such as Supabase or Neon (Postgres), Cloudflare R2 or AWS S3 (Blobs), and Upstash (Redis)."
+      },
+      {
+        step: "4. Replicate Git Preview Environments",
+        details: "Railway and Coolify both support automatic pull request preview deployments linked directly to GitHub/GitLab webhooks."
+      }
+    ],
+    whenToStay: [
+      "Your application is a standard Next.js web frontend where all API routes complete in under 10–30 seconds.",
+      "Your engineering team heavily utilizes Vercel's visual preview comments, Vercel Toolbar, and deep v0 generative UI workflows.",
+      "Developer productivity and zero operational overhead are more valuable to your business than saving on hosting fees.",
+      "You have no need for persistent container daemons, Celery queues, or native Docker orchestration."
+    ],
+    faqs: [
+      {
+        question: "Can I host Next.js App Router on platforms other than Vercel?",
+        answer: "Yes. Next.js natively supports containerized deployment using output: 'standalone'. Platforms like Railway, Coolify, and Render run standalone Next.js containers seamlessly with Server Components, API routes, and streaming responses fully functional."
+      },
+      {
+        question: "Why do AI apps struggle with Vercel's serverless model?",
+        answer: "AI apps often run complex agent loops, multi-step document chunking, or background scraping that take several minutes. Vercel enforces strict timeout limits (max 300 seconds on Pro; 60 seconds on Hobby), causing long-running tasks to fail unless offloaded to external queue services."
+      },
+      {
+        question: "What is the cheapest Vercel alternative for production AI apps?",
+        answer: "Self-hosting with Coolify or Dokploy on a Hetzner Cloud VPS (~€3.79/month) or DigitalOcean Droplet ($6/month) is the most cost-effective solution. The deployment software is completely free, and the VPS provides dedicated 24/7 compute with massive bandwidth allowances."
+      },
+      {
+        question: "Is Netlify a good alternative to Vercel?",
+        answer: "Yes. Netlify offers comparable Git-based workflows, preview deployments, and edge functions. With its OpenNext runtime integration, it runs Next.js App Router workloads reliably while providing a more generous free tier for commercial testing."
+      }
+    ],
+    relatedCategorySlug: "ai-hosting"
   }
 };
 

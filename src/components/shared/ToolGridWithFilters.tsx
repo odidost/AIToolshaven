@@ -101,11 +101,11 @@ export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) 
 
   return (
     <div>
-      {/* Controls Bar */}
-      <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-center gap-3.5 mb-6 bg-white p-3.5 sm:p-4 rounded-lg border border-[#E5E7EB] shadow-xs">
+      {/* Controls Bar with Editorial Pick Background Style */}
+      <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-center gap-3.5 mb-6 bg-[#F9F9F6] p-3.5 sm:p-4 rounded-2xl border border-black/[0.08] shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
         {/* Search in this category */}
         <div className="relative flex-1 max-w-md">
-          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#9CA3AF] text-[16px]">
+          <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[#78716C] text-[16px]">
             search
           </span>
           <input
@@ -116,7 +116,7 @@ export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) 
               setCurrentPage(1);
             }}
             placeholder="Search tools in this section..."
-            className="w-full h-9 pl-9 pr-8 rounded-md bg-[#F9FAFB] border border-[#E5E7EB] text-sm text-[#0A0A0A] placeholder:text-[#9CA3AF] focus:outline-none focus:border-[#E11D48] focus:bg-white transition-all"
+            className="w-full h-9 pl-9 pr-8 rounded-full bg-white border border-black/[0.07] text-sm text-[#0A0A0A] placeholder:text-[#9CA3AF] focus:outline-none focus:border-[#E11D48] transition-all shadow-2xs"
           />
           {searchQuery && (
             <button
@@ -124,7 +124,7 @@ export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) 
                 setSearchQuery("");
                 setCurrentPage(1);
               }}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#9CA3AF] hover:text-[#0A0A0A] p-0.5"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#78716C] hover:text-[#0A0A0A] p-0.5"
               aria-label="Clear search"
             >
               <span className="material-symbols-outlined text-[15px]">close</span>
@@ -142,10 +142,10 @@ export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) 
                   setPricingFilter(option);
                   setCurrentPage(1);
                 }}
-                className={`px-3 py-1.5 text-xs font-medium rounded-md whitespace-nowrap transition-colors ${
+                className={`px-3.5 py-1.5 text-xs font-medium rounded-full whitespace-nowrap transition-all shadow-2xs ${
                   pricingFilter === option
-                    ? "bg-[#E11D48] text-white shadow-xs"
-                    : "bg-[#F9FAFB] text-[#4B5563] border border-[#E5E7EB] hover:border-[#E11D48] hover:text-[#E11D48] hover:bg-[#FFF1F2]"
+                    ? "bg-[#E11D48] text-white shadow-xs font-semibold"
+                    : "bg-white text-[#57534E] border border-black/[0.07] hover:border-[#FECDD3] hover:text-[#E11D48] hover:bg-[#FFF1F2]"
                 }`}
               >
                 {option === "all" ? "All" : option}
@@ -154,14 +154,14 @@ export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) 
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-xs font-medium text-[#6B7280] hidden sm:inline">Sort:</span>
+            <span className="text-xs font-medium text-[#78716C] hidden sm:inline">Sort:</span>
             <select
               value={sortBy}
               onChange={(e) => {
                 setSortBy(e.target.value as SortOption);
                 setCurrentPage(1);
               }}
-              className="bg-[#F9FAFB] border border-[#E5E7EB] text-[#0A0A0A] text-xs font-medium rounded-md py-1.5 px-2.5 outline-none cursor-pointer focus:border-[#E11D48] transition-colors"
+              className="bg-white border border-black/[0.07] text-[#0A0A0A] text-xs font-medium rounded-full py-1.5 px-3 outline-none cursor-pointer focus:border-[#E11D48] transition-colors shadow-2xs"
             >
               <option value="popular">Most Popular</option>
               <option value="rating">Highest Rated</option>
@@ -172,7 +172,7 @@ export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) 
       </div>
 
       {/* Results summary */}
-      <div className="mb-4 flex items-center justify-between text-xs text-[#6B7280] font-medium">
+      <div className="mb-4 flex items-center justify-between text-xs text-[#78716C] font-serif">
         <div>
           Showing <span className="font-semibold text-[#0A0A0A]">{filteredAndSortedTools.length}</span> of {tools.length} tools
           {searchQuery && <span> matching &ldquo;{searchQuery}&rdquo;</span>}
@@ -199,14 +199,14 @@ export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) 
             />
           ))
         ) : (
-          <div className="col-span-full py-14 px-4 text-center bg-[#F9FAFB] rounded-lg border border-dashed border-[#E5E7EB]">
-            <span className="material-symbols-outlined text-3xl mb-2 block text-[#9CA3AF]">
+          <div className="col-span-full py-14 px-4 text-center bg-[#F9F9F7] rounded-2xl border border-dashed border-black/[0.1]">
+            <span className="material-symbols-outlined text-3xl mb-2 block text-[#A8A29E]">
               search_off
             </span>
-            <p className="text-sm font-semibold text-[#0A0A0A]">
+            <p className="text-sm font-semibold text-[#0A0A0A] font-serif">
               {searchQuery ? `No tools matching "${searchQuery}" in this view` : (theme ? theme.emptyState.message : "No tools found")}
             </p>
-            <p className="text-xs text-[#6B7280] mt-1 max-w-sm mx-auto">
+            <p className="text-xs text-[#78716C] mt-1 max-w-sm mx-auto font-serif">
               {searchQuery
                 ? "This tool might be in another category or vertical in our directory."
                 : (theme ? theme.emptyState.subMessage : "Try adjusting your search or pricing filters.")}
@@ -218,14 +218,14 @@ export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) 
                     setSearchQuery("");
                     setPricingFilter("all");
                   }}
-                  className="px-3.5 py-1.5 bg-white border border-[#E5E7EB] rounded-md text-xs font-medium hover:border-[#E11D48] hover:text-[#E11D48] hover:bg-[#FFF1F2] text-[#4B5563] transition-colors"
+                  className="px-4 py-2 bg-white border border-black/[0.08] rounded-full text-xs font-medium hover:border-[#FECDD3] hover:text-[#E11D48] hover:bg-[#FFF1F2] text-[#44403C] transition-colors shadow-2xs"
                 >
                   Reset Section Filters
                 </button>
               )}
               <button
                 onClick={openGlobalSearch}
-                className="px-3.5 py-1.5 bg-[#E11D48] text-white rounded-md text-xs font-medium hover:bg-[#BE123C] transition-colors shadow-xs flex items-center gap-1.5"
+                className="px-4 py-2 bg-[#E11D48] text-white rounded-full text-xs font-semibold hover:bg-[#BE123C] transition-all shadow-xs flex items-center gap-1.5"
               >
                 <span className="material-symbols-outlined text-[14px]">search</span>
                 Search All 1,000+ Tools (⌘K)
@@ -241,19 +241,19 @@ export function ToolGridWithFilters({ tools, theme }: ToolGridWithFiltersProps) 
           <button
             onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
             disabled={currentPage === 1}
-            className="px-3 py-1.5 bg-white hover:bg-[#FFF1F2] hover:border-[#FECDD3] hover:text-[#E11D48] border border-[#E5E7EB] rounded-md disabled:opacity-30 disabled:hover:bg-white disabled:hover:border-[#E5E7EB] disabled:hover:text-inherit transition-colors font-medium text-xs flex items-center gap-1"
+            className="px-4 py-2 bg-white hover:bg-[#FFF1F2] hover:border-[#FECDD3] hover:text-[#E11D48] border border-black/[0.08] rounded-full disabled:opacity-30 disabled:hover:bg-white disabled:hover:border-black/[0.08] disabled:hover:text-inherit transition-all font-medium text-xs flex items-center gap-1.5 shadow-2xs"
           >
             <span className="material-symbols-outlined text-[15px]">arrow_back</span> Prev
           </button>
           
-          <span className="text-xs font-medium text-[#6B7280]">
+          <span className="text-xs font-mono text-[#78716C]">
             Page <span className="font-semibold text-[#0A0A0A]">{currentPage}</span> of {totalPages}
           </span>
           
           <button
             onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
-            className="px-3 py-1.5 bg-white hover:bg-[#FFF1F2] hover:border-[#FECDD3] hover:text-[#E11D48] border border-[#E5E7EB] rounded-md disabled:opacity-30 disabled:hover:bg-white disabled:hover:border-[#E5E7EB] disabled:hover:text-inherit transition-colors font-medium text-xs flex items-center gap-1"
+            className="px-4 py-2 bg-white hover:bg-[#FFF1F2] hover:border-[#FECDD3] hover:text-[#E11D48] border border-black/[0.08] rounded-full disabled:opacity-30 disabled:hover:bg-white disabled:hover:border-black/[0.08] disabled:hover:text-inherit transition-all font-medium text-xs flex items-center gap-1.5 shadow-2xs"
           >
             Next <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
           </button>

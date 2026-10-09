@@ -30,7 +30,14 @@ export function ToolImage({ tool, type, className, alt, width, height, priority,
 
   // Fallback if somehow there's no url at all or image failed
   if (!src || hasError) {
-    return <div className={`bg-gray-100 flex items-center justify-center ${className || ''}`} {...props} />;
+    return (
+      <div 
+        className={`bg-[#FFF1F2] border border-[#FECDD3] text-[#E11D48] flex items-center justify-center font-bold font-sans text-xs sm:text-sm select-none rounded-lg ${className || ''}`} 
+        {...props}
+      >
+        {tool.name ? tool.name.charAt(0).toUpperCase() : 'AI'}
+      </div>
+    );
   }
 
   const defaultWidth = type === 'logo' ? 48 : 600;
@@ -81,4 +88,3 @@ export function ToolImage({ tool, type, className, alt, width, height, priority,
     />
   );
 }
-

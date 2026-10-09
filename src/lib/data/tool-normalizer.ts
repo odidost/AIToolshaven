@@ -317,6 +317,8 @@ export function normalizeTool(raw: any, localFallback?: any): AITool {
     socials: data.socials || local.socials || undefined,
     stats: data.stats || local.stats || undefined,
     promptExamples: data.promptExamples || local.promptExamples || undefined,
+    hostingType: data.hostingType || local.hostingType || undefined,
+    hostingDetails: data.hostingDetails || local.hostingDetails || undefined,
     lastUpdated: data.updated_at || data.lastUpdated || local.lastUpdated,
     status
   };

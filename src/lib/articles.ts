@@ -1238,7 +1238,7 @@ export const articles: Article[] = [
       <p class="text-base text-on-surface-variant mb-6">Open-source command-line and extension-based coding agents provide unmatched speed, zero telemetry, and complete control over API billing. The two clear champions in this space are <a href="/tool/aider-chat" class="text-primary hover:underline font-bold">Aider</a> (the terminal AI pair programmer that auto-commits git diffs) and <strong>Cline</strong> (the autonomous VS Code extension with browser testing). In this guide, we test both across real refactoring tasks.</p>
 
       <div class="bg-primary-container/10 border border-primary/20 rounded-xl p-5 mb-8 shadow-sm">
-        <p class="text-sm font-semibold text-primary mb-2 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">code</span> Developer Tools Silo</p>
+        <p class="text-sm font-semibold text-primary mb-2 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">code</span> Developer Tools Hub</p>
         <p class="text-sm text-on-surface-variant">Looking to compare full IDEs or autonomous SWE bots? Read our guides on <a href="/blog/cursor-vs-windsurf-vs-copilot-best-ai-code-editors" class="text-primary hover:underline font-bold">Cursor vs Windsurf vs Copilot</a> and <a href="/blog/best-autonomous-ai-software-engineers" class="text-primary hover:underline font-bold">Devin vs Devika</a>, or explore the <a href="/category/coding-assistants" class="text-primary hover:underline font-bold">AI Coding Directory</a>.</p>
       </div>
 
@@ -1900,7 +1900,7 @@ export const articles: Article[] = [
     readTime: "16 min read",
     author: "Editorial Team",
     summary: "A complete step-by-step masterclass on launching a profitable faceless YouTube channel with AI. Learn the exact 2026 tool stack for viral scripting, voice cloning, B-roll generation, thumbnail design, and monetization.",
-    imageUrl: "/blog/best-ai-video-generators-2026.jpg",
+    imageUrl: "/blog/how-to-launch-faceless-youtube-channel-ai-stack-2026.jpg",
     content: `
       <p class="lead text-lg text-on-surface-variant mb-6 leading-relaxed">
         YouTube automation and faceless channels have generated tens of millions in creator revenue over the past decade. But in 2026, the game has fundamentally changed: low-effort robotic slide shows and monotone text-to-speech videos get instantly demonetized by YouTube’s quality algorithms.
@@ -2057,11 +2057,11 @@ export const articles: Article[] = [
 
       <div class="my-12 p-8 rounded-3xl bg-gradient-to-r from-primary/10 via-surface to-secondary/10 border border-primary/20 flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-primary">High-Margin Niches</span>
-          <h4 className="text-xl font-bold text-on-surface mt-1">Explore High-CPM YouTube Niches</h4>
-          <p className="text-sm text-on-surface-variant mt-1">Discover which categories yield $15–$35 AdSense CPMs (Finance, AI Tech, Business History).</p>
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">High-Margin Niches</span>
+          <h4 class="text-xl font-bold text-on-surface mt-1">Explore High-CPM YouTube Niches</h4>
+          <p class="text-sm text-on-surface-variant mt-1">Discover which categories yield $15–$35 AdSense CPMs (Finance, AI Tech, Business History).</p>
         </div>
-        <a href="/goals/faceless-youtube" class="px-6 py-3 rounded-full bg-primary text-white font-bold text-sm hover:opacity-90 transition-opacity whitespace-nowrap">
+        <a href="/goals/faceless-youtube" class="px-6 py-3 rounded-full bg-primary !text-white !no-underline font-bold text-sm hover:opacity-90 transition-opacity whitespace-nowrap">
           View YouTube Blueprint →
         </a>
       </div>
@@ -2085,6 +2085,18 @@ export const articles: Article[] = [
           <strong>Short-Form Repurposing Funnels:</strong> Using tools like <a href="/blog/best-ai-short-form-video-repurposing-tools" class="text-primary hover:underline font-bold">Opus Clip</a> and <a href="/category/ai-social-media-tools" class="text-primary hover:underline font-bold">Social Media AI</a> to convert each long-form video into 10 TikToks and Shorts that funnel traffic to an email newsletter.
         </li>
       </ul>
+
+      <h3 class="text-xl font-bold text-on-surface mt-8 mb-3">
+        Understand YouTube's AI Disclosure and Monetization Rules
+      </h3>
+
+      <p class="text-base text-on-surface-variant mb-4 leading-relaxed">
+        Before monetizing your faceless YouTube channel, make sure you understand YouTube's <strong>AI content disclosure requirements</strong> and monetization policies. While AI-generated content can be monetized, YouTube strictly expects original, authentic content and requires disclosure of certain realistic altered or synthetic media.
+      </p>
+
+      <p class="text-base text-on-surface-variant mb-6 leading-relaxed">
+        For additional guidance, explore <a href="https://www.flowjam.com/blog/how-to-make-a-faceless-youtube-channel-with-ai-2026" target="_blank" rel="nofollow noopener noreferrer" class="text-primary hover:underline font-bold">Flowjam's guide to creating a faceless YouTube channel with AI</a>, which covers AI disclosure rules and monetization considerations for creators.
+      </p>
 
       <h2 class="text-2xl sm:text-3xl font-bold text-on-surface mt-12 mb-6 border-b border-outline pb-3">
         The 7-Day Channel Launch Checklist
@@ -4677,7 +4689,7 @@ export const articles: Article[] = [
       <div class="bg-primary-container/10 border border-primary/20 rounded-2xl p-6 mb-10 shadow-xs">
         <p class="text-sm font-bold text-primary mb-2 flex items-center gap-2">
           <span class="material-symbols-outlined text-[20px]">hub</span> 
-          Developer Infrastructure Pillar
+          Developer Infrastructure Hub
         </p>
         <p class="text-sm text-on-surface-variant leading-relaxed">
           Building agentic software stacks? Explore our <a href="/blog/best-ai-subscriptions-for-developers-2026" class="text-primary hover:underline font-bold">Best AI Developer Subscriptions Guide</a> and our deep-dive on <a href="/blog/cursor-vs-windsurf-vs-copilot-best-ai-code-editors" class="text-primary hover:underline font-bold">Cursor vs Windsurf vs Copilot</a>.
@@ -7062,7 +7074,7 @@ if __name__ == "__main__":
           AI Presentation Knowledge Network
         </p>
         <p class="text-sm text-on-surface-variant leading-relaxed">
-          Comparing the broader presentation market? Read our master pillar on <a href="/blog/best-ai-presentation-makers-gamma-beautiful-canva-2026" class="text-primary hover:underline font-bold">The Best AI Presentation Makers in 2026</a> or browse the <a href="/category/productivity" class="text-primary hover:underline font-bold">Productivity Tools Directory</a>.
+          Comparing the broader presentation market? Read our flagship guide on <a href="/blog/best-ai-presentation-makers-gamma-beautiful-canva-2026" class="text-primary hover:underline font-bold">The Best AI Presentation Makers in 2026</a> or browse the <a href="/category/productivity" class="text-primary hover:underline font-bold">Productivity Tools Directory</a>.
         </p>
       </div>
 
@@ -7602,7 +7614,7 @@ if __name__ == "__main__":
           Enterprise Productivity &amp; Slide Intelligence
         </p>
         <p class="text-sm text-on-surface-variant leading-relaxed">
-          Looking for more presentation comparisons? Read our master pillar on <a href="/blog/best-ai-presentation-makers-gamma-beautiful-canva-2026" class="text-primary hover:underline font-bold">The Best AI Presentation Makers in 2026</a> or browse the <a href="/category/productivity" class="text-primary hover:underline font-bold">Productivity Tools Directory</a>.
+          Looking for more presentation comparisons? Read our flagship guide on <a href="/blog/best-ai-presentation-makers-gamma-beautiful-canva-2026" class="text-primary hover:underline font-bold">The Best AI Presentation Makers in 2026</a> or browse the <a href="/category/productivity" class="text-primary hover:underline font-bold">Productivity Tools Directory</a>.
         </p>
       </div>
 
@@ -7786,7 +7798,7 @@ if __name__ == "__main__":
           AI Prompt Engineering &amp; Productivity Stack
         </p>
         <p class="text-sm text-on-surface-variant leading-relaxed">
-          Looking for tool comparisons? Read our master pillar on <a href="/blog/best-ai-presentation-makers-gamma-beautiful-canva-2026" class="text-primary hover:underline font-bold">The Best AI Presentation Makers in 2026</a> or browse the <a href="/category/productivity" class="text-primary hover:underline font-bold">Productivity Tools Directory</a>.
+          Looking for tool comparisons? Read our flagship guide on <a href="/blog/best-ai-presentation-makers-gamma-beautiful-canva-2026" class="text-primary hover:underline font-bold">The Best AI Presentation Makers in 2026</a> or browse the <a href="/category/productivity" class="text-primary hover:underline font-bold">Productivity Tools Directory</a>.
         </p>
       </div>
 
@@ -8157,7 +8169,7 @@ if __name__ == "__main__":
           Interactive Slide &amp; Lead Generation Hub
         </p>
         <p class="text-sm text-on-surface-variant leading-relaxed">
-          Comparing the broader presentation market? Read our master pillar on <a href="/blog/best-ai-presentation-makers-gamma-beautiful-canva-2026" class="text-primary hover:underline font-bold">The Best AI Presentation Makers in 2026</a> or browse the <a href="/category/productivity" class="text-primary hover:underline font-bold">Productivity Tools Directory</a>.
+          Comparing the broader presentation market? Read our flagship guide on <a href="/blog/best-ai-presentation-makers-gamma-beautiful-canva-2026" class="text-primary hover:underline font-bold">The Best AI Presentation Makers in 2026</a> or browse the <a href="/category/productivity" class="text-primary hover:underline font-bold">Productivity Tools Directory</a>.
         </p>
       </div>
 
@@ -8341,7 +8353,7 @@ if __name__ == "__main__":
           Free AI Productivity &amp; Presentation Tools
         </p>
         <p class="text-sm text-on-surface-variant leading-relaxed">
-          Looking for premium enterprise benchmarks? Read our master pillar on <a href="/blog/best-ai-presentation-makers-gamma-beautiful-canva-2026" class="text-primary hover:underline font-bold">The Best AI Presentation Makers in 2026</a> or browse the <a href="/category/productivity" class="text-primary hover:underline font-bold">Productivity Tools Directory</a>.
+          Looking for premium enterprise benchmarks? Read our flagship guide on <a href="/blog/best-ai-presentation-makers-gamma-beautiful-canva-2026" class="text-primary hover:underline font-bold">The Best AI Presentation Makers in 2026</a> or browse the <a href="/category/productivity" class="text-primary hover:underline font-bold">Productivity Tools Directory</a>.
         </p>
       </div>
 
@@ -8483,7 +8495,7 @@ if __name__ == "__main__":
           Enterprise Sales &amp; Presentation Tech Stack
         </p>
         <p class="text-sm text-on-surface-variant leading-relaxed">
-          Comparing standalone slide builders? Read our master pillar on <a href="/blog/best-ai-presentation-makers-gamma-beautiful-canva-2026" class="text-primary hover:underline font-bold">The Best AI Presentation Makers in 2026</a> or browse the <a href="/category/productivity" class="text-primary hover:underline font-bold">Productivity Tools Directory</a>.
+          Comparing standalone slide builders? Read our flagship guide on <a href="/blog/best-ai-presentation-makers-gamma-beautiful-canva-2026" class="text-primary hover:underline font-bold">The Best AI Presentation Makers in 2026</a> or browse the <a href="/category/productivity" class="text-primary hover:underline font-bold">Productivity Tools Directory</a>.
         </p>
       </div>
 
@@ -8670,7 +8682,7 @@ if __name__ == "__main__":
           B2B Sales Acceleration &amp; Presentation Tech
         </p>
         <p class="text-sm text-on-surface-variant leading-relaxed">
-          Comparing the broader presentation market? Read our master pillar on <a href="/blog/best-ai-presentation-makers-gamma-beautiful-canva-2026" class="text-primary hover:underline font-bold">The Best AI Presentation Makers in 2026</a> or browse the <a href="/category/productivity" class="text-primary hover:underline font-bold">Productivity Tools Directory</a>.
+          Comparing the broader presentation market? Read our flagship guide on <a href="/blog/best-ai-presentation-makers-gamma-beautiful-canva-2026" class="text-primary hover:underline font-bold">The Best AI Presentation Makers in 2026</a> or browse the <a href="/category/productivity" class="text-primary hover:underline font-bold">Productivity Tools Directory</a>.
         </p>
       </div>
 

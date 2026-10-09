@@ -1181,5 +1181,17 @@
     "parentId": "cat-research",
     "indexable": true,
     "status": "Published"
+  },
+  {
+    "id": "c-ai-hosting",
+    "name": "AI Hosting",
+    "slug": "ai-hosting",
+    "icon": "dns",
+    "count": 10,
+    "type": "category",
+    "indexable": true,
+    "status": "Published",
+    "description": "Find the right cloud platform, VPS, or self-hosted setup for your AI app, agent, or automation. Compare pricing, features, and deployment options."
   }
 ]
+

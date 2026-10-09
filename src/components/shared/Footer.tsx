@@ -10,6 +10,7 @@ const footerLinks = {
     { label: "Monetization Goals", href: "/goals" },
     { label: "AI Tool Recommender", href: "/ai-tool-recommender" },
     { label: "Compare Tools", href: "/compare-tools" },
+    { label: "AI Hosting", href: "/category/ai-hosting" },
     { label: "AI Cost Calculator", href: "/ai-cost-calculator" },
     { label: "Trending Tools", href: "/trending-ai-tools" },
   ],

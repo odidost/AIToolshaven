@@ -31,7 +31,7 @@ export const DOMAIN_METAS: DomainMeta[] = [
     id: "all",
     label: "All Categories",
     icon: "grid_view",
-    description: "Browse the complete directory taxonomy of verified AI software across every use-case.",
+    description: "Browse the complete directory of verified AI software across every use-case.",
   },
   {
     id: "code-agents",
