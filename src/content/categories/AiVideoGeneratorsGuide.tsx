@@ -14,8 +14,6 @@ import {
   DollarSign,
   LineChart,
   BookOpen,
-  ExternalLink,
-  Video,
   Film,
   PlayCircle,
   Clapperboard,
@@ -111,17 +109,16 @@ const alternatives = [
 // ---- ANIMATIONS & STYLES ---- //
 
 const fadeUpVariant: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  hidden: { opacity: 0, y: 25 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
 };
 
 const staggerContainer: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+  visible: { opacity: 1, transition: { staggerChildren: 0.12 } }
 };
 
-const figtreeBodyClass = "font-['Figtree',_'Figtree_Fallback',_system-ui,_sans-serif] text-[18px] font-normal leading-[32.4px] text-[rgb(74,85,104)] dark:text-slate-300";
-const figtreeDarkBodyClass = "font-['Figtree',_'Figtree_Fallback',_system-ui,_sans-serif] text-[18px] font-normal leading-[32.4px] text-slate-300";
+const editorialSerifClass = "font-serif text-sm sm:text-base text-[#44403C] leading-relaxed";
 
 export default function AiVideoGeneratorsGuide() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -129,118 +126,118 @@ export default function AiVideoGeneratorsGuide() {
   const [roiMode, setRoiMode] = useState<"traditional" | "ai">("ai");
 
   return (
-    <article className="w-full max-w-6xl mx-auto py-6 md:py-10 font-sans overflow-hidden">
+    <article className="w-full max-w-6xl mx-auto py-8 font-sans overflow-hidden">
       
       {/* 1. Hero Header */}
       <motion.section 
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="mb-8 md:mb-12 relative rounded-[2.5rem] bg-slate-900 overflow-hidden border border-rose-500/20 shadow-xl shadow-rose-500/10"
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="mb-10 md:mb-14 relative rounded-2xl md:rounded-[2.5rem] bg-[#18181B] overflow-hidden border border-white/10 shadow-xl"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-rose-500/40 via-amber-500/10 to-transparent z-0" />
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-orange-500/40 blur-[120px] rounded-full z-0 pointer-events-none" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-rose-500/40 blur-[120px] rounded-full z-0 pointer-events-none" />
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.04] mix-blend-overlay z-0" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#E11D48]/35 via-orange-500/10 to-transparent z-0" />
+        <div className="absolute -top-36 -right-36 w-96 h-96 bg-orange-500/30 blur-[100px] rounded-full z-0 pointer-events-none" />
+        <div className="absolute -bottom-36 -left-36 w-96 h-96 bg-[#E11D48]/30 blur-[100px] rounded-full z-0 pointer-events-none" />
         
         <div className="relative z-10 px-6 py-10 md:py-14 flex flex-col items-center text-center max-w-4xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 text-white/90 text-sm font-semibold tracking-wide mb-6 border border-white/20 backdrop-blur-md shadow-lg"
-          >
-            <Sparkles className="w-4 h-4 text-orange-400" /> 
-            2026 Generative Video Deep Dive
-          </motion.div>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter leading-[1.08]"
-          >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white/95 text-xs font-semibold tracking-wide mb-6 border border-white/20 backdrop-blur-md shadow-2xs">
+            <Sparkles className="w-4 h-4 text-amber-300" /> 
+            <span>2026 Generative Video Deep Dive</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white mb-5 tracking-tight leading-[1.1]">
             The Ultimate Guide to <br className="hidden md:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400 drop-shadow-sm">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-orange-300 to-amber-200">
               AI Video Generators
             </span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className={`${figtreeDarkBodyClass} max-w-2xl mx-auto`}
-          >
+          </h2>
+
+          <p className="font-serif text-sm sm:text-base md:text-lg text-white/80 max-w-2xl mx-auto font-normal leading-relaxed">
             From temporal diffusion models and cinematic camera physics to digital avatar presenters and automated localization: how artificial intelligence is redefining video production economics.
-          </motion.p>
+          </p>
         </div>
       </motion.section>
 
       {/* 2. Definitive Overview - Two Alternating Blocks */}
-      <motion.section variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="mb-8 md:mb-12 max-w-5xl mx-auto">
-        <motion.div variants={fadeUpVariant} className="text-center mb-8">
-          <h3 className="text-sm font-extrabold text-rose-500 uppercase tracking-[0.25em] mb-3">The Paradigm Shift</h3>
-          <h4 className="text-3xl md:text-4xl font-black text-on-surface tracking-tighter">From Production Sets to Neural Diffusion</h4>
+      <motion.section variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="mb-12 md:mb-16 max-w-5xl mx-auto">
+        <motion.div variants={fadeUpVariant} className="text-center mb-10">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-black/[0.07] bg-white text-xs font-semibold text-[#E11D48] shadow-2xs mb-2.5">
+            <span>The Paradigm Shift</span>
+          </div>
+          <h3 className="text-2xl sm:text-4xl font-heading font-black text-[#0A0A0A] tracking-tight">
+            From Production Sets to Neural Diffusion
+          </h3>
         </motion.div>
 
-        <div className="space-y-10 md:space-y-12">
+        <div className="space-y-12">
           {/* Block 1 */}
-          <motion.div variants={fadeUpVariant} className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1 space-y-6">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500/20 to-amber-500/20 border border-rose-500/20 flex items-center justify-center text-rose-500 mb-8 shadow-sm">
-                <Film className="w-7 h-7" />
+          <motion.div variants={fadeUpVariant} className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="order-2 md:order-1 space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-[#FFF1F2] border border-[#FECDD3] flex items-center justify-center text-[#E11D48] shadow-2xs">
+                <Film className="w-6 h-6" />
               </div>
-              <h5 className="text-3xl font-extrabold text-on-surface tracking-tight">The Death of Physical Production Bottlenecks</h5>
-              <p className={figtreeBodyClass}>
+              <h4 className="text-2xl sm:text-3xl font-heading font-bold text-[#0A0A0A] tracking-tight">
+                The Death of Physical Production Bottlenecks
+              </h4>
+              <p className={editorialSerifClass}>
                 Historically, creating commercial video required five-figure camera rentals, studio lighting grips, location permits, and multi-week post-production color grading. Modern generative video models comprehend real-world optical physics: focal depth, fluid dynamics, lighting bounce, and temporal consistency. A solo creator can prompt a sweeping 4K aerial flyover in seconds.
               </p>
             </div>
-            <div className="order-1 md:order-2 bg-gradient-to-br from-rose-50/50 to-amber-50/50 dark:from-rose-950/20 dark:to-amber-900/20 border border-rose-200/50 dark:border-rose-800/50 rounded-[2.5rem] aspect-square p-8 relative overflow-hidden flex items-center justify-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
-               <div className="w-48 h-48 bg-gradient-to-tr from-rose-500 to-amber-500 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 absolute" />
-               <div className="w-full max-w-xs aspect-video rounded-2xl bg-slate-900/90 border border-white/20 p-5 flex flex-col justify-between relative z-10 shadow-2xl transition-transform duration-700 group-hover:scale-105">
+            
+            <div className="order-1 md:order-2 bg-[#F9F9F6] border border-black/[0.08] rounded-2xl md:rounded-3xl aspect-video md:aspect-square p-6 md:p-8 relative overflow-hidden flex items-center justify-center shadow-2xs group">
+               <div className="w-48 h-48 bg-gradient-to-tr from-[#E11D48]/20 to-amber-500/20 rounded-full blur-2xl absolute pointer-events-none" />
+               <div className="w-full max-w-xs aspect-video rounded-xl bg-[#18181B] border border-white/20 p-4 flex flex-col justify-between relative z-10 shadow-xl transition-transform duration-500 group-hover:scale-105">
                  <div className="flex justify-between items-center">
                    <div className="flex items-center gap-2">
                      <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping" />
-                     <div className="text-[11px] text-white/80 font-mono">REC 00:04:12</div>
+                     <div className="text-xs text-white font-mono font-semibold">REC 00:04:12</div>
                    </div>
-                   <div className="px-2 py-0.5 rounded bg-white/10 text-white text-[10px] font-bold">60 FPS</div>
+                   <div className="px-2 py-0.5 rounded-full bg-white/20 text-white text-[10px] font-mono font-bold">60 FPS</div>
                  </div>
-                 <div className="flex items-center justify-center">
-                   <PlayCircle className="w-12 h-12 text-rose-400/80 drop-shadow-md" />
+                 <div className="flex items-center justify-center my-2">
+                   <PlayCircle className="w-10 h-10 text-white/90 drop-shadow-md" />
                  </div>
-                 <div className="h-1.5 w-full bg-slate-700 rounded-full overflow-hidden">
-                   <div className="h-full w-2/3 bg-gradient-to-r from-rose-500 to-amber-400" />
+                 <div className="h-1.5 w-full bg-white/20 rounded-full overflow-hidden">
+                   <div className="h-full w-2/3 bg-gradient-to-r from-[#E11D48] to-amber-400" />
                  </div>
                </div>
             </div>
           </motion.div>
 
           {/* Block 2 */}
-          <motion.div variants={fadeUpVariant} className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-gradient-to-br from-orange-50/50 to-red-50/50 dark:from-orange-950/20 dark:to-red-900/20 border border-orange-200/50 dark:border-orange-800/50 rounded-[2.5rem] aspect-square p-8 relative overflow-hidden flex items-center justify-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
-               <div className="w-full max-w-sm space-y-4 relative z-10 transition-transform duration-700 group-hover:scale-105">
-                 <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-white/20 rounded-2xl p-4 shadow-md flex items-center gap-4">
-                   <div className="w-10 h-10 rounded-full bg-rose-500/20 text-rose-500 flex items-center justify-center font-bold">
-                     <Smile className="w-6 h-6" />
+          <motion.div variants={fadeUpVariant} className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="bg-[#F9F9F6] border border-black/[0.08] rounded-2xl md:rounded-3xl aspect-video md:aspect-square p-6 md:p-8 relative overflow-hidden flex items-center justify-center shadow-2xs group">
+               <div className="w-48 h-48 bg-gradient-to-tr from-orange-500/20 to-[#E11D48]/20 rounded-full blur-2xl absolute pointer-events-none" />
+               <div className="w-full max-w-sm space-y-3 relative z-10 transition-transform duration-500 group-hover:scale-105">
+                 <div className="bg-white rounded-xl p-4 shadow-2xs border border-black/[0.08] flex items-center gap-3">
+                   <div className="w-10 h-10 rounded-xl bg-[#FFF1F2] border border-[#FECDD3] text-[#E11D48] flex items-center justify-center font-bold shrink-0">
+                     <Smile className="w-5 h-5" />
                    </div>
                    <div className="space-y-1.5 flex-1">
-                     <div className="h-3 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full" />
-                     <div className="h-2 w-3/4 bg-slate-200 dark:bg-slate-700 rounded-full" />
+                     <div className="h-2.5 w-2/3 bg-black/[0.08] rounded-full" />
+                     <div className="h-2 w-1/2 bg-black/[0.04] rounded-full" />
                    </div>
                  </div>
-                 <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-white/20 rounded-2xl p-4 shadow-md flex items-center justify-between">
+                 <div className="bg-white rounded-xl p-3.5 shadow-2xs border border-black/[0.08] flex items-center justify-between">
                    <div className="flex items-center gap-2">
-                     <Globe className="w-4 h-4 text-orange-500" />
-                     <span className="text-xs font-bold text-on-surface">Auto Lip-Sync</span>
+                     <Globe className="w-4 h-4 text-[#E11D48]" />
+                     <span className="text-xs font-bold text-[#0A0A0A]">Auto Lip-Sync</span>
                    </div>
-                   <span className="text-xs font-bold text-success px-2 py-0.5 bg-success/10 rounded-full">40+ Languages</span>
+                   <span className="text-xs font-semibold text-emerald-700 px-2.5 py-0.5 bg-emerald-50 border border-emerald-200 rounded-full font-mono">
+                     40+ Languages
+                   </span>
                  </div>
                </div>
             </div>
-            <div className="space-y-6">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-500/20 border border-orange-500/20 flex items-center justify-center text-orange-500 mb-8 shadow-sm">
-                <Globe className="w-7 h-7" />
+
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-[#FFF1F2] border border-[#FECDD3] flex items-center justify-center text-[#E11D48] shadow-2xs">
+                <Globe className="w-6 h-6" />
               </div>
-              <h5 className="text-3xl font-extrabold text-on-surface tracking-tight">Photorealistic Avatars & Multilingual Scale</h5>
-              <p className={figtreeBodyClass}>
+              <h4 className="text-2xl sm:text-3xl font-heading font-bold text-[#0A0A0A] tracking-tight">
+                Photorealistic Avatars &amp; Multilingual Scale
+              </h4>
+              <p className={editorialSerifClass}>
                 Video is no longer bound by human scheduling or spoken language. Modern avatar engines clone real executives, spokespeople, or digital presenters with sub-millimeter facial tracking. A single English video script can be instantly translated and rendered in Spanish, Mandarin, German, and Japanese with flawless neural lip-syncing.
               </p>
             </div>
@@ -250,61 +247,72 @@ export default function AiVideoGeneratorsGuide() {
 
       {/* 2.5: Interactive ROI / Cost Savings Calculator */}
       <motion.section 
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-        className="mb-8 md:mb-12 max-w-5xl mx-auto"
+        transition={{ duration: 0.6 }}
+        className="mb-12 md:mb-16 max-w-5xl mx-auto"
       >
-        <div className="bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2.5rem] p-8 md:p-12 shadow-xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
+        <div className="relative bg-[#F9F9F6] border border-black/[0.08] rounded-2xl md:rounded-3xl p-6 sm:p-10 shadow-2xs overflow-hidden">
+          <div className="absolute -top-12 -right-12 w-64 h-64 bg-[#FED7AA]/35 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-[#FDA4AF]/25 blur-3xl pointer-events-none" />
           
           <div className="relative z-10 flex flex-col items-center text-center mb-8">
-            <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-5">
-              <Calculator className="w-7 h-7" />
+            <div className="w-12 h-12 bg-[#FFF1F2] border border-[#FECDD3] text-[#E11D48] rounded-xl flex items-center justify-center mb-4 shadow-2xs">
+              <Calculator className="w-6 h-6" />
             </div>
-            <h3 className="text-3xl md:text-5xl font-black text-on-surface tracking-tighter mb-4">Calculate Video Production ROI</h3>
-            <p className={figtreeBodyClass + " max-w-xl"}>
+            <h3 className="text-2xl sm:text-4xl font-heading font-black text-[#0A0A0A] tracking-tight mb-3">
+              Calculate Video Production ROI
+            </h3>
+            <p className="font-serif text-sm sm:text-base text-[#57534E] max-w-xl">
               See the exact production capital, studio fees, and turnaround hours saved by automating commercial video with generative AI pipelines.
             </p>
           </div>
 
-          <div className="flex justify-center mb-8">
-            <div className="bg-slate-100 dark:bg-slate-800 p-1.5 rounded-full flex gap-2">
+          <div className="flex justify-center mb-8 relative z-10">
+            <div className="bg-white p-1 rounded-full border border-black/[0.08] shadow-2xs flex gap-1.5">
               <button 
                 onClick={() => setRoiMode("traditional")}
-                className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 ${roiMode === "traditional" ? "bg-white dark:bg-slate-700 shadow-md text-on-surface" : "text-slate-400 hover:text-on-surface"}`}
+                className={`px-5 py-2 rounded-full font-bold text-xs transition-all ${
+                  roiMode === "traditional" 
+                    ? "bg-[#0A0A0A] text-white shadow-xs" 
+                    : "text-[#57534E] hover:text-[#0A0A0A]"
+                }`}
               >
                 Production Studio
               </button>
               <button 
                 onClick={() => setRoiMode("ai")}
-                className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 ${roiMode === "ai" ? "bg-primary text-primary-foreground shadow-md shadow-primary/20" : "text-slate-400 hover:text-on-surface"}`}
+                className={`px-5 py-2 rounded-full font-bold text-xs transition-all ${
+                  roiMode === "ai" 
+                    ? "bg-[#E11D48] text-white shadow-xs" 
+                    : "text-[#57534E] hover:text-[#0A0A0A]"
+                }`}
               >
                 AI Video Engine
               </button>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 text-center relative z-10">
-            <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 rounded-2xl">
-              <Timer className={`w-7 h-7 mx-auto mb-3 ${roiMode === "ai" ? "text-success" : "text-slate-400"}`} />
-              <div className="text-slate-500 font-semibold mb-1 text-sm">Turnaround Time</div>
-              <div className="text-3xl md:text-4xl font-black text-on-surface tracking-tight">
+          <div className="grid md:grid-cols-3 gap-5 text-center relative z-10">
+            <div className="bg-white border border-black/[0.06] p-6 rounded-2xl shadow-2xs hover:border-[#E11D48]/30 transition-all">
+              <Timer className={`w-6 h-6 mx-auto mb-2 ${roiMode === "ai" ? "text-emerald-600" : "text-[#78716C]"}`} />
+              <div className="text-xs font-serif text-[#78716C] mb-1">Turnaround Time</div>
+              <div className="text-2xl sm:text-3xl font-heading font-black text-[#0A0A0A] tracking-tight">
                 {roiMode === "ai" ? "5 Minutes" : "3-4 Weeks"}
               </div>
             </div>
-            <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 rounded-2xl">
-              <DollarSign className={`w-7 h-7 mx-auto mb-3 ${roiMode === "ai" ? "text-success" : "text-slate-400"}`} />
-              <div className="text-slate-500 font-semibold mb-1 text-sm">Cost per Video</div>
-              <div className="text-3xl md:text-4xl font-black text-on-surface tracking-tight">
+            <div className="bg-white border border-black/[0.06] p-6 rounded-2xl shadow-2xs hover:border-[#E11D48]/30 transition-all">
+              <DollarSign className={`w-6 h-6 mx-auto mb-2 ${roiMode === "ai" ? "text-emerald-600" : "text-[#78716C]"}`} />
+              <div className="text-xs font-serif text-[#78716C] mb-1">Cost per Video</div>
+              <div className="text-2xl sm:text-3xl font-heading font-black text-[#0A0A0A] tracking-tight">
                 {roiMode === "ai" ? "$12.00" : "$4,500+"}
               </div>
             </div>
-            <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 rounded-2xl">
-              <LineChart className={`w-7 h-7 mx-auto mb-3 ${roiMode === "ai" ? "text-primary" : "text-slate-400"}`} />
-              <div className="text-slate-500 font-semibold mb-1 text-sm">Language Localization</div>
-              <div className="text-3xl md:text-4xl font-black text-on-surface tracking-tight">
+            <div className="bg-white border border-black/[0.06] p-6 rounded-2xl shadow-2xs hover:border-[#E11D48]/30 transition-all">
+              <LineChart className={`w-6 h-6 mx-auto mb-2 ${roiMode === "ai" ? "text-[#E11D48]" : "text-[#78716C]"}`} />
+              <div className="text-xs font-serif text-[#78716C] mb-1">Language Localization</div>
+              <div className="text-2xl sm:text-3xl font-heading font-black text-[#0A0A0A] tracking-tight">
                 {roiMode === "ai" ? "40+ Dialects" : "1 ($$$ Extra)"}
               </div>
             </div>
@@ -314,56 +322,63 @@ export default function AiVideoGeneratorsGuide() {
 
       {/* 3. Sponsor Spotlight - High-End Dark Card */}
       <motion.section 
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="mb-8 md:mb-12 max-w-5xl mx-auto"
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="mb-12 md:mb-16 max-w-5xl mx-auto"
       >
-        <div className="relative rounded-[2.5rem] bg-slate-900 overflow-hidden shadow-xl p-[2px] group">
-          <div className="absolute inset-0 bg-gradient-to-r from-rose-500 via-orange-500 to-amber-500 opacity-50 blur-md group-hover:opacity-100 transition-opacity duration-700 z-0" />
+        <div className="relative rounded-2xl md:rounded-[2.5rem] bg-[#18181B] overflow-hidden shadow-xl border border-white/10 p-8 md:p-12 text-white">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#E11D48]/20 via-orange-500/10 to-amber-500/10 pointer-events-none" />
           
-          <div className="relative bg-slate-900/95 backdrop-blur-2xl rounded-[2.4rem] p-8 md:p-12 z-10 border border-white/10">
-            <div className="flex flex-col md:flex-row gap-10 md:gap-14">
-              <div className="md:w-1/2 space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 text-xs font-bold uppercase tracking-widest border border-amber-500/20 shadow-inner">
-                  <Crown className="w-4 h-4" /> Editor&apos;s Choice 2026
-                </div>
-                
-                <h3 className="text-3xl md:text-4xl font-black text-white leading-[1.1] tracking-tight">
-                  Scale your video operations globally with <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400">HeyGen</span>
-                </h3>
-                
-                <p className={figtreeDarkBodyClass}>
-                  Traditional video cameras and dubbing studios cannot keep pace with digital commerce. HeyGen allows enterprises to produce studio-grade avatar videos from text scripts, complete with custom cloned digital twins, flawless lip-syncing, and native translation into 40+ languages.
-                </p>
-
-                <a href="https://www.heygen.com" target="_blank" rel="noopener noreferrer" className="group/btn inline-flex items-center gap-2.5 px-6 py-3 bg-white text-slate-900 rounded-xl font-bold text-base hover:bg-rose-50 hover:scale-105 hover:shadow-xl transition-all duration-300">
-                  Try HeyGen Free
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform" />
-                </a>
+          <div className="relative z-10 flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+            <div className="md:w-1/2 space-y-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 text-amber-300 text-xs font-semibold uppercase tracking-wider border border-amber-400/20 shadow-inner">
+                <Crown className="w-3.5 h-3.5" /> 
+                <span>Editor&apos;s Choice 2026</span>
               </div>
+              
+              <h3 className="text-2xl sm:text-4xl font-black text-white leading-tight tracking-tight">
+                Scale your video operations globally with <br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-orange-300 to-amber-200">
+                  HeyGen
+                </span>
+              </h3>
+              
+              <p className="font-serif text-sm sm:text-base text-white/80 leading-relaxed font-normal">
+                Traditional video cameras and dubbing studios cannot keep pace with digital commerce. HeyGen allows enterprises to produce studio-grade avatar videos from text scripts, complete with custom cloned digital twins, flawless lip-syncing, and native translation into 40+ languages.
+              </p>
 
-              <div className="md:w-1/2 flex flex-col justify-center">
-                <div className="bg-slate-800/40 border border-white/5 rounded-2xl p-6 md:p-8 space-y-6 shadow-xl backdrop-blur-sm">
-                  <h4 className="text-white font-extrabold text-xl tracking-tight">The HeyGen Advantage</h4>
-                  {[
-                    { title: "Instant Custom Avatar Twin", desc: "Create a 4K digital twin from a 2-minute webcam recording." },
-                    { title: "40+ Language Video Translation", desc: "Translate existing videos with authentic voice cloning & lip-sync." },
-                    { title: "Interactive Streaming Avatars", desc: "Embed real-time conversational AI video agents into your app." },
-                    { title: "Enterprise SOC 2 Compliance", desc: "Your proprietary video data is fully protected and private." }
-                  ].map((feature, i) => (
-                    <div key={i} className="flex gap-4 group/feature">
-                      <div className="mt-1 bg-rose-500/10 p-1.5 rounded-lg h-fit border border-rose-500/20 group-hover/feature:bg-rose-500/30 group-hover/feature:scale-110 transition-all duration-300">
-                        <CheckCircle2 className="w-4 h-4 text-rose-400" />
-                      </div>
-                      <div>
-                        <div className="text-white font-bold text-base tracking-tight">{feature.title}</div>
-                        <div className="text-slate-400 font-['Figtree',_'Figtree_Fallback',_system-ui,_sans-serif] text-xs font-normal mt-0.5 leading-relaxed">{feature.desc}</div>
-                      </div>
+              <a 
+                href="https://www.heygen.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-[#0A0A0A] hover:bg-[#FFF1F2] hover:text-[#E11D48] rounded-full font-bold text-sm transition-all shadow-xs hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <span>Try HeyGen Free</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+
+            <div className="md:w-1/2 w-full">
+              <div className="bg-white/[0.04] border border-white/10 rounded-2xl p-6 space-y-4 backdrop-blur-md">
+                <h4 className="text-white font-bold text-base tracking-tight mb-2">The HeyGen Advantage</h4>
+                {[
+                  { title: "Instant Custom Avatar Twin", desc: "Create a 4K digital twin from a 2-minute webcam recording." },
+                  { title: "40+ Language Video Translation", desc: "Translate existing videos with authentic voice cloning & lip-sync." },
+                  { title: "Interactive Streaming Avatars", desc: "Embed real-time conversational AI video agents into your app." },
+                  { title: "Enterprise SOC 2 Compliance", desc: "Your proprietary video data is fully protected and private." }
+                ].map((feature, i) => (
+                  <div key={i} className="flex gap-3">
+                    <div className="mt-0.5 bg-[#E11D48]/20 border border-[#E11D48]/40 p-1 rounded-lg h-fit text-[#FDA4AF] shrink-0">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
                     </div>
-                  ))}
-                </div>
+                    <div>
+                      <div className="text-white font-semibold text-xs sm:text-sm">{feature.title}</div>
+                      <div className="font-serif text-xs text-white/70 leading-relaxed mt-0.5">{feature.desc}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -373,84 +388,95 @@ export default function AiVideoGeneratorsGuide() {
       {/* 3.5: Top 3 Alternatives Matrix */}
       <motion.section 
         variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}
-        className="mb-8 md:mb-12 max-w-5xl mx-auto"
+        className="mb-12 md:mb-16 max-w-5xl mx-auto"
       >
         <div className="text-center mb-8">
-          <h3 className="text-sm font-extrabold text-slate-500 uppercase tracking-[0.25em] mb-3">Market Landscape</h3>
-          <h4 className="text-3xl font-black text-on-surface tracking-tighter">Top Alternatives</h4>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-black/[0.07] bg-white text-xs font-semibold text-[#E11D48] shadow-2xs mb-2.5">
+            <span>Market Landscape</span>
+          </div>
+          <h3 className="text-2xl sm:text-3xl font-heading font-black text-[#0A0A0A] tracking-tight">
+            Top Alternative Platforms
+          </h3>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           {alternatives.map((alt, idx) => (
-            <motion.div key={idx} variants={fadeUpVariant} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:shadow-lg hover:border-primary/30 transition-all duration-300 group flex flex-col justify-between">
+            <motion.div 
+              key={idx} 
+              variants={fadeUpVariant} 
+              className="bg-white border border-black/[0.08] p-5 rounded-2xl hover:shadow-xs hover:border-[#E11D48]/40 hover:-translate-y-0.5 transition-all duration-200 group flex flex-col justify-between shadow-2xs"
+            >
               <div>
-                <div className="flex justify-between items-start mb-4">
-                  <Link href={`/tool/${alt.slug}`} className="text-lg font-black text-on-surface group-hover:text-primary transition-colors">
+                <div className="flex justify-between items-start mb-3">
+                  <Link href={`/tool/${alt.slug}`} className="text-base font-bold font-heading text-[#0A0A0A] group-hover:text-[#E11D48] transition-colors truncate">
                     {alt.name}
                   </Link>
-                  <div className="bg-success/10 text-success font-bold px-2 py-0.5 rounded-full text-xs">{alt.score}/10</div>
+                  <div className="bg-emerald-500/10 text-emerald-800 border border-emerald-500/20 font-bold px-2 py-0.5 rounded-full text-[11px] font-mono shrink-0">
+                    {alt.score}/10
+                  </div>
                 </div>
-                <div className="space-y-2 mb-4 text-xs">
-                  <div className="flex justify-between border-b border-slate-100 dark:border-slate-800 pb-1.5">
-                    <span className="text-slate-500">Starting Price</span>
-                    <span className="font-bold text-on-surface">{alt.price}</span>
+                <div className="space-y-1.5 mb-4 text-xs font-serif">
+                  <div className="flex justify-between border-b border-black/[0.06] pb-1">
+                    <span className="text-[#78716C]">Starting Price</span>
+                    <span className="font-semibold text-[#0A0A0A] font-sans">{alt.price}</span>
                   </div>
-                  <div className="flex justify-between border-b border-slate-100 dark:border-slate-800 pb-1.5">
-                    <span className="text-slate-500">Best For</span>
-                    <span className="font-bold text-on-surface">{alt.bestFor}</span>
+                  <div className="flex justify-between border-b border-black/[0.06] pb-1">
+                    <span className="text-[#78716C]">Best For</span>
+                    <span className="font-semibold text-[#0A0A0A] font-sans truncate ml-2">{alt.bestFor}</span>
                   </div>
-                  <div className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed pt-1">
-                    <span className="font-bold text-on-surface">Highlight: </span>{alt.highlight}
+                  <div className="text-[#57534E] text-[11px] leading-relaxed pt-1 font-serif line-clamp-2">
+                    <span className="font-semibold text-[#0A0A0A]">Highlight: </span>{alt.highlight}
                   </div>
                 </div>
               </div>
               <Link 
                 href={`/tool/${alt.slug}`}
-                className="w-full flex items-center justify-center gap-1.5 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs rounded-lg hover:bg-primary hover:text-white transition-colors"
+                className="w-full flex items-center justify-center gap-1.5 py-1.5 bg-[#F9F9F6] hover:bg-[#FFF1F2] border border-black/[0.06] hover:border-[#FECDD3] text-[#44403C] hover:text-[#E11D48] font-semibold text-xs rounded-full transition-colors"
               >
-                View {alt.name} Profile <ArrowRight className="w-3.5 h-3.5" />
+                <span>View Profile</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </motion.div>
           ))}
         </div>
 
-        {/* Head-to-Head Comparison & Workflow Quick Bridges */}
-        <motion.div variants={fadeUpVariant} className="grid grid-cols-1 md:grid-cols-3 gap-4 p-5 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
+        {/* Head-to-Head Comparison Quick Bridges */}
+        <motion.div variants={fadeUpVariant} className="grid grid-cols-1 md:grid-cols-3 gap-3 p-4 rounded-2xl bg-[#F9F9F6] border border-black/[0.08]">
           <Link
             href="/compare-tools/opus-clip-vs-capcut"
-            className="group block p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary/40 transition-all shadow-xs"
+            className="group block p-3.5 rounded-xl bg-white border border-black/[0.06] hover:border-[#E11D48]/40 hover:-translate-y-0.5 transition-all shadow-2xs"
           >
-            <div className="text-[11px] font-bold uppercase tracking-wider text-rose-500 mb-1">Top Ranking Comparison</div>
-            <div className="text-sm font-extrabold text-on-surface group-hover:text-primary transition-colors flex items-center gap-1.5">
+            <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#E11D48] mb-1">Top Ranking Comparison</div>
+            <div className="text-xs font-bold text-[#0A0A0A] group-hover:text-[#E11D48] transition-colors flex items-center gap-1">
               Opus Clip vs CapCut →
             </div>
-            <p className="text-xs text-on-surface-variant mt-1">
+            <p className="font-serif text-[11px] text-[#78716C] mt-1 line-clamp-1">
               Automated AI clipping vs full-timeline creator editing suite.
             </p>
           </Link>
 
           <Link
             href="/tool/luma-dream-machine"
-            className="group block p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary/40 transition-all shadow-xs"
+            className="group block p-3.5 rounded-xl bg-white border border-black/[0.06] hover:border-[#E11D48]/40 hover:-translate-y-0.5 transition-all shadow-2xs"
           >
-            <div className="text-[11px] font-bold uppercase tracking-wider text-blue-500 mb-1">Generative Video Model</div>
-            <div className="text-sm font-extrabold text-on-surface group-hover:text-primary transition-colors flex items-center gap-1.5">
+            <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-600 mb-1">Generative Video Model</div>
+            <div className="text-xs font-bold text-[#0A0A0A] group-hover:text-[#E11D48] transition-colors flex items-center gap-1">
               Luma Dream Machine Profile →
             </div>
-            <p className="text-xs text-on-surface-variant mt-1">
+            <p className="font-serif text-[11px] text-[#78716C] mt-1 line-clamp-1">
               Realistic physical motion simulation and fluid camera movements.
             </p>
           </Link>
 
           <Link
             href="/workflows/faceless-youtube"
-            className="group block p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary/40 transition-all shadow-xs"
+            className="group block p-3.5 rounded-xl bg-white border border-black/[0.06] hover:border-[#E11D48]/40 hover:-translate-y-0.5 transition-all shadow-2xs"
           >
-            <div className="text-[11px] font-bold uppercase tracking-wider text-emerald-500 mb-1">Which Tools Work Best Together?</div>
-            <div className="text-sm font-extrabold text-on-surface group-hover:text-primary transition-colors flex items-center gap-1.5">
+            <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-600 mb-1">Workflow Stack</div>
+            <div className="text-xs font-bold text-[#0A0A0A] group-hover:text-[#E11D48] transition-colors flex items-center gap-1">
               Faceless YouTube Video Stack →
             </div>
-            <p className="text-xs text-on-surface-variant mt-1">
+            <p className="font-serif text-[11px] text-[#78716C] mt-1 line-clamp-1">
               Script, voice, edit, and optimize with ChatGPT, ElevenLabs &amp; CapCut.
             </p>
           </Link>
@@ -463,71 +489,79 @@ export default function AiVideoGeneratorsGuide() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="mb-8 md:mb-12 max-w-6xl mx-auto"
+        className="mb-12 md:mb-16 max-w-6xl mx-auto"
       >
         <motion.div variants={fadeUpVariant} className="text-center mb-8">
-          <h3 className="text-sm font-extrabold text-orange-500 uppercase tracking-[0.25em] mb-3">Evaluation Criteria</h3>
-          <h4 className="text-3xl md:text-4xl font-black text-on-surface tracking-tighter">What to Demand from Pro Video Tools</h4>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-black/[0.07] bg-white text-xs font-semibold text-[#E11D48] shadow-2xs mb-2.5">
+            <span>Evaluation Criteria</span>
+          </div>
+          <h3 className="text-2xl sm:text-4xl font-heading font-black text-[#0A0A0A] tracking-tight">
+            What to Demand from Pro Video Tools
+          </h3>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-5">
           {/* Big Card 1 */}
-          <motion.div variants={fadeUpVariant} className="md:col-span-2 bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 hover:shadow-xl hover:border-red-500/30 transition-all duration-300 group overflow-hidden relative">
-            <div className="absolute -right-20 -top-20 w-64 h-64 bg-red-500/5 rounded-full blur-3xl group-hover:bg-red-500/10 transition-colors duration-500" />
+          <motion.div variants={fadeUpVariant} className="md:col-span-2 bg-white border border-black/[0.08] rounded-2xl p-6 md:p-8 hover:shadow-xs hover:border-[#E11D48]/40 transition-all duration-300 group overflow-hidden relative shadow-2xs">
             <div className="relative z-10">
-              <div className="flex items-start justify-between mb-6">
-                <div className="w-14 h-14 bg-red-500/10 text-red-500 rounded-xl flex items-center justify-center border border-red-500/20 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
-                  <Clapperboard className="w-7 h-7" />
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-12 h-12 bg-[#FFF1F2] text-[#E11D48] rounded-xl flex items-center justify-center border border-[#FECDD3] shadow-2xs">
+                  <Clapperboard className="w-6 h-6" />
                 </div>
-                <span className="text-6xl font-black text-slate-100 dark:text-slate-800 group-hover:text-red-500/10 transition-colors duration-500">01</span>
+                <span className="text-5xl font-black font-heading text-black/[0.05] group-hover:text-[#E11D48]/10 transition-colors">01</span>
               </div>
-              <h4 className="text-2xl font-extrabold text-on-surface mb-4 tracking-tight">Temporal Consistency & Physics</h4>
-              <p className={figtreeBodyClass}>
+              <h4 className="text-xl font-bold font-heading text-[#0A0A0A] mb-2 tracking-tight">
+                Temporal Consistency &amp; Physics
+              </h4>
+              <p className={editorialSerifClass}>
                 The single biggest differentiator between amateur and professional AI video is temporal stability. Ensure the engine does not warp limbs, glitch background geometry, or flicker lighting across generation frames. Top-tier tools understand 3D spatial permanence.
               </p>
             </div>
           </motion.div>
 
           {/* Small Card 2 */}
-          <motion.div variants={fadeUpVariant} className="bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 hover:shadow-xl hover:border-amber-500/30 transition-all duration-300 group overflow-hidden relative">
-            <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition-colors duration-500" />
+          <motion.div variants={fadeUpVariant} className="bg-white border border-black/[0.08] rounded-2xl p-6 md:p-8 hover:shadow-xs hover:border-[#E11D48]/40 transition-all duration-300 group overflow-hidden relative shadow-2xs">
             <div className="relative z-10">
-              <div className="w-12 h-12 bg-amber-500/10 text-amber-500 rounded-xl flex items-center justify-center mb-6 border border-amber-500/20 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+              <div className="w-12 h-12 bg-[#FFF1F2] text-[#E11D48] rounded-xl flex items-center justify-center mb-4 border border-[#FECDD3] shadow-2xs">
                 <Sliders className="w-6 h-6" />
               </div>
-              <h4 className="text-xl font-extrabold text-on-surface mb-3 tracking-tight">Camera Motion Controls</h4>
-              <p className={figtreeBodyClass}>
+              <h4 className="text-lg font-bold font-heading text-[#0A0A0A] mb-2 tracking-tight">
+                Camera Motion Controls
+              </h4>
+              <p className={editorialSerifClass}>
                 Look for explicit cinematic camera directing sliders: pan, tilt, zoom, pedestal, and orbital drone paths.
               </p>
             </div>
           </motion.div>
 
           {/* Small Card 3 */}
-          <motion.div variants={fadeUpVariant} className="bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 hover:shadow-xl hover:border-orange-500/30 transition-all duration-300 group overflow-hidden relative">
-            <div className="absolute -left-10 -top-10 w-40 h-40 bg-orange-500/5 rounded-full blur-2xl group-hover:bg-orange-500/10 transition-colors duration-500" />
+          <motion.div variants={fadeUpVariant} className="bg-white border border-black/[0.08] rounded-2xl p-6 md:p-8 hover:shadow-xs hover:border-[#E11D48]/40 transition-all duration-300 group overflow-hidden relative shadow-2xs">
             <div className="relative z-10">
-              <div className="w-12 h-12 bg-orange-500/10 text-orange-500 rounded-xl flex items-center justify-center mb-6 border border-orange-500/20 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
+              <div className="w-12 h-12 bg-[#FFF1F2] text-[#E11D48] rounded-xl flex items-center justify-center mb-4 border border-[#FECDD3] shadow-2xs">
                 <Mic className="w-6 h-6" />
               </div>
-              <h4 className="text-xl font-extrabold text-on-surface mb-3 tracking-tight">Audio & Lip-Sync</h4>
-              <p className={figtreeBodyClass}>
+              <h4 className="text-lg font-bold font-heading text-[#0A0A0A] mb-2 tracking-tight">
+                Audio &amp; Lip-Sync
+              </h4>
+              <p className={editorialSerifClass}>
                 If generating talking head videos, demand sub-pixel neural lip-sync and integrated expressive voice cloning.
               </p>
             </div>
           </motion.div>
 
           {/* Big Card 4 */}
-          <motion.div variants={fadeUpVariant} className="md:col-span-2 bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 hover:shadow-xl hover:border-rose-500/30 transition-all duration-300 group overflow-hidden relative">
-            <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-rose-500/5 rounded-full blur-3xl group-hover:bg-rose-500/10 transition-colors duration-500" />
+          <motion.div variants={fadeUpVariant} className="md:col-span-2 bg-white border border-black/[0.08] rounded-2xl p-6 md:p-8 hover:shadow-xs hover:border-[#E11D48]/40 transition-all duration-300 group overflow-hidden relative shadow-2xs">
             <div className="relative z-10">
-              <div className="flex items-start justify-between mb-6">
-                <div className="w-14 h-14 bg-rose-500/10 text-rose-500 rounded-xl flex items-center justify-center border border-rose-500/20 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
-                  <ShieldCheck className="w-7 h-7" />
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-12 h-12 bg-[#FFF1F2] text-[#E11D48] rounded-xl flex items-center justify-center border border-[#FECDD3] shadow-2xs">
+                  <ShieldCheck className="w-6 h-6" />
                 </div>
-                <span className="text-6xl font-black text-slate-100 dark:text-slate-800 group-hover:text-rose-500/10 transition-colors duration-500">04</span>
+                <span className="text-5xl font-black font-heading text-black/[0.05] group-hover:text-[#E11D48]/10 transition-colors">04</span>
               </div>
-              <h4 className="text-2xl font-extrabold text-on-surface mb-4 tracking-tight">Ethical Training & Commercial Indemnity</h4>
-              <p className={figtreeBodyClass}>
+              <h4 className="text-xl font-bold font-heading text-[#0A0A0A] mb-2 tracking-tight">
+                Ethical Training &amp; Commercial Indemnity
+              </h4>
+              <p className={editorialSerifClass}>
                 Enterprise media demands ethical peace of mind. Ensure the provider trains on licensed stock datasets or proprietary video corpuses, shielding your brand from copyright infringement claims and likeness theft liabilities.
               </p>
             </div>
@@ -538,29 +572,32 @@ export default function AiVideoGeneratorsGuide() {
       {/* 4.5: Step-by-Step "How-To" Walkthrough */}
       <motion.section 
         variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}
-        className="mb-8 md:mb-12 max-w-5xl mx-auto bg-slate-900 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden text-white"
+        className="mb-12 md:mb-16 max-w-5xl mx-auto bg-[#18181B] rounded-2xl md:rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden text-white border border-white/10 shadow-xl"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 z-0" />
         <div className="relative z-10">
-          <h3 className="text-sm font-extrabold text-amber-400 uppercase tracking-[0.25em] mb-3">Implementation Guide</h3>
-          <h4 className="text-3xl md:text-4xl font-black text-white tracking-tighter mb-10">How to Generate Cinematic Video in 4 Steps</h4>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-amber-300 text-xs font-semibold mb-3">
+            <span>Implementation Guide</span>
+          </div>
+          <h3 className="text-2xl sm:text-4xl font-heading font-black text-white tracking-tight mb-8">
+            How to Generate Cinematic Video in 4 Steps
+          </h3>
           
-          <div className="space-y-8">
+          <div className="space-y-6">
             {[
               { title: "Anchor Keyframes with Image-to-Video", text: "Never generate blind text-to-video if you need specific character or product branding. Render a pristine 4K still image first and pass it as the starting keyframe." },
               { title: "Prompt Explicit Temporal Motion", text: "Describe movement chronologically: 'Slow steady forward dolly zoom, subject turns head toward camera at second 2, golden hour lens flare reflects on glass'." },
               { title: "Use Motion Brushes for Micro-Control", text: "If only one element should move (such as river rapids while mountains stay static), paint a motion mask over the water to isolate the animation." },
               { title: "Extend & Chain Scene Blocks", text: "Generate in 4 to 8-second increments. Use the final frame of clip 1 as the anchor of clip 2 to construct cohesive multi-shot cinematic sequences." }
             ].map((step, idx) => (
-              <motion.div key={idx} variants={fadeUpVariant} className="flex gap-5 md:gap-8">
+              <motion.div key={idx} variants={fadeUpVariant} className="flex gap-4 sm:gap-6 items-start">
                 <div className="shrink-0">
-                  <div className="w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-lg font-black text-amber-400">
+                  <div className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-sm font-black font-mono text-amber-300 shadow-inner">
                     {idx + 1}
                   </div>
                 </div>
                 <div>
-                  <h5 className="text-xl font-bold text-white mb-2">{step.title}</h5>
-                  <p className={figtreeDarkBodyClass}>{step.text}</p>
+                  <h4 className="text-base sm:text-lg font-bold text-white mb-1">{step.title}</h4>
+                  <p className="font-serif text-xs sm:text-sm text-white/80 leading-relaxed font-normal">{step.text}</p>
                 </div>
               </motion.div>
             ))}
@@ -570,59 +607,65 @@ export default function AiVideoGeneratorsGuide() {
 
       {/* 5. Use Cases - Interactive Tabs */}
       <motion.section 
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-        className="mb-8 md:mb-12 max-w-5xl mx-auto bg-gradient-to-b from-slate-50 to-white dark:from-slate-900/50 dark:to-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-[2.5rem] p-6 md:p-10 shadow-xl"
+        transition={{ duration: 0.6 }}
+        className="mb-12 md:mb-16 max-w-5xl mx-auto bg-[#F9F9F6] border border-black/[0.08] rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-2xs relative overflow-hidden"
       >
-        <h3 className="text-3xl md:text-4xl font-black text-on-surface mb-8 text-center tracking-tighter">Who Benefits Most?</h3>
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-black/[0.07] bg-white text-xs font-semibold text-[#E11D48] shadow-2xs mb-2.5">
+            <span>Workflow Verticals</span>
+          </div>
+          <h3 className="text-2xl sm:text-3xl font-heading font-black text-[#0A0A0A] tracking-tight">
+            Who Benefits Most?
+          </h3>
+        </div>
         
-        <div className="flex flex-col md:flex-row gap-8">
+        <div className="flex flex-col md:flex-row gap-6">
           {/* Tab Navigation */}
-          <div className="md:w-1/3 space-y-3">
+          <div className="md:w-1/3 space-y-2.5">
             {useCases.map((uc) => {
               const isActive = activeTab === uc.id;
               return (
                 <button
                   key={uc.id}
                   onClick={() => setActiveTab(uc.id)}
-                  className={`w-full flex items-center gap-3.5 px-5 py-4 rounded-xl transition-all duration-300 font-bold text-left border text-sm ${
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-semibold text-left border text-xs sm:text-sm ${
                     isActive 
-                      ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20 translate-x-1 border-primary' 
-                      : 'bg-white dark:bg-slate-800 text-on-surface-variant hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-on-surface border-slate-200 dark:border-slate-700'
+                      ? 'bg-[#E11D48] text-white border-[#E11D48] shadow-xs translate-x-0.5' 
+                      : 'bg-white text-[#57534E] hover:border-[#FECDD3] hover:text-[#E11D48] hover:bg-[#FFF1F2] border-black/[0.07] shadow-2xs'
                   }`}
                 >
-                  <div className={`${isActive ? 'text-primary-foreground' : 'text-slate-400'} transition-colors duration-300`}>
+                  <div className={`${isActive ? 'text-white' : 'text-[#78716C]'} transition-colors`}>
                     {uc.icon}
                   </div>
-                  {uc.title}
+                  <span>{uc.title}</span>
                 </button>
               );
             })}
           </div>
 
           {/* Tab Content */}
-          <div className="md:w-2/3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 md:p-10 relative overflow-hidden flex items-center shadow-inner">
+          <div className="md:w-2/3 bg-white border border-black/[0.07] rounded-2xl p-6 sm:p-8 shadow-2xs relative overflow-hidden flex items-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
                 className="relative z-10"
               >
-                <div className="w-12 h-1 bg-gradient-to-r from-rose-500 to-orange-500 rounded-full mb-6" />
-                <h4 className="text-2xl font-extrabold text-on-surface mb-4 tracking-tight">
+                <div className="w-10 h-1 bg-[#E11D48] rounded-full mb-4" />
+                <h4 className="text-xl font-bold font-heading text-[#0A0A0A] mb-3 tracking-tight">
                   {useCases.find(u => u.id === activeTab)?.title}
                 </h4>
-                <p className={figtreeBodyClass}>
+                <p className={editorialSerifClass}>
                   {useCases.find(u => u.id === activeTab)?.content}
                 </p>
               </motion.div>
             </AnimatePresence>
-            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-rose-500/5 rounded-full blur-[80px] pointer-events-none" />
           </div>
         </div>
       </motion.section>
@@ -630,21 +673,25 @@ export default function AiVideoGeneratorsGuide() {
       {/* 5.5: Topical Glossary */}
       <motion.section 
         variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}
-        className="mb-8 md:mb-12 max-w-5xl mx-auto"
+        className="mb-12 md:mb-16 max-w-5xl mx-auto"
       >
         <div className="text-center mb-8">
-          <h3 className="text-sm font-extrabold text-primary uppercase tracking-[0.25em] mb-3">Technical Foundation</h3>
-          <h4 className="text-3xl font-black text-on-surface tracking-tighter">Core Terminology</h4>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-black/[0.07] bg-white text-xs font-semibold text-[#E11D48] shadow-2xs mb-2.5">
+            <span>Technical Foundation</span>
+          </div>
+          <h3 className="text-2xl sm:text-3xl font-heading font-black text-[#0A0A0A] tracking-tight">
+            Core Terminology &amp; Metrics
+          </h3>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 gap-4">
           {glossaryTerms.map((item, idx) => (
-            <motion.div key={idx} variants={fadeUpVariant} className="bg-surface border border-slate-200 dark:border-slate-800 p-6 rounded-2xl hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-3">
-                <BookOpen className="w-5 h-5 text-primary" />
-                <h5 className="text-lg font-bold text-on-surface">{item.term}</h5>
+            <motion.div key={idx} variants={fadeUpVariant} className="bg-white border border-black/[0.08] p-5 sm:p-6 rounded-2xl shadow-2xs hover:shadow-xs hover:border-[#E11D48]/30 transition-all">
+              <div className="flex items-center gap-2.5 mb-2">
+                <BookOpen className="w-4 h-4 text-[#E11D48]" />
+                <h4 className="text-base font-bold font-heading text-[#0A0A0A]">{item.term}</h4>
               </div>
-              <p className={figtreeBodyClass}>{item.def}</p>
+              <p className="font-serif text-xs sm:text-sm text-[#57534E] leading-relaxed">{item.def}</p>
             </motion.div>
           ))}
         </div>
@@ -655,27 +702,42 @@ export default function AiVideoGeneratorsGuide() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="mb-8 md:mb-12 max-w-3xl mx-auto"
+        transition={{ duration: 0.6 }}
+        className="mb-12 max-w-3xl mx-auto"
       >
         <div className="text-center mb-8">
-          <h3 className="text-3xl md:text-4xl font-black text-on-surface mb-3 tracking-tighter">Frequently Asked Questions</h3>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-black/[0.07] bg-white text-xs font-semibold text-[#E11D48] shadow-2xs mb-2.5">
+            <span>Clear Answers</span>
+          </div>
+          <h3 className="text-2xl sm:text-3xl font-heading font-black text-[#0A0A0A] tracking-tight">
+            Frequently Asked Questions
+          </h3>
         </div>
-        <div className="space-y-4">
+        <div className="space-y-3">
           {faqData.map((faq, idx) => {
             const isOpen = openFaq === idx;
             return (
               <div 
                 key={idx} 
-                className={`border rounded-2xl overflow-hidden transition-all duration-300 ${isOpen ? 'bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-800/50 border-rose-500/30 shadow-lg shadow-rose-500/5' : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-rose-500/20 hover:shadow-sm'}`}
+                className={`border rounded-2xl overflow-hidden transition-all duration-200 ${
+                  isOpen 
+                    ? 'bg-gradient-to-br from-white to-[#FFF1F2]/20 border-[#FECDD3] shadow-xs' 
+                    : 'bg-white border-black/[0.08] hover:border-[#FECDD3] shadow-2xs'
+                }`}
               >
                 <button 
                   onClick={() => setOpenFaq(isOpen ? null : idx)}
-                  className="w-full flex items-center justify-between p-6 text-left"
+                  className="w-full flex items-center justify-between p-5 text-left cursor-pointer"
                 >
-                  <span className="font-extrabold text-on-surface text-lg tracking-tight pr-6">{faq.question}</span>
-                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-primary text-primary-foreground shadow-sm rotate-180' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'}`}>
-                    <ChevronDown className="w-4 h-4" />
+                  <span className="font-bold font-heading text-[#0A0A0A] text-sm sm:text-base tracking-tight pr-4">
+                    {faq.question}
+                  </span>
+                  <div className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all ${
+                    isOpen 
+                      ? 'bg-[#E11D48] text-white shadow-xs rotate-180' 
+                      : 'bg-[#F9F9F6] border border-black/[0.06] text-[#78716C]'
+                  }`}>
+                    <ChevronDown className="w-3.5 h-3.5" />
                   </div>
                 </button>
                 <AnimatePresence>
@@ -684,9 +746,9 @@ export default function AiVideoGeneratorsGuide() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.25 }}
                     >
-                      <div className={`px-6 pb-6 text-sm ${figtreeBodyClass}`}>
+                      <div className="px-5 pb-5 text-xs sm:text-sm font-serif text-[#57534E] leading-relaxed">
                         {faq.answer}
                       </div>
                     </motion.div>

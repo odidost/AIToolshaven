@@ -20,6 +20,12 @@ export function Header() {
         <nav className="flex items-center gap-3 sm:gap-4">
           <MobileSearchTrigger />
           <Link
+            href="/category/ai-hosting"
+            className="hidden sm:flex text-xs sm:text-sm font-medium text-[#4B5563] hover:text-[#0A0A0A] transition-colors items-center gap-1.5 px-3 py-1.5 rounded-md hover:bg-[#F9FAFB] border border-transparent hover:border-[#E5E7EB]"
+          >
+            <span>AI Hosting</span>
+          </Link>
+          <Link
             href="/agency"
             className="hidden sm:flex text-xs sm:text-sm font-medium text-[#4B5563] hover:text-[#0A0A0A] transition-colors items-center gap-1.5 px-3 py-1.5 rounded-md hover:bg-[#F9FAFB] border border-transparent hover:border-[#E5E7EB]"
           >

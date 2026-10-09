@@ -292,7 +292,7 @@ export default async function WorkflowPage({ params }: Props) {
                     <div className="rounded-3xl border border-border bg-surface-secondary/40 p-6 shadow-xs">
                         <div className="flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-wider mb-2">
                             <span className="material-symbols-outlined text-[18px]">category</span>
-                            <span>Component Category Hub</span>
+                            <span>Category Hub</span>
                         </div>
                         <h4 className="font-bold text-on-surface text-base mb-1.5">{siloData.primaryCategory.name}</h4>
                         <p className="text-xs text-on-surface-variant leading-relaxed mb-4">

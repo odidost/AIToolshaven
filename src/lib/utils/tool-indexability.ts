@@ -19,6 +19,16 @@ export const PROVEN_SEARCH_SIGNAL_TOOL_SLUGS = new Set([
   "gamma",
   "slidespilot-ai",
   "luma-dream-machine",
+  "vercel",
+  "railway",
+  "render",
+  "netlify",
+  "cloudflare",
+  "coolify",
+  "dokploy",
+  "hetzner",
+  "digitalocean",
+  "hostinger",
 ]);
 
 /**

@@ -260,7 +260,7 @@ export default function AiProgrammaticSeoBuildersGuide() {
               <LineChart className="w-4 h-4 text-indigo-400" />
             </div>
             <div className="text-3xl font-black text-white">
-              {calculatorMode === "traditional" ? "Limited Coverage" : "Massive Silo"}
+              {calculatorMode === "traditional" ? "Limited Coverage" : "Massive Scale"}
             </div>
             <p className="text-xs text-slate-400">
               {calculatorMode === "traditional"

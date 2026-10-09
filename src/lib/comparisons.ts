@@ -105,6 +105,34 @@ export const comparisons: ComparisonData[] = [
         tool1: { name: "Gamma", letter: "G", color: "from-purple-500 to-indigo-600", logoUrl: "/assets/logos/gamma-logo.webp" },
         tool2: { name: "Slidespilot AI", letter: "S", color: "from-blue-600 to-cyan-600", logoUrl: "https://fygifuwuseksxpcetsbo.supabase.co/storage/v1/object/public/assets/logos/slidespilot-ai-logo.webp" },
     },
+    {
+        title: "Vercel vs Railway",
+        slug: "vercel-vs-railway",
+        description: "Serverless edge frontend optimization and Next.js AI streaming vs continuous container PaaS, persistent volumes, and 24/7 background worker daemons.",
+        tool1: { name: "Vercel", letter: "V", color: "from-slate-900 to-black", logoUrl: "/assets/logos/vercel-logo.svg" },
+        tool2: { name: "Railway", letter: "R", color: "from-rose-500 to-pink-600", logoUrl: "/assets/logos/railway-logo.svg" },
+    },
+    {
+        title: "Vercel vs Render",
+        slug: "vercel-vs-render",
+        description: "Global serverless frontend deployment vs unified cloud PaaS with dedicated 24/7 background workers, cron jobs, and managed PostgreSQL.",
+        tool1: { name: "Vercel", letter: "V", color: "from-slate-900 to-black", logoUrl: "/assets/logos/vercel-logo.svg" },
+        tool2: { name: "Render", letter: "R", color: "from-emerald-400 to-teal-600", logoUrl: "/assets/logos/render-logo.svg" },
+    },
+    {
+        title: "Coolify vs Vercel",
+        slug: "coolify-vs-vercel",
+        description: "Free self-hosted open-source PaaS on your own VPS with zero seat or egress fees vs fully managed zero-ops serverless cloud.",
+        tool1: { name: "Coolify", letter: "C", color: "from-purple-600 to-indigo-700", logoUrl: "/assets/logos/coolify-logo.svg" },
+        tool2: { name: "Vercel", letter: "V", color: "from-slate-900 to-black", logoUrl: "/assets/logos/vercel-logo.svg" },
+    },
+    {
+        title: "Coolify vs Dokploy",
+        slug: "coolify-vs-dokploy",
+        description: "Feature-rich open-source self-hosted PaaS with 200+ 1-click app templates vs lightweight minimalist Docker deployment control plane.",
+        tool1: { name: "Coolify", letter: "C", color: "from-purple-600 to-indigo-700", logoUrl: "/assets/logos/coolify-logo.svg" },
+        tool2: { name: "Dokploy", letter: "D", color: "from-blue-600 to-sky-500", logoUrl: "/assets/logos/dokploy-logo.svg" },
+    },
 ];
 
 export function getComparisonBySlug(slug: string): ComparisonData | undefined {

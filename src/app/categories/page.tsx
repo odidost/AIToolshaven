@@ -128,7 +128,7 @@ export default async function CategoriesIndexPage() {
       <div className="max-w-4xl mx-auto text-center mb-10 mt-2 flex flex-col items-center">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] text-xs font-medium text-[#4B5563] mb-4">
           <span className="material-symbols-outlined text-[16px] text-[#E11D48]">compare_arrows</span>
-          <span>AI Tool Comparison Directory &amp; Taxonomy</span>
+          <span>AI Tool Comparison Directory &amp; Categories</span>
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-[#0A0A0A] tracking-tight leading-[1.12]">
           Compare AI Tools Across 100+ Categories (2026)

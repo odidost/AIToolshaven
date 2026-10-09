@@ -309,7 +309,9 @@ export default async function ArticlePage({ params }: Props) {
               [&>ol]:space-y-3 [&>ol]:my-6 [&>ol]:pl-6
               [&>li]:text-[16.5px] [&>li]:leading-[1.8]
               [&_strong]:text-on-surface [&_strong]:font-bold
-              [&_a]:text-primary [&_a]:font-semibold [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary/80"
+              [&_a]:text-primary [&_a]:font-semibold [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary/80
+              [&_a[class*='text-white']]:!text-white [&_a[class*='text-white']]:!no-underline hover:[&_a[class*='text-white']]:!text-white
+              [&_a[class*='bg-primary']]:!text-white [&_a[class*='bg-primary']]:!no-underline hover:[&_a[class*='bg-primary']]:!text-white"
             dangerouslySetInnerHTML={{ __html: contentWithAnchors }}
           />
 
