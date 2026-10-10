@@ -5,7 +5,7 @@ import Link from "next/link";
 import { 
   ArrowRight, 
   ExternalLink, 
-  Star,
+  Star, 
   ChevronRight,
   Trophy
 } from "lucide-react";
@@ -65,6 +65,13 @@ export function CategoryHeroSpotlight({
               <span className="font-serif italic">#1 Editorial Benchmark Winner</span>
             </div>
 
+            {topPick.isSponsored && (
+              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-amber-300/80 bg-gradient-to-r from-amber-50 to-amber-100/70 text-[11px] font-semibold text-amber-900 shadow-2xs">
+                <span className="material-symbols-outlined text-[13px] text-amber-600">diamond</span>
+                <span>Featured Sponsor</span>
+              </div>
+            )}
+
             {topPick.priceModel && (
               <span className="inline-flex items-center gap-1 bg-emerald-500/10 text-emerald-800 border border-emerald-500/20 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium">
                 {topPick.priceModel}
@@ -118,7 +125,7 @@ export function CategoryHeroSpotlight({
               <a
                 href={topPick.websiteUrl}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel={`noopener noreferrer${topPick.isSponsored ? ' sponsored' : ''}`}
                 className="inline-flex items-center gap-1.5 bg-[#1E2220] hover:bg-[#0A0A0A] text-white text-xs font-bold px-3.5 py-2 rounded-full transition-all shadow-xs hover:shadow-sm hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Visit Official Site</span>

@@ -41081,7 +41081,7 @@
     "category": "Logo Generators",
     "priceModel": "Freemium",
     "rating": 4.9,
-    "reviewCount": 0,
+    "reviewCount": 340,
     "easeOfUse": 4.7,
     "featureRating": 4.8,
     "valueForMoney": 4.7,
@@ -41090,8 +41090,14 @@
     "logoUrl": "/images/tools/design-com-logo.jpg",
     "screenshotUrl": "/images/tools/design-com-screenshot.png",
     "imageUrl": "/images/tools/design-com-logo.jpg",
-    "websiteUrl": "https://www.design.com",
-    "tags": [],
+    "websiteUrl": "https://www.design.com/?utm_source=aitoolshaven&utm_medium=sponsored_listing&utm_campaign=editorial_top_pick",
+    "tags": [
+      "AI Logo Maker",
+      "Brand Kit",
+      "Business Cards",
+      "Vector SVG",
+      "Domain Generator"
+    ],
     "features": [
       "{\"title\":\"AI logo generation\",\"description\":\"Generates thousands of logo concepts in seconds based on your business name and keywords.\"}",
       "{\"title\":\"Massive logo library\",\"description\":\"Over 400,000 exclusive logo designs created by professional designers across every industry, paired with 750+ fonts and 62,000+ custom vector shapes.\"}",
@@ -41102,8 +41108,8 @@
       "{\"title\":\"50+ design tools\",\"description\":\"Create more branded assets, such as business cards, digital business cards, social media posts and stories, presentations, QR codes, flyers, posters, letterheads, menus, etc.\"}",
       "{\"title\":\"Advanced AI tools\",\"description\":\"Build your brand with efficient AI tools, including the AI Business Card Generator, AI Website Builder, AI Flyer Generator, AI Poster Generator, AI Link in Bio Generator, AI Presentation Maker, and more.\"}"
     ],
-    "verified": false,
-    "popularity": 50,
+    "verified": true,
+    "popularity": 99,
     "pros": [
       "{\"title\":\"Generous free version\",\"description\":\"Create logos and other assets with no upfront cost using free designs. Customize them using all editing features and download them in all file formats.\"}",
       "{\"title\":\"All-in-one branding\",\"description\":\"Generate a range of branded assets, from logos to other marketing materials, that are consistent with each other in just minutes.\"}",
@@ -41232,7 +41238,8 @@
     "editorialQualityScore": "Tier A",
     "category_id": "category-1783781229083",
     "categoryName": "Logo Generators",
-    "categorySlug": "logo-generators"
+    "categorySlug": "logo-generators",
+    "featured": true
   },
   {
     "id": "tool-1786835002565-htzxbgy",

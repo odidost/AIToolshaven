@@ -58,6 +58,8 @@ const BLOG_TITLE_OVERRIDES: Record<string, string> = {
     "8 Best Free AI Voice Generators (2026) [Tested]",
   "best-free-ai-presentation-makers-2026":
     "Best Free AI Presentation Makers (2026) [$0 Cost]",
+  "7-ai-skills-every-freelancer-should-learn":
+    "7 AI Skills Every Freelancer Should Learn (2026 Guide)",
 };
 
 /**

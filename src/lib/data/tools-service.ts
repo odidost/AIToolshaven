@@ -720,6 +720,8 @@ export async function getToolsByCategoryId(categoryId: string, limit: number = 1
 
             // High-Precision Popularity & Quality Ranking
             combined.sort((a, b) => {
+                if (a.isSponsored && !b.isSponsored) return -1;
+                if (!a.isSponsored && b.isSponsored) return 1;
                 const popDiff = (b.popularity || 0) - (a.popularity || 0);
                 if (popDiff !== 0) return popDiff;
                 if (a.verified !== b.verified) return (b.verified ? 1 : 0) - (a.verified ? 1 : 0);
@@ -748,6 +750,8 @@ export async function getToolsByCategoryId(categoryId: string, limit: number = 1
                 return true;
             });
             dedupe.sort((a, b) => {
+                if (a.isSponsored && !b.isSponsored) return -1;
+                if (!a.isSponsored && b.isSponsored) return 1;
                 const popDiff = (b.popularity || 0) - (a.popularity || 0);
                 if (popDiff !== 0) return popDiff;
                 if (a.verified !== b.verified) return (b.verified ? 1 : 0) - (a.verified ? 1 : 0);
@@ -756,7 +760,7 @@ export async function getToolsByCategoryId(categoryId: string, limit: number = 1
             return dedupe.slice(0, limit);
         }
     };
-    return safeCache(fetchByCategory, ['tools_by_category_v4', categoryId, limit.toString()], { revalidate: 86400, tags: [`category:${categoryId.toLowerCase()}`] })();
+    return safeCache(fetchByCategory, ['tools_by_category_v5', categoryId, limit.toString()], { revalidate: 86400, tags: [`category:${categoryId.toLowerCase()}`] })();
 }
 
 /**
@@ -766,11 +770,38 @@ export async function getToolsByCategoryId(categoryId: string, limit: number = 1
 export async function getRelatedCandidatesPool(tool: AITool): Promise<AITool[]> {
   try {
     const categoryTools = await getToolsByCategoryId(tool.category);
-    if (categoryTools.length >= 8) {
-      return categoryTools;
+    let subcategoryTools: AITool[] = [];
+
+    if (Array.isArray(tool.additionalCategories) && tool.additionalCategories.length > 0) {
+      for (const cat of tool.additionalCategories) {
+        if (typeof cat === 'string') {
+          const addTools = await getToolsByCategoryId(cat);
+          subcategoryTools.push(...addTools);
+        }
+      }
     }
-    const trending = await getTrendingTools(16);
-    const combined = [...categoryTools, ...trending];
+
+    const isLogo =
+      (tool.category || '').toLowerCase().includes('logo') ||
+      (Array.isArray(tool.additionalCategories) && tool.additionalCategories.includes('logo-generators')) ||
+      (Array.isArray(tool.tags) && tool.tags.some((t: any) => typeof t === 'string' && t.toLowerCase().includes('logo')));
+
+    let sponsorCandidate: AITool | null = null;
+    if (isLogo && tool.slug !== 'design-com') {
+      sponsorCandidate = (await getToolBySlug('design-com')) || null;
+    }
+
+    const combined = [
+      ...(sponsorCandidate ? [sponsorCandidate] : []),
+      ...categoryTools,
+      ...subcategoryTools,
+    ];
+
+    if (combined.length < 8) {
+      const trending = await getTrendingTools(16);
+      combined.push(...trending);
+    }
+
     const seen = new Set<string>();
     return combined.filter(t => {
       if (!t || !t.id || seen.has(t.id)) return false;
