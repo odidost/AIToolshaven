@@ -69,7 +69,7 @@ export const articles: Article[] = [
             <tr class="hover:bg-primary/[0.02]">
               <td class="p-4 font-bold text-on-surface">3. SEO &amp; Visibility</td>
               <td class="p-4">Search intent mapping, brief generation &amp; content architecture</td>
-              <td class="p-4">Chyweb Academy, <a href="/tool/perplexity" class="text-primary hover:underline font-semibold">Perplexity</a></td>
+              <td class="p-4"><a href="https://chyweb.com.ng/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Chyweb Academy</a>, <a href="/tool/perplexity" class="text-primary hover:underline font-semibold">Perplexity</a></td>
               <td class="p-4 font-semibold text-emerald-600">Shifts services from basic execution to organic revenue growth</td>
             </tr>
             <tr class="hover:bg-primary/[0.02] bg-surface-secondary/20">
@@ -160,7 +160,7 @@ export const articles: Article[] = [
       
       <div class="bg-surface-secondary/40 border border-outline rounded-2xl p-6 my-6">
         <p class="text-base text-on-surface-variant leading-relaxed">
-          If you want a structured way to master this, <strong>Chyweb Academy's SEO training</strong> walks through the fundamentals step by step, so you can pair AI speed with real strategy. Platforms like Chyweb Academy specialize in teaching career-ready digital skills so you can execute client campaigns with confidence.
+          If you want a structured way to master this, <a href="https://chyweb.com.ng/seo-training" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-bold">Chyweb Academy's SEO training</a> walks through the fundamentals step by step, so you can pair AI speed with real strategy. Platforms like <a href="https://chyweb.com.ng/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-bold">Chyweb Academy</a> specialize in teaching career-ready digital skills so you can execute client campaigns with confidence.
         </p>
       </div>
 
@@ -240,7 +240,7 @@ export const articles: Article[] = [
           <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm shrink-0">4</div>
           <div>
             <h4 class="font-bold text-on-surface text-base mb-1">Learn in a Structured Way</h4>
-            <p class="text-sm text-on-surface-variant leading-relaxed">Random internet tutorials leave massive blind spots in your skill set. A guided learning path helps you acquire capabilities in the correct sequence and apply them with conviction. Educational platforms like Chyweb Academy focus on practical, career-ready digital skills designed specifically for people who want to learn by doing.</p>
+            <p class="text-sm text-on-surface-variant leading-relaxed">Random internet tutorials leave massive blind spots in your skill set. A guided learning path helps you acquire capabilities in the correct sequence and apply them with conviction. Educational platforms like <a href="https://chyweb.com.ng/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-bold">Chyweb Academy</a> focus on practical, career-ready digital skills designed specifically for people who want to learn by doing.</p>
           </div>
         </div>
 
