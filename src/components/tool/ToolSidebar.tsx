@@ -66,9 +66,16 @@ export function ToolSidebar({
                             />
 
                             <div className="flex-1 min-w-0">
-                                <p className="truncate font-bold text-on-surface group-hover:text-primary transition-colors">
-                                    {t.name}
-                                </p>
+                                <div className="flex items-center gap-1.5">
+                                    <p className="truncate font-bold text-on-surface group-hover:text-primary transition-colors">
+                                        {t.name}
+                                    </p>
+                                    {t.isSponsored && (
+                                        <span className="shrink-0 text-[9px] font-extrabold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300">
+                                            Sponsor
+                                        </span>
+                                    )}
+                                </div>
                                 <p className="truncate text-xs text-on-surface-variant mt-0.5">
                                     {t.tagline}
                                 </p>

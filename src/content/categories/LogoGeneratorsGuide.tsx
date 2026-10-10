@@ -291,7 +291,7 @@ export default function LogoGeneratorsGuide() {
                   What truly elevates Design.com is its integrated infrastructure. You can generate a logo, secure the exact matching domain, and deploy a branded landing page—all without ever leaving the platform.
                 </p>
 
-                <a href="https://www.design.com" target="_blank" rel="noopener noreferrer" className="group/btn inline-flex items-center gap-3 px-8 py-4 bg-white text-slate-900 rounded-2xl font-bold text-lg hover:bg-rose-50 hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <a href="https://www.design.com/?utm_source=aitoolshaven&utm_medium=sponsored_listing&utm_campaign=editorial_top_pick" target="_blank" rel="noopener noreferrer sponsored" className="group/btn inline-flex items-center gap-3 px-8 py-4 bg-white text-slate-900 rounded-2xl font-bold text-lg hover:bg-rose-50 hover:scale-105 hover:shadow-xl transition-all duration-300">
                   Try Design.com
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1.5 transition-transform" />
                 </a>

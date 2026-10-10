@@ -230,7 +230,9 @@ export function normalizeTool(raw: any, localFallback?: any): AITool {
   const logoUrl = String(data.logo_url || data.logoUrl || local.logoUrl || local.logo_url || '');
   const imageUrl = String(data.image_url || data.imageUrl || local.imageUrl || local.image_url || logoUrl);
   const screenshotUrl = data.screenshot_url || data.screenshotUrl || local.screenshotUrl || local.screenshot_url || undefined;
-  const websiteUrl = data.website_url || data.websiteUrl || data.url || local.websiteUrl || local.url || undefined;
+  const localWebUrl = local.websiteUrl || local.url;
+  const dbWebUrl = data.website_url || data.websiteUrl || data.url;
+  const websiteUrl = (Boolean(local.isSponsored || data.isSponsored || data.is_sponsored) && localWebUrl) ? localWebUrl : (dbWebUrl || localWebUrl || undefined);
 
   // Normalized Arrays
   const tags = normalizeStringArray(data.tags || local.tags);

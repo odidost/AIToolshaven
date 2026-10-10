@@ -40,13 +40,21 @@ export default function ToolComparisonSection({
                     {comparisonTools.filter(Boolean).map((comparisonTool, idx) => (
                         <div
                             key={comparisonTool.id || comparisonTool.slug || idx}
-                            className="group relative rounded-[24px] border border-border/50 bg-surface-secondary/30 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-md hover:bg-white overflow-hidden flex flex-col"
+                            className={`group relative rounded-[24px] border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-md overflow-hidden flex flex-col ${
+                                comparisonTool.isSponsored
+                                    ? "border-amber-300/80 bg-gradient-to-b from-amber-50/40 via-white to-white shadow-xs hover:border-amber-400"
+                                    : "border-border/50 bg-surface-secondary/30 hover:border-primary/30 hover:bg-white"
+                            }`}
                         >
-                            {idx === 0 && (
+                            {comparisonTool.isSponsored ? (
+                                <div className="absolute -right-10 top-6 rotate-45 bg-gradient-to-r from-amber-400 to-amber-500 px-12 py-1 text-[9px] font-extrabold tracking-wider text-amber-950 shadow-sm z-20">
+                                    SPONSOR #1
+                                </div>
+                            ) : idx === 0 ? (
                                 <div className="absolute -right-10 top-6 rotate-45 bg-gradient-to-r from-success to-emerald-400 px-12 py-1 text-[10px] font-bold text-white shadow-sm z-20">
                                     TOP RATED
                                 </div>
-                            )}
+                            ) : null}
 
                             <div className="flex items-center justify-between mb-6 relative z-10">
                                 <div className="h-14 w-14 rounded-2xl border border-border/50 bg-white shadow-xs group-hover:scale-105 transition-transform flex items-center justify-center p-2 overflow-hidden">
@@ -65,9 +73,17 @@ export default function ToolComparisonSection({
                                 ) : null}
                             </div>
 
-                            <h3 className="text-xl font-bold text-on-surface mb-3 relative z-10">
-                                {comparisonTool.name}
-                            </h3>
+                            <div className="flex items-center gap-2 mb-3 relative z-10 flex-wrap">
+                                <h3 className="text-xl font-bold text-on-surface">
+                                    {comparisonTool.name}
+                                </h3>
+                                {comparisonTool.isSponsored && (
+                                    <span className="inline-flex items-center gap-1 rounded-full border border-amber-300/70 bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-900 shadow-2xs">
+                                        <span className="material-symbols-outlined text-[11px] text-amber-600">diamond</span>
+                                        Featured Sponsor
+                                    </span>
+                                )}
+                            </div>
 
                             <p className="text-sm leading-relaxed text-on-surface-variant mb-8 relative z-10">
                                 {tool.editorial?.compareWithBreakdown?.[comparisonTool.id] || tool.editorial?.compareWithBreakdown?.[comparisonTool.slug] || `If you're debating between ${tool.name} and ${comparisonTool.name}, here is the breakdown of which one actually performs better for specific workflows.`}

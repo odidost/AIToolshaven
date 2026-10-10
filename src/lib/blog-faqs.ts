@@ -38,6 +38,24 @@ const CURATED_ARTICLE_FAQS: Record<string, ArticleFAQItem[]> = {
       question: "Can AI coding assistants replace software engineers?",
       answer: "No. AI coding assistants automate boilerplate, suggest completions, and speed up debugging, but engineers remain essential for architecture design, edge-case analysis, and systems verification."
     }
+  ],
+  "7-ai-skills-every-freelancer-should-learn": [
+    {
+      question: "Which AI skills offer the highest earning potential for freelancers?",
+      answer: "Prompt writing and workflow automation provide the fastest ROI. High-precision prompt writing ensures first-draft deliverables meet client expectations without endless revisions, while automation handles repetitive administrative tasks, allowing you to take on more billable clients."
+    },
+    {
+      question: "Will AI replace freelance writers, designers, and marketers?",
+      answer: "No. AI replaces professionals who deliver generic, robotic work. Freelancers who combine AI speed with domain expertise, strategic thinking, storytelling, and brand judgment will earn higher rates."
+    },
+    {
+      question: "How can freelancers learn practical SEO and digital marketing skills?",
+      answer: "Structured learning paths like Chyweb Academy teach practical digital marketing and SEO step-by-step. Combining strategic SEO fundamentals with AI tools enables freelancers to help clients achieve genuine organic visibility and conversions."
+    },
+    {
+      question: "How should freelancers handle AI ethics and client data?",
+      answer: "Always maintain transparency with clients regarding AI usage. Protect client confidential data by opting out of model training in your AI settings, rigorously fact-check all generated claims, and verify output originality before final delivery."
+    }
   ]
 };
 

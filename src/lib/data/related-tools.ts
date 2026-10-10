@@ -94,6 +94,25 @@ export function calculateRelatedScore(target: AITool, candidate: AITool): number
     score += 5;
   }
 
+  // 8. Sponsored Partner Elevation (50 pts for category or subcategory match)
+  const isTargetLogo =
+    targetCategory.toLowerCase().includes("logo") ||
+    (Array.isArray(target.additionalCategories) && target.additionalCategories.includes("logo-generators")) ||
+    (Array.isArray(target.tags) && target.tags.some((t: any) => typeof t === "string" && t.toLowerCase().includes("logo")));
+
+  const isCandidateLogo =
+    candidateCategory.toLowerCase().includes("logo") ||
+    (Array.isArray(candidate.additionalCategories) && candidate.additionalCategories.includes("logo-generators")) ||
+    (Array.isArray(candidate.tags) && candidate.tags.some((t: any) => typeof t === "string" && t.toLowerCase().includes("logo")));
+
+  const hasCategoryMatch =
+    (targetCategory && candidateCategory && targetCategory.toLowerCase() === candidateCategory.toLowerCase()) ||
+    (isTargetLogo && isCandidateLogo);
+
+  if (candidate.isSponsored && hasCategoryMatch) {
+    score += 50;
+  }
+
   return score;
 }
 
@@ -117,6 +136,10 @@ export function getDeterministicRelatedTools(
     }))
     .filter((item) => item.score > 0)
     .sort((a, b) => {
+      // Prioritize relevant sponsored partner to rank #1
+      if (Boolean(a.tool.isSponsored) !== Boolean(b.tool.isSponsored)) {
+        return a.tool.isSponsored ? -1 : 1;
+      }
       // Deterministic sort: higher score first, fallback to slug alphabetical
       if (b.score !== a.score) {
         return b.score - a.score;

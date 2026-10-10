@@ -6,6 +6,7 @@ import { UseCases } from "@/components/tool/UseCases";
 import { FeatureGrid } from "@/components/tool/FeatureGrid";
 import { ProsCons } from "@/components/tool/ProsCons";
 import ToolComparisonSection from "@/components/tool/ToolComparisonSection";
+import { CompetitorSponsoredBanner } from "@/components/tool/CompetitorSponsoredBanner";
 import { PricingPlans } from "@/components/tool/PricingPlans";
 import { ToolSidebar } from "@/components/tool/ToolSidebar";
 import { StructuredData } from "@/components/shared/StructuredData";
@@ -332,6 +333,8 @@ export default async function ToolPage({ params }: Props) {
           <FeatureGrid features={tool.features} />
 
           <PricingPlans tool={tool} plans={tool.pricingPlans} pricing={tool.pricing} />
+
+          <CompetitorSponsoredBanner currentTool={tool} />
 
           {comparisonTools.length > 0 && (
             <ToolComparisonSection
